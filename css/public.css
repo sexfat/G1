@@ -1,0 +1,143 @@
+@charset "UTF-8";
+* {
+  -webkit-box-sizing: border-box;
+          box-sizing: border-box;
+}
+
+html {
+  font-size: 20px;
+}
+
+body {
+  margin: 0;
+  font-family: 'Lucida Sans Unicode', Geneva, Verdana, sans-serif;
+}
+
+h1,
+h2,
+h3,
+h4,
+h5,
+h6,
+p,
+title,
+section,
+.forget {
+  margin: 0;
+  padding: 0;
+}
+
+h1 {
+  /*60px*/
+  font-size: 3rem;
+}
+
+h2 {
+  /* 40px*/
+  font-size: 2rem;
+  /*副標的h2 font-weight:bold*/
+}
+
+h3 {
+  /*30px*/
+  font-size: 1.5rem;
+}
+
+h4 {
+  /*24px*/
+  font-size: 1.2rem;
+}
+
+p {
+  /*內文 20px*/
+  font-size: 1rem;
+}
+
+p.bigSmall {
+  /*大小 16px*/
+  font-size: 0.8rem;
+}
+
+p.doubleSmall {
+  /*小小 14px*/
+  font-size: 0.7rem;
+}
+
+p.forget {
+  /*旺季 12px*/
+  font-size: 0.6rem;
+}
+
+.title {
+  /*16px*/
+  font-size: 0.8rem;
+}
+
+.section {
+  /*14px*/
+  font-size: 0.7rem;
+}
+
+.forget {
+  /*12px*/
+  font-size: 0.6rem;
+}
+
+nav {
+  width: 100%;
+  position: fixed;
+}
+
+nav > h4 {
+  /*nav裡面的按鈕*/
+  border: 1px solid pink;
+  padding: 15px 12px;
+  letter-spacing: 1px;
+}
+
+.wrapper {
+  max-width: 1500px;
+  margin: 0 auto;
+  width: 100%;
+}
+
+/*燈箱寬*/
+.lightbox_s {
+  width: 500px;
+}
+
+/*新手教學用*/
+.lightbox_b {
+  width: 1000px;
+}
+
+/*燈箱裡的按鈕*/
+.lightbox_s .btn_s {
+  font-size: 0.7rem;
+  display: inline-block;
+  padding: 5px 8px;
+  margin: 20px auto;
+  background-color: #f1c40f6b;
+}
+
+/*燈箱的遮罩顏色*/
+/*background-color: #414141e6;*/
+/*小按鈕*/
+.btn_s {
+  font-size: 0.7rem;
+  display: inline-block;
+  padding: 5px 8px;
+  background-color: #f1c40f6b;
+  border: 1.5px solid #f1c40f;
+}
+
+/*這個是有底圖的按鈕*/
+.btn_b {
+  font-size: 0.8rem;
+  /*按鈕的圖*/
+}
+
+header {
+  height: 300px;
+}
+/*# sourceMappingURL=public.css.map */
