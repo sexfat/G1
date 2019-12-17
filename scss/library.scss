@@ -1,0 +1,78 @@
+@import './var';
+@import './clearfix';
+
+html {
+  font-size: 20px;
+}
+
+ul,
+li,
+p,
+h1,
+h2,
+h3,
+h4,
+h5,
+h6,
+button {
+  margin: 0;
+  padding: 0;
+}
+
+ol,
+ul {
+  list-style: none;
+}
+
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+main {
+  width: 100%;
+  max-width: 1500px;
+  margin: 0 auto;
+  border: 1px solid red;
+
+  img {
+    width: 100%;
+  }
+
+  aside {
+    border: 1px solid gold;
+    float: left;
+    width: 30%;
+    padding: 3%;
+
+    .lists {
+      li {
+        padding: 10px 0;
+        border-bottom: 1px solid gray;
+      }
+    }
+  }
+
+  .right {
+    border: 1px solid gold;
+    float: left;
+    width: 70%;
+    padding: 3%;
+    min-height: 400px;
+
+    .listInfo {
+      .listCover {
+        max-width: 200px;
+        float: left;
+        border-width: 100px;
+      }
+
+      .listName {
+        float: left;
+
+      }
+    }
+  }
+
+}
