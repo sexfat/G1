@@ -189,19 +189,41 @@ body .registercontainer .registerbox .registerform h2 {
 
 body .registercontainer .registerbox .registerform form {
   border: 1px solid #aaa;
-  width: 350px;
   margin: 0 auto;
   height: 500px;
+  padding: 70px;
 }
 
 body .registercontainer .registerbox .registerform form button {
   font-size: 0.8rem;
-  padding: 5px 15px;
+  padding: 10px 30px;
   background-color: #f1c40f;
   border: 1px solid #f1c40f;
   border-radius: 5px;
   color: #fff;
   font-weight: bold;
+  margin-top: 180px;
+  display: block;
+  margin: 180px auto;
+}
+
+body .registercontainer .registerbox .registerform form label {
+  font-size: 1.2rem;
+}
+
+body .registercontainer .registerbox .registerform form .inputemail {
+  margin-bottom: 20px;
+}
+
+body .registercontainer .registerbox .registerform form input {
+  background-color: #d0d6d6;
+  border: 1px solid #d0d6d6;
+  padding: 8px;
+  width: 100%;
+}
+
+body .registercontainer .registerbox .registerform form a {
+  font-size: 0.6rem;
 }
 
 body .registercontainer .registerbox .signupform {
