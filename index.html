@@ -1,0 +1,253 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+    <link rel="stylesheet" href="./css/main.css">
+    <link rel="stylesheet" href="./css/nav_bar.css">
+    <link rel="stylesheet" href="./css/home.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/pagePiling.js/1.5.6/jquery.pagepiling.min.css">
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/vue/2.6.10/vue.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
+
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/pagePiling.js/1.5.6/jquery.pagepiling.min.js"></script>
+
+    <style>
+
+
+    </style>
+    <script>
+
+        $(document).ready(function () {
+            $('#pagepiling').pagepiling(
+                {
+                    verticalCentered: false,
+                }
+            );
+        });
+
+    </script>
+</head>
+
+<body>
+    <div id="app" @click="app_click">
+        <div class="nav_bar flexbox">
+            <div class="hamburger" @click="hamburger_click">
+                <div class="hamburger-box">
+                    <div class="hamburger-inner"></div>
+                </div>
+            </div>
+            <ul>
+                <li></li>
+                <li></li>
+                <li></li>
+                <li></li>
+            </ul>
+            <div class="logo_container">
+                <a href="">
+                    <div class="logo"></div>
+                </a>
+            </div>
+            <ul class="main_list flexbox">
+                <li id="REMIX" class="flexbox">
+                    <a class="flexbox" href="">
+                    </a>
+                </li>
+                <li id="COLLECTION" class="flexbox">
+                    <a class="flexbox" href="">
+                    </a>
+                </li>
+                <li id="ACTIVITY" class="flexbox">
+                    <a class="flexbox" href="">
+                    </a>
+                </li>
+                <li id="LIBRARY" class="flexbox">
+                    <a class="flexbox" href="">
+                    </a>
+                </li>
+            </ul>
+            <div class="search_bt" @click="search_bt_click">
+                <a href="#"></a>
+            </div>
+            <div class="search_bar">
+                <input class="search" type="text" />
+                <div class="tag_container">
+                </div>
+            </div>
+            <div class="mem_bt" @click="mem_bt_click">
+                <a href="#"></a>
+            </div>
+            <ul class="mem_list" @click="stopPropagation">
+                <li>
+                    <a href="">
+                        <h4>Profile</h4>
+                    </a>
+                </li>
+                <li>
+                    <a href="">
+                        <h4>Favorite</h4>
+                    </a>
+                </li>
+                <li>
+                    <a href="">
+                        <h4>
+                            Song Upload
+                            <br />&amp; Remove
+                        </h4>
+                    </a>
+                </li>
+                <li>
+                    <a href="">
+                        <h4>
+                            Store Value
+                            <br />&amp;Store Record
+                        </h4>
+                    </a>
+                </li>
+                <li>
+                    <a href="">
+                        <h4>Donate Record</h4>
+                    </a>
+                </li>
+            </ul>
+        </div>
+
+        <div id="pagepiling">
+            <div class="sec sec01 section">
+                <div class="img_container">
+                    <div class="stylus"></div>
+                    <div class="vinyl_records">
+                        <div class="cover_img">
+                        </div>
+                    </div>
+                </div>
+                <div class="ctrl_container">
+                    <div class="top_arrow"></div>
+                    <div songInfo_container>
+
+                    </div>
+                    <div class="bot_arrow"></div>
+                </div>
+                <div class="wave_container">
+
+                </div>
+            </div>
+            <div class="sec sec02 section">
+                <header>
+                    <h1>
+                        REMIX
+                    </h1>
+                </header>
+                <div class="mixer">
+
+                </div>
+            </div>
+            <div class="sec sec03 section">
+                <div class="pot">
+
+                </div>
+            </div>
+            <div class="sec sec04 section">
+                <div class="DJ">
+
+                </div>
+            </div>
+            <div class="sec sec05 section">
+                <div class="container">
+                    <div class="shelf shelf01"></div>
+                    <div class="shelf shelf02"></div>
+                    <div class="shelf shelf03"></div>
+                </div>
+            </div>
+            <div class="sec sec06 section">
+                <div class="audio_man">
+                </div>
+            </div>
+        </div>
+    </div>
+
+
+
+
+    <script>
+        let vm = new Vue({
+            el: "#app",
+            data: {
+                search_bar: false,
+                mem_list: false,
+            },
+            methods: {
+                hamburger_click(e) {
+                    // e.stopPropagation();
+                    document
+                        .querySelector(".hamburger").classList.toggle("is-active");
+                },
+                search_bt_click(e) {
+                    e.stopPropagation();
+                    if (this.search_bar == false) {
+                        this.search_bar = true;
+                        this.mem_list = false;
+                        document
+                            .querySelector(".search_bar")
+                            .setAttribute("style", "height: 240px; filter: opacity(1);");
+                        document.querySelector("input.search").focus();
+                        document
+                            .querySelector(".mem_list")
+                            .setAttribute("style", "height: 0px; filter: opacity(0);");
+                    } else {
+                        this.search_bar = false;
+                        document
+                            .querySelector(".search_bar")
+                            .setAttribute("style", "height: 0px; filter: opacity(0);");
+                        document.querySelector("input.search").blur();
+                        document
+                            .querySelector(".mem_list")
+                            .setAttribute("style", "height: 0px; filter: opacity(0);");
+                    }
+                },
+
+                stopPropagation(e) {
+                    e.stopPropagation();
+                },
+
+                mem_bt_click(e) {
+                    e.stopPropagation();
+                    if (this.mem_list == false) {
+                        this.mem_list = true;
+                        this.search_bar = false;
+                        document
+                            .querySelector(".mem_list")
+                            .setAttribute("style", "height: 293px; filter: opacity(1);");
+                        document
+                            .querySelector(".search_bar")
+                            .setAttribute("style", "height: 0px; filter: opacity(0);");
+
+                    } else {
+                        this.mem_list = false;
+                        document
+                            .querySelector(".mem_list")
+                            .setAttribute("style", "height: 0px; filter: opacity(0);");
+                        document
+                            .querySelector(".search_bar")
+                            .setAttribute("style", "height: 0px; filter: opacity(0);");
+                    }
+                },
+                app_click() {
+                    this.mem_list = false;
+                    this.search_bar = false;
+                    document
+                        .querySelector(".search_bar")
+                        .setAttribute("style", "height: 0px; filter: opacity(0);");
+                    document
+                        .querySelector(".mem_list")
+                        .setAttribute("style", "height: 0px; filter: opacity(0);");
+                },
+            }
+        });
+    </script>
+</body>
+
+</html>
