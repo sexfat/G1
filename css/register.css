@@ -142,6 +142,7 @@ header {
 }
 
 body {
+  background-image: url(/img/register/login.jpg);
   margin: 0;
   padding: 0;
   width: 100%;
@@ -154,7 +155,7 @@ body nav {
 
 body .registercontainer {
   margin: 0 auto;
-  border: 1px solid blue;
+  border: 1px solid green;
   position: relative;
   top: 100px;
 }
