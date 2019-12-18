@@ -1,0 +1,64 @@
+@import './public.scss';
+
+$button-no2-color: #f1c40f;
+$button-no2-fontsize:0.8rem;
+$button-no2-padding:5px 15px;
+$green-color:#d0d6d6;
+
+body{
+    // background-image: url(../img/register/signup.jpg);
+    margin:0;
+    padding:0;
+    width:100%;
+    nav{
+        height: 100px;
+        border: 1px solid pink;
+    }
+    .registercontainer{
+        margin:0 auto;
+        border: 1px solid blue;
+        position: relative;
+        top: 100px;
+        .registerbox{
+            background-color: $green-color;
+            width: 55%;
+            height: 550px;
+            margin: 0 auto;
+            position: relative;
+            top:100px;
+            transition: all 0.5s ease-in-out;
+            z-index: 2;
+            .registerform{
+                background-color:#fff;
+                border:1px solid #aaa;
+                width:40%;
+                height:700px;
+                position: relative;
+                bottom: 15%;
+                left: 10%;
+                h2{
+                    text-align: center;
+                    padding-top:50px;
+                }
+                form{
+                    border:1px solid #aaa;
+                    width: 350px;
+                    margin: 0 auto;
+                    height: 500px;
+                    button{
+                        font-size:$button-no2-fontsize;
+                        padding:$button-no2-padding;
+                        background-color: $button-no2-color;
+                        border:1px solid #f1c40f;
+                        border-radius: 5px;
+                        color:#fff;
+                        font-weight: bold;
+                    }
+                }
+            }
+            .signupform{
+                border: 1px solid gray;
+            }
+        }
+    }
+}
