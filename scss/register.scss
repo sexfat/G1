@@ -1,17 +1,29 @@
 @import './public.scss';
 
-$button-no2-color: #f1c40f;
-$button-no2-fontsize:0.8rem;
-$button-no2-padding:10px 30px;
+// $button-no2-color: #f1c40f;
+// $button-no2-fontsize:0.8rem;
+// $button-no2-padding:10px 30px;
 $green-color:#d0d6d6;
 $labelfontsize:1.2rem;
 $forgetfontsize:0.6rem;
+$buttonhover:scale(1.1);
+
+@mixin butttonn02{
+    background-color:#f1c40f;
+    font-size:0.8rem;
+    padding:10px 30px;
+    border:1px solid #f1c40f;
+    border-radius: 5px;
+    color:#fff;
+    font-weight: bold;
+}
 
 body{
-    background-image: url(/img/register/login.jpg);
+    // background-image: url(/img/register/login.jpg);
     margin:0;
     padding:0;
     width:100%;
+    background-color:#fafaf1;
     nav{
         height: 100px;
         border: 1px solid pink;
@@ -48,17 +60,11 @@ body{
                     height: 500px;
                     padding:70px;
                     button{
-                        font-size:$button-no2-fontsize;
-                        padding:$button-no2-padding;
-                        background-color: $button-no2-color;
-                        border:1px solid #f1c40f;
-                        border-radius: 5px;
-                        color:#fff;
-                        font-weight: bold;
-                        margin-top: 180px;
+                        @include butttonn02;
+                        margin-top: 150px;
                         display: block;
                         margin: 180px auto;
-                        
+                        transition: $buttonhover;
                     }
                     label{
                         font-size:$labelfontsize;
@@ -74,12 +80,25 @@ body{
                     }
                     a{
                         font-size: $forgetfontsize;
+                        display: inline;
+                        position: relative;
+                        left: 17px;
                     }
                 }
+
             }
             .signupform{
                 border: 1px solid gray;
             }
+            .rightbox,.leftbox{
+                border: 1px solid red;
+                display: inline-block;
+                text-align: center;
+                button{
+                    @include butttonn02;
+                }
+            }
+        
         }
     }
 }
