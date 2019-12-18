@@ -146,6 +146,12 @@ ul {
   list-style: none;
 }
 
+#player {
+  width: 100%;
+  position: fixed;
+  z-index: 98;
+}
+
 #player i {
   display: block;
 }
@@ -162,8 +168,8 @@ ul {
   left: 0;
   bottom: 0;
   padding: 10px;
-  position: fixed;
-  z-index: 99;
+  position: absolute;
+  z-index: 97;
 }
 
 #player .player_s .info {
