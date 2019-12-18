@@ -1,0 +1,446 @@
+@charset "UTF-8";
+* {
+  -webkit-box-sizing: border-box;
+          box-sizing: border-box;
+}
+
+html {
+  font-size: 20px;
+}
+
+body {
+  margin: 0;
+  font-family: 'Lucida Sans Unicode', Geneva, Verdana, sans-serif;
+}
+
+h1,
+h2,
+h3,
+h4,
+h5,
+h6,
+p,
+title,
+section,
+.forget {
+  margin: 0;
+  padding: 0;
+}
+
+h1 {
+  /*60px*/
+  font-size: 3rem;
+}
+
+h2 {
+  /* 40px*/
+  font-size: 2rem;
+  /*副標的h2 font-weight:bold*/
+}
+
+h3 {
+  /*30px*/
+  font-size: 1.5rem;
+}
+
+h4 {
+  /*24px*/
+  font-size: 1.2rem;
+}
+
+p {
+  /*內文 20px*/
+  font-size: 1rem;
+}
+
+p.bigSmall {
+  /*大小 16px*/
+  font-size: 0.8rem;
+}
+
+p.doubleSmall {
+  /*小小 14px*/
+  font-size: 0.7rem;
+}
+
+p.forget {
+  /*旺季 12px*/
+  font-size: 0.6rem;
+}
+
+.title {
+  /*16px*/
+  font-size: 0.8rem;
+}
+
+.section {
+  /*14px*/
+  font-size: 0.7rem;
+}
+
+.forget {
+  /*12px*/
+  font-size: 0.6rem;
+}
+
+nav {
+  width: 100%;
+  position: fixed;
+}
+
+nav > h4 {
+  /*nav裡面的按鈕*/
+  border: 1px solid pink;
+  padding: 15px 12px;
+  letter-spacing: 1px;
+}
+
+.wrapper {
+  max-width: 1500px;
+  margin: 0 auto;
+  width: 100%;
+}
+
+/*燈箱寬*/
+.lightbox_s {
+  width: 500px;
+}
+
+/*新手教學用*/
+.lightbox_b {
+  width: 1000px;
+}
+
+/*燈箱裡的按鈕*/
+.lightbox_s .btn_s {
+  font-size: 0.7rem;
+  display: inline-block;
+  padding: 5px 8px;
+  margin: 20px auto;
+  background-color: #f1c40f6b;
+}
+
+/*燈箱的遮罩顏色*/
+/*background-color: #414141e6;*/
+/*小按鈕*/
+.btn_s {
+  font-size: 0.7rem;
+  display: inline-block;
+  padding: 5px 8px;
+  background-color: #f1c40f6b;
+  border: 1.5px solid #f1c40f;
+}
+
+/*這個是有底圖的按鈕*/
+.btn_b {
+  font-size: 0.8rem;
+  /*按鈕的圖*/
+}
+
+header {
+  height: 300px;
+}
+
+ol,
+ul {
+  list-style: none;
+  padding: 0;
+  margin: 0;
+}
+
+body {
+  background-color: #fafaf1;
+  background-image: url("../img/library/library_bg.jpg");
+  background-position: bottom right;
+  background-repeat: no-repeat;
+  background-size: cover;
+  font-size: 1rem;
+}
+
+header {
+  text-align: center;
+}
+
+a {
+  display: block;
+  color: black;
+  text-decoration: none;
+  -webkit-transition: -webkit-transform .5s;
+  transition: -webkit-transform .5s;
+  transition: transform .5s;
+  transition: transform .5s, -webkit-transform .5s;
+}
+
+a:hover {
+  -webkit-transform: scale(1.1);
+          transform: scale(1.1);
+}
+
+main.library_main {
+  width: 100%;
+  max-width: 1500px;
+  margin: 0 auto;
+}
+
+main.library_main img {
+  width: 100%;
+}
+
+main.library_main aside {
+  float: left;
+  width: 25%;
+  position: relative;
+  z-index: 3;
+}
+
+main.library_main aside .my_list {
+  background-color: #d0d6d6;
+  padding: 8%;
+  text-align: center;
+}
+
+main.library_main aside .my_list div:nth-child(2) {
+  padding: 20px 0;
+  color: #b3b3b3;
+  position: relative;
+}
+
+main.library_main aside .my_list div:nth-child(2)::before {
+  content: '';
+  width: 30%;
+  height: 2px;
+  top: 50%;
+  left: 0;
+  position: absolute;
+  background-color: #cacaca;
+}
+
+main.library_main aside .my_list div:nth-child(2)::after {
+  content: '';
+  width: 30%;
+  height: 2px;
+  top: 50%;
+  right: 0;
+  position: absolute;
+  background-color: #cacaca;
+}
+
+main.library_main aside .my_list .lists {
+  text-align: left;
+}
+
+main.library_main aside .my_list .lists li {
+  padding: 10px 0;
+  border-bottom: 1px solid #b3b3b3;
+}
+
+main.library_main aside .list_pic {
+  margin-top: 20px;
+  text-align: center;
+}
+
+main.library_main aside .list_pic img {
+  width: 100%;
+  max-width: 250px;
+  vertical-align: bottom;
+}
+
+main.library_main .right {
+  float: left;
+  width: 70%;
+  padding: 5%;
+  margin-left: 5%;
+  min-height: 400px;
+  background-image: url("../img/library/blackline2.svg");
+  background-repeat: no-repeat;
+  background-size: cover;
+  background-position: top center;
+  position: relative;
+}
+
+main.library_main .right::after {
+  content: "";
+  position: absolute;
+  background-image: url("../img/library/list_hand.png");
+  background-repeat: no-repeat;
+  background-position: bottom center;
+  width: 350px;
+  max-width: 350px;
+  height: 520px;
+  background-size: contain;
+  bottom: 0px;
+  left: -350px;
+}
+
+main.library_main .right .listInfo .listCover {
+  width: 200px;
+  height: 200px;
+  float: left;
+  position: relative;
+}
+
+main.library_main .right .listInfo .listCover button {
+  position: absolute;
+  bottom: 10px;
+  left: 50%;
+  -webkit-transform: translateX(-50%);
+          transform: translateX(-50%);
+}
+
+main.library_main .right .listInfo .nameAndBtn {
+  width: calc(100% - 200px);
+  height: 200px;
+  padding: 5%;
+  float: left;
+}
+
+main.library_main .right .listInfo .nameAndBtn .listName .name h2 {
+  display: inline-block;
+  vertical-align: middle;
+}
+
+main.library_main .right .listInfo .nameAndBtn .listName .name button {
+  margin-left: 10px;
+}
+
+main.library_main .right .listInfo .nameAndBtn .playall_btn {
+  text-align: right;
+}
+
+main.library_main .right ul.songs {
+  padding-top: 20px;
+}
+
+main.library_main .right ul.songs li {
+  padding: 10px 0;
+  border-bottom: 1px solid #cacaca;
+}
+
+main.library_main .right ul.songs li .songPlay {
+  float: left;
+}
+
+main.library_main .right ul.songs li .songPlay .songCover {
+  width: 60px;
+  height: 60px;
+  position: relative;
+}
+
+main.library_main .right ul.songs li .songPlay .songCover .listPlay {
+  width: 30px;
+  height: 30px;
+  line-height: 30px;
+  text-align: center;
+  background-color: rgba(255, 255, 255, 0.5);
+  border-radius: 15px;
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  -webkit-transform: translate(-50%, -50%);
+          transform: translate(-50%, -50%);
+  -webkit-transition: -webkit-transform .5s;
+  transition: -webkit-transform .5s;
+  transition: transform .5s;
+  transition: transform .5s, -webkit-transform .5s;
+  cursor: pointer;
+}
+
+main.library_main .right ul.songs li .songPlay .songCover .listPlay i {
+  color: white;
+  font-size: 0.8rem;
+}
+
+main.library_main .right ul.songs li .songPlay .songCover .listPlay:hover {
+  -webkit-transform: scale(1.1) translate(-50%, -50%);
+          transform: scale(1.1) translate(-50%, -50%);
+}
+
+main.library_main .right ul.songs li .songInfo {
+  float: left;
+  margin: 0 3%;
+  width: 60%;
+}
+
+main.library_main .right ul.songs li .songInfo .name {
+  padding: 2% 0;
+}
+
+main.library_main .right ul.songs li .songInfo .name span {
+  font-size: 1.2rem;
+}
+
+main.library_main .right ul.songs li .songInfo .name span:last-child {
+  font-size: 1rem;
+  margin-left: 2%;
+}
+
+main.library_main .right ul.songs li .totalTime {
+  float: left;
+  padding: 2% 0;
+  width: 10%;
+}
+
+main.library_main .right ul.songs li .heart {
+  float: left;
+  text-align: right;
+  padding: 2% 0;
+  width: 5%;
+}
+
+main.library_main .right ul.songs li .more {
+  float: left;
+  text-align: right;
+  padding: 2% 0;
+  width: 5%;
+}
+
+.circlebtn {
+  width: 50px;
+  height: 50px;
+  line-height: 50px;
+  border-radius: 25px;
+  font-size: 0.8rem;
+  font-weight: bold;
+  border: 1px solid #f1c40f;
+  background-color: #f1c40f;
+  color: white;
+  outline: none;
+  cursor: pointer;
+  -webkit-transition: -webkit-transform .5s;
+  transition: -webkit-transform .5s;
+  transition: transform .5s;
+  transition: transform .5s, -webkit-transform .5s;
+}
+
+.circlebtn:hover {
+  -webkit-transform: scale(1.1);
+          transform: scale(1.1);
+}
+
+.normalbtn {
+  margin: 20px auto 0;
+  display: block;
+  padding: 5px 15px;
+  border-radius: 5px;
+  font-size: 0.8rem;
+  font-weight: bold;
+  border: 1px solid #f1c40f;
+  background-color: #f1c40f;
+  color: white;
+  outline: none;
+  cursor: pointer;
+  -webkit-transition: -webkit-transform .5s;
+  transition: -webkit-transform .5s;
+  transition: transform .5s;
+  transition: transform .5s, -webkit-transform .5s;
+}
+
+.normalbtn:hover {
+  -webkit-transform: scale(1.1);
+          transform: scale(1.1);
+}
+
+.clearfix {
+  clear: both;
+}
+/*# sourceMappingURL=library.css.map */

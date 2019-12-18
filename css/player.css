@@ -163,6 +163,7 @@ ul {
   bottom: 0;
   padding: 10px;
   position: fixed;
+  z-index: 99;
 }
 
 #player .player_s .info {
@@ -194,6 +195,15 @@ ul {
   float: left;
   height: 100%;
   padding: 5%;
+  -webkit-transition: -webkit-transform .5s;
+  transition: -webkit-transform .5s;
+  transition: transform .5s;
+  transition: transform .5s, -webkit-transform .5s;
+}
+
+#player .player_s .info .heart:hover {
+  -webkit-transform: scale(1.1);
+          transform: scale(1.1);
 }
 
 #player .player_s .controlPanel {
@@ -230,7 +240,7 @@ ul {
 
 #player .player_s .controlPanel .btns {
   width: 70%;
-  margin: -2px auto 0;
+  margin: -10px auto 0;
   text-align: center;
   height: 100%;
 }
@@ -241,8 +251,30 @@ ul {
   margin-left: 30%;
 }
 
+#player .player_s .controlPanel .btns .controls .play {
+  width: 35px;
+  height: 35px;
+  float: left;
+  color: black;
+  background-color: #f1c40f;
+  border-radius: 20px;
+  text-align: center;
+  line-height: 35px;
+  padding: 5px;
+  margin: -6px 5px 0;
+  border: 0;
+  -webkit-transition: -webkit-transform .5s;
+  transition: -webkit-transform .5s;
+  transition: transform .5s;
+  transition: transform .5s, -webkit-transform .5s;
+}
+
+#player .player_s .controlPanel .btns .controls .play:hover {
+  -webkit-transform: scale(1.1);
+          transform: scale(1.1);
+}
+
 #player .player_s .controlPanel .btns .controls .prev,
-#player .player_s .controlPanel .btns .controls .play,
 #player .player_s .controlPanel .btns .controls .next,
 #player .player_s .controlPanel .btns .controls .stop,
 #player .player_s .controlPanel .btns .controls .rand,
@@ -250,13 +282,26 @@ ul {
   width: 25px;
   height: 25px;
   float: left;
-  background-color: white;
-  color: #373737;
+  color: black;
   border-radius: 15px;
   text-align: center;
   line-height: 25px;
   padding: 5px;
   margin: 0px 5px;
+  border: 0;
+  -webkit-transition: -webkit-transform .5s;
+  transition: -webkit-transform .5s;
+  transition: transform .5s;
+  transition: transform .5s, -webkit-transform .5s;
+}
+
+#player .player_s .controlPanel .btns .controls .prev:hover,
+#player .player_s .controlPanel .btns .controls .next:hover,
+#player .player_s .controlPanel .btns .controls .stop:hover,
+#player .player_s .controlPanel .btns .controls .rand:hover,
+#player .player_s .controlPanel .btns .controls .loop:hover {
+  -webkit-transform: scale(1.1);
+          transform: scale(1.1);
 }
 
 #player .player_s .controlPanel .btns .vol {
@@ -290,6 +335,16 @@ ul {
   width: 5%;
   height: 100%;
   padding: 1%;
+  cursor: pointer;
+  -webkit-transition: -webkit-transform .5s;
+  transition: -webkit-transform .5s;
+  transition: transform .5s;
+  transition: transform .5s, -webkit-transform .5s;
+}
+
+#player .player_s .expand:hover {
+  -webkit-transform: scale(1.1);
+          transform: scale(1.1);
 }
 
 #player .player_b {
@@ -309,11 +364,13 @@ ul {
 
 #player .player_b .left .songCover {
   width: 100%;
+  height: 50%;
+  min-height: 400px;
   margin: 0 auto 2%;
-  padding: 10% 0 1%;
+  padding: 15% 0 1%;
   background-image: url("../img/library/player_record_bg.png");
   background-repeat: no-repeat;
-  background-size: 70%;
+  background-size: 80%;
   background-position: center center;
 }
 
@@ -321,7 +378,6 @@ ul {
   width: 250px;
   min-height: 250px;
   margin: 0 auto;
-  border: 1px solid silver;
   position: relative;
 }
 
@@ -344,8 +400,18 @@ ul {
   text-align: center;
 }
 
-#player .player_b .left .songInfo .creator {
-  font-size: 0.8rem;
+#player .player_b .left .songInfo .heart {
+  padding-right: 10%;
+  float: right;
+  -webkit-transition: -webkit-transform .5s;
+  transition: -webkit-transform .5s;
+  transition: transform .5s;
+  transition: transform .5s, -webkit-transform .5s;
+}
+
+#player .player_b .left .songInfo .heart:hover {
+  -webkit-transform: scale(1.1);
+          transform: scale(1.1);
 }
 
 #player .player_b .left .controlPanel {
@@ -372,7 +438,7 @@ ul {
 
 #player .player_b .left .controlPanel .time span {
   font-size: 11px;
-  width: 49.5%;
+  width: 49%;
   display: inline-block;
 }
 
@@ -385,20 +451,42 @@ ul {
 }
 
 #player .player_b .left .controlPanel .btns {
-  width: 70%;
-  margin: -2px auto 0;
+  width: 100%;
+  margin: 10px auto 0;
   text-align: center;
   height: 100%;
 }
 
 #player .player_b .left .controlPanel .btns .controls {
   float: left;
-  width: 50%;
+  width: 40%;
   margin-left: 30%;
 }
 
+#player .player_b .left .controlPanel .btns .controls .play {
+  width: 35px;
+  height: 35px;
+  float: left;
+  color: black;
+  background-color: #f1c40f;
+  border-radius: 20px;
+  text-align: center;
+  line-height: 35px;
+  padding: 5px;
+  margin: -6px 5px 0;
+  border: 0;
+  -webkit-transition: -webkit-transform .5s;
+  transition: -webkit-transform .5s;
+  transition: transform .5s;
+  transition: transform .5s, -webkit-transform .5s;
+}
+
+#player .player_b .left .controlPanel .btns .controls .play:hover {
+  -webkit-transform: scale(1.1);
+          transform: scale(1.1);
+}
+
 #player .player_b .left .controlPanel .btns .controls .prev,
-#player .player_b .left .controlPanel .btns .controls .play,
 #player .player_b .left .controlPanel .btns .controls .next,
 #player .player_b .left .controlPanel .btns .controls .stop,
 #player .player_b .left .controlPanel .btns .controls .rand,
@@ -406,12 +494,27 @@ ul {
   width: 25px;
   height: 25px;
   float: left;
-  color: #373737;
+  color: black;
+  background-color: transparent;
   border-radius: 15px;
   text-align: center;
   line-height: 25px;
   padding: 5px;
   margin: 0px 5px;
+  border: 0;
+  -webkit-transition: -webkit-transform .5s;
+  transition: -webkit-transform .5s;
+  transition: transform .5s;
+  transition: transform .5s, -webkit-transform .5s;
+}
+
+#player .player_b .left .controlPanel .btns .controls .prev:hover,
+#player .player_b .left .controlPanel .btns .controls .next:hover,
+#player .player_b .left .controlPanel .btns .controls .stop:hover,
+#player .player_b .left .controlPanel .btns .controls .rand:hover,
+#player .player_b .left .controlPanel .btns .controls .loop:hover {
+  -webkit-transform: scale(1.1);
+          transform: scale(1.1);
 }
 
 #player .player_b .left .controlPanel .btns .vol {
@@ -448,13 +551,29 @@ ul {
   overflow-y: scroll;
 }
 
+#player .player_b .right .close {
+  float: right;
+  margin-right: 20px;
+  margin-top: 20px;
+  -webkit-transition: -webkit-transform .5s;
+  transition: -webkit-transform .5s;
+  transition: transform .5s;
+  transition: transform .5s, -webkit-transform .5s;
+  cursor: pointer;
+}
+
+#player .player_b .right .close:hover {
+  -webkit-transform: scale(1.1);
+          transform: scale(1.1);
+}
+
 #player .player_b .right .listTitle {
-  padding: 5% 8% 0;
+  padding: 8% 8% 0;
 }
 
 #player .player_b .right .listTitle .listCover {
-  max-width: 80px;
-  width: 15%;
+  width: 100px;
+  height: 100px;
   float: left;
 }
 
@@ -466,8 +585,6 @@ ul {
 }
 
 #player .player_b .right .listTitle .listName span {
-  margin-top: 2%;
-  font-size: 0.8rem;
   display: block;
 }
 
@@ -480,11 +597,12 @@ ul {
 }
 
 #player .player_b .right .list ul {
-  padding: 5% 8%;
+  padding: 3% 8%;
+  margin-bottom: 70px;
 }
 
 #player .player_b .right .list ul li {
-  padding: 10px 0;
+  padding: 15px 0;
   border-bottom: 1px solid #cfd6d6;
 }
 
@@ -493,9 +611,39 @@ ul {
 }
 
 #player .player_b .right .list ul li .songCover {
-  max-width: 50px;
-  max-height: 50px;
+  width: 70px;
+  height: 70px;
   float: left;
+  position: relative;
+}
+
+#player .player_b .right .list ul li .songCover .listPlay {
+  width: 30px;
+  height: 30px;
+  text-align: center;
+  background-color: rgba(255, 255, 255, 0.5);
+  border-radius: 15px;
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  -webkit-transform: translate(-50%, -50%);
+          transform: translate(-50%, -50%);
+  -webkit-transition: -webkit-transform .5s;
+  transition: -webkit-transform .5s;
+  transition: transform .5s;
+  transition: transform .5s, -webkit-transform .5s;
+  cursor: pointer;
+}
+
+#player .player_b .right .list ul li .songCover .listPlay i {
+  color: white;
+  font-size: 0.8rem;
+  line-height: 30px;
+}
+
+#player .player_b .right .list ul li .songCover .listPlay:hover {
+  -webkit-transform: scale(1.1) translate(-50%, -50%);
+          transform: scale(1.1) translate(-50%, -50%);
 }
 
 #player .player_b .right .list ul li .songInfo {
@@ -521,13 +669,26 @@ ul {
   width: 12%;
   float: left;
   padding: 2% 0;
-  font-size: 0.8rem;
 }
 
 #player .player_b .right .list ul li .heart {
   width: 10%;
-  padding: 2% 0;
+  padding: 3% 0;
   float: left;
+  -webkit-transition: -webkit-transform .5s;
+  transition: -webkit-transform .5s;
+  transition: transform .5s;
+  transition: transform .5s, -webkit-transform .5s;
+}
+
+#player .player_b .right .list ul li .heart:hover {
+  -webkit-transform: scale(1.1);
+          transform: scale(1.1);
+}
+
+button,
+.heart {
+  cursor: pointer;
 }
 
 .clearfix {

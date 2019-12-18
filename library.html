@@ -3,58 +3,60 @@
 
 <head>
   <meta charset="UTF-8">
-  <meta
-    name="viewport"
-    content="width=device-width, initial-scale=1.0"
-  >
-  <meta
-    http-equiv="X-UA-Compatible"
-    content="ie=edge"
-  >
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta http-equiv="X-UA-Compatible" content="ie=edge">
   <title>sound wave | library</title>
-  <link
-    rel="stylesheet"
-    href="../css/library.css"
-  >
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.11.2/css/all.min.css" />
+  <link rel="stylesheet" href="./css/library.css">
 </head>
 
 <body>
   <nav></nav>
-  <header></header>
-  <main>
+  <header>
+    <!-- <h1>LIBRARY</h1> -->
+    <img src="./img/library/title_library.jpg" alt="">
+    <div class="header_bg"></div>
+  </header>
+  <main class="library_main">
     <aside>
-      <div class="favor">liked songs</div>
-      <div>My List</div>
-      <ul class="lists">
-        <li>peaceful Songs</li>
-        <li>Party</li>
-        <li>Who cares</li>
-      </ul>
-      <button>create</button>
+      <div class="my_list">
+        <div class="favor"><a href="#"><h4>Liked songs</h4></a></div>
+        <div>My List</div>
+        <ul class="lists">
+          <li><a href="#"><h4>peaceful songs</h4></a></li>
+          <li><a href="#"><h4>party</h4></a></li>
+          <li><a href="#"><h4>who cares</h4></a></li>
+        </ul>
+        <button class="normalbtn">create list</button>
+      </div>
+      <!-- <div class="list_pic"><img src="./img/library/list_hand.png" alt=""></div> -->
     </aside>
     <div class="right">
       <div class="listInfo">
         <div class="listCover">
-          <img
-            src="./img/list_pic1.jpg"
-            alt=""
-          >
+          <img src="./img/library/list_pic1.jpg" alt="">
+          <button class="btn_s">Edit</button>
         </div>
         <div class="nameAndBtn">
           <div class="listName">
-            <div class="name">Peaceful Songs</div>
+            <div class="name"> <h2>Peaceful Songs</h2><button class="btn_s">Edit</button></div>
             <div class="totalSong">8 songs</div>
           </div>
-          <div class="playall_btn"></div>
+          <div class="playall_btn">
+            <button id="listAllPlay" class="circlebtn"><i class="fas fa-play"></i></button>
+            play all
+          </div>
         </div>
-
+        <div class="clearfix"></div>
       </div>
       <ul class="songs">
         <li>
-          <div class="songCover"><img
-              src="./img/happy.jpg"
-              alt=""
-            ></div>
+          <div class="songPlay">
+            <div class="songCover">
+              <img src="./img/library/happy.jpg" alt="">
+              <div class="listPlay"><i class="fas fa-play"></i></div>
+            </div>
+          </div>
           <div class="songInfo">
             <div class="name">
               <span>Lucid Dreamer</span>
@@ -64,7 +66,99 @@
           </div>
           <div class="totalTime">4:30</div>
           <div class="heart"><i class="far fa-heart"></i></div>
-          <div class="more"></div>
+          <div class="more"><i class="fas fa-ellipsis-h"></i></div>
+          <div class="clearfix"></div>
+        </li>
+        <li>
+          <div class="songPlay">
+            <div class="songCover">
+              <img src="./img/library/happy.jpg" alt="">
+              <div class="listPlay"><i class="fas fa-play"></i></div>
+            </div>
+          </div>
+          <div class="songInfo">
+            <div class="name">
+              <span>Lucid Dreamer</span>
+              <span>Spazz Cardigan</span>
+            </div>
+          </div>
+          <div class="totalTime">4:30</div>
+          <div class="heart"><i class="far fa-heart"></i></div>
+          <div class="more"><i class="fas fa-ellipsis-h"></i></div>
+          <div class="clearfix"></div>
+        </li>
+        <li>
+          <div class="songPlay">
+            <div class="songCover">
+              <img src="./img/library/happy.jpg" alt="">
+              <div class="listPlay"><i class="fas fa-play"></i></div>
+            </div>
+          </div>
+          <div class="songInfo">
+            <div class="name">
+              <span>Lucid Dreamer</span>
+              <span>Spazz Cardigan
+              </span>
+            </div>
+          </div>
+          <div class="totalTime">4:30</div>
+          <div class="heart"><i class="far fa-heart"></i></div>
+          <div class="more"><i class="fas fa-ellipsis-h"></i></div>
+          <div class="clearfix"></div>
+        </li>
+        <li>
+          <div class="songPlay">
+            <div class="songCover">
+              <img src="./img/library/happy.jpg" alt="">
+              <div class="listPlay"><i class="fas fa-play"></i></div>
+            </div>
+          </div>
+          <div class="songInfo">
+            <div class="name">
+              <span>Lucid Dreamer</span>
+              <span>Spazz Cardigan</span>
+            </div>
+          </div>
+          <div class="totalTime">4:30</div>
+          <div class="heart"><i class="far fa-heart"></i></div>
+          <div class="more"><i class="fas fa-ellipsis-h"></i></div>
+          <div class="clearfix"></div>
+        </li>
+        <li>
+          <div class="songPlay">
+            <div class="songCover">
+              <img src="./img/library/happy.jpg" alt="">
+              <div class="listPlay"><i class="fas fa-play"></i></div>
+            </div>
+          </div>
+          <div class="songInfo">
+            <div class="name">
+              <span>Lucid Dreamer</span>
+              <span>Spazz Cardigan
+              </span>
+            </div>
+          </div>
+          <div class="totalTime">4:30</div>
+          <div class="heart"><i class="far fa-heart"></i></div>
+          <div class="more"><i class="fas fa-ellipsis-h"></i></div>
+          <div class="clearfix"></div>
+        </li>
+        <li>
+          <div class="songPlay">
+            <div class="songCover">
+              <img src="./img/library/happy.jpg" alt="">
+              <div class="listPlay"><i class="fas fa-play"></i></div>
+            </div>
+          </div>
+          <div class="songInfo">
+            <div class="name">
+              <span>Lucid Dreamer</span>
+              <span>Spazz Cardigan</span>
+            </div>
+          </div>
+          <div class="totalTime">4:30</div>
+          <div class="heart"><i class="far fa-heart"></i></div>
+          <div class="more"><i class="fas fa-ellipsis-h"></i></div>
           <div class="clearfix"></div>
         </li>
       </ul>

@@ -1,78 +1,303 @@
-@import './var';
-@import './clearfix';
-
-html {
-  font-size: 20px;
-}
-
-ul,
-li,
-p,
-h1,
-h2,
-h3,
-h4,
-h5,
-h6,
-button {
-  margin: 0;
-  padding: 0;
-}
+@import './public.scss';
 
 ol,
 ul {
   list-style: none;
-}
-
-* {
-  margin: 0;
   padding: 0;
-  box-sizing: border-box;
+  margin: 0;
 }
 
-main {
+body {
+  background-color: #fafaf1;
+  background-image: url('../img/library/library_bg.jpg');
+  background-position: bottom right;
+  background-repeat: no-repeat;
+  background-size: cover;
+  font-size: 1rem;
+}
+
+header {
+  text-align: center;
+}
+
+a {
+  display: block;
+  color: black;
+  text-decoration: none;
+  transition: transform .5s;
+
+  &:hover {
+    transform: scale(1.1);
+  }
+}
+
+main.library_main {
   width: 100%;
   max-width: 1500px;
   margin: 0 auto;
-  border: 1px solid red;
 
   img {
     width: 100%;
   }
 
   aside {
-    border: 1px solid gold;
+    // border: 1px solid gold;
     float: left;
-    width: 30%;
-    padding: 3%;
+    width: 25%;
+    position: relative;
+    z-index: 3;
 
-    .lists {
-      li {
-        padding: 10px 0;
-        border-bottom: 1px solid gray;
+    .my_list {
+      background-color: #d0d6d6;
+      padding: 8%;
+      text-align: center;
+
+      div {
+        &:nth-child(2) {
+          padding: 20px 0;
+          color: #b3b3b3;
+          position: relative;
+
+          &::before {
+            content: '';
+            width: 30%;
+            height: 2px;
+            top: 50%;
+            left: 0;
+            position: absolute;
+            background-color: #cacaca;
+          }
+
+          &::after {
+            content: '';
+            width: 30%;
+            height: 2px;
+            top: 50%;
+            right: 0;
+            position: absolute;
+            background-color: #cacaca;
+          }
+        }
+      }
+
+      .lists {
+        text-align: left;
+
+        li {
+          padding: 10px 0;
+          border-bottom: 1px solid #b3b3b3;
+        }
       }
     }
+
+    .list_pic {
+      margin-top: 20px;
+      text-align: center;
+
+      img {
+        width: 100%;
+        max-width: 250px;
+        vertical-align: bottom;
+      }
+    }
+
   }
 
   .right {
-    border: 1px solid gold;
+    // border: 1px solid gold;
     float: left;
     width: 70%;
-    padding: 3%;
+    padding: 5%;
+    margin-left: 5%;
     min-height: 400px;
+    background-image: url('../img/library/blackline2.svg');
+    background-repeat: no-repeat;
+    background-size: cover;
+    background-position: top center;
+    position: relative;
+
+    &::after {
+      content: "";
+      position: absolute;
+      background-image: url("../img/library/list_hand.png");
+      background-repeat: no-repeat;
+      background-position: bottom center;
+      width: 350px;
+      max-width: 350px;
+      height: 520px;
+      background-size: contain;
+      bottom: 0px;
+      left: -350px;
+    }
 
     .listInfo {
       .listCover {
-        max-width: 200px;
+        width: 200px;
+        height: 200px;
         float: left;
-        border-width: 100px;
+        position: relative;
+
+        button {
+          position: absolute;
+          bottom: 10px;
+          left: 50%;
+          transform: translateX(-50%);
+        }
       }
 
-      .listName {
+      .nameAndBtn {
+        width: calc(100% - 200px);
+        height: 200px;
+        padding: 5%;
         float: left;
 
+        .listName {
+          .name {
+            h2 {
+              display: inline-block;
+              vertical-align: middle;
+            }
+
+            button {
+              margin-left: 10px;
+            }
+          }
+        }
+
+        .playall_btn {
+          text-align: right;
+          // border: 1px black solid;
+        }
+      }
+    }
+
+    ul.songs {
+      padding-top: 20px;
+
+      li {
+        // border: 1px skyblue solid;
+        padding: 10px 0;
+        border-bottom: 1px solid #cacaca;
+
+        .songPlay {
+          float: left;
+
+          .songCover {
+            width: 60px;
+            height: 60px;
+            position: relative;
+
+            .listPlay {
+              width: 30px;
+              height: 30px;
+              line-height: 30px;
+              text-align: center;
+              background-color: rgba(255, 255, 255, 0.5);
+              border-radius: 15px;
+              position: absolute;
+              top: 50%;
+              left: 50%;
+              transform: translate(-50%,-50%);
+              transition: transform .5s;
+              cursor: pointer;
+
+              i{
+                color: white;
+                font-size: 0.8rem;
+              }
+              &:hover{
+                transform: scale(1.1) translate(-50%,-50%);
+              }
+            }
+          }
+
+
+        }
+
+        .songInfo {
+          float: left;
+          margin: 0 3%;
+          width: 60%;
+
+          .name {
+            padding: 2% 0;
+
+            span {
+              font-size: 1.2rem;
+
+              &:last-child {
+                font-size: 1rem;
+                margin-left: 2%;
+              }
+            }
+          }
+        }
+
+        .totalTime {
+          float: left;
+          padding: 2% 0;
+          width: 10%
+        }
+
+        .heart {
+          float: left;
+          text-align: right;
+          padding: 2% 0;
+          width: 5%;
+        }
+
+        .more {
+          float: left;
+          text-align: right;
+          padding: 2% 0;
+          width: 5%;
+        }
       }
     }
   }
 
+}
+
+
+.circlebtn {
+  width: 50px;
+  height: 50px;
+  line-height: 50px;
+  border-radius: 25px;
+  font-size: 0.8rem;
+  font-weight: bold;
+  border: 1px solid #f1c40f;
+  background-color: #f1c40f;
+  color: white;
+  outline: none;
+  cursor: pointer;
+  transition: transform .5s;
+
+  &:hover {
+    transform: scale(1.1);
+  }
+}
+
+.normalbtn {
+  margin: 20px auto 0;
+  display: block;
+  padding: 5px 15px;
+  border-radius: 5px;
+  font-size: 0.8rem;
+  font-weight: bold;
+  border: 1px solid #f1c40f;
+  background-color: #f1c40f;
+  color: white;
+  outline: none;
+  cursor: pointer;
+  transition: transform .5s;
+
+  &:hover {
+    transform: scale(1.1);
+  }
+}
+
+
+.clearfix {
+  clear: both;
 }
