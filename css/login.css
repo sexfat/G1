@@ -153,7 +153,7 @@ body nav {
 
 body .signupcontainer {
   margin: 0 auto;
-  width: 950px;
+  width: 900px;
   height: 600px;
   position: relative;
   top: 200px;
@@ -172,8 +172,10 @@ body .signupcontainer .whiteform {
   left: 7%;
   background-color: #fff;
   border: 1px solid #aaa;
-  width: 450px;
+  width: 430px;
   height: 700px;
+  -webkit-box-shadow: 2px 0 10px rgba(0, 0, 0, 0.1);
+          box-shadow: 2px 0 10px rgba(0, 0, 0, 0.1);
   -webkit-transition: all .5s ease-in-out;
   transition: all .5s ease-in-out;
   z-index: 2;
@@ -208,8 +210,8 @@ body .signupcontainer .rightbox {
 
 body .signupcontainer .signin a {
   font-size: 0.6rem;
-  margin-left: 195px;
-  margin-bottom: 45px;
+  margin-left: 175px;
+  margin-bottom: 90px;
 }
 
 body .signupcontainer .emailinput {
@@ -266,7 +268,7 @@ body .signupcontainer form {
 body .signupcontainer .title {
   font-size: 1.5em;
   letter-spacing: 3px;
-  margin-top: 20%;
+  margin-top: 10%;
 }
 
 body .signupcontainer .title span {
@@ -278,20 +280,20 @@ body .signupcontainer .account {
 }
 
 body .signupcontainer p {
-  letter-spacing: 2px;
   color: #333;
   text-align: center;
+  padding-top: 100px;
 }
 
 body .signupcontainer .flower {
   position: absolute;
-  height: 120px;
-  top: 46%;
-  left: 29%;
+  height: 320px;
+  top: 25%;
+  left: 25%;
 }
 
 body .signupcontainer .smaller {
-  height: 100px;
+  height: 320px;
   top: 48%;
   left: 38%;
 }

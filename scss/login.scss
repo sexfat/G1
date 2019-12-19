@@ -42,7 +42,7 @@ body{
     }
     .signupcontainer {
         margin: 0 auto;
-        width: 950px;
+        width: 900px;
         height: 600px;
         position: relative;
         top: 200px;
@@ -51,9 +51,6 @@ body{
             background-color: $green;
             width: 100%;
             height: 600px;
-            // position: absolute;
-            // top: 25%;
-            // box-shadow: 5px 5px 5px rgba(0,0,0,.1);
         }
         .whiteform {
             position: absolute;
@@ -61,9 +58,9 @@ body{
             left: 7%;
             background-color: #fff;
             border: 1px solid #aaa;
-            width: 450px;
+            width: 430px;
             height: 700px;
-            // box-shadow: 2px 0 10px rgba(0,0,0,.1);
+            box-shadow: 2px 0 10px rgba(0,0,0,.1);
             transition: all .5s ease-in-out;
             z-index: 2;
             }
@@ -90,8 +87,8 @@ body{
         .signin{
             a{
                 font-size: 0.6rem;
-                margin-left:195px; 
-                margin-bottom: 45px;
+                margin-left:175px; 
+                margin-bottom: 90px;
             }
         }
         .emailinput{
@@ -124,12 +121,12 @@ body{
             display: flex;
             align-items: left;
             flex-direction: column;
-            margin: 60px;
+            margin:60px;
         }
         .title {
             font-size: 1.5em;
             letter-spacing: 3px;
-            margin-top: 20%;
+            margin-top: 10%;
             span {
                 color: #fff;
             }
@@ -138,18 +135,18 @@ body{
             margin-top: 45%;
         }
         p{
-            letter-spacing: 2px;
             color: $black;
             text-align: center;
+            padding-top: 100px;
         }
         .flower {
             position: absolute;
-            height: 120px;
-            top: 46%;
-            left: 29%;
+            height: 320px;
+            top: 25%;
+            left: 25%;
         }
         .smaller {
-            height: 100px;
+            height: 320px;
             top: 48%;
             left: 38%;
         }
