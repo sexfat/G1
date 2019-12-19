@@ -179,6 +179,12 @@ ul {
           transform: scale(1.1);
 }
 
+@media all and (max-width: 376px) {
+  #player .player_s .info {
+    width: 80%;
+  }
+}
+
 #player .player_s .controlPanel {
   width: 70%;
   height: 100%;
@@ -197,6 +203,14 @@ ul {
   background-color: #f1c40f;
 }
 
+@media all and (max-width: 376px) {
+  #player .player_s .controlPanel .progressbar {
+    position: absolute;
+    top: 0;
+    left: 0;
+  }
+}
+
 #player .player_s .controlPanel .time span {
   font-size: 11px;
   width: 49.5%;
@@ -209,6 +223,12 @@ ul {
 
 #player .player_s .controlPanel .time span.end {
   text-align: right;
+}
+
+@media all and (max-width: 376px) {
+  #player .player_s .controlPanel .time {
+    display: none;
+  }
 }
 
 #player .player_s .controlPanel .btns {
@@ -247,6 +267,12 @@ ul {
           transform: scale(1.1);
 }
 
+@media all and (max-width: 376px) {
+  #player .player_s .controlPanel .btns .controls .play {
+    display: none;
+  }
+}
+
 #player .player_s .controlPanel .btns .controls .prev,
 #player .player_s .controlPanel .btns .controls .next,
 #player .player_s .controlPanel .btns .controls .stop,
@@ -277,6 +303,16 @@ ul {
           transform: scale(1.1);
 }
 
+@media all and (max-width: 376px) {
+  #player .player_s .controlPanel .btns .controls .prev,
+  #player .player_s .controlPanel .btns .controls .next,
+  #player .player_s .controlPanel .btns .controls .stop,
+  #player .player_s .controlPanel .btns .controls .rand,
+  #player .player_s .controlPanel .btns .controls .loop {
+    display: none;
+  }
+}
+
 #player .player_s .controlPanel .btns .vol {
   float: left;
   margin: 1% 0;
@@ -303,6 +339,24 @@ ul {
   margin: -4px;
 }
 
+@media all and (max-width: 376px) {
+  #player .player_s .controlPanel .btns .vol {
+    display: none;
+  }
+}
+
+@media all and (max-width: 376px) {
+  #player .player_s .controlPanel .btns {
+    display: none;
+  }
+}
+
+@media all and (max-width: 376px) {
+  #player .player_s .controlPanel {
+    width: 0;
+  }
+}
+
 #player .player_s .expand {
   float: right;
   width: 5%;
@@ -318,6 +372,12 @@ ul {
 #player .player_s .expand:hover {
   -webkit-transform: scale(1.1);
           transform: scale(1.1);
+}
+
+@media all and (max-width: 376px) {
+  #player .player_s .expand {
+    width: 18%;
+  }
 }
 
 #player .player_b {

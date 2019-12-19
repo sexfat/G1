@@ -20,17 +20,37 @@
   <main class="library_main wrapper">
     <aside>
       <div class="my_list">
-        <div class="favor"><a href="#"><h4>Liked songs</h4></a></div>
+        <div class="favor"><a href="#">
+            <h4>Liked songs</h4>
+          </a></div>
         <div>My List</div>
         <ul class="lists">
-          <li><a href="#"><h4>peaceful songs</h4></a></li>
-          <li><a href="#"><h4>party</h4></a></li>
-          <li><a href="#"><h4>who cares</h4></a></li>
+          <li>
+              <h4>peaceful songs</h4>
+              <div class="delete"><i class="fas fa-times"></i></div>
+            </li>
+          <li>
+              <h4>party</h4>
+              <div class="delete"><i class="fas fa-times"></i></div>
+            </li>
+          <li>
+              <h4>who cares</h4>
+              <div class="delete"><i class="fas fa-times"></i></div>
+            </li>
         </ul>
-        <button class="normalbtn">create list</button>
+        <select id="">
+          <option value="peaceful songs">peaceful songs</option>
+          <option value="party">party</option>
+          <option value="who cares">who cares</option>
+        </select>
+        <div class="btns">
+          <button class="normalbtn">create list</button>
+          <button class="normalbtn">modify list</button>
+        </div>
       </div>
-      <!-- <div class="list_pic"><img src="./img/library/list_hand.png" alt=""></div> -->
+
     </aside>
+
     <div class="right">
       <div class="listInfo">
         <div class="listCover">
@@ -39,7 +59,9 @@
         </div>
         <div class="nameAndBtn">
           <div class="listName">
-            <div class="name"> <h2>Peaceful Songs</h2><button class="editBtn">Edit</button></div>
+            <div class="name">
+              <h2>Peaceful Songs</h2><button class="editBtn">Edit</button>
+            </div>
             <div class="totalSong">8 songs</div>
           </div>
           <div class="playall_btn">
@@ -60,8 +82,7 @@
           <div class="songInfo">
             <div class="name">
               <h4>Lucid Dreamer</h4>
-              <p>Spazz Cardigan
-              </p>
+              <p>Spazz Cardigan</p>
             </div>
           </div>
           <div class="totalTime">4:30</div>

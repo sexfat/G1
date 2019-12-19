@@ -105,6 +105,30 @@ header {
 }
 
 /*button mixin*/
+@media all and (max-width: 1200px) and (min-width: 993px) {
+  html {
+    font-size: 16px;
+  }
+}
+
+@media all and (max-width: 768px) and (min-width: 577px) {
+  html {
+    font-size: 16px;
+  }
+}
+
+@media all and (max-width: 576px) and (min-width: 377px) {
+  html {
+    font-size: 16px;
+  }
+}
+
+@media all and (max-width: 376px) {
+  html {
+    font-size: 16px;
+  }
+}
+
 ol,
 ul {
   list-style: none;
@@ -124,6 +148,12 @@ body {
 
 header {
   text-align: center;
+}
+
+@media all and (max-width: 376px) {
+  header img {
+    width: 100%;
+  }
 }
 
 a {
@@ -195,6 +225,85 @@ main.library_main aside .my_list .lists {
 main.library_main aside .my_list .lists li {
   padding: 10px 0;
   border-bottom: 1px solid #b3b3b3;
+  position: relative;
+}
+
+main.library_main aside .my_list .lists li .delete {
+  color: #333;
+  position: absolute;
+  right: 0;
+  top: 50%;
+  -webkit-transform: translateY(-50%);
+          transform: translateY(-50%);
+  -webkit-transition: -webkit-transform .5s;
+  transition: -webkit-transform .5s;
+  transition: transform .5s;
+  transition: transform .5s, -webkit-transform .5s;
+  cursor: pointer;
+}
+
+main.library_main aside .my_list .lists li .delete:hover {
+  -webkit-transform: scale(1.1) translateY(-50%);
+          transform: scale(1.1) translateY(-50%);
+}
+
+@media all and (max-width: 1200px) and (min-width: 993px) {
+  main.library_main aside .my_list .lists {
+    display: none;
+  }
+}
+
+@media all and (max-width: 768px) and (min-width: 577px) {
+  main.library_main aside .my_list .lists {
+    display: none;
+  }
+}
+
+@media all and (max-width: 576px) and (min-width: 377px) {
+  main.library_main aside .my_list .lists {
+    display: none;
+  }
+}
+
+@media all and (max-width: 376px) {
+  main.library_main aside .my_list .lists {
+    display: none;
+  }
+}
+
+main.library_main aside .my_list select {
+  width: 100%;
+  background-color: #d0d6d6;
+  font-size: 1rem;
+  padding: 16px 8px;
+}
+
+main.library_main aside .my_list select option {
+  padding: 16px 0;
+}
+
+@media all and (max-width: 1200px) and (min-width: 993px) {
+  main.library_main aside .my_list select {
+    display: block;
+  }
+}
+
+@media all and (max-width: 768px) and (min-width: 577px) {
+  main.library_main aside .my_list select {
+    display: block;
+  }
+}
+
+@media all and (max-width: 576px) and (min-width: 377px) {
+  main.library_main aside .my_list select {
+    display: block;
+  }
+}
+
+@media all and (max-width: 376px) {
+  main.library_main aside .my_list select {
+    display: block;
+  }
 }
 
 main.library_main aside .list_pic {
@@ -206,6 +315,30 @@ main.library_main aside .list_pic img {
   width: 100%;
   max-width: 250px;
   vertical-align: bottom;
+}
+
+@media all and (max-width: 768px) and (min-width: 577px) {
+  main.library_main aside {
+    width: 90%;
+    margin: 0 auto;
+    float: none;
+  }
+}
+
+@media all and (max-width: 576px) and (min-width: 377px) {
+  main.library_main aside {
+    width: 90%;
+    margin: 0 auto;
+    float: none;
+  }
+}
+
+@media all and (max-width: 376px) {
+  main.library_main aside {
+    width: 90%;
+    margin: 0 auto;
+    float: none;
+  }
 }
 
 main.library_main .right {
@@ -235,11 +368,35 @@ main.library_main .right::after {
   left: -350px;
 }
 
+@media all and (max-width: 768px) and (min-width: 577px) {
+  main.library_main .right::after {
+    display: none;
+  }
+}
+
+@media all and (max-width: 576px) and (min-width: 377px) {
+  main.library_main .right::after {
+    display: none;
+  }
+}
+
+@media all and (max-width: 376px) {
+  main.library_main .right::after {
+    display: none;
+  }
+}
+
 main.library_main .right .listInfo .listCover {
   width: 200px;
   height: 200px;
   float: left;
   position: relative;
+}
+
+@media all and (max-width: 376px) {
+  main.library_main .right .listInfo .listCover {
+    float: none;
+  }
 }
 
 main.library_main .right .listInfo .listCover button {
@@ -248,6 +405,12 @@ main.library_main .right .listInfo .listCover button {
   left: 50%;
   -webkit-transform: translateX(-50%);
           transform: translateX(-50%);
+}
+
+@media all and (max-width: 376px) {
+  main.library_main .right .listInfo .listCover {
+    margin: 5% auto;
+  }
 }
 
 main.library_main .right .listInfo .nameAndBtn {
@@ -266,8 +429,20 @@ main.library_main .right .listInfo .nameAndBtn .listName .name button {
   margin-left: 10px;
 }
 
+@media all and (max-width: 376px) {
+  main.library_main .right .listInfo .nameAndBtn .listName {
+    width: 100%;
+  }
+}
+
 main.library_main .right .listInfo .nameAndBtn .playall_btn {
   text-align: right;
+}
+
+@media all and (max-width: 376px) {
+  main.library_main .right .listInfo .nameAndBtn {
+    width: 100%;
+  }
 }
 
 main.library_main .right ul.songs {
@@ -277,6 +452,10 @@ main.library_main .right ul.songs {
 main.library_main .right ul.songs li {
   padding: 10px 0;
   border-bottom: 1px solid #cacaca;
+}
+
+main.library_main .right ul.songs li:last-child {
+  border: none;
 }
 
 main.library_main .right ul.songs li .songPlay {
@@ -334,12 +513,19 @@ main.library_main .right ul.songs li .songInfo .name h4 {
 
 main.library_main .right ul.songs li .songInfo .name p {
   display: inline-block;
+  margin-left: 5%;
 }
 
 main.library_main .right ul.songs li .totalTime {
   float: left;
   padding: 2% 0;
   width: 10%;
+}
+
+@media all and (max-width: 376px) {
+  main.library_main .right ul.songs li .totalTime {
+    display: none;
+  }
 }
 
 main.library_main .right ul.songs li .heart {
@@ -354,6 +540,30 @@ main.library_main .right ul.songs li .more {
   text-align: right;
   padding: 2% 0;
   width: 5%;
+}
+
+@media all and (max-width: 768px) and (min-width: 577px) {
+  main.library_main .right {
+    width: 90%;
+    margin: 5%;
+    padding: 10% 5%;
+  }
+}
+
+@media all and (max-width: 576px) and (min-width: 377px) {
+  main.library_main .right {
+    width: 90%;
+    margin: 5%;
+    padding: 10% 5%;
+  }
+}
+
+@media all and (max-width: 376px) {
+  main.library_main .right {
+    width: 90%;
+    margin: 5%;
+    padding: 10% 5%;
+  }
 }
 
 .circlebtn {
@@ -388,6 +598,7 @@ main.library_main .right ul.songs li .more {
   color: #fff;
   font-weight: bold;
   cursor: pointer;
+  display: inline-block;
   margin-top: 20px;
   -webkit-transition: -webkit-transform .5s;
   transition: -webkit-transform .5s;
@@ -398,6 +609,18 @@ main.library_main .right ul.songs li .more {
 .normalbtn:hover {
   -webkit-transform: scale(1.1);
           transform: scale(1.1);
+}
+
+@media all and (max-width: 1200px) and (min-width: 993px) {
+  .normalbtn {
+    width: 100%;
+  }
+}
+
+@media all and (max-width: 376px) {
+  .normalbtn {
+    width: 100%;
+  }
 }
 
 .editBtn {
