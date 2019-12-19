@@ -1,0 +1,340 @@
+@charset "UTF-8";
+* {
+  -webkit-box-sizing: border-box;
+          box-sizing: border-box;
+}
+
+html {
+  font-size: 20px;
+}
+
+body {
+  margin: 0;
+  font-family: 'Lucida Sans Unicode', Geneva, Verdana, sans-serif;
+}
+
+h1,
+h2,
+h3,
+h4,
+h5,
+h6,
+p,
+title,
+section,
+.forget {
+  margin: 0;
+  padding: 0;
+}
+
+h1 {
+  /*60px*/
+  font-size: 3rem;
+}
+
+h2 {
+  /* 40px*/
+  font-size: 2rem;
+  /*副標的h2 font-weight:bold*/
+}
+
+h3 {
+  /*30px*/
+  font-size: 1.5rem;
+}
+
+h4 {
+  /*24px*/
+  font-size: 1.2rem;
+}
+
+p {
+  /*內文 20px*/
+  font-size: 1rem;
+}
+
+p.bigSmall {
+  /*大小 16px*/
+  font-size: 0.8rem;
+}
+
+p.doubleSmall {
+  /*小小 14px*/
+  font-size: 0.7rem;
+}
+
+p.forget {
+  /*旺季 12px*/
+  font-size: 0.6rem;
+}
+
+.title {
+  /*16px*/
+  font-size: 0.8rem;
+}
+
+.section {
+  /*14px*/
+  font-size: 0.7rem;
+}
+
+.forget {
+  /*12px*/
+  font-size: 0.6rem;
+}
+
+nav {
+  width: 100%;
+  position: fixed;
+}
+
+nav > h4 {
+  /*nav裡面的按鈕*/
+  border: 1px solid pink;
+  padding: 15px 12px;
+  letter-spacing: 1px;
+}
+
+.wrapper {
+  max-width: 1500px;
+  margin: 0 auto;
+  width: 100%;
+}
+
+/*燈箱寬*/
+.lightbox_s {
+  width: 500px;
+}
+
+/*新手教學用*/
+.lightbox_b {
+  width: 1000px;
+}
+
+/*燈箱裡的按鈕*/
+.lightbox_s .btn_s {
+  font-size: 0.7rem;
+  display: inline-block;
+  padding: 5px 8px;
+  margin: 20px auto;
+  background-color: #f1c40f6b;
+}
+
+/*燈箱的遮罩顏色*/
+/*background-color: #414141e6;*/
+/*小按鈕*/
+.btn_s {
+  font-size: 0.7rem;
+  display: inline-block;
+  padding: 5px 8px;
+  background-color: #f1c40f6b;
+  border: 1.5px solid #f1c40f;
+}
+
+/*這個是有底圖的按鈕*/
+.btn_b {
+  font-size: 0.8rem;
+  /*按鈕的圖*/
+}
+
+header {
+  height: 300px;
+}
+
+body {
+  background-color: #fafaf1;
+  background-image: url(../img/register/register.jpg);
+}
+
+body nav {
+  height: 100px;
+  border: 1px solid red;
+}
+
+body .signupcontainer {
+  margin: 0 auto;
+  width: 950px;
+  height: 600px;
+  position: relative;
+  top: 200px;
+  border: 1px solid red;
+}
+
+body .signupcontainer .greenblock {
+  background-color: #d0d6d6;
+  width: 100%;
+  height: 600px;
+}
+
+body .signupcontainer .whiteform {
+  position: absolute;
+  top: -10%;
+  left: 7%;
+  background-color: #fff;
+  border: 1px solid #aaa;
+  width: 450px;
+  height: 700px;
+  -webkit-transition: all .5s ease-in-out;
+  transition: all .5s ease-in-out;
+  z-index: 2;
+}
+
+body .signupcontainer .displaynone {
+  display: none;
+  -webkit-transition: all .5s ease;
+  transition: all .5s ease;
+}
+
+body .signupcontainer h2 {
+  text-align: center;
+  margin-top: 55px;
+  color: #333;
+}
+
+body .signupcontainer .leftbox, body .signupcontainer .rightbox {
+  position: absolute;
+  width: 50%;
+  -webkit-transition: 1s all ease;
+  transition: 1s all ease;
+}
+
+body .signupcontainer .leftbox {
+  left: -2%;
+}
+
+body .signupcontainer .rightbox {
+  right: -2%;
+}
+
+body .signupcontainer .signin a {
+  font-size: 0.6rem;
+  margin-left: 195px;
+  margin-bottom: 45px;
+}
+
+body .signupcontainer .emailinput {
+  margin-bottom: 30px;
+}
+
+body .signupcontainer input {
+  background-color: #d0d6d6;
+  padding: 15px;
+  border: none;
+  padding: 12px;
+}
+
+body .signupcontainer .signin form {
+  padding-top: 35px;
+}
+
+body .signupcontainer .signin form button {
+  margin-top: 45px;
+}
+
+body .signupcontainer button {
+  background-color: #f1c40f;
+  font-size: 0.8rem;
+  padding: 10px 30px;
+  border: 1px solid #f1c40f;
+  border-radius: 5px;
+  color: #fff;
+  font-weight: bold;
+  border-radius: 10px;
+  margin: auto;
+  display: block;
+}
+
+body .signupcontainer button:hover {
+  -webkit-transition: scale(1.1);
+  transition: scale(1.1);
+}
+
+body .signupcontainer form {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-align: left;
+      -ms-flex-align: left;
+          align-items: left;
+  -webkit-box-orient: vertical;
+  -webkit-box-direction: normal;
+      -ms-flex-direction: column;
+          flex-direction: column;
+  margin: 60px;
+}
+
+body .signupcontainer .title {
+  font-size: 1.5em;
+  letter-spacing: 3px;
+  margin-top: 20%;
+}
+
+body .signupcontainer .title span {
+  color: #fff;
+}
+
+body .signupcontainer .account {
+  margin-top: 45%;
+}
+
+body .signupcontainer p {
+  letter-spacing: 2px;
+  color: #333;
+  text-align: center;
+}
+
+body .signupcontainer .flower {
+  position: absolute;
+  height: 120px;
+  top: 46%;
+  left: 29%;
+}
+
+body .signupcontainer .smaller {
+  height: 100px;
+  top: 48%;
+  left: 38%;
+}
+
+body .signupcontainer input {
+  width: 90%;
+}
+
+body .signupcontainer input::-webkit-input-placeholder {
+  font-size: 1.3em;
+}
+
+body .signupcontainer input:-ms-input-placeholder {
+  font-size: 1.3em;
+}
+
+body .signupcontainer input::-ms-input-placeholder {
+  font-size: 1.3em;
+}
+
+body .signupcontainer input::placeholder {
+  font-size: 1.3em;
+}
+
+body .signupcontainer input:focus {
+  font-size: 1em;
+  -webkit-transition: .8s all ease;
+  transition: .8s all ease;
+}
+
+body .signupcontainer input:focus::-webkit-input-placeholder {
+  opacity: 0;
+}
+
+body .signupcontainer input:focus:-ms-input-placeholder {
+  opacity: 0;
+}
+
+body .signupcontainer input:focus::-ms-input-placeholder {
+  opacity: 0;
+}
+
+body .signupcontainer input:focus::placeholder {
+  opacity: 0;
+}
+/*# sourceMappingURL=login.css.map */

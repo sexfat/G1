@@ -1,0 +1,170 @@
+@import './public.scss';
+
+$gray: #8E9AAF;
+$lavender: #CBC0D3;
+$pale: #EAC7CC;
+$white: #f6f6f6;
+
+$pink: darken($pale, 20%);
+
+$green:#d0d6d6;
+$yellow:#f1c40f;
+$black: #333;
+$background-color: #fafaf1;
+$labelfontsize:1.2rem;
+$forgetfontsize:0.6rem;
+$buttonhover:scale(1.1);
+
+@mixin butttonn02{
+    background-color:$yellow;
+    font-size:0.8rem;
+    padding:10px 30px;
+    border:1px solid $yellow;
+    border-radius: 5px;
+    color:#fff;
+    font-weight: bold;
+}
+@mixin buttonno03{
+    font-size: 0.7rem;
+    display: inline-block;
+    padding: 5px 8px;
+    background-color: #f1c40f6b;
+    border: 1.5px solid #f1c40f;
+}
+
+
+body{
+    background-color: $background-color;
+    background-image: url(../img/register/register.jpg);
+    nav{
+        height: 100px;
+        border: 1px solid red;
+    }
+    .signupcontainer {
+        margin: 0 auto;
+        width: 950px;
+        height: 600px;
+        position: relative;
+        top: 200px;
+        border: 1px solid red;
+        .greenblock {
+            background-color: $green;
+            width: 100%;
+            height: 600px;
+            // position: absolute;
+            // top: 25%;
+            // box-shadow: 5px 5px 5px rgba(0,0,0,.1);
+        }
+        .whiteform {
+            position: absolute;
+            top: -10%;
+            left: 7%;
+            background-color: #fff;
+            border: 1px solid #aaa;
+            width: 450px;
+            height: 700px;
+            // box-shadow: 2px 0 10px rgba(0,0,0,.1);
+            transition: all .5s ease-in-out;
+            z-index: 2;
+            }
+        .displaynone {
+            display:none;
+            transition: all .5s ease;
+        }
+        h2{
+            text-align: center;
+            margin-top: 55px;
+            color: $black;
+        }
+        .leftbox, .rightbox {
+            position: absolute;
+            width: 50%;
+            transition: 1s all ease;
+        }
+        .leftbox{
+            left: -2%;
+        }
+        .rightbox{
+            right: -2%;
+        }
+        .signin{
+            a{
+                font-size: 0.6rem;
+                margin-left:195px; 
+                margin-bottom: 45px;
+            }
+        }
+        .emailinput{
+            margin-bottom: 30px;
+        }
+        input{
+            background-color:$green;
+            padding:15px;
+            border: none;
+            padding: 12px;
+        }
+        .signin{
+            form{
+                padding-top: 35px;
+                button{
+                    margin-top: 45px;
+                }
+            }
+        }
+        button{
+            @include butttonn02;
+            border-radius: 10px;
+            margin: auto;
+            display: block;
+            &:hover{
+                transition: scale(1.1);
+            }
+        }
+        form {
+            display: flex;
+            align-items: left;
+            flex-direction: column;
+            margin: 60px;
+        }
+        .title {
+            font-size: 1.5em;
+            letter-spacing: 3px;
+            margin-top: 20%;
+            span {
+                color: #fff;
+            }
+        }
+        .account {
+            margin-top: 45%;
+        }
+        p{
+            letter-spacing: 2px;
+            color: $black;
+            text-align: center;
+        }
+        .flower {
+            position: absolute;
+            height: 120px;
+            top: 46%;
+            left: 29%;
+        }
+        .smaller {
+            height: 100px;
+            top: 48%;
+            left: 38%;
+        }
+        input {
+            width: 90%;
+            &::placeholder {
+              font-size: 1.3em;
+            }
+            &:focus {
+              font-size: 1em;
+              transition: .8s all ease;
+              &::placeholder {
+                opacity: 0;
+                }
+            }
+        }
+    }
+}
