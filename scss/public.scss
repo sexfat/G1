@@ -154,6 +154,10 @@ $latop-max: 1200px;
       @content;
     }
   } @else if $breakpoint== "latop-min" {
+    @media all and (max-width: $latop-min) and (min-width:$ipadpro + 1) {
+      @content;
+    }
+  }@else if $breakpoint== "latop-max" {
     @media all and (max-width: $latop-max) and (min-width: $latop-min + 1) {
       @content;
     }
