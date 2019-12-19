@@ -10,7 +10,9 @@ html {
 
 body {
   margin: 0;
+  padding: 0;
   font-family: 'Lucida Sans Unicode', Geneva, Verdana, sans-serif;
+  color: #333;
 }
 
 h1,
@@ -19,10 +21,7 @@ h3,
 h4,
 h5,
 h6,
-p,
-title,
-section,
-.forget {
+p {
   margin: 0;
   padding: 0;
 }
@@ -68,31 +67,20 @@ p.forget {
   font-size: 0.6rem;
 }
 
-.title {
-  /*16px*/
-  font-size: 0.8rem;
-}
-
-.section {
-  /*14px*/
-  font-size: 0.7rem;
-}
-
-.forget {
-  /*12px*/
-  font-size: 0.6rem;
-}
-
 nav {
   width: 100%;
   position: fixed;
 }
 
-nav > h4 {
+nav h4 {
   /*nav裡面的按鈕*/
-  border: 1px solid pink;
   padding: 15px 12px;
   letter-spacing: 1px;
+}
+
+header {
+  height: 300px;
+  text-align: center;
 }
 
 .wrapper {
@@ -111,36 +99,12 @@ nav > h4 {
   width: 1000px;
 }
 
-/*燈箱裡的按鈕*/
-.lightbox_s .btn_s {
-  font-size: 0.7rem;
-  display: inline-block;
-  padding: 5px 8px;
-  margin: 20px auto;
-  background-color: #f1c40f6b;
-}
-
 /*燈箱的遮罩顏色*/
-/*background-color: #414141e6;*/
-/*小按鈕*/
-.btn_s {
-  font-size: 0.7rem;
-  display: inline-block;
-  padding: 5px 8px;
-  background-color: #f1c40f6b;
-  border: 1.5px solid #f1c40f;
+.lightCover {
+  background-color: #414141e6;
 }
 
-/*這個是有底圖的按鈕*/
-.btn_b {
-  font-size: 0.8rem;
-  /*按鈕的圖*/
-}
-
-header {
-  height: 300px;
-}
-
+/*button mixin*/
 ol,
 ul {
   list-style: none;
@@ -155,6 +119,7 @@ body {
   background-repeat: no-repeat;
   background-size: cover;
   font-size: 1rem;
+  color: #333;
 }
 
 header {
@@ -163,7 +128,7 @@ header {
 
 a {
   display: block;
-  color: black;
+  color: #333;
   text-decoration: none;
   -webkit-transition: -webkit-transform .5s;
   transition: -webkit-transform .5s;
@@ -178,8 +143,6 @@ a:hover {
 
 main.library_main {
   width: 100%;
-  max-width: 1500px;
-  margin: 0 auto;
 }
 
 main.library_main img {
@@ -365,13 +328,12 @@ main.library_main .right ul.songs li .songInfo .name {
   padding: 2% 0;
 }
 
-main.library_main .right ul.songs li .songInfo .name span {
-  font-size: 1.2rem;
+main.library_main .right ul.songs li .songInfo .name h4 {
+  display: inline-block;
 }
 
-main.library_main .right ul.songs li .songInfo .name span:last-child {
-  font-size: 1rem;
-  margin-left: 2%;
+main.library_main .right ul.songs li .songInfo .name p {
+  display: inline-block;
 }
 
 main.library_main .right ul.songs li .totalTime {
@@ -418,17 +380,15 @@ main.library_main .right ul.songs li .more {
 }
 
 .normalbtn {
-  margin: 20px auto 0;
-  display: block;
-  padding: 5px 15px;
-  border-radius: 5px;
-  font-size: 0.8rem;
-  font-weight: bold;
-  border: 1px solid #f1c40f;
   background-color: #f1c40f;
-  color: white;
-  outline: none;
+  font-size: 0.8rem;
+  padding: 10px 30px;
+  border: 1px solid #f1c40f;
+  border-radius: 5px;
+  color: #fff;
+  font-weight: bold;
   cursor: pointer;
+  margin-top: 20px;
   -webkit-transition: -webkit-transform .5s;
   transition: -webkit-transform .5s;
   transition: transform .5s;
@@ -438,6 +398,15 @@ main.library_main .right ul.songs li .more {
 .normalbtn:hover {
   -webkit-transform: scale(1.1);
           transform: scale(1.1);
+}
+
+.editBtn {
+  font-size: 0.7rem;
+  display: inline-block;
+  padding: 5px 8px;
+  background-color: #f1c40f6b;
+  border: 1.5px solid #f1c40f;
+  cursor: pointer;
 }
 
 .clearfix {
