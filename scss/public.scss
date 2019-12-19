@@ -1,19 +1,35 @@
+$green: #d0d6d6;
+$yellow: #f1c40f;
+$mainBg: #fafaf1;
+$fontColor: #333;
+
 * {
-    box-sizing: border-box;
+  box-sizing: border-box;
 }
 
 html {
-    font-size: 20px;
+  font-size: 20px;
 }
+
 // 手機版改成 375以下
 // html {
 //     font-size: 16px;
 // }
 
 body {
-    margin: 0;
-    font-family: 'Lucida Sans Unicode', Geneva, Verdana, sans-serif;
-    // color: #333;
+  margin: 0;
+  padding: 0;
+  font-family: "Lucida Sans Unicode", Geneva, Verdana, sans-serif;
+  background: $mainBg;
+  color: $fontColor;
+}
+
+.flexbox {
+  display: flex;
+}
+
+a {
+  text-decoration: none;
 }
 
 h1,
@@ -22,136 +38,100 @@ h3,
 h4,
 h5,
 h6,
-p,
-title,
-section,
-.forget {
-    margin: 0;
-    padding: 0;
+p {
+  margin: 0;
+  padding: 0;
 }
 
 h1 {
-    /*60px*/
-    font-size: 3rem;
-
+  /*60px*/
+  font-size: 3rem;
 }
 
 h2 {
-    /* 40px*/
-    font-size: 2rem;
-    /*副標的h2 font-weight:bold*/
+  /* 40px*/
+  font-size: 2rem;
+  /*副標的h2 font-weight:bold*/
 }
 
 h3 {
-    /*30px*/
-    font-size: 1.5rem;
+  /*30px*/
+  font-size: 1.5rem;
 }
 
 h4 {
-    /*24px*/
-    font-size: 1.2rem;
-
+  /*24px*/
+  font-size: 1.2rem;
 }
 
 p {
-    /*內文 20px*/
-    font-size: 1rem;
-    &.bigSmall{
-        /*大小 16px*/
-        font-size: 0.8rem;
-    }
-    &.doubleSmall{
-        /*小小 14px*/
-        font-size: 0.7rem;
-    }
-    &.forget {
-        /*旺季 12px*/
-        font-size: 0.6rem;
-    }
-}
+  /*內文 20px*/
+  font-size: 1rem;
 
-.title {
-    /*16px*/
+  &.bigSmall {
+    /*大小 16px*/
     font-size: 0.8rem;
-}
+  }
 
-.section {
-    /*14px*/
+  &.doubleSmall {
+    /*小小 14px*/
     font-size: 0.7rem;
-}
+  }
 
-.forget {
-    /*12px*/
+  &.forget {
+    /*旺季 12px*/
     font-size: 0.6rem;
+  }
 }
 
-nav {
-    width: 100%;
-    // border: 1px blue solid;
-    position: fixed;
-}
-
-nav>h4 {
-    /*nav裡面的按鈕*/
-    border: 1px solid pink;
-    padding: 15px 12px;
-    letter-spacing: 1px;
+header {
+  height: 300px;
+  text-align: center;
 }
 
 .wrapper {
-    // border: 1px solid red;
-    max-width: 1500px;
-    margin: 0 auto;
-    width: 100%;
+  max-width: 1500px;
+  margin: 0 auto;
+  width: 100%;
 }
 
 /*燈箱寬*/
 .lightbox_s {
-    width: 500px;
-    // border: 1px green solid;
+  width: 500px;
 }
 
 /*新手教學用*/
 .lightbox_b {
-    width: 1000px;
+  width: 1000px;
 }
 
-/*燈箱裡的按鈕*/
-.lightbox_s .btn_s {
-    font-size: 0.7rem;
-    display: inline-block;
-    padding: 5px 8px;
-    margin: 20px auto;
-    background-color: #f1c40f6b;
-    // border: 1.5px solid #f1c40f;
-}
 /*燈箱的遮罩顏色*/
-/*background-color: #414141e6;*/
-
-
-/*小按鈕*/
-.btn_s {
-    font-size: 0.7rem;
-    display: inline-block;
-    padding: 5px 8px;
-    background-color: #f1c40f6b;
-    border: 1.5px solid #f1c40f;
-    
+.lightCover {
+  background-color: #414141e6;
 }
 
-/*這個是有底圖的按鈕*/
-.btn_b {
-    font-size: 0.8rem;
-    /*按鈕的圖*/
+/*button mixin*/
+@mixin butttonn02 {
+  background-color: $yellow;
+  font-size: 0.8rem;
+  padding: 10px 30px;
+  border: 1px solid $yellow;
+  border-radius: 5px;
+  color: #fff;
+  font-weight: bold;
+  cursor: pointer;
 }
 
-header {
-    // border: 1px tomato solid;
-    height: 300px;
+@mixin buttonno03 {
+  font-size: 0.7rem;
+  display: inline-block;
+  padding: 5px 8px;
+  background-color: #f1c40f6b;
+  border: 1.5px solid $yellow;
+  cursor: pointer;
 }
 
-
-// 新增斷點
+// RWD新增斷點
 $phone: 376px;
 $ipad: 576px;
 $ipadpro: 768px;
@@ -160,33 +140,25 @@ $latop-max: 1200px;
 
 //mixin
 @mixin respond($breakpoint) {
-    @if $breakpoint=="phone" {
-        @media all and (max-width: $phone) {
-            @content;
-        }
+  @if $breakpoint== "phone" {
+    @media all and (max-width: $phone) {
+      @content;
     }
-
-    @else if $breakpoint=="ipad" {
-        @media all and (max-width: $ipad) and (min-width:$phone + 1) {
-            @content;
-        }
+  } @else if $breakpoint== "ipad" {
+    @media all and (max-width: $ipad) and (min-width: $phone + 1) {
+      @content;
     }
-
-    @else if $breakpoint=="ipadpro" {
-        @media all and (max-width: $ipadpro) and (min-width:$ipad + 1) {
-            @content;
-        }
+  } @else if $breakpoint== "ipadpro" {
+    @media all and (max-width: $ipadpro) and (min-width: $ipad + 1) {
+      @content;
     }
-
-    @else if $breakpoint=="latop-min" {
-        @media all and (max-width: $latop-max) and (min-width: $latop-min + 1) {
-            @content;
-        }
+  } @else if $breakpoint== "latop-min" {
+    @media all and (max-width: $latop-max) and (min-width: $latop-min + 1) {
+      @content;
     }
-
-    @else if $breakpoint=="desktop" {
-        @media all and (min-width: $latop-max) {
-            @content;
-        }
+  } @else if $breakpoint== "desktop" {
+    @media all and (min-width: $latop-max) {
+      @content;
     }
+  }
 }

@@ -1,6 +1,6 @@
 div.nav_bar {
   position: fixed;
-  z-index: 99;
+  z-index: 999;
   width: 100%;
   height: 60px;
   padding: 0px 10px;
@@ -14,8 +14,8 @@ div.nav_bar {
   }
 
   .hamburger {
+    display: none;
     padding: 10px 10px;
-    display: inline-block;
     cursor: pointer;
     transition-property: opacity, filter;
     transition-duration: 0.15s;
@@ -31,7 +31,6 @@ div.nav_bar {
       display: inline-block;
       position: relative;
       vertical-align: middle;
-
 
       .hamburger-inner {
         position: absolute;
@@ -99,11 +98,50 @@ div.nav_bar {
 
   .mobile_list {
     position: absolute;
-    top: 0;
-    left: -60%;
-    width: 60%;
-    flex-direction: column;
-    flex-shrink: 0;
+    top: 60px;
+    left: 0;
+    width: 270px;
+    transform: translateX(-270px);
+    filter: opacity(0);
+    transition: all 0.5s;
+
+    .paint_border {
+      float: right;
+      width: 30px;
+      background: url("../img/public/paint_border.png");
+      transform: scaleX(-1);
+    }
+    ul {
+      float: right;
+      width: 240px;
+      background: #ffffff;
+
+      li {
+        width: 100%;
+        height: 80px;
+        justify-content: center;
+        align-items: center;
+
+        &.REMIX {
+          background: url("../img/public/nav_m_y_bt01.png") center center no-repeat;
+        }
+        &.COLLECTION {
+          background: url("../img/public/nav_m_y_bt02.png") center center no-repeat;
+        }
+        &.ACTIVITY {
+          background: url("../img/public/nav_m_y_bt04.png") center center no-repeat;
+        }
+        &.LIBRARY {
+          background: url("../img/public/nav_m_y_bt04.png") center center no-repeat;
+        }
+        a {
+          width: 150px;
+          height: 45px;
+          font-size: 1.2rem;
+          letter-spacing: -0.1rem;
+        }
+      }
+    }
   }
 
   .logo_container {
@@ -128,27 +166,24 @@ div.nav_bar {
     li {
       width: 150px;
       height: 60px;
-      justify-content: center;
       align-items: center;
 
-      &#REMIX {
+      &.REMIX {
         background: url("../img/public/nav_y_bt01.png") center center no-repeat;
       }
-      &#COLLECTION {
+      &.COLLECTION {
         background: url("../img/public/nav_y_bt02.png") center center no-repeat;
       }
-      &#ACTIVITY {
+      &.ACTIVITY {
         background: url("../img/public/nav_y_bt03.png") center center no-repeat;
       }
-      &#LIBRARY {
+      &.LIBRARY {
         background: url("../img/public/nav_y_bt04.png") center center no-repeat;
       }
       a {
         width: 100%;
         height: 45px;
         font-size: 1.2rem;
-        justify-content: center;
-        align-items: center;
         letter-spacing: -0.1rem;
       }
     }
@@ -174,9 +209,6 @@ div.nav_bar {
     right: 60px;
     width: 200px;
     height: 240px;
-    border: 1px solid gray;
-    border-radius: 5px;
-    text-indent: 50px;
     overflow: hidden;
     filter: opacity(0);
     transition: all 0.5s;
@@ -213,23 +245,31 @@ div.nav_bar {
   }
 
   .mem_list {
-    position: absolute;
-    z-index: 1;
+    position: fixed;
     top: 60px;
-    width: 240px;
-    height: 0;
     right: 0;
-    overflow: hidden;
+    width: 270px;
+    transform: translateX(270px);
     filter: opacity(0);
-    background: #ffffff;
     transition: all 0.5s;
 
-    li {
-      padding: 5px 10px;
+    .paint_border {
+      float: left;
+      width: 30px;
+      background: url("../img/public/paint_border.png");
+    }
+    ul {
+      float: left;
+      width: 240px;
+      background: #ffffff;
 
-      a {
-        display: block;
-        text-align: end;
+      li {
+        padding: 5px 10px;
+
+        a {
+          display: block;
+          text-align: end;
+        }
       }
     }
 
@@ -252,16 +292,16 @@ div.nav_bar {
 
       li {
         width: 120px;
-        &#REMIX {
+        &.REMIX {
           background-size: 120px 55px;
         }
-        &#COLLECTION {
+        &.COLLECTION {
           background-size: 120px 55px;
         }
-        &#ACTIVITY {
+        &.ACTIVITY {
           background-size: 120px 55px;
         }
-        &#LIBRARY {
+        &.LIBRARY {
           background-size: 120px 55px;
         }
         a {
@@ -275,6 +315,10 @@ div.nav_bar {
 
 @media screen and (max-width: 768px) {
   div.nav_bar {
+    .hamburger {
+      display: inline-block;
+    }
+
     .logo_container {
       margin: 0 auto 0 auto;
     }

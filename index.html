@@ -6,7 +6,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
     <title>Document</title>
-    <link rel="stylesheet" href="./css/main.css">
+    <link rel="stylesheet" href="./css/public.css">
     <link rel="stylesheet" href="./css/nav_bar.css">
     <link rel="stylesheet" href="./css/home.css">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/pagePiling.js/1.5.6/jquery.pagepiling.min.css">
@@ -21,51 +21,95 @@
     </style>
     <script>
 
-        $(document).ready(function () {
+        $(document).ready(() => {
             $('#pagepiling').pagepiling(
                 {
-                    verticalCentered: false,
+                    verticalCentered: false, //section 內物件置中對齊
+                    navigation: {
+                        'bulletsColor': '#F1C40F', // 框線
+                        'position': 'right',
+                        'tooltips': ['SOUND WAVE', 'REMIX', 'RANK', 'ACTIVITY', 'COLLECTION', 'ABOUT']
+                    },
                 }
             );
+
+            $('.mem_list').css({ 'height': $(window).height() });
+            $('.mobile_list').css({ 'height': $(window).height() });
+            $('.mem_list ul').css({ 'height': $(window).height() });
+            $('.mobile_list ul').css({ 'height': $(window).height() });
+            $('.paint_border').css({ 'height': $(window).height() });
+
+            $(document).click(() => {
+                vm.mem_list = false;
+                vm.search_bar = false;
+                vm.mobile_list = false;
+
+                document
+                    .querySelector(".search_bar")
+                    .setAttribute("style", "height: 0px; filter: opacity(0);");
+                document
+                    .querySelector(".mem_list")
+                    .setAttribute("style", "transform: translateX(270px); filter: opacity(0);");
+                document
+                    .querySelector(".mobile_list")
+                    .setAttribute("style", "transform: translateX(-270px); filter: opacity(0);");
+            })
+
         });
 
     </script>
 </head>
 
 <body>
-    <div id="app" @click="app_click">
+    <div id="app">
         <div class="nav_bar flexbox">
             <div class="hamburger" @click="hamburger_click">
                 <div class="hamburger-box">
                     <div class="hamburger-inner"></div>
                 </div>
             </div>
-            <ul>
-                <li></li>
-                <li></li>
-                <li></li>
-                <li></li>
-            </ul>
+            <div class="mobile_list" @click="stopPropagation">
+                <div class="paint_border"></div>
+                <ul>
+                    <li class="REMIX flexbox">
+                        <a href="">
+                        </a>
+                    </li>
+                    <li class="COLLECTION flexbox">
+                        <a href="">
+                        </a>
+                    </li>
+                    <li class="ACTIVITY flexbox">
+                        <a href="">
+                        </a>
+                    </li>
+                    <li class="LIBRARY flexbox">
+                        <a href="">
+                        </a>
+                    </li>
+                </ul>
+            </div>
+
             <div class="logo_container">
                 <a href="">
                     <div class="logo"></div>
                 </a>
             </div>
             <ul class="main_list flexbox">
-                <li id="REMIX" class="flexbox">
-                    <a class="flexbox" href="">
+                <li class="REMIX flexbox">
+                    <a href="">
                     </a>
                 </li>
-                <li id="COLLECTION" class="flexbox">
-                    <a class="flexbox" href="">
+                <li class="COLLECTION flexbox">
+                    <a href="">
                     </a>
                 </li>
-                <li id="ACTIVITY" class="flexbox">
-                    <a class="flexbox" href="">
+                <li class="ACTIVITY flexbox">
+                    <a href="">
                     </a>
                 </li>
-                <li id="LIBRARY" class="flexbox">
-                    <a class="flexbox" href="">
+                <li class="LIBRARY flexbox">
+                    <a href="">
                     </a>
                 </li>
             </ul>
@@ -80,39 +124,43 @@
             <div class="mem_bt" @click="mem_bt_click">
                 <a href="#"></a>
             </div>
-            <ul class="mem_list" @click="stopPropagation">
-                <li>
-                    <a href="">
-                        <h4>Profile</h4>
-                    </a>
-                </li>
-                <li>
-                    <a href="">
-                        <h4>Favorite</h4>
-                    </a>
-                </li>
-                <li>
-                    <a href="">
-                        <h4>
-                            Song Upload
-                            <br />&amp; Remove
-                        </h4>
-                    </a>
-                </li>
-                <li>
-                    <a href="">
-                        <h4>
-                            Store Value
-                            <br />&amp;Store Record
-                        </h4>
-                    </a>
-                </li>
-                <li>
-                    <a href="">
-                        <h4>Donate Record</h4>
-                    </a>
-                </li>
-            </ul>
+            <div class="mem_list" @click="stopPropagation">
+                <div class="paint_border"></div>
+                <ul>
+                    <li>
+                        <a href="">
+                            <h4>Profile</h4>
+                        </a>
+                    </li>
+                    <li>
+                        <a href="">
+                            <h4>Favorite</h4>
+                        </a>
+                    </li>
+                    <li>
+                        <a href="">
+                            <h4>
+                                Song Upload
+                                <br />&amp; Remove
+                            </h4>
+                        </a>
+                    </li>
+                    <li>
+                        <a href="">
+                            <h4>
+                                Store Value
+                                <br />&amp;Store Record
+                            </h4>
+                        </a>
+                    </li>
+                    <li>
+                        <a href="">
+                            <h4>Donate Record</h4>
+                        </a>
+                    </li>
+                </ul>
+            </div>
+
         </div>
 
         <div id="pagepiling">
@@ -147,7 +195,20 @@
             </div>
             <div class="sec sec03 section">
                 <div class="pot">
-
+                </div>
+                <div class="container">
+                    <div class="song_container">
+                        <div class="song song01"></div>
+                        <div class="song song02"></div>
+                        <div class="song song03"></div>
+                        <div class="song song04"></div>
+                        <div class="song song05"></div>
+                        <div class="song song06"></div>
+                        <div class="song song07"></div>
+                        <div class="song song08"></div>
+                        <div class="song song09"></div>
+                        <div class="song song10"></div>
+                    </div>
                 </div>
             </div>
             <div class="sec sec04 section">
@@ -178,6 +239,7 @@
             data: {
                 search_bar: false,
                 mem_list: false,
+                mobile_list: false,
             },
             methods: {
                 hamburger_click(e) {
@@ -190,13 +252,17 @@
                     if (this.search_bar == false) {
                         this.search_bar = true;
                         this.mem_list = false;
+                        this.mobile_list = false;
                         document
                             .querySelector(".search_bar")
                             .setAttribute("style", "height: 240px; filter: opacity(1);");
                         document.querySelector("input.search").focus();
                         document
                             .querySelector(".mem_list")
-                            .setAttribute("style", "height: 0px; filter: opacity(0);");
+                            .setAttribute("style", "transform: translateX(270px); filter: opacity(0);");
+                        document
+                            .querySelector(".mobile_list")
+                            .setAttribute("style", "transform: translateX(-270px); filter: opacity(0);");
                     } else {
                         this.search_bar = false;
                         document
@@ -205,7 +271,10 @@
                         document.querySelector("input.search").blur();
                         document
                             .querySelector(".mem_list")
-                            .setAttribute("style", "height: 0px; filter: opacity(0);");
+                            .setAttribute("style", "transform: translateX(270px); filter: opacity(0);");
+                        document
+                            .querySelector(".mobile_list")
+                            .setAttribute("style", "transform: translateX(-270px); filter: opacity(0);");
                     }
                 },
 
@@ -218,32 +287,57 @@
                     if (this.mem_list == false) {
                         this.mem_list = true;
                         this.search_bar = false;
+                        this.mobile_list = false;
                         document
                             .querySelector(".mem_list")
-                            .setAttribute("style", "height: 293px; filter: opacity(1);");
+                            .setAttribute("style", "transform: translateX(0); filter: opacity(1);");
                         document
                             .querySelector(".search_bar")
                             .setAttribute("style", "height: 0px; filter: opacity(0);");
-
+                        document
+                            .querySelector(".mobile_list")
+                            .setAttribute("style", "transform: translateX(-270px); filter: opacity(0);");
                     } else {
                         this.mem_list = false;
                         document
                             .querySelector(".mem_list")
+                            .setAttribute("style", "transform: translateX(270px); filter: opacity(0);");
+                        document
+                            .querySelector(".search_bar")
                             .setAttribute("style", "height: 0px; filter: opacity(0);");
+                        document
+                            .querySelector(".mobile_list")
+                            .setAttribute("style", "transform: translateX(-270px); filter: opacity(0);");
+                    }
+                },
+
+                hamburger_click(e) {
+                    e.stopPropagation();
+                    if (this.mobile_list == false) {
+                        this.mobile_list = true;
+                        this.mem_list = false;
+                        this.search_bar = false;
+                        document
+                            .querySelector(".mobile_list")
+                            .setAttribute("style", "transform: translateX(0); filter: opacity(1);");
+                        document
+                            .querySelector(".mem_list")
+                            .setAttribute("style", "transform: translateX(270px); filter: opacity(0);");
+                        document
+                            .querySelector(".search_bar")
+                            .setAttribute("style", "height: 0px; filter: opacity(0);");
+                    } else {
+                        this.mobile_list = false;
+                        document
+                            .querySelector(".mobile_list")
+                            .setAttribute("style", "transform: translateX(-270px); filter: opacity(0);");
+                        document
+                            .querySelector(".mem_list")
+                            .setAttribute("style", "transform: translateX(270px); filter: opacity(0);");
                         document
                             .querySelector(".search_bar")
                             .setAttribute("style", "height: 0px; filter: opacity(0);");
                     }
-                },
-                app_click() {
-                    this.mem_list = false;
-                    this.search_bar = false;
-                    document
-                        .querySelector(".search_bar")
-                        .setAttribute("style", "height: 0px; filter: opacity(0);");
-                    document
-                        .querySelector(".mem_list")
-                        .setAttribute("style", "height: 0px; filter: opacity(0);");
                 },
             }
         });
