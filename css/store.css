@@ -10,7 +10,21 @@ html {
 
 body {
   margin: 0;
-  font-family: 'Lucida Sans Unicode', Geneva, Verdana, sans-serif;
+  padding: 0;
+  font-family: "Lucida Sans Unicode", Geneva, Verdana, sans-serif;
+  background: #fafaf1;
+  color: #333;
+}
+
+.flexbox {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+}
+
+a {
+  text-decoration: none;
+  color: #333;
 }
 
 h1,
@@ -19,10 +33,7 @@ h3,
 h4,
 h5,
 h6,
-p,
-title,
-section,
-.forget {
+p {
   margin: 0;
   padding: 0;
 }
@@ -68,31 +79,9 @@ p.forget {
   font-size: 0.6rem;
 }
 
-.title {
-  /*16px*/
-  font-size: 0.8rem;
-}
-
-.section {
-  /*14px*/
-  font-size: 0.7rem;
-}
-
-.forget {
-  /*12px*/
-  font-size: 0.6rem;
-}
-
-nav {
-  width: 100%;
-  position: fixed;
-}
-
-nav > h4 {
-  /*nav裡面的按鈕*/
-  border: 1px solid pink;
-  padding: 15px 12px;
-  letter-spacing: 1px;
+header {
+  height: 300px;
+  text-align: center;
 }
 
 .wrapper {
@@ -111,36 +100,12 @@ nav > h4 {
   width: 1000px;
 }
 
-/*燈箱裡的按鈕*/
-.lightbox_s .btn_s {
-  font-size: 0.7rem;
-  display: inline-block;
-  padding: 5px 8px;
-  margin: 20px auto;
-  background-color: #f1c40f6b;
-}
-
 /*燈箱的遮罩顏色*/
-/*background-color: #414141e6;*/
-/*小按鈕*/
-.btn_s {
-  font-size: 0.7rem;
-  display: inline-block;
-  padding: 5px 8px;
-  background-color: #f1c40f6b;
-  border: 1.5px solid #f1c40f;
+.lightCover {
+  background-color: #414141e6;
 }
 
-/*這個是有底圖的按鈕*/
-.btn_b {
-  font-size: 0.8rem;
-  /*按鈕的圖*/
-}
-
-header {
-  height: 300px;
-}
-
+/*button mixin*/
 .col-1 {
   width: 8.33333%;
   display: inline-block;
@@ -487,6 +452,7 @@ h2 {
   border-radius: 5px;
   width: 95%;
   padding: 2%;
+  margin: 0 auto;
 }
 
 .wrapper .stepFlow .step .comfirm_detail .detail {
@@ -518,6 +484,7 @@ h2 {
 .wrapper .stepFlow .step .comfirm_detail .button .press {
   display: inline-block;
   width: 50%;
+  margin: 0 auto;
 }
 
 .wrapper .stepFlow .step .done {
@@ -684,7 +651,6 @@ h2 {
 .button {
   position: relative;
   width: 100%;
-  padding: 10%;
   text-align: center;
   margin: 0 auto;
 }
@@ -692,8 +658,18 @@ h2 {
 .button .btn_s {
   width: 85%;
   max-width: 9rem;
+  margin: 0 auto;
   background-color: #efc318;
   border-radius: 5px;
+  background-color: #f1c40f;
+  font-size: 0.8rem;
+  padding: 10px 30px;
+  border: 1px solid #f1c40f;
+  border-radius: 5px;
+  color: #fff;
+  font-weight: bold;
+  cursor: pointer;
+  padding: 10px 0;
 }
 
 .button .btn_s p {
@@ -786,11 +762,14 @@ h2 {
 
 @media all and (max-width: 768px) and (min-width: 577px) {
   html {
-    font-size: 18px;
+    font-size: 17px;
   }
   .wrapper {
     overflow-x: hidden;
     margin: 0 auto;
+  }
+  .wrapper .button {
+    padding: 5%;
   }
   .wrapper .color1 {
     top: 8%;
@@ -827,6 +806,9 @@ h2 {
   .wrapper .stepFlow .step .enter_card .button {
     width: 95%;
   }
+  .wrapper .stepFlow .step .comfirm_detail .detail p .card_class {
+    width: 40%;
+  }
   .wrapper .support {
     width: 85%;
     margin: 10% auto;
@@ -853,6 +835,9 @@ h2 {
   html {
     font-size: 17px;
   }
+  .button {
+    padding: 8%;
+  }
   .wrapper {
     overflow-x: hidden;
   }
@@ -864,6 +849,9 @@ h2 {
   }
   .wrapper .stepCount .count img {
     max-width: 4rem;
+  }
+  .wrapper .stepFlow .step h2 {
+    margin: 2.625rem auto 1.625rem;
   }
   .wrapper .stepFlow .step .color2 {
     width: 81%;
@@ -1027,6 +1015,9 @@ h2 {
   }
   html {
     font-size: 16px;
+  }
+  .button {
+    padding: 10%;
   }
   .wrapper {
     overflow-x: hidden;

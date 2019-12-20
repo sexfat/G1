@@ -1,0 +1,314 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta http-equiv="X-UA-Compatible" content="ie=edge">
+  <link rel="stylesheet" href="./css/public.css">
+  <link rel="stylesheet" href="./css/nav_bar.css">
+  <link rel="stylesheet" href="./css/remix.css">
+  <title>remix</title>
+</head>
+
+<body>
+  <div id="app">
+    <div class="nav_bar flexbox">
+      <div class="hamburger" @click="hamburger_click">
+        <div class="hamburger-box">
+          <div class="hamburger-inner"></div>
+        </div>
+      </div>
+      <div class="mobile_list" @click="stopPropagation">
+        <div class="paint_border"></div>
+        <ul>
+          <li class="REMIX flexbox">
+            <a href="">
+            </a>
+          </li>
+          <li class="COLLECTION flexbox">
+            <a href="">
+            </a>
+          </li>
+          <li class="ACTIVITY flexbox">
+            <a href="">
+            </a>
+          </li>
+          <li class="LIBRARY flexbox">
+            <a href="">
+            </a>
+          </li>
+        </ul>
+      </div>
+
+      <div class="logo_container">
+        <a href="">
+          <div class="logo"></div>
+        </a>
+      </div>
+      <ul class="main_list flexbox">
+        <li class="REMIX flexbox">
+          <a href="">
+          </a>
+        </li>
+        <li class="COLLECTION flexbox">
+          <a href="">
+          </a>
+        </li>
+        <li class="ACTIVITY flexbox">
+          <a href="">
+          </a>
+        </li>
+        <li class="LIBRARY flexbox">
+          <a href="">
+          </a>
+        </li>
+      </ul>
+      <div class="search_bt" @click="search_bt_click">
+        <a href="#"></a>
+      </div>
+      <div class="search_bar">
+        <input class="search" type="text" />
+        <div class="tag_container">
+        </div>
+      </div>
+      <div class="mem_bt" @click="mem_bt_click">
+        <a href="#"></a>
+      </div>
+      <div class="mem_list" @click="stopPropagation">
+        <div class="paint_border"></div>
+        <ul>
+          <li>
+            <a href="">
+              <h4>Profile</h4>
+            </a>
+          </li>
+          <li>
+            <a href="">
+              <h4>Favorite</h4>
+            </a>
+          </li>
+          <li>
+            <a href="">
+              <h4>
+                Song Upload
+                <br />&amp; Remove
+              </h4>
+            </a>
+          </li>
+          <li>
+            <a href="./store.html">
+              <h4>
+                Store Value
+                <br />&amp;Store Record
+              </h4>
+            </a>
+          </li>
+          <li>
+            <a href="">
+              <h4>Donate Record</h4>
+            </a>
+          </li>
+        </ul>
+      </div>
+    </div>
+    <!-- <div class="remix_title">
+      <img src="./img/remix/REMIX.png">
+    </div> -->
+    <div class="wrapper">
+      <div class="remix_head">
+        <div class="demo col-xl-6 col-md-10 col-sm-12">
+          <h2>The Playground</h2>
+          <p class="intro">On this page, you can experiment with the different music making tools you've used so far.
+            They'll all
+            play together in sync.</p>
+          <div class="choose_song">
+            <h4>1. always with me</h4>
+            <h4>2. Happy Birthday</h4>
+            <h4>3. cat</h4>
+          </div>
+        </div>
+        <div class="svg_move col-xl-6 col-md-10 col-sm-12">
+          <img src="./img/remix/rock.png">
+          <img src="./img/remix/rock_color.png" class="color">
+        </div>
+      </div>
+      <div class="range">
+        <p>npm: {{ npm }}</p>
+        <div class="rangebutton">
+          <input type="range" id="input_npm" value="120" min="40" max="220" step="5" v-model="npm"
+            @change="npm_control">
+          <div class="button">
+            <button><img src="./img/remix/start.png"></button>
+            <button><img src="./img/remix/record.png"></button>
+            <button><img src="./img/remix/download.png"></button>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+  <script src="./js/vue.js"></script>
+  <script>
+    var app = new Vue({
+      el: '#app',
+      data: {
+        search_bar: false,
+        mem_list: false,
+        mobile_list: false,
+        screenWidth: document.body.clientWidth, // 紀錄螢幕寬度
+        npm: 120,
+      },
+      methods: {
+        hamburger_click(e) {
+          e.stopPropagation();
+          document.querySelector(".hamburger").classList.toggle("is-active");
+        },
+        search_bt_click(e) {
+          e.stopPropagation();
+          if (this.search_bar == false) {
+            this.search_bar = true;
+            this.mem_list = false;
+            this.mobile_list = false;
+            document
+              .querySelector(".search_bar")
+              .setAttribute("style", "height: 240px; filter: opacity(1);");
+            document.querySelector("input.search").focus();
+            document
+              .querySelector(".mem_list")
+              .setAttribute("style", "transform: translateX(270px); filter: opacity(0);");
+            document
+              .querySelector(".mobile_list")
+              .setAttribute("style", "transform: translateX(-270px); filter: opacity(0);");
+          } else {
+            this.search_bar = false;
+            document
+              .querySelector(".search_bar")
+              .setAttribute("style", "height: 0px; filter: opacity(0);");
+            document.querySelector("input.search").blur();
+            document
+              .querySelector(".mem_list")
+              .setAttribute("style", "transform: translateX(270px); filter: opacity(0);");
+            document
+              .querySelector(".mobile_list")
+              .setAttribute("style", "transform: translateX(-270px); filter: opacity(0);");
+          }
+        },
+        stopPropagation(e) {
+          e.stopPropagation();
+        },
+        mem_bt_click(e) {
+          e.stopPropagation();
+          if (this.mem_list == false) {
+            this.mem_list = true;
+            this.search_bar = false;
+            this.mobile_list = false;
+            document
+              .querySelector(".mem_list")
+              .setAttribute("style", "transform: translateX(0); filter: opacity(1);");
+            document
+              .querySelector(".search_bar")
+              .setAttribute("style", "height: 0px; filter: opacity(0);");
+            document
+              .querySelector(".mobile_list")
+              .setAttribute("style", "transform: translateX(-270px); filter: opacity(0);");
+          } else {
+            this.mem_list = false;
+            document
+              .querySelector(".mem_list")
+              .setAttribute("style", "transform: translateX(270px); filter: opacity(0);");
+            document
+              .querySelector(".search_bar")
+              .setAttribute("style", "height: 0px; filter: opacity(0);");
+            document
+              .querySelector(".mobile_list")
+              .setAttribute("style", "transform: translateX(-270px); filter: opacity(0);");
+          }
+        },
+        hamburger_click(e) {
+          e.stopPropagation();
+          if (this.mobile_list == false) {
+            this.mobile_list = true;
+            this.mem_list = false;
+            this.search_bar = false;
+            document
+              .querySelector(".mobile_list")
+              .setAttribute("style", "transform: translateX(0); filter: opacity(1);");
+            document
+              .querySelector(".mem_list")
+              .setAttribute("style", "transform: translateX(270px); filter: opacity(0);");
+            document
+              .querySelector(".search_bar")
+              .setAttribute("style", "height: 0px; filter: opacity(0);");
+          } else {
+            this.mobile_list = false;
+            document.querySelector(".mobile_list").setAttribute("style",
+              "transform: translateX(-270px); filter: opacity(0);");
+            document
+              .querySelector(".mem_list")
+              .setAttribute("style", "transform: translateX(270px); filter: opacity(0);");
+            document
+              .querySelector(".search_bar")
+              .setAttribute("style", "height: 0px; filter: opacity(0);");
+          }
+        },
+        npm_control() {
+          // 顏色控制
+          var input_npm = document.getElementById('input_npm');
+          var slider = window.getComputedStyle(input_npm, '::-webkit-slider-runnable-track');
+          let value = ((this.npm - 40) / 180) * 100;
+          // console.log(value)
+          // input_npm.style.background = 'linear-gradient(to right, blue , #fff ' + value + '%, #fff)';
+
+          slider.style.background= "linear-gradient(to right, #1ab1e2 0%, #1ab1e2"+value+"%,#333 "+value+"%, #333)";
+        }
+      },
+      computed: {},
+      mounted() {
+        // 組長的code
+        document.addEventListener('click', () => {
+          vm.mem_list = false;
+          vm.search_bar = false;
+          vm.mobile_list = false;
+
+          document
+            .querySelector(".search_bar")
+            .setAttribute("style", "height: 0px; filter: opacity(0);");
+          document
+            .querySelector(".mem_list")
+            .setAttribute("style", "transform: translateX(270px); filter: opacity(0);");
+          document
+            .querySelector(".mobile_list")
+            .setAttribute("style", "transform: translateX(-270px); filter: opacity(0);");
+        });
+
+        // resize 的部分
+        const vm = this;
+        window.onresize = () => {
+          return (() => {
+            vm.screenWidth = document.body.clientWidth;
+            // console.log(vm.screenWidth)
+          })()
+        }
+
+        // 一開始偵測是否為375
+        if (this.screenWidth <= 376) {
+          var intro = document.getElementsByClassName('intro')[0];
+          intro.innerHTML = intro.innerHTML.substr(0, 92);
+        }
+      },
+      watch: {
+        screenWidth(val) {
+          // 偵測螢幕寬度 切字串
+          this.screenWidth = val
+          if (this.screenWidth <= 376) {
+            var intro = document.getElementsByClassName('intro')[0];
+            intro.innerHTML = intro.innerHTML.substr(0, 92);
+          }
+        }
+      },
+    })
+  </script>
+
+</body>
+
+</html>
