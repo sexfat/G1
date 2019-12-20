@@ -1,7 +1,7 @@
-$green:#d0d6d6;
-$yellow:#f1c40f;
-$mainBg:#fafaf1;
-$fontColor:#333;
+$green: #d0d6d6;
+$yellow: #f1c40f;
+$mainBg: #fafaf1;
+$fontColor: #333;
 
 * {
   box-sizing: border-box;
@@ -19,7 +19,17 @@ html {
 body {
   margin: 0;
   padding: 0;
-  font-family: 'Lucida Sans Unicode', Geneva, Verdana, sans-serif;
+  font-family: "Lucida Sans Unicode", Geneva, Verdana, sans-serif;
+  background: $mainBg;
+  color: $fontColor;
+}
+
+.flexbox {
+  display: flex;
+}
+
+a {
+  text-decoration: none;
   color: $fontColor;
 }
 
@@ -75,17 +85,6 @@ p {
   }
 }
 
-nav {
-  width: 100%;
-  position: fixed;
-
-  h4 {
-    /*nav裡面的按鈕*/
-    padding: 15px 12px;
-    letter-spacing: 1px;
-  }
-}
-
 header {
   height: 300px;
   text-align: center;
@@ -112,9 +111,6 @@ header {
   background-color: #414141e6;
 }
 
-
-
-
 /*button mixin*/
 @mixin butttonn02 {
   background-color: $yellow;
@@ -136,9 +132,6 @@ header {
   cursor: pointer;
 }
 
-
-
-
 // RWD新增斷點
 $phone: 376px;
 $ipad: 576px;
@@ -148,37 +141,27 @@ $latop-max: 1200px;
 
 //mixin
 @mixin respond($breakpoint) {
-  @if $breakpoint=="phone" {
+  @if $breakpoint== "phone" {
     @media all and (max-width: $phone) {
       @content;
     }
-  }
-
-  @else if $breakpoint=="ipad" {
+  } @else if $breakpoint== "ipad" {
     @media all and (max-width: $ipad) and (min-width: $phone + 1) {
       @content;
     }
-  }
-
-  @else if $breakpoint=="ipadpro" {
+  } @else if $breakpoint== "ipadpro" {
     @media all and (max-width: $ipadpro) and (min-width: $ipad + 1) {
       @content;
     }
-  }
-
-  @else if $breakpoint=="latop-min" {
+  } @else if $breakpoint== "latop-min" {
     @media all and (max-width: $latop-min) and (min-width:$ipadpro + 1) {
       @content;
     }
-  }
-
-  @else if $breakpoint=="latop-max" {
+  }@else if $breakpoint== "latop-max" {
     @media all and (max-width: $latop-max) and (min-width: $latop-min + 1) {
       @content;
     }
-  }
-
-  @else if $breakpoint=="desktop" {
+  } @else if $breakpoint== "desktop" {
     @media all and (min-width: $latop-max) {
       @content;
     }

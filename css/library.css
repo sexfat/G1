@@ -11,7 +11,19 @@ html {
 body {
   margin: 0;
   padding: 0;
-  font-family: 'Lucida Sans Unicode', Geneva, Verdana, sans-serif;
+  font-family: "Lucida Sans Unicode", Geneva, Verdana, sans-serif;
+  background: #fafaf1;
+  color: #333;
+}
+
+.flexbox {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+}
+
+a {
+  text-decoration: none;
   color: #333;
 }
 
@@ -65,17 +77,6 @@ p.doubleSmall {
 p.forget {
   /*旺季 12px*/
   font-size: 0.6rem;
-}
-
-nav {
-  width: 100%;
-  position: fixed;
-}
-
-nav h4 {
-  /*nav裡面的按鈕*/
-  padding: 15px 12px;
-  letter-spacing: 1px;
 }
 
 header {
@@ -512,6 +513,13 @@ div.nav_bar .mem_list li:not(:nth-child(5))::after {
   }
 }
 
+ol,
+ul {
+  list-style: none;
+  padding: 0;
+  margin: 0;
+}
+
 body {
   background-color: #fafaf1;
   background-image: url("../img/library/library_bg.jpg");
@@ -639,6 +647,7 @@ main.library_main aside .my_list select {
   background-color: #d0d6d6;
   font-size: 1rem;
   padding: 16px 8px;
+  display: none;
 }
 
 main.library_main aside .my_list select option {
@@ -756,8 +765,16 @@ main.library_main .right .listInfo .listCover {
   position: relative;
 }
 
+@media all and (max-width: 576px) and (min-width: 377px) {
+  main.library_main .right .listInfo .listCover {
+    margin: 0 auto;
+    float: none;
+  }
+}
+
 @media all and (max-width: 376px) {
   main.library_main .right .listInfo .listCover {
+    margin: 0 auto;
     float: none;
   }
 }
@@ -783,6 +800,18 @@ main.library_main .right .listInfo .nameAndBtn {
   float: left;
 }
 
+@media all and (max-width: 576px) and (min-width: 377px) {
+  main.library_main .right .listInfo .nameAndBtn {
+    width: 100%;
+  }
+}
+
+@media all and (max-width: 376px) {
+  main.library_main .right .listInfo .nameAndBtn {
+    width: 100%;
+  }
+}
+
 main.library_main .right .listInfo .nameAndBtn .listName .name h2 {
   display: inline-block;
   vertical-align: middle;
@@ -790,6 +819,12 @@ main.library_main .right .listInfo .nameAndBtn .listName .name h2 {
 
 main.library_main .right .listInfo .nameAndBtn .listName .name button {
   margin-left: 10px;
+}
+
+@media all and (max-width: 576px) and (min-width: 377px) {
+  main.library_main .right .listInfo .nameAndBtn .listName {
+    width: 85%;
+  }
 }
 
 @media all and (max-width: 376px) {
@@ -802,9 +837,9 @@ main.library_main .right .listInfo .nameAndBtn .playall_btn {
   text-align: right;
 }
 
-@media all and (max-width: 376px) {
-  main.library_main .right .listInfo .nameAndBtn {
-    width: 100%;
+@media all and (max-width: 576px) and (min-width: 377px) {
+  main.library_main .right .listInfo .nameAndBtn .playall_btn {
+    width: 14%;
   }
 }
 
