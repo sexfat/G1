@@ -1,0 +1,28 @@
+@import './public.scss';
+@import './nav_bar.scss';
+
+body{
+    header{
+        padding:120px;
+        border: 1px solid red;
+        width: 100%;
+        img{
+            max-width:500px;
+            width: 100%;
+        }
+    }
+    section{
+        border: 1px solid green;
+        text-align: center;
+        img{
+            width:100vw;
+            max-width:1500px;
+        }
+        .closeeyes1,.closeeyes2,.closeeyes3,.closeeyes4
+        ,.openeyes1,.openeyes2,.openeyes3,.openeyes4{
+            max-width: 150px;
+            position: relative;
+            width:100vw;
+        }
+    }
+}

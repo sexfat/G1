@@ -489,207 +489,31 @@ div.nav_bar .mem_list li:not(:nth-child(5))::after {
   }
 }
 
-body {
-  height: 100vh;
-  background-image: url(../img/register/login.jpg);
-  background-size: cover;
-  background-position: center;
-}
-
-body .signupcontainer {
-  margin: 0 auto;
-  width: 900px;
-  height: 600px;
-  position: relative;
-  top: 230px;
-}
-
-body .signupcontainer .greenblock {
-  background-color: #d0d6d6;
+body header {
+  padding: 120px;
+  border: 1px solid red;
   width: 100%;
-  height: 600px;
 }
 
-body .signupcontainer .whiteform {
-  position: absolute;
-  top: -10%;
-  left: 7%;
-  background-color: #fff;
-  border: 1px solid #aaa;
-  width: 430px;
-  height: 700px;
-  -webkit-box-shadow: 2px 0 10px rgba(0, 0, 0, 0.1);
-          box-shadow: 2px 0 10px rgba(0, 0, 0, 0.1);
-  -webkit-transition: all .5s ease-in-out;
-  transition: all .5s ease-in-out;
-  z-index: 2;
+body header img {
+  max-width: 500px;
+  width: 100%;
 }
 
-body .signupcontainer .displaynone {
-  display: none;
-  -webkit-transition: all .5s ease;
-  transition: all .5s ease;
-}
-
-body .signupcontainer h1 {
+body section {
+  border: 1px solid green;
   text-align: center;
-  margin-top: 55px;
 }
 
-body .signupcontainer .leftbox, body .signupcontainer .rightbox {
-  position: absolute;
-  width: 50%;
-  -webkit-transition: 1s all ease;
-  transition: 1s all ease;
+body section img {
+  width: 100vw;
+  max-width: 1500px;
 }
 
-body .signupcontainer .leftbox h2, body .signupcontainer .rightbox h2 {
-  text-align: center;
-  margin: 17px;
+body section .closeeyes1, body section .closeeyes2, body section .closeeyes3, body section .closeeyes4
+, body section .openeyes1, body section .openeyes2, body section .openeyes3, body section .openeyes4 {
+  max-width: 150px;
+  position: relative;
+  width: 100vw;
 }
-
-body .signupcontainer .leftbox {
-  left: -2%;
-}
-
-body .signupcontainer .rightbox {
-  right: -2%;
-}
-
-body .signupcontainer .signin a {
-  font-size: 0.6rem;
-  margin-left: 170px;
-  margin-bottom: 90px;
-}
-
-body .signupcontainer .emailinput {
-  margin-bottom: 30px;
-}
-
-body .signupcontainer input {
-  background-color: #d0d6d6;
-  padding: 15px;
-  border: none;
-  padding: 12px;
-}
-
-body .signupcontainer .signin form {
-  padding-top: 35px;
-}
-
-body .signupcontainer .signin form button {
-  margin-top: 82px;
-}
-
-body .signupcontainer .signup button {
-  margin-top: 92px;
-}
-
-body .signupcontainer button {
-  background-color: #f1c40f;
-  font-size: 0.8rem;
-  padding: 10px 30px;
-  border: 1px solid #f1c40f;
-  border-radius: 5px;
-  color: #fff;
-  font-weight: bold;
-  cursor: pointer;
-  border-radius: 10px;
-  margin: auto;
-  display: block;
-  margin-top: 10px;
-}
-
-body .signupcontainer button:hover {
-  -webkit-transition: scale(1.1);
-  transition: scale(1.1);
-}
-
-body .signupcontainer form {
-  display: -webkit-box;
-  display: -ms-flexbox;
-  display: flex;
-  -webkit-box-align: left;
-      -ms-flex-align: left;
-          align-items: left;
-  -webkit-box-orient: vertical;
-  -webkit-box-direction: normal;
-      -ms-flex-direction: column;
-          flex-direction: column;
-  margin: 30px 60px 60px 65px;
-}
-
-body .signupcontainer .title {
-  font-size: 1.5em;
-  padding-top: 10px;
-}
-
-body .signupcontainer .title span {
-  color: #fff;
-}
-
-body .signupcontainer .account {
-  margin-top: 45%;
-}
-
-body .signupcontainer p {
-  color: #333;
-  text-align: center;
-  padding-top: 150px;
-}
-
-body .signupcontainer .flower {
-  position: absolute;
-  height: 320px;
-  top: 25%;
-  left: 25%;
-}
-
-body .signupcontainer .smaller {
-  height: 320px;
-  top: 25%;
-  left: 28%;
-}
-
-body .signupcontainer input {
-  width: 90%;
-}
-
-body .signupcontainer input::-webkit-input-placeholder {
-  font-size: 1.3em;
-}
-
-body .signupcontainer input:-ms-input-placeholder {
-  font-size: 1.3em;
-}
-
-body .signupcontainer input::-ms-input-placeholder {
-  font-size: 1.3em;
-}
-
-body .signupcontainer input::placeholder {
-  font-size: 1.3em;
-}
-
-body .signupcontainer input:focus {
-  font-size: 1em;
-  -webkit-transition: .8s all ease;
-  transition: .8s all ease;
-}
-
-body .signupcontainer input:focus::-webkit-input-placeholder {
-  opacity: 0;
-}
-
-body .signupcontainer input:focus:-ms-input-placeholder {
-  opacity: 0;
-}
-
-body .signupcontainer input:focus::-ms-input-placeholder {
-  opacity: 0;
-}
-
-body .signupcontainer input:focus::placeholder {
-  opacity: 0;
-}
-/*# sourceMappingURL=login.css.map */
+/*# sourceMappingURL=collection.css.map */
