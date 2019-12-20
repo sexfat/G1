@@ -1,8 +1,25 @@
+#pp-nav {
+  .pp-tooltip {
+    color: #539e90;
+    // pagepiling.js navigation text color
+  }
+  li {
+    .active {
+      span {
+        background: #ffcb1e !important;
+        // pagepiling.js navigation circle bg-color
+      }
+    }
+  }
+}
+
 .sec {
   position: relative;
   width: 100%;
+  // height: 937px
+
   background: #fafaf1;
-  // height 937px
+  overflow: hidden;
 
   header {
     margin: 60px 0 0 0;
@@ -125,6 +142,73 @@
     width: 407px;
     height: 232px;
     background: url(../img/home/pot.png);
+  }
+  .container {
+    width: 210px;
+    height: 140px;
+    top: 100px;
+    left: 800px;
+    position: absolute;
+    perspective: 1000px;
+    .song_container {
+      position: absolute;
+      top: 240px;
+      right: 0;
+      width: 100%;
+      height: 100%;
+      transform-style: preserve-3d;
+      // animation: rotation 20s infinite linear;
+
+      border: 1px solid red;
+      @keyframes rotation {
+        from {
+          transform: rotateY(0deg);
+        }
+        to {
+          transform: rotateY(360deg);
+        }
+      }
+
+      .song {
+        position: absolute;
+        width: 200px;
+        height: 200px;
+        border: 1px solid red;
+
+        &.song01 {
+          transform: rotateY(0deg) translateZ(288px);
+        }
+        &.song02 {
+          // transform: translateX(200px) translateZ(100px);
+          transform: rotateY(40deg) translateZ(288px);
+
+        }
+        &.song03 {
+          transform: rotateY(80deg) translateZ(288px);
+        }
+        &.song04 {
+          transform: rotateY(120deg) translateZ(288px);
+        }
+        &.song05 {
+          transform: rotateY(160deg) translateZ(288px);
+        }
+        &.song06 {
+          transform: rotateY(200deg) translateZ(288px);
+        }
+        &.song07 {
+          transform: rotateY(240deg) translateZ(288px);
+        }
+        &.song08 {
+          transform: rotateY(280deg) translateZ(288px);
+        }
+        &.song09 {
+          transform: rotateY(320deg) translateZ(288px);
+        }
+        &.song10 {
+          transform: rotateY(360deg) translateZ(288px);
+        }
+      }
+    }
   }
 }
 .sec04 {
