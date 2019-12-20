@@ -1,0 +1,258 @@
+#pp-nav {
+  .pp-tooltip {
+    color: #539e90;
+    // pagepiling.js navigation text color
+  }
+  li {
+    .active {
+      span {
+        background: #ffcb1e !important;
+        // pagepiling.js navigation circle bg-color
+      }
+    }
+  }
+}
+
+.sec {
+  position: relative;
+  width: 100%;
+  // height: 937px
+
+  background: #fafaf1;
+  overflow: hidden;
+
+  header {
+    margin: 60px 0 0 0;
+  }
+}
+
+.sec01 {
+  .img_container {
+    position: absolute;
+    top: 0;
+    width: 100%;
+    height: 100%;
+    overflow: hidden;
+    pointer-events: none;
+
+    .stylus {
+      position: absolute;
+      top: 10px;
+      left: -360px;
+      z-index: 1;
+      width: 618px;
+      height: 180px;
+      background: url(../img/home/stylus.png);
+      animation: test02 0.9s infinite linear alternate;
+    }
+    .vinyl_records {
+      position: absolute;
+      z-index: -1;
+      top: -100px;
+      left: -200px;
+      width: 1200px;
+      height: 1200px;
+      background: url(../img/home/vinyl_records.png);
+      background-size: cover;
+      animation: test 6s infinite linear;
+
+      .cover_img {
+        position: relative;
+        top: calc((100% - 400px) / 2);
+        left: calc((100% - 400px) / 2);
+        width: 400px;
+        height: 400px;
+        border-radius: 100%;
+        background: url(../img/home/test.jpg) center center;
+        background-size: cover;
+      }
+    }
+
+    @keyframes test {
+      0% {
+        transform: rotate(0deg);
+      }
+      100% {
+        transform: rotate(360deg);
+      }
+    }
+
+    @keyframes test02 {
+      0% {
+        transform: rotate(15deg);
+      }
+      // 50% {
+      //   transform: rotate(20deg);
+      // }
+
+      100% {
+        transform: rotate(20deg);
+      }
+    }
+  }
+
+  .ctrl_container {
+    position: absolute;
+    left: 700px;
+    top: 350px;
+    width: 200px;
+    height: 300px;
+    border: 1px solid red;
+
+    .top_arrow {
+      position: relative;
+      // left: 700px;
+      // top: 350px;
+      width: 100px;
+      height: 100px;
+      background: url(../img/home/top_arrow.png) center center no-repeat;
+    }
+    .bot_arrow {
+      position: absolute;
+      bottom: 0;
+      width: 100px;
+      height: 100px;
+      background: url(../img/home/bot_arrow.png) center center no-repeat;
+    }
+  }
+
+  .wave_container {
+    position: absolute;
+    top: 200px;
+    right: 0;
+    width: 1200px;
+    height: 600px;
+    border: 1px solid blue;
+  }
+}
+.sec02 {
+  .mixer {
+    position: absolute;
+    right: 100px;
+    width: 556px;
+    height: 616px;
+    background: url(../img/home/mixer.png);
+  }
+}
+.sec03 {
+  .pot {
+    position: absolute;
+    top: 60px;
+    right: 0;
+    width: 407px;
+    height: 232px;
+    background: url(../img/home/pot.png);
+  }
+  .container {
+    width: 210px;
+    height: 140px;
+    top: 100px;
+    left: 800px;
+    position: absolute;
+    perspective: 1000px;
+    .song_container {
+      position: absolute;
+      top: 240px;
+      right: 0;
+      width: 100%;
+      height: 100%;
+      transform-style: preserve-3d;
+      // animation: rotation 20s infinite linear;
+
+      border: 1px solid red;
+      @keyframes rotation {
+        from {
+          transform: rotateY(0deg);
+        }
+        to {
+          transform: rotateY(360deg);
+        }
+      }
+
+      .song {
+        position: absolute;
+        width: 200px;
+        height: 200px;
+        border: 1px solid red;
+
+        &.song01 {
+          transform: rotateY(0deg) translateZ(288px);
+        }
+        &.song02 {
+          // transform: translateX(200px) translateZ(100px);
+          transform: rotateY(40deg) translateZ(288px);
+
+        }
+        &.song03 {
+          transform: rotateY(80deg) translateZ(288px);
+        }
+        &.song04 {
+          transform: rotateY(120deg) translateZ(288px);
+        }
+        &.song05 {
+          transform: rotateY(160deg) translateZ(288px);
+        }
+        &.song06 {
+          transform: rotateY(200deg) translateZ(288px);
+        }
+        &.song07 {
+          transform: rotateY(240deg) translateZ(288px);
+        }
+        &.song08 {
+          transform: rotateY(280deg) translateZ(288px);
+        }
+        &.song09 {
+          transform: rotateY(320deg) translateZ(288px);
+        }
+        &.song10 {
+          transform: rotateY(360deg) translateZ(288px);
+        }
+      }
+    }
+  }
+}
+.sec04 {
+  .DJ {
+    position: absolute;
+    bottom: 0px;
+    left: 0;
+    width: 613px;
+    height: 522px;
+    background: url(../img/home/DJ.png);
+  }
+}
+.sec05 {
+  .container {
+    position: relative;
+    top: 240px;
+    .shelf {
+      position: absolute;
+      width: 590px;
+      height: 141px;
+      background: url(../img/home/shelf.png);
+      background-size: cover;
+    }
+    .shelf01 {
+      right: 120px;
+      top: 0px;
+    }
+    .shelf02 {
+      right: 60px;
+      top: 240px;
+    }
+    .shelf03 {
+      right: 180px;
+      top: 480px;
+    }
+  }
+}
+.sec06 {
+  .audio_man {
+    position: absolute;
+    bottom: 0px;
+    left: 0;
+    width: 1153px;
+    height: 751px;
+    background: url(../img/home/audio_man.png);
+  }
+}

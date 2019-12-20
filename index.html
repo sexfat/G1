@@ -1,0 +1,347 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+    <link rel="stylesheet" href="./css/public.css">
+    <link rel="stylesheet" href="./css/nav_bar.css">
+    <link rel="stylesheet" href="./css/home.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/pagePiling.js/1.5.6/jquery.pagepiling.min.css">
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/vue/2.6.10/vue.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
+
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/pagePiling.js/1.5.6/jquery.pagepiling.min.js"></script>
+
+    <style>
+
+
+    </style>
+    <script>
+
+        $(document).ready(() => {
+            $('#pagepiling').pagepiling(
+                {
+                    verticalCentered: false, //section 內物件置中對齊
+                    navigation: {
+                        'bulletsColor': '#F1C40F', // 框線
+                        'position': 'right',
+                        'tooltips': ['SOUND WAVE', 'REMIX', 'RANK', 'ACTIVITY', 'COLLECTION', 'ABOUT']
+                    },
+                }
+            );
+
+            $('.mem_list').css({ 'height': $(window).height() });
+            $('.mobile_list').css({ 'height': $(window).height() });
+            $('.mem_list ul').css({ 'height': $(window).height() });
+            $('.mobile_list ul').css({ 'height': $(window).height() });
+            $('.paint_border').css({ 'height': $(window).height() });
+
+            $(document).click(() => {
+                vm.mem_list = false;
+                vm.search_bar = false;
+                vm.mobile_list = false;
+
+                document
+                    .querySelector(".search_bar")
+                    .setAttribute("style", "height: 0px; filter: opacity(0);");
+                document
+                    .querySelector(".mem_list")
+                    .setAttribute("style", "transform: translateX(270px); filter: opacity(0);");
+                document
+                    .querySelector(".mobile_list")
+                    .setAttribute("style", "transform: translateX(-270px); filter: opacity(0);");
+            })
+
+        });
+
+    </script>
+</head>
+
+<body>
+    <div id="app">
+        <div class="nav_bar flexbox">
+            <div class="hamburger" @click="hamburger_click">
+                <div class="hamburger-box">
+                    <div class="hamburger-inner"></div>
+                </div>
+            </div>
+            <div class="mobile_list" @click="stopPropagation">
+                <div class="paint_border"></div>
+                <ul>
+                    <li class="REMIX flexbox">
+                        <a href="">
+                        </a>
+                    </li>
+                    <li class="COLLECTION flexbox">
+                        <a href="">
+                        </a>
+                    </li>
+                    <li class="ACTIVITY flexbox">
+                        <a href="">
+                        </a>
+                    </li>
+                    <li class="LIBRARY flexbox">
+                        <a href="">
+                        </a>
+                    </li>
+                </ul>
+            </div>
+
+            <div class="logo_container">
+                <a href="">
+                    <div class="logo"></div>
+                </a>
+            </div>
+            <ul class="main_list flexbox">
+                <li class="REMIX flexbox">
+                    <a href="">
+                    </a>
+                </li>
+                <li class="COLLECTION flexbox">
+                    <a href="">
+                    </a>
+                </li>
+                <li class="ACTIVITY flexbox">
+                    <a href="">
+                    </a>
+                </li>
+                <li class="LIBRARY flexbox">
+                    <a href="">
+                    </a>
+                </li>
+            </ul>
+            <div class="search_bt" @click="search_bt_click">
+                <a href="#"></a>
+            </div>
+            <div class="search_bar">
+                <input class="search" type="text" />
+                <div class="tag_container">
+                </div>
+            </div>
+            <div class="mem_bt" @click="mem_bt_click">
+                <a href="#"></a>
+            </div>
+            <div class="mem_list" @click="stopPropagation">
+                <div class="paint_border"></div>
+                <ul>
+                    <li>
+                        <a href="">
+                            <h4>Profile</h4>
+                        </a>
+                    </li>
+                    <li>
+                        <a href="">
+                            <h4>Favorite</h4>
+                        </a>
+                    </li>
+                    <li>
+                        <a href="">
+                            <h4>
+                                Song Upload
+                                <br />&amp; Remove
+                            </h4>
+                        </a>
+                    </li>
+                    <li>
+                        <a href="">
+                            <h4>
+                                Store Value
+                                <br />&amp;Store Record
+                            </h4>
+                        </a>
+                    </li>
+                    <li>
+                        <a href="">
+                            <h4>Donate Record</h4>
+                        </a>
+                    </li>
+                </ul>
+            </div>
+
+        </div>
+
+        <div id="pagepiling">
+            <div class="sec sec01 section">
+                <div class="img_container">
+                    <div class="stylus"></div>
+                    <div class="vinyl_records">
+                        <div class="cover_img">
+                        </div>
+                    </div>
+                </div>
+                <div class="ctrl_container">
+                    <div class="top_arrow"></div>
+                    <div songInfo_container>
+
+                    </div>
+                    <div class="bot_arrow"></div>
+                </div>
+                <div class="wave_container">
+
+                </div>
+            </div>
+            <div class="sec sec02 section">
+                <header>
+                    <h1>
+                        REMIX
+                    </h1>
+                </header>
+                <div class="mixer">
+
+                </div>
+            </div>
+            <div class="sec sec03 section">
+                <div class="pot">
+                </div>
+                <div class="container">
+                    <div class="song_container">
+                        <div class="song song01"></div>
+                        <div class="song song02"></div>
+                        <div class="song song03"></div>
+                        <div class="song song04"></div>
+                        <div class="song song05"></div>
+                        <div class="song song06"></div>
+                        <div class="song song07"></div>
+                        <div class="song song08"></div>
+                        <div class="song song09"></div>
+                        <div class="song song10"></div>
+                    </div>
+                </div>
+            </div>
+            <div class="sec sec04 section">
+                <div class="DJ">
+
+                </div>
+            </div>
+            <div class="sec sec05 section">
+                <div class="container">
+                    <div class="shelf shelf01"></div>
+                    <div class="shelf shelf02"></div>
+                    <div class="shelf shelf03"></div>
+                </div>
+            </div>
+            <div class="sec sec06 section">
+                <div class="audio_man">
+                </div>
+            </div>
+        </div>
+    </div>
+
+
+
+
+    <script>
+        let vm = new Vue({
+            el: "#app",
+            data: {
+                search_bar: false,
+                mem_list: false,
+                mobile_list: false,
+            },
+            methods: {
+                hamburger_click(e) {
+                    // e.stopPropagation();
+                    document
+                        .querySelector(".hamburger").classList.toggle("is-active");
+                },
+                search_bt_click(e) {
+                    e.stopPropagation();
+                    if (this.search_bar == false) {
+                        this.search_bar = true;
+                        this.mem_list = false;
+                        this.mobile_list = false;
+                        document
+                            .querySelector(".search_bar")
+                            .setAttribute("style", "height: 240px; filter: opacity(1);");
+                        document.querySelector("input.search").focus();
+                        document
+                            .querySelector(".mem_list")
+                            .setAttribute("style", "transform: translateX(270px); filter: opacity(0);");
+                        document
+                            .querySelector(".mobile_list")
+                            .setAttribute("style", "transform: translateX(-270px); filter: opacity(0);");
+                    } else {
+                        this.search_bar = false;
+                        document
+                            .querySelector(".search_bar")
+                            .setAttribute("style", "height: 0px; filter: opacity(0);");
+                        document.querySelector("input.search").blur();
+                        document
+                            .querySelector(".mem_list")
+                            .setAttribute("style", "transform: translateX(270px); filter: opacity(0);");
+                        document
+                            .querySelector(".mobile_list")
+                            .setAttribute("style", "transform: translateX(-270px); filter: opacity(0);");
+                    }
+                },
+
+                stopPropagation(e) {
+                    e.stopPropagation();
+                },
+
+                mem_bt_click(e) {
+                    e.stopPropagation();
+                    if (this.mem_list == false) {
+                        this.mem_list = true;
+                        this.search_bar = false;
+                        this.mobile_list = false;
+                        document
+                            .querySelector(".mem_list")
+                            .setAttribute("style", "transform: translateX(0); filter: opacity(1);");
+                        document
+                            .querySelector(".search_bar")
+                            .setAttribute("style", "height: 0px; filter: opacity(0);");
+                        document
+                            .querySelector(".mobile_list")
+                            .setAttribute("style", "transform: translateX(-270px); filter: opacity(0);");
+                    } else {
+                        this.mem_list = false;
+                        document
+                            .querySelector(".mem_list")
+                            .setAttribute("style", "transform: translateX(270px); filter: opacity(0);");
+                        document
+                            .querySelector(".search_bar")
+                            .setAttribute("style", "height: 0px; filter: opacity(0);");
+                        document
+                            .querySelector(".mobile_list")
+                            .setAttribute("style", "transform: translateX(-270px); filter: opacity(0);");
+                    }
+                },
+
+                hamburger_click(e) {
+                    e.stopPropagation();
+                    if (this.mobile_list == false) {
+                        this.mobile_list = true;
+                        this.mem_list = false;
+                        this.search_bar = false;
+                        document
+                            .querySelector(".mobile_list")
+                            .setAttribute("style", "transform: translateX(0); filter: opacity(1);");
+                        document
+                            .querySelector(".mem_list")
+                            .setAttribute("style", "transform: translateX(270px); filter: opacity(0);");
+                        document
+                            .querySelector(".search_bar")
+                            .setAttribute("style", "height: 0px; filter: opacity(0);");
+                    } else {
+                        this.mobile_list = false;
+                        document
+                            .querySelector(".mobile_list")
+                            .setAttribute("style", "transform: translateX(-270px); filter: opacity(0);");
+                        document
+                            .querySelector(".mem_list")
+                            .setAttribute("style", "transform: translateX(270px); filter: opacity(0);");
+                        document
+                            .querySelector(".search_bar")
+                            .setAttribute("style", "height: 0px; filter: opacity(0);");
+                    }
+                },
+            }
+        });
+    </script>
+</body>
+
+</html>
