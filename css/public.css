@@ -11,7 +11,23 @@ html {
 body {
   margin: 0;
   padding: 0;
+<<<<<<< HEAD
   font-family: 'Lucida Sans Unicode', Geneva, Verdana, sans-serif;
+=======
+  font-family: "Lucida Sans Unicode", Geneva, Verdana, sans-serif;
+  background: #fafaf1;
+  color: #333;
+}
+
+.flexbox {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+}
+
+a {
+  text-decoration: none;
+>>>>>>> dev
   color: #333;
 }
 
@@ -67,6 +83,7 @@ p.forget {
   font-size: 0.6rem;
 }
 
+<<<<<<< HEAD
 nav {
   width: 100%;
   position: fixed;
@@ -76,6 +93,11 @@ nav h4 {
   /*nav裡面的按鈕*/
   padding: 15px 12px;
   letter-spacing: 1px;
+=======
+header {
+  height: 300px;
+  text-align: center;
+>>>>>>> dev
 }
 
 header {
