@@ -105,6 +105,36 @@ header {
 }
 
 /*button mixin*/
+@media all and (max-width: 1200px) and (min-width: 993px) {
+  html {
+    font-size: 16px;
+  }
+}
+
+@media all and (max-width: 992px) and (min-width: 769px) {
+  html {
+    font-size: 16px;
+  }
+}
+
+@media all and (max-width: 768px) and (min-width: 577px) {
+  html {
+    font-size: 16px;
+  }
+}
+
+@media all and (max-width: 576px) and (min-width: 377px) {
+  html {
+    font-size: 16px;
+  }
+}
+
+@media all and (max-width: 376px) {
+  html {
+    font-size: 16px;
+  }
+}
+
 ol,
 ul {
   list-style: none;
@@ -135,13 +165,32 @@ ul {
   padding: 10px;
   position: absolute;
   z-index: 97;
-  -webkit-transition: bottom .5s;
-  transition: bottom .5s;
+  -webkit-transition: bottom 0.5s;
+  transition: bottom 0.5s;
 }
 
 #player .player_s .info {
   width: 20%;
+  min-width: 200px;
   float: left;
+}
+
+@media all and (max-width: 992px) and (min-width: 769px) {
+  #player .player_s .info {
+    width: 25%;
+  }
+}
+
+@media all and (max-width: 1200px) and (min-width: 993px) {
+  #player .player_s .info {
+    width: 22%;
+  }
+}
+
+@media all and (max-width: 376px) {
+  #player .player_s .info {
+    width: 80%;
+  }
 }
 
 #player .player_s .info .cover {
@@ -168,10 +217,10 @@ ul {
   float: left;
   height: 100%;
   padding: 5%;
-  -webkit-transition: -webkit-transform .5s;
-  transition: -webkit-transform .5s;
-  transition: transform .5s;
-  transition: transform .5s, -webkit-transform .5s;
+  -webkit-transition: -webkit-transform 0.5s;
+  transition: -webkit-transform 0.5s;
+  transition: transform 0.5s;
+  transition: transform 0.5s, -webkit-transform 0.5s;
 }
 
 #player .player_s .info .heart:hover {
@@ -179,16 +228,44 @@ ul {
           transform: scale(1.1);
 }
 
-@media all and (max-width: 376px) {
-  #player .player_s .info {
-    width: 80%;
-  }
-}
-
 #player .player_s .controlPanel {
   width: 70%;
   height: 100%;
   float: left;
+}
+
+@media all and (max-width: 376px) {
+  #player .player_s .controlPanel {
+    width: 0;
+    height: 0px;
+    overflow: hidden;
+  }
+}
+
+@media all and (max-width: 576px) and (min-width: 377px) {
+  #player .player_s .controlPanel {
+    width: 0;
+    height: 0px;
+    overflow: hidden;
+  }
+}
+
+@media all and (max-width: 768px) and (min-width: 577px) {
+  #player .player_s .controlPanel {
+    width: 60%;
+  }
+}
+
+@media all and (max-width: 992px) and (min-width: 769px) {
+  #player .player_s .controlPanel {
+    width: 65%;
+  }
+}
+
+@media all and (max-width: 1200px) and (min-width: 993px) {
+  #player .player_s .controlPanel {
+    width: 70%;
+  }
 }
 
 #player .player_s .controlPanel .progressbar {
@@ -211,10 +288,42 @@ ul {
   }
 }
 
+@media all and (max-width: 576px) and (min-width: 377px) {
+  #player .player_s .controlPanel .progressbar {
+    position: absolute;
+    top: 0;
+    left: 0;
+  }
+}
+
+@media all and (max-width: 376px) {
+  #player .player_s .controlPanel .time {
+    display: none;
+  }
+}
+
+@media all and (max-width: 576px) and (min-width: 377px) {
+  #player .player_s .controlPanel .time {
+    display: none;
+  }
+}
+
 #player .player_s .controlPanel .time span {
   font-size: 11px;
   width: 49.5%;
   display: inline-block;
+}
+
+@media all and (max-width: 768px) and (min-width: 577px) {
+  #player .player_s .controlPanel .time span {
+    width: 49%;
+  }
+}
+
+@media all and (max-width: 992px) and (min-width: 769px) {
+  #player .player_s .controlPanel .time span {
+    width: 49%;
+  }
 }
 
 #player .player_s .controlPanel .time span.start {
@@ -225,17 +334,29 @@ ul {
   text-align: right;
 }
 
+#player .player_s .controlPanel .btns {
+  width: calc(100% - 100px - 12px);
+  margin: -10px auto 0;
+  text-align: center;
+  height: 100%;
+}
+
 @media all and (max-width: 376px) {
-  #player .player_s .controlPanel .time {
+  #player .player_s .controlPanel .btns {
     display: none;
   }
 }
 
-#player .player_s .controlPanel .btns {
-  width: 70%;
-  margin: -10px auto 0;
-  text-align: center;
-  height: 100%;
+@media all and (max-width: 576px) and (min-width: 377px) {
+  #player .player_s .controlPanel .btns {
+    display: none;
+  }
+}
+
+@media all and (max-width: 768px) and (min-width: 577px) {
+  #player .player_s .controlPanel .btns {
+    width: 100%;
+  }
 }
 
 #player .player_s .controlPanel .btns .controls {
@@ -244,11 +365,37 @@ ul {
   margin-left: 30%;
 }
 
+@media all and (max-width: 576px) and (min-width: 377px) {
+  #player .player_s .controlPanel .btns .controls {
+    width: 70%;
+  }
+}
+
+@media all and (max-width: 768px) and (min-width: 577px) {
+  #player .player_s .controlPanel .btns .controls {
+    width: 70%;
+    margin-left: 15%;
+  }
+}
+
+@media all and (max-width: 992px) and (min-width: 769px) {
+  #player .player_s .controlPanel .btns .controls {
+    width: 60%;
+    margin-left: 5%;
+  }
+}
+
+@media all and (max-width: 1200px) and (min-width: 993px) {
+  #player .player_s .controlPanel .btns .controls {
+    margin-left: 20%;
+  }
+}
+
 #player .player_s .controlPanel .btns .controls .play {
   width: 35px;
   height: 35px;
   float: left;
-  color: black;
+  color: #333;
   background-color: #f1c40f;
   border-radius: 20px;
   text-align: center;
@@ -256,10 +403,10 @@ ul {
   padding: 5px;
   margin: -6px 5px 0;
   border: 0;
-  -webkit-transition: -webkit-transform .5s;
-  transition: -webkit-transform .5s;
-  transition: transform .5s;
-  transition: transform .5s, -webkit-transform .5s;
+  -webkit-transition: -webkit-transform 0.5s;
+  transition: -webkit-transform 0.5s;
+  transition: transform 0.5s;
+  transition: transform 0.5s, -webkit-transform 0.5s;
 }
 
 #player .player_s .controlPanel .btns .controls .play:hover {
@@ -281,17 +428,17 @@ ul {
   width: 25px;
   height: 25px;
   float: left;
-  color: black;
+  color: #333;
   border-radius: 15px;
   text-align: center;
   line-height: 25px;
   padding: 5px;
   margin: 0px 5px;
   border: 0;
-  -webkit-transition: -webkit-transform .5s;
-  transition: -webkit-transform .5s;
-  transition: transform .5s;
-  transition: transform .5s, -webkit-transform .5s;
+  -webkit-transition: -webkit-transform 0.5s;
+  transition: -webkit-transform 0.5s;
+  transition: transform 0.5s;
+  transition: transform 0.5s, -webkit-transform 0.5s;
 }
 
 #player .player_s .controlPanel .btns .controls .prev:hover,
@@ -314,7 +461,7 @@ ul {
 }
 
 #player .player_s .controlPanel .btns .vol {
-  float: left;
+  float: right;
   margin: 1% 0;
 }
 
@@ -339,21 +486,15 @@ ul {
   margin: -4px;
 }
 
-@media all and (max-width: 376px) {
+@media all and (max-width: 768px) and (min-width: 577px) {
   #player .player_s .controlPanel .btns .vol {
     display: none;
   }
 }
 
 @media all and (max-width: 376px) {
-  #player .player_s .controlPanel .btns {
+  #player .player_s .controlPanel .btns .vol {
     display: none;
-  }
-}
-
-@media all and (max-width: 376px) {
-  #player .player_s .controlPanel {
-    width: 0;
   }
 }
 
@@ -363,10 +504,10 @@ ul {
   height: 100%;
   padding: 1%;
   cursor: pointer;
-  -webkit-transition: -webkit-transform .5s;
-  transition: -webkit-transform .5s;
-  transition: transform .5s;
-  transition: transform .5s, -webkit-transform .5s;
+  -webkit-transition: -webkit-transform 0.5s;
+  transition: -webkit-transform 0.5s;
+  transition: transform 0.5s;
+  transition: transform 0.5s, -webkit-transform 0.5s;
 }
 
 #player .player_s .expand:hover {
@@ -377,6 +518,14 @@ ul {
 @media all and (max-width: 376px) {
   #player .player_s .expand {
     width: 18%;
+    text-align: right;
+    padding-top: 4%;
+  }
+}
+
+@media all and (max-width: 576px) and (min-width: 377px) {
+  #player .player_s .expand {
+    padding-top: 4%;
   }
 }
 
@@ -385,8 +534,25 @@ ul {
   height: 0;
   opacity: 0;
   overflow: hidden;
-  -webkit-transition: all .5s;
-  transition: all .5s;
+  -webkit-transition: all 0.5s;
+  transition: all 0.5s;
+  position: relative;
+}
+
+#player .player_b .close {
+  position: absolute;
+  right: 30px;
+  top: 10px;
+  -webkit-transition: -webkit-transform 0.5s;
+  transition: -webkit-transform 0.5s;
+  transition: transform 0.5s;
+  transition: transform 0.5s, -webkit-transform 0.5s;
+  cursor: pointer;
+}
+
+#player .player_b .close:hover {
+  -webkit-transform: scale(1.1);
+          transform: scale(1.1);
 }
 
 #player .player_b .left {
@@ -396,6 +562,36 @@ ul {
   padding-top: 2%;
   background-color: #cfd6d6;
   overflow: hidden;
+  position: relative;
+  -webkit-transition: height .5s;
+  transition: height .5s;
+}
+
+@media all and (max-width: 768px) and (min-width: 577px) {
+  #player .player_b .left {
+    height: 90%;
+    padding: 8% 5%;
+    width: 100%;
+    float: none;
+  }
+}
+
+@media all and (max-width: 576px) and (min-width: 377px) {
+  #player .player_b .left {
+    height: 90%;
+    padding: 12% 5%;
+    width: 100%;
+    float: none;
+  }
+}
+
+@media all and (max-width: 376px) {
+  #player .player_b .left {
+    height: 90%;
+    padding: 15% 5%;
+    width: 100%;
+    float: none;
+  }
 }
 
 #player .player_b .left .songCover {
@@ -408,6 +604,22 @@ ul {
   background-repeat: no-repeat;
   background-size: 80%;
   background-position: center center;
+}
+
+@media all and (max-width: 576px) and (min-width: 377px) {
+  #player .player_b .left .songCover {
+    padding: 5% 0 1%;
+    min-height: 300px;
+    background-size: 100%;
+  }
+}
+
+@media all and (max-width: 376px) {
+  #player .player_b .left .songCover {
+    padding: 5% 0 1%;
+    min-height: 250px;
+    background-size: 100%;
+  }
 }
 
 #player .player_b .left .songCover .coverImg {
@@ -432,6 +644,20 @@ ul {
   z-index: 1;
 }
 
+@media all and (max-width: 376px) {
+  #player .player_b .left .songCover .coverImg .coverRec {
+    width: 175px;
+    height: 175px;
+  }
+}
+
+@media all and (max-width: 376px) {
+  #player .player_b .left .songCover .coverImg {
+    width: 175px;
+    height: 175px;
+  }
+}
+
 #player .player_b .left .songInfo {
   text-align: center;
 }
@@ -439,10 +665,10 @@ ul {
 #player .player_b .left .songInfo .heart {
   padding-right: 10%;
   float: right;
-  -webkit-transition: -webkit-transform .5s;
-  transition: -webkit-transform .5s;
-  transition: transform .5s;
-  transition: transform .5s, -webkit-transform .5s;
+  -webkit-transition: -webkit-transform 0.5s;
+  transition: -webkit-transform 0.5s;
+  transition: transform 0.5s;
+  transition: transform 0.5s, -webkit-transform 0.5s;
 }
 
 #player .player_b .left .songInfo .heart:hover {
@@ -459,6 +685,12 @@ ul {
   margin: 0 auto;
   height: 3px;
   border-radius: 2px;
+}
+
+@media all and (max-width: 376px) {
+  #player .player_b .left .controlPanel .progressbar {
+    width: 90%;
+  }
 }
 
 #player .player_b .left .controlPanel .progressbar .progress {
@@ -478,6 +710,12 @@ ul {
   display: inline-block;
 }
 
+@media all and (max-width: 376px) {
+  #player .player_b .left .controlPanel .time span {
+    width: 48%;
+  }
+}
+
 #player .player_b .left .controlPanel .time span.start {
   text-align: left;
 }
@@ -493,17 +731,67 @@ ul {
   height: 100%;
 }
 
+@media all and (max-width: 376px) {
+  #player .player_b .left .controlPanel .btns {
+    width: 100%;
+  }
+}
+
 #player .player_b .left .controlPanel .btns .controls {
   float: left;
   width: 40%;
   margin-left: 30%;
 }
 
+@media all and (max-width: 1200px) and (min-width: 993px) {
+  #player .player_b .left .controlPanel .btns .controls {
+    float: none;
+    width: 45%;
+    min-width: 220px;
+    margin: 0 auto;
+  }
+}
+
+@media all and (max-width: 992px) and (min-width: 769px) {
+  #player .player_b .left .controlPanel .btns .controls {
+    float: none;
+    width: 45%;
+    min-width: 220px;
+    margin: 0 auto;
+  }
+}
+
+@media all and (max-width: 768px) and (min-width: 577px) {
+  #player .player_b .left .controlPanel .btns .controls {
+    float: left;
+    width: 45%;
+    margin-left: 25%;
+  }
+}
+
+@media all and (max-width: 576px) and (min-width: 377px) {
+  #player .player_b .left .controlPanel .btns .controls {
+    float: none;
+    width: 45%;
+    min-width: 220px;
+    margin: 0 auto;
+  }
+}
+
+@media all and (max-width: 376px) {
+  #player .player_b .left .controlPanel .btns .controls {
+    float: none;
+    width: 66%;
+    min-width: 220px;
+    margin: 0 auto;
+  }
+}
+
 #player .player_b .left .controlPanel .btns .controls .play {
   width: 35px;
   height: 35px;
   float: left;
-  color: black;
+  color: #333;
   background-color: #f1c40f;
   border-radius: 20px;
   text-align: center;
@@ -511,10 +799,10 @@ ul {
   padding: 5px;
   margin: -6px 5px 0;
   border: 0;
-  -webkit-transition: -webkit-transform .5s;
-  transition: -webkit-transform .5s;
-  transition: transform .5s;
-  transition: transform .5s, -webkit-transform .5s;
+  -webkit-transition: -webkit-transform 0.5s;
+  transition: -webkit-transform 0.5s;
+  transition: transform 0.5s;
+  transition: transform 0.5s, -webkit-transform 0.5s;
 }
 
 #player .player_b .left .controlPanel .btns .controls .play:hover {
@@ -530,7 +818,7 @@ ul {
   width: 25px;
   height: 25px;
   float: left;
-  color: black;
+  color: #333;
   background-color: transparent;
   border-radius: 15px;
   text-align: center;
@@ -538,10 +826,10 @@ ul {
   padding: 5px;
   margin: 0px 5px;
   border: 0;
-  -webkit-transition: -webkit-transform .5s;
-  transition: -webkit-transform .5s;
-  transition: transform .5s;
-  transition: transform .5s, -webkit-transform .5s;
+  -webkit-transition: -webkit-transform 0.5s;
+  transition: -webkit-transform 0.5s;
+  transition: transform 0.5s;
+  transition: transform 0.5s, -webkit-transform 0.5s;
 }
 
 #player .player_b .left .controlPanel .btns .controls .prev:hover,
@@ -558,8 +846,66 @@ ul {
   margin: 1% 0;
 }
 
+@media all and (max-width: 1200px) and (min-width: 993px) {
+  #player .player_b .left .controlPanel .btns .vol {
+    float: none;
+    margin-top: 5%;
+  }
+}
+
+@media all and (max-width: 992px) and (min-width: 769px) {
+  #player .player_b .left .controlPanel .btns .vol {
+    float: none;
+    margin-top: 5%;
+  }
+}
+
+@media all and (max-width: 576px) and (min-width: 377px) {
+  #player .player_b .left .controlPanel .btns .vol {
+    float: none;
+    margin-top: 5%;
+  }
+}
+
+@media all and (max-width: 376px) {
+  #player .player_b .left .controlPanel .btns .vol {
+    float: none;
+    margin-top: 5%;
+  }
+}
+
 #player .player_b .left .controlPanel .btns .vol .volicon {
   float: left;
+}
+
+@media all and (max-width: 1200px) and (min-width: 993px) {
+  #player .player_b .left .controlPanel .btns .vol .volicon {
+    width: 3%;
+    margin-left: 7%;
+    text-align: right;
+  }
+}
+
+@media all and (max-width: 992px) and (min-width: 769px) {
+  #player .player_b .left .controlPanel .btns .vol .volicon {
+    width: 3%;
+    margin-left: 7%;
+    text-align: right;
+  }
+}
+
+@media all and (max-width: 576px) and (min-width: 377px) {
+  #player .player_b .left .controlPanel .btns .vol .volicon {
+    width: 3%;
+    margin-left: 7%;
+    text-align: right;
+  }
+}
+
+@media all and (max-width: 376px) {
+  #player .player_b .left .controlPanel .btns .vol .volicon {
+    width: 5%;
+  }
 }
 
 #player .player_b .left .controlPanel .btns .vol .volLine {
@@ -571,6 +917,37 @@ ul {
   background-color: white;
 }
 
+@media all and (max-width: 1200px) and (min-width: 993px) {
+  #player .player_b .left .controlPanel .btns .vol .volLine {
+    width: 75%;
+    margin: 1% 10% 0 0;
+    float: right;
+  }
+}
+
+@media all and (max-width: 992px) and (min-width: 769px) {
+  #player .player_b .left .controlPanel .btns .vol .volLine {
+    width: 75%;
+    margin: 1% 10% 0 0;
+    float: right;
+  }
+}
+
+@media all and (max-width: 576px) and (min-width: 377px) {
+  #player .player_b .left .controlPanel .btns .vol .volLine {
+    width: 75%;
+    margin: 1% 10% 0 0;
+    float: right;
+  }
+}
+
+@media all and (max-width: 376px) {
+  #player .player_b .left .controlPanel .btns .vol .volLine {
+    width: 85%;
+    margin: 1% 5% 0;
+  }
+}
+
 #player .player_b .left .controlPanel .btns .vol .volLine .volControl {
   position: absolute;
   width: 5px;
@@ -579,28 +956,85 @@ ul {
   margin: -4px;
 }
 
+#player .player_b .left .pushBtn {
+  width: 45px;
+  height: 10px;
+  border-radius: 5px;
+  background-color: rgba(255, 255, 255, 0.5);
+  bottom: 16px;
+  left: 50%;
+  -webkit-transform: translateX(-50%);
+          transform: translateX(-50%);
+  position: absolute;
+  display: none;
+  cursor: pointer;
+}
+
+@media all and (max-width: 768px) and (min-width: 577px) {
+  #player .player_b .left .pushBtn {
+    display: block;
+  }
+}
+
+@media all and (max-width: 576px) and (min-width: 377px) {
+  #player .player_b .left .pushBtn {
+    display: block;
+  }
+}
+
+@media all and (max-width: 376px) {
+  #player .player_b .left .pushBtn {
+    display: block;
+  }
+}
+
 #player .player_b .right {
   float: left;
   width: 50%;
   height: 100%;
   overflow: hidden;
   overflow-y: scroll;
+  position: relative;
+  -webkit-transition: height .5s;
+  transition: height .5s;
 }
 
-#player .player_b .right .close {
-  float: right;
-  margin-right: 20px;
-  margin-top: 20px;
-  -webkit-transition: -webkit-transform .5s;
-  transition: -webkit-transform .5s;
-  transition: transform .5s;
-  transition: transform .5s, -webkit-transform .5s;
+@media all and (max-width: 768px) and (min-width: 577px) {
+  #player .player_b .right {
+    width: 100%;
+    float: none;
+    overflow: auto;
+  }
+}
+
+@media all and (max-width: 576px) and (min-width: 377px) {
+  #player .player_b .right {
+    width: 100%;
+    float: none;
+    overflow: auto;
+  }
+}
+
+@media all and (max-width: 376px) {
+  #player .player_b .right {
+    width: 100%;
+    float: none;
+    overflow: auto;
+  }
+}
+
+#player .player_b .right .pushBtn {
+  width: 45px;
+  height: 10px;
+  border-radius: 5px;
+  background-color: #cfd6d6;
+  top: 16px;
+  left: 50%;
+  -webkit-transform: translateX(-50%);
+          transform: translateX(-50%);
+  position: absolute;
+  display: none;
   cursor: pointer;
-}
-
-#player .player_b .right .close:hover {
-  -webkit-transform: scale(1.1);
-          transform: scale(1.1);
 }
 
 #player .player_b .right .listTitle {
@@ -613,11 +1047,83 @@ ul {
   float: left;
 }
 
+@media all and (max-width: 992px) and (min-width: 769px) {
+  #player .player_b .right .listTitle .listCover {
+    width: 200px;
+    height: 200px;
+    margin: 5% auto 0;
+    float: none;
+  }
+}
+
+@media all and (max-width: 768px) and (min-width: 577px) {
+  #player .player_b .right .listTitle .listCover {
+    width: 200px;
+    height: 200px;
+    margin: 5% auto 0;
+    float: none;
+  }
+}
+
+@media all and (max-width: 576px) and (min-width: 377px) {
+  #player .player_b .right .listTitle .listCover {
+    width: 200px;
+    height: 200px;
+    margin: 5% auto 0;
+    float: none;
+  }
+}
+
+@media all and (max-width: 376px) {
+  #player .player_b .right .listTitle .listCover {
+    width: 200px;
+    height: 200px;
+    margin: 5% auto 0;
+    float: none;
+  }
+}
+
 #player .player_b .right .listTitle .listName {
   width: 50%;
   height: 100%;
   margin-left: 2%;
   float: left;
+}
+
+@media all and (max-width: 992px) and (min-width: 769px) {
+  #player .player_b .right .listTitle .listName {
+    width: 100%;
+    text-align: center;
+    margin: 5% auto;
+    float: none;
+  }
+}
+
+@media all and (max-width: 768px) and (min-width: 577px) {
+  #player .player_b .right .listTitle .listName {
+    width: 100%;
+    text-align: center;
+    margin: 5% auto;
+    float: none;
+  }
+}
+
+@media all and (max-width: 576px) and (min-width: 377px) {
+  #player .player_b .right .listTitle .listName {
+    width: 100%;
+    text-align: center;
+    margin: 5% auto;
+    float: none;
+  }
+}
+
+@media all and (max-width: 376px) {
+  #player .player_b .right .listTitle .listName {
+    width: 100%;
+    text-align: center;
+    margin: 5% auto;
+    float: none;
+  }
 }
 
 #player .player_b .right .listTitle .listName span {
@@ -665,10 +1171,10 @@ ul {
   left: 50%;
   -webkit-transform: translate(-50%, -50%);
           transform: translate(-50%, -50%);
-  -webkit-transition: -webkit-transform .5s;
-  transition: -webkit-transform .5s;
-  transition: transform .5s;
-  transition: transform .5s, -webkit-transform .5s;
+  -webkit-transition: -webkit-transform 0.5s;
+  transition: -webkit-transform 0.5s;
+  transition: transform 0.5s;
+  transition: transform 0.5s, -webkit-transform 0.5s;
   cursor: pointer;
 }
 
@@ -681,6 +1187,13 @@ ul {
 #player .player_b .right .list ul li .songCover .listPlay:hover {
   -webkit-transform: scale(1.1) translate(-50%, -50%);
           transform: scale(1.1) translate(-50%, -50%);
+}
+
+@media all and (max-width: 376px) {
+  #player .player_b .right .list ul li .songCover {
+    width: 50px;
+    height: 50px;
+  }
 }
 
 #player .player_b .right .list ul li .songInfo {
@@ -708,19 +1221,78 @@ ul {
   padding: 2% 0;
 }
 
+@media all and (max-width: 1200px) and (min-width: 993px) {
+  #player .player_b .right .list ul li .totalTime {
+    padding: 2% 0;
+    width: 10%;
+  }
+}
+
+@media all and (max-width: 992px) and (min-width: 769px) {
+  #player .player_b .right .list ul li .totalTime {
+    padding: 2% 0;
+    width: 8%;
+  }
+}
+
+@media all and (max-width: 768px) and (min-width: 577px) {
+  #player .player_b .right .list ul li .totalTime {
+    width: 7%;
+  }
+}
+
+@media all and (max-width: 376px) {
+  #player .player_b .right .list ul li .totalTime {
+    font-size: 0.8rem;
+  }
+}
+
 #player .player_b .right .list ul li .heart {
   width: 10%;
   padding: 3% 0;
   float: left;
-  -webkit-transition: -webkit-transform .5s;
-  transition: -webkit-transform .5s;
-  transition: transform .5s;
-  transition: transform .5s, -webkit-transform .5s;
+  -webkit-transition: -webkit-transform 0.5s;
+  transition: -webkit-transform 0.5s;
+  transition: transform 0.5s;
+  transition: transform 0.5s, -webkit-transform 0.5s;
 }
 
 #player .player_b .right .list ul li .heart:hover {
   -webkit-transform: scale(1.1);
           transform: scale(1.1);
+}
+
+@media all and (max-width: 1200px) and (min-width: 993px) {
+  #player .player_b .right .list ul li .heart {
+    padding: 3% 0;
+    width: 5%;
+  }
+}
+
+@media all and (max-width: 992px) and (min-width: 769px) {
+  #player .player_b .right .list ul li .heart {
+    padding: 3% 0;
+    width: 5%;
+  }
+}
+
+@media all and (max-width: 768px) and (min-width: 577px) {
+  #player .player_b .right .list ul li .heart {
+    padding: 3% 0;
+    width: 5%;
+  }
+}
+
+@media all and (max-width: 576px) and (min-width: 377px) {
+  #player .player_b .right .list ul li .heart {
+    padding: 0;
+  }
+}
+
+@media all and (max-width: 376px) {
+  #player .player_b .right .list ul li .heart {
+    padding: 0;
+  }
 }
 
 button,
@@ -744,6 +1316,8 @@ button,
 }
 
 .lightCover #myAllList {
+  width: 90%;
+  max-width: 500px;
   background-color: white;
   border-radius: 10px;
   padding: 1% 0;
@@ -752,8 +1326,8 @@ button,
   top: 50%;
   left: 50%;
   opacity: 0;
-  -webkit-transition: opacity .5s ease-in-out;
-  transition: opacity .5s ease-in-out;
+  -webkit-transition: opacity 0.5s ease-in-out;
+  transition: opacity 0.5s ease-in-out;
   -webkit-transform: translate(-50%, -50%);
           transform: translate(-50%, -50%);
 }
@@ -768,10 +1342,10 @@ button,
   right: 20px;
   top: 20px;
   cursor: pointer;
-  -webkit-transition: -webkit-transform .5s;
-  transition: -webkit-transform .5s;
-  transition: transform .5s;
-  transition: transform .5s, -webkit-transform .5s;
+  -webkit-transition: -webkit-transform 0.5s;
+  transition: -webkit-transform 0.5s;
+  transition: transform 0.5s;
+  transition: transform 0.5s, -webkit-transform 0.5s;
 }
 
 .lightCover #myAllList .close:hover {
@@ -816,10 +1390,10 @@ button,
   color: #fff;
   font-weight: bold;
   cursor: pointer;
-  -webkit-transition: -webkit-transform .5s;
-  transition: -webkit-transform .5s;
-  transition: transform .5s;
-  transition: transform .5s, -webkit-transform .5s;
+  -webkit-transition: -webkit-transform 0.5s;
+  transition: -webkit-transform 0.5s;
+  transition: transform 0.5s;
+  transition: transform 0.5s, -webkit-transform 0.5s;
 }
 
 .lightCover #myAllList button:hover {

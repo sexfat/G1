@@ -1,4 +1,5 @@
 @import './public.scss';
+@import './nav_bar.scss';
 
 html {
   @include respond(latop-min) {
@@ -17,12 +18,12 @@ html {
   }
 }
 
-ol,
-ul {
-  list-style: none;
-  padding: 0;
-  margin: 0;
-}
+// ol,
+// ul {
+//   list-style: none;
+//   padding: 0;
+//   margin: 0;
+// }
 
 body {
   background-color: $mainBg;
@@ -35,26 +36,30 @@ body {
   
 }
 
+
 header {
   text-align: center;
+  vertical-align: middle;
+  padding-top: 120px;
 
   img {
     @include respond(phone) {
       width: 100%;
+      
     }
   }
 }
 
-a {
-  display: block;
-  color: $fontColor;
-  text-decoration: none;
-  transition: transform .5s;
+// a {
+//   display: block;
+//   color: $fontColor;
+//   text-decoration: none;
+//   transition: transform .5s;
 
-  &:hover {
-    transform: scale(1.1);
-  }
-}
+//   &:hover {
+//     transform: scale(1.1);
+//   }
+// }
 
 main.library_main {
   width: 100%;
