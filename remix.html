@@ -138,25 +138,305 @@
         <div class="rangebutton">
           <input type="range" id="input_npm" value="120" min="40" max="220" step="5" v-model="npm" @input="npm_control">
           <div class="button">
-            <button class="start" @mouseenter="buttonclick(1)"><img src="./img/remix/start.png"><span></span></button>
+            <button class="start" @click="start_schedule" @mouseenter="buttonclick(1)"><img
+                src="./img/remix/start.png"><span></span></button>
             <button class="record" @mouseenter="buttonclick(2)"><img src="./img/remix/record.png"><span></span></button>
-            <button class="download" @mouseenter="buttonclick(3)"><img src="./img/remix/download.png"><span></span></button>
+            <button class="download" @mouseenter="buttonclick(3)"><img
+                src="./img/remix/download.png"><span></span></button>
           </div>
         </div>
       </div>
+      <div class="table">
+        <h3>Paino</h3>
+        <!-- re -->
+        <table class="re poa" style="z-index: 5;">
+          <tr>
+            <th v-for="(tr,index) in table_id" colspan="7" @click="className.isActive = index;control_table(tr)"
+              :class="{active: className.isActive == index}">
+              <h4>{{ tr }}</h4>
+            </th>
+          </tr>
+          <tr v-for="(res,index_row) in re" class="trclass">
+            <td class="note_name">
+              <h6>{{re[index_row]}}</h6>
+            </td>
+            <td class="sound_note" v-for="(item,index) in lattice"
+              @click="changeClass(index_row,index);one_sound(re[index_row],index_row,index);">
+              <audio :src="'./img/remix/sound/'+(re1[index_row])+'.mp3'"></audio>
+            </td>
+          </tr>
+        </table>
+        <!-- mi -->
+        <table class="mi poa">
+          <tr>
+            <th v-for="(tr,index) in table_id" colspan="7" @click="className.isActive = index;control_table(tr)"
+              :class="{active: className.isActive == index}">
+              <h4>{{ tr }}</h4>
+            </th>
+          </tr>
+          <tr v-for="(res,index_row) in mi" class="trclass">
+            <td class="note_name">
+              <h6>{{mi[index_row]}}</h6>
+            </td>
+            <td class="sound_note" v-for="(item,index) in lattice"
+              @click="changeClass(index_row + 12,index);one_sound(mi[index_row],index_row + 12,index);">
+              <audio :src="'./img/remix/sound/'+(mi1[index_row])+'.mp3'"></audio>
+            </td>
+          </tr>
+        </table>
+        <!-- fa -->
+        <table class="fa poa">
+          <tr>
+            <th v-for="(tr,index) in table_id" colspan="7" @click="className.isActive = index;control_table(tr)"
+              :class="{active: className.isActive == index}">
+              <h4>{{ tr }}</h4>
+            </th>
+          </tr>
+          <tr v-for="(res,index_row) in fa" class="trclass">
+            <td class="note_name">
+              <h6>{{fa[index_row]}}</h6>
+            </td>
+            <td class="sound_note" v-for="(item,index) in lattice"
+              @click="changeClass(index_row + 24,index);one_sound(fa[index_row],index_row + 24,index);">
+              <audio :src="'./img/remix/sound/'+(fa1[index_row])+'.mp3'"></audio>
+            </td>
+          </tr>
+        </table>
+        <!-- so -->
+        <table class="so poa">
+          <tr>
+            <th v-for="(tr,index) in table_id" colspan="7" @click="className.isActive = index;control_table(tr)"
+              :class="{active: className.isActive == index}">
+              <h4>{{ tr }}</h4>
+            </th>
+          </tr>
+          <tr v-for="(res,index_row) in so" class="trclass">
+            <td class="note_name">
+              <h6>{{so[index_row]}}</h6>
+            </td>
+            <td class="sound_note" v-for="(item,index) in lattice"
+              @click="changeClass(index_row + 36,index);one_sound(so[index_row],index_row + 36,index);">
+              <audio :src="'./img/remix/sound/'+(so1[index_row])+'.mp3'"></audio>
+            </td>
+          </tr>
+        </table>
+        <!-- la -->
+        <table class="la ">
+          <tr>
+            <th v-for="(tr,index) in table_id" colspan="7" @click="className.isActive = index;control_table(tr)"
+              :class="{active: className.isActive == index}">
+              <h4>{{ tr }}</h4>
+            </th>
+          </tr>
+          <tr v-for="(res,index_row) in la" class="trclass">
+            <td class="note_name">
+              <h6>{{la[index_row]}}</h6>
+            </td>
+            <td class="sound_note" v-for="(item,index) in lattice"
+              @click="changeClass(index_row + 48,index);one_sound(la[index_row],index_row + 48,index);">
+              <audio :src="'./img/remix/sound/'+(la1[index_row])+'.mp3'"></audio>
+            </td>
+          </tr>
+        </table>
+        <h3 class="drumh3">Beat</h3>
+        <!-- drum -->
+        <table class="drum">
+          <tr v-for="(res,index_row) in drum" class="trclass">
+            <td class="note_name">
+              <h6>{{drum[index_row]}}</h6>
+            </td>
+            <td class="sound_note" v-for="(item,index) in lattice"
+              @click="changeClass(index_row + 60,index);one_sound(drum[index_row],index_row + 60,index);">
+              <audio :src="'./img/remix/sound/'+(drum[index_row])+'.mp3'"></audio>
+            </td>
+          </tr>
+        </table>
+      </div>
     </div>
   </div>
+  <script src='https://cdnjs.cloudflare.com/ajax/libs/tone/14.4.84/Tone.js'></script>
   <script src='https://cdnjs.cloudflare.com/ajax/libs/gsap/2.1.3/TweenMax.min.js'></script>
   <script src="./js/vue.js"></script>
   <script>
     var app = new Vue({
       el: '#app',
       data: {
+        className: {
+          isActive: 0,
+        },
         search_bar: false,
         mem_list: false,
         mobile_list: false,
         screenWidth: document.body.clientWidth, // 紀錄螢幕寬度
         npm: 120,
+        lattice: 34, // 現在有幾格
+        loop: false, // 是否再循環撥放            
+        record: false, // 是否有在錄音
+        finish_one_song: false,
+        table_id: ['re', 'mi', 'fa', 'so', 'la'],
+        index: 0, // 第幾直排
+        audioSrc: "", // 歌曲路徑
+        category: ['two', 'three', 'four', 'five', 'six'],
+        notes: ['C2', 'C#2', 'D2', 'D#2', 'E2', 'F2', 'F#2', 'G2', 'G#2', 'A2', 'A#2', 'B2', 'C3', 'C#3',
+          'D3', 'D#3', 'E3', 'F3', 'F#3', 'G3', 'G#3', 'A3', 'A#3', 'B3', 'C4', 'C#4', 'D4', 'D#4',
+          'E4', 'F4', 'F#4', 'G4', 'G#4', 'A4', 'A#4', 'B4', 'C5', 'C#5', 'D5', 'D#5', 'E5', 'F5',
+          'F#5', 'G5', 'G#5', 'A5', 'A#5', 'B5', 'C6', 'C#6', 'D6', 'D#6', 'E6', 'F6', 'F#6', 'G6',
+          'G#6', 'A6', 'A#6', 'B6', 'C1', 'D1', 'D#1', 'E1', 'F1', 'F#1', 'G1', 'G#1', 'C7', 'D7',
+          'D#7', 'E7'
+        ],
+        re: ['C2', 'C#2', 'D2', 'D#2', 'E2', 'F2', 'F#2', 'G2', 'G#2', 'A2', 'A#2', 'B2'],
+        re1: ['C2', 'Cs2', 'D2', 'Ds2', 'E2', 'F2', 'Fs2', 'G2', 'Gs2', 'A2', 'As2', 'B2'],
+        mi: ['C3', 'C#3', 'D3', 'D#3', 'E3', 'F3', 'F#3', 'G3', 'G#3', 'A3', 'A#3', 'B3'],
+        mi1: ['C3', 'Cs3', 'D3', 'Ds3', 'E3', 'F3', 'Fs3', 'G3', 'Gs3', 'A3', 'As3', 'B3'],
+        fa: ['C4', 'C#4', 'D4', 'D#4', 'E4', 'F4', 'F#4', 'G4', 'G#4', 'A4', 'A#4', 'B4'],
+        fa1: ['C4', 'Cs4', 'D4', 'Ds4', 'E4', 'F4', 'Fs4', 'G4', 'Gs4', 'A4', 'As4', 'B4'],
+        so: ['C5', 'C#5', 'D5', 'D#5', 'E5', 'F5', 'F#5', 'G5', 'G#5', 'A5', 'A#5', 'B5'],
+        so1: ['C5', 'Cs5', 'D5', 'Ds5', 'E5', 'F5', 'Fs5', 'G5', 'Gs5', 'A5', 'As5', 'B5'],
+        la: ['C6', 'C#6', 'D6', 'D#6', 'E6', 'F6', 'F#6', 'G6', 'G#6', 'A6', 'A#6', 'B6'],
+        la1: ['C6', 'Cs6', 'D6', 'Ds6', 'E6', 'F6', 'Fs6', 'G6', 'Gs6', 'A6', 'As6', 'B6'],
+        drum: ['Ride', 'Tom', 'OpenHat', 'ClosedHat', 'Clap', 'Snare', 'Rim', 'Kick', 'Slam', 'Guitar',
+          'Scratch', 'Electric'
+        ],
+        soundSrc: {
+          "c2": "./img/remix/sound/C2.mp3",
+          "c#2": "./img/remix/sound/Cs2.mp3",
+          "d2": "./img/remix/sound/D2.mp3",
+          "d#2": "./img/remix/sound/Ds2.mp3",
+          "e2": "./img/remix/sound/E2.mp3",
+          "f2": "./img/remix/sound/F2.mp3",
+          "f#2": "./img/remix/sound/Fs2.mp3",
+          "g2": "./img/remix/sound/G2.mp3",
+          "G#2": "./img/remix/sound/Gs2.mp3",
+          "a2": "./img/remix/sound/A2.mp3",
+          "a#2": "./img/remix/sound/As2.mp3",
+          "c3": "./img/remix/sound/C3.mp3",
+          "c#3": "./img/remix/sound/Cs3.mp3",
+          "d3": "./img/remix/sound/D3.mp3",
+          "d#3": "./img/remix/sound/Ds3.mp3",
+          "e3": "./img/remix/sound/E3.mp3",
+          "f3": "./img/remix/sound/F3.mp3",
+          "f#3": "./img/remix/sound/Fs3.mp3",
+          "g3": "./img/remix/sound/G3.mp3",
+          "g#3": "./img/remix/sound/Gs3.mp3",
+          "a3": "./img/remix/sound/A3.mp3",
+          "a#3": "./img/remix/sound/As3.mp3",
+          "c4": "./img/remix/sound/C4.mp3",
+          "d4": "./img/remix/sound/D4.mp3",
+          "d#4": "./img/remix/sound/Ds4.mp3",
+          "e4": "./img/remix/sound/E4.mp3",
+          "f4": "./img/remix/sound/F4.mp3",
+          "f#4": "./img/remix/sound/Fs4.mp3",
+          "g4": "./img/remix/sound/G4.mp3",
+          "g#4": "./img/remix/sound/Gs4.mp3",
+          "a4": "./img/remix/sound/A4.mp3",
+          "b4": "./img/remix/sound/B4.mp3",
+          "c5": "./img/remix/sound/C5.mp3",
+          "d5": "./img/remix/sound/D5.mp3",
+          "d#5": "./img/remix/sound/Ds5.mp3",
+          "e5": "./img/remix/sound/E5.mp3",
+          "f5": "./img/remix/sound/F5.mp3",
+          "f#5": "./img/remix/sound/Fs5.mp3",
+          "g5": "./img/remix/sound/G5.mp3",
+          "g#5": "./img/remix/sound/Gs5.mp3",
+          "a5": "./img/remix/sound/A5.mp3",
+          "b5": "./img/remix/sound/B5.mp3",
+          "c6": "./img/remix/sound/C6.mp3",
+          "d6": "./img/remix/sound/D6.mp3",
+          "d#6": "./img/remix/sound/Ds6.mp3",
+          "e6": "./img/remix/sound/E6.mp3",
+          "f6": "./img/remix/sound/F6.mp3",
+          "f#6": "./img/remix/sound/Fs6.mp3",
+          "g6": "./img/remix/sound/G6.mp3",
+          "g#6": "./img/remix/sound/Gs6.mp3",
+          "a6": "./img/remix/sound/A6.mp3",
+          "b6": "./img/remix/sound/B6.mp3",
+          "c1": "./img/remix/sound/Ride.ogg",
+          "d1": "./img/remix/sound/TomHi.ogg",
+          "d#1": "./img/remix/sound/OpenHat.ogg",
+          "e1": "./img/remix/sound/ClosedHat.ogg",
+          "f1": "./img/remix/sound/Clap.ogg",
+          "f#1": "./img/remix/sound/Snare.ogg",
+          "g1": "./img/remix/sound/Rim.ogg",
+          "g#1": "./img/remix/sound/Kick.ogg",
+          "c7": "./img/remix/sound/Slam.mp3",
+          "d7": "./img/remix/sound/Guitar.mp3",
+          "d#7": "./img/remix/sound/Scratch.mp3",
+          "e7": "./img/remix/sound/Electricity.mp3",
+        },
+        song_start: {
+          always_with_me: [
+            [24],
+            [26],
+            [12, 28],
+            [24],
+            [19, 31],
+            [],
+            [28],
+            [7, 26],
+            [31],
+            [],
+            [19, 26],
+            [],
+            [9, 24],
+            [21],
+            [24, 28],
+            [],
+            [4, 23],
+            [19],
+            [],
+            [23],
+            [5, 21],
+            [17, 23],
+            [24],
+            [26],
+            [16, 19],
+            [],
+            [19, 24],
+            [],
+            [26],
+            [28],
+            [14, 29],
+            [21, 29],
+            [21, 19],
+            [28],
+            [26],
+          ],
+          cat: [
+            [42],
+            [44],
+            [46, 18, 25],
+            [37],
+            [42],
+            [46],
+            [46],
+            [],
+            [44],
+            [42],
+            [17, 24, 44],
+            [49],
+            [49],
+            [49],
+            [49],
+            [],
+            [42],
+            [41],
+            [14, 22, 42],
+            [42],
+            [42],
+            [42],
+            [42],
+            [],
+            [41],
+            [42],
+            [41, 13, 22],
+            [42],
+            [41],
+            [39],
+            [37, 17],
+            [],
+            [13, 37]
+          ]
+        },
       },
       methods: {
         hamburger_click(e) {
@@ -275,10 +555,142 @@
             }
           })
 
-        }
+        },
+        control_table(index) { // 控制table z-index
+          var index = document.getElementsByClassName(`${index}`)[0];
+          var tables = document.getElementsByTagName('table');
+          for (var i = 0; i < tables.length; i++) {
+            tables[i].style.zIndex = '-10';
+          }
+          index.style.zIndex = '5';
+        },
+        one_sound(note, column, row) { // 按下會發出聲音 
+          // console.log(this.notes.length);
+          var vm = this;
+          // var sampler = new Tone.Sampler(vm.soundSrc, function () {
+          //   if (note == 'Ride') note = 'c1';
+          //   if (note == 'Tom') note = 'd1';
+          //   if (note == 'OpenHat') note = 'd#1';
+          //   if (note == 'ClosedHat') note = 'e1';
+          //   if (note == 'Clap') note = 'f1';
+          //   if (note == 'Snare') note = 'f#1';
+          //   if (note == 'Rim') note = 'g1';
+          //   if (note == 'Kick') note = 'g#1';
+          //   if (note == 'Slam') note = 'c7';
+          //   if (note == 'Guitar') note = 'd7';
+          //   if (note == 'Scratch') note = 'd#7';
+          //   if (note == 'Electric') note = 'e7';
+          //   note = note.toLowerCase()
+          //   var trclass = document.getElementsByClassName('trclass');
+          //   var sound_note = trclass[column].getElementsByClassName('sound_note');
+          //   // class 有 active 的才會發出聲音
+          //   if (sound_note[row].classList.contains('active')) {
+          //     sampler.triggerAttack(note);
+          //   }
+          //   // sampler.triggerAttackRelease(note,'4n');
+
+          // }).toMaster();
+
+          var trclass = document.getElementsByClassName('trclass');
+          var sound_note = trclass[column].getElementsByClassName('sound_note');
+          var audiostart = sound_note[row].querySelector('audio');
+
+          if (sound_note[row].classList.contains('active')) {
+            audiostart.play();
+          } else {
+            audiostart.pause();
+            audiostart.currentTime = 0;
+          }
+        },
+        changeClass(column, row) {
+          var trclass = document.getElementsByClassName('trclass');
+          var sound_note = trclass[column].getElementsByClassName('sound_note');
+          sound_note[row].className == 'sound_note active' ? sound_note[row].className = 'sound_note' :
+            sound_note[row].className = 'sound_note active';
+        },
+        start_schedule() {
+          // 開始輪播 + 控制 npm
+          // alert('123');
+          var vm = this;
+          var trclass = document.getElementsByClassName('trclass');
+          this.loop = !this.loop;
+          if (vm.loop) { // 沒有在循環播放
+            start = setInterval(() => {
+              var step = vm.index % vm.lattice;
+              for (var i = 0; i < trclass.length; i++) {
+                var tr = trclass[i];
+                var beforestep = trclass[i].getElementsByClassName(`sound_note`)[step - 1];
+                var nowstep = trclass[i].getElementsByClassName(`sound_note`)[step];
+                var audiostart = nowstep.querySelector('audio');
+                // console.log(nowstep);
+                if (step == 0) {
+                  nowstep.style.border = 'solid 1.5px rgba(0, 0, 0, 0.3)';
+                  trclass[i].getElementsByClassName(`sound_note`)[vm.lattice - 1].style.border = 'solid 1px rgba(#333, 0.3)';
+                } else {
+                  nowstep.style.border = 'solid 1.5px rgba(0, 0, 0, 0.3)';
+                  beforestep.style.border = 'solid 1px rgba(#333, 0.3)';
+                }
+                if (nowstep.classList.contains('active')) {
+                  audiostart.play();
+                }
+              }
+              vm.index++
+            }, (60000 / vm.npm) / 4);
+          }
+
+
+          // var sampler = new Tone.Sampler(vm.soundSrc, function () {
+          //   if (!vm.loop) { // 控制播放 or 暫停
+          //     Tone.Transport.pause();
+          //     recorder.stop();
+          //     console.log('stop');
+          //   } else {
+          //     var trs = document.getElementsByTagName('tr');
+          //     var sound_note = document.getElementsByClassName('sound_note');
+          //     let index = vm.index // 第幾直排
+
+          //     Tone.Transport.scheduleRepeat(repeat, '8n');
+          //     Tone.Transport.start();
+
+          //     function repeat(time) {
+          //       console.log(`repeat: start`);
+          //       Tone.Transport.bpm.value = vm.npm; // 控制 npm
+          //       let step = index % vm.lattice;
+          //       for (var i = 0; i < trs.length; i++) {
+          //         let note = vm.notes[i],
+          //           $row = trs[i];
+          //         note = note.toLowerCase();
+          //         console.log(note);
+          //         var $td = $row.getElementsByClassName('sound_note')[step - 1];
+          //         var $tds = $row.getElementsByClassName('sound_note')[step];
+
+          //         if (step == 0) {
+          //           $tds.style.border = 'solid 1.5px rgba(0, 0, 0, 0.3)';
+          //           $row.getElementsByClassName('sound_note')[vm.lattice - 1].style
+          //             .border =
+          //             'solid 1px rgba(255, 255, 255, 0.3)';
+          //         } else {
+          //           $tds.style.border = 'solid 1.5px rgba(0, 0, 0, 0.3)';
+          //           $td.style.border = 'solid 1px rgba(255, 255, 255, 0.3)';
+          //         }
+
+          //         if ($tds.className == 'sound_note active') {
+          //           sampler.triggerAttack(note, time);
+          //         }
+          //       }
+          //       index++;
+          //       vm.index = index; // 傳回index值
+          //     }
+          //   }
+
+          // })
+          // sampler.toMaster();
+
+        },
       },
       computed: {},
       mounted() {
+        const vm = this;
         // 組長的code
         document.addEventListener('click', () => {
           vm.mem_list = false;
@@ -297,7 +709,6 @@
         });
 
         // resize 的部分
-        const vm = this;
         window.onresize = () => {
           return (() => {
             vm.screenWidth = document.body.clientWidth;
@@ -310,6 +721,7 @@
           var intro = document.getElementsByClassName('intro')[0];
           intro.innerHTML = intro.innerHTML.substr(0, 92);
         }
+
       },
       watch: {
         screenWidth(val) {

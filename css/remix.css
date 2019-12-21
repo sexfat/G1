@@ -80,7 +80,6 @@ p.forget {
 }
 
 header {
-  text-align: center;
   height: 300px;
   padding: 120px 0;
 }
@@ -244,6 +243,7 @@ header {
           transform: translate(-50%, -50%);
   background: url(../img/remix/Demo.svg) no-repeat;
   background-size: contain;
+  z-index: -10;
 }
 
 .wrapper .remix_head .demo .choose_song {
@@ -282,16 +282,17 @@ header {
 .wrapper .range {
   position: relative;
   margin: 0% auto;
-  margin-top: 13%;
+  margin: 4% 0% 1%;
 }
 
 .wrapper .range p {
   position: absolute;
-  left: 3%;
+  left: 5.5%;
 }
 
 .wrapper .range .rangebutton {
-  width: 100%;
+  width: 95%;
+  margin: 0 auto;
   display: -webkit-box;
   display: -ms-flexbox;
   display: flex;
@@ -395,6 +396,67 @@ header {
     -webkit-box-shadow: 0 0 0 0 #f24;
             box-shadow: 0 0 0 0 #f24;
   }
+}
+
+.wrapper .table {
+  width: 100%;
+  position: relative;
+}
+
+.wrapper .table .drumh3 {
+  margin-top: 5%;
+}
+
+.wrapper .table table {
+  width: 100%;
+  background-color: #70706e;
+  border: solid 5px #70706e;
+  border-radius: 10px;
+  border-spacing: 0;
+  border-collapse: separate;
+}
+
+.wrapper .table table.poa {
+  width: 100%;
+  left: 50%;
+  -webkit-transform: translateX(-50%);
+          transform: translateX(-50%);
+  position: absolute;
+}
+
+.wrapper .table table th:first-child {
+  border-radius: 10px 0 0 0;
+}
+
+.wrapper .table table th:last-child {
+  border-radius: 0 10px 0 0;
+}
+
+.wrapper .table table th, .wrapper .table table td {
+  background-color: #d1d2d4;
+  border-left: solid 1px #333;
+  border-top: solid 1px #333;
+  max-width: 6px;
+  cursor: pointer;
+}
+
+.wrapper .table table th h6, .wrapper .table table td h6 {
+  font-weight: normal;
+  font-size: 1rem;
+  line-height: 1.8rem;
+}
+
+.wrapper .table table td.active {
+  background-color: #efc318;
+}
+
+.wrapper .table table th.active {
+  background-color: #444;
+  color: #fff;
+}
+
+.wrapper .table table .note_name {
+  text-align: center;
 }
 
 @media all and (min-width: 1200px) {
