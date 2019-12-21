@@ -106,6 +106,118 @@ header {
 }
 
 /*button mixin*/
+.lightCover {
+  background-color: #414141e6;
+  width: 100%;
+  height: 100%;
+  position: fixed;
+  top: 0;
+  left: 0;
+  z-index: 1001;
+  display: none;
+}
+
+.lightCover #myAllList {
+  width: 90%;
+  max-width: 500px;
+  background-color: white;
+  border-radius: 10px;
+  padding: 1% 0;
+  text-align: center;
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  display: none;
+  -webkit-transform: translate(-50%, -50%);
+          transform: translate(-50%, -50%);
+}
+
+.lightCover #myAllList .lightSelectMenu {
+  clear: both;
+}
+
+.lightCover #myAllList .lightSelectMenu ul {
+  width: 80%;
+  margin: 3% auto;
+  padding: 16px 0;
+  min-height: 100px;
+  background-image: url("../img/library/blackline2.svg");
+  background-position: center center;
+}
+
+.lightCover #myAllList .lightSelectMenu ul li {
+  width: 90%;
+  margin: 0 auto;
+  padding: 16px 0;
+  border-bottom: 1px solid #333;
+}
+
+.lightCover #myAllList .lightSelectMenu ul li.choose {
+  background-color: #7ed5e5;
+}
+
+.lightCover #myAllList .lightSelectMenu ul li:last-child {
+  border-bottom: none;
+}
+
+.lightCover #deleteCheck {
+  width: 90%;
+  max-width: 500px;
+  background-color: white;
+  border-radius: 10px;
+  padding: 1% 0;
+  text-align: center;
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  -webkit-transform: translate(-50%, -50%);
+          transform: translate(-50%, -50%);
+  display: none;
+}
+
+.lightCover .close {
+  margin-right: 20px;
+  position: absolute;
+  right: 20px;
+  top: 20px;
+  cursor: pointer;
+  -webkit-transition: -webkit-transform 0.5s;
+  transition: -webkit-transform 0.5s;
+  transition: transform 0.5s;
+  transition: transform 0.5s, -webkit-transform 0.5s;
+}
+
+.lightCover .close:hover {
+  -webkit-transform: scale(1.1);
+          transform: scale(1.1);
+}
+
+.lightCover button {
+  background-color: #f1c40f;
+  font-size: 0.8rem;
+  padding: 10px 30px;
+  border: 1px solid #f1c40f;
+  border-radius: 5px;
+  color: #fff;
+  font-weight: bold;
+  cursor: pointer;
+  -webkit-transition: -webkit-transform 0.5s;
+  transition: -webkit-transform 0.5s;
+  transition: transform 0.5s;
+  transition: transform 0.5s, -webkit-transform 0.5s;
+}
+
+@media all and (max-width: 376px) {
+  .lightCover button {
+    margin-bottom: 10px;
+  }
+}
+
+.lightCover button:hover {
+  -webkit-transform: scale(1.1);
+          transform: scale(1.1);
+}
+
 @media all and (max-width: 1200px) and (min-width: 993px) {
   html {
     font-size: 16px;
@@ -145,7 +257,7 @@ ul {
   width: 100%;
   position: fixed;
   bottom: 0;
-  z-index: 98;
+  z-index: 1000;
 }
 
 #player i {
@@ -641,8 +753,10 @@ ul {
   height: 250px;
   position: absolute;
   top: 0;
-  right: -50%;
+  right: 0;
   z-index: 1;
+  -webkit-transition: right .5s;
+  transition: right .5s;
 }
 
 @media all and (max-width: 376px) {
@@ -650,6 +764,15 @@ ul {
     width: 175px;
     height: 175px;
   }
+}
+
+#player .player_b .left .songCover .coverImg .coverRec.recordOut {
+  right: -50%;
+}
+
+#player .player_b .left .songCover .coverImg .coverRec.recRotate {
+  -webkit-animation: recRotate 5s infinite linear;
+          animation: recRotate 5s infinite linear;
 }
 
 @media all and (max-width: 376px) {
@@ -993,6 +1116,7 @@ ul {
   float: left;
   width: 50%;
   height: 100%;
+  background-color: white;
   overflow: hidden;
   overflow-y: scroll;
   position: relative;
@@ -1022,6 +1146,14 @@ ul {
     float: none;
     overflow: auto;
   }
+}
+
+#player .player_b .right::-webkit-scrollbar {
+  width: 5px;
+}
+
+#player .player_b .right::-webkit-scrollbar-thumb {
+  background-color: #cfd6d6;
 }
 
 #player .player_b .right .pushBtn {
@@ -1167,15 +1299,12 @@ ul {
   text-align: center;
   background-color: rgba(255, 255, 255, 0.5);
   border-radius: 15px;
+  display: none;
   position: absolute;
   top: 50%;
   left: 50%;
   -webkit-transform: translate(-50%, -50%);
           transform: translate(-50%, -50%);
-  -webkit-transition: -webkit-transform 0.5s;
-  transition: -webkit-transform 0.5s;
-  transition: transform 0.5s;
-  transition: transform 0.5s, -webkit-transform 0.5s;
   cursor: pointer;
 }
 
@@ -1183,11 +1312,6 @@ ul {
   color: white;
   font-size: 0.8rem;
   line-height: 30px;
-}
-
-#player .player_b .right .list ul li .songCover .listPlay:hover {
-  -webkit-transform: scale(1.1) translate(-50%, -50%);
-          transform: scale(1.1) translate(-50%, -50%);
 }
 
 @media all and (max-width: 376px) {
@@ -1307,102 +1431,33 @@ button,
   opacity: 1;
 }
 
-.lightCover {
-  background-color: #414141e6;
-  width: 0;
-  height: 0;
-  position: absolute;
-  z-index: 100;
-  display: none;
-}
-
-.lightCover #myAllList {
-  width: 90%;
-  max-width: 500px;
-  background-color: white;
-  border-radius: 10px;
-  padding: 1% 0;
-  text-align: center;
-  position: absolute;
-  top: 50%;
-  left: 50%;
-  opacity: 0;
-  -webkit-transition: opacity 0.5s ease-in-out;
-  transition: opacity 0.5s ease-in-out;
-  -webkit-transform: translate(-50%, -50%);
-          transform: translate(-50%, -50%);
-}
-
-.lightCover #myAllList.show {
-  opacity: 1;
-}
-
-.lightCover #myAllList .close {
-  margin-right: 20px;
-  position: absolute;
-  right: 20px;
-  top: 20px;
-  cursor: pointer;
-  -webkit-transition: -webkit-transform 0.5s;
-  transition: -webkit-transform 0.5s;
-  transition: transform 0.5s;
-  transition: transform 0.5s, -webkit-transform 0.5s;
-}
-
-.lightCover #myAllList .close:hover {
-  -webkit-transform: scale(1.1);
-          transform: scale(1.1);
-}
-
-.lightCover #myAllList .lightSelectMenu {
-  clear: both;
-}
-
-.lightCover #myAllList .lightSelectMenu ul {
-  width: 80%;
-  margin: 3% auto;
-  padding: 16px 0;
-  min-height: 100px;
-  background-image: url("../img/library/blackline2.svg");
-  background-position: center center;
-}
-
-.lightCover #myAllList .lightSelectMenu ul li {
-  width: 90%;
-  margin: 0 auto;
-  padding: 16px 0;
-  border-bottom: 1px solid #333;
-}
-
-.lightCover #myAllList .lightSelectMenu ul li.choose {
-  background-color: #7ed5e5;
-}
-
-.lightCover #myAllList .lightSelectMenu ul li:last-child {
-  border-bottom: none;
-}
-
-.lightCover #myAllList button {
-  background-color: #f1c40f;
-  font-size: 0.8rem;
-  padding: 10px 30px;
-  border: 1px solid #f1c40f;
-  border-radius: 5px;
-  color: #fff;
-  font-weight: bold;
-  cursor: pointer;
-  -webkit-transition: -webkit-transform 0.5s;
-  transition: -webkit-transform 0.5s;
-  transition: transform 0.5s;
-  transition: transform 0.5s, -webkit-transform 0.5s;
-}
-
-.lightCover #myAllList button:hover {
-  -webkit-transform: scale(1.1);
-          transform: scale(1.1);
-}
-
 .clearfix {
   clear: both;
+}
+
+.becomeRed {
+  color: #de267d;
+}
+
+@-webkit-keyframes recRotate {
+  0% {
+    -webkit-transform: rotate(0deg);
+            transform: rotate(0deg);
+  }
+  100% {
+    -webkit-transform: rotate(360deg);
+            transform: rotate(360deg);
+  }
+}
+
+@keyframes recRotate {
+  0% {
+    -webkit-transform: rotate(0deg);
+            transform: rotate(0deg);
+  }
+  100% {
+    -webkit-transform: rotate(360deg);
+            transform: rotate(360deg);
+  }
 }
 /*# sourceMappingURL=player.css.map */

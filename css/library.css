@@ -544,6 +544,8 @@ header {
 
 main.library_main {
   width: 100%;
+  max-width: 1200px;
+  padding-bottom: 70px;
 }
 
 main.library_main img {
@@ -580,14 +582,14 @@ main.library_main aside .my_list .favor i {
   margin-right: 8px;
 }
 
-main.library_main aside .my_list div:nth-child(2) {
+main.library_main aside .my_list .listSubtitle:nth-child(2) {
   text-align: center;
   padding: 20px 0;
   color: #b3b3b3;
   position: relative;
 }
 
-main.library_main aside .my_list div:nth-child(2)::before {
+main.library_main aside .my_list .listSubtitle:nth-child(2)::before {
   content: '';
   width: 30%;
   height: 2px;
@@ -597,7 +599,7 @@ main.library_main aside .my_list div:nth-child(2)::before {
   background-color: #cacaca;
 }
 
-main.library_main aside .my_list div:nth-child(2)::after {
+main.library_main aside .my_list .listSubtitle:nth-child(2)::after {
   content: '';
   width: 30%;
   height: 2px;
@@ -638,6 +640,7 @@ main.library_main aside .my_list .lists li .delete {
   transition: -webkit-transform .5s;
   transition: transform .5s;
   transition: transform .5s, -webkit-transform .5s;
+  display: none;
   cursor: pointer;
 }
 
@@ -746,6 +749,7 @@ main.library_main .right {
   width: 70%;
   padding: 5%;
   margin-left: 5%;
+  margin-bottom: 10px;
   min-height: 400px;
   background-image: url("../img/library/blackline2.svg");
   background-repeat: no-repeat;
@@ -764,7 +768,7 @@ main.library_main .right::after {
   max-width: 350px;
   height: 520px;
   background-size: contain;
-  bottom: 0px;
+  bottom: -10px;
   left: -350px;
 }
 
@@ -845,6 +849,15 @@ main.library_main .right .listInfo .nameAndBtn .listName .name h2 {
   vertical-align: middle;
 }
 
+main.library_main .right .listInfo .nameAndBtn .listName .name #inputListTitle {
+  height: 60px;
+  width: 100%;
+  max-width: 300px;
+  font-size: 2rem;
+  padding: 5px;
+  display: none;
+}
+
 main.library_main .right .listInfo .nameAndBtn .listName .name button {
   margin-left: 10px;
 }
@@ -904,12 +917,9 @@ main.library_main .right ul.songs li .songPlay .songCover .listPlay {
   position: absolute;
   top: 50%;
   left: 50%;
+  display: none;
   -webkit-transform: translate(-50%, -50%);
           transform: translate(-50%, -50%);
-  -webkit-transition: -webkit-transform .5s;
-  transition: -webkit-transform .5s;
-  transition: transform .5s;
-  transition: transform .5s, -webkit-transform .5s;
   cursor: pointer;
 }
 
@@ -918,15 +928,16 @@ main.library_main .right ul.songs li .songPlay .songCover .listPlay i {
   font-size: 0.8rem;
 }
 
-main.library_main .right ul.songs li .songPlay .songCover .listPlay:hover {
-  -webkit-transform: scale(1.1) translate(-50%, -50%);
-          transform: scale(1.1) translate(-50%, -50%);
-}
-
 main.library_main .right ul.songs li .songInfo {
   float: left;
   margin: 0 3%;
   width: 60%;
+}
+
+@media all and (max-width: 376px) {
+  main.library_main .right ul.songs li .songInfo {
+    width: 58%;
+  }
 }
 
 main.library_main .right ul.songs li .songInfo .name {
@@ -957,6 +968,12 @@ main.library_main .right ul.songs li .songInfo .name p {
   margin-left: 5%;
 }
 
+@media all and (max-width: 376px) {
+  main.library_main .right ul.songs li .songInfo .name p {
+    margin-left: 0;
+  }
+}
+
 main.library_main .right ul.songs li .totalTime {
   float: left;
   padding: 2% 0;
@@ -981,6 +998,13 @@ main.library_main .right ul.songs li .heart {
   transition: transform .5s, -webkit-transform .5s;
 }
 
+@media all and (max-width: 376px) {
+  main.library_main .right ul.songs li .heart {
+    width: 7%;
+    text-align: left;
+  }
+}
+
 main.library_main .right ul.songs li .heart:hover {
   -webkit-transform: scale(1.1);
           transform: scale(1.1);
@@ -991,16 +1015,40 @@ main.library_main .right ul.songs li .more {
   text-align: right;
   padding: 2% 0;
   width: 5%;
+  position: relative;
   cursor: pointer;
+}
+
+@media all and (max-width: 376px) {
+  main.library_main .right ul.songs li .more {
+    width: 8%;
+    text-align: left;
+  }
+}
+
+main.library_main .right ul.songs li .more i {
   -webkit-transition: -webkit-transform .5s;
   transition: -webkit-transform .5s;
   transition: transform .5s;
   transition: transform .5s, -webkit-transform .5s;
 }
 
-main.library_main .right ul.songs li .more:hover {
+main.library_main .right ul.songs li .more i:hover {
   -webkit-transform: scale(1.1);
           transform: scale(1.1);
+}
+
+main.library_main .right ul.songs li .more .changeList {
+  text-align: center;
+  position: absolute;
+  right: 0;
+  white-space: nowrap;
+  padding: 8px 16px;
+  margin-top: 8px;
+  font-size: 0.8rem;
+  border: 2px #333 solid;
+  background-color: white;
+  display: none;
 }
 
 @media all and (max-width: 768px) and (min-width: 577px) {
@@ -1092,16 +1140,133 @@ main.library_main .right ul.songs li .more:hover {
   }
 }
 
-.editBtn {
+.editBtn, .enterBtn {
   font-size: 0.7rem;
   display: inline-block;
   padding: 5px 8px;
   background-color: #f1c40f6b;
   border: 1.5px solid #f1c40f;
   cursor: pointer;
+  display: none;
+}
+
+.becomeRed {
+  color: #de267d;
 }
 
 .clearfix {
   clear: both;
+}
+
+.lightCover {
+  background-color: #414141e6;
+  width: 100%;
+  height: 100%;
+  position: fixed;
+  top: 0;
+  left: 0;
+  z-index: 1001;
+  display: none;
+}
+
+.lightCover #myAllList {
+  width: 90%;
+  max-width: 500px;
+  background-color: white;
+  border-radius: 10px;
+  padding: 1% 0;
+  text-align: center;
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  display: none;
+  -webkit-transform: translate(-50%, -50%);
+          transform: translate(-50%, -50%);
+}
+
+.lightCover #myAllList .lightSelectMenu {
+  clear: both;
+}
+
+.lightCover #myAllList .lightSelectMenu ul {
+  width: 80%;
+  margin: 3% auto;
+  padding: 16px 0;
+  min-height: 100px;
+  background-image: url("../img/library/blackline2.svg");
+  background-position: center center;
+}
+
+.lightCover #myAllList .lightSelectMenu ul li {
+  width: 90%;
+  margin: 0 auto;
+  padding: 16px 0;
+  border-bottom: 1px solid #333;
+}
+
+.lightCover #myAllList .lightSelectMenu ul li.choose {
+  background-color: #7ed5e5;
+}
+
+.lightCover #myAllList .lightSelectMenu ul li:last-child {
+  border-bottom: none;
+}
+
+.lightCover #deleteCheck {
+  width: 90%;
+  max-width: 500px;
+  background-color: white;
+  border-radius: 10px;
+  padding: 1% 0;
+  text-align: center;
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  -webkit-transform: translate(-50%, -50%);
+          transform: translate(-50%, -50%);
+  display: none;
+}
+
+.lightCover .close {
+  margin-right: 20px;
+  position: absolute;
+  right: 20px;
+  top: 20px;
+  cursor: pointer;
+  -webkit-transition: -webkit-transform 0.5s;
+  transition: -webkit-transform 0.5s;
+  transition: transform 0.5s;
+  transition: transform 0.5s, -webkit-transform 0.5s;
+}
+
+.lightCover .close:hover {
+  -webkit-transform: scale(1.1);
+          transform: scale(1.1);
+}
+
+.lightCover button {
+  background-color: #f1c40f;
+  font-size: 0.8rem;
+  padding: 10px 30px;
+  border: 1px solid #f1c40f;
+  border-radius: 5px;
+  color: #fff;
+  font-weight: bold;
+  cursor: pointer;
+  -webkit-transition: -webkit-transform 0.5s;
+  transition: -webkit-transform 0.5s;
+  transition: transform 0.5s;
+  transition: transform 0.5s, -webkit-transform 0.5s;
+}
+
+@media all and (max-width: 376px) {
+  .lightCover button {
+    margin-bottom: 10px;
+  }
+}
+
+.lightCover button:hover {
+  -webkit-transform: scale(1.1);
+          transform: scale(1.1);
 }
 /*# sourceMappingURL=library.css.map */

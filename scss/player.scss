@@ -1,5 +1,8 @@
 @import './public.scss';
+@import './lightBox';
 
+
+$mainRed : #de267d;
 html {
   @include respond(latop-max) {
     font-size: 16px;
@@ -31,7 +34,7 @@ ul {
   width: 100%;
   position: fixed;
   bottom: 0;
-  z-index: 98;
+  z-index: 1000;
 
   i {
     display: block;
@@ -438,12 +441,19 @@ ul {
             height: 250px;
             position: absolute;
             top: 0;
-            right: -50%;
+            right: 0;
             z-index: 1;
+            transition: right .5s;
 
             @include respond(phone) {
               width: 175px;
               height: 175px
+            }
+            &.recordOut{
+              right: -50%;
+            }
+            &.recRotate{
+              animation: recRotate 5s infinite linear;
             }
           }
 
@@ -718,6 +728,7 @@ ul {
       float: left;
       width: 50%;
       height: 100%;
+      background-color: white;
       overflow: hidden;
       overflow-y: scroll;
       position: relative;
@@ -739,6 +750,13 @@ ul {
         width: 100%;
         float: none;
         overflow: auto;
+      }
+
+      &::-webkit-scrollbar{
+        width: 5px;
+      }
+      &::-webkit-scrollbar-thumb{
+        background-color: #cfd6d6;
       }
 
       .pushBtn {
@@ -868,11 +886,12 @@ ul {
                 text-align: center;
                 background-color: rgba(255, 255, 255, 0.5);
                 border-radius: 15px;
+                display: none;
                 position: absolute;
                 top: 50%;
                 left: 50%;
                 transform: translate(-50%, -50%);
-                transition: transform 0.5s;
+                // transition: transform 0.5s;
                 cursor: pointer;
 
                 i {
@@ -881,9 +900,9 @@ ul {
                   line-height: 30px;
                 }
 
-                &:hover {
-                  transform: scale(1.1) translate(-50%, -50%);
-                }
+                // &:hover {
+                //   transform: scale(1.1) translate(-50%, -50%);
+                // }
               }
 
               @include respond(phone) {
@@ -987,85 +1006,19 @@ button,
   opacity: 1;
 }
 
-.lightCover {
-  background-color: #414141e6;
-  width: 0;
-  height: 0;
-  position: absolute;
-  z-index: 100;
-  display: none;
-
-  #myAllList {
-    width: 90%;
-    max-width: 500px;
-    background-color: white;
-    border-radius: 10px;
-    padding: 1% 0;
-    text-align: center;
-    position: absolute;
-    top: 50%;
-    left: 50%;
-    opacity: 0;
-    transition: opacity 0.5s ease-in-out;
-    transform: translate(-50%, -50%);
-
-    &.show {
-      opacity: 1;
-    }
-
-    .close {
-      // margin-top: 20px;
-      margin-right: 20px;
-      position: absolute;
-      right: 20px;
-      top: 20px;
-      cursor: pointer;
-      transition: transform 0.5s;
-
-      &:hover {
-        transform: scale(1.1);
-      }
-    }
-
-    .lightSelectMenu {
-      clear: both;
-
-      ul {
-        width: 80%;
-        margin: 3% auto;
-        padding: 16px 0;
-        min-height: 100px;
-        background-image: url('../img/library/blackline2.svg');
-        background-position: center center;
-
-        li {
-          width: 90%;
-          margin: 0 auto;
-          padding: 16px 0;
-          border-bottom: 1px solid $fontColor;
-
-          &.choose {
-            background-color: #7ed5e5;
-          }
-
-          &:last-child {
-            border-bottom: none;
-          }
-        }
-      }
-    }
-
-    button {
-      @include butttonn02;
-      transition: transform 0.5s;
-
-      &:hover {
-        transform: scale(1.1);
-      }
-    }
-  }
-}
-
 .clearfix {
   clear: both;
+}
+
+.becomeRed{
+  color: $mainRed;
+}
+
+@keyframes recRotate{
+  0%{
+    transform: rotate(0deg);
+  }
+  100%{
+    transform: rotate(360deg);
+  }
 }
