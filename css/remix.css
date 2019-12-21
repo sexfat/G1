@@ -80,8 +80,9 @@ p.forget {
 }
 
 header {
-  height: 300px;
   text-align: center;
+  height: 300px;
+  padding: 120px 0;
 }
 
 .wrapper {
@@ -199,13 +200,14 @@ h4 {
   font-weight: normal;
 }
 
-.wrapper {
-  padding-top: 8%;
-  font-size: 0;
+header {
+  text-align: center;
+  height: 300px;
+  padding: 120px 0;
 }
 
-.wrapper .remix_title {
-  text-align: center;
+.wrapper {
+  font-size: 0;
 }
 
 .wrapper .remix_head {
@@ -227,6 +229,8 @@ h4 {
   margin: 0 auto;
   padding: 8%;
   position: relative;
+  -webkit-box-sizing: border-box;
+          box-sizing: border-box;
 }
 
 .wrapper .remix_head .demo::before {
@@ -239,7 +243,7 @@ h4 {
   -webkit-transform: translate(-50%, -50%);
           transform: translate(-50%, -50%);
   background: url(../img/remix/Demo.svg) no-repeat;
-  background-size: 100%;
+  background-size: contain;
 }
 
 .wrapper .remix_head .demo .choose_song {
@@ -298,16 +302,18 @@ h4 {
 
 .wrapper .range .rangebutton input[type='range'] {
   margin: 3%;
-  width: 70%;
+  width: 75%;
   text-align: center;
   border-radius: 10px;
   -webkit-appearance: none;
+  background: -webkit-gradient(linear, left top, right top, from(#fff), color-stop(44%, #fff), color-stop(44%, #333), to(#333));
+  background: linear-gradient(to right, #fff 0%, #fff 44%, #333 44%, #333);
 }
 
 .wrapper .range .rangebutton input[type='range']::-webkit-slider-thumb {
   -webkit-appearance: none;
-  height: 25px;
-  width: 25px;
+  height: 20px;
+  width: 20px;
   background: #fff;
   border-radius: 50%;
   margin-top: -5px;
@@ -319,7 +325,7 @@ h4 {
 }
 
 .wrapper .range .rangebutton input[type='range']::-webkit-slider-runnable-track {
-  height: 13px;
+  height: 8px;
   border-radius: 10px;
   /*将轨道设为圆角的*/
   -webkit-box-shadow: 0 1px 1px #333, inset 0 .1em .1em #333;
@@ -343,10 +349,52 @@ h4 {
   background-color: transparent;
   outline: transparent;
   cursor: pointer;
+  position: relative;
+  padding-top: 33%;
+}
+
+.wrapper .range .rangebutton .button button:hover {
+  -webkit-animation: pulse 1s;
+          animation: pulse 1s;
 }
 
 .wrapper .range .rangebutton .button button img {
+  position: absolute;
+  left: 50%;
+  top: 50%;
+  -webkit-transform: translate(-50%, -50%);
+          transform: translate(-50%, -50%);
   width: 75%;
+  z-index: 10;
+}
+
+.wrapper .range .rangebutton .button button span {
+  display: inline-block;
+  position: absolute;
+  left: 50%;
+  top: 50%;
+  -webkit-transform: translate(-50%, -50%);
+          transform: translate(-50%, -50%);
+  border-radius: 100%;
+  width: 50%;
+  height: 50%;
+  background-color: #E5A84F;
+  z-index: 0;
+  pointer-events: none;
+}
+
+@-webkit-keyframes pulse {
+  0% {
+    -webkit-box-shadow: 0 0 0 0 #f24;
+            box-shadow: 0 0 0 0 #f24;
+  }
+}
+
+@keyframes pulse {
+  0% {
+    -webkit-box-shadow: 0 0 0 0 #f24;
+            box-shadow: 0 0 0 0 #f24;
+  }
 }
 
 @media all and (min-width: 1200px) {
@@ -798,11 +846,12 @@ h4 {
             flex-direction: column;
   }
   .wrapper .remix_head .demo {
-    padding: 20% 15% 24%;
+    padding: 12% 12% 12%;
   }
   .wrapper .remix_head .demo::before {
     -webkit-transform: translate(-50%, -50%) rotate(90deg);
             transform: translate(-50%, -50%) rotate(90deg);
+    width: 80%;
   }
   .wrapper .remix_head .demo .choose_song {
     margin: 5% auto;
@@ -1101,6 +1150,9 @@ h4 {
   html {
     font-size: 17px;
   }
+  header img {
+    height: 76px;
+  }
   .wrapper .remix_head {
     -webkit-box-orient: vertical;
     -webkit-box-direction: normal;
@@ -1108,9 +1160,10 @@ h4 {
             flex-direction: column;
   }
   .wrapper .remix_head .demo {
-    padding: 20% 12%;
+    padding: 10% 24%;
   }
   .wrapper .remix_head .demo::before {
+    width: 80%;
     -webkit-transform: translate(-50%, -50%) rotate(90deg);
             transform: translate(-50%, -50%) rotate(90deg);
   }
@@ -1408,6 +1461,12 @@ h4 {
   html {
     font-size: 17px;
   }
+  header {
+    padding: 120px 0;
+  }
+  header img {
+    height: 76px;
+  }
   .wrapper .remix_head {
     -webkit-box-orient: vertical;
     -webkit-box-direction: normal;
@@ -1415,9 +1474,11 @@ h4 {
             flex-direction: column;
   }
   .wrapper .remix_head .demo {
-    padding: 16% 15%;
+    padding: 6% 21% 6% 22%;
   }
   .wrapper .remix_head .demo::before {
+    width: 90%;
+    height: 115%;
     -webkit-transform: translate(-50%, -50%) rotate(90deg);
             transform: translate(-50%, -50%) rotate(90deg);
   }
@@ -1796,6 +1857,12 @@ h4 {
   html {
     font-size: 16px;
   }
+  header {
+    padding: 120px 0;
+  }
+  header img {
+    height: 76px;
+  }
   .wrapper {
     overflow-x: hidden;
   }
@@ -1807,9 +1874,11 @@ h4 {
     width: 100%;
   }
   .wrapper .remix_head .demo {
-    padding: 17% 13%;
+    padding: 18% 10% 18% 16%;
   }
   .wrapper .remix_head .demo::before {
+    width: 110%;
+    height: 85%;
     -webkit-transform: translate(-50%, -50%) rotate(90deg);
             transform: translate(-50%, -50%) rotate(90deg);
   }
