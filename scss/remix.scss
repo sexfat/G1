@@ -70,16 +70,19 @@ body {
 h4 {
   font-weight: normal;
 }
+header{
+  text-align: center;
+  height: 300px;
+  padding: 120px 0;
+  img{
+    // width: 300px;
+  }
+}
 
 .wrapper {
   // margin-top: 10%;
-  padding-top: 8%;
+  // padding-top: 8%;
   font-size: 0;
-
-  .remix_title {
-    text-align: center;
-  }
-
   .remix_head {
     margin: 0 auto;
     width: 95%;
@@ -92,7 +95,7 @@ h4 {
       margin: 0 auto;
       padding: 8%;
       position: relative;
-
+      box-sizing: border-box;
       &::before {
         content: "";
         position: absolute;
@@ -102,7 +105,7 @@ h4 {
         top: 50%;
         transform: translate(-50%, -50%);
         background: url(../img/remix/Demo.svg) no-repeat;
-        background-size: 100%;
+        background-size: contain;
       }
 
       // border: solid 1px #333;
@@ -160,17 +163,15 @@ h4 {
       // align-items: center;
       input[type='range'] {
         margin: 3%;
-        width: 70%;
+        width: 75%;
         text-align: center;
         border-radius: 10px;
         -webkit-appearance: none;
-
-        // background-color: pink;
-        // background: linear-gradient(to right, blue , #fff 50%, #fff);
+        background: linear-gradient(to right, #fff 0%, #fff 44%,#333  44%, #333);
         &::-webkit-slider-thumb {
           -webkit-appearance: none;
-          height: 25px;
-          width: 25px;
+          height: 20px;
+          width: 20px;
           background: #fff;
           border-radius: 50%;
           margin-top: -5px;
@@ -180,10 +181,9 @@ h4 {
           /*添加底部阴影*/
 
         }
-
         &::-webkit-slider-runnable-track {
           // 自定义滑动控件的轨道
-          height: 13px;
+          height: 8px;
           border-radius: 10px;
           /*将轨道设为圆角的*/
           box-shadow: 0 1px 1px #333, inset 0 .1em .1em #333;
@@ -200,11 +200,41 @@ h4 {
         button{
           width: calc(100% / 3);
           border: none;
+          // border: solid 1px #333;
           background-color: transparent;
           outline: transparent;
           cursor: pointer;
+          position: relative;
+          padding-top: 33%;
+          &:hover{
+            animation: pulse 1s;
+          }
           img{
+            position: absolute;
+            left: 50%;
+            top: 50%;
+            transform: translate(-50%,-50%);
             width: 75%;
+            z-index: 10;
+          }
+          span{
+            display: inline-block;
+            position: absolute;
+            left: 50%;
+            top: 50%;
+            transform: translate(-50%,-50%);
+            border-radius: 100%;
+            width: 50%;
+            height: 50%;
+            background-color: #E5A84F;
+            z-index: 0;
+            pointer-events: none
+
+          }
+        }
+        @keyframes pulse {
+          0% {
+            box-shadow: 0 0 0 0 #f24;
           }
         }
       }
@@ -248,10 +278,11 @@ h4 {
       flex-direction: column;
 
       .demo {
-        padding: 20% 15% 24%;
+        padding: 12% 12% 12%;
 
         &::before {
           transform: translate(-50%, -50%) rotate(90deg);
+          width: 80%;
         }
 
         .choose_song {
@@ -280,7 +311,11 @@ h4 {
   html {
     font-size: 17px;
   }
-
+  header{
+    img{
+      height: 76px;
+    }
+  }
   .wrapper {
     .remix_title {}
 
@@ -288,9 +323,10 @@ h4 {
       flex-direction: column;
 
       .demo {
-        padding: 20% 12%;
+        padding: 10% 24%;
 
         &::before {
+          width: 80%;
           transform: translate(-50%, -50%) rotate(90deg);
         }
 
@@ -318,7 +354,12 @@ h4 {
   html {
     font-size: 17px;
   }
-
+  header{
+    padding: 120px 0;
+    img{
+      height: 76px;
+    }
+  }
   .wrapper {
     .remix_title {}
 
@@ -326,9 +367,10 @@ h4 {
       flex-direction: column;
 
       .demo {
-        padding: 16% 15%;
-
+        padding: 6% 21% 6% 22%;
         &::before {
+          width: 90%;
+          height: 115%;
           transform: translate(-50%, -50%) rotate(90deg);
         }
 
@@ -367,7 +409,12 @@ h4 {
   html {
     font-size: 16px;
   }
-
+  header{
+    padding: 120px 0;
+    img{
+      height: 76px;
+    }
+  }
   .wrapper {
     overflow-x: hidden;
 
@@ -378,9 +425,11 @@ h4 {
       width: 100%;
 
       .demo {
-        padding: 17% 13%;
+        padding: 18% 10% 18% 16%;
 
         &::before {
+          width: 110%;
+          height: 85%;
           transform: translate(-50%, -50%) rotate(90deg);
         }
 

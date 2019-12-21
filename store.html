@@ -5,7 +5,8 @@
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <meta http-equiv="X-UA-Compatible" content="ie=edge">
-  <link rel="stylesheet" href="./css/example.css">
+  <link rel="stylesheet" href="./css/public.css">
+  <link rel="stylesheet" href="./css/nav_bar.css">
   <link rel="stylesheet" href="./css/store.css">
   <script src='https://cdnjs.cloudflare.com/ajax/libs/jquery/3.4.1/jquery.js'></script>
   <title>Document</title>
@@ -14,31 +15,106 @@
 <body>
   <div id="app">
     <div class="nav_bar flexbox">
-      <div class="logo"></div>
-      <div class="main_list flexbox">
-        <h4>REMIX</h4>
-        <h4>COLLECTION</h4>
-        <h4>ACTIVITY</h4>
-        <h4>LIBRARY</h4>
+      <div class="hamburger" @click="hamburger_click">
+        <div class="hamburger-box">
+          <div class="hamburger-inner"></div>
+        </div>
       </div>
-      <label class="search" @click="search_click">
-        <div class="search_icon"></div>
-        <input class="search_bar" type="text" />
+      <div class="mobile_list" @click="stopPropagation">
+        <div class="paint_border"></div>
+        <ul>
+          <li class="REMIX flexbox">
+            <a href="./remix.html">
+            </a>
+          </li>
+          <li class="COLLECTION flexbox">
+            <a href="">
+            </a>
+          </li>
+          <li class="ACTIVITY flexbox">
+            <a href="">
+            </a>
+          </li>
+          <li class="LIBRARY flexbox">
+            <a href="">
+            </a>
+          </li>
+        </ul>
+      </div>
+
+      <div class="logo_container">
+        <a href="">
+          <div class="logo"></div>
+        </a>
+      </div>
+      <ul class="main_list flexbox">
+        <li class="REMIX flexbox">
+          <a href="">
+          </a>
+        </li>
+        <li class="COLLECTION flexbox">
+          <a href="">
+          </a>
+        </li>
+        <li class="ACTIVITY flexbox">
+          <a href="">
+          </a>
+        </li>
+        <li class="LIBRARY flexbox">
+          <a href="">
+          </a>
+        </li>
+      </ul>
+      <div class="search_bt" @click="search_bt_click">
+        <a href="#"></a>
+      </div>
+      <div class="search_bar">
+        <input class="search" type="text" />
         <div class="tag_container">
         </div>
-      </label>
-      <div class="mem_bt" @click="mem_bt_click"></div>
+      </div>
+      <div class="mem_bt" @click="mem_bt_click">
+        <a href="#"></a>
+      </div>
       <div class="mem_list" @click="stopPropagation">
-        <h4>會員資料</h4>
-        <h4>個人音樂庫</h4>
-        <h4>歌曲上下架</h4>
-        <h4>儲值/儲值紀錄</h4>
-        <h4>贊助紀錄</h4>
+        <div class="paint_border"></div>
+        <ul>
+          <li>
+            <a href="">
+              <h4>Profile</h4>
+            </a>
+          </li>
+          <li>
+            <a href="">
+              <h4>Favorite</h4>
+            </a>
+          </li>
+          <li>
+            <a href="">
+              <h4>
+                Song Upload
+                <br />&amp; Remove
+              </h4>
+            </a>
+          </li>
+          <li>
+            <a href="./store.html">
+              <h4>
+                Store Value
+                <br />&amp;Store Record
+              </h4>
+            </a>
+          </li>
+          <li>
+            <a href="">
+              <h4>Donate Record</h4>
+            </a>
+          </li>
+        </ul>
       </div>
     </div>
     <header>
-      <h1>MEMBER</h1>
-      <div class="header_bg"></div>
+      <img src="./img/member/RESTORE.png">
     </header>
     <div class="wrapper ">
       <img src="./img/member/color1.png" class="color1">
@@ -372,85 +448,97 @@
         ]
       },
       methods: {
-        search_click(e) {
-          _search_click = true;
-          _mem_bt_click = false;
+        hamburger_click(e) {
           e.stopPropagation();
-          if (_search_click) {
-            document.querySelector(".search_bar").focus();
-            document
-              .querySelector("label.search")
-              .setAttribute("style", "width: 250px;");
+          document.querySelector(".hamburger").classList.toggle("is-active");
+        },
+        search_bt_click(e) {
+          e.stopPropagation();
+          if (this.search_bar == false) {
+            this.search_bar = true;
+            this.mem_list = false;
+            this.mobile_list = false;
             document
               .querySelector(".search_bar")
-              .setAttribute("style", "filter: opacity(1); width: 250px;");
-            document
-              .querySelector(".tag_container")
-              .setAttribute(
-                "style",
-                "filter: opacity(1); width: 250px; height: 200px;  z-index: 99;"
-              );
+              .setAttribute("style", "height: 240px; filter: opacity(1);");
+            document.querySelector("input.search").focus();
             document
               .querySelector(".mem_list")
-              .setAttribute("style", "height: 0px;");
-          } else {
+              .setAttribute("style", "transform: translateX(270px); filter: opacity(0);");
             document
-              .querySelector("label.search")
-              .setAttribute("style", "width: 250px;");
+              .querySelector(".mobile_list")
+              .setAttribute("style", "transform: translateX(-270px); filter: opacity(0);");
+          } else {
+            this.search_bar = false;
             document
               .querySelector(".search_bar")
-              .setAttribute("style", "filter: opacity(1); width: 250px;");
-            document.querySelector(".search_bar").focus();
-
+              .setAttribute("style", "height: 0px; filter: opacity(0);");
+            document.querySelector("input.search").blur();
             document
-              .querySelector(".tag_container")
-              .setAttribute(
-                "style",
-                "filter: opacity(1); width: 250px; height: 200px;  z-index: 99;"
-              );
+              .querySelector(".mem_list")
+              .setAttribute("style", "transform: translateX(270px); filter: opacity(0);");
+            document
+              .querySelector(".mobile_list")
+              .setAttribute("style", "transform: translateX(-270px); filter: opacity(0);");
           }
         },
         stopPropagation(e) {
           e.stopPropagation();
         },
         mem_bt_click(e) {
-          _mem_bt_click = true;
-          _search_click = false;
-
           e.stopPropagation();
-          if (_mem_bt_click) {
+          if (this.mem_list == false) {
+            this.mem_list = true;
+            this.search_bar = false;
+            this.mobile_list = false;
             document
               .querySelector(".mem_list")
-              .setAttribute("style", "height: 200px;");
-            document
-              .querySelector("label.search")
-              .setAttribute("style", "width: 50px;");
+              .setAttribute("style", "transform: translateX(0); filter: opacity(1);");
             document
               .querySelector(".search_bar")
-              .setAttribute("style", "opacity: 0; width: 50px;");
+              .setAttribute("style", "height: 0px; filter: opacity(0);");
             document
-              .querySelector(".tag_container")
-              .setAttribute(
-                "style",
-                "filter: opacity(0); width: 50px; height: 50px;"
-              );
+              .querySelector(".mobile_list")
+              .setAttribute("style", "transform: translateX(-270px); filter: opacity(0);");
           } else {
+            this.mem_list = false;
             document
               .querySelector(".mem_list")
-              .setAttribute("style", "height: 200px;");
+              .setAttribute("style", "transform: translateX(270px); filter: opacity(0);");
+            document
+              .querySelector(".search_bar")
+              .setAttribute("style", "height: 0px; filter: opacity(0);");
+            document
+              .querySelector(".mobile_list")
+              .setAttribute("style", "transform: translateX(-270px); filter: opacity(0);");
           }
         },
-        app_click() {
-          _search_click = false;
-          _mem_bt_click = false;
-          document.querySelector("label.search").setAttribute("style", "width: 50px;");
-          document.querySelector(".search_bar").setAttribute("style", "opacity: 0; width: 50px;");
-          document.querySelector(".tag_container")
-            .setAttribute(
-              "style",
-              "filter: opacity(0); width: 50px; height: 50px;"
-            );
-          document.querySelector(".mem_list").setAttribute("style", "height: 0px;");
+        hamburger_click(e) {
+          e.stopPropagation();
+          if (this.mobile_list == false) {
+            this.mobile_list = true;
+            this.mem_list = false;
+            this.search_bar = false;
+            document
+              .querySelector(".mobile_list")
+              .setAttribute("style", "transform: translateX(0); filter: opacity(1);");
+            document
+              .querySelector(".mem_list")
+              .setAttribute("style", "transform: translateX(270px); filter: opacity(0);");
+            document
+              .querySelector(".search_bar")
+              .setAttribute("style", "height: 0px; filter: opacity(0);");
+          } else {
+            this.mobile_list = false;
+            document.querySelector(".mobile_list").setAttribute("style",
+              "transform: translateX(-270px); filter: opacity(0);");
+            document
+              .querySelector(".mem_list")
+              .setAttribute("style", "transform: translateX(270px); filter: opacity(0);");
+            document
+              .querySelector(".search_bar")
+              .setAttribute("style", "height: 0px; filter: opacity(0);");
+          }
         },
         moveDiv(move) {
           var step = document.getElementsByClassName('step');
@@ -467,10 +555,24 @@
 
       },
       mounted() {
-        document.addEventListener('click', this.app_click);
-        // $(window).scroll(function(){
-        //     console.log($(this).scrollTop());
-        // })
+        // 組長的code
+        var vm =this;
+        document.addEventListener('click', () => {
+          vm.mem_list = false;
+          vm.search_bar = false;
+          vm.mobile_list = false;
+
+          document
+            .querySelector(".search_bar")
+            .setAttribute("style", "height: 0px; filter: opacity(0);");
+          document
+            .querySelector(".mem_list")
+            .setAttribute("style", "transform: translateX(270px); filter: opacity(0);");
+          document
+            .querySelector(".mobile_list")
+            .setAttribute("style", "transform: translateX(-270px); filter: opacity(0);");
+        });
+
       },
     })
   </script>

@@ -80,8 +80,9 @@ p.forget {
 }
 
 header {
-  height: 300px;
   text-align: center;
+  height: 300px;
+  padding: 120px 0;
 }
 
 .wrapper {
@@ -206,6 +207,11 @@ h2 {
   font-weight: bold;
 }
 
+header {
+  height: 300px;
+  padding: 120px 0;
+}
+
 .wrapper {
   margin-top: 0%;
   position: relative;
@@ -218,7 +224,7 @@ h2 {
 }
 
 .wrapper .stepCount {
-  margin: 2.5rem auto;
+  margin: 0rem auto;
   width: 90%;
   overflow: hidden;
 }
@@ -764,6 +770,12 @@ h2 {
   html {
     font-size: 17px;
   }
+  header {
+    padding: 120px 0;
+  }
+  header img {
+    height: 76px;
+  }
   .wrapper {
     overflow-x: hidden;
     margin: 0 auto;
@@ -834,6 +846,12 @@ h2 {
 @media all and (max-width: 576px) and (min-width: 377px) {
   html {
     font-size: 17px;
+  }
+  header {
+    padding: 120px 0;
+  }
+  header img {
+    height: 76px;
   }
   .button {
     padding: 8%;
@@ -1019,6 +1037,12 @@ h2 {
   .button {
     padding: 10%;
   }
+  header {
+    padding: 120px 0;
+  }
+  header img {
+    height: 76px;
+  }
   .wrapper {
     overflow-x: hidden;
   }
@@ -1027,7 +1051,7 @@ h2 {
     top: 6%;
   }
   .wrapper .stepCount {
-    margin: 1.5rem auto;
+    margin: 0rem auto;
   }
   .wrapper .stepCount .count {
     width: 23%;

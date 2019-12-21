@@ -66,6 +66,7 @@ $latop-max: 1200px;
     }
   }
 }
+
 @include grid(12);
 
 //mixin
@@ -132,9 +133,18 @@ h2 {
   font-weight: bold;
 }
 
+header {
+  height: 300px;
+  padding: 120px 0;
+  img {
+    
+  }
+}
+
 .wrapper {
   margin-top: 0%;
   position: relative;
+
   // border-bottom: solid 1px #333;
   // overflow-x: hidden;  
   .color1 {
@@ -144,7 +154,7 @@ h2 {
   }
 
   .stepCount {
-    margin: 2.5rem auto;
+    margin: 0rem auto;
     width: 90%;
     overflow: hidden;
 
@@ -363,6 +373,7 @@ h2 {
         width: 95%;
         padding: 2%;
         margin: 0 auto;
+
         // h2{
         //   width: 85%;
         // }
@@ -600,7 +611,7 @@ h2 {
   // padding: 10%;
   text-align: center;
   margin: 0 auto;
-  
+
   // margin: 5% auto;
   .btn_s {
     width: 85%;
@@ -610,6 +621,7 @@ h2 {
     border-radius: 5px;
     @include butttonn02;
     padding: 10px 0;
+
     p {
       // position: absolute;
       // font-size: 0.8rem;
@@ -621,9 +633,11 @@ h2 {
     }
   }
 }
-@include respond(desktop){
+
+@include respond(desktop) {
+
   // 1200 up
-  .button{
+  .button {
     padding: 5%;
   }
 }
@@ -634,9 +648,11 @@ h2 {
   html {
     font-size: 18px;
   }
-  .button{
+
+  .button {
     padding: 5%;
   }
+
   .wrapper {
     overflow-x: hidden;
 
@@ -723,9 +739,11 @@ h2 {
       font-size: 0;
       // display: flex;
       display: block;
-      h2{
+
+      h2 {
         width: 80%;
       }
+
       .box {}
 
       .member_info {
@@ -776,9 +794,11 @@ h2 {
   html {
     font-size: 17px;
   }
-  .button{
+
+  .button {
     padding: 5%;
   }
+
   .wrapper {
     overflow-x: hidden;
 
@@ -923,12 +943,21 @@ h2 {
     font-size: 17px;
   }
 
+  header{
+    padding: 120px 0;
+    img{
+      height: 76px;
+    }
+  }
+
   .wrapper {
     overflow-x: hidden;
     margin: 0 auto;
-    .button{
+
+    .button {
       padding: 5%;
     }
+
     .color1 {
       top: 8%;
     }
@@ -1020,10 +1049,10 @@ h2 {
           }
         }
 
-        .comfirm_detail{
-          .detail{
-            p{
-              .card_class{
+        .comfirm_detail {
+          .detail {
+            p {
+              .card_class {
                 width: 40%;
               }
             }
@@ -1080,13 +1109,23 @@ h2 {
 }
 
 @include respond(ipad) {
-    // 375-576
+
+  // 375-576
   html {
     font-size: 17px;
   }
-  .button{
+
+  header{
+    padding: 120px 0;
+    img{
+      height: 76px;
+    }
+  }
+
+  .button {
     padding: 8%;
   }
+
   .wrapper {
     overflow-x: hidden;
 
@@ -1278,15 +1317,23 @@ h2 {
 }
 
 @include respond(phone) {
+    // 375 -- 0
   @include sm-grid(12);
 
   html {
     font-size: 16px;
   }
-  .button{
+
+  .button {
     padding: 10%;
   }
-  // 375 -- 0
+
+  header{
+    padding: 120px 0;
+    img{
+      height: 76px;
+    }
+  }
   .wrapper {
     overflow-x: hidden;
 
@@ -1296,7 +1343,7 @@ h2 {
     }
 
     .stepCount {
-      margin: 1.5rem auto;
+      margin: 0rem auto;
 
       .count {
         width: 23%;
