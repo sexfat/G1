@@ -34,9 +34,9 @@ $latop-max: 1200px;
   }
 }
 
-@mixin sm-grid($grid_number) {
+@mixin md-grid($grid_number) {
   @for $i from 1 through $grid_number {
-    .col-sm-#{$i} {
+    .col-md-#{$i} {
       width: ($i / $grid_number) * 100%;
       display: inline-block;
       // padding: 5px 0;
@@ -45,6 +45,27 @@ $latop-max: 1200px;
   }
 }
 
+@mixin lg-grid($grid_number) {
+  @for $i from 1 through $grid_number {
+    .col-lg-#{$i} {
+      width: ($i / $grid_number) * 100%;
+      display: inline-block;
+      // padding: 5px 0;
+      box-sizing: border-box;
+    }
+  }
+}
+
+@mixin xl-grid($grid_number) {
+  @for $i from 1 through $grid_number {
+    .col-xl-#{$i} {
+      width: ($i / $grid_number) * 100%;
+      display: inline-block;
+      // padding: 5px 0;
+      box-sizing: border-box;
+    }
+  }
+}
 @include grid(12);
 
 //mixin
@@ -341,7 +362,7 @@ h2 {
         border-radius: 5px;
         width: 95%;
         padding: 2%;
-
+        margin: 0 auto;
         // h2{
         //   width: 85%;
         // }
@@ -374,6 +395,7 @@ h2 {
           .press {
             display: inline-block;
             width: 50%;
+            margin: 0 auto;
           }
         }
       }
@@ -575,16 +597,19 @@ h2 {
   position: relative;
   width: 100%;
   // margin: 10% auto;
-  padding: 10%;
+  // padding: 10%;
   text-align: center;
   margin: 0 auto;
-
+  
+  // margin: 5% auto;
   .btn_s {
     width: 85%;
     max-width: 9rem;
+    margin: 0 auto;
     background-color: $buttonyellow;
     border-radius: 5px;
-
+    @include butttonn02;
+    padding: 10px 0;
     p {
       // position: absolute;
       // font-size: 0.8rem;
@@ -895,13 +920,15 @@ h2 {
 
   // 576-768
   html {
-    font-size: 18px;
+    font-size: 17px;
   }
 
   .wrapper {
     overflow-x: hidden;
     margin: 0 auto;
-
+    .button{
+      padding: 5%;
+    }
     .color1 {
       top: 8%;
     }
@@ -993,6 +1020,15 @@ h2 {
           }
         }
 
+        .comfirm_detail{
+          .detail{
+            p{
+              .card_class{
+                width: 40%;
+              }
+            }
+          }
+        }
       }
 
 
@@ -1044,11 +1080,13 @@ h2 {
 }
 
 @include respond(ipad) {
+    // 375-576
   html {
     font-size: 17px;
   }
-
-  // 375-576
+  .button{
+    padding: 8%;
+  }
   .wrapper {
     overflow-x: hidden;
 
@@ -1077,6 +1115,7 @@ h2 {
       .step {
         h2 {
           // font-size: 1.2rem;
+          margin: 2.625rem auto 1.625rem;
         }
 
         .color2 {
@@ -1244,7 +1283,9 @@ h2 {
   html {
     font-size: 16px;
   }
-
+  .button{
+    padding: 10%;
+  }
   // 375 -- 0
   .wrapper {
     overflow-x: hidden;
