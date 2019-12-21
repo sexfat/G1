@@ -560,10 +560,28 @@ main.library_main aside {
 main.library_main aside .my_list {
   background-color: #d0d6d6;
   padding: 8%;
-  text-align: center;
+}
+
+main.library_main aside .my_list .favor {
+  cursor: pointer;
+  -webkit-transition: -webkit-transform .5s;
+  transition: -webkit-transform .5s;
+  transition: transform .5s;
+  transition: transform .5s, -webkit-transform .5s;
+}
+
+main.library_main aside .my_list .favor:hover {
+  -webkit-transform: scale(1.1);
+          transform: scale(1.1);
+}
+
+main.library_main aside .my_list .favor i {
+  color: #de267d;
+  margin-right: 8px;
 }
 
 main.library_main aside .my_list div:nth-child(2) {
+  text-align: center;
   padding: 20px 0;
   color: #b3b3b3;
   position: relative;
@@ -597,6 +615,16 @@ main.library_main aside .my_list .lists li {
   padding: 10px 0;
   border-bottom: 1px solid #b3b3b3;
   position: relative;
+  cursor: pointer;
+  -webkit-transition: -webkit-transform .5s;
+  transition: -webkit-transform .5s;
+  transition: transform .5s;
+  transition: transform .5s, -webkit-transform .5s;
+}
+
+main.library_main aside .my_list .lists li:hover {
+  -webkit-transform: scale(1.1);
+          transform: scale(1.1);
 }
 
 main.library_main aside .my_list .lists li .delete {
@@ -905,6 +933,21 @@ main.library_main .right ul.songs li .songInfo .name {
   padding: 2% 0;
 }
 
+main.library_main .right ul.songs li .songInfo .name a {
+  display: block;
+  color: #333;
+  text-decoration: none;
+  -webkit-transition: -webkit-transform .5s;
+  transition: -webkit-transform .5s;
+  transition: transform .5s;
+  transition: transform .5s, -webkit-transform .5s;
+}
+
+main.library_main .right ul.songs li .songInfo .name a:hover {
+  -webkit-transform: scale(1.1);
+          transform: scale(1.1);
+}
+
 main.library_main .right ul.songs li .songInfo .name h4 {
   display: inline-block;
 }
@@ -931,6 +974,16 @@ main.library_main .right ul.songs li .heart {
   text-align: right;
   padding: 2% 0;
   width: 5%;
+  cursor: pointer;
+  -webkit-transition: -webkit-transform .5s;
+  transition: -webkit-transform .5s;
+  transition: transform .5s;
+  transition: transform .5s, -webkit-transform .5s;
+}
+
+main.library_main .right ul.songs li .heart:hover {
+  -webkit-transform: scale(1.1);
+          transform: scale(1.1);
 }
 
 main.library_main .right ul.songs li .more {
@@ -938,6 +991,16 @@ main.library_main .right ul.songs li .more {
   text-align: right;
   padding: 2% 0;
   width: 5%;
+  cursor: pointer;
+  -webkit-transition: -webkit-transform .5s;
+  transition: -webkit-transform .5s;
+  transition: transform .5s;
+  transition: transform .5s, -webkit-transform .5s;
+}
+
+main.library_main .right ul.songs li .more:hover {
+  -webkit-transform: scale(1.1);
+          transform: scale(1.1);
 }
 
 @media all and (max-width: 768px) and (min-width: 577px) {
@@ -996,8 +1059,8 @@ main.library_main .right ul.songs li .more {
   color: #fff;
   font-weight: bold;
   cursor: pointer;
-  display: inline-block;
-  margin-top: 20px;
+  display: block;
+  margin: 20px auto 0;
   -webkit-transition: -webkit-transform .5s;
   transition: -webkit-transform .5s;
   transition: transform .5s;
@@ -1012,6 +1075,14 @@ main.library_main .right ul.songs li .more {
 @media all and (max-width: 992px) and (min-width: 769px) {
   .normalbtn {
     width: 100%;
+  }
+}
+
+@media all and (max-width: 768px) and (min-width: 577px) {
+  .normalbtn {
+    width: 47%;
+    margin: 20px 1% 0;
+    display: inline-block;
   }
 }
 

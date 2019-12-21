@@ -1,6 +1,8 @@
 @import './public.scss';
 @import './nav_bar.scss';
 
+$mainRed : #de267d;
+
 html {
   @include respond(latop-min) {
     font-size: 16px;
@@ -13,6 +15,7 @@ html {
   @include respond(ipad) {
     font-size: 16px;
   }
+
   @include respond(phone) {
     font-size: 16px;
   }
@@ -33,7 +36,7 @@ body {
   background-size: cover;
   font-size: 1rem;
   color: $fontColor;
-  
+
 }
 
 
@@ -45,7 +48,7 @@ header {
   img {
     @include respond(phone) {
       width: 100%;
-      
+
     }
   }
 }
@@ -67,10 +70,24 @@ main.library_main {
     .my_list {
       background-color: #d0d6d6;
       padding: 8%;
-      text-align: center;
+
+      .favor {
+        cursor: pointer;
+        transition: transform .5s;
+
+        &:hover {
+          transform: scale(1.1);
+        }
+
+        i {
+          color: $mainRed;
+          margin-right: 8px;
+        }
+      }
 
       div {
         &:nth-child(2) {
+          text-align: center;
           padding: 20px 0;
           color: #b3b3b3;
           position: relative;
@@ -104,8 +121,14 @@ main.library_main {
           padding: 10px 0;
           border-bottom: 1px solid #b3b3b3;
           position: relative;
+          cursor: pointer;
+          transition: transform .5s;
 
-          .delete{
+          &:hover {
+            transform: scale(1.1);
+          }
+
+          .delete {
             color: $fontColor;
             position: absolute;
             right: 0;
@@ -114,7 +137,7 @@ main.library_main {
             transition: transform .5s;
             cursor: pointer;
 
-            &:hover{
+            &:hover {
               transform: scale(1.1) translateY(-50%);
             }
           }
@@ -147,6 +170,7 @@ main.library_main {
         option {
           padding: 16px 0;
         }
+
         @include respond(latop-min) {
           display: block;
         }
@@ -222,13 +246,15 @@ main.library_main {
       bottom: 0px;
       left: -350px;
 
-      @include respond(ipadpro){
+      @include respond(ipadpro) {
         display: none;
       }
-      @include respond(ipad){
+
+      @include respond(ipad) {
         display: none;
       }
-      @include respond(phone){
+
+      @include respond(phone) {
         display: none;
       }
     }
@@ -244,6 +270,7 @@ main.library_main {
           margin: 0 auto;
           float: none;
         }
+
         @include respond(phone) {
           margin: 0 auto;
           float: none;
@@ -266,11 +293,13 @@ main.library_main {
         height: 200px;
         padding: 5%;
         float: left;
+
         @include respond(ipad) {
-          width:100%;
+          width: 100%;
         }
+
         @include respond(phone) {
-          width:100%;
+          width: 100%;
         }
 
         .listName {
@@ -284,21 +313,24 @@ main.library_main {
               margin-left: 10px;
             }
           }
+
           @include respond(ipad) {
-            width:85%;
+            width: 85%;
           }
+
           @include respond(phone) {
-            width:100%;
+            width: 100%;
           }
         }
 
         .playall_btn {
           text-align: right;
+
           @include respond(ipad) {
-            width:14%;
+            width: 14%;
           }
         }
-        
+
       }
     }
 
@@ -309,7 +341,8 @@ main.library_main {
         // border: 1px skyblue solid;
         padding: 10px 0;
         border-bottom: 1px solid #cacaca;
-        &:last-child{
+
+        &:last-child {
           border: none;
         }
 
@@ -355,6 +388,17 @@ main.library_main {
           .name {
             padding: 2% 0;
 
+            a {
+              display: block;
+              color: $fontColor;
+              text-decoration: none;
+              transition: transform .5s;
+
+              &:hover {
+                transform: scale(1.1);
+              }
+            }
+
             h4 {
               display: inline-block;
             }
@@ -371,7 +415,8 @@ main.library_main {
           float: left;
           padding: 2% 0;
           width: 10%;
-          @include respond(phone){
+
+          @include respond(phone) {
             display: none;
           }
         }
@@ -381,6 +426,12 @@ main.library_main {
           text-align: right;
           padding: 2% 0;
           width: 5%;
+          cursor: pointer;
+          transition: transform .5s;
+
+          &:hover {
+            transform: scale(1.1);
+          }
         }
 
         .more {
@@ -388,6 +439,12 @@ main.library_main {
           text-align: right;
           padding: 2% 0;
           width: 5%;
+          cursor: pointer;
+          transition: transform .5s;
+
+          &:hover {
+            transform: scale(1.1);
+          }
         }
       }
     }
@@ -397,11 +454,13 @@ main.library_main {
       margin: 5%;
       padding: 10% 5%;
     }
+
     @include respond(ipad) {
       width: 90%;
       margin: 5%;
       padding: 10% 5%;
     }
+
     @include respond(phone) {
       width: 90%;
       margin: 5%;
@@ -432,8 +491,8 @@ main.library_main {
 
 .normalbtn {
   @include butttonn02;
-  display: inline-block;
-  margin-top: 20px;
+  display: block;
+  margin: 20px auto 0;
   transition: transform .5s;
 
   &:hover {
@@ -442,6 +501,12 @@ main.library_main {
 
   @include respond(latop-min) {
     width: 100%;
+  }
+
+  @include respond(ipadpro) {
+    width: 47%;
+    margin: 20px 1% 0;
+    display: inline-block;
   }
 
   @include respond(phone) {
