@@ -538,11 +538,11 @@ body section #tabcontainer .tabtitle li a {
   margin: 0px 50px 0px 50px;
 }
 
-body section #tabcontainer .bookshelf-row {
+body section #tabcontainer .albumshelf-row {
   display: none;
 }
 
-body section #tabcontainer .bookshelf {
+body section #tabcontainer .albumshelf {
   display: -webkit-box;
   display: -ms-flexbox;
   display: flex;
@@ -552,18 +552,18 @@ body section #tabcontainer .bookshelf {
           justify-content: center;
 }
 
-body section #tabcontainer .bookshelf .shelf {
+body section #tabcontainer .albumshelf .shelf {
   width: 65vw;
   margin-top: 80px;
 }
 
-body section #tabcontainer .bookshelf .shelf .row-1 {
+body section #tabcontainer .albumshelf .shelf .row-1 {
   position: relative;
   width: 100%;
   height: 400px;
 }
 
-body section #tabcontainer .bookshelf .shelf .row-1:after {
+body section #tabcontainer .albumshelf .shelf .row-1:after {
   background: url("../img/collection/shelf.png");
   background-size: 100%;
   background-repeat: no-repeat;
@@ -574,14 +574,14 @@ body section #tabcontainer .bookshelf .shelf .row-1:after {
   content: "";
 }
 
-body section #tabcontainer .bookshelf .shelf .loc {
+body section #tabcontainer .albumshelf .shelf .loc {
   position: absolute;
   bottom: 0;
   width: 100%;
   text-align: left;
 }
 
-body section #tabcontainer .bookshelf .shelf .loc p {
+body section #tabcontainer .albumshelf .shelf .loc p {
   position: relative;
   top: 180px;
   font-size: 1.2rem;
@@ -590,13 +590,13 @@ body section #tabcontainer .bookshelf .shelf .loc p {
   display: flex;
 }
 
-body section #tabcontainer .bookshelf .shelf .loc span {
+body section #tabcontainer .albumshelf .shelf .loc span {
   position: relative;
   top: 180px;
   font-size: 1rem;
 }
 
-body section #tabcontainer .bookshelf .shelf .loc img {
+body section #tabcontainer .albumshelf .shelf .loc img {
   cursor: pointer;
   position: relative;
   top: 160px;
@@ -605,15 +605,15 @@ body section #tabcontainer .bookshelf .shelf .loc img {
   max-width: 40px;
 }
 
-body section #tabcontainer .bookshelf .shelf .loc > div {
+body section #tabcontainer .albumshelf .shelf .loc > div {
   width: 25%;
   height: 100%;
   background-size: contain;
   float: left;
 }
 
-body section #tabcontainer .bookshelf .sample,
-body section #tabcontainer .bookshelf-row .sample {
+body section #tabcontainer .albumshelf .sample,
+body section #tabcontainer .albumshelf-row .sample {
   margin: auto;
   position: relative;
   z-index: 1;
@@ -621,8 +621,8 @@ body section #tabcontainer .bookshelf-row .sample {
           box-shadow: 2px 2px 5px rgba(0, 0, 0, 0.6);
 }
 
-body section #tabcontainer .bookshelf .book1,
-body section #tabcontainer .bookshelf-row .book1 {
+body section #tabcontainer .albumshelf .album1,
+body section #tabcontainer .albumshelf-row .album1 {
   background-image: url("../img/collection/album1.jpg");
   background-size: 100%;
   width: 200px;
@@ -631,8 +631,8 @@ body section #tabcontainer .bookshelf-row .book1 {
   bottom: 340px;
 }
 
-body section #tabcontainer .bookshelf .book2,
-body section #tabcontainer .bookshelf-row .book2 {
+body section #tabcontainer .albumshelf .album2,
+body section #tabcontainer .albumshelf-row .album2 {
   background-image: url("../img/collection/album2.jpg");
   background-size: 100%;
   width: 200px;
@@ -641,8 +641,8 @@ body section #tabcontainer .bookshelf-row .book2 {
   bottom: 340px;
 }
 
-body section #tabcontainer .bookshelf .book3,
-body section #tabcontainer .bookshelf-row .book3 {
+body section #tabcontainer .albumshelf .album3,
+body section #tabcontainer .albumshelf-row .album3 {
   background-image: url("../img/collection/album3.jpg");
   background-size: 100%;
   width: 200px;
@@ -651,8 +651,8 @@ body section #tabcontainer .bookshelf-row .book3 {
   bottom: 340px;
 }
 
-body section #tabcontainer .bookshelf .book4,
-body section #tabcontainer .bookshelf-row .book4 {
+body section #tabcontainer .albumshelf .album4,
+body section #tabcontainer .albumshelf-row .album4 {
   background-image: url("../img/collection/album4.jpg");
   background-size: 100%;
   width: 200px;
@@ -661,8 +661,8 @@ body section #tabcontainer .bookshelf-row .book4 {
   bottom: 340px;
 }
 
-body section #tabcontainer .bookshelf .book5,
-body section #tabcontainer .bookshelf-row .book5 {
+body section #tabcontainer .albumshelf .album5,
+body section #tabcontainer .albumshelf-row .album5 {
   background-image: url("../img/collection/album5.jpg");
   background-size: 100%;
   width: 200px;
@@ -671,8 +671,8 @@ body section #tabcontainer .bookshelf-row .book5 {
   bottom: 340px;
 }
 
-body section #tabcontainer .bookshelf .book6,
-body section #tabcontainer .bookshelf-row .book6 {
+body section #tabcontainer .albumshelf .album6,
+body section #tabcontainer .albumshelf-row .album6 {
   background-image: url("../img/collection/album6.jpg");
   background-size: 100%;
   width: 200px;
@@ -681,8 +681,8 @@ body section #tabcontainer .bookshelf-row .book6 {
   bottom: 340px;
 }
 
-body section #tabcontainer .bookshelf .book7,
-body section #tabcontainer .bookshelf-row .book7 {
+body section #tabcontainer .albumshelf .album7,
+body section #tabcontainer .albumshelf-row .album7 {
   background-image: url("../img/collection/album7.jpg");
   background-size: 100%;
   width: 200px;
@@ -691,8 +691,8 @@ body section #tabcontainer .bookshelf-row .book7 {
   bottom: 340px;
 }
 
-body section #tabcontainer .bookshelf .book8,
-body section #tabcontainer .bookshelf-row .book8 {
+body section #tabcontainer .albumshelf .album8,
+body section #tabcontainer .albumshelf-row .album8 {
   background-image: url("../img/collection/album8.jpg");
   background-size: 100%;
   width: 200px;
@@ -701,8 +701,8 @@ body section #tabcontainer .bookshelf-row .book8 {
   bottom: 340px;
 }
 
-body section #tabcontainer .bookshelf .book9,
-body section #tabcontainer .bookshelf-row .book9 {
+body section #tabcontainer .albumshelf .album9,
+body section #tabcontainer .albumshelf-row .album9 {
   background-image: url("../img/collection/album9.jpg");
   background-size: 100%;
   width: 200px;
@@ -711,8 +711,8 @@ body section #tabcontainer .bookshelf-row .book9 {
   bottom: 340px;
 }
 
-body section #tabcontainer .bookshelf .book10,
-body section #tabcontainer .bookshelf-row .book10 {
+body section #tabcontainer .albumshelf .album10,
+body section #tabcontainer .albumshelf-row .album10 {
   background-image: url("../img/collection/album10.jpg");
   background-size: 100%;
   width: 200px;
