@@ -92,7 +92,7 @@ body{
             display: block;
             margin-top: 10px;
             &:hover{
-                transition: scale(1.1);
+                transform: scale(1.1);
             }
         }
         form {

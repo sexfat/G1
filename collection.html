@@ -5,11 +5,13 @@
 	<meta name="viewport" content="width=device-width, initial-scale=1.0">
 	<meta http-equiv="X-UA-Compatible" content="ie=edge">
   <title>Document</title>
+  <link rel="stylesheet" href="./css/collection.css">
   <link rel="stylesheet" href="./css/nav_bar.css">
   <link rel="stylesheet" href="./css/public.css"> 
-  <link rel="stylesheet" href="./css/collection.css">
+  
   <script src="https://cdnjs.cloudflare.com/ajax/libs/vue/2.6.10/vue.js"></script>
-
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
+    
 </head>
 <body>
   <div id="app">
@@ -119,17 +121,87 @@
 <section>
     <div class="radio">
         <img src="./img/collection/radio.png" alt="">
+        <div class="eyes1">
+            <img class="closeeyes1"src="./img/collection/closeeye.png" alt="">
+            <img class="closeeyes2"src="./img/collection/closeeye.png" alt="">
+            <img class="closeeyes3"src="./img/collection/closeeye.png" alt="">
+            <img class="closeeyes4"src="./img/collection/closeeye.png" alt="">
+        </div>
     </div>
-    <img class="closeeyes1"src="./img/collection/closeeye.png" alt="">
-    <!-- <img class="openeyes1" src="./img/collection/openeye.png" alt="">
-    <img class="closeeyes2"src="./img/collection/closeeye.png" alt="">
-    <img class="openeyes2" src="./img/collection/openeye.png" alt="">
-    <img class="closeeyes3"src="./img/collection/closeeye.png" alt="">
-    <img class="openeyes3" src="./img/collection/openeye.png" alt="">
-    <img class="closeeyes4"src="./img/collection/closeeye.png" alt="">
-    <img class="openeyes4" src="./img/collection/openeye.png" alt=""> -->
+    <script>
+        $(".closeeyes1").click(function(){
+            $(".closeeyes1").attr('src','./img/collection/openeye.png');
+            $(".closeeyes2").attr('src','./img/collection/closeeye.png'); 
+            $(".closeeyes3").attr('src','./img/collection/closeeye.png'); 
+            $(".closeeyes4").attr('src','./img/collection/closeeye.png');  
+        });
+    </script>
+    <script>
+        $(".closeeyes2").click(function(){
+            $(".closeeyes2").attr('src','./img/collection/openeye.png');
+            $(".closeeyes1").attr('src','./img/collection/closeeye.png'); 
+            $(".closeeyes3").attr('src','./img/collection/closeeye.png'); 
+            $(".closeeyes4").attr('src','./img/collection/closeeye.png');
+        });
+    </script>
+        <script>
+            $(".closeeyes3").click(function(){
+                $(".closeeyes3").attr('src','./img/collection/openeye.png');
+                $(".closeeyes1").attr('src','./img/collection/closeeye.png'); 
+                $(".closeeyes2").attr('src','./img/collection/closeeye.png'); 
+                $(".closeeyes4").attr('src','./img/collection/closeeye.png');
+            });
+        </script>
+            <script>
+                $(".closeeyes4").click(function(){
+                    $(".closeeyes4").attr('src','./img/collection/openeye.png');
+                    $(".closeeyes1").attr('src','./img/collection/closeeye.png'); 
+                    $(".closeeyes2").attr('src','./img/collection/closeeye.png'); 
+                    $(".closeeyes3").attr('src','./img/collection/closeeye.png');
+                });
+            </script>
+
+    <div id="tabcontainer">
+        <ul class="tabtitle">
+            <li><a class="tabtitlechange1" href="#tab01">Favorite</a></li>
+            <li><a class="tabtitlechange2" href="#tab02">Trap</a></li>
+            <li><a class="tabtitlechange3" href="#tab03"><img src="./img/collection/all.png" alt=""></a></li>
+            <li><a class="tabtitlechange4" href="#tab04">House</a></li>
+        </ul>
+        <div id="tab01" class="tabinner">
+            <p>tab01的內容</p>
+        </div>
+        <div id="tab02" class="tabinner">
+            <p>tab02的內容</p>
+        </div>
+        <div id="tab03" class="tabinner">
+            <p>tab03的內容</p>
+        </div>
+        <div id="tab04" class="tabinner">
+            <p>tab04的內容</p>
+        </div>
     </div>
-    <div></div>
+    <script>
+        $(function(){
+    var $li = $('ul.tabtitle li');
+        $($li. eq(0) .addClass('active').find('a').attr('href')).siblings('.tabinner').hide();
+        $li.click(function(){
+            $($(this).find('a'). attr ('href')).show().siblings ('.tabinner').hide();
+            $(this).addClass('active'). siblings ('.active').removeClass('active');
+            $(".closeeyes1").attr('src','./img/collection/openeye.png');
+            $(".closeeyes2").attr('src','./img/collection/closeeye.png'); 
+            $(".closeeyes3").attr('src','./img/collection/closeeye.png'); 
+            $(".closeeyes4").attr('src','./img/collection/closeeye.png');
+        });
+    });
+    </script>
+    <script>
+        $(".tabtitlechange1").click(function(){
+    $(".tabtitlechange1").replaceWith(document.createElement('img'));
+    var e = document.createElement ("img");
+    e.attr('src','./img/collection/closeeye.png');
+  });
+    </script>
 </section>
 <script>
     let vm = new Vue({
