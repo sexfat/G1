@@ -1,0 +1,675 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1.0">
+	<meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+    <link rel="stylesheet" href="./css/collection.css">
+    <link rel="stylesheet" href="./css/nav_bar.css">
+    <link rel="stylesheet" href="./css/public.css"> 
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/vue/2.6.10/vue.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
+</head>
+<body>
+<div id="app">
+    <div class="nav_bar flexbox">
+        <div class="hamburger" @click="hamburger_click">
+            <div class="hamburger-box">
+                <div class="hamburger-inner"></div>
+            </div>
+        </div>
+        <div class="mobile_list" @click="stopPropagation">
+            <div class="paint_border"></div>
+            <ul>
+                <li class="REMIX flexbox">
+                    <a href="">
+                    </a>
+                </li>
+                <li class="COLLECTION flexbox">
+                    <a href="">
+                    </a>
+                </li>
+                <li class="ACTIVITY flexbox">
+                    <a href="">
+                    </a>
+                </li>
+                <li class="LIBRARY flexbox">
+                    <a href="">
+                    </a>
+                </li>
+            </ul>
+        </div>
+        <div class="logo_container">
+            <a href="">
+                <div class="logo"></div>
+            </a>
+        </div>
+        <ul class="main_list flexbox">
+            <li class="REMIX flexbox">
+                <a href="">
+                </a>
+            </li>
+            <li class="COLLECTION flexbox">
+                <a href="">
+                </a>
+            </li>
+            <li class="ACTIVITY flexbox">
+                <a href="">
+                </a>
+            </li>
+            <li class="LIBRARY flexbox">
+                <a href="">
+                </a>
+            </li>
+        </ul>
+        <div class="search_bt" @click="search_bt_click">
+            <a href="#"></a>
+        </div>
+        <div class="search_bar">
+            <input class="search" type="text" />
+            <div class="tag_container">
+            </div>
+        </div>
+        <div class="mem_bt" @click="mem_bt_click">
+            <a href="#"></a>
+        </div>
+        <div class="mem_list" @click="stopPropagation">
+            <div class="paint_border"></div>
+            <ul>
+                <li>
+                    <a href="">
+                        <h4>Profile</h4>
+                    </a>
+                </li>
+                <li>
+                    <a href="">
+                        <h4>Favorite</h4>
+                    </a>
+                </li>
+                <li>
+                    <a href="">
+                        <h4>
+                            Song Upload
+                            <br />&amp; Remove
+                        </h4>
+                    </a>
+                </li>
+                <li>
+                    <a href="">
+                        <h4>
+                            Store Value
+                            <br />&amp;Store Record
+                        </h4>
+                    </a>
+                </li>
+                <li>
+                    <a href="">
+                        <h4>Donate Record</h4>
+                    </a>
+                </li>
+            </ul>
+        </div>
+    </div>
+</div>
+<header>
+    <img src="./img/collection/colltitle.png" alt="">
+</header>
+<section>
+    <div class="radio">
+        <img src="./img/collection/radio.png" alt="">
+        <div class="eyes1">
+            <img class="closeeyes1"src="./img/collection/closeeye.png" alt="">
+            <img class="closeeyes2"src="./img/collection/closeeye.png" alt="">
+            <img class="closeeyes3"src="./img/collection/closeeye.png" alt="">
+            <img class="closeeyes4"src="./img/collection/closeeye.png" alt="">
+        </div>
+    </div>
+    <script>
+        $(".closeeyes1").click(function(){
+            $(".closeeyes1").attr('src','./img/collection/openeye.png');
+            $(".closeeyes2").attr('src','./img/collection/closeeye.png'); 
+            $(".closeeyes3").attr('src','./img/collection/closeeye.png'); 
+            $(".closeeyes4").attr('src','./img/collection/closeeye.png');  
+        });
+    </script>
+    <script>
+        $(".closeeyes2").click(function(){
+            $(".closeeyes2").attr('src','./img/collection/openeye.png');
+            $(".closeeyes1").attr('src','./img/collection/closeeye.png'); 
+            $(".closeeyes3").attr('src','./img/collection/closeeye.png'); 
+            $(".closeeyes4").attr('src','./img/collection/closeeye.png');
+        });
+    </script>
+    <script>
+            $(".closeeyes3").click(function(){
+                $(".closeeyes3").attr('src','./img/collection/openeye.png');
+                $(".closeeyes1").attr('src','./img/collection/closeeye.png'); 
+                $(".closeeyes2").attr('src','./img/collection/closeeye.png'); 
+                $(".closeeyes4").attr('src','./img/collection/closeeye.png');
+            });
+    </script>
+    <script>
+                $(".closeeyes4").click(function(){
+                    $(".closeeyes4").attr('src','./img/collection/openeye.png');
+                    $(".closeeyes1").attr('src','./img/collection/closeeye.png'); 
+                    $(".closeeyes2").attr('src','./img/collection/closeeye.png'); 
+                    $(".closeeyes3").attr('src','./img/collection/closeeye.png');
+                });
+    </script>
+    
+    <div id="tabcontainer">
+        <ul class="tabtitle">
+            <li><a class="tabtitlechange1" href="#tab01">Favorite</a></li>
+            <li><a class="tabtitlechange2" href="#tab02">Trap</a></li>
+            <li><a class="tabtitlechange3" href="#tab03">All</a></li>
+            <li><a class="tabtitlechange4" href="#tab04">House</a></li>
+        </ul>
+        <div id="tab01" class="tabinner">
+            <div class="albumshelf">
+                <div class="shelf">
+                    <div class="row-1">
+                        <div class="loc">
+                            <div>
+                                <div class="sample album1">
+                                    <img src="./img/collection/grayheart.png" id="heart" alt="">
+                                    <p>At th beginning</p>
+                                    <span>ONE OK ROCK</span>
+                                </div>
+                            </div>
+                            <div>
+                                <div class="sample album2" >
+                                    <img src="./img/collection/grayheart.png" id="heart" alt="">
+                                    <p>Want You Know</p>
+                                    <span>Zedd</span>
+                                </div>
+                            </div>
+                            <div>
+                                <div class="sample album3" >
+                                    <img src="./img/collection/grayheart.png" id="heart" alt="">
+                                    <p>Don't Look Down</p>
+                                    <span>Martin Garrix</span>
+                                </div>
+                            </div>
+                            <div>
+                                <div class="sample album4" >
+                                    <img src="./img/collection/grayheart.png" id="heart" alt="">
+                                    <p>Outside</p>
+                                    <span>Calvin Harris</span>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="row-1">
+                        <div class="loc">
+                            <div> <div class="sample album5">
+                                <img src="./img/collection/grayheart.png" id="heart" alt="">
+                                <p> Lean On</p>
+                                <span>Major Lazer & DJ Snake</span>
+                            </div>
+                        </div>
+                            <div>
+                                <div class="sample album6">
+                                    <img src="./img/collection/grayheart.png" id="heart" alt="">
+                                    <p>Hey Mama</p>
+                                    <span>David Guetta</span>
+                                </div>
+                            </div>
+                            <div>
+                                <div class="sample album7">
+                                    <img src="./img/collection/grayheart.png" id="heart" alt="">
+                                    <p>Waiting For Love</p>
+                                    <span>Avicii </span>
+                                </div>
+                            </div>
+                            <div>
+                                <div class="sample album8">
+                                    <img src="./img/collection/grayheart.png" id="heart" alt="">
+                                    <p>Are Ü Now</p>
+                                    <span>Skrillex and Diplo </span>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="row-1">
+                        <div class="loc">
+                            <div>
+                                <div class="sample album9" >
+                                    <img src="./img/collection/grayheart.png" id="heart" alt="">
+                                    <p>Follow Me</p>
+                                    <span>Hardwell</span>
+                                </div>
+                            </div>
+                            <div>
+                                <div class="sample album10" >
+                                    <img src="./img/collection/grayheart.png" id="heart" alt="">
+                                    <p>Secrets</p>
+                                    <span>Tiësto & KSHMR</span>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div id="tab02" class="tabinner">
+            <div class="albumshelf">
+                <div class="shelf">
+                    <div class="row-1">
+                        <div class="loc">
+                            <div>
+                                <div class="sample album1">
+                                    <img src="./img/collection/grayheart.png" id="heart" alt="">
+                                    <p>At th beginning</p>
+                                    <span>ONE OK ROCK</span>
+                                </div>
+                            </div>
+                            <div>
+                                <div class="sample album2" >
+                                    <img src="./img/collection/grayheart.png" id="heart" alt="">
+                                    <p>Want You Know</p>
+                                    <span>Zedd</span>
+                                </div>
+                            </div>
+                            <div>
+                                <div class="sample album3" >
+                                    <img src="./img/collection/grayheart.png" id="heart" alt="">
+                                    <p>Don't Look Down</p>
+                                    <span>Martin Garrix</span>
+                                </div>
+                            </div>
+                            <div>
+                                <div class="sample album4" >
+                                    <img src="./img/collection/grayheart.png" id="heart" alt="">
+                                    <p>Outside</p>
+                                    <span>Calvin Harris</span>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="row-1">
+                        <div class="loc">
+                            <div> <div class="sample album5">
+                                <img src="./img/collection/grayheart.png" id="heart" alt="">
+                                <p> Lean On</p>
+                                <span>Major Lazer & DJ Snake</span>
+                            </div>
+                        </div>
+                            <div>
+                                <div class="sample album6">
+                                    <img src="./img/collection/grayheart.png" id="heart" alt="">
+                                    <p>Hey Mama</p>
+                                    <span>David Guetta</span>
+                                </div>
+                            </div>
+                            <div>
+                                <div class="sample album7">
+                                    <img src="./img/collection/grayheart.png" id="heart" alt="">
+                                    <p>Waiting For Love</p>
+                                    <span>Avicii </span>
+                                </div>
+                            </div>
+                            <div>
+                                <div class="sample album8">
+                                    <img src="./img/collection/grayheart.png" id="heart" alt="">
+                                    <p>Are Ü Now</p>
+                                    <span>Skrillex and Diplo </span>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="row-1">
+                        <div class="loc">
+                            <div>
+                                <div class="sample album9" >
+                                    <img src="./img/collection/grayheart.png" id="heart" alt="">
+                                    <p>Follow Me</p>
+                                    <span>Hardwell</span>
+                                </div>
+                            </div>
+                            <div>
+                                <div class="sample album10" >
+                                    <img src="./img/collection/grayheart.png" id="heart" alt="">
+                                    <p>Secrets</p>
+                                    <span>Tiësto & KSHMR</span>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div id="tab03" class="tabinner">
+            <div class="albumshelf">
+                <div class="shelf">
+                    <div class="row-1">
+                        <div class="loc">
+                            <div>
+                                <div class="sample album1">
+                                    <img src="./img/collection/grayheart.png" id="heart" alt="">
+                                    <p>At th beginning</p>
+                                    <span>ONE OK ROCK</span>
+                                </div>
+                            </div>
+                            <div>
+                                <div class="sample album2" >
+                                    <img src="./img/collection/grayheart.png" id="heart" alt="">
+                                    <p>Want You Know</p>
+                                    <span>Zedd</span>
+                                </div>
+                            </div>
+                            <div>
+                                <div class="sample album3" >
+                                    <img src="./img/collection/grayheart.png" id="heart" alt="">
+                                    <p>Don't Look Down</p>
+                                    <span>Martin Garrix</span>
+                                </div>
+                            </div>
+                            <div>
+                                <div class="sample album4" >
+                                    <img src="./img/collection/grayheart.png" id="heart" alt="">
+                                    <p>Outside</p>
+                                    <span>Calvin Harris</span>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="row-1">
+                        <div class="loc">
+                            <div> <div class="sample album5">
+                                <img src="./img/collection/grayheart.png" id="heart" alt="">
+                                <p> Lean On</p>
+                                <span>Major Lazer & DJ Snake</span>
+                            </div>
+                        </div>
+                            <div>
+                                <div class="sample album6">
+                                    <img src="./img/collection/grayheart.png" id="heart" alt="">
+                                    <p>Hey Mama</p>
+                                    <span>David Guetta</span>
+                                </div>
+                            </div>
+                            <div>
+                                <div class="sample album7">
+                                    <img src="./img/collection/grayheart.png" id="heart" alt="">
+                                    <p>Waiting For Love</p>
+                                    <span>Avicii </span>
+                                </div>
+                            </div>
+                            <div>
+                                <div class="sample album8">
+                                    <img src="./img/collection/grayheart.png" id="heart" alt="">
+                                    <p>Are Ü Now</p>
+                                    <span>Skrillex and Diplo </span>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="row-1">
+                        <div class="loc">
+                            <div>
+                                <div class="sample album9" >
+                                    <img src="./img/collection/grayheart.png" id="heart" alt="">
+                                    <p>Follow Me</p>
+                                    <span>Hardwell</span>
+                                </div>
+                            </div>
+                            <div>
+                                <div class="sample album10" >
+                                    <img src="./img/collection/grayheart.png" id="heart" alt="">
+                                    <p>Secrets</p>
+                                    <span>Tiësto & KSHMR</span>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div id="tab04" class="tabinner">
+            <div class="albumshelf">
+                <div class="shelf">
+                    <div class="row-1">
+                        <div class="loc">
+                            <div>
+                                <div class="sample album1">
+                                    <img src="./img/collection/grayheart.png" id="heart" alt="">
+                                    <p>At th beginning</p>
+                                    <span>ONE OK ROCK</span>
+                                </div>
+                            </div>
+                            <div>
+                                <div class="sample album2" >
+                                    <img src="./img/collection/grayheart.png" id="heart" alt="">
+                                    <p>Want You Know</p>
+                                    <span>Zedd</span>
+                                </div>
+                            </div>
+                            <div>
+                                <div class="sample album3" >
+                                    <img src="./img/collection/grayheart.png" id="heart" alt="">
+                                    <p>Don't Look Down</p>
+                                    <span>Martin Garrix</span>
+                                </div>
+                            </div>
+                            <div>
+                                <div class="sample album4" >
+                                    <img src="./img/collection/grayheart.png" id="heart" alt="">
+                                    <p>Outside</p>
+                                    <span>Calvin Harris</span>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="row-1">
+                        <div class="loc">
+                            <div> <div class="sample album5">
+                                <img src="./img/collection/grayheart.png" id="heart" alt="">
+                                <p> Lean On</p>
+                                <span>Major Lazer & DJ Snake</span>
+                            </div>
+                        </div>
+                            <div>
+                                <div class="sample album6">
+                                    <img src="./img/collection/grayheart.png" id="heart" alt="">
+                                    <p>Hey Mama</p>
+                                    <span>David Guetta</span>
+                                </div>
+                            </div>
+                            <div>
+                                <div class="sample album7">
+                                    <img src="./img/collection/grayheart.png" id="heart" alt="">
+                                    <p>Waiting For Love</p>
+                                    <span>Avicii </span>
+                                </div>
+                            </div>
+                            <div>
+                                <div class="sample album8">
+                                    <img src="./img/collection/grayheart.png" id="heart" alt="">
+                                    <p>Are Ü Now</p>
+                                    <span>Skrillex and Diplo </span>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="row-1">
+                        <div class="loc">
+                            <div>
+                                <div class="sample album9" >
+                                    <img src="./img/collection/grayheart.png" id="heart" alt="">
+                                    <p>Follow Me</p>
+                                    <span>Hardwell</span>
+                                </div>
+                            </div>
+                            <div>
+                                <div class="sample album10" >
+                                    <img src="./img/collection/grayheart.png" id="heart" alt="">
+                                    <p>Secrets</p>
+                                    <span>Tiësto & KSHMR</span>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+        <!-- <script>
+function switchFavorite(){
+    var heart = document.getElementById("heart");
+    if( heart.title == "add" ){
+        heart.src = "./img/collection/redheart.png";
+        heart.title = "cancel";
+    }else{
+        heart.src = "./img/collection/grayheart.png";
+        heart.title == "add";
+    }
+
+}
+
+function init(){
+   document.getElementById("heart").onclick = switchFavorite;
+ 
+}
+window.onload = init;
+</script> -->
+
+    <script>
+        $(function(){
+        var $li = $('ul.tabtitle li');
+        $($li. eq(0) .addClass('active').find('a').attr('href')).siblings('.tabinner').hide();
+        $li.click(function(){
+            $($(this).find('a'). attr ('href')).show().siblings ('.tabinner').hide();
+            $(this).addClass('active'). siblings ('.active').removeClass('active');
+        });
+    });
+    </script>
+    <!-- <script>
+        $(".tabtitlechange1").click(function(){
+    $(".tabtitlechange1").replaceWith(document.createElement('img'));
+    var e = document.createElement ("img");
+    e.attr('src','./img/collection/closeeye.png');
+  });
+    </script> -->
+</section>
+
+
+<script>
+    let vm = new Vue({
+        el: "#app",
+        data: {
+            search_bar: false,
+            mem_list: false,
+            mobile_list: false,
+        },
+        methods: {
+            hamburger_click(e) {
+                // e.stopPropagation();
+                document
+                    .querySelector(".hamburger").classList.toggle("is-active");
+            },
+            search_bt_click(e) {
+                e.stopPropagation();
+                if (this.search_bar == false) {
+                    this.search_bar = true;
+                    this.mem_list = false;
+                    this.mobile_list = false;
+                    document
+                        .querySelector(".search_bar")
+                        .setAttribute("style", "height: 240px; filter: opacity(1);");
+                    document.querySelector("input.search").focus();
+                    document
+                        .querySelector(".mem_list")
+                        .setAttribute("style", "transform: translateX(270px); filter: opacity(0);");
+                    document
+                        .querySelector(".mobile_list")
+                        .setAttribute("style", "transform: translateX(-270px); filter: opacity(0);");
+                } else {
+                    this.search_bar = false;
+                    document
+                        .querySelector(".search_bar")
+                        .setAttribute("style", "height: 0px; filter: opacity(0);");
+                    document.querySelector("input.search").blur();
+                    document
+                        .querySelector(".mem_list")
+                        .setAttribute("style", "transform: translateX(270px); filter: opacity(0);");
+                    document
+                        .querySelector(".mobile_list")
+                        .setAttribute("style", "transform: translateX(-270px); filter: opacity(0);");
+                }
+            },
+
+            stopPropagation(e) {
+                e.stopPropagation();
+            },
+
+            mem_bt_click(e) {
+                e.stopPropagation();
+                if (this.mem_list == false) {
+                    this.mem_list = true;
+                    this.search_bar = false;
+                    this.mobile_list = false;
+                    document
+                        .querySelector(".mem_list")
+                        .setAttribute("style", "transform: translateX(0); filter: opacity(1);");
+                    document
+                        .querySelector(".search_bar")
+                        .setAttribute("style", "height: 0px; filter: opacity(0);");
+                    document
+                        .querySelector(".mobile_list")
+                        .setAttribute("style", "transform: translateX(-270px); filter: opacity(0);");
+                } else {
+                    this.mem_list = false;
+                    document
+                        .querySelector(".mem_list")
+                        .setAttribute("style", "transform: translateX(270px); filter: opacity(0);");
+                    document
+                        .querySelector(".search_bar")
+                        .setAttribute("style", "height: 0px; filter: opacity(0);");
+                    document
+                        .querySelector(".mobile_list")
+                        .setAttribute("style", "transform: translateX(-270px); filter: opacity(0);");
+                }
+            },
+
+            hamburger_click(e) {
+                e.stopPropagation();
+                if (this.mobile_list == false) {
+                    this.mobile_list = true;
+                    this.mem_list = false;
+                    this.search_bar = false;
+                    document
+                        .querySelector(".mobile_list")
+                        .setAttribute("style", "transform: translateX(0); filter: opacity(1);");
+                    document
+                        .querySelector(".mem_list")
+                        .setAttribute("style", "transform: translateX(270px); filter: opacity(0);");
+                    document
+                        .querySelector(".search_bar")
+                        .setAttribute("style", "height: 0px; filter: opacity(0);");
+                } else {
+                    this.mobile_list = false;
+                    document
+                        .querySelector(".mobile_list")
+                        .setAttribute("style", "transform: translateX(-270px); filter: opacity(0);");
+                    document
+                        .querySelector(".mem_list")
+                        .setAttribute("style", "transform: translateX(270px); filter: opacity(0);");
+                    document
+                        .querySelector(".search_bar")
+                        .setAttribute("style", "height: 0px; filter: opacity(0);");
+                }
+            },
+        }
+    });
+</script>
+</body>
+</htm
