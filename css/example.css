@@ -1,2 +1,135 @@
-div.nav_bar{position:fixed;z-index:99;width:100%;height:66px;-webkit-box-align:center;-ms-flex-align:center;align-items:center;background:#FFFFFF}div.nav_bar .logo{position:absolute;left:10px;width:100px;height:55px;background:url(../img/public/logo_s.svg) center center no-repeat}div.nav_bar div.main_list{position:absolute;left:110px;width:600px;height:66px;-ms-flex-pack:distribute;justify-content:space-around;-webkit-box-align:center;-ms-flex-align:center;align-items:center}div.nav_bar div.main_list a{display:inline-block}div.nav_bar div.main_list a h4{padding:15px 12px}div.nav_bar label.search{position:absolute;right:80px;display:inline-block;width:50px;height:50px;-webkit-transition:all 0.5s;transition:all 0.5s}div.nav_bar label.search .search_icon{position:absolute;z-index:1;left:0;width:50px;height:50px;background:url(../img/public/search_icon.png);background-size:cover;-webkit-transition:all 0.5s;transition:all 0.5s}div.nav_bar label.search .search_bar{width:50px;height:50px;border:1px solid gray;border-radius:5px;text-indent:50px;-webkit-filter:opacity(0);filter:opacity(0);-webkit-transition:all 0.5s;transition:all 0.5s}div.nav_bar label.search .tag_container{position:absolute;top:50px;right:0;width:50px;height:0px;border:1px solid gray;border-radius:5px;-webkit-filter:opacity(0);filter:opacity(0);-webkit-transition:all 0.5s;transition:all 0.5s;overflow:hidden}div.nav_bar .mem_bt{position:absolute;right:10px;width:50px;height:50px;background:url(../img/public/user_icon.png);background-size:cover}div.nav_bar .mem_list{position:absolute;top:55px;height:0;right:0;overflow:hidden;-webkit-transition:all 0.5s;transition:all 0.5s}div.nav_bar .mem_list a{display:block;margin:5px 10px;text-align:end}header{position:relative;height:300px}header h1{position:absolute;top:150px;width:100%;font-weight:bold;text-align:center}header .header_bg{position:absolute;top:60px;z-index:-1;width:100%;height:204px;background:url(../img/public/header_bg.png) center center no-repeat}
+div.nav_bar {
+  position: fixed;
+  z-index: 99;
+  width: 100%;
+  height: 66px;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+  background: #FFFFFF;
+}
+
+div.nav_bar .logo {
+  position: absolute;
+  left: 10px;
+  width: 100px;
+  height: 55px;
+  background: url(../img/public/logo_s.svg) center center no-repeat;
+}
+
+div.nav_bar div.main_list {
+  position: absolute;
+  left: 110px;
+  width: 600px;
+  height: 66px;
+  -ms-flex-pack: distribute;
+      justify-content: space-around;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+}
+
+div.nav_bar div.main_list a {
+  display: inline-block;
+}
+
+div.nav_bar div.main_list a h4 {
+  padding: 15px 12px;
+}
+
+div.nav_bar label.search {
+  position: absolute;
+  right: 80px;
+  display: inline-block;
+  width: 50px;
+  height: 50px;
+  -webkit-transition: all 0.5s;
+  transition: all 0.5s;
+}
+
+div.nav_bar label.search .search_icon {
+  position: absolute;
+  z-index: 1;
+  left: 0;
+  width: 50px;
+  height: 50px;
+  background: url(../img/public/search_icon.png);
+  background-size: cover;
+  -webkit-transition: all 0.5s;
+  transition: all 0.5s;
+}
+
+div.nav_bar label.search .search_bar {
+  width: 50px;
+  height: 50px;
+  border: 1px solid gray;
+  border-radius: 5px;
+  text-indent: 50px;
+  -webkit-filter: opacity(0);
+          filter: opacity(0);
+  -webkit-transition: all 0.5s;
+  transition: all 0.5s;
+}
+
+div.nav_bar label.search .tag_container {
+  position: absolute;
+  top: 50px;
+  right: 0;
+  width: 50px;
+  height: 0px;
+  border: 1px solid gray;
+  border-radius: 5px;
+  -webkit-filter: opacity(0);
+          filter: opacity(0);
+  -webkit-transition: all 0.5s;
+  transition: all 0.5s;
+  overflow: hidden;
+}
+
+div.nav_bar .mem_bt {
+  position: absolute;
+  right: 10px;
+  width: 50px;
+  height: 50px;
+  background: url(../img/public/user_icon.png);
+  background-size: cover;
+}
+
+div.nav_bar .mem_list {
+  position: absolute;
+  top: 55px;
+  height: 0;
+  right: 0;
+  overflow: hidden;
+  -webkit-transition: all 0.5s;
+  transition: all 0.5s;
+}
+
+div.nav_bar .mem_list a {
+  display: block;
+  margin: 5px 10px;
+  text-align: end;
+}
+
+header {
+  position: relative;
+  height: 300px;
+}
+
+header h1 {
+  position: absolute;
+  top: 150px;
+  width: 100%;
+  font-weight: bold;
+  text-align: center;
+}
+
+header .header_bg {
+  position: absolute;
+  top: 60px;
+  z-index: -1;
+  width: 100%;
+  height: 204px;
+  background: url(../img/public/header_bg.png) center center no-repeat;
+}
 /*# sourceMappingURL=example.css.map */

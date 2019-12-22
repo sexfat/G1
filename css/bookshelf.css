@@ -489,207 +489,146 @@ div.nav_bar .mem_list li:not(:nth-child(5))::after {
   }
 }
 
-body {
-  height: 100vh;
-  background-image: url(../img/register/login.jpg);
-  background-size: cover;
-  background-position: center;
-}
-
-body .signupcontainer {
-  margin: 0 auto;
-  width: 900px;
-  height: 600px;
-  position: relative;
-  top: 230px;
-}
-
-body .signupcontainer .greenblock {
-  background-color: #d0d6d6;
-  width: 100%;
-  height: 600px;
-}
-
-body .signupcontainer .whiteform {
-  position: absolute;
-  top: -10%;
-  left: 7%;
-  background-color: #fff;
-  border: 1px solid #aaa;
-  width: 430px;
-  height: 700px;
-  -webkit-box-shadow: 2px 0 10px rgba(0, 0, 0, 0.1);
-          box-shadow: 2px 0 10px rgba(0, 0, 0, 0.1);
-  -webkit-transition: all .5s ease-in-out;
-  transition: all .5s ease-in-out;
-  z-index: 2;
-}
-
-body .signupcontainer .displaynone {
+.bookshelf-row {
   display: none;
-  -webkit-transition: all .5s ease;
-  transition: all .5s ease;
 }
 
-body .signupcontainer h1 {
-  text-align: center;
-  margin-top: 55px;
+.bookshelf {
+  -webkit-transition: all 1s;
+  transition: all 1s;
 }
 
-body .signupcontainer .leftbox, body .signupcontainer .rightbox {
-  position: absolute;
-  width: 50%;
-  -webkit-transition: 1s all ease;
-  transition: 1s all ease;
-}
-
-body .signupcontainer .leftbox h2, body .signupcontainer .rightbox h2 {
-  text-align: center;
-  margin: 17px;
-}
-
-body .signupcontainer .leftbox {
-  left: -2%;
-}
-
-body .signupcontainer .rightbox {
-  right: -2%;
-}
-
-body .signupcontainer .signin a {
-  font-size: 0.6rem;
-  margin-left: 170px;
-  margin-bottom: 90px;
-}
-
-body .signupcontainer .emailinput {
-  margin-bottom: 30px;
-}
-
-body .signupcontainer input {
-  background-color: #d0d6d6;
-  padding: 15px;
-  border: none;
-  padding: 12px;
-}
-
-body .signupcontainer .signin form {
-  padding-top: 35px;
-}
-
-body .signupcontainer .signin form button {
-  margin-top: 82px;
-}
-
-body .signupcontainer .signup button {
-  margin-top: 92px;
-}
-
-body .signupcontainer button {
-  background-color: #f1c40f;
-  font-size: 0.8rem;
-  padding: 10px 30px;
-  border: 1px solid #f1c40f;
-  border-radius: 5px;
-  color: #fff;
-  font-weight: bold;
-  cursor: pointer;
-  border-radius: 10px;
-  margin: auto;
-  display: block;
-  margin-top: 10px;
-}
-
-body .signupcontainer button:hover {
-  -webkit-transform: scale(1.1);
-          transform: scale(1.1);
-}
-
-body .signupcontainer form {
+.bookshelf {
   display: -webkit-box;
   display: -ms-flexbox;
   display: flex;
-  -webkit-box-align: left;
-      -ms-flex-align: left;
-          align-items: left;
-  -webkit-box-orient: vertical;
-  -webkit-box-direction: normal;
-      -ms-flex-direction: column;
-          flex-direction: column;
-  margin: 30px 60px 60px 65px;
+  margin-top: 19vh;
+  -webkit-box-pack: center;
+      -ms-flex-pack: center;
+          justify-content: center;
 }
 
-body .signupcontainer .title {
-  font-size: 1.5em;
-  padding-top: 10px;
+.bookshelf .shelf {
+  width: 70%;
+  height: 440px;
 }
 
-body .signupcontainer .title span {
-  color: #fff;
+.bookshelf .shelf .row-1 {
+  position: relative;
+  width: 100%;
+  height: 158px;
 }
 
-body .signupcontainer .account {
-  margin-top: 45%;
+.bookshelf .shelf .row-2 {
+  position: relative;
+  margin-top: 20px;
+  width: 100%;
+  height: 164px;
 }
 
-body .signupcontainer p {
-  color: #333;
-  text-align: center;
-  padding-top: 150px;
+.bookshelf .shelf .row-1:after {
+  background: url("https://netzulim.org/R/OrgR/Library/sherut/shelfR.png");
+  background-size: 100%;
+  background-repeat: no-repeat;
+  background-position: bottom left;
+  width: 100%;
+  height: 210px;
+  display: block;
+  content: "";
 }
 
-body .signupcontainer .flower {
+.bookshelf .shelf .row-2:after {
+  background: url("https://netzulim.org/R/OrgR/Library/sherut/shelfR.png");
+  background-size: 100%;
+  background-repeat: no-repeat;
+  background-position: bottom left;
+  width: 100%;
+  height: 216px;
+  display: block;
+  content: "";
+}
+
+.bookshelf .shelf .loc {
   position: absolute;
-  height: 320px;
-  top: 25%;
-  left: 25%;
+  bottom: 0;
+  width: 100%;
 }
 
-body .signupcontainer .smaller {
-  height: 320px;
-  top: 25%;
-  left: 28%;
+.bookshelf .shelf .loc > div {
+  width: 33%;
+  height: 100%;
+  background-size: contain;
+  float: left;
 }
 
-body .signupcontainer input {
-  width: 90%;
+.bookshelf .sample,
+.bookshelf-row .sample {
+  margin: auto;
+  position: relative;
+  z-index: 1;
+  -webkit-box-shadow: 2px 2px 5px rgba(0, 0, 0, 0.6);
+          box-shadow: 2px 2px 5px rgba(0, 0, 0, 0.6);
+  -webkit-transition: -webkit-transform 0.1s;
+  transition: -webkit-transform 0.1s;
+  transition: transform 0.1s;
+  transition: transform 0.1s, -webkit-transform 0.1s;
+  -webkit-transform: translate(0, 0);
+          transform: translate(0, 0);
 }
 
-body .signupcontainer input::-webkit-input-placeholder {
-  font-size: 1.3em;
+.sample:hover {
+  z-index: 2;
+  cursor: pointer;
+  background-color: white;
+  -webkit-transform: scale3d(1.1, 1.1, 1) translate3d(0, -5px, 0);
+          transform: scale3d(1.1, 1.1, 1) translate3d(0, -5px, 0);
 }
 
-body .signupcontainer input:-ms-input-placeholder {
-  font-size: 1.3em;
+.bookshelf .book1,
+.bookshelf-row .book1 {
+  background-image: url("https://images.booksense.com/images/books/134/800/FC9780394800134.JPG");
+  background-size: 83px 115px;
+  width: 83px;
+  height: 115px;
 }
 
-body .signupcontainer input::-ms-input-placeholder {
-  font-size: 1.3em;
+.bookshelf .book2,
+.bookshelf-row .book2 {
+  background-image: url("https://images.booksense.com/images/books/899/800/FC9780394800899.JPG");
+  background-size: 85px 115px;
+  width: 85px;
+  height: 115px;
 }
 
-body .signupcontainer input::placeholder {
-  font-size: 1.3em;
+.bookshelf .book3,
+.bookshelf-row .book3 {
+  background-image: url("https://images.booksense.com/images/books/783/800/FC9780394800783.JPG");
+  background-size: 84px 115px;
+  width: 84px;
+  height: 115px;
 }
 
-body .signupcontainer input:focus {
-  font-size: 1em;
-  -webkit-transition: .8s all ease;
-  transition: .8s all ease;
+.bookshelf .book4,
+.bookshelf-row .book4 {
+  background-image: url("http://ecx.images-amazon.com/images/I/51KXmt4Ur-L.jpg");
+  background-size: 91px 125px;
+  width: 91px;
+  height: 125px;
 }
 
-body .signupcontainer input:focus::-webkit-input-placeholder {
-  opacity: 0;
+.bookshelf .book5,
+.bookshelf-row .book5 {
+  background-image: url("https://toppsta.com/images/book-covers/9780007169917");
+  background-size: 91px 125px;
+  width: 91px;
+  height: 125px;
 }
 
-body .signupcontainer input:focus:-ms-input-placeholder {
-  opacity: 0;
+.bookshelf .book6,
+.bookshelf-row .book6 {
+  background-image: url("https://d1w7fb2mkkr3kw.cloudfront.net/assets/images/book/lrg/9780/0071/9780007158461.jpg");
+  background-size: 91px 125px;
+  width: 91px;
+  height: 125px;
 }
-
-body .signupcontainer input:focus::-ms-input-placeholder {
-  opacity: 0;
-}
-
-body .signupcontainer input:focus::placeholder {
-  opacity: 0;
-}
-/*# sourceMappingURL=login.css.map */
+/*# sourceMappingURL=bookshelf.css.map */

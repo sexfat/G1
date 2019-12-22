@@ -168,41 +168,114 @@
             <li><a class="tabtitlechange3" href="#tab03"><img src="./img/collection/all.png" alt=""></a></li>
             <li><a class="tabtitlechange4" href="#tab04">House</a></li>
         </ul>
-        <div id="tab01" class="tabinner">
-            <p>tab01的內容</p>
+        <div id="tab01" class="tabinner">tab1
+            <!-- <div class="bookshelf">
+                <div class="shelf">
+                    <div class="row-1">
+                        <div class="loc">
+                            <div>
+                                <div class="sample book1">
+                                    <img src="./img/collection/grayheart.png" id="heart" alt="">
+                                    <p>At th beginning</p>
+                                    <span>ONE OK ROCK</span>
+                                </div>
+                            </div>
+                            <div>
+                                <div class="sample book2" >
+                                    <img src="./img/collection/grayheart.png" id="heart" alt="">
+                                    <p>Want You Know</p>
+                                    <span>Zedd</span>
+                                </div>
+                            </div>
+                            <div>
+                                <div class="sample book3" >
+                                    <img src="./img/collection/grayheart.png" id="heart" alt="">
+                                    <p>Don't Look Down</p>
+                                    <span>Martin Garrix</span>
+                                </div>
+                            </div>
+                            <div>
+                                <div class="sample book4" >
+                                    <img src="./img/collection/grayheart.png" id="heart" alt="">
+                                    <p>Outside</p>
+                                    <span>Calvin Harris</span>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="row-1">
+                        <div class="loc">
+                            <div> <div class="sample book5"><img src="./img/collection/grayheart.png" id="heart" alt=""><p> Lean On</p><span>Major Lazer & DJ Snake</span></div> </div>
+                            <div> <div class="sample book6"><img src="./img/collection/grayheart.png" id="heart" alt=""><p>Hey Mama</p><span>David Guetta</span></div> </div>
+                            <div> <div class="sample book7"><img src="./img/collection/grayheart.png" id="heart" alt=""><p>Waiting For Love</p><span>Avicii </span></div> </div>
+                            <div> <div class="sample book8"><img src="./img/collection/grayheart.png" id="heart" alt=""><p>Are Ü Now</p><span>Skrillex and Diplo </span></div> </div>
+                        </div>
+                    </div>
+                    <div class="row-1">
+                        <div class="loc">
+                            <div> <div class="sample book9" ><img src="./img/collection/grayheart.png" id="heart" alt=""><p>Follow Me</p><span>Hardwell</span></div> </div>
+                            <div> <div class="sample book10" ><img src="./img/collection/grayheart.png" id="heart" alt=""><p>Secrets</p><span>Tiësto & KSHMR</span></div> </div>
+                        </div>
+                    </div>
+                        </div>
+                    </div>
+                </div>
+            </div> -->
         </div>
         <div id="tab02" class="tabinner">
-            <p>tab02的內容</p>
+            <p>tab2</p>
         </div>
         <div id="tab03" class="tabinner">
-            <p>tab03的內容</p>
+            <p>tab3</p>
         </div>
         <div id="tab04" class="tabinner">
-            <p>tab04的內容</p>
+            <p>tab4</p>
         </div>
     </div>
+        <!-- <script>
+function switchFavorite(){
+    var heart = document.getElementById("heart");
+    if( heart.title == "add" ){
+        heart.src = "./img/collection/redheart.png";
+        heart.title = "cancel";
+    }else{
+        heart.src = "./img/collection/grayheart.png";
+        heart.title == "add";
+    }
+
+}
+
+function init(){
+   document.getElementById("heart").onclick = switchFavorite;
+ 
+}
+window.onload = init;
+</script> -->
+
     <script>
         $(function(){
-    var $li = $('ul.tabtitle li');
+        var $li = $('ul.tabtitle li');
         $($li. eq(0) .addClass('active').find('a').attr('href')).siblings('.tabinner').hide();
         $li.click(function(){
             $($(this).find('a'). attr ('href')).show().siblings ('.tabinner').hide();
             $(this).addClass('active'). siblings ('.active').removeClass('active');
-            $(".closeeyes1").attr('src','./img/collection/openeye.png');
-            $(".closeeyes2").attr('src','./img/collection/closeeye.png'); 
-            $(".closeeyes3").attr('src','./img/collection/closeeye.png'); 
-            $(".closeeyes4").attr('src','./img/collection/closeeye.png');
+            // $(".closeeyes1").attr('src','./img/collection/openeye.png');
+            // $(".closeeyes2").attr('src','./img/collection/closeeye.png'); 
+            // $(".closeeyes3").attr('src','./img/collection/closeeye.png'); 
+            // $(".closeeyes4").attr('src','./img/collection/closeeye.png');
         });
     });
     </script>
-    <script>
+    <!-- <script>
         $(".tabtitlechange1").click(function(){
     $(".tabtitlechange1").replaceWith(document.createElement('img'));
     var e = document.createElement ("img");
     e.attr('src','./img/collection/closeeye.png');
   });
-    </script>
+    </script> -->
 </section>
+
+
 <script>
     let vm = new Vue({
         el: "#app",
@@ -313,4 +386,4 @@
     });
 </script>
 </body>
-</html>
+</htm
