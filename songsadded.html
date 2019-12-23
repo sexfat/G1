@@ -141,25 +141,27 @@
     </header>
 
     <section class="adds2">
-        <ul class="leftli">
+        <ol class="leftli">
             <li class="lif">&emsp;UPLOAD SONG</li>
-            <ul class="inside">
+            <ol class="inside">
                 <form action="" method="POST">
                     <article>
-                        <p>
+                        <p style="width: 100px;height: 100px;">
                             <img id="image" style="width: 300px;height: 300px;">
                         </p>
-                        <input type="file" name="" id="theFile" style="color: rgba(0, 0, 0, 0);">
+                        <img id="ff" style="width: 50px;height: 30px;" src="./img/songupload/button_edit.png">
+                        <input style="opacity:0;" type="file" name="" id="theFile" style="color: rgba(0, 0, 0, 0);">
+                        
                     </article>
                     <div>
                         <p>Song Title : <input type="text" style="border: 1px solid #d0d6d6;"></p>
                         <input type="file" name="" id="" style="border: 1px solid #d0d6d6;">
                         <br>
                         <br>
-                        <input type="checkbox" name="" id="">House&emsp;&emsp;&emsp;&ensp;&ensp;
+                        <input type="checkbox" name="" id=""> House&emsp;&emsp;&emsp;&ensp;&ensp;&ensp;
                         <input type="checkbox" style="border-radius: 5px;" name="" id="">Trap
                         <br>
-                        <input type="checkbox" name="" id="">#111111 &emsp;&emsp;&emsp;
+                        <input type="checkbox" name="" id="">#111111 &emsp;&emsp;&emsp; 
                         <input type="checkbox" name="" id="">#222222 &emsp;&emsp;&emsp;
                         <input type="checkbox" name="" id="">#333333
                         <br>
@@ -171,14 +173,15 @@
                             onClick="document.form.submit()" style="width:80px;height:50px;margin-left:50px;"></section>
                 </form>
 
-            </ul>
+            </ol>
 
             <li class="lif">&emsp;UPLOADED</li>
-            <ul class="inside2">
-                <li>two One</li>
-                <li>two Two</li>
-            </ul>
-        </ul>
+            <ol class="inside2">
+                <li>Andy Warhol - Because of you</li><button>．．．</button>
+                <li>Andy Warhol - Because of you</li><button>．．．</button>
+                <li>Andy Warhol - Because of you</li><button>．．．</button>
+            </ol>
+        </ol>
         <div class="uploadmic">
             <img src="./img/songupload/mic.png" alt="">
         </div>
@@ -322,16 +325,17 @@
             //設定DIV的高度跟隨螢幕變化而變化，類似於自適應
             $(".leftli").height(document.body.scrollHeight);
 
-            $(".leftli ul.inside2").hide();
+            $(".leftli ol.inside2").hide();
 
             //bind()為.leftli li的li生成點選事件
             $(".leftli li").bind("click", function () {
                 /**
-                .netx("ul")獲取同級的下一個ul元素
-                slideToggle(300)展開/關閉當前被點選的ul元素，300為速度，除了可以是數字還可以"slow"、"normal"、"fast"
-                siblings("ul")遍歷所有的ul元素
+                .netx("ol")獲取同級的下一個ol元素
+                slideToggle(300)展開/關閉當前被點選的ol元素，300為速度，除了可以是數字還可以"slow"、"normal"、"fast"
+                siblings("ol")遍歷所有的ul元素
                 **/
-                $(this).next("ul").slideToggle(300).siblings("ul").slideUp(300);
+                // $(this).next("ol").slideToggle(300).siblings("ol").slideUp(300);
+                $(this).next("ol").slideToggle(300).siblings("ol").slideUp(300);
             })
         });
     </script>
