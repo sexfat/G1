@@ -5,15 +5,18 @@
 }
 
 html {
-  font-size: 20px;
+  font-size: 18px;
 }
 
 body {
   margin: 0;
-  padding: 0;
   font-family: "Lucida Sans Unicode", Geneva, Verdana, sans-serif;
-  background: #fafaf1;
-  color: #333;
+  background: #FAFAF1;
+}
+
+#app {
+  width: 100%;
+  height: 100%;
 }
 
 .flexbox {
@@ -24,7 +27,7 @@ body {
 
 a {
   text-decoration: none;
-  color: #333;
+  color: #000;
 }
 
 h1,
@@ -33,7 +36,10 @@ h3,
 h4,
 h5,
 h6,
-p {
+p,
+title,
+section,
+.forget {
   margin: 0;
   padding: 0;
 }
@@ -44,9 +50,8 @@ h1 {
 }
 
 h2 {
-  /* 40px*/
+  /*40px*/
   font-size: 2rem;
-  /*副標的h2 font-weight:bold*/
 }
 
 h3 {
@@ -60,39 +65,35 @@ h4 {
 }
 
 p {
-  /*內文 20px*/
+  /*20px*/
   font-size: 1rem;
 }
 
-p.bigSmall {
-  /*大小 16px*/
+.title {
+  /*16px*/
   font-size: 0.8rem;
 }
 
-p.doubleSmall {
-  /*小小 14px*/
+.section {
+  /*14px*/
   font-size: 0.7rem;
 }
 
-p.forget {
-  /*旺季 12px*/
+.forget {
+  /*12px*/
   font-size: 0.6rem;
 }
 
-header {
-  height: 300px;
-  text-align: center;
-}
-
 .wrapper {
+  border: 1px solid red;
   max-width: 1500px;
   margin: 0 auto;
-  width: 100%;
 }
 
 /*燈箱寬*/
 .lightbox_s {
   width: 500px;
+  border: 1px green solid;
 }
 
 /*新手教學用*/
@@ -100,10 +101,28 @@ header {
   width: 1000px;
 }
 
-/*燈箱的遮罩顏色*/
-.lightCover {
-  background-color: #414141e6;
+/*燈箱裡的按鈕*/
+.lightbox_s .btn_s {
+  font-size: 0.7rem;
+  display: inline-block;
+  padding: 5px 8px;
+  margin: 20px auto;
+  background-color: #f1c40f6b;
+  border: 1.5px solid #f1c40f;
 }
 
-/*button mixin*/
-/*# sourceMappingURL=public.css.map */
+/*小按鈕*/
+.btn_s {
+  font-size: 0.7rem;
+  display: inline-block;
+  padding: 5px 8px;
+  background-color: #f1c40f6b;
+  border: 1.5px solid #f1c40f;
+}
+
+/*這個是有底圖的按鈕*/
+.btn_b {
+  font-size: 0.8rem;
+  /*按鈕的圖*/
+}
+/*# sourceMappingURL=main.css.map */

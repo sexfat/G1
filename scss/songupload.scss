@@ -1,0 +1,124 @@
+//songadd
+
+// .navhead{
+//     border: 1px solid red;
+//     height: 100px;
+// }
+
+
+.bnr img{ 
+    // border: 1px solid rgb(24, 27, 199);
+    position: relative;
+    top: 120px;
+}
+
+section.adds2{
+    // border: 1px solid black;
+    box-sizing: border-box;
+    width: 100vw;
+    // height: 630px;
+}
+// .up{
+//     border: 1px solid purple;
+//     width: 1400px;
+//     margin: 0 auto;
+//     box-sizing: border-box;
+// }
+
+.leftli{ 
+    // border: 1px solid greenyellow;
+    width: 1200px;
+    height: 600px !important;
+    margin: 0 auto;
+    box-sizing: border-box;
+    padding: 0px;
+} 
+
+.lif{
+    border: 1px solid #b2c0c0;
+    width: 1200px;
+    padding: 30px 0px;
+    background-color: #d0d6d6;
+}
+
+@media screen and(max-width: 1200px){
+    section.adds2{
+        width: 100%;
+        max-width: 1200px;
+    }
+    .leftli{
+        width: 100vw;
+        max-width: 900px;
+    }
+}
+
+
+.inside,
+.inside2{
+    border: 1px solid rgba(128, 128, 128,0.5);
+    width: 1200px;
+    margin: 0 auto;
+    background-color: rgb(255, 255, 255);
+}
+.inside div{
+    border: 1px solid orange;
+    width: 500px;
+    height: 320px;
+    position: relative;
+    right: -650px;
+    top: -23px;
+    padding: 30px 0px;
+}
+.inside article{
+    // border: 1px solid firebrick;
+    width: 500px;
+    position: relative;
+    left: 270px;
+    top: 0px;
+}
+
+.inside section{
+    // border: 1px solid yellow;
+    text-align: center;
+}
+
+//checkbox樣式-----------
+input[type="checkbox"]{
+    -webkit-appearance: none;
+    vertical-align:middle;
+    margin-top:0;
+    background:#fff;
+    border:#d0d6d6 solid 1px;
+    border-radius: 3px;
+    min-height: 20px;
+    min-width: 20px;
+}
+input[type="checkbox"]:checked {
+    background: #3190e8;
+}
+input[type=checkbox]:checked::after{
+    content: '';
+    top: 3px;
+    left: 3px;
+    position: absolute;
+    background: transparent;
+    border: #fff solid 2px;
+    border-top: none;
+    border-right: none;
+    height: 6px;
+    width: 10px;
+    -moz-transform: rotate(-45deg);
+    -ms-transform: rotate(-45deg);
+    -webkit-transform: rotate(-45deg); 
+    transform: rotate(-45deg);
+}
+
+.uploadmic img{
+    // border: 1px solid red;
+    position: absolute;
+    right: 50px;
+    bottom: 0px;
+    width: 230px;
+    height: 450px;
+}
+

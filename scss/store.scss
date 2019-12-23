@@ -34,31 +34,9 @@ $latop-max: 1200px;
   }
 }
 
-@mixin md-grid($grid_number) {
+@mixin sm-grid($grid_number) {
   @for $i from 1 through $grid_number {
-    .col-md-#{$i} {
-      width: ($i / $grid_number) * 100%;
-      display: inline-block;
-      // padding: 5px 0;
-      box-sizing: border-box;
-    }
-  }
-}
-
-@mixin lg-grid($grid_number) {
-  @for $i from 1 through $grid_number {
-    .col-lg-#{$i} {
-      width: ($i / $grid_number) * 100%;
-      display: inline-block;
-      // padding: 5px 0;
-      box-sizing: border-box;
-    }
-  }
-}
-
-@mixin xl-grid($grid_number) {
-  @for $i from 1 through $grid_number {
-    .col-xl-#{$i} {
+    .col-sm-#{$i} {
       width: ($i / $grid_number) * 100%;
       display: inline-block;
       // padding: 5px 0;
@@ -133,18 +111,9 @@ h2 {
   font-weight: bold;
 }
 
-header {
-  height: 300px;
-  padding: 120px 0;
-  img {
-    
-  }
-}
-
 .wrapper {
   margin-top: 0%;
   position: relative;
-
   // border-bottom: solid 1px #333;
   // overflow-x: hidden;  
   .color1 {
@@ -154,7 +123,7 @@ header {
   }
 
   .stepCount {
-    margin: 0rem auto;
+    margin: 2.5rem auto;
     width: 90%;
     overflow: hidden;
 
@@ -372,7 +341,6 @@ header {
         border-radius: 5px;
         width: 95%;
         padding: 2%;
-        margin: 0 auto;
 
         // h2{
         //   width: 85%;
@@ -406,7 +374,6 @@ header {
           .press {
             display: inline-block;
             width: 50%;
-            margin: 0 auto;
           }
         }
       }
@@ -608,19 +575,15 @@ header {
   position: relative;
   width: 100%;
   // margin: 10% auto;
-  // padding: 10%;
+  padding: 10%;
   text-align: center;
   margin: 0 auto;
 
-  // margin: 5% auto;
   .btn_s {
     width: 85%;
     max-width: 9rem;
-    margin: 0 auto;
     background-color: $buttonyellow;
     border-radius: 5px;
-    @include butttonn02;
-    padding: 10px 0;
 
     p {
       // position: absolute;
@@ -633,11 +596,9 @@ header {
     }
   }
 }
-
-@include respond(desktop) {
-
+@include respond(desktop){
   // 1200 up
-  .button {
+  .button{
     padding: 5%;
   }
 }
@@ -648,11 +609,9 @@ header {
   html {
     font-size: 18px;
   }
-
-  .button {
+  .button{
     padding: 5%;
   }
-
   .wrapper {
     overflow-x: hidden;
 
@@ -739,11 +698,9 @@ header {
       font-size: 0;
       // display: flex;
       display: block;
-
-      h2 {
+      h2{
         width: 80%;
       }
-
       .box {}
 
       .member_info {
@@ -794,11 +751,9 @@ header {
   html {
     font-size: 17px;
   }
-
-  .button {
+  .button{
     padding: 5%;
   }
-
   .wrapper {
     overflow-x: hidden;
 
@@ -940,23 +895,12 @@ header {
 
   // 576-768
   html {
-    font-size: 17px;
-  }
-
-  header{
-    padding: 120px 0;
-    img{
-      height: 76px;
-    }
+    font-size: 18px;
   }
 
   .wrapper {
     overflow-x: hidden;
     margin: 0 auto;
-
-    .button {
-      padding: 5%;
-    }
 
     .color1 {
       top: 8%;
@@ -1049,15 +993,6 @@ header {
           }
         }
 
-        .comfirm_detail {
-          .detail {
-            p {
-              .card_class {
-                width: 40%;
-              }
-            }
-          }
-        }
       }
 
 
@@ -1109,23 +1044,11 @@ header {
 }
 
 @include respond(ipad) {
-
-  // 375-576
   html {
     font-size: 17px;
   }
 
-  header{
-    padding: 120px 0;
-    img{
-      height: 76px;
-    }
-  }
-
-  .button {
-    padding: 8%;
-  }
-
+  // 375-576
   .wrapper {
     overflow-x: hidden;
 
@@ -1154,7 +1077,6 @@ header {
       .step {
         h2 {
           // font-size: 1.2rem;
-          margin: 2.625rem auto 1.625rem;
         }
 
         .color2 {
@@ -1317,23 +1239,13 @@ header {
 }
 
 @include respond(phone) {
-    // 375 -- 0
   @include sm-grid(12);
 
   html {
     font-size: 16px;
   }
 
-  .button {
-    padding: 10%;
-  }
-
-  header{
-    padding: 120px 0;
-    img{
-      height: 76px;
-    }
-  }
+  // 375 -- 0
   .wrapper {
     overflow-x: hidden;
 
@@ -1343,7 +1255,7 @@ header {
     }
 
     .stepCount {
-      margin: 0rem auto;
+      margin: 1.5rem auto;
 
       .count {
         width: 23%;

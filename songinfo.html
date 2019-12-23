@@ -5,59 +5,17 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
-    <title>Document</title>
+    <title>Songinfo</title>
+    <link rel="stylesheet" href="./css/infotop.css">
+    <link rel="stylesheet" href="./css/songinfo.css">
     <link rel="stylesheet" href="./css/public.css">
     <link rel="stylesheet" href="./css/nav_bar.css">
-    <link rel="stylesheet" href="./css/home.css">
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/pagePiling.js/1.5.6/jquery.pagepiling.min.css">
     <script src="https://cdnjs.cloudflare.com/ajax/libs/vue/2.6.10/vue.js"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
-
     <script src="https://cdnjs.cloudflare.com/ajax/libs/pagePiling.js/1.5.6/jquery.pagepiling.min.js"></script>
-
     <style>
 
-
     </style>
-    <script>
-
-        $(document).ready(() => {
-            $('#pagepiling').pagepiling(
-                {
-                    verticalCentered: false, //section 內物件置中對齊
-                    navigation: {
-                        'bulletsColor': '#F1C40F', // 框線
-                        'position': 'right',
-                        'tooltips': ['SOUND WAVE', 'REMIX', 'RANK', 'ACTIVITY', 'COLLECTION', 'ABOUT']
-                    },
-                }
-            );
-
-            $('.mem_list').css({ 'height': $(window).height() });
-            $('.mobile_list').css({ 'height': $(window).height() });
-            $('.mem_list ul').css({ 'height': $(window).height() });
-            $('.mobile_list ul').css({ 'height': $(window).height() });
-            $('.paint_border').css({ 'height': $(window).height() });
-
-            $(document).click(() => {
-                vm.mem_list = false;
-                vm.search_bar = false;
-                vm.mobile_list = false;
-
-                document
-                    .querySelector(".search_bar")
-                    .setAttribute("style", "height: 0px; filter: opacity(0);");
-                document
-                    .querySelector(".mem_list")
-                    .setAttribute("style", "transform: translateX(270px); filter: opacity(0);");
-                document
-                    .querySelector(".mobile_list")
-                    .setAttribute("style", "transform: translateX(-270px); filter: opacity(0);");
-            })
-
-        });
-
-    </script>
 </head>
 
 <body>
@@ -162,75 +120,118 @@
             </div>
 
         </div>
-
-        <div id="pagepiling">
-            <div class="sec sec01 section">
-                <div class="img_container">
-                    <div class="stylus"></div>
-                    <div class="vinyl_records">
-                        <div class="cover_img">
-                        </div>
-                    </div>
+    </div>
+    <header>
+        <div class="bnr">
+            <h1>Songinfo</h1>
+        </div>
+    </header>
+    <section class="infos2">
+        <div class="infoplay">
+            <div class="music-player-container is-playing">
+                <div class="music-player">
+                    <div class="player-content-container">
+                        <h1 class="artist-name">Incubus</h1><!--  /.track-title -->
+                        <h2 class="album-title">Make Yourself</h2><!--  /.album-title -->
+                        <h3 class="song-title">"Stellar"</h3><!--  /.song-title -->
+                        <div class="music-player-controls">
+                            <div class="control-back"></div><!--  /.control-back -->
+                            <div class="control-play"></div><!--  /.control-play -->
+                            <div class="control-forwards"></div><!--  /.control-forwards -->
+                        </div><!--  /.music-player-controls -->
+                    </div><!--  /.player-content-container -->
+                </div><!--  /.music-player -->
+                <div class="album">
+                    <div class="album-art"></div><!--  /.album-art -->
+                    <div class="vinyl"></div><!--  /.vinyl -->
+                </div><!--  /.album-art -->
+            </div><!--  /.music-player -->
+            <!-- <div>
+                    <audio id="music" src="./music/Paul Flint - SAVAGE Worlds First 21 Launchpad Cover.mp3"
+                        autoplay="autoplay"></audio>
+                </div> -->
+        </div>
+    </section>
+    <section class="infos3">
+        <div>
+            <p>Introduction</p>
+        </div>
+    </section>
+    <section class="infos4">
+        <div>
+            <div class="message">
+                <br>
+                <h3>Message</h3>
+                <br>
+                <div class="mess">
+                    <ul>
+                        <li>
+                            <p>Alice</p>
+                            WOW ! Awesome !<button class="delete">删除</button>
+                        </li>
+                        <li>
+                            <p>Bella</p>
+                            Nice !<button class="delete">删除</button>
+                        </li>
+                    </ul>
                 </div>
-                <div class="ctrl_container">
-                    <div class="top_arrow"></div>
-                    <div songInfo_container>
-
-                    </div>
-                    <div class="bot_arrow"></div>
-                </div>
-                <div class="wave_container">
-
-                </div>
-            </div>
-            <div class="sec sec02 section">
-                <header>
-                    <h1>
-                        REMIX
-                    </h1>
-                </header>
-                <div class="mixer">
-
-                </div>
-            </div>
-            <div class="sec sec03 section">
-                <div class="pot">
-                </div>
-                <div class="container">
-                    <div class="song_container">
-                        <div class="song song01"></div>
-                        <div class="song song02"></div>
-                        <div class="song song03"></div>
-                        <div class="song song04"></div>
-                        <div class="song song05"></div>
-                        <div class="song song06"></div>
-                        <div class="song song07"></div>
-                        <div class="song song08"></div>
-                        <div class="song song09"></div>
-                        <div class="song song10"></div>
-                    </div>
-                </div>
-            </div>
-            <div class="sec sec04 section">
-                <div class="DJ">
-
-                </div>
-            </div>
-            <div class="sec sec05 section">
-                <div class="container">
-                    <div class="shelf shelf01"></div>
-                    <div class="shelf shelf02"></div>
-                    <div class="shelf shelf03"></div>
-                </div>
-            </div>
-            <div class="sec sec06 section">
-                <div class="audio_man">
+                <div class="mess_write">
+                    <textarea name="" rows="8" cols="125"></textarea>
+                    <br>
+                    <button>提交</button>
+                    <button>清空</button>
                 </div>
             </div>
         </div>
-    </div>
+    </section>
 
 
+    <script>
+        //元素節點<h3>，屬性節點class
+        window.onload = message
+
+        function message() {
+            //獲取留言區的內容
+            var text = document.getElementsByTagName('textarea')[0]; //返回一個Nodelist節點列表
+            //獲取提交按鈕
+            var submit = document.getElementsByTagName('button')[0];
+            //獲取清空按鈕
+            var empty = document.getElementsByTagName('button')[1];
+            //獲取評論區
+            var mess = document.getElementsByClassName('mess')[0]
+            //獲取評論區的列表
+            var messlist = mess.getElementsByTagName('ul')[0];
+            //獲取到messlist下面的所有的子節點
+            var li = mess.getElementsByTagName('li');
+            submit.onclick = function () {
+                //獲取留言區的內容
+                var content = text.value
+                //創建一個評論列表項元素createElement
+                var item = document.createElement('li');
+                //給新創建的節點創建內容：innerHTML
+                //item.innerHTML = content;
+                item.innerHTML = content + '<button class="delete">删除</button>'
+                //將新節點添加到評論區：添加到頁面父節點.appendChild 
+                //messlist.appendChild(item)
+                //將新節點插入到某個節點之前，父節點.insertBefore(子節點，在那個子節點之前)
+                messlist.insertBefore(item, li[0]);
+
+                if (li.length == 0) {
+                    messlist.appendChild(item)
+                } else {
+                    messlist.insertBefore(item, li[0]);
+                }
+            }
+            empty.onclick = function () {
+                text.value = ''
+            }
+            if (li.length > 0) {
+                for (var i = 0; i < li.length; i++) {
+                    messlist.removeChild(this.parent)
+                }
+            }
+        }
+    </script>
 
 
     <script>
@@ -342,6 +343,32 @@
             }
         });
     </script>
+    <script>
+        (function ($) {
+            $(document).ready(function () {
+
+                // Pause/Play functionality
+                var playButton = $('.control-play'),
+                    album = $('.album');
+
+                playButton.on('click', function () {
+                    $('.music-player-container').toggleClass('is-playing');
+                });
+            });
+        })(jQuery);
+    </script>
+    <!-- <script>
+        document.getElementById(".control-play").onclick = function () {
+            var mu = document.getElementById("music");
+            if (this.innerHTML == "play") {
+                this.innerHTML = "stop";
+                mu.src = "./music/Paul Flint - SAVAGE Worlds First 21 Launchpad Cover.mp3";
+            } else {
+                this.innerHTML = "play";
+                mu.src = "";
+            }
+        }
+    </script> -->
 </body>
 
 </html>

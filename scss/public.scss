@@ -85,37 +85,10 @@ p {
   }
 }
 
-// header高度 + img寬度
 header {
   height: 300px;
-  padding: 120px 0;
-  img {
-    
-  }
+  text-align: center;
 }
-// 這樣包
-// <header>
-//   <img src="./img/remix/REMIX.png">
-// </header>
-
-// 768-576
-// header{
-//   img{
-//     height: 76px;
-//   }
-// }
-// 576-375
-// header{
-//   img{
-//     height: 76px;
-//   }
-// }
-// 375-0
-// header{
-//   img{
-//     height: 76px;
-//   }
-// }
 
 .wrapper {
   max-width: 1500px;
