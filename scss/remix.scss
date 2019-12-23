@@ -65,6 +65,7 @@ $buttonyellow: #efc318;
 body {
   width: 100%;
   overflow-x: hidden;
+  // background-color: #333;
 }
 
 h4 {
@@ -80,7 +81,8 @@ header{
 }
 
 .wrapper {
-  // margin-top: 10%;
+  overflow-y: hidden;
+  margin-bottom: 10%;
   // padding-top: 8%;
   font-size: 0;
   .remix_head {
@@ -96,6 +98,8 @@ header{
       padding: 8%;
       position: relative;
       box-sizing: border-box;
+      // overflow: hidden;
+      // height: 0;
       &::before {
         content: "";
         position: absolute;
@@ -104,6 +108,7 @@ header{
         left: 50%;
         top: 50%;
         transform: translate(-50%, -50%);
+        // transform-origin: 0 100%;
         background: url(../img/remix/Demo.svg) no-repeat;
         background-size: contain;
         z-index: -10;
@@ -112,7 +117,7 @@ header{
       // border: solid 1px #333;
       .choose_song {
         background-color: $gray;
-        margin: 10% auto;
+        margin: 3% auto;
         padding: 5%;
         border-radius: 5px;
 
@@ -139,10 +144,15 @@ header{
 
       .color {
         position: absolute;
-        width: 115%;
+        width: 100%;
+        padding-top: 75%;
         left: 0%;
-        top: -36%;
+        top:  0%;
         z-index: -11;
+        background: url('../img/remix/rock_color.png') no-repeat;
+        background-size: cover;
+        background-position: 50% 75%;
+
       }
     }
 
@@ -218,6 +228,7 @@ header{
             transform: translate(-50%,-50%);
             width: 75%;
             z-index: 10;
+            max-width: 67px;
           }
           span{
             display: inline-block;
@@ -243,31 +254,35 @@ header{
             // position: relative;
           }
         }
-        @keyframes pulse {
-          0% {
-            box-shadow: 0 0 0 0 #f24;
-          }
-        }
       }
     }
   }
   .table{
     width: 100%;
+    max-width: 100%;
     position: relative;
+    // overflow-x: scroll;
+    // display: table;
+    h3{
+      margin: 0.5rem 0;
+    }
     .drumh3{
       margin-top: 5%;
     }
     table{
+      margin: 0 auto;
       width: 100%;
+      max-width: 100%;
       background-color: #70706e;
       border: solid 5px #70706e;
       border-radius: 10px;
       border-spacing: 0;
       border-collapse: separate;
+      // overflow-x: scroll;
       &.poa{
         width: 100%;
-        left: 50%;
-        transform: translateX(-50%);
+        left: 0%;
+        // transform: translateX(-50%);
         position: absolute;
       }
       th:first-child{
@@ -297,7 +312,7 @@ header{
         color: #fff;
       }
       .note_name{
-
+        max-width: 7px;
         text-align: center;
       }
     }
@@ -320,6 +335,35 @@ header{
   html {
     // font-size: 18px;
   }
+  .wrapper{
+    .range {
+      p{
+      }
+      .rangebutton {
+        input[type='range'] {
+          &::-webkit-slider-thumb {
+          }
+          &::-webkit-slider-runnable-track {
+          }
+  
+          &:focus {
+          }
+        }
+        .button{
+          button{
+            &:hover{
+            }
+            img{
+            }
+            span{
+            }
+            a{
+            }
+          }
+        }
+      }
+    }
+  }
 }
 
 @include respond(latop-min) {
@@ -337,7 +381,7 @@ header{
 
     .remix_head {
       flex-direction: column;
-
+      margin-bottom: 10%;
       .demo {
         padding: 12% 12% 12%;
 
@@ -357,6 +401,37 @@ header{
         img {}
 
         .color {}
+      }
+    }
+    .range {
+      p{
+        top: 15%;
+      }
+      .rangebutton {
+        input[type='range'] {
+          margin: 6% 3% 3%;
+          width: 65%;
+          &::-webkit-slider-thumb {
+          }
+          &::-webkit-slider-runnable-track {
+          }
+  
+          &:focus {
+          }
+        }
+        .button{
+          button{
+            &:hover{
+            }
+            img{
+              width: 100%;
+            }
+            span{
+            }
+            a{
+            }
+          }
+        }
       }
     }
   }
@@ -382,12 +457,13 @@ header{
 
     .remix_head {
       flex-direction: column;
-
+      margin-bottom: 10%;
       .demo {
-        padding: 10% 24%;
+        padding: 24% 18%;
 
         &::before {
-          width: 80%;
+          width: 80vw;
+          height: 80vw;
           transform: translate(-50%, -50%) rotate(90deg);
         }
 
@@ -400,6 +476,47 @@ header{
         img {}
 
         .color {}
+      }
+    }
+    .range {
+      p{
+        top: 40%;
+      }
+      .rangebutton {
+        flex-direction: column;
+        position: relative;
+
+        input[type='range'] {
+          order: 2;
+          margin: 3%;
+          width: 95%;
+          &::-webkit-slider-thumb {
+          }
+          &::-webkit-slider-runnable-track {
+          }
+  
+          &:focus {
+          }
+        }
+        .button{
+          position: relative;
+          order: 1;
+          max-width: 250px;
+          margin-left: 65%;
+          transform: translateY(10px);
+          button{
+            // max-width: 67px;
+            &:hover{
+            }
+            img{
+              width: 95%;
+            }
+            span{
+            }
+            a{
+            }
+          }
+        }
       }
     }
   }
@@ -426,17 +543,17 @@ header{
 
     .remix_head {
       flex-direction: column;
-
+      margin-bottom: 20%;
       .demo {
-        padding: 6% 21% 6% 22%;
+        padding: 30% 6% 30%;
         &::before {
-          width: 90%;
-          height: 115%;
+          width: 100vw;
+          height: 100vw;
           transform: translate(-50%, -50%) rotate(90deg);
         }
 
         h2 {
-          font-size: 1.8rem;
+          font-size: 1.6rem;
         }
 
         p {
@@ -454,6 +571,48 @@ header{
         img {}
 
         .color {}
+      }
+    }
+    .range {
+      p{
+        top: 40%;
+      }
+      .rangebutton {
+        flex-direction: column;
+        position: relative;
+
+        input[type='range'] {
+          order: 2;
+          margin: 3%;
+          width: 95%;
+          &::-webkit-slider-thumb {
+          }
+          &::-webkit-slider-runnable-track {
+          }
+  
+          &:focus {
+          }
+        }
+        .button{
+          position: relative;
+          order: 1;
+          max-width: 250px;
+          margin-left: 55%;
+          transform: translateY(0px);
+
+          button{
+            // max-width: 67px;
+            &:hover{
+            }
+            img{
+              width: 95%;
+            }
+            span{
+            }
+            a{
+            }
+          }
+        }
       }
     }
   }
@@ -476,17 +635,21 @@ header{
       height: 76px;
     }
   }
+  body{
+    // overflow-x: hidden;
+  }
   .wrapper {
-    overflow-x: hidden;
+    // overflow-x: hidden;
 
     .remix_title {}
 
     .remix_head {
       flex-direction: column;
       width: 100%;
+      margin-bottom: 20%;
 
       .demo {
-        padding: 18% 10% 18% 16%;
+        padding: 18% 13% 18% 16%;
 
         &::before {
           width: 110%;
@@ -495,7 +658,7 @@ header{
         }
 
         h2 {
-          font-size: 1.8rem;
+          font-size: 1.6rem;
         }
 
         p {
@@ -513,6 +676,47 @@ header{
         img {}
 
         .color {}
+      }
+    }
+    .range {
+      p{
+        top: 25%;
+      }
+      .rangebutton {
+        flex-direction: column;
+        position: relative;
+
+        input[type='range'] {
+          order: 2;
+          margin: 3%;
+          width: 95%;
+          &::-webkit-slider-thumb {
+          }
+          &::-webkit-slider-runnable-track {
+          }
+  
+          &:focus {
+          }
+        }
+        .button{
+          position: relative;
+          order: 1;
+          max-width: 250px;
+          margin-left: 55%;
+          transform: translateY(0px);
+          button{
+            // max-width: 67px;
+            &:hover{
+            }
+            img{
+              width: 95%;
+            }
+            span{
+            }
+            a{
+            }
+          }
+        }
       }
     }
   }

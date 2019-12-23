@@ -119,7 +119,7 @@
       <div class="remix_head">
         <div class="demo col-xl-6 col-md-8 col-sm-12">
           <h2>The Playground</h2>
-          <p class="intro">On this page, you can experiment with the different music making tools you've used so far.
+          <p class="intro">You can experiment with the different music making tools you've used so far.
             They'll all
             play together in sync.</p>
           <div class="choose_song">
@@ -130,7 +130,7 @@
         </div>
         <div class="svg_move col-xl-6 col-md-10 col-sm-12">
           <img src="./img/remix/rock.png">
-          <img src="./img/remix/rock_color.png" class="color">
+          <div class="color"></div>
         </div>
       </div>
       <div class="range">
@@ -143,8 +143,11 @@
               <img src="./img/remix/start.png"><span></span>
             </button>
             <button class="start" @click="start_schedule();buttonclick(1)" @mouseenter="buttonclick(1)"
-              v-if="loop == true">
+              v-if="loop == true && record == false">
               <img src="./img/remix/pause.png"><span></span>
+            </button>
+            <button class="start" v-if="loop == true && record == true">
+              <img src="./img/remix/start_disable.png"><span></span>
             </button>
             <button class="record" @click="record = true;start_record()" @mouseenter="buttonclick(2)"
               v-if="record == false">
@@ -219,7 +222,6 @@
             </td>
             <td class="sound_note" v-for="(item,index) in lattice"
               @click="changeClass(index_row + 24,index);one_sound(fa[index_row],index_row + 24,index);">
-
             </td>
           </tr>
         </table>
@@ -278,7 +280,7 @@
 
   <script src='https://cdnjs.cloudflare.com/ajax/libs/tone/13.4.0/Tone.js'></script>
   <script src='https://cdnjs.cloudflare.com/ajax/libs/gsap/2.1.3/TweenMax.min.js'></script>
-  <!-- <script src='https://cdnjs.cloudflare.com/ajax/libs/jquery/3.4.1/jquery.min.js'></script> -->
+  <script src='https://cdnjs.cloudflare.com/ajax/libs/jquery/3.4.1/jquery.min.js'></script>
   <script src="./js/vue.js"></script>
   <script>
     var app = new Vue({
@@ -326,7 +328,7 @@
         so1: ['C5', 'Cs5', 'D5', 'Ds5', 'E5', 'F5', 'Fs5', 'G5', 'Gs5', 'A5', 'As5', 'B5'],
         la: ['C6', 'C#6', 'D6', 'D#6', 'E6', 'F6', 'F#6', 'G6', 'G#6', 'A6', 'A#6', 'B6'],
         la1: ['C6', 'Cs6', 'D6', 'Ds6', 'E6', 'F6', 'Fs6', 'G6', 'Gs6', 'A6', 'As6', 'B6'],
-        drum: ['Ride', 'Tom', 'OpenHat', 'ClosedHat', 'Clap', 'Snare', 'Rim', 'Kick', 'Slam', 'Guitar',
+        drum: ['Ride', 'Tom', 'Open', 'Closed', 'Clap', 'Snare', 'Rim', 'Kick', 'Slam', 'Guitar',
           'Scratch', 'Electric'
         ],
         soundSrc: {
@@ -384,8 +386,8 @@
           "b6": "./img/remix/sound/B6.mp3",
           "c1": "./img/remix/sound/Ride.mp3",
           "d1": "./img/remix/sound/Tom.mp3",
-          "d#1": "./img/remix/sound/OpenHat.mp3",
-          "e1": "./img/remix/sound/ClosedHat.mp3",
+          "d#1": "./img/remix/sound/Open.mp3",
+          "e1": "./img/remix/sound/Closed.mp3",
           "f1": "./img/remix/sound/Clap.mp3",
           "f#1": "./img/remix/sound/Snare.mp3",
           "g1": "./img/remix/sound/Rim.mp3",
@@ -466,7 +468,33 @@
             [39],
             [37, 17],
             [],
-            [13, 37]
+            [13, 37],
+            [11, 18, 39],
+            [39],
+            [39],
+            [39],
+            [39],
+            [],
+            [37],
+            [34],
+            [10, 18, 37],
+            [34],
+            [37],
+            [44],
+            [13, 42],
+            [],
+            [10],
+            [37],
+            [8, 15, 46],
+            [46],
+            [46],
+            [47],
+            [15, 49],
+            [42],
+            [11, 44],
+            [46],
+            [13, 20, 44],
+            []
           ]
         },
       },
@@ -662,10 +690,9 @@
               }
               vm.index++;
               console.log(vm.index);
-              start = setTimeout(repeat, (60000 / vm.npm) / 4);
+              start = setTimeout(repeat, (60000 / vm.npm) / 2);
             }
             repeat();
-            // start = setTimeout(repeat, (60000 / vm.npm) / 4);
           } else {
             vm.loop = !vm.loop;
             console.log(start);
@@ -686,7 +713,6 @@
               sound_note[x].style.borderTop = 'solid 1px rgba(0,0,0,1)';
             }
           };
-
 
           function repeat() {
             vm.demostart = true;
@@ -720,9 +746,16 @@
                 return;
               }
 
+              if (step == 0) { // 清除上一次的紀錄
+                tr.getElementsByClassName('sound_note')[vm.lattice - 1].className = 'sound_note';
+              } else {
+                tr.getElementsByClassName('sound_note')[step].className = 'sound_note';
+              }
+
               for (var j = 0; j < vm.song_start[list][vm.index].length; j++) {
                 var note = vm.song_start[list][vm.index][j]; // 第一直排的第幾個音
                 if (i == note) {
+                  tr.getElementsByClassName('sound_note')[step].classList.add('active'); // 現在的位置
                   var audio = new Audio(`./img/remix/sound/${vm.notes1[note]}.mp3`)
                   audio.play();
                 }
@@ -773,9 +806,6 @@
                   let note = vm.notes[i],
                     $row = trs[i];
                   note = note.toLowerCase();
-                  // console.log(note);
-                  // var $td = $row.querySelector(`.sound_note:nth-child(${step})`); // 前一個
-                  // var $tds = $row.querySelector(`.sound_note:nth-child(${step + 1})`); // 現在的
                   var $td = $row.getElementsByClassName('sound_note')[step - 1];
                   var $tds = $row.getElementsByClassName('sound_note')[step];
 
@@ -843,25 +873,61 @@
           })()
         }
 
-        // 一開始偵測是否為375
-        if (this.screenWidth <= 376) {
+        // 一開始偵測是否為 425
+        if (this.screenWidth <= 425) {
           var intro = document.getElementsByClassName('intro')[0];
-          intro.innerHTML = intro.innerHTML.substr(0, 92);
+          intro.innerHTML = intro.innerHTML.substr(0, 79);
         }
 
+        if (this.screenWidth > 1200) {
+          $('th').attr('colspan', 7);
+          this.lattice = 34;
+        } else if (this.screenWidth > 768) {
+          $('th').attr('colspan', 4);
+          this.lattice = 19;
+        } else if (this.screenWidth > 576) {
+          $('th').attr('colspan', 3);
+          this.lattice = 14;
+        } else {
+          $('th').attr('colspan', 2);
+          this.lattice = 9;
+        }
+
+        // 一開始的微動畫
+        
       },
       watch: {
         screenWidth(val) {
           // 偵測螢幕寬度 切字串
           this.screenWidth = val;
-          if (this.screenWidth <= 376) {
+          if (this.screenWidth > 1200) {
+            $('th').attr('colspan', 7);
+            this.lattice = 34;
+          } else if (this.screenWidth > 768) {
+            $('th').attr('colspan', 4);
+            this.lattice = 19;
+          } else if (this.screenWidth > 576) {
+            $('th').attr('colspan', 3);
+            this.lattice = 14;
+          } else {
+            $('th').attr('colspan', 2);
+            this.lattice = 9;
+          }
+
+          if (this.screenWidth <= 425) {
             var intro = document.getElementsByClassName('intro')[0];
-            intro.innerHTML = intro.innerHTML.substr(0, 92);
+            intro.innerHTML = intro.innerHTML.substr(0, 79);
           }
         },
         audioSrc(NewaudioSrc) {
           this.audioSrc = NewaudioSrc;
           var button = document.querySelector('.button button:nth-of-type(3) span');
+          TweenMax.set(button, {
+            css: {
+              scale: 1,
+              opacity: 1,
+            }
+          })
           TweenMax.to(button, 1, {
             scale: 3,
             opacity: 0,
