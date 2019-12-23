@@ -3,6 +3,7 @@
 
 
 $mainRed : #de267d;
+$mainGreen:#d0d6d6;
 
 html {
   @include respond(latop-min) {
@@ -28,6 +29,10 @@ ul {
   padding: 0;
   margin: 0;
 }
+iframe{
+  margin: 0;
+  padding:0;
+}
 
 body {
   background-color: $mainBg;
@@ -44,12 +49,18 @@ body {
 header {
   text-align: center;
   vertical-align: middle;
-  padding-top: 120px;
 
   img {
-    @include respond(phone) {
-      width: 100%;
+    @include respond(ipadpro) {
+      height: 76px;
+    }
 
+    @include respond(ipad) {
+      height: 76px;
+    }
+
+    @include respond(phone) {
+      height: 76px;
     }
   }
 }
@@ -64,14 +75,13 @@ main.library_main {
   }
 
   aside {
-    // border: 1px solid gold;
     float: left;
     width: 25%;
     position: relative;
     z-index: 3;
 
     .my_list {
-      background-color: #d0d6d6;
+      background-color: $mainGreen;
       padding: 8%;
 
       .favor {
@@ -88,7 +98,7 @@ main.library_main {
         }
       }
 
-      .listSubtitle{
+      .listSubtitle {
         &:nth-child(2) {
           text-align: center;
           padding: 20px 0;
@@ -166,7 +176,7 @@ main.library_main {
 
       select {
         width: 100%;
-        background-color: #d0d6d6;
+        background-color: $mainGreen;
         font-size: 1rem;
         padding: 16px 8px;
         display: none;
@@ -231,7 +241,7 @@ main.library_main {
     padding: 5%;
     margin-left: 5%;
     margin-bottom: 10px;
-    min-height: 400px;
+    min-height: 580px;
     background-image: url('../img/library/blackline2.svg');
     background-repeat: no-repeat;
     background-size: cover;
@@ -308,18 +318,46 @@ main.library_main {
         }
 
         .listName {
+
+          @include respond(ipad) {
+            width: 85%;
+            text-align: center;
+            margin: 0 auto;
+          }
+
+          @include respond(phone) {
+            width: 100%;
+          }
+
           .name {
             h2 {
               display: inline-block;
               vertical-align: middle;
+
+              @include respond(ipadpro) {
+                display: block;
+                overflow: hidden;
+                text-overflow: ellipsis;
+                white-space: nowrap;
+              }
+
+              @include respond(phone) {
+                display: block;
+                overflow: hidden;
+                text-overflow: ellipsis;
+                white-space: nowrap;
+              }
             }
-            #inputListTitle{
+
+            #inputListTitle {
               height: 60px;
               width: 100%;
               max-width: 300px;
               font-size: 2rem;
               padding: 5px;
               display: none;
+              background-color: $mainGreen;
+              border: 1px solid $mainGreen;
             }
 
             button {
@@ -327,20 +365,14 @@ main.library_main {
             }
           }
 
-          @include respond(ipad) {
-            width: 85%;
-          }
 
-          @include respond(phone) {
-            width: 100%;
-          }
         }
 
         .playall_btn {
           text-align: right;
 
           @include respond(ipad) {
-            width: 14%;
+            width: 100%;
           }
         }
 
@@ -351,7 +383,6 @@ main.library_main {
       padding-top: 20px;
 
       li {
-        // border: 1px skyblue solid;
         padding: 10px 0;
         border-bottom: 1px solid #cacaca;
 
@@ -393,33 +424,73 @@ main.library_main {
           float: left;
           margin: 0 3%;
           width: 60%;
-          @include respond(phone){
+
+          @include respond(latop-min) {
+            width: 55%;
+          }
+
+          @include respond(ipadpro) {
+            width: 50%;
+          }
+
+          @include respond(ipad) {
+            width: 48%;
+          }
+
+          @include respond(phone) {
             width: 58%;
           }
 
           .name {
             padding: 2% 0;
 
-            a {
-              display: block;
-              color: $fontColor;
-              text-decoration: none;
-              transition: transform .5s;
+            h4 {
+              display: inline-block;
+              @include respond(phone) {
+                display: block;
+              }
+              a {
+                display: block;
+                color: $fontColor;
+                text-decoration: none;
+                transition: transform .5s;
 
-              &:hover {
-                transform: scale(1.1);
+                @include respond(phone) {
+                  overflow: hidden;
+                  text-overflow: ellipsis;
+                  white-space: nowrap;
+                }
+
+                &:hover {
+                  transform: scale(1.1);
+                }
               }
             }
 
-            h4 {
-              display: inline-block;
-            }
-
             p {
+              overflow: hidden;
+              text-overflow: ellipsis;
+              white-space: nowrap;
               display: inline-block;
               margin-left: 5%;
 
-              @include respond(phone){
+              @include respond(latop-min) {
+                display: block;
+                margin-left: 0;
+              }
+
+              @include respond(ipadpro) {
+                display: block;
+                margin-left: 0;
+              }
+
+              @include respond(ipad) {
+                display: block;
+                margin-left: 0;
+              }
+
+              @include respond(phone) {
+                display: block;
                 margin-left: 0;
               }
             }
@@ -431,6 +502,10 @@ main.library_main {
           float: left;
           padding: 2% 0;
           width: 10%;
+
+          @include respond(ipad) {
+            font-size: 0.9rem;
+          }
 
           @include respond(phone) {
             display: none;
@@ -444,7 +519,23 @@ main.library_main {
           width: 5%;
           cursor: pointer;
           transition: transform .5s;
-          @include respond(phone){
+
+          @include respond(laptop-min) {
+            width: 8%;
+            text-align: center;
+          }
+
+          @include respond(ipadpro) {
+            width: 10%;
+            text-align: center;
+          }
+
+          @include respond(ipad) {
+            width: 10%;
+            text-align: center;
+          }
+
+          @include respond(phone) {
             width: 7%;
             text-align: left;
           }
@@ -461,7 +552,8 @@ main.library_main {
           width: 5%;
           position: relative;
           cursor: pointer;
-          @include respond(phone){
+
+          @include respond(phone) {
             width: 8%;
             text-align: left;
           }
@@ -556,7 +648,8 @@ main.library_main {
   }
 }
 
-.editBtn,.enterBtn {
+.editBtn,
+.enterBtn {
   @include buttonno03;
   display: none;
 }
