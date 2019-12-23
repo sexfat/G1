@@ -752,8 +752,8 @@
                         <img src="./img/activity/Splash-ink01.png" alt="">
                          </div>    
                     </div>
-             
-                   <article>
+                    
+                   <article  class="fromPageShow">
                        <div >
                           <h3>Qualifications</h3>
                           <p>American Idol is an annual American singing competition 
@@ -762,11 +762,87 @@
                          </p>
                           <button type="button">GO</button>
                        </div>
-                       
-                        <div class="Now-Sign-up-text-bg">
-                            <img src="" alt="">
-                        </div>
                    </article>
+                  
+                   <article>
+                    <div >
+                       <h3>Choose your contest song!</h3>
+                      
+                         <p>  
+                             <label for="SignUp-UpLoadSong">Upload from my local</label>
+                            <input type="file" id="SignUp-UpLoadSong" style="display:none"> 
+                        </p>
+                         <p>
+                            <label for="SignUp-selectSong">  Select from my music list</label>
+                            <br>   
+                            <select id="SignUp-selectSong" >
+                               <option value="">1.cat</option>
+                               <option value="">2.hollo</option>
+                              </select>
+                        </p>
+                     
+                       <button type="button" >Back</button>
+                       <button type="button"  >Next </button>
+                    </div>
+                    
+                </article>
+               
+                 <article>
+                    <div >
+                       <h3>Fill in your song information!</h3>
+                      
+                          <p>  
+                              <h4>Song-name</h4>
+                              <input type="text" name="" id="song-name">
+                         
+                              <h4>Song-information</h4>
+                              <textarea name="" id="song-information" cols="30" rows="10" ></textarea>
+                         
+                              <h4>Song-img</h4>
+                              <label for="SignUp-Song-img">Upload The album cover</label>
+                              <input type="file" id="SignUp-Song-img" style="display:none">
+                              <div><img src="" alt=""></div>
+                            </p>
+                                
+                      <button type="button" >Back</button>
+                      <button type="button" >Next </button>
+                    </div>
+                    
+                </article> 
+                <article >
+                    <div >
+                       <h3>Fill in your song information!</h3>   
+                       <p>
+                         <h4>Member-name:
+                             <span></span>
+                            </h4>
+                         <h4>Menber-email:
+                             <span></span>
+                            </h4>
+                        <h4>Song-img</h4>
+                        <div><img src="" alt=""></div>
+                        
+                        <h4>Song-name</h4>
+                        <div></div>
+                        
+                        <h4>Song-information</h4>
+                        <div></div>
+                       </p>             
+                      <button type="button">Back</button>
+                     <input type="submit" value="Comfirm">
+                    </div>
+                    
+                </article> 
+                <article >
+                    <div >
+                       <h3>Qualifications</h3>
+                       <p>American Idol is an annual American singing competition 
+                          which began its first season in June 11, 2002. 
+                          Part of the Idol franchise, it originated from the UK reality program Pop Idol.
+                      </p>
+                       <button type="button" disable style="background-color:gray ">GO</button>
+                    </div>
+                </article>
              
                  </section>
                  <section id="Now-Vote"> 
@@ -892,7 +968,7 @@
 
                                </div>
                             <h4>
-                                'If I Had A Heart'
+                                'If I Had A Heart''
                                 <p>
                                     Bob
                                 </p>
@@ -1021,8 +1097,23 @@
                 ],
                 imageActive: `./img/activity/banner-activ.jpg`,
                 isActive: 0,
-                btncolor: false,
                 currentIndex: 1,
+              
+               
+               
+
+                // MemberName:'Bob',
+                // MemberEmail:'djfijdsk@gmail.com',
+                // SongName:'songname',
+                // SongInformation:'SongInformation',
+                // SongImgURL:new FileReader(),
+                // signUpFrom:[
+                //        {MemberName:'Bob'},
+                //        {MemberEmail:'djfijdsk@gmail.com'},
+                //        {SongName:'songname'},
+                //        {SongInformation:'SongInformation'},
+                //        {imgURL:'The album cover'},
+                // ],
 
 
             },
@@ -1053,7 +1144,8 @@
                         vml.currentIndex = 0;
 
                     }
-                }
+                },
+
 
 
             },
