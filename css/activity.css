@@ -1,0 +1,736 @@
+@charset "UTF-8";
+* {
+  -webkit-box-sizing: border-box;
+          box-sizing: border-box;
+}
+
+html {
+  font-size: 20px;
+}
+
+body {
+  margin: 0;
+  padding: 0;
+  font-family: "Lucida Sans Unicode", Geneva, Verdana, sans-serif;
+  background: #fafaf1;
+  color: #333;
+}
+
+.flexbox {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+}
+
+a {
+  text-decoration: none;
+  color: #333;
+}
+
+h1,
+h2,
+h3,
+h4,
+h5,
+h6,
+p {
+  margin: 0;
+  padding: 0;
+}
+
+h1 {
+  /*60px*/
+  font-size: 3rem;
+}
+
+h2 {
+  /* 40px*/
+  font-size: 2rem;
+  /*副標的h2 font-weight:bold*/
+}
+
+h3 {
+  /*30px*/
+  font-size: 1.5rem;
+}
+
+h4 {
+  /*24px*/
+  font-size: 1.2rem;
+}
+
+p {
+  /*內文 20px*/
+  font-size: 1rem;
+}
+
+p.bigSmall {
+  /*大小 16px*/
+  font-size: 0.8rem;
+}
+
+p.doubleSmall {
+  /*小小 14px*/
+  font-size: 0.7rem;
+}
+
+p.forget {
+  /*旺季 12px*/
+  font-size: 0.6rem;
+}
+
+header {
+  height: 300px;
+  padding: 120px 0;
+}
+
+.wrapper {
+  max-width: 1500px;
+  margin: 0 auto;
+  width: 100%;
+}
+
+/*燈箱寬*/
+.lightbox_s {
+  width: 500px;
+}
+
+/*新手教學用*/
+.lightbox_b {
+  width: 1000px;
+}
+
+/*燈箱的遮罩顏色*/
+.lightCover {
+  background-color: #414141e6;
+}
+
+/*button mixin*/
+#actHead {
+  position: relative;
+}
+
+#radioBg {
+  position: relative;
+  max-width: 1400px;
+  height: 650px;
+  margin: 50px auto 50px 0px;
+}
+
+#radioBg img {
+  width: 100%;
+  height: 100%;
+}
+
+#radioBg #act-title {
+  margin: 0 auto;
+  text-align: center;
+  position: absolute;
+  top: -5%;
+  left: 50%;
+  -webkit-transform: translate(-30%, 0%);
+          transform: translate(-30%, 0%);
+  z-index: 1;
+}
+
+#radioBg h2 {
+  margin: 0;
+  display: inline-block;
+  max-width: 550px;
+  position: absolute;
+  top: 13%;
+  left: 18%;
+  z-index: 1;
+}
+
+#radioBg #act-sectionAnchor {
+  display: inline-block;
+  width: 800px;
+  height: 75px;
+  position: absolute;
+  bottom: 4%;
+  left: 23%;
+  z-index: 1;
+}
+
+#radioBg #act-sectionAnchor a {
+  display: inline-block;
+  width: 200px;
+  margin-left: 50px;
+  height: 75px;
+  text-decoration: none;
+  position: relative;
+}
+
+#radioBg #act-sectionAnchor a img {
+  width: 100%;
+  height: 100%;
+}
+
+#radioBg #act-sectionAnchor a span {
+  color: black;
+  font-size: 0.7rem;
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  z-index: 1;
+  -webkit-transform: translate(-50%, -50%);
+          transform: translate(-50%, -50%);
+}
+
+#radioBg #act-oldyear-Anchor {
+  position: absolute;
+  right: -10%;
+  bottom: 10%;
+  width: 100px;
+}
+
+#radioBg #act-oldyear-Anchor a img {
+  width: 30px;
+  height: 30px;
+}
+
+#radioBg #act-oldyear-Anchor a span {
+  font-size: 0.7rem;
+  margin-right: 10px;
+}
+
+#actHeadBtn {
+  position: absolute;
+  top: 16%;
+  right: 5%;
+  z-index: 1;
+}
+
+#actHeadBtn div {
+  position: relative;
+  margin: 0;
+  width: 150px;
+  height: 140px;
+  display: inline-block;
+  cursor: pointer;
+  text-align: center;
+}
+
+#actHeadBtn div:hover {
+  -webkit-transform: scale(1.1);
+          transform: scale(1.1);
+}
+
+#actHeadBtn div img {
+  width: 80%;
+  height: 80%;
+}
+
+#actHeadBtn div span {
+  position: absolute;
+  top: 32%;
+  left: 35%;
+  z-index: 2;
+  font-size: 0.8rem;
+  font-weight: bold;
+}
+
+#act-carousel {
+  width: 80%;
+  height: 60%;
+  max-width: 1200px;
+  max-height: 400px;
+  position: absolute;
+  top: 35%;
+  left: 15%;
+  z-index: -1;
+  overflow: hidden;
+}
+
+#act-carousel img {
+  width: 100%;
+  height: 100%;
+}
+
+#act-carouselSelect {
+  width: 30px;
+  height: 80px;
+  position: absolute;
+  right: 7%;
+  top: 60%;
+}
+
+#act-carouselSelect div {
+  width: 20px;
+  height: 20px;
+  border-radius: 50%;
+  background-color: white;
+  border: yellow;
+  -webkit-box-shadow: 1px 1px 5px black;
+          box-shadow: 1px 1px 5px black;
+  margin: 5px 5px auto;
+  opacity: 0.5;
+}
+
+#act-carouselSelect .btncolor {
+  opacity: 1;
+}
+
+#countdown {
+  display: block;
+  width: 350px;
+  height: 100px;
+  position: absolute;
+  top: 25%;
+  left: 40%;
+  text-align: center;
+}
+
+#countdown p {
+  vertical-align: bottom;
+}
+
+#countdown div {
+  margin: 0 auto;
+}
+
+#countdown div div {
+  display: inline-block;
+  text-align: center;
+  width: 70px;
+  height: 70px;
+  margin: 5px;
+}
+
+#countdown div div p {
+  margin: 0;
+  padding: 0;
+  font-size: 1.5rem;
+  color: white;
+}
+
+#countdown div div span {
+  font-size: 0.6rem;
+  position: relative;
+  top: -20px;
+  color: sienna;
+}
+
+.act-old-years {
+  position: relative;
+  background-image: url(../img/activity/0.blackline.svg);
+  height: 700px;
+  max-width: 1300px;
+  width: 100%;
+  padding: 100px 0 0 150px;
+  margin: 150px auto 0 auto;
+}
+
+.act-old-years .act-oldink {
+  position: absolute;
+  top: -30%;
+  left: -15%;
+  z-index: -1;
+  width: 500px;
+  height: 400px;
+}
+
+.act-old-years .act-oldink img {
+  width: 100%;
+  height: 100%;
+}
+
+.act-old-years div {
+  width: 40%;
+}
+
+.act-old-years div .act-year {
+  font-size: 2.5rem;
+  font-weight: bold;
+  display: inline-block;
+}
+
+.act-old-years div p {
+  display: inline-block;
+  max-width: 600px;
+}
+
+.act-old-years div .act-oldVotes h3 {
+  display: inline-block;
+}
+
+.act-old-years div .act-oldVotes span {
+  font-size: 2.5rem;
+  font-weight: bold;
+  color: red;
+}
+
+.act-old-years .act-oldposterbox {
+  display: inline-block;
+  position: absolute;
+  height: 100%;
+  top: 0%;
+  right: 0%;
+}
+
+.act-old-years .act-oldposterbox .act-oldposter {
+  width: 350px;
+  height: 500px;
+  position: absolute;
+  bottom: 5%;
+  right: 15%;
+  z-index: 2;
+}
+
+.act-old-years .act-oldposterbox .act-oldposter img {
+  width: 100%;
+  height: 100%;
+}
+
+.act-old-years .act-oldposterbox .act-oldSplash-ink {
+  position: absolute;
+  bottom: -20%;
+  left: -25%;
+  z-index: 1;
+  width: 800px;
+  height: 600px;
+}
+
+.act-old-years .act-oldposterbox .act-oldSplash-ink img {
+  width: 100%;
+  height: 100%;
+}
+
+.act-old-years .act-oldposterbox .act-oldposter-linetop {
+  position: absolute;
+  top: 10%;
+}
+
+.act-old-years .act-oldposterbox .act-oldposter-linebotom {
+  position: absolute;
+  bottom: -15%;
+  right: -15%;
+  z-index: 2;
+}
+
+.act-oldsongbox {
+  margin-top: 75px;
+  padding: 100px 125px;
+  width: 1500px;
+}
+
+.act-oldsongbox .act-oldTop {
+  text-align: left;
+  width: 100%;
+}
+
+.act-oldsongbox .act-oldTop h3 {
+  margin-bottom: 30px;
+}
+
+.act-oldsongbox .act-oldTop div {
+  text-align: left;
+  width: 30%;
+  margin-left: 2%;
+  display: inline-block;
+}
+
+.act-oldsongbox .act-oldTop div p {
+  font-size: 0.6rem;
+}
+
+.act-oldsongbox .act-oldTop div p span {
+  font-size: 0.8rem;
+}
+
+.act-oldsongbox .act-oldTop div div {
+  width: 100%;
+  margin: 0;
+}
+
+.act-oldsongbox .act-oldTop div div img {
+  width: 300px;
+  height: 300px;
+}
+
+.act-oldsongbox .act-oldAll {
+  text-align: left;
+  width: 100%;
+  margin-top: 75px;
+}
+
+.act-oldsongbox .act-oldAll h3 {
+  margin-bottom: 30px;
+}
+
+.act-oldsongbox .act-oldAll div {
+  text-align: left;
+  width: 20%;
+  margin-left: 3.5%;
+  margin-bottom: 50px;
+  display: inline-block;
+}
+
+.act-oldsongbox .act-oldAll div p {
+  font-size: 0.6rem;
+}
+
+.act-oldsongbox .act-oldAll div p span {
+  font-size: 0.8rem;
+}
+
+.act-oldsongbox .act-oldAll div div {
+  width: 100%;
+  margin: 0;
+}
+
+.act-oldsongbox .act-oldAll div div img {
+  width: 200px;
+  height: 200px;
+}
+
+.act-now-year {
+  position: relative;
+  height: 700px;
+  max-width: 1500px;
+  width: 100%;
+  padding: 100px 0 0 150px;
+  margin: 150px auto 0 auto;
+}
+
+.act-now-year div {
+  width: 50%;
+}
+
+.act-now-year div div {
+  margin: 20px 0;
+  width: 70%;
+  font-size: 2.5rem;
+  line-height: 1;
+}
+
+.act-now-year div p {
+  width: 80%;
+}
+
+.act-nowposterbox {
+  display: inline-block;
+  position: absolute;
+  height: 100%;
+  top: 0%;
+  right: 0%;
+}
+
+.act-nowposterbox .act-nowposter {
+  width: 350px;
+  height: 450px;
+  position: absolute;
+  top: 10%;
+  right: 20%;
+  z-index: 2;
+  margin: auto auto;
+}
+
+.act-nowposterbox .act-nowposter img {
+  width: 100%;
+  height: 100%;
+}
+
+.act-nowposterbox .act-nowSplash-ink {
+  position: absolute;
+  bottom: -10%;
+  left: 0%;
+  z-index: 1;
+  width: 800px;
+  height: 600px;
+}
+
+.act-nowposterbox .act-nowSplash-ink img {
+  width: 100%;
+  height: 100%;
+}
+
+.act-nowposterbox .act-nowposter-linetop {
+  width: 400px;
+  height: 400px;
+  position: absolute;
+  top: -10%;
+  left: 10%;
+  margin: auto auto;
+}
+
+.act-nowposterbox .act-nowposter-linetop img {
+  width: 100%;
+  height: 100%;
+}
+
+.act-nowposterbox .act-nowposter-linebotom {
+  position: absolute;
+  bottom: -10%;
+  right: -15%;
+  z-index: 2;
+  margin: auto auto;
+  width: 400px;
+  height: 400px;
+}
+
+.act-nowposterbox .act-nowposter-linebotom img {
+  width: 100%;
+  height: 100%;
+}
+
+#Now-Sign-up {
+  height: 800px;
+  max-width: 1300px;
+  width: 100%;
+  margin: 150px auto 0 auto;
+  position: relative;
+  padding: 100px 0 0 0;
+  vertical-align: inherit;
+}
+
+#Now-Sign-up div {
+  width: 40%;
+  display: inline-block;
+}
+
+#Now-Sign-up div img {
+  width: 80%;
+  height: 80%;
+}
+
+#Now-Sign-up article {
+  width: 50%;
+  min-height: 550px;
+  display: inline-block;
+  margin: auto auto;
+  background-image: url(../img/activity/0.text-circle.svg);
+  background-repeat: no-repeat;
+  background-size: contain;
+  text-align: center;
+  padding: 100px 0 0 0;
+  position: absolute;
+}
+
+#Now-Sign-up article div {
+  text-align: left;
+  width: 60%;
+  margin: auto auto;
+  padding: 20px;
+  text-align: center;
+}
+
+#Now-Sign-up article div p {
+  display: inline-block;
+  width: 80%;
+  margin: 0 auto;
+  text-align: left;
+}
+
+#Now-Sign-up article div button {
+  margin-top: 20px;
+  background-color: #f1c40f;
+  font-size: 0.8rem;
+  padding: 10px 30px;
+  border: 1px solid #f1c40f;
+  border-radius: 5px;
+  color: #fff;
+  font-weight: bold;
+  cursor: pointer;
+}
+
+#Now-Vote {
+  text-align: left;
+  height: 700px;
+  max-width: 1500px;
+  width: 100%;
+  margin: 150px auto 0 auto;
+  position: relative;
+}
+
+#Now-Vote .Now-Vote-content {
+  height: 400px;
+  max-width: 1500px;
+  padding: 100px 0 0 150px;
+  position: relative;
+  margin: 0 auto;
+  background-image: url(../img/activity/0.blackline.svg), url(../img/activity/text-wh.png);
+  background-size: contain, 100% 100%;
+  background-repeat: no-repeat, no-repeat;
+}
+
+#Now-Vote .Now-Vote-content p {
+  width: 60%;
+}
+
+#Now-Vote .Now-Vote-content div {
+  text-align: right;
+  vertical-align: middle;
+  padding-right: 100px;
+}
+
+#Now-Vote .Now-Vote-content div h3 {
+  display: inline-block;
+}
+
+#Now-Vote .Now-Vote-content div span {
+  font-size: 2.5rem;
+  font-weight: bold;
+  color: red;
+}
+
+#Now-Vote .Now-Vote-content img {
+  position: absolute;
+  right: -13%;
+  bottom: -20%;
+  z-index: -1;
+  width: 50%;
+  height: 125%;
+}
+
+#Now-Vote h3 {
+  margin-bottom: 30px;
+}
+
+#Now-Vote section {
+  padding: 100px 0 0 100px;
+  margin: 0 auto;
+}
+
+#Now-Vote section div {
+  text-align: left;
+  width: 20%;
+  margin-left: 3.5%;
+  margin-bottom: 50px;
+  display: inline-block;
+}
+
+#Now-Vote section div p {
+  font-size: 0.6rem;
+  text-align: right;
+  margin: 0 auto 0 0;
+  display: inline-block;
+}
+
+#Now-Vote section div p span {
+  font-size: 0.8rem;
+}
+
+#Now-Vote section div button {
+  display: inline-block;
+  background-color: #f1c40f;
+  font-size: 0.8rem;
+  padding: 10px 30px;
+  border: 1px solid #f1c40f;
+  border-radius: 5px;
+  color: #fff;
+  font-weight: bold;
+  cursor: pointer;
+}
+
+#Now-Vote section div div {
+  width: 100%;
+  margin: 0;
+}
+
+#Now-Vote section div div img {
+  width: 250px;
+  height: 250px;
+}
+/*# sourceMappingURL=activity.css.map */
