@@ -106,15 +106,19 @@ header {
 }
 
 /*button mixin*/
-#actHead {
-  position: relative;
+#app {
+  margin: 0;
+  position: fixed;
+  top: 0;
+  left: 0;
+  z-index: 999;
 }
 
 #radioBg {
   position: relative;
   max-width: 1400px;
   height: 650px;
-  margin: 50px auto 50px 0px;
+  margin: 180px auto 50px 0px;
 }
 
 #radioBg img {
@@ -168,7 +172,7 @@ header {
 }
 
 #radioBg #act-sectionAnchor a span {
-  color: black;
+  color: #333;
   font-size: 0.7rem;
   position: absolute;
   top: 50%;
@@ -309,7 +313,7 @@ header {
   font-size: 0.6rem;
   position: relative;
   top: -20px;
-  color: sienna;
+  color: #333;
 }
 
 .act-old-years {
@@ -358,7 +362,7 @@ header {
 .act-old-years div .act-oldVotes span {
   font-size: 2.5rem;
   font-weight: bold;
-  color: red;
+  color: #333;
 }
 
 .act-old-years .act-oldposterbox {
@@ -411,17 +415,21 @@ header {
 
 .act-oldsongbox {
   margin-top: 75px;
-  padding: 100px 125px;
+  padding: 100px 135px;
   width: 1500px;
+  margin: 50px auto 0 auto;
 }
 
 .act-oldsongbox .act-oldTop {
   text-align: left;
   width: 100%;
+  max-width: 1400px;
+  padding: 100px 0 0 50px;
 }
 
 .act-oldsongbox .act-oldTop h3 {
   margin-bottom: 30px;
+  margin-left: 20px;
 }
 
 .act-oldsongbox .act-oldTop div {
@@ -433,6 +441,7 @@ header {
 
 .act-oldsongbox .act-oldTop div p {
   font-size: 0.6rem;
+  margin-bottom: 10px;
 }
 
 .act-oldsongbox .act-oldTop div p span {
@@ -442,24 +451,61 @@ header {
 .act-oldsongbox .act-oldTop div div {
   width: 100%;
   margin: 0;
+  position: relative;
+}
+
+.act-oldsongbox .act-oldTop div div:hover .act-old-play {
+  display: block;
+  cursor: pointer;
+  z-index: 2;
+}
+
+.act-oldsongbox .act-oldTop div div .act-old-play {
+  width: 100px;
+  height: 100px;
+  text-align: center;
+  position: absolute;
+  top: 25%;
+  left: 20%;
+  display: none;
+  z-index: 2;
+}
+
+.act-oldsongbox .act-oldTop div div .act-old-play img {
+  width: 100%;
+  height: 100%;
 }
 
 .act-oldsongbox .act-oldTop div div img {
-  width: 300px;
-  height: 300px;
+  width: 250px;
+  height: 250px;
 }
 
-.act-oldsongbox .act-oldAll {
+.act-oldsongbox .act-oldTop div .act-old-hear1 {
+  width: 25px;
+  height: 25px;
+}
+
+.act-oldsongbox .act-oldTop div .act-old-hear1 img {
+  width: 100%;
+  height: 100%;
+}
+
+.act-oldAll {
   text-align: left;
   width: 100%;
   margin-top: 75px;
+  max-width: 1400px;
+  padding: 100px 0 0 0;
+  margin: 50px auto 0px auto;
 }
 
-.act-oldsongbox .act-oldAll h3 {
+.act-oldAll h3 {
   margin-bottom: 30px;
+  margin-left: 50px;
 }
 
-.act-oldsongbox .act-oldAll div {
+.act-oldAll div {
   text-align: left;
   width: 20%;
   margin-left: 3.5%;
@@ -467,28 +513,62 @@ header {
   display: inline-block;
 }
 
-.act-oldsongbox .act-oldAll div p {
+.act-oldAll div p {
   font-size: 0.6rem;
+  margin-bottom: 10px;
 }
 
-.act-oldsongbox .act-oldAll div p span {
+.act-oldAll div p span {
   font-size: 0.8rem;
 }
 
-.act-oldsongbox .act-oldAll div div {
+.act-oldAll div div {
   width: 100%;
   margin: 0;
+  position: relative;
 }
 
-.act-oldsongbox .act-oldAll div div img {
+.act-oldAll div div:hover .act-old-play {
+  display: block;
+  cursor: pointer;
+  z-index: 2;
+}
+
+.act-oldAll div div .act-old-play {
+  width: 100px;
+  height: 100px;
+  text-align: center;
+  position: absolute;
+  top: 20%;
+  left: 20%;
+  display: none;
+  z-index: 2;
+}
+
+.act-oldAll div div .act-old-play img {
+  width: 100%;
+  height: 100%;
+}
+
+.act-oldAll div div img {
   width: 200px;
   height: 200px;
+}
+
+.act-oldAll div div .act-old-hear1 {
+  width: 25px;
+  height: 25px;
+}
+
+.act-oldAll div div .act-old-hear1 img {
+  width: 100%;
+  height: 100%;
 }
 
 .act-now-year {
   position: relative;
   height: 700px;
-  max-width: 1500px;
+  max-width: 1400px;
   width: 100%;
   padding: 100px 0 0 150px;
   margin: 150px auto 0 auto;
@@ -563,7 +643,7 @@ header {
 .act-nowposterbox .act-nowposter-linebotom {
   position: absolute;
   bottom: -10%;
-  right: -15%;
+  right: -12%;
   z-index: 2;
   margin: auto auto;
   width: 400px;
@@ -576,23 +656,50 @@ header {
 }
 
 #Now-Sign-up {
-  height: 800px;
-  max-width: 1300px;
+  max-width: 1400px;
   width: 100%;
+  min-height: 800px;
+  padding: 50px 0 0 150px;
   margin: 150px auto 0 auto;
   position: relative;
-  padding: 100px 0 0 0;
-  vertical-align: inherit;
+}
+
+#Now-Sign-up h2 {
+  margin-bottom: 100px;
 }
 
 #Now-Sign-up div {
   width: 40%;
+  min-width: 300px;
+  height: 100%;
   display: inline-block;
+  position: relative;
+  text-align: right;
 }
 
-#Now-Sign-up div img {
+#Now-Sign-up div .now-marry {
   width: 80%;
   height: 80%;
+  margin: auto auto;
+}
+
+#Now-Sign-up div .now-marry img {
+  width: 100%;
+  height: 100%;
+}
+
+#Now-Sign-up div .now-marry-ink {
+  width: 1000px;
+  height: 720px;
+  position: absolute;
+  z-index: -1;
+  left: -50%;
+  top: -10%;
+}
+
+#Now-Sign-up div .now-marry-ink img {
+  width: 100%;
+  height: 100%;
 }
 
 #Now-Sign-up article {
@@ -600,9 +707,10 @@ header {
   min-height: 550px;
   display: inline-block;
   margin: auto auto;
-  background-image: url(../img/activity/0.text-circle.svg);
+  background-image: url(../img/activity/0.text-circle.svg), url(../img/activity/text.circle-wh.png);
   background-repeat: no-repeat;
-  background-size: contain;
+  background-size: contain,95% 95%;
+  background-position-x: center,right;
   text-align: center;
   padding: 100px 0 0 0;
   position: absolute;
@@ -635,10 +743,15 @@ header {
   cursor: pointer;
 }
 
+#Now-Sign-up article div button:hover {
+  -webkit-transform: scale(1.1);
+          transform: scale(1.1);
+}
+
 #Now-Vote {
   text-align: left;
   height: 700px;
-  max-width: 1500px;
+  max-width: 1300px;
   width: 100%;
   margin: 150px auto 0 auto;
   position: relative;
@@ -647,7 +760,7 @@ header {
 #Now-Vote .Now-Vote-content {
   height: 400px;
   max-width: 1500px;
-  padding: 100px 0 0 150px;
+  padding: 100px 0 0 100px;
   position: relative;
   margin: 0 auto;
   background-image: url(../img/activity/0.blackline.svg), url(../img/activity/text-wh.png);
@@ -672,7 +785,7 @@ header {
 #Now-Vote .Now-Vote-content div span {
   font-size: 2.5rem;
   font-weight: bold;
-  color: red;
+  color: #333;
 }
 
 #Now-Vote .Now-Vote-content img {
@@ -689,8 +802,10 @@ header {
 }
 
 #Now-Vote section {
-  padding: 100px 0 0 100px;
-  margin: 0 auto;
+  max-width: 1400px;
+  width: 100%;
+  padding: 100px 0 0 50px;
+  margin: 150px auto 0 auto;
 }
 
 #Now-Vote section div {
@@ -722,15 +837,54 @@ header {
   color: #fff;
   font-weight: bold;
   cursor: pointer;
+  margin: 0 0 10px 0;
+}
+
+#Now-Vote section div button:hover {
+  -webkit-transform: scale(1.1);
+          transform: scale(1.1);
 }
 
 #Now-Vote section div div {
   width: 100%;
   margin: 0;
+  position: relative;
+}
+
+#Now-Vote section div div:hover .act-old-play {
+  display: block;
+  cursor: pointer;
+  z-index: 2;
+}
+
+#Now-Vote section div div .act-old-play {
+  width: 100px;
+  height: 100px;
+  text-align: center;
+  position: absolute;
+  top: 20%;
+  left: 20%;
+  display: none;
+  z-index: 2;
+}
+
+#Now-Vote section div div .act-old-play img {
+  width: 100%;
+  height: 100%;
 }
 
 #Now-Vote section div div img {
-  width: 250px;
-  height: 250px;
+  width: 200px;
+  height: 200px;
+}
+
+#Now-Vote section div .act-old-hear1 {
+  width: 25px;
+  height: 25px;
+}
+
+#Now-Vote section div .act-old-hear1 img {
+  width: 100%;
+  height: 100%;
 }
 /*# sourceMappingURL=activity.css.map */
