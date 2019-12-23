@@ -24,10 +24,9 @@
             padding: 0px;
         }
 
-        body{
+        body {
             background: url(./img/songupload/addimg0.jpg);
         }
-      
     </style>
 </head>
 
@@ -147,12 +146,15 @@
             <ul class="inside">
                 <form action="" method="POST">
                     <article>
-                        <input type="file" name="" id="" accept=".img/*" style="color: rgba(208, 214, 214,0);">
+                        <p>
+                            <img id="image" style="width: 300px;height: 300px;">
+                        </p>
+                        <input type="file" name="" id="theFile" style="color: rgba(0, 0, 0, 0);">
                     </article>
                     <div>
-                        <br>
                         <p>Song Title : <input type="text" style="border: 1px solid #d0d6d6;"></p>
-                        <input type="file" name="" id="" accept=".mp3/*" style="border: 1px solid #d0d6d6;">
+                        <input type="file" name="" id="" style="border: 1px solid #d0d6d6;">
+                        <br>
                         <br>
                         <input type="checkbox" name="" id="">House&emsp;&emsp;&emsp;&ensp;&ensp;
                         <input type="checkbox" style="border-radius: 5px;" name="" id="">Trap
@@ -161,10 +163,12 @@
                         <input type="checkbox" name="" id="">#222222 &emsp;&emsp;&emsp;
                         <input type="checkbox" name="" id="">#333333
                         <br>
+                        <br>
                         <p>Introduction :</p>
-                        <textarea name="" id="" cols="68" rows="6" style="border: 1px solid #d0d6d6;"></textarea>
+                        <textarea name="" id="" cols="68" rows="4" style="border: 1px solid #d0d6d6;"></textarea>
                     </div>
-                    <section><input type="image" name="submit" src="./img/songupload/button_send.png" onClick="document.form.submit()" style="width:70px;height:50px;"></section>
+                    <section><input type="image" id="sd" name="submit" src="./img/songupload/button_send.png"
+                            onClick="document.form.submit()" style="width:80px;height:50px;margin-left:50px;"></section>
                 </form>
 
             </ul>
@@ -179,6 +183,30 @@
             <img src="./img/songupload/mic.png" alt="">
         </div>
     </section>
+
+    <script>
+        function doFirst() {
+            //先跟HTML畫面產生關聯，再建事件聆聽功能
+            document.getElementById('theFile').onchange = fileChange;
+        }
+
+        function fileChange() {
+            let file = document.getElementById('theFile').files[0];
+            let content = '';
+            //========================
+
+            let readFile = new FileReader();
+            readFile.readAsDataURL(file);
+            readFile.addEventListener('load', function () {
+                let image = document.getElementById('image');
+                image.src = this.result;
+                image.style.maxWidth = '500px';
+                image.style.maxHeight = '400px';
+            });
+        }
+        window.addEventListener('load', doFirst);
+    </script>
+
 
     <script>
         let vm = new Vue({
