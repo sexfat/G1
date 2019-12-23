@@ -213,3 +213,15 @@ input[type=checkbox]:checked::after {
     padding: 20px 0px;
     margin-left: 180px;
 }
+.inside2 article{
+   float: left;
+}
+.inside2 div{
+    position: relative;
+    left: 100px;
+    float: left;
+}
+// .inside2 div .ins2box{
+//     position: relative;
+//     top: 50px;
+// }
