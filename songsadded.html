@@ -26,6 +26,7 @@
 
         body {
             background: url(./img/songupload/addimg0.jpg);
+            background-repeat: no-repeat;
         }
     </style>
 </head>
@@ -149,9 +150,9 @@
                         <p style="width: 100px;height: 100px;">
                             <img id="image" style="width: 300px;height: 300px;">
                         </p>
-                        <img id="ff" style="width: 50px;height: 30px;" src="./img/songupload/button_edit.png">
+                        <img class="ff" style="width: 50px;height: 30px;" src="./img/songupload/button_edit.png">
                         <input style="opacity:0;" type="file" name="" id="theFile" style="color: rgba(0, 0, 0, 0);">
-                        
+
                     </article>
                     <div>
                         <p>Song Title : <input type="text" style="border: 1px solid #d0d6d6;"></p>
@@ -161,7 +162,7 @@
                         <input type="checkbox" name="" id=""> House&emsp;&emsp;&emsp;&ensp;&ensp;&ensp;
                         <input type="checkbox" style="border-radius: 5px;" name="" id="">Trap
                         <br>
-                        <input type="checkbox" name="" id="">#111111 &emsp;&emsp;&emsp; 
+                        <input type="checkbox" name="" id="">#111111 &emsp;&emsp;&emsp;
                         <input type="checkbox" name="" id="">#222222 &emsp;&emsp;&emsp;
                         <input type="checkbox" name="" id="">#333333
                         <br>
@@ -177,9 +178,39 @@
 
             <li class="lif">&emsp;UPLOADED</li>
             <ol class="inside2">
-                <li>Andy Warhol - Because of you</li><button>．．．</button>
-                <li>Andy Warhol - Because of you</li><button>．．．</button>
-                <li>Andy Warhol - Because of you</li><button>．．．</button>
+                <li>Andy Warhol - Because of you</li>
+                <ol>
+                    <article>
+                        <p style="width: 100px;height: 100px;">
+                            <img src="./img/songupload/0075yYLSly1fruy9e4oj9j30i20i2jsp.jpg"
+                                style="width: 300px;height: 300px;">
+                        </p>
+                        <img class="ff" style="width: 50px;height: 30px;" src="./img/songupload/button_edit.png">
+                        <input style="opacity:0;" type="file" name="" class="theFile" style="color: rgba(0, 0, 0, 0);">
+                    </article>
+                </ol>
+                <li>Andy Warhol - Because of you</li>
+                <ol>
+                    <article>
+                        <p style="width: 100px;height: 100px;">
+                            <img src="./img/songupload/0075yYLSly1fruy9e4oj9j30i20i2jsp.jpg"
+                                style="width: 300px;height: 300px;">
+                        </p>
+                        <img class="ff" style="width: 50px;height: 30px;" src="./img/songupload/button_edit.png">
+                        <input style="opacity:0;" type="file" name="" class="theFile" style="color: rgba(0, 0, 0, 0);">
+                    </article>
+                </ol>
+                <li>Andy Warhol - Because of you</li>
+                <ol>
+                    <article>
+                        <p style="width: 100px;height: 100px;">
+                            <img src="./img/songupload/0075yYLSly1fruy9e4oj9j30i20i2jsp.jpg"
+                                style="width: 300px;height: 300px;">
+                        </p>
+                        <img class="ff" style="width: 50px;height: 30px;" src="./img/songupload/button_edit.png">
+                        <input style="opacity:0;" type="file" name="" class="theFile" style="color: rgba(0, 0, 0, 0);">
+                    </article>
+                </ol>
             </ol>
         </ol>
         <div class="uploadmic">
@@ -189,7 +220,6 @@
 
     <script>
         function doFirst() {
-            //先跟HTML畫面產生關聯，再建事件聆聽功能
             document.getElementById('theFile').onchange = fileChange;
         }
 
@@ -326,6 +356,7 @@
             $(".leftli").height(document.body.scrollHeight);
 
             $(".leftli ol.inside2").hide();
+            $(".inside2 ol").hide();
 
             //bind()為.leftli li的li生成點選事件
             $(".leftli li").bind("click", function () {

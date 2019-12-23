@@ -6,7 +6,6 @@
 section.adds2 {
   -webkit-box-sizing: border-box;
           box-sizing: border-box;
-  width: 100vw;
 }
 
 .leftli {
@@ -47,7 +46,7 @@ section.adds2 {
   width: 500px;
   height: 300px;
   position: relative;
-  left: 150px;
+  left: 120px;
   top: 20px;
   float: left;
 }
@@ -58,7 +57,7 @@ section.adds2 {
   left: 65px;
 }
 
-#ff {
+.ff {
   position: relative;
   top: 170px;
   left: 130px;
@@ -120,9 +119,16 @@ input[type=checkbox]:checked::after {
   margin: 0 auto;
 }
 
-.inside2 button {
+.inside2 input {
   position: relative;
-  left: 1000px;
-  top: -35px;
+  left: 60px;
+  top: 160px;
+}
+
+.inside2 ol {
+  border: 1px solid mediumaquamarine;
+  height: 350px;
+  padding: 20px 0px;
+  margin-left: 180px;
 }
 /*# sourceMappingURL=songupload.css.map */
