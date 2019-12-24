@@ -6,10 +6,11 @@
 	<meta http-equiv="X-UA-Compatible" content="ie=edge">
     <title>Document</title>
     <link rel="stylesheet" href="./css/collection.css">
-    <link rel="stylesheet" href="./css/nav_bar.css">
-    <link rel="stylesheet" href="./css/public.css"> 
+    <link rel="stylesheet" href="./css/main.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.11.2/css/all.min.css" />
     <script src="https://cdnjs.cloudflare.com/ajax/libs/vue/2.6.10/vue.js"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
+    <script src="./js/player.js"></script>
 </head>
 <body>
 <div id="app">
@@ -40,6 +41,7 @@
                 </li>
             </ul>
         </div>
+
         <div class="logo_container">
             <a href="">
                 <div class="logo"></div>
@@ -66,12 +68,15 @@
         <div class="search_bt" @click="search_bt_click">
             <a href="#"></a>
         </div>
-        <div class="search_bar">
+        <div class="search_bar" @click="stopPropagation">
             <input class="search" type="text" />
             <div class="tag_container">
             </div>
         </div>
-        <div class="mem_bt" @click="mem_bt_click">
+        <div class="login_bt" @click="" v-if="mem_login == false">
+            <a class="flexbox" href="#">Login</a>
+        </div>
+        <div class="mem_bt" @click="mem_bt_click" v-if="mem_login == true">
             <a href="#"></a>
         </div>
         <div class="mem_list" @click="stopPropagation">
@@ -116,7 +121,7 @@
     <img src="./img/collection/colltitle.png" alt="">
 </header>
 <section>
-    <div class="radio">
+    <div class="collectionradio">
         <img src="./img/collection/radio.png" alt="">
         <div class="eyes1">
             <img class="closeeyes1"src="./img/collection/closeeye.png" alt="">
@@ -157,43 +162,47 @@
                     $(".closeeyes3").attr('src','./img/collection/closeeye.png');
                 });
     </script>
-    
-    <div id="tabcontainer">
-        <ul class="tabtitle">
+
+    <div id="collectiontabcontainer">
+        <ul class="collectiontabtitle">
             <li><a class="tabtitlechange1" href="#tab01">Favorite</a></li>
             <li><a class="tabtitlechange2" href="#tab02">Trap</a></li>
             <li><a class="tabtitlechange3" href="#tab03">All</a></li>
             <li><a class="tabtitlechange4" href="#tab04">House</a></li>
         </ul>
-        <div id="tab01" class="tabinner">
+        <div class="playall_btn">
+            <button id="listAllPlay" class="circlebtn"><i class="fas fa-play"></i></button>
+            play all
+          </div> 
+        <div id="tab01" class="collectiontabinner">
             <div class="albumshelf">
                 <div class="shelf">
                     <div class="row-1">
                         <div class="loc">
                             <div>
                                 <div class="sample album1">
-                                    <img src="./img/collection/grayheart.png" id="heart" alt="">
+                                    <h6 class ="like" >❤</h6>
                                     <p>At th beginning</p>
                                     <span>ONE OK ROCK</span>
                                 </div>
                             </div>
                             <div>
                                 <div class="sample album2" >
-                                    <img src="./img/collection/grayheart.png" id="heart" alt="">
+                                    <h6 class ="like" >❤</h6>
                                     <p>Want You Know</p>
                                     <span>Zedd</span>
                                 </div>
                             </div>
                             <div>
                                 <div class="sample album3" >
-                                    <img src="./img/collection/grayheart.png" id="heart" alt="">
-                                    <p>Don't Look Down</p>
+                                    <h6 class ="like" >❤</h6>
+                                    <p>Don't Look</p>
                                     <span>Martin Garrix</span>
                                 </div>
                             </div>
                             <div>
                                 <div class="sample album4" >
-                                    <img src="./img/collection/grayheart.png" id="heart" alt="">
+                                    <h6 class ="like" >❤</h6>
                                     <p>Outside</p>
                                     <span>Calvin Harris</span>
                                 </div>
@@ -204,28 +213,28 @@
                     <div class="row-1">
                         <div class="loc">
                             <div> <div class="sample album5">
-                                <img src="./img/collection/grayheart.png" id="heart" alt="">
+                                <h6 class ="like" >❤</h6>
                                 <p> Lean On</p>
-                                <span>Major Lazer & DJ Snake</span>
+                                <span>DJ Snake</span>
                             </div>
                         </div>
                             <div>
                                 <div class="sample album6">
-                                    <img src="./img/collection/grayheart.png" id="heart" alt="">
+                                    <h6 class ="like" >❤</h6>
                                     <p>Hey Mama</p>
                                     <span>David Guetta</span>
                                 </div>
                             </div>
                             <div>
                                 <div class="sample album7">
-                                    <img src="./img/collection/grayheart.png" id="heart" alt="">
+                                    <h6 class ="like" >❤</h6>
                                     <p>Waiting For Love</p>
                                     <span>Avicii </span>
                                 </div>
                             </div>
                             <div>
                                 <div class="sample album8">
-                                    <img src="./img/collection/grayheart.png" id="heart" alt="">
+                                    <h6 class ="like" >❤</h6>
                                     <p>Are Ü Now</p>
                                     <span>Skrillex and Diplo </span>
                                 </div>
@@ -237,14 +246,14 @@
                         <div class="loc">
                             <div>
                                 <div class="sample album9" >
-                                    <img src="./img/collection/grayheart.png" id="heart" alt="">
+                                    <h6 class ="like" >❤</h6>
                                     <p>Follow Me</p>
                                     <span>Hardwell</span>
                                 </div>
                             </div>
                             <div>
                                 <div class="sample album10" >
-                                    <img src="./img/collection/grayheart.png" id="heart" alt="">
+                                    <h6 class ="like" >❤</h6>
                                     <p>Secrets</p>
                                     <span>Tiësto & KSHMR</span>
                                 </div>
@@ -254,35 +263,36 @@
                 </div>
             </div>
         </div>
-        <div id="tab02" class="tabinner">
+        <div id="tab02" class="collectiontabinner">
             <div class="albumshelf">
                 <div class="shelf">
                     <div class="row-1">
                         <div class="loc">
                             <div>
-                                <div class="sample album1">
-                                    <img src="./img/collection/grayheart.png" id="heart" alt="">
+                                <div class="sample album10">
+                                    <div>123</div>
+                                    <h6 class ="like" >❤</h6>
                                     <p>At th beginning</p>
                                     <span>ONE OK ROCK</span>
                                 </div>
                             </div>
                             <div>
-                                <div class="sample album2" >
-                                    <img src="./img/collection/grayheart.png" id="heart" alt="">
+                                <div class="sample album9" >
+                                    <h6 class ="like" >❤</h6>
                                     <p>Want You Know</p>
                                     <span>Zedd</span>
                                 </div>
                             </div>
                             <div>
-                                <div class="sample album3" >
-                                    <img src="./img/collection/grayheart.png" id="heart" alt="">
+                                <div class="sample album8" >
+                                    <h6 class ="like" >❤</h6>
                                     <p>Don't Look Down</p>
                                     <span>Martin Garrix</span>
                                 </div>
                             </div>
                             <div>
-                                <div class="sample album4" >
-                                    <img src="./img/collection/grayheart.png" id="heart" alt="">
+                                <div class="sample album7" >
+                                    <h6 class ="like" >❤</h6>
                                     <p>Outside</p>
                                     <span>Calvin Harris</span>
                                 </div>
@@ -292,29 +302,29 @@
 
                     <div class="row-1">
                         <div class="loc">
-                            <div> <div class="sample album5">
-                                <img src="./img/collection/grayheart.png" id="heart" alt="">
+                            <div> <div class="sample album6">
+                                <h6 class ="like" >❤</h6>
                                 <p> Lean On</p>
                                 <span>Major Lazer & DJ Snake</span>
                             </div>
                         </div>
                             <div>
-                                <div class="sample album6">
-                                    <img src="./img/collection/grayheart.png" id="heart" alt="">
+                                <div class="sample album5">
+                                    <h6 class ="like" >❤</h6>
                                     <p>Hey Mama</p>
                                     <span>David Guetta</span>
                                 </div>
                             </div>
                             <div>
-                                <div class="sample album7">
-                                    <img src="./img/collection/grayheart.png" id="heart" alt="">
+                                <div class="sample album4">
+                                    <h6 class ="like" >❤</h6>
                                     <p>Waiting For Love</p>
                                     <span>Avicii </span>
                                 </div>
                             </div>
                             <div>
-                                <div class="sample album8">
-                                    <img src="./img/collection/grayheart.png" id="heart" alt="">
+                                <div class="sample album3">
+                                    <h6 class ="like" >❤</h6>
                                     <p>Are Ü Now</p>
                                     <span>Skrillex and Diplo </span>
                                 </div>
@@ -325,15 +335,15 @@
                     <div class="row-1">
                         <div class="loc">
                             <div>
-                                <div class="sample album9" >
-                                    <img src="./img/collection/grayheart.png" id="heart" alt="">
+                                <div class="sample album2" >
+                                    <h6 class ="like" >❤</h6>
                                     <p>Follow Me</p>
                                     <span>Hardwell</span>
                                 </div>
                             </div>
                             <div>
-                                <div class="sample album10" >
-                                    <img src="./img/collection/grayheart.png" id="heart" alt="">
+                                <div class="sample album1" >
+                                    <h6 class ="like" >❤</h6>
                                     <p>Secrets</p>
                                     <span>Tiësto & KSHMR</span>
                                 </div>
@@ -343,35 +353,35 @@
                 </div>
             </div>
         </div>
-        <div id="tab03" class="tabinner">
+        <div id="tab03" class="collectiontabinner">
             <div class="albumshelf">
                 <div class="shelf">
                     <div class="row-1">
                         <div class="loc">
                             <div>
-                                <div class="sample album1">
-                                    <img src="./img/collection/grayheart.png" id="heart" alt="">
+                                <div class="sample album2">
+                                    <h6 class ="like" >❤</h6>
                                     <p>At th beginning</p>
                                     <span>ONE OK ROCK</span>
                                 </div>
                             </div>
                             <div>
-                                <div class="sample album2" >
-                                    <img src="./img/collection/grayheart.png" id="heart" alt="">
+                                <div class="sample album4" >
+                                    <h6 class ="like" >❤</h6>
                                     <p>Want You Know</p>
                                     <span>Zedd</span>
                                 </div>
                             </div>
                             <div>
-                                <div class="sample album3" >
-                                    <img src="./img/collection/grayheart.png" id="heart" alt="">
+                                <div class="sample album6" >
+                                    <h6 class ="like" >❤</h6>
                                     <p>Don't Look Down</p>
                                     <span>Martin Garrix</span>
                                 </div>
                             </div>
                             <div>
-                                <div class="sample album4" >
-                                    <img src="./img/collection/grayheart.png" id="heart" alt="">
+                                <div class="sample album8" >
+                                    <h6 class ="like" >❤</h6>
                                     <p>Outside</p>
                                     <span>Calvin Harris</span>
                                 </div>
@@ -381,29 +391,29 @@
 
                     <div class="row-1">
                         <div class="loc">
-                            <div> <div class="sample album5">
-                                <img src="./img/collection/grayheart.png" id="heart" alt="">
+                            <div> <div class="sample album10">
+                                <h6 class ="like" >❤</h6>
                                 <p> Lean On</p>
                                 <span>Major Lazer & DJ Snake</span>
                             </div>
                         </div>
                             <div>
-                                <div class="sample album6">
-                                    <img src="./img/collection/grayheart.png" id="heart" alt="">
+                                <div class="sample album1">
+                                    <h6 class ="like" >❤</h6>
                                     <p>Hey Mama</p>
                                     <span>David Guetta</span>
                                 </div>
                             </div>
                             <div>
-                                <div class="sample album7">
-                                    <img src="./img/collection/grayheart.png" id="heart" alt="">
+                                <div class="sample album3">
+                                    <h6 class ="like" >❤</h6>
                                     <p>Waiting For Love</p>
                                     <span>Avicii </span>
                                 </div>
                             </div>
                             <div>
-                                <div class="sample album8">
-                                    <img src="./img/collection/grayheart.png" id="heart" alt="">
+                                <div class="sample album5">
+                                    <h6 class ="like" >❤</h6>
                                     <p>Are Ü Now</p>
                                     <span>Skrillex and Diplo </span>
                                 </div>
@@ -414,15 +424,15 @@
                     <div class="row-1">
                         <div class="loc">
                             <div>
-                                <div class="sample album9" >
-                                    <img src="./img/collection/grayheart.png" id="heart" alt="">
+                                <div class="sample album7" >
+                                    <h6 class ="like" >❤</h6>
                                     <p>Follow Me</p>
                                     <span>Hardwell</span>
                                 </div>
                             </div>
                             <div>
-                                <div class="sample album10" >
-                                    <img src="./img/collection/grayheart.png" id="heart" alt="">
+                                <div class="sample album9" >
+                                    <h6 class ="like" >❤</h6>
                                     <p>Secrets</p>
                                     <span>Tiësto & KSHMR</span>
                                 </div>
@@ -432,35 +442,35 @@
                 </div>
             </div>
         </div>
-        <div id="tab04" class="tabinner">
+        <div id="tab04" class="collectiontabinner">
             <div class="albumshelf">
                 <div class="shelf">
                     <div class="row-1">
                         <div class="loc">
                             <div>
                                 <div class="sample album1">
-                                    <img src="./img/collection/grayheart.png" id="heart" alt="">
+                                    <h6 class ="like" >❤</h6>
                                     <p>At th beginning</p>
                                     <span>ONE OK ROCK</span>
                                 </div>
                             </div>
                             <div>
-                                <div class="sample album2" >
-                                    <img src="./img/collection/grayheart.png" id="heart" alt="">
+                                <div class="sample album3" >
+                                    <h6 class ="like" >❤</h6>
                                     <p>Want You Know</p>
                                     <span>Zedd</span>
                                 </div>
                             </div>
                             <div>
-                                <div class="sample album3" >
-                                    <img src="./img/collection/grayheart.png" id="heart" alt="">
+                                <div class="sample album5" >
+                                <h6 class ="like" >❤</h6>
                                     <p>Don't Look Down</p>
                                     <span>Martin Garrix</span>
                                 </div>
                             </div>
                             <div>
-                                <div class="sample album4" >
-                                    <img src="./img/collection/grayheart.png" id="heart" alt="">
+                                <div class="sample album7" >
+                                    <h6 class ="like" >❤</h6>
                                     <p>Outside</p>
                                     <span>Calvin Harris</span>
                                 </div>
@@ -470,29 +480,29 @@
 
                     <div class="row-1">
                         <div class="loc">
-                            <div> <div class="sample album5">
-                                <img src="./img/collection/grayheart.png" id="heart" alt="">
+                            <div> <div class="sample album9">
+                            <h6 class ="like" >❤</h6>
                                 <p> Lean On</p>
                                 <span>Major Lazer & DJ Snake</span>
                             </div>
                         </div>
                             <div>
-                                <div class="sample album6">
-                                    <img src="./img/collection/grayheart.png" id="heart" alt="">
+                                <div class="sample album2">
+                                    <h6 class ="like" >❤</h6>
                                     <p>Hey Mama</p>
                                     <span>David Guetta</span>
                                 </div>
                             </div>
                             <div>
-                                <div class="sample album7">
-                                    <img src="./img/collection/grayheart.png" id="heart" alt="">
+                                <div class="sample album4">
+                                    <h6 class ="like" >❤</h6>
                                     <p>Waiting For Love</p>
                                     <span>Avicii </span>
                                 </div>
                             </div>
                             <div>
-                                <div class="sample album8">
-                                    <img src="./img/collection/grayheart.png" id="heart" alt="">
+                                <div class="sample album6">
+                                    <h6 class ="like" >❤</h6>
                                     <p>Are Ü Now</p>
                                     <span>Skrillex and Diplo </span>
                                 </div>
@@ -503,15 +513,15 @@
                     <div class="row-1">
                         <div class="loc">
                             <div>
-                                <div class="sample album9" >
-                                    <img src="./img/collection/grayheart.png" id="heart" alt="">
+                                <div class="sample album8" >
+                                    <h6 class ="like" >❤</h6>
                                     <p>Follow Me</p>
                                     <span>Hardwell</span>
                                 </div>
                             </div>
                             <div>
                                 <div class="sample album10" >
-                                    <img src="./img/collection/grayheart.png" id="heart" alt="">
+                                    <h6 class ="like" >❤</h6>
                                     <p>Secrets</p>
                                     <span>Tiësto & KSHMR</span>
                                 </div>
@@ -522,43 +532,27 @@
             </div>
         </div>
     </div>
-        <!-- <script>
-function switchFavorite(){
-    var heart = document.getElementById("heart");
-    if( heart.title == "add" ){
-        heart.src = "./img/collection/redheart.png";
-        heart.title = "cancel";
-    }else{
-        heart.src = "./img/collection/grayheart.png";
-        heart.title == "add";
-    }
-
-}
-
-function init(){
-   document.getElementById("heart").onclick = switchFavorite;
- 
-}
-window.onload = init;
-</script> -->
-
+    <script> 
+        $( function () {            
+            $( ".like").click( function () {
+                if($(this).toggleClass('' )){
+                    $(this).toggleClass('redheartshape' );  
+                }else{
+                    $(this).toggleClass('' );  
+                }            
+            })
+        })
+    </script>
     <script>
         $(function(){
-        var $li = $('ul.tabtitle li');
-        $($li. eq(0) .addClass('active').find('a').attr('href')).siblings('.tabinner').hide();
+        var $li = $('ul.collectiontabtitle li');
+        $($li. eq(0) .addClass('active').find('a').attr('href')).siblings('.collectiontabinner').hide();
         $li.click(function(){
-            $($(this).find('a'). attr ('href')).show().siblings ('.tabinner').hide();
+            $($(this).find('a'). attr ('href')).show().siblings ('.collectiontabinner').hide();
             $(this).addClass('active'). siblings ('.active').removeClass('active');
         });
     });
     </script>
-    <!-- <script>
-        $(".tabtitlechange1").click(function(){
-    $(".tabtitlechange1").replaceWith(document.createElement('img'));
-    var e = document.createElement ("img");
-    e.attr('src','./img/collection/closeeye.png');
-  });
-    </script> -->
 </section>
 
 
@@ -671,5 +665,243 @@ window.onload = init;
         }
     });
 </script>
+        <div id="player">
+            <audio src="" id="audioPlayer"></audio>
+            <div class="player_s">
+                <div class="info">
+                    <div class="cover"><img src="./img/library/cover1.jpg"></div>
+                    <div class="songInfo">
+                        <span class="name">Lucid Dreamer</span>
+                        <span class="creator">Spazz Cardigan</span>
+                    </div>
+                    <div class="heart becomeRed"><i class="fas fa-heart"></i></div>
+                    <div class="clearfix"></div>
+                </div>
+
+                <div class="controlPanel">
+                    <div class="progressbar">
+                        <div class="progress"></div>
+                    </div>
+                    <div class="time">
+                        <span class="start">00:00</span>
+                        <span class="end">04:30</span>
+                        <div class="clearfix"></div>
+                    </div>
+                    <div class="btns">
+                        <div class="controls">
+                            <button class="prev"><i class="fas fa-step-backward"></i></button>
+                            <button class="play"><i class="fas fa-play"></i></button>
+                            <button class="next"><i class="fas fa-step-forward"></i></button>
+                            <button class="stop"><i class="fas fa-stop"></i></button>
+                            <button class="rand"><i class="fas fa-random"></i></button>
+                            <button class="loop"><i class="fas fa-undo-alt"></i></button>
+                            <div class="clearfix"></div>
+                        </div>
+                        <div class="vol">
+                            <div class="volicon"><i class="fas fa-volume-down"></i></div>
+                            <div class="volLine">
+                                <div class="volControl"></div>
+                            </div>
+                            <div class="clearfix"></div>
+                        </div>
+                        <div class="clearfix"></div>
+                    </div>
+                </div>
+
+                <div class="expand" id="expand"><i class="fas fa-expand"></i></div>
+                <div class="clearfix"></div>
+            </div>
+
+            <!-- 詳細版 -->
+            <div class="player_b">
+                <div class="left">
+                    <div class="songCover">
+                        <div class="coverImg">
+                            <img src="./img/library/cover1.jpg">
+                            <div class="coverRec"><img src="./img/library/player_record.png" alt=""></div>
+                        </div>
+                    </div>
+                    <div class="songInfo">
+                        <div class="name">
+                            Lucid Dreamer
+                        </div>
+                        <div class="creator">
+                            Spazz Cardigan
+                        </div>
+                        <div class="heart becomeRed"><i class="fas fa-heart"></i></div>
+                        <div class="clearfix"></div>
+                    </div>
+                    <div class="controlPanel">
+                        <div class="progressbar">
+                            <div class="progress"></div>
+                        </div>
+                        <div class="time">
+                            <span class="start">00:00</span>
+                            <span class="end">04:30</span>
+                            <div class="clearfix"></div>
+                        </div>
+                        <div class="btns">
+                            <div class="controls">
+                                <button class="rand"><i class="fas fa-random"></i></button>
+                                <button class="prev"><i class="fas fa-step-backward"></i></button>
+                                <button class="play"><i class="fas fa-play"></i></button>
+                                <button class="next"><i class="fas fa-step-forward"></i></button>
+                                <button class="stop"><i class="fas fa-stop"></i></button>
+                                <button class="loop"><i class="fas fa-undo-alt"></i></button>
+                                <div class="clearfix"></div>
+                            </div>
+                            <div class="vol">
+                                <div class="volicon"><i class="fas fa-volume-down"></i></div>
+                                <div class="volLine">
+                                    <div class="volControl"></div>
+                                </div>
+                                <div class="clearfix"></div>
+                            </div>
+                            <div class="clearfix"></div>
+                        </div>
+                    </div>
+                    <div class="pushBtn"></div>
+                </div>
+
+                <div class="right">
+                    <div class="pushBtn"></div>
+                    <div class="listTitle">
+                        <div class="listCover">
+                            <img src="./img/library/list_pic1.jpg"></div>
+                        <div class="listName">
+                            <h2>peaceful list</h2>
+                            <span>8 songs</span>
+                        </div>
+                        <button class="selectBtn" id="selectBtn">SELECT</button>
+                        <div class="clearfix"></div>
+                    </div>
+                    <div class="list">
+                        <ul>
+                            <li>
+                                <div class="songCover">
+                                    <img src="./img/library/cover1.jpg" alt="">
+                                    <div class="listPlay"><i class="fas fa-play"></i></div>
+                                </div>
+                                <div class="listSongInfo">
+                                    <div class="name">
+                                        <h4>Lucid Dreamer</h4>
+                                        <p> Spazz Cardigan</p>
+                                    </div>
+                                </div>
+                                <div class="totalTime">4:30</div>
+                                <div class="heart becomeRed"><i class="fas fa-heart"></i></div>
+                                <div class="clearfix"></div>
+                            </li>
+                            <li>
+                                <div class="songCover">
+                                    <img src="./img/library/cover2.jpg" alt="">
+                                    <div class="listPlay"><i class="fas fa-play"></i></div>
+                                </div>
+                                <div class="listSongInfo">
+                                    <div class="name">
+                                        <h4>Lucid Dreamer</h4>
+                                        <p> Spazz Cardigan</p>
+                                    </div>
+                                </div>
+                                <div class="totalTime">4:30</div>
+                                <div class="heart becomeRed"><i class="fas fa-heart"></i></div>
+                                <div class="clearfix"></div>
+                            </li>
+                            <li>
+                                <div class="songCover">
+                                    <img src="./img/library/cover3.jpg" alt="">
+                                    <div class="listPlay"><i class="fas fa-play"></i></div>
+                                </div>
+                                <div class="listSongInfo">
+                                    <div class="name">
+                                        <h4>Lucid Dreamer</h4>
+                                        <p> Spazz Cardigan</p>
+                                    </div>
+                                </div>
+                                <div class="totalTime">4:30</div>
+                                <div class="heart becomeRed"><i class="fas fa-heart"></i></div>
+                                <div class="clearfix"></div>
+                            </li>
+                            <li>
+                                <div class="songCover">
+                                    <img src="./img/library/cover4.jpg" alt="">
+                                    <div class="listPlay"><i class="fas fa-play"></i></div>
+                                </div>
+                                <div class="listSongInfo">
+                                    <div class="name">
+                                        <h4>Lucid Dreamer</h4>
+                                        <p> Spazz Cardigan</p>
+                                    </div>
+                                </div>
+                                <div class="totalTime">4:30</div>
+                                <div class="heart becomeRed"><i class="fas fa-heart"></i></div>
+                                <div class="clearfix"></div>
+                            </li>
+                            <li>
+                                <div class="songCover">
+                                    <img src="./img/library/cover5.jpg" alt="">
+                                    <div class="listPlay"><i class="fas fa-play"></i></div>
+                                </div>
+                                <div class="listSongInfo">
+                                    <div class="name">
+                                        <h4>Lucid Dreamer</h4>
+                                        <p> Spazz Cardigan</p>
+                                    </div>
+                                </div>
+                                <div class="totalTime">4:30</div>
+                                <div class="heart becomeRed"><i class="fas fa-heart"></i></div>
+                                <div class="clearfix"></div>
+                            </li>
+                            <li>
+                                <div class="songCover">
+                                    <img src="./img/library/cover6.jpg" alt="">
+                                    <div class="listPlay"><i class="fas fa-play"></i></div>
+                                </div>
+                                <div class="listSongInfo">
+                                    <div class="name">
+                                        <h4>Lucid Dreamer</h4>
+                                        <p> Spazz Cardigan</p>
+                                    </div>
+                                </div>
+                                <div class="totalTime">4:30</div>
+                                <div class="heart becomeRed"><i class="fas fa-heart"></i></div>
+                                <div class="clearfix"></div>
+                            </li>
+                            <li>
+                                <div class="songCover">
+                                    <img src="./img/library/cover1.jpg" alt="">
+                                    <div class="listPlay"><i class="fas fa-play"></i></div>
+                                </div>
+                                <div class="listSongInfo">
+                                    <div class="name">
+                                        <h4>Lucid Dreamer</h4>
+                                        <p> Spazz Cardigan</p>
+                                    </div>
+                                </div>
+                                <div class="totalTime">4:30</div>
+                                <div class="heart becomeRed"><i class="fas fa-heart"></i></div>
+                                <div class="clearfix"></div>
+                            </li>
+                        </ul>
+                    </div>
+                </div>
+                <div class="close" id="closePlayer"><i class="fas fa-times"></i></div>
+                <div class="clearfix"></div>
+            </div>
+        </div>
+        <div id="lightCover">
+            <div class="lightbox_s" id="myAllList">
+                <div class="close closeLight"><i class="fas fa-times"></i></div>
+                <h3>My List</h3>
+                <div class="lightSelectMenu">
+                    <ul>
+                        <li>Liked songs</li>
+                        <li>Peaceful songs</li>
+                        <li>party</li>
+                    </ul>
+                </div>
+                <button class="">ok</button>
+            </div>
+        </div>
 </body>
-</htm
+</html>

@@ -74,7 +74,7 @@
             <div class="search_bt" @click="search_bt_click">
                 <a href="#"></a>
             </div>
-            <div class="search_bar">
+            <div class="search_bar" @click="stopPropagation">
                 <input class="search" type="text" />
                 <div class="tag_container">
                 </div>
@@ -382,7 +382,7 @@
                 search_bar: false,
                 mem_list: false,
                 mem_login: false,
-
+                
             },
             mounted() {
                 // nav_bar start

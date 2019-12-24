@@ -1,5 +1,6 @@
 @import './public.scss';
 @import './nav_bar.scss';
+@import './player.scss';
 
 $albumsize: 200px;
 $albumbottom: 340px;
@@ -12,7 +13,12 @@ $albumbottom: 340px;
 }
 
 body{
+    background-image: url(../img/collection/collectionnavback.jpg);
+    background-position:bottom;
+    background-size: cover;
+    background-repeat: no-repeat;
     header{
+        text-align: center;
         padding:120px;
         width: 100%;
         img{
@@ -20,9 +26,33 @@ body{
             width: 100%;
         }
     }
+    .playall_btn{
+        text-align: right;
+        margin: 0vw 20vw;
+        
+    }
+    .circlebtn {
+        width: 50px;
+        height: 50px;
+        vertical-align: middle;
+        line-height: 50px;
+        border-radius: 25px;
+        font-size: 0.8rem;
+        font-weight: bold;
+        border: 1px solid $yellow;
+        background-color: $yellow;
+        color: white;
+        outline: none;
+        cursor: pointer;
+        transition: transform .5s;
+      
+        &:hover {
+          transform: scale(1.1);
+        }
+      }
     section{
         text-align: center;
-        .radio{
+        .collectionradio{
             img{
                 width:100vw;
                 max-width:1200px;
@@ -43,18 +73,31 @@ body{
                 }
             }
         }
-        #tabcontainer{
-            .tabtitle{
+        #collectiontabcontainer{
+            .collectiontabtitle{
                 li{
                     list-style: none;
                     vertical-align: middle;
                     display: inline-block;
                     font-size: 2rem;
+                    border-radius: 5px;
+                    background-color: $yellow;
+                    margin: 20px;
+                    &:hover{
+                        transform: scale(1.1);
+                        background-color: $mainBg;
+                        border:2px solid $yellow;
+                    }
                     a{
                         margin: 0px 50px 0px 50px;
+                        color: #fff;
                         // img{
                         //     border: 1px solid green;
                         // }
+                        &:hover{
+                            color: $fontColor;
+                        }
+
                     }
                 }
             }
@@ -73,7 +116,28 @@ body{
     width:65vw;
     margin-top:80px;
 }
-
+.sample{
+    .like{ 
+        font-size : 40px;   
+        color : #ccc; 
+        position: relative;
+        left: 102%;
+        top: 75%;
+        width: 50px;
+        cursor : pointer;
+    }
+    p{
+        position: relative;
+        font-size: 1.2rem;
+        display: flex;
+        top: 160px;
+    }
+    span{
+        position: relative;
+        font-size: 1rem;
+        top: 160px;
+    }
+}
 .albumshelf .shelf .row-1{
 	position:relative;
 	width:100%;
@@ -90,23 +154,16 @@ body{
 	content:"";
 }
 
+.redheartshape{
+    color:#de267d;
+}
 
 .albumshelf .shelf .loc{
 	position:absolute;
 	bottom:0;
     width:100%;
     text-align: left;
-    p{
-        position: relative;
-        top: 180px;
-        font-size: 1.2rem;
-        display: flex;
-    }
-    span{
-        position: relative;
-        top: 180px;
-        font-size: 1rem;
-    }
+    
     img{
         cursor: pointer;
         position: relative;
@@ -126,12 +183,12 @@ body{
 
 .albumshelf .sample,
 .albumshelf-row .sample{
+    border: 1px solid #ffffff00;
 	margin:auto;
 	position: relative;
 	z-index:1;
 	box-shadow:2px 2px 5px rgba(0,0,0,0.6);
 }
-
 .albumshelf .album1,
 .albumshelf-row .album1{
     background-image:url("../img/collection/album1.jpg");
@@ -190,5 +247,4 @@ body{
         }
 
     }
-    
 }
