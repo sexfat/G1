@@ -65,12 +65,15 @@
       <div class="search_bt" @click="search_bt_click">
         <a href="#"></a>
       </div>
-      <div class="search_bar">
+      <div class="search_bar" @click="stopPropagation">
         <input class="search" type="text" />
         <div class="tag_container">
         </div>
       </div>
-      <div class="mem_bt" @click="mem_bt_click">
+      <div class="login_bt" @click="" v-if="mem_login == false">
+        <a class="flexbox" href="#">Login</a>
+      </div>
+      <div class="mem_bt" @click="mem_bt_click" v-if="mem_login == true">
         <a href="#"></a>
       </div>
       <div class="mem_list" @click="stopPropagation">
@@ -95,7 +98,7 @@
             </a>
           </li>
           <li>
-            <a href="./store.html">
+            <a href="">
               <h4>
                 Store Value
                 <br />&amp;Store Record
@@ -182,7 +185,8 @@
           </tr>
           <tr v-for="(res,index_row) in re" class="trclass">
             <td class="note_name">
-              <h6 class="remix_h6">{{re[index_row]}}</h6><audio :src="'./img/remix/sound/'+(re1[index_row])+'.mp3'"></audio>
+              <h6 class="remix_h6">{{re[index_row]}}</h6><audio
+                :src="'./img/remix/sound/'+(re1[index_row])+'.mp3'"></audio>
             </td>
             <td class="sound_note" v-for="(item,index) in lattice"
               @click="changeClass(index_row,index);one_sound(re[index_row],index_row,index);">
@@ -200,7 +204,8 @@
           </tr>
           <tr v-for="(res,index_row) in mi" class="trclass">
             <td class="note_name">
-              <h6 class="remix_h6">{{mi[index_row]}}</h6><audio :src="'./img/remix/sound/'+(mi1[index_row])+'.mp3'"></audio>
+              <h6 class="remix_h6">{{mi[index_row]}}</h6><audio
+                :src="'./img/remix/sound/'+(mi1[index_row])+'.mp3'"></audio>
             </td>
             <td class="sound_note" v-for="(item,index) in lattice"
               @click="changeClass(index_row + 12,index);one_sound(mi[index_row],index_row + 12,index);">
@@ -218,7 +223,8 @@
           </tr>
           <tr v-for="(res,index_row) in fa" class="trclass">
             <td class="note_name">
-              <h6 class="remix_h6">{{fa[index_row]}}</h6><audio :src="'./img/remix/sound/'+(fa1[index_row])+'.mp3'"></audio>
+              <h6 class="remix_h6">{{fa[index_row]}}</h6><audio
+                :src="'./img/remix/sound/'+(fa1[index_row])+'.mp3'"></audio>
             </td>
             <td class="sound_note" v-for="(item,index) in lattice"
               @click="changeClass(index_row + 24,index);one_sound(fa[index_row],index_row + 24,index);">
@@ -235,7 +241,8 @@
           </tr>
           <tr v-for="(res,index_row) in so" class="trclass">
             <td class="note_name">
-              <h6 class="remix_h6">{{so[index_row]}}</h6><audio :src="'./img/remix/sound/'+(so1[index_row])+'.mp3'"></audio>
+              <h6 class="remix_h6">{{so[index_row]}}</h6><audio
+                :src="'./img/remix/sound/'+(so1[index_row])+'.mp3'"></audio>
             </td>
             <td class="sound_note" v-for="(item,index) in lattice"
               @click="changeClass(index_row + 36,index);one_sound(so[index_row],index_row + 36,index);">
@@ -253,7 +260,8 @@
           </tr>
           <tr v-for="(res,index_row) in la" class="trclass">
             <td class="note_name">
-              <h6 class="remix_h6">{{la[index_row]}}</h6><audio :src="'./img/remix/sound/'+(la1[index_row])+'.mp3'"></audio>
+              <h6 class="remix_h6">{{la[index_row]}}</h6><audio
+                :src="'./img/remix/sound/'+(la1[index_row])+'.mp3'"></audio>
             </td>
             <td class="sound_note" v-for="(item,index) in lattice"
               @click="changeClass(index_row + 48,index);one_sound(la[index_row],index_row + 48,index);">
@@ -266,7 +274,8 @@
         <table class="drum remix_play">
           <tr v-for="(res,index_row) in drum" class="trclass">
             <td class="note_name">
-              <h6 class="remix_h6">{{drum[index_row]}}</h6><audio :src="'./img/remix/sound/'+(drum[index_row])+'.mp3'"></audio>
+              <h6 class="remix_h6">{{drum[index_row]}}</h6><audio
+                :src="'./img/remix/sound/'+(drum[index_row])+'.mp3'"></audio>
             </td>
             <td class="sound_note" v-for="(item,index) in lattice"
               @click="changeClass(index_row + 60,index);one_sound(drum[index_row],index_row + 60,index);">
@@ -276,9 +285,12 @@
         </table>
       </div>
     </div>
-    <img src="./img/remix/background_color.png" class="remix_bg_color">
+    <div class="remix_bg_color">
+      <img src="./img/remix/background_color.png" alt="">
+    </div>
   </div>
-  <!-- 音樂撥放器 -->
+
+  <!-- player start -->
   <div id="player">
     <audio src="" id="audioPlayer"></audio>
     <div class="player_s">
@@ -398,7 +410,7 @@
               </div>
               <div class="listSongInfo">
                 <div class="name">
-                  <h4 class="remix_h4"> Lucid Dreamer</h4>
+                  <h4>Lucid Dreamer</h4>
                   <p> Spazz Cardigan</p>
                 </div>
               </div>
@@ -496,15 +508,14 @@
               <div class="heart becomeRed"><i class="fas fa-heart"></i></div>
               <div class="clearfix"></div>
             </li>
-
           </ul>
         </div>
       </div>
       <div class="close" id="closePlayer"><i class="fas fa-times"></i></div>
       <div class="clearfix"></div>
     </div>
-
   </div>
+  <!-- player end -->
   <div id="lightCover">
     <div class="lightbox_s" id="myAllList">
       <div class="close closeLight"><i class="fas fa-times"></i></div>
@@ -519,11 +530,12 @@
       <button class="">ok</button>
     </div>
   </div>
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.11.2/css/all.min.css" />
   <script src='https://cdnjs.cloudflare.com/ajax/libs/tone/13.4.0/Tone.js'></script>
   <script src='https://cdnjs.cloudflare.com/ajax/libs/gsap/2.1.3/TweenMax.min.js'></script>
   <script src='https://cdnjs.cloudflare.com/ajax/libs/jquery/3.4.1/jquery.min.js'></script>
   <script src="./js/vue.js"></script>
-  <!-- <script src="./js/player.js"></script> -->
+  <script src="./js/player.js"></script>
   <script>
     var app = new Vue({
       el: '#remix_app',
@@ -531,9 +543,10 @@
         className: {
           isActive: 0,
         },
+        mobile_list: false,
         search_bar: false,
         mem_list: false,
-        mobile_list: false,
+        mem_login: false,
         screenWidth: document.body.clientWidth, // 紀錄螢幕寬度
         npm: 120,
         lattice: 34, // 現在有幾格
@@ -1091,10 +1104,16 @@
       mounted() {
         const vm = this;
         // 組長的code
+        // nav_bar start
+        document.querySelector('.mem_list ul').setAttribute('style', `height: ${window.innerHeight}px;`);
+        document.querySelector('.mobile_list ul').setAttribute('style', `height: ${window.innerHeight}px;`);
+        document.querySelectorAll('.paint_border')[0].setAttribute('style', `height: ${window.innerHeight}px;`);
+        document.querySelectorAll('.paint_border')[1].setAttribute('style', `height: ${window.innerHeight}px;`);
+
         document.addEventListener('click', () => {
-          vm.mem_list = false;
-          vm.search_bar = false;
-          vm.mobile_list = false;
+          this.mem_list = false;
+          this.search_bar = false;
+          this.mobile_list = false;
 
           document
             .querySelector(".search_bar")
@@ -1106,6 +1125,8 @@
             .querySelector(".mobile_list")
             .setAttribute("style", "transform: translateX(-270px); filter: opacity(0);");
         });
+        // nav_bar end
+
 
         // resize 的部分
         window.onresize = () => {
@@ -1136,7 +1157,7 @@
         }
 
         // 一開始的微動畫
-        TweenMax.to($('.remix_rock_move'),2.5,{
+        TweenMax.to($('.remix_rock_move'), 2.5, {
           rotation: 0,
           ease: Bounce.easeOut,
         })
@@ -1164,7 +1185,7 @@
             remix_intro.innerHTML = remix_intro.innerHTML.substr(0, 79);
           }
 
-          $('.sound_note').css('width',`calc(100% - 70px) / ${this.lattice - 2}`);
+          $('.sound_note').css('width', `calc(100% - 70px) / ${this.lattice - 2}`);
         },
         audioSrc(NewaudioSrc) {
           this.audioSrc = NewaudioSrc;
