@@ -1,0 +1,27 @@
+div.table_box {
+  width: 1400px;
+  border: 1px solid red;
+  margin: 0 auto;
+  padding: 20px 0px;
+}
+
+div.title {
+  border: 1px solid gray;
+  padding: 15px 0px;
+  font-size: 40px;
+}
+
+.fileimg {
+  float: left;
+}
+
+.filemessage {
+  margin-left: 500px;
+}
+
+.loadcontent {
+  border: 1px solid purple;
+  width: 1000px;
+  margin: 0 auto;
+}
+/*# sourceMappingURL=zero.css.map */

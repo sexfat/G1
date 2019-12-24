@@ -1,10 +1,14 @@
-@import './public.scss';
-@import './nav_bar.scss';
-
 $labelfontsize:1.2rem;
 $forgetfontsize:0.6rem;
 $buttonhover:scale(1.1);
-
+$latop-maxer: 1920px;
+@mixin respond($breakpoint) {
+  @if $breakpoint== "latop-maxer" {
+    @media all and (max-width:latop-maxer) {
+      @content;
+    }
+  }
+}
 .loginbody{
     height: 100vh;
     background-size: cover;
@@ -252,6 +256,9 @@ $buttonhover:scale(1.1);
     }
 }
 #mobilelogintab{
+  @include respond(latop-maxer) {
+    display: none;
+  }
   @include respond(ipadpro) {
     display: none;
   }
@@ -271,15 +278,13 @@ $buttonhover:scale(1.1);
     top: 50%;
     left: 50%;
     transform: translate(-50%,-50%);
-    background-image: url(../img/register/register.jpg);
     background-position: center;
     background-repeat: no-repeat;
-    .motabtitle{
+    motabtitle{
       text-align: center;
       li{
         display: inline-block;
         padding:10px;
-        border: 1px solid red;
         position: relative;
         top: 50%;
         left: 10%;
@@ -334,6 +339,7 @@ $buttonhover:scale(1.1);
     display: inline-block;
     border: 1px solid $green;
     background-color: #fff;
+    box-shadow: 2px 0 10px rgba(0,0,0,.2);
     position: absolute;
     padding: 50px 0px 50px 0px;
     width:80vw;
@@ -372,12 +378,14 @@ $buttonhover:scale(1.1);
         align-items: left;
         flex-direction: column;
         margin: 0px 0px 0px 50px;
+        
         button{
           @include butttonn02;
           border-radius: 10px;
           margin: 0 auto;
           display: block;
           position: relative;
+          
           right:10%;
           margin-top: 70px;
           &:hover{
