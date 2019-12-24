@@ -2,8 +2,13 @@
 // @import './nav_bar.scss';
 // @import './player.scss';
 
+$green: #d0d6d6;
+$yellow: #f1c40f;
+$mainBg: #fafaf1;
+$fontColor: #333;
 $albumsize: 200px;
 $albumbottom: 340px;
+
 @mixin collectionalbum {
     background-size: 100%;
     width:$albumsize;
@@ -12,7 +17,7 @@ $albumbottom: 340px;
     bottom:$albumbottom;
 }
 
-body{
+.collectionbody{
     background-image: url(../img/collection/collectionnavback.jpg);
     background-position:bottom;
     background-size: cover;
