@@ -106,8 +106,6 @@ $(document).ready(function () {
 
   $('#player audio').attr("src", myPlaylist[nowPlaying].filein);
   // isStorageHave();
-  
-  // isAutoPlay(true);//測試
 
   //播放暫停按鈕 -- 音樂撥放/暫停
   $("#player .play").click(function () {
@@ -186,17 +184,6 @@ $(document).ready(function () {
     audio.currentTime = newTime_s;
   });
 
-
-  /* -- 自動撥放 --*/
-  // function isAutoPlay(autoP){//測試
-  //   if(autoP){
-  //     isPlaying(false);
-  //   }else{
-  //     isPlaying(true);
-  //   }
-  // }
-
-
   /* -- local -- */
   // function isStorageHave() {
   //   let newSongTime;
@@ -212,9 +199,21 @@ $(document).ready(function () {
 
 
   function isPlaying(isPlaying) {
+    var listNum = $(".listSongInfo h4").length;
+
+    for(let i = 0;i<listNum;i++){
+      console.log($(".listSongInfo h4")[i].text);
+      if($(".listSongInfo h4")[i].text == $("#player .songInfo .name")[1].text){
+        // $(".listSongInfo h4")[i].parent().siblings(".songCover").find(".listPlay").html('<i class="fas fa-pause"></i>');
+      }else{
+        // $(".listSongInfo h4")[i].parent().siblings(".songCover").find(".listPlay").html('<i class="fas fa-play"></i>');
+      }
+    }
+
     if (!isPlaying) { //如果沒有播放就讓他撥
       playAudio();
       $("#player .play").html('<i class="fas fa-pause"></i>');
+
       $("#player .player_b .coverRec").animate({
         right: "-50%",
         opacity: "1"
