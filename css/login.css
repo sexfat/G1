@@ -474,9 +474,9 @@ body .signupcontainer {
 
 @media all and (max-width: 768px) {
   body .signupcontainer {
-    width: 600px;
-    height: 200px;
-    top: 120px;
+    width: 550px;
+    border: 1px solid red;
+    top: 150px;
   }
 }
 
@@ -503,6 +503,8 @@ body .signupcontainer .greenblock {
 @media all and (max-width: 768px) {
   body .signupcontainer .greenblock {
     height: 450px;
+    width: 600px;
+    margin: 0 auto;
   }
 }
 
@@ -529,7 +531,7 @@ body .signupcontainer .whiteform {
 
 @media all and (max-width: 768px) {
   body .signupcontainer .whiteform {
-    width: 290px;
+    width: 200px;
     height: 525px;
     top: -20%;
   }
@@ -773,7 +775,7 @@ body .signupcontainer .flower {
 
 @media all and (max-width: 768px) {
   body .signupcontainer .flower {
-    height: 250px;
+    height: 200px;
   }
 }
 
@@ -792,7 +794,7 @@ body .signupcontainer .smaller {
 
 @media all and (max-width: 768px) {
   body .signupcontainer .smaller {
-    height: 230px;
+    height: 200px;
   }
 }
 

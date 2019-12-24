@@ -18,9 +18,9 @@ body{
             display: none;
           }
           @include respond(ipadpro) {
-            width: 600px;
-            height: 200px;
-            top: 120px;
+            width: 550px;
+            border: 1px solid red;
+            top: 150px;
           }
           @include respond(latop-min) {
             width: 750px;
@@ -41,6 +41,8 @@ body{
             }
             @include respond(ipadpro) {
                 height: 450px;
+                width: 600px;
+                margin: 0 auto;
             }
             @include respond(latop-min) {
                 height:500px;
@@ -58,11 +60,8 @@ body{
             box-shadow: 2px 0 10px rgba(0,0,0,.1);
             transition: all .5s ease-in-out;
             z-index: 2;
-            @include respond(phone) {
-              
-            }
             @include respond(ipadpro) {
-                width: 290px;
+                width: 200px;
                 height: 525px;
                 top: -20%;
               }
@@ -217,7 +216,7 @@ body{
             top: 25%;
             left: 25%;
             @include respond(ipadpro) {
-                height: 250px;
+                height: 200px;
               }
               @include respond(latop-min) {
                 height: 280px;
@@ -231,7 +230,7 @@ body{
             top: 25%;
             left: 28%;
             @include respond(ipadpro) {
-                height: 230px;
+                height: 200px;
               }
               @include respond(latop-min) {
                 height: 270px;
