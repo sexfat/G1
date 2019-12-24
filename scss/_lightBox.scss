@@ -1,4 +1,5 @@
-.lightCover {
+$mainGreen:#d0d6d6;
+#lightCover {
     background-color: #414141e6;
     width: 100%;
     height: 100%;
@@ -7,6 +8,7 @@
     left: 0;
     z-index: 1001;
     display: none;
+    
 
     #myAllList {
         width: 90%;
@@ -19,8 +21,6 @@
         top: 50%;
         left: 50%;
         display: none;
-        //   opacity: 0;
-        //   transition: opacity 0.5s ease-in-out;
         transform: translate(-50%, -50%);
 
         //   &.show {
@@ -70,15 +70,39 @@
         display: none;
     }
 
+    #createListBox {
+        width: 90%;
+        max-width: 500px;
+        background-color: white;
+        border-radius: 10px;
+        padding: 1% 0;
+        text-align: center;
+        position: absolute;
+        top: 50%;
+        left: 50%;
+        transform: translate(-50%, -50%);
+        display: none;
+        #createList{
+            width: 80%;
+            height: 60px;
+            margin: 3% auto;
+            display: block;
+            border: 1px solid $mainGreen;
+            background-color:$mainGreen ;
+        }
+    }
+
+
     .close {
-        // margin-top: 20px;
-        margin-right: 20px;
         position: absolute;
         right: 20px;
         top: 20px;
         cursor: pointer;
         transition: transform 0.5s;
-
+        @include respond(phone){
+            right: 10px;
+            top: 5px;
+        }
         &:hover {
             transform: scale(1.1);
         }
