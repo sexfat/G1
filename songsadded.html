@@ -15,18 +15,48 @@
 
     <script src="https://cdnjs.cloudflare.com/ajax/libs/pagePiling.js/1.5.6/jquery.pagepiling.min.js"></script>
     <style>
-        .leftli {
+        .songsadded_leftli {
             list-style-type: none;
         }
-
-        .leftli ul {
+        .songsadded_leftli ul {
             list-style-type: none;
             padding: 0px;
         }
-
         .songsadded_body {
             background: url(./img/songupload/addimg0.jpg);
             background-repeat: no-repeat;
+        }
+        
+        input[type="checkbox"] {
+            -webkit-appearance: none;
+            vertical-align: middle;
+            margin-top: 0;
+            background: #fff;
+            border: #d0d6d6 solid 1px;
+            border-radius: 3px;
+            min-height: 20px;
+            min-width: 20px;
+        }
+
+        input[type="checkbox"]:checked {
+            background: #f1c40f;
+        }
+
+        input[type=checkbox]:checked::after {
+            content: '';
+            top: 3px;
+            left: 3px;
+            position: absolute;
+            background: transparent;
+            border: #fff solid 2px;
+            border-top: none;
+            border-right: none;
+            height: 6px;
+            width: 10px;
+            -moz-transform: rotate(-45deg);
+            -ms-transform: rotate(-45deg);
+            -webkit-transform: rotate(-45deg);
+            transform: rotate(-45deg);
         }
     </style>
 </head>
@@ -135,22 +165,23 @@
         </div>
     </div>
     <header>
-        <div class="bnr">
+        <div>
             <!-- <h1>Songs Added</h1> -->
             <img src="./img/songupload/addtitle.png" alt="">
         </div>
     </header>
 
-    <section class="adds2">
-        <ol class="leftli">
-            <li class="lif">&emsp;UPLOAD SONG</li>
-            <ol class="inside">
+    <section class="songsadded_adds2">
+        <ol class="songsadded_leftli">
+            <li class="songsadded_lif">&emsp;UPLOAD SONG</li>
+            <ol class="songsadded_inside">
                 <form action="" method="POST">
                     <article>
                         <p style="width: 100px;height: 100px;">
                             <img id="image" style="width: 300px;height: 300px;">
                         </p>
-                        <img class="ff" style="width: 50px;height: 30px;" src="./img/songupload/button_edit.png">
+                        <img class="songsadded_ff" style="width: 50px;height: 30px;"
+                            src="./img/songupload/button_edit.png">
                         <input style="opacity:0;" type="file" name="" id="theFile" style="color: rgba(0, 0, 0, 0);">
 
                     </article>
@@ -158,14 +189,12 @@
                         <p>Song Title : <input type="text" style="border: 1px solid #d0d6d6;"></p>
                         <input type="file" name="" id="" style="border: 1px solid #d0d6d6;">
                         <br>
-                        <br>
                         <input type="checkbox" name="" id=""> House&emsp;&emsp;&emsp;&ensp;&ensp;&ensp;
                         <input type="checkbox" style="border-radius: 5px;" name="" id="">Trap
                         <br>
                         <input type="checkbox" name="" id="">#111111 &emsp;&emsp;&emsp;
                         <input type="checkbox" name="" id="">#222222 &emsp;&emsp;&emsp;
                         <input type="checkbox" name="" id="">#333333
-                        <br>
                         <br>
                         <p>Introduction :</p>
                         <textarea name="" id="" cols="68" rows="4" style="border: 1px solid #d0d6d6;"></textarea>
@@ -176,8 +205,8 @@
 
             </ol>
 
-            <li class="lif">&emsp;UPLOADED</li>
-            <ol class="inside2">
+            <li class="songsadded_lif">&emsp;UPLOADED</li>
+            <ol class="songsadded_inside2">
                 <li>Andy Warhol - Because of you</li>
                 <ol>
                     <article>
@@ -185,30 +214,8 @@
                             <img src="./img/songupload/0075yYLSly1fruy9e4oj9j30i20i2jsp.jpg"
                                 style="width: 300px;height: 300px;">
                         </p>
-                        <img class="ff" style="width: 50px;height: 30px;" src="./img/songupload/button_edit.png">
-                        <input style="opacity:0;" type="file" name="" class="theFile" style="color: rgba(0, 0, 0, 0);">
-                    </article>
-                    <div>
-                        <span>Song Title : Because of you</span><br>
-                        <span>Author : Andy Warhol</span><br>
-                        <span>Song Type : House</span><br>
-                        <span>HashTag :  #111111</span><br>
-                        <span>Introduction :</span><br>
-                        <span>"Hold It Against Me" is three <br>
-                            minutes and forty-nine seconds <br>
-                            long.It is a dance-pop song that <br>
-                            blends pulsating industrial and trance <br>
-                            beats with elements of grime.</span>
-                    </div>
-                </ol>
-                <li>Andy Warhol - Because of you</li>
-                <ol>
-                    <article>
-                        <p style="width: 100px;height: 100px;">
-                            <img src="./img/songupload/0075yYLSly1fruy9e4oj9j30i20i2jsp.jpg"
-                                style="width: 300px;height: 300px;">
-                        </p>
-                        <img class="ff" style="width: 50px;height: 30px;" src="./img/songupload/button_edit.png">
+                        <img class="songsadded_ff" style="width: 50px;height: 30px;"
+                            src="./img/songupload/button_edit.png">
                         <input style="opacity:0;" type="file" name="" class="theFile" style="color: rgba(0, 0, 0, 0);">
                     </article>
                     <div>
@@ -231,7 +238,32 @@
                             <img src="./img/songupload/0075yYLSly1fruy9e4oj9j30i20i2jsp.jpg"
                                 style="width: 300px;height: 300px;">
                         </p>
-                        <img class="ff" style="width: 50px;height: 30px;" src="./img/songupload/button_edit.png">
+                        <img class="songsadded_ff" style="width: 50px;height: 30px;"
+                            src="./img/songupload/button_edit.png">
+                        <input style="opacity:0;" type="file" name="" class="theFile" style="color: rgba(0, 0, 0, 0);">
+                    </article>
+                    <div>
+                        <span>Song Title : Because of you</span><br>
+                        <span>Author : Andy Warhol</span><br>
+                        <span>Song Type : House</span><br>
+                        <span>HashTag : #111111</span><br>
+                        <span>Introduction :</span><br>
+                        <span>"Hold It Against Me" is three <br>
+                            minutes and forty-nine seconds <br>
+                            long.It is a dance-pop song that <br>
+                            blends pulsating industrial and trance <br>
+                            beats with elements of grime.</span>
+                    </div>
+                </ol>
+                <li>Andy Warhol - Because of you</li>
+                <ol>
+                    <article>
+                        <p style="width: 100px;height: 100px;">
+                            <img src="./img/songupload/0075yYLSly1fruy9e4oj9j30i20i2jsp.jpg"
+                                style="width: 300px;height: 300px;">
+                        </p>
+                        <img class="songsadded_ff" style="width: 50px;height: 30px;"
+                            src="./img/songupload/button_edit.png">
                         <input style="opacity:0;" type="file" name="" class="theFile" style="color: rgba(0, 0, 0, 0);">
                     </article>
                     <div>
@@ -389,13 +421,13 @@
     <script>
         $(function () {
             //設定DIV的高度跟隨螢幕變化而變化，類似於自適應
-            $(".leftli").height(document.body.scrollHeight);
+            $(".songsadded_leftli").height(document.body.scrollHeight);
 
-            $(".leftli ol.inside2").hide();
-            $(".inside2 ol").hide();
+            $(".songsadded_leftli ol.songsadded_inside2").hide();
+            $(".songsadded_inside2 ol").hide();
 
             //bind()為.leftli li的li生成點選事件
-            $(".leftli li").bind("click", function () {
+            $(".songsadded_leftli li").bind("click", function () {
                 /**
                 .netx("ol")獲取同級的下一個ol元素
                 slideToggle(300)展開/關閉當前被點選的ol元素，300為速度，除了可以是數字還可以"slow"、"normal"、"fast"
