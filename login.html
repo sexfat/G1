@@ -1,3 +1,4 @@
+
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -6,11 +7,14 @@
 	<meta http-equiv="X-UA-Compatible" content="ie=edge">
   <title>Document</title>
   <link rel="stylesheet" href="./css/login.css">
+  <link rel="stylesheet" href="./css/player.css">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.11.2/css/all.min.css" />
   <script src="https://cdnjs.cloudflare.com/ajax/libs/vue/2.6.10/vue.js"></script>
   <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
+  <script src="./js/player.js"></script>
 
 </head>
-<body>
+<body class="loginbody">
   <div id="app">
     <div class="nav_bar flexbox">
         <div class="hamburger" @click="hamburger_click">
@@ -153,6 +157,7 @@
         </div>
       </div>
     </div>
+    
   <script>
 	$('#signup').click(function() {
   $('.whiteform').css('transform', 'translateX(80%)');
@@ -166,6 +171,45 @@ $('#signin').click(function() {
   $('.signin').removeClass('displaynone');
 });
 </script>
+<div id=mobilelogintab>
+  <ul class="motabtitle">
+    <li><a href="#mobilelogintab1">Sign in</a></li>
+    <li><a href="#mobilelogintab2">Register</a></li>
+  </ul>
+  <div id="mobilelogintab1" class="motabinner">
+    <form>
+      <label>E-mail:</label>
+      <input type="text" class="mobileemailinput">
+      <label >Password:</label>
+      <input type="password" >
+      <a href="">forget password?</a>
+      <button>Log in</button>
+    </form>
+  </div>
+  <div id="mobilelogintab2" class="motabinner">
+    <form autocomplete="off">
+              <label>E-mail:</label>
+              <input type="email" class="mobileemailinput">
+              <label>Password:</label>
+              <input type="password" class="mobileemailinput">
+              <label>Confirm password:</label>
+              <input type="password" class="mobileemailinput">
+            <button>Create</button>
+            </form>
+  </div>
+</div>
+<script>
+  $(function(){
+    var $li = $('ul.motabtitle li');
+        $($li. eq(0) .addClass('active').find('a').attr('href')).siblings('.motabinner').hide();
+    
+        $li.click(function(){
+            $($(this).find('a'). attr ('href')).show().siblings ('.motabinner').hide();
+            $(this).addClass('active'). siblings ('.active').removeClass('active');
+        });
+    });
+</script>
+
 <script>
     let vm = new Vue({
         el: "#app",

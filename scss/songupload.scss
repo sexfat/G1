@@ -1,32 +1,23 @@
-//songadd
+@import "./player.scss";
+@import "./public.scss";
 
-// .navhead{
-//     border: 1px solid red;
-//     height: 100px;
+
+
+//songadd
+// .bnr img {
+//     border: 1px solid rgb(24, 27, 199);
+//     position: relative;
+//     top: 55px;
 // }
 
-
-.bnr img {
-    // border: 1px solid rgb(24, 27, 199);
-    position: relative;
-    top: 120px;
-}
-
-section.adds2 {
+.songsadded_adds2 {
     // border: 1px solid black;
     box-sizing: border-box;
     // width: 100vw;
-    // height: 630px;
+    // height: 700px;
 }
 
-// .up{
-//     border: 1px solid purple;
-//     width: 1400px;
-//     margin: 0 auto;
-//     box-sizing: border-box;
-// }
-
-.leftli {
+.songsadded_leftli {
     // border: 1px solid greenyellow;
     width: 1200px;
     height: 600px !important;
@@ -35,35 +26,22 @@ section.adds2 {
     padding: 0px;
 }
 
-.lif {
+.songsadded_lif {
     border: 1px solid #b2c0c0;
     width: 1200px;
     padding: 30px 0px;
     background-color: #d0d6d6;
 }
 
-// @media screen and(max-width: 1200px){
-//     section.adds2{
-//         width: 100%;
-//         max-width: 1200px;
-//     }
-//     .leftli{
-//         width: 100vw;
-//         max-width: 900px;
-//     }
-// }
-
-
-
-.inside,
-.inside2 {
+.songsadded_inside,
+.songsadded_inside2 {
     border: 1px solid rgba(128, 128, 128, 0.5);
     width: 1200px;
     margin: 0 auto;
     background-color: rgb(255, 255, 255);
 }
 
-.inside div{
+.songsadded_inside div{
     // border: 1px solid orange;
     width: 500px;
     height: 320px;
@@ -74,7 +52,7 @@ section.adds2 {
     display: inline-block;
 }
 
-.inside article{
+.songsadded_inside article{
     // border: 1px solid firebrick;
     width: 500px;
     height: 300px;
@@ -84,20 +62,20 @@ section.adds2 {
     float: left;
 }
 
-.inside article #theFile{
+.songsadded_inside article #theFile{
     position: relative;
-    top: 160px;
+    top: 140px;
     left: 65px;
 }
 
-.ff{
+.songsadded_ff{
     // border: 1px solid mediumaquamarine;
     position: relative;
-    top: 170px;
+    top: 150px;
     left: 130px;
 }
 
-.inside section{
+.songsadded_inside section{
     // border: 1px solid yellow;
     text-align: center;
     margin-left: -70px;
@@ -107,53 +85,22 @@ section.adds2 {
     z-index: 10;
 }
 
-//checkbox樣式-----------
-input[type="checkbox"] {
-    -webkit-appearance: none;
-    vertical-align: middle;
-    margin-top: 0;
-    background: #fff;
-    border: #d0d6d6 solid 1px;
-    border-radius: 3px;
-    min-height: 20px;
-    min-width: 20px;
-}
 
-input[type="checkbox"]:checked {
-    background: #f1c40f;
-}
-
-input[type=checkbox]:checked::after {
-    content: '';
-    top: 3px;
-    left: 3px;
-    position: absolute;
-    background: transparent;
-    border: #fff solid 2px;
-    border-top: none;
-    border-right: none;
-    height: 6px;
-    width: 10px;
-    -moz-transform: rotate(-45deg);
-    -ms-transform: rotate(-45deg);
-    -webkit-transform: rotate(-45deg);
-    transform: rotate(-45deg);
-}
 
 .uploadmic img {
     // border: 1px solid red;
     position: absolute;
     right: 50px;
-    bottom: 0px;
+    bottom: 70px;
     width: 200px;
     height: 420px;
 }
 
-.inside2 {
+.songsadded_inside2 {
     padding: 40px 0px;
 }
 
-.inside2 li {
+.songsadded_inside2 li {
     // border: 1px solid blue;
     width: 800px;
     margin: 0 auto;
@@ -169,11 +116,11 @@ input[type=checkbox]:checked::after {
 //     color: #fff;
 //     border-radius: 10px;
 // }
-.inside2 input {
+.songsadded_inside2 input {
     // border: 1px solid chocolate;
     position: relative;
     left: 60px;
-    top: 160px;
+    top: 140px;
 }
 // #ff2{
 //     position: relative;
@@ -207,16 +154,16 @@ input[type=checkbox]:checked::after {
 //     display: block;
 // }
 
-.inside2 ol{
+.songsadded_inside2 ol{
     border: 1px solid mediumaquamarine;
     height: 350px;
     padding: 20px 0px;
     margin-left: 180px;
 }
-.inside2 article{
+.songsadded_inside2 article{
    float: left;
 }
-.inside2 div{
+.songsadded_inside2 div{
     position: relative;
     left: 100px;
     float: left;
@@ -225,3 +172,18 @@ input[type=checkbox]:checked::after {
 //     position: relative;
 //     top: 50px;
 // }
+
+// @media screen and(max-width: 1200px){
+//     section.adds2{
+//         width: 100%;
+//         max-width: 1200px;
+//     }
+//     .leftli{
+//         width: 100vw;
+//         max-width: 900px;
+//     }
+// }
+.songsadded_adds3{
+    border: 1px solid rgba(0, 128, 0, 0);
+    height: 200px;
+}
