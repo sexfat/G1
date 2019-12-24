@@ -28,61 +28,10 @@ a {
   color: #333;
 }
 
-h1,
-h2,
-h3,
-h4,
-h5,
-h6,
-p {
-  margin: 0;
-  padding: 0;
-}
-
-h1 {
-  /*60px*/
-  font-size: 3rem;
-}
-
-h2 {
-  /* 40px*/
-  font-size: 2rem;
-  /*副標的h2 font-weight:bold*/
-}
-
-h3 {
-  /*30px*/
-  font-size: 1.5rem;
-}
-
-h4 {
-  /*24px*/
-  font-size: 1.2rem;
-}
-
-p {
-  /*內文 20px*/
-  font-size: 1rem;
-}
-
-p.bigSmall {
-  /*大小 16px*/
-  font-size: 0.8rem;
-}
-
-p.doubleSmall {
-  /*小小 14px*/
-  font-size: 0.7rem;
-}
-
-p.forget {
-  /*旺季 12px*/
-  font-size: 0.6rem;
-}
-
 header {
   height: 300px;
   text-align: center;
+  padding: 120px 0;
 }
 
 .wrapper {
@@ -107,6 +56,12 @@ header {
 }
 
 /*button mixin*/
+@media all and (max-width: 768px) {
+  header img {
+    height: 76px;
+  }
+}
+
 div.nav_bar {
   position: fixed;
   z-index: 999;
@@ -519,61 +474,10 @@ a {
   color: #333;
 }
 
-h1,
-h2,
-h3,
-h4,
-h5,
-h6,
-p {
-  margin: 0;
-  padding: 0;
-}
-
-h1 {
-  /*60px*/
-  font-size: 3rem;
-}
-
-h2 {
-  /* 40px*/
-  font-size: 2rem;
-  /*副標的h2 font-weight:bold*/
-}
-
-h3 {
-  /*30px*/
-  font-size: 1.5rem;
-}
-
-h4 {
-  /*24px*/
-  font-size: 1.2rem;
-}
-
-p {
-  /*內文 20px*/
-  font-size: 1rem;
-}
-
-p.bigSmall {
-  /*大小 16px*/
-  font-size: 0.8rem;
-}
-
-p.doubleSmall {
-  /*小小 14px*/
-  font-size: 0.7rem;
-}
-
-p.forget {
-  /*旺季 12px*/
-  font-size: 0.6rem;
-}
-
 header {
   height: 300px;
   text-align: center;
+  padding: 120px 0;
 }
 
 .wrapper {
@@ -598,6 +502,12 @@ header {
 }
 
 /*button mixin*/
+@media all and (max-width: 768px) {
+  header img {
+    height: 76px;
+  }
+}
+
 #lightCover {
   background-color: #414141e6;
   width: 100%;
@@ -740,25 +650,25 @@ header {
           transform: scale(1.1);
 }
 
-@media all and (max-width: 1200px) and (min-width: 993px) {
+@media all and (max-width: 1200px) {
   html {
     font-size: 16px;
   }
 }
 
-@media all and (max-width: 992px) and (min-width: 769px) {
+@media all and (max-width: 992px) {
   html {
     font-size: 16px;
   }
 }
 
-@media all and (max-width: 768px) and (min-width: 577px) {
+@media all and (max-width: 768px) {
   html {
     font-size: 16px;
   }
 }
 
-@media all and (max-width: 576px) and (min-width: 377px) {
+@media all and (max-width: 576px) {
   html {
     font-size: 16px;
   }
@@ -808,13 +718,13 @@ ul {
   float: left;
 }
 
-@media all and (max-width: 992px) and (min-width: 769px) {
+@media all and (max-width: 992px) {
   #player .player_s .info {
     width: 25%;
   }
 }
 
-@media all and (max-width: 1200px) and (min-width: 993px) {
+@media all and (max-width: 1200px) {
   #player .player_s .info {
     width: 22%;
   }
@@ -875,7 +785,7 @@ ul {
   }
 }
 
-@media all and (max-width: 576px) and (min-width: 377px) {
+@media all and (max-width: 576px) {
   #player .player_s .controlPanel {
     width: 0;
     height: 0px;
@@ -883,19 +793,19 @@ ul {
   }
 }
 
-@media all and (max-width: 768px) and (min-width: 577px) {
+@media all and (max-width: 768px) {
   #player .player_s .controlPanel {
     width: 58%;
   }
 }
 
-@media all and (max-width: 992px) and (min-width: 769px) {
+@media all and (max-width: 992px) {
   #player .player_s .controlPanel {
     width: 65%;
   }
 }
 
-@media all and (max-width: 1200px) and (min-width: 993px) {
+@media all and (max-width: 1200px) {
   #player .player_s .controlPanel {
     width: 70%;
   }
@@ -923,7 +833,7 @@ ul {
   }
 }
 
-@media all and (max-width: 576px) and (min-width: 377px) {
+@media all and (max-width: 576px) {
   #player .player_s .controlPanel .progressbar {
     position: absolute;
     top: 0;
@@ -937,7 +847,7 @@ ul {
   }
 }
 
-@media all and (max-width: 576px) and (min-width: 377px) {
+@media all and (max-width: 576px) {
   #player .player_s .controlPanel .time {
     display: none;
   }
@@ -949,13 +859,13 @@ ul {
   display: inline-block;
 }
 
-@media all and (max-width: 768px) and (min-width: 577px) {
+@media all and (max-width: 768px) {
   #player .player_s .controlPanel .time span {
     width: 49%;
   }
 }
 
-@media all and (max-width: 992px) and (min-width: 769px) {
+@media all and (max-width: 992px) {
   #player .player_s .controlPanel .time span {
     width: 49%;
   }
@@ -982,13 +892,13 @@ ul {
   }
 }
 
-@media all and (max-width: 576px) and (min-width: 377px) {
+@media all and (max-width: 576px) {
   #player .player_s .controlPanel .btns {
     display: none;
   }
 }
 
-@media all and (max-width: 768px) and (min-width: 577px) {
+@media all and (max-width: 768px) {
   #player .player_s .controlPanel .btns {
     width: 100%;
   }
@@ -1000,27 +910,27 @@ ul {
   margin-left: 30%;
 }
 
-@media all and (max-width: 576px) and (min-width: 377px) {
+@media all and (max-width: 576px) {
   #player .player_s .controlPanel .btns .controls {
     width: 70%;
   }
 }
 
-@media all and (max-width: 768px) and (min-width: 577px) {
+@media all and (max-width: 768px) {
   #player .player_s .controlPanel .btns .controls {
     width: 70%;
     margin-left: 15%;
   }
 }
 
-@media all and (max-width: 992px) and (min-width: 769px) {
+@media all and (max-width: 992px) {
   #player .player_s .controlPanel .btns .controls {
     width: 60%;
     margin-left: 5%;
   }
 }
 
-@media all and (max-width: 1200px) and (min-width: 993px) {
+@media all and (max-width: 1200px) {
   #player .player_s .controlPanel .btns .controls {
     margin-left: 20%;
   }
@@ -1121,7 +1031,7 @@ ul {
   margin: -4px;
 }
 
-@media all and (max-width: 768px) and (min-width: 577px) {
+@media all and (max-width: 768px) {
   #player .player_s .controlPanel .btns .vol {
     display: none;
   }
@@ -1158,7 +1068,7 @@ ul {
   }
 }
 
-@media all and (max-width: 576px) and (min-width: 377px) {
+@media all and (max-width: 576px) {
   #player .player_s .expand {
     padding-top: 4%;
   }
@@ -1202,7 +1112,7 @@ ul {
   transition: height .5s;
 }
 
-@media all and (max-width: 768px) and (min-width: 577px) {
+@media all and (max-width: 768px) {
   #player .player_b .left {
     height: 90%;
     padding: 8% 5%;
@@ -1211,7 +1121,7 @@ ul {
   }
 }
 
-@media all and (max-width: 576px) and (min-width: 377px) {
+@media all and (max-width: 576px) {
   #player .player_b .left {
     height: 90%;
     padding: 12% 5%;
@@ -1241,7 +1151,7 @@ ul {
   background-position: center center;
 }
 
-@media all and (max-width: 1200px) and (min-width: 993px) {
+@media all and (max-width: 1200px) {
   #player .player_b .left .songCover {
     padding: 15% 0 0;
     min-height: 350px;
@@ -1249,7 +1159,7 @@ ul {
   }
 }
 
-@media all and (max-width: 992px) and (min-width: 769px) {
+@media all and (max-width: 992px) {
   #player .player_b .left .songCover {
     padding: 15% 0 0;
     min-height: 350px;
@@ -1257,7 +1167,7 @@ ul {
   }
 }
 
-@media all and (max-width: 768px) and (min-width: 577px) {
+@media all and (max-width: 768px) {
   #player .player_b .left .songCover {
     padding: 5% 0 0;
     min-height: 320px;
@@ -1265,7 +1175,7 @@ ul {
   }
 }
 
-@media all and (max-width: 576px) and (min-width: 377px) {
+@media all and (max-width: 576px) {
   #player .player_b .left .songCover {
     padding: 5% 0 1%;
     min-height: 300px;
@@ -1423,7 +1333,7 @@ ul {
   margin-left: 30%;
 }
 
-@media all and (max-width: 1200px) and (min-width: 993px) {
+@media all and (max-width: 1200px) {
   #player .player_b .left .controlPanel .btns .controls {
     float: none;
     width: 45%;
@@ -1432,7 +1342,7 @@ ul {
   }
 }
 
-@media all and (max-width: 992px) and (min-width: 769px) {
+@media all and (max-width: 992px) {
   #player .player_b .left .controlPanel .btns .controls {
     float: none;
     width: 45%;
@@ -1441,7 +1351,7 @@ ul {
   }
 }
 
-@media all and (max-width: 768px) and (min-width: 577px) {
+@media all and (max-width: 768px) {
   #player .player_b .left .controlPanel .btns .controls {
     float: left;
     width: 45%;
@@ -1449,7 +1359,7 @@ ul {
   }
 }
 
-@media all and (max-width: 576px) and (min-width: 377px) {
+@media all and (max-width: 576px) {
   #player .player_b .left .controlPanel .btns .controls {
     float: none;
     width: 45%;
@@ -1534,21 +1444,21 @@ ul {
   margin: 1% 0;
 }
 
-@media all and (max-width: 1200px) and (min-width: 993px) {
+@media all and (max-width: 1200px) {
   #player .player_b .left .controlPanel .btns .vol {
     float: none;
     margin-top: 5%;
   }
 }
 
-@media all and (max-width: 992px) and (min-width: 769px) {
+@media all and (max-width: 992px) {
   #player .player_b .left .controlPanel .btns .vol {
     float: none;
     margin-top: 5%;
   }
 }
 
-@media all and (max-width: 576px) and (min-width: 377px) {
+@media all and (max-width: 576px) {
   #player .player_b .left .controlPanel .btns .vol {
     float: none;
     margin-top: 5%;
@@ -1566,7 +1476,7 @@ ul {
   float: left;
 }
 
-@media all and (max-width: 1200px) and (min-width: 993px) {
+@media all and (max-width: 1200px) {
   #player .player_b .left .controlPanel .btns .vol .volicon {
     width: 3%;
     margin-left: 7%;
@@ -1574,7 +1484,7 @@ ul {
   }
 }
 
-@media all and (max-width: 992px) and (min-width: 769px) {
+@media all and (max-width: 992px) {
   #player .player_b .left .controlPanel .btns .vol .volicon {
     width: 3%;
     margin-left: 7%;
@@ -1582,7 +1492,7 @@ ul {
   }
 }
 
-@media all and (max-width: 576px) and (min-width: 377px) {
+@media all and (max-width: 576px) {
   #player .player_b .left .controlPanel .btns .vol .volicon {
     width: 3%;
     margin-left: 7%;
@@ -1605,7 +1515,7 @@ ul {
   background-color: white;
 }
 
-@media all and (max-width: 1200px) and (min-width: 993px) {
+@media all and (max-width: 1200px) {
   #player .player_b .left .controlPanel .btns .vol .volLine {
     width: 75%;
     margin: 1% 10% 0 0;
@@ -1613,7 +1523,7 @@ ul {
   }
 }
 
-@media all and (max-width: 992px) and (min-width: 769px) {
+@media all and (max-width: 992px) {
   #player .player_b .left .controlPanel .btns .vol .volLine {
     width: 75%;
     margin: 1% 10% 0 0;
@@ -1621,7 +1531,7 @@ ul {
   }
 }
 
-@media all and (max-width: 576px) and (min-width: 377px) {
+@media all and (max-width: 576px) {
   #player .player_b .left .controlPanel .btns .vol .volLine {
     width: 75%;
     margin: 1% 10% 0 0;
@@ -1658,13 +1568,13 @@ ul {
   cursor: pointer;
 }
 
-@media all and (max-width: 768px) and (min-width: 577px) {
+@media all and (max-width: 768px) {
   #player .player_b .left .pushBtn {
     display: block;
   }
 }
 
-@media all and (max-width: 576px) and (min-width: 377px) {
+@media all and (max-width: 576px) {
   #player .player_b .left .pushBtn {
     display: block;
   }
@@ -1688,7 +1598,7 @@ ul {
   transition: height .5s;
 }
 
-@media all and (max-width: 768px) and (min-width: 577px) {
+@media all and (max-width: 768px) {
   #player .player_b .right {
     width: 100%;
     float: none;
@@ -1696,7 +1606,7 @@ ul {
   }
 }
 
-@media all and (max-width: 576px) and (min-width: 377px) {
+@media all and (max-width: 576px) {
   #player .player_b .right {
     width: 100%;
     float: none;
@@ -1738,7 +1648,7 @@ ul {
   padding: 8% 8% 0;
 }
 
-@media all and (max-width: 992px) and (min-width: 769px) {
+@media all and (max-width: 992px) {
   #player .player_b .right .listTitle {
     padding-top: 15%;
   }
@@ -1750,7 +1660,7 @@ ul {
   float: left;
 }
 
-@media all and (max-width: 992px) and (min-width: 769px) {
+@media all and (max-width: 992px) {
   #player .player_b .right .listTitle .listCover {
     width: 200px;
     height: 200px;
@@ -1759,7 +1669,7 @@ ul {
   }
 }
 
-@media all and (max-width: 768px) and (min-width: 577px) {
+@media all and (max-width: 768px) {
   #player .player_b .right .listTitle .listCover {
     width: 200px;
     height: 200px;
@@ -1768,7 +1678,7 @@ ul {
   }
 }
 
-@media all and (max-width: 576px) and (min-width: 377px) {
+@media all and (max-width: 576px) {
   #player .player_b .right .listTitle .listCover {
     width: 200px;
     height: 200px;
@@ -1794,7 +1704,7 @@ ul {
   float: left;
 }
 
-@media all and (max-width: 992px) and (min-width: 769px) {
+@media all and (max-width: 992px) {
   #player .player_b .right .listTitle .listName {
     width: 100%;
     text-align: center;
@@ -1803,7 +1713,7 @@ ul {
   }
 }
 
-@media all and (max-width: 768px) and (min-width: 577px) {
+@media all and (max-width: 768px) {
   #player .player_b .right .listTitle .listName {
     width: 100%;
     text-align: center;
@@ -1812,7 +1722,7 @@ ul {
   }
 }
 
-@media all and (max-width: 576px) and (min-width: 377px) {
+@media all and (max-width: 576px) {
   #player .player_b .right .listTitle .listName {
     width: 100%;
     text-align: center;
@@ -1922,19 +1832,19 @@ ul {
   padding: 2% 0;
 }
 
-@media all and (max-width: 1200px) and (min-width: 993px) {
+@media all and (max-width: 1200px) {
   #player .player_b .right .list ul li .totalTime {
     width: 10%;
   }
 }
 
-@media all and (max-width: 992px) and (min-width: 769px) {
+@media all and (max-width: 992px) {
   #player .player_b .right .list ul li .totalTime {
     width: 8%;
   }
 }
 
-@media all and (max-width: 768px) and (min-width: 577px) {
+@media all and (max-width: 768px) {
   #player .player_b .right .list ul li .totalTime {
     margin: 0 10px;
     width: 7%;
@@ -1963,7 +1873,7 @@ ul {
           transform: scale(1.1);
 }
 
-@media all and (max-width: 1200px) and (min-width: 993px) {
+@media all and (max-width: 1200px) {
   #player .player_b .right .list ul li .heart {
     padding: 3% 0;
     margin: 0 5px;
@@ -1971,21 +1881,21 @@ ul {
   }
 }
 
-@media all and (max-width: 992px) and (min-width: 769px) {
+@media all and (max-width: 992px) {
   #player .player_b .right .list ul li .heart {
     padding: 3% 0;
     width: 8%;
   }
 }
 
-@media all and (max-width: 768px) and (min-width: 577px) {
+@media all and (max-width: 768px) {
   #player .player_b .right .list ul li .heart {
     padding: 3% 0;
     width: 5%;
   }
 }
 
-@media all and (max-width: 576px) and (min-width: 377px) {
+@media all and (max-width: 576px) {
   #player .player_b .right .list ul li .heart {
     width: 5%;
     padding: 3% 0;
