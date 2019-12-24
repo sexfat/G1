@@ -14,6 +14,7 @@ body {
   font-family: "Lucida Sans Unicode", Geneva, Verdana, sans-serif;
   background: #fafaf1;
   color: #333;
+  overflow-x: hidden;
 }
 
 .flexbox {
@@ -27,61 +28,10 @@ a {
   color: #333;
 }
 
-h1,
-h2,
-h3,
-h4,
-h5,
-h6,
-p {
-  margin: 0;
-  padding: 0;
-}
-
-h1 {
-  /*60px*/
-  font-size: 3rem;
-}
-
-h2 {
-  /* 40px*/
-  font-size: 2rem;
-  /*副標的h2 font-weight:bold*/
-}
-
-h3 {
-  /*30px*/
-  font-size: 1.5rem;
-}
-
-h4 {
-  /*24px*/
-  font-size: 1.2rem;
-}
-
-p {
-  /*內文 20px*/
-  font-size: 1rem;
-}
-
-p.bigSmall {
-  /*大小 16px*/
-  font-size: 0.8rem;
-}
-
-p.doubleSmall {
-  /*小小 14px*/
-  font-size: 0.7rem;
-}
-
-p.forget {
-  /*旺季 12px*/
-  font-size: 0.6rem;
-}
-
 header {
   height: 300px;
   text-align: center;
+  padding: 120px 0;
 }
 
 .wrapper {
@@ -106,6 +56,12 @@ header {
 }
 
 /*button mixin*/
+@media all and (max-width: 768px) {
+  header img {
+    height: 76px;
+  }
+}
+
 div.nav_bar {
   position: fixed;
   z-index: 999;
@@ -504,10 +460,56 @@ body .signupcontainer {
   top: 230px;
 }
 
+@media all and (max-width: 576px) {
+  body .signupcontainer {
+    display: none;
+  }
+}
+
+@media all and (max-width: 376px) {
+  body .signupcontainer {
+    display: none;
+  }
+}
+
+@media all and (max-width: 768px) {
+  body .signupcontainer {
+    width: 600px;
+    height: 200px;
+    top: 120px;
+  }
+}
+
+@media all and (max-width: 992px) {
+  body .signupcontainer {
+    width: 750px;
+    top: 150px;
+  }
+}
+
 body .signupcontainer .greenblock {
   background-color: #d0d6d6;
   width: 100%;
   height: 600px;
+}
+
+@media all and (max-width: 376px) {
+  body .signupcontainer .greenblock {
+    width: 300px;
+    height: 500px;
+  }
+}
+
+@media all and (max-width: 768px) {
+  body .signupcontainer .greenblock {
+    height: 450px;
+  }
+}
+
+@media all and (max-width: 992px) {
+  body .signupcontainer .greenblock {
+    height: 400px;
+  }
 }
 
 body .signupcontainer .whiteform {
@@ -525,6 +527,22 @@ body .signupcontainer .whiteform {
   z-index: 2;
 }
 
+@media all and (max-width: 768px) {
+  body .signupcontainer .whiteform {
+    width: 290px;
+    height: 525px;
+    top: -20%;
+  }
+}
+
+@media all and (max-width: 992px) {
+  body .signupcontainer .whiteform {
+    width: 360px;
+    height: 455px;
+    top: -5%;
+  }
+}
+
 body .signupcontainer .displaynone {
   display: none;
   -webkit-transition: all .5s ease;
@@ -534,6 +552,18 @@ body .signupcontainer .displaynone {
 body .signupcontainer h1 {
   text-align: center;
   margin-top: 55px;
+}
+
+@media all and (max-width: 768px) {
+  body .signupcontainer h1 {
+    margin-top: 25px;
+  }
+}
+
+@media all and (max-width: 992px) {
+  body .signupcontainer h1 {
+    margin-top: 25px;
+  }
 }
 
 body .signupcontainer .leftbox, body .signupcontainer .rightbox {
@@ -562,27 +592,99 @@ body .signupcontainer .signin a {
   margin-bottom: 90px;
 }
 
+@media all and (max-width: 768px) {
+  body .signupcontainer .signin a {
+    margin-left: 12px;
+    margin-bottom: 0px;
+  }
+}
+
+@media all and (max-width: 992px) {
+  body .signupcontainer .signin a {
+    margin-left: 150px;
+  }
+}
+
 body .signupcontainer .emailinput {
   margin-bottom: 30px;
 }
 
+@media all and (max-width: 768px) {
+  body .signupcontainer .emailinput {
+    margin-bottom: 20px;
+  }
+}
+
+@media all and (max-width: 992px) {
+  body .signupcontainer .emailinput {
+    margin-bottom: 20px;
+  }
+}
+
 body .signupcontainer input {
   background-color: #d0d6d6;
-  padding: 15px;
   border: none;
   padding: 12px;
+}
+
+@media all and (max-width: 768px) {
+  body .signupcontainer input {
+    padding: 10px;
+  }
+}
+
+@media all and (max-width: 992px) {
+  body .signupcontainer input {
+    padding: 10px;
+  }
 }
 
 body .signupcontainer .signin form {
   padding-top: 35px;
 }
 
+@media all and (max-width: 768px) {
+  body .signupcontainer .signin form {
+    padding-top: 10px;
+  }
+}
+
+@media all and (max-width: 992px) {
+  body .signupcontainer .signin form {
+    padding-top: 5px;
+  }
+}
+
 body .signupcontainer .signin form button {
   margin-top: 82px;
 }
 
+@media all and (max-width: 768px) {
+  body .signupcontainer .signin form button {
+    margin-top: 122px;
+  }
+}
+
+@media all and (max-width: 992px) {
+  body .signupcontainer .signin form button {
+    margin-top: -13px;
+  }
+}
+
 body .signupcontainer .signup button {
   margin-top: 92px;
+}
+
+@media all and (max-width: 768px) {
+  body .signupcontainer .signup button {
+    margin-top: 50px;
+  }
+}
+
+@media all and (max-width: 992px) {
+  body .signupcontainer .signup button {
+    margin-top: 1px;
+  }
 }
 
 body .signupcontainer button {
@@ -619,6 +721,18 @@ body .signupcontainer form {
   margin: 30px 60px 60px 65px;
 }
 
+@media all and (max-width: 768px) {
+  body .signupcontainer form {
+    margin: 30px 20px 0px 40px;
+  }
+}
+
+@media all and (max-width: 992px) {
+  body .signupcontainer form {
+    margin: 30px 30px 0px 50px;
+  }
+}
+
 body .signupcontainer .title {
   font-size: 1.5em;
   padding-top: 10px;
@@ -638,6 +752,18 @@ body .signupcontainer p {
   padding-top: 150px;
 }
 
+@media all and (max-width: 768px) {
+  body .signupcontainer p {
+    padding-top: 110px;
+  }
+}
+
+@media all and (max-width: 992px) {
+  body .signupcontainer p {
+    padding-top: 35px;
+  }
+}
+
 body .signupcontainer .flower {
   position: absolute;
   height: 320px;
@@ -645,10 +771,37 @@ body .signupcontainer .flower {
   left: 25%;
 }
 
+@media all and (max-width: 768px) {
+  body .signupcontainer .flower {
+    height: 250px;
+  }
+}
+
+@media all and (max-width: 992px) {
+  body .signupcontainer .flower {
+    height: 220px;
+    left: 30%;
+  }
+}
+
 body .signupcontainer .smaller {
   height: 320px;
   top: 25%;
   left: 28%;
+}
+
+@media all and (max-width: 768px) {
+  body .signupcontainer .smaller {
+    height: 230px;
+  }
+}
+
+@media all and (max-width: 992px) {
+  body .signupcontainer .smaller {
+    height: 215px;
+    left: 30%;
+    top: 25%;
+  }
 }
 
 body .signupcontainer input {
@@ -691,5 +844,157 @@ body .signupcontainer input:focus::-ms-input-placeholder {
 
 body .signupcontainer input:focus::placeholder {
   opacity: 0;
+}
+
+@media all and (max-width: 768px) {
+  #mobilelogintab {
+    display: none;
+  }
+}
+
+@media all and (max-width: 992px) {
+  #mobilelogintab {
+    display: none;
+  }
+}
+
+@media all and (max-width: 1200px) {
+  #mobilelogintab {
+    display: none;
+  }
+}
+
+@media all and (max-width: 376px) {
+  #mobilelogintab {
+    display: inline-block;
+    border: 1px solid gray;
+    background-color: #fff;
+    position: absolute;
+    padding: 50px 0px 50px 0px;
+    width: 80vw;
+    top: 50%;
+    left: 50%;
+    -webkit-transform: translate(-50%, -50%);
+            transform: translate(-50%, -50%);
+    background-image: url(../img/register/register.jpg);
+    background-position: center;
+    background-repeat: no-repeat;
+  }
+  #mobilelogintab .motabtitle {
+    text-align: center;
+  }
+  #mobilelogintab .motabtitle li {
+    display: inline-block;
+    padding: 10px;
+    border: 1px solid red;
+  }
+  #mobilelogintab .motabinner form {
+    display: -webkit-box;
+    display: -ms-flexbox;
+    display: flex;
+    -webkit-box-align: left;
+        -ms-flex-align: left;
+            align-items: left;
+    -webkit-box-orient: vertical;
+    -webkit-box-direction: normal;
+        -ms-flex-direction: column;
+            flex-direction: column;
+    margin: 0px 20px 0px 60px;
+  }
+  #mobilelogintab .motabinner form button {
+    background-color: #f1c40f;
+    font-size: 0.8rem;
+    padding: 10px 30px;
+    border: 1px solid #f1c40f;
+    border-radius: 5px;
+    color: #fff;
+    font-weight: bold;
+    cursor: pointer;
+    border-radius: 10px;
+    margin: 0 auto;
+    display: block;
+    position: relative;
+    right: 10%;
+    margin-top: 40px;
+  }
+  #mobilelogintab .motabinner form button:hover {
+    -webkit-transform: scale(1.1);
+            transform: scale(1.1);
+  }
+  #mobilelogintab .motabinner form input {
+    background-color: #d0d6d6;
+    border: none;
+    padding: 5px;
+    width: 80%;
+  }
+  #mobilelogintab .motabinner form .mobileemailinput {
+    margin-bottom: 15px;
+  }
+  #mobilelogintab .motabinner form a {
+    margin-left: 41px;
+  }
+}
+
+@media all and (max-width: 576px) {
+  #mobilelogintab {
+    display: inline-block;
+    border: 1px solid gray;
+    background-color: #fff;
+    position: absolute;
+    padding: 50px 0px 50px 0px;
+    width: 80vw;
+    top: 50%;
+    left: 50%;
+    -webkit-transform: translate(-50%, -50%);
+            transform: translate(-50%, -50%);
+    background-image: url(../img/register/register.jpg);
+    background-position: center;
+    background-repeat: no-repeat;
+  }
+  #mobilelogintab .motabinner form {
+    display: -webkit-box;
+    display: -ms-flexbox;
+    display: flex;
+    -webkit-box-align: left;
+        -ms-flex-align: left;
+            align-items: left;
+    -webkit-box-orient: vertical;
+    -webkit-box-direction: normal;
+        -ms-flex-direction: column;
+            flex-direction: column;
+    margin: 0px 40px 0px 100px;
+  }
+  #mobilelogintab .motabinner form button {
+    background-color: #f1c40f;
+    font-size: 0.8rem;
+    padding: 10px 30px;
+    border: 1px solid #f1c40f;
+    border-radius: 5px;
+    color: #fff;
+    font-weight: bold;
+    cursor: pointer;
+    border-radius: 10px;
+    margin: 0 auto;
+    display: block;
+    position: relative;
+    right: 10%;
+    margin-top: 10px;
+  }
+  #mobilelogintab .motabinner form button:hover {
+    -webkit-transform: scale(1.1);
+            transform: scale(1.1);
+  }
+  #mobilelogintab .motabinner form input {
+    background-color: #d0d6d6;
+    border: none;
+    padding: 5px;
+    width: 80%;
+  }
+  #mobilelogintab .motabinner form .mobileemailinput {
+    margin-bottom: 15px;
+  }
+  #mobilelogintab .motabinner form a {
+    margin-left: 72px;
+  }
 }
 /*# sourceMappingURL=login.css.map */

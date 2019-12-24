@@ -12,7 +12,11 @@ $albumbottom: 340px;
 }
 
 body{
+    background-image: url(../img/collection/collectionnavback.jpg);
+    background-position:bottom;
+    background-size: cover;
     header{
+        text-align: center;
         padding:120px;
         width: 100%;
         img{
@@ -20,6 +24,30 @@ body{
             width: 100%;
         }
     }
+    .playall_btn{
+        text-align: right;
+        margin: 0vw 20vw;
+        
+    }
+    .circlebtn {
+        width: 50px;
+        height: 50px;
+        vertical-align: middle;
+        line-height: 50px;
+        border-radius: 25px;
+        font-size: 0.8rem;
+        font-weight: bold;
+        border: 1px solid $yellow;
+        background-color: $yellow;
+        color: white;
+        outline: none;
+        cursor: pointer;
+        transition: transform .5s;
+      
+        &:hover {
+          transform: scale(1.1);
+        }
+      }
     section{
         text-align: center;
         .radio{
@@ -89,7 +117,17 @@ body{
 	display:block;
 	content:"";
 }
-
+h6{ 
+    font-size : 40px;   
+    color : #ccc; 
+    position: relative;
+    left: 102%;
+    top: 76%;
+    cursor : pointer;
+} 
+.redheartshape{
+    color:#de267d;
+}
 
 .albumshelf .shelf .loc{
 	position:absolute;
@@ -126,12 +164,12 @@ body{
 
 .albumshelf .sample,
 .albumshelf-row .sample{
+    border: 1px solid red;
 	margin:auto;
 	position: relative;
 	z-index:1;
 	box-shadow:2px 2px 5px rgba(0,0,0,0.6);
 }
-
 .albumshelf .album1,
 .albumshelf-row .album1{
     background-image:url("../img/collection/album1.jpg");
@@ -190,5 +228,4 @@ body{
         }
 
     }
-    
 }
