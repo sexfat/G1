@@ -6,14 +6,17 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
     <title>Document</title>
-    <link rel="stylesheet" href="./css/public.css">
-    <link rel="stylesheet" href="./css/nav_bar.css">
+    <link rel="stylesheet" href="./css/main.css">
     <link rel="stylesheet" href="./css/home.css">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/pagePiling.js/1.5.6/jquery.pagepiling.min.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.11.2/css/all.min.css" />
     <script src="https://cdnjs.cloudflare.com/ajax/libs/vue/2.6.10/vue.js"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
-
     <script src="https://cdnjs.cloudflare.com/ajax/libs/pagePiling.js/1.5.6/jquery.pagepiling.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/pixi.js/5.2.0/pixi.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/three.js/110/three.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/2.1.3/TweenMax.min.js"></script>
+
 
     <style>
 
@@ -33,29 +36,361 @@
                 }
             );
 
-            $('.mem_list').css({ 'height': $(window).height() });
-            $('.mobile_list').css({ 'height': $(window).height() });
-            $('.mem_list ul').css({ 'height': $(window).height() });
-            $('.mobile_list ul').css({ 'height': $(window).height() });
-            $('.paint_border').css({ 'height': $(window).height() });
 
-            $(document).click(() => {
-                vm.mem_list = false;
-                vm.search_bar = false;
-                vm.mobile_list = false;
 
-                document
-                    .querySelector(".search_bar")
-                    .setAttribute("style", "height: 0px; filter: opacity(0);");
-                document
-                    .querySelector(".mem_list")
-                    .setAttribute("style", "transform: translateX(270px); filter: opacity(0);");
-                document
-                    .querySelector(".mobile_list")
-                    .setAttribute("style", "transform: translateX(-270px); filter: opacity(0);");
-            })
+            // RANK
+            song_transform = new Array();
+            rankOrder = 1;
+            set_value = [
+                parseInt(200 - (((1920 - window.innerWidth) / 16) * 0.01 * 80)),
+                parseInt(360 - (((1920 - window.innerWidth) / 16) * 0.01 * 130)),
+            ]
+            if (window.innerWidth <= 768) {
+                windowLess768 = true;
+            } else {
+                windowLess768 = false;
+            }
 
-        });
+            for (let i = 0; i < 10; i++) {
+                if (i == 0) {
+                    document.querySelector(`.home_song${i + 1}`).setAttribute(
+                        'style',
+                        `width: ${set_value[0]}px;
+                        height: ${set_value[0]}px;
+                        transform: rotateY(${i * 36}deg) translateZ(${set_value[1]}px) scale(1.18);`
+                    );
+                    song_transform.push(`${parseInt(document.querySelector(`.home_song${i + 1}`).style.transform.substr(8, 3))}`);
+                    document.querySelector(`.home_song${rankOrder} .home_shadow`).setAttribute('style', 'box-shadow: 5px 5px 5px 1px rgba(0, 0, 0, 0.2);');
+                    if (windowLess768) {
+                        document.querySelector(`.home_song${rankOrder} .home_song_info`).setAttribute('style', `transform: translateY(${set_value[0]}px);`);
+                    } else {
+                        document.querySelector(`.home_song${rankOrder} .home_song_info`).setAttribute('style', `transform: translateX(${-set_value[0]}px);`);
+                    }
+
+                } else {
+                    document.querySelector(`.home_song${i + 1}`).setAttribute(
+                        'style',
+                        `width: ${set_value[0]}px;
+                        height: ${set_value[0]}px;
+                        transform: rotateY(${i * 36}deg) translateZ(${set_value[1]}px`
+                    );
+                    song_transform.push(`${parseInt(document.querySelector(`.home_song${i + 1}`).style.transform.substr(8, 3))}`);
+                }
+            }
+            document.querySelector('.home_perspective').setAttribute(
+                'style',
+                `left: ${540 - (((1920 - window.innerWidth) / 16) * 0.01 * 1060)}px`
+            );
+
+            $(window).resize(() => {
+                set_value = [
+                    (200 - (((1920 - window.innerWidth) / 16) * 0.01 * 80)),
+                    parseInt(360 - (((1920 - window.innerWidth) / 16) * 0.01 * 130)),
+                ]
+                if (window.innerWidth <= 768) {
+                    windowLess768 = true;
+                } else {
+                    windowLess768 = false;
+                }
+
+                for (let i = 0; i < 10; i++) {
+                    if ((i + 1) == rankOrder) {
+                        document.querySelector(`.home_song${i + 1}`).setAttribute(
+                            'style',
+                            `width: ${set_value[0]}px;
+                            height:${set_value[0]}px;
+                            transform: rotateY(${+ song_transform[i]}deg) translateZ(${set_value[1]}px) scale(1.18);`
+                        );
+                        if (windowLess768) {
+                            document.querySelector(`.home_song${rankOrder} .home_song_info`).setAttribute('style', `transform: translateY(${set_value[0]}px);`);
+                        } else {
+                            document.querySelector(`.home_song${rankOrder} .home_song_info`).setAttribute('style', `transform: translateX(${-set_value[0]}px);`);
+                        }
+                    } else {
+                        document.querySelector(`.home_song${i + 1}`).setAttribute(
+                            'style',
+                            `width: ${set_value[0]}px;
+                            height: ${set_value[0]}px;
+                            transform: rotateY(${+ song_transform[i]}deg) translateZ(${set_value[1]}px);`
+                        );
+                    }
+                }
+
+                document.querySelector('.home_perspective').setAttribute(
+                    'style',
+                    `left: ${540 - (((1920 - window.innerWidth) / 16) * 0.01 * 1060)}px`
+                );
+
+            });
+
+
+            document.querySelector('.home_left_arrow').addEventListener('click', () => {
+                rankOrder--;
+                if (rankOrder == 0) {
+                    rankOrder = 10;
+                    document.querySelector(`.home_song${rankOrder} .home_shadow`).setAttribute('style', 'box-shadow: 5px 5px 5px 1px rgba(0, 0, 0, 0.2);');
+                    if (windowLess768) {
+                        document.querySelector(`.home_song${rankOrder} .home_song_info`).setAttribute('style', `transform: translateY(${set_value[0]}px);`);
+                    } else {
+                        document.querySelector(`.home_song${rankOrder} .home_song_info`).setAttribute('style', `transform: translateX(${-set_value[0]}px);`);
+                    }
+                    document.querySelector(`.home_song1 .home_shadow`).setAttribute('style', 'box-shadow: none;');
+                    document.querySelector(`.home_song1 .home_song_info`).setAttribute('style', 'transform: translateX(0px);');
+
+                } else {
+                    document.querySelector(`.home_song${rankOrder} .home_shadow`).setAttribute('style', 'box-shadow: 5px 5px 5px 1px rgba(0, 0, 0, 0.2);');
+                    if (windowLess768) {
+                        document.querySelector(`.home_song${rankOrder} .home_song_info`).setAttribute('style', `transform: translateY(${set_value[0]}px);`);
+                    } else {
+                        document.querySelector(`.home_song${rankOrder} .home_song_info`).setAttribute('style', `transform: translateX(${-set_value[0]}px);`);
+                    }
+                    document.querySelector(`.home_song${rankOrder + 1} .home_shadow`).setAttribute('style', 'box-shadow: none;');
+                    document.querySelector(`.home_song${rankOrder + 1} .home_song_info`).setAttribute('style', 'transform: translateX(0px);');
+                }
+                left_spin();
+            });
+            document.querySelector('.home_right_arrow').addEventListener('click', () => {
+                rankOrder++;
+                if (rankOrder == 11) {
+                    rankOrder = 1;
+                    document.querySelector(`.home_song${rankOrder} .home_shadow`).setAttribute('style', 'box-shadow: 5px 5px 5px 1px rgba(0, 0, 0, 0.2);');
+                    if (windowLess768) {
+                        document.querySelector(`.home_song${rankOrder} .home_song_info`).setAttribute('style', `transform: translateY(${set_value[0]}px);`);
+                    } else {
+                        document.querySelector(`.home_song${rankOrder} .home_song_info`).setAttribute('style', `transform: translateX(${-set_value[0]}px);`);
+                    }
+                    document.querySelector(`.home_song10 .home_shadow`).setAttribute('style', 'box-shadow: none;');
+                    document.querySelector(`.home_song10 .home_song_info`).setAttribute('style', 'transform: translateX(0px);');
+
+                } else {
+                    document.querySelector(`.home_song${rankOrder} .home_shadow`).setAttribute('style', 'box-shadow: 5px 5px 5px 1px rgba(0, 0, 0, 0.2);');
+                    if (windowLess768) {
+                        document.querySelector(`.home_song${rankOrder} .home_song_info`).setAttribute('style', `transform: translateY(${set_value[0]}px);`);
+                    } else {
+                        document.querySelector(`.home_song${rankOrder} .home_song_info`).setAttribute('style', `transform: translateX(${-set_value[0]}px);`);
+                    }
+                    document.querySelector(`.home_song${rankOrder - 1} .home_shadow`).setAttribute('style', 'box-shadow: none;');
+                    document.querySelector(`.home_song${rankOrder - 1} .home_song_info`).setAttribute('style', 'transform: translateX(0px);');
+                }
+                right_spin();
+            });
+
+            document.querySelector('.home_slider').addEventListener('mousedown', (holdDown));
+            document.querySelector('.home_slider').addEventListener('mouseup', (holdUp));
+
+            spin = 0;
+            function left_spin() {
+                if (spin <= 36) {
+                    for (let i = 0; i < 10; i++) {
+                        if (+song_transform[i] == 360 || +song_transform[i] == 0) {
+                            document
+                                .querySelector(`.home_song${i + 1}`).setAttribute('style', `width: ${set_value[0]}px; height: ${set_value[0]}px; transform: rotateY(${0 + spin}deg) translateZ(${set_value[1]}px) scale(${1.18 - 0.005 * spin})`
+                                );
+                        } else if (+song_transform[i] == 324) {
+                            document
+                                .querySelector(`.home_song${i + 1} `).setAttribute('style', `width: ${set_value[0]}px; height: ${set_value[0]}px; transform: rotateY(${+ song_transform[i] + spin}deg) translateZ(${set_value[1]}px) scale(${1 + 0.005 * spin})`
+                                );
+                        } else {
+                            document
+                                .querySelector(`.home_song${i + 1} `).setAttribute('style', `width: ${set_value[0]}px; height: ${set_value[0]}px; transform: rotateY(${+ song_transform[i] + spin}deg) translateZ(${set_value[1]}px) scale(1)`);
+                        }
+                    }
+                    spin++;
+                    window.requestAnimationFrame(left_spin);
+                } else {
+                    song_transform = [];
+                    for (let i = 0; i < 10; i++) {
+                        song_transform.push(`${parseInt(document.querySelector(`.home_song${i + 1}`).style.transform.substr(8, 3))} `)
+                    }
+                    spin = 0;
+                }
+            }
+            function right_spin() {
+                if (spin <= 36) {
+                    for (let i = 0; i < 10; i++) {
+                        if (+song_transform[i] == 0 || +song_transform[i] == 360) {
+                            document
+                                .querySelector(`.home_song${i + 1} `).setAttribute('style', `width: ${set_value[0]}px; height: ${set_value[0]}px; transform: rotateY(${360 - spin}deg) translateZ(${set_value[1]}px) scale(${1.18 - 0.005 * spin});`);
+
+                        } else if (+song_transform[i] == 36) {
+                            document
+                                .querySelector(`.home_song${i + 1} `).setAttribute('style', `width: ${set_value[0]}px; height: ${set_value[0]}px; transform: rotateY(${+ song_transform[i] - spin}deg) translateZ(${set_value[1]}px) scale(${1 + 0.005 * spin})`);
+
+                        } else {
+                            document
+                                .querySelector(`.home_song${i + 1} `).setAttribute('style', `width: ${set_value[0]}px; height: ${set_value[0]}px; transform: rotateY(${+ song_transform[i] - spin}deg) translateZ(${set_value[1]}px)`);
+                        }
+                    }
+                    spin++;
+                    window.requestAnimationFrame(right_spin);
+                } else {
+                    song_transform = [];
+                    for (let i = 0; i < 10; i++) {
+                        song_transform.push(`${parseInt(document.querySelector(`.home_song${i + 1}`).style.transform.substr(8, 3))}`)
+                    }
+                    spin = 0;
+                }
+
+            }
+
+            var timeStart, timeEnd, time;//申明全局變數
+
+            function getTimeNow()//獲取此刻時間
+            {
+                now = new Date();
+                return now.getTime();
+            }
+
+            function holdDown(e)//滑鼠按下時觸發
+            {
+                preX = e.clientX;
+                console.log(preX);
+                timeStart = getTimeNow();//獲取滑鼠按下時的時間
+                time = setInterval(() =>//setInterval會每100毫秒執行一次
+                {
+                    timeEnd = getTimeNow();//也就是每100毫秒獲取一次時間
+                    if (timeEnd - timeStart > 500)//如果此時檢測到的時間與第一次獲取的時間差有1000毫秒
+                    {
+                        clearInterval(time);//便不再繼續重覆此函數 （clearInterval取消周期性執行）
+                        document.querySelector('.home_slider').addEventListener('mousemove', (e) => {
+                            x = e.clientX;
+                            console.log(x);
+                        });
+                    }
+                }, 100);
+            }
+            function holdUp() {
+                clearInterval(time);//如果按下時間不到1000毫秒便彈起，
+            }
+
+
+
+
+
+
+
+
+
+
+            // sec06 canvas
+            var renderer, scene, camera, ww, wh, particles;
+
+            ww = window.innerWidth,
+                wh = window.innerHeight;
+
+            var centerVector = new THREE.Vector3(0, 0, 0);
+            var previousTime = 0;
+
+            var getImageData = function (image) {
+
+                var canvas = document.createElement("canvas");
+                canvas.width = image.width;
+                canvas.height = image.height;
+
+                var ctx = canvas.getContext("2d");
+                ctx.drawImage(image, 0, 0);
+
+                return ctx.getImageData(0, 0, image.width, image.height);
+            }
+
+            var drawTheMap = function () {
+
+                var geometry = new THREE.Geometry();
+                var material = new THREE.PointsMaterial({
+                    size: 3,
+                    color: 0x000000,
+                    sizeAttenuation: false
+                });
+                for (var y = 0, y2 = imagedata.height; y < y2; y += 2) {
+                    for (var x = 0, x2 = imagedata.width; x < x2; x += 2) {
+                        if (imagedata.data[(x * 4 + y * 4 * imagedata.width) + 3] > 128) {
+
+                            var vertex = new THREE.Vector3();
+                            vertex.x = Math.random() * 1000 - 500;
+                            vertex.y = Math.random() * 1000 - 500;
+                            vertex.z = -Math.random() * 500;
+
+                            vertex.destination = {
+                                x: x - imagedata.width / 2,
+                                y: -y + imagedata.height / 2,
+                                z: 0
+                            };
+
+                            vertex.speed = Math.random() / 200 + 0.015;
+
+                            geometry.vertices.push(vertex);
+                        }
+                    }
+                }
+                particles = new THREE.Points(geometry, material);
+
+                scene.add(particles);
+
+                requestAnimationFrame(render);
+            };
+
+            var init = function () {
+                THREE.ImageUtils.crossOrigin = '';
+                renderer = new THREE.WebGLRenderer({
+                    canvas: document.querySelector('.home_map'),
+                    antialias: true
+                });
+                renderer.setSize(ww, wh);
+                renderer.setClearColor(0xFAFAF1);
+
+                scene = new THREE.Scene();
+
+                camera = new THREE.PerspectiveCamera(100, ww / wh, 0.1, 10000);
+                camera.position.set(-100, 0, 400);
+                camera.lookAt(centerVector);
+                scene.add(camera);
+
+                texture = THREE.ImageUtils.loadTexture("./img/home/audio_man.png", undefined, function () {
+                    imagedata = getImageData(texture.image);
+                    drawTheMap();
+                });
+                window.addEventListener('resize', onResize, false);
+
+            };
+            var onResize = function () {
+                ww = window.innerWidth;
+                wh = window.innerHeight;
+                renderer.setSize(ww, wh);
+                camera.aspect = ww / wh;
+                camera.updateProjectionMatrix();
+            };
+
+            var render = function (a) {
+
+                requestAnimationFrame(render);
+
+                for (var i = 0, j = particles.geometry.vertices.length; i < j; i++) {
+                    var particle = particles.geometry.vertices[i];
+                    particle.x += (particle.destination.x - particle.x) * particle.speed;
+                    particle.y += (particle.destination.y - particle.y) * particle.speed;
+                    particle.z += (particle.destination.z - particle.z) * particle.speed;
+                }
+
+                if (a - previousTime > 100) {
+                    var index = Math.floor(Math.random() * particles.geometry.vertices.length);
+                    var particle1 = particles.geometry.vertices[index];
+                    var particle2 = particles.geometry.vertices[particles.geometry.vertices.length - index];
+                    TweenMax.to(particle, Math.random() * 2 + 1, { x: particle2.x, y: particle2.y, ease: Power2.easeInOut });
+                    TweenMax.to(particle2, Math.random() * 2 + 1, { x: particle1.x, y: particle1.y, ease: Power2.easeInOut });
+                    previousTime = a;
+                }
+
+                particles.geometry.verticesNeedUpdate = true;
+                camera.position.x = Math.sin(a / 5000) * 100;
+                camera.lookAt(centerVector);
+
+                renderer.render(scene, camera);
+            };
+
+            init();
+        }); //document.ready end
+
+
 
     </script>
 </head>
@@ -121,7 +456,10 @@
                 <div class="tag_container">
                 </div>
             </div>
-            <div class="mem_bt" @click="mem_bt_click">
+            <div class="login_bt" @click="" v-if="mem_login == false">
+                <a class="flexbox" href="#">Login</a>
+            </div>
+            <div class="mem_bt" @click="mem_bt_click" v-if="mem_login == true">
                 <a href="#"></a>
             </div>
             <div class="mem_list" @click="stopPropagation">
@@ -160,88 +498,849 @@
                     </li>
                 </ul>
             </div>
-
         </div>
 
         <div id="pagepiling">
-            <div class="sec sec01 section">
-                <div class="img_container">
-                    <div class="stylus"></div>
-                    <div class="vinyl_records">
-                        <div class="cover_img">
+            <div class="home_sec home_sec01 section">
+                <div class="home_img_container">
+                    <div class="home_stylus"></div>
+                    <div class="home_vinyl_records">
+                        <div class="home_cover_img">
                         </div>
                     </div>
                 </div>
-                <div class="ctrl_container">
-                    <div class="top_arrow"></div>
+                <div class="home_ctrl_container">
+                    <div class="home_top_arrow"></div>
                     <div songInfo_container>
 
                     </div>
-                    <div class="bot_arrow"></div>
+                    <div class="home_bot_arrow"></div>
                 </div>
-                <div class="wave_container">
+                <div class="home_wave_container">
 
                 </div>
             </div>
-            <div class="sec sec02 section">
+            <div class="home_sec home_sec02 section">
                 <header>
                     <h1>
                         REMIX
                     </h1>
                 </header>
-                <div class="mixer">
+                <div class="home_mixer">
 
                 </div>
             </div>
-            <div class="sec sec03 section">
-                <div class="pot">
+            <div class="home_sec home_sec03 section">
+                <div class="home_pot">
                 </div>
-                <div class="container">
-                    <div class="song_container">
-                        <div class="song song01"></div>
-                        <div class="song song02"></div>
-                        <div class="song song03"></div>
-                        <div class="song song04"></div>
-                        <div class="song song05"></div>
-                        <div class="song song06"></div>
-                        <div class="song song07"></div>
-                        <div class="song song08"></div>
-                        <div class="song song09"></div>
-                        <div class="song song10"></div>
+                <div class="home_slider">
+                    <div class="home_perspective">
+                        <div class="home_song_container">
+                            <div class="home_song home_song1">
+                                <div class="home_cover_img"><a href="" draggable="home_false"></a></div>
+                                <div class="home_shadow"></div>
+                                <div class="home_song_info">
+                                    <h4 class="home_song_name">play circle</h4>
+                                    <div class="home_song_author">test</div>
+                                    <div class="home_icon_container flexbox">
+                                        <div class="home_play">
+                                            <i class="far fa-play-circle"></i>
+                                        </div>
+                                        <div class="home_favorite">
+                                            <span>9487</span>
+                                            <i class="fas fa-heart"></i>
+                                        </div>
+                                        <div class="home_donate">
+                                            <span>500</span>
+                                            <i class="fas fa-coins"></i>
+                                        </div>
+                                    </div>
+
+                                </div>
+                            </div>
+                            <div class="home_song home_song2">
+                                <div class="home_cover_img"><a href="" draggable="home_false"></a></div>
+                                <div class="home_shadow"></div>
+                                <div class="home_song_info">
+                                    <h4 class="home_song_name">play circle</h4>
+                                    <div class="home_song_author">test</div>
+                                    <div class="home_icon_container flexbox">
+                                        <div class="home_play">
+                                            <i class="far fa-play-circle"></i>
+                                        </div>
+                                        <div class="home_favorite">
+                                            <span>9487</span>
+                                            <i class="fas fa-heart"></i>
+                                        </div>
+                                        <div class="home_donate">
+                                            <span>500</span>
+                                            <i class="fas fa-coins"></i>
+                                        </div>
+                                    </div>
+
+                                </div>
+                            </div>
+                            <div class="home_song home_song3">
+                                <div class="home_cover_img"><a href="" draggable="home_false"></a></div>
+                                <div class="home_shadow"></div>
+                                <div class="home_song_info">
+                                    <h4 class="home_song_name">play circle</h4>
+                                    <div class="home_song_author">test</div>
+                                    <div class="home_icon_container flexbox">
+                                        <div class="home_play">
+                                            <i class="far fa-play-circle"></i>
+                                        </div>
+                                        <div class="home_favorite">
+                                            <span>9487</span>
+                                            <i class="fas fa-heart"></i>
+                                        </div>
+                                        <div class="home_donate">
+                                            <span>500</span>
+                                            <i class="fas fa-coins"></i>
+                                        </div>
+                                    </div>
+
+                                </div>
+                            </div>
+                            <div class="home_song home_song4">
+                                <div class="home_cover_img"><a href="" draggable="home_false"></a></div>
+                                <div class="home_shadow"></div>
+                                <div class="home_song_info">
+                                    <h4 class="home_song_name">play circle</h4>
+                                    <div class="home_song_author">test</div>
+                                    <div class="home_icon_container flexbox">
+                                        <div class="home_play">
+                                            <i class="far fa-play-circle"></i>
+                                        </div>
+                                        <div class="home_favorite">
+                                            <span>9487</span>
+                                            <i class="fas fa-heart"></i>
+                                        </div>
+                                        <div class="home_donate">
+                                            <span>500</span>
+                                            <i class="fas fa-coins"></i>
+                                        </div>
+                                    </div>
+
+                                </div>
+                            </div>
+                            <div class="home_song home_song5">
+                                <div class="home_cover_img"><a href="" draggable="home_false"></a></div>
+                                <div class="home_shadow"></div>
+                                <div class="home_song_info">
+                                    <h4 class="home_song_name">play circle</h4>
+                                    <div class="home_song_author">test</div>
+                                    <div class="home_icon_container flexbox">
+                                        <div class="home_play">
+                                            <i class="far fa-play-circle"></i>
+                                        </div>
+                                        <div class="home_favorite">
+                                            <span>9487</span>
+                                            <i class="fas fa-heart"></i>
+                                        </div>
+                                        <div class="home_donate">
+                                            <span>500</span>
+                                            <i class="fas fa-coins"></i>
+                                        </div>
+                                    </div>
+
+                                </div>
+                            </div>
+                            <div class="home_song home_song6">
+                                <div class="home_cover_img"><a href="" draggable="home_false"></a></div>
+                                <div class="home_shadow"></div>
+                                <div class="home_song_info">
+                                    <h4 class="home_song_name">play circle</h4>
+                                    <div class="home_song_author">test</div>
+                                    <div class="home_icon_container flexbox">
+                                        <div class="home_play">
+                                            <i class="far fa-play-circle"></i>
+                                        </div>
+                                        <div class="home_favorite">
+                                            <span>9487</span>
+                                            <i class="fas fa-heart"></i>
+                                        </div>
+                                        <div class="home_donate">
+                                            <span>500</span>
+                                            <i class="fas fa-coins"></i>
+                                        </div>
+                                    </div>
+
+                                </div>
+                            </div>
+                            <div class="home_song home_song7">
+                                <div class="home_cover_img"><a href="" draggable="home_false"></a></div>
+                                <div class="home_shadow"></div>
+                                <div class="home_song_info">
+                                    <h4 class="home_song_name">play circle</h4>
+                                    <div class="home_song_author">test</div>
+                                    <div class="home_icon_container flexbox">
+                                        <div class="home_play">
+                                            <i class="far fa-play-circle"></i>
+                                        </div>
+                                        <div class="home_favorite">
+                                            <span>9487</span>
+                                            <i class="fas fa-heart"></i>
+                                        </div>
+                                        <div class="home_donate">
+                                            <span>500</span>
+                                            <i class="fas fa-coins"></i>
+                                        </div>
+                                    </div>
+
+                                </div>
+                            </div>
+                            <div class="home_song home_song8">
+                                <div class="home_cover_img"><a href="" draggable="home_false"></a></div>
+                                <div class="home_shadow"></div>
+                                <div class="home_song_info">
+                                    <h4 class="home_song_name">play circle</h4>
+                                    <div class="home_song_author">test</div>
+                                    <div class="home_icon_container flexbox">
+                                        <div class="home_play">
+                                            <i class="far fa-play-circle"></i>
+                                        </div>
+                                        <div class="home_favorite">
+                                            <span>9487</span>
+                                            <i class="fas fa-heart"></i>
+                                        </div>
+                                        <div class="home_donate">
+                                            <span>500</span>
+                                            <i class="fas fa-coins"></i>
+                                        </div>
+                                    </div>
+
+                                </div>
+                            </div>
+                            <div class="home_song home_song9">
+                                <div class="home_cover_img"><a href="" draggable="home_false"></a></div>
+                                <div class="home_shadow"></div>
+                                <div class="home_song_info">
+                                    <h4 class="home_song_name">play circle</h4>
+                                    <div class="home_song_author">test</div>
+                                    <div class="home_icon_container flexbox">
+                                        <div class="home_play">
+                                            <i class="far fa-play-circle"></i>
+                                        </div>
+                                        <div class="home_favorite">
+                                            <span>9487</span>
+                                            <i class="fas fa-heart"></i>
+                                        </div>
+                                        <div class="home_donate">
+                                            <span>500</span>
+                                            <i class="fas fa-coins"></i>
+                                        </div>
+                                    </div>
+
+                                </div>
+                            </div>
+                            <div class="home_song home_song10">
+                                <div class="home_cover_img"><a href="" draggable="home_false"></a></div>
+                                <div class="home_shadow"></div>
+                                <div class="home_song_info">
+                                    <h4 class="home_song_name">play circle</h4>
+                                    <div class="home_song_author">test</div>
+                                    <div class="home_icon_container flexbox">
+                                        <div class="home_play">
+                                            <i class="far fa-play-circle"></i>
+                                        </div>
+                                        <div class="home_favorite">
+                                            <span>9487</span>
+                                            <i class="fas fa-heart"></i>
+                                        </div>
+                                        <div class="home_donate">
+                                            <span>500</span>
+                                            <i class="fas fa-coins"></i>
+                                        </div>
+                                    </div>
+
+                                </div>
+                            </div>
+
+                        </div>
+                    </div>
+                    <div class="home_arrow_container">
+                        <div class="home_left_arrow"></div>
+                        <div class="home_right_arrow"></div>
                     </div>
                 </div>
+
             </div>
-            <div class="sec sec04 section">
-                <div class="DJ">
+            <div class="home_sec home_sec04 section">
+                <div class="home_DJ">
 
                 </div>
             </div>
-            <div class="sec sec05 section">
-                <div class="container">
-                    <div class="shelf shelf01"></div>
-                    <div class="shelf shelf02"></div>
-                    <div class="shelf shelf03"></div>
+            <div class="home_sec home_sec05 section">
+                <div class="home_container">
+                    <div class="home_shelf home_shelf01"></div>
+                    <div class="home_shelf home_shelf02"></div>
+                    <div class="home_shelf home_shelf03"></div>
                 </div>
             </div>
-            <div class="sec sec06 section">
-                <div class="audio_man">
-                </div>
+            <div class="home_sec home_sec06 section">
+                <canvas class="home_map"></canvas>
             </div>
         </div>
+
+        <!-- player start -->
+        <div id="player">
+            <audio src="" id="audioPlayer"></audio>
+            <div class="player_s">
+                <div class="info">
+                    <div class="cover"><img src="./img/library/cover1.jpg"></div>
+                    <div class="songInfo">
+                        <span class="name">Lucid Dreamer</span>
+                        <span class="creator">Spazz Cardigan</span>
+                    </div>
+                    <div class="heart becomeRed"><i class="fas fa-heart"></i></div>
+                    <div class="clearfix"></div>
+                </div>
+
+                <div class="controlPanel">
+                    <div class="progressbar">
+                        <div class="progress"></div>
+                    </div>
+                    <div class="time">
+                        <span class="start">00:00</span>
+                        <span class="end">04:30</span>
+                        <div class="clearfix"></div>
+                    </div>
+                    <div class="btns">
+                        <div class="controls">
+                            <button class="prev"><i class="fas fa-step-backward"></i></button>
+                            <button class="play"><i class="fas fa-play"></i></button>
+                            <button class="next"><i class="fas fa-step-forward"></i></button>
+                            <button class="stop"><i class="fas fa-stop"></i></button>
+                            <button class="rand"><i class="fas fa-random"></i></button>
+                            <button class="loop"><i class="fas fa-undo-alt"></i></button>
+                            <div class="clearfix"></div>
+                        </div>
+                        <div class="vol">
+                            <div class="volicon"><i class="fas fa-volume-down"></i></div>
+                            <div class="volLine">
+                                <div class="volControl"></div>
+                            </div>
+                            <div class="clearfix"></div>
+                        </div>
+                        <div class="clearfix"></div>
+                    </div>
+                </div>
+
+                <div class="expand" id="expand"><i class="fas fa-expand"></i></div>
+                <div class="clearfix"></div>
+            </div>
+
+            <!-- 詳細版 -->
+            <div class="player_b">
+                <div class="left">
+                    <div class="songCover">
+                        <div class="coverImg">
+                            <img src="./img/library/cover1.jpg">
+                            <div class="coverRec"><img src="./img/library/player_record.png" alt=""></div>
+                        </div>
+                    </div>
+                    <div class="songInfo">
+                        <div class="name">
+                            Lucid Dreamer
+                        </div>
+                        <div class="creator">
+                            Spazz Cardigan
+                        </div>
+                        <div class="heart becomeRed"><i class="fas fa-heart"></i></div>
+                        <div class="clearfix"></div>
+                    </div>
+                    <div class="controlPanel">
+                        <div class="progressbar">
+                            <div class="progress"></div>
+                        </div>
+                        <div class="time">
+                            <span class="start">00:00</span>
+                            <span class="end">04:30</span>
+                            <div class="clearfix"></div>
+                        </div>
+                        <div class="btns">
+                            <div class="controls">
+                                <button class="rand"><i class="fas fa-random"></i></button>
+                                <button class="prev"><i class="fas fa-step-backward"></i></button>
+                                <button class="play"><i class="fas fa-play"></i></button>
+                                <button class="next"><i class="fas fa-step-forward"></i></button>
+                                <button class="stop"><i class="fas fa-stop"></i></button>
+                                <button class="loop"><i class="fas fa-undo-alt"></i></button>
+                                <div class="clearfix"></div>
+                            </div>
+                            <div class="vol">
+                                <div class="volicon"><i class="fas fa-volume-down"></i></div>
+                                <div class="volLine">
+                                    <div class="volControl"></div>
+                                </div>
+                                <div class="clearfix"></div>
+                            </div>
+                            <div class="clearfix"></div>
+                        </div>
+                    </div>
+                    <div class="pushBtn"></div>
+                </div>
+
+                <div class="right">
+                    <div class="pushBtn"></div>
+                    <div class="listTitle">
+                        <div class="listCover">
+                            <img src="./img/library/list_pic1.jpg"></div>
+                        <div class="listName">
+                            <h2>peaceful list</h2>
+                            <span>8 songs</span>
+                        </div>
+                        <button class="selectBtn" id="selectBtn">SELECT</button>
+                        <div class="clearfix"></div>
+                    </div>
+                    <div class="list">
+                        <ul>
+                            <li>
+                                <div class="songCover">
+                                    <img src="./img/library/cover1.jpg" alt="">
+                                    <div class="listPlay"><i class="fas fa-play"></i></div>
+                                </div>
+                                <div class="listSongInfo">
+                                    <div class="name">
+                                        <h4>Lucid Dreamer</h4>
+                                        <p> Spazz Cardigan</p>
+                                    </div>
+                                </div>
+                                <div class="totalTime">4:30</div>
+                                <div class="heart becomeRed"><i class="fas fa-heart"></i></div>
+                                <div class="clearfix"></div>
+                            </li>
+                            <li>
+                                <div class="songCover">
+                                    <img src="./img/library/cover2.jpg" alt="">
+                                    <div class="listPlay"><i class="fas fa-play"></i></div>
+                                </div>
+                                <div class="listSongInfo">
+                                    <div class="name">
+                                        <h4>Lucid Dreamer</h4>
+                                        <p> Spazz Cardigan</p>
+                                    </div>
+                                </div>
+                                <div class="totalTime">4:30</div>
+                                <div class="heart becomeRed"><i class="fas fa-heart"></i></div>
+                                <div class="clearfix"></div>
+                            </li>
+                            <li>
+                                <div class="songCover">
+                                    <img src="./img/library/cover3.jpg" alt="">
+                                    <div class="listPlay"><i class="fas fa-play"></i></div>
+                                </div>
+                                <div class="listSongInfo">
+                                    <div class="name">
+                                        <h4>Lucid Dreamer</h4>
+                                        <p> Spazz Cardigan</p>
+                                    </div>
+                                </div>
+                                <div class="totalTime">4:30</div>
+                                <div class="heart becomeRed"><i class="fas fa-heart"></i></div>
+                                <div class="clearfix"></div>
+                            </li>
+                            <li>
+                                <div class="songCover">
+                                    <img src="./img/library/cover4.jpg" alt="">
+                                    <div class="listPlay"><i class="fas fa-play"></i></div>
+                                </div>
+                                <div class="listSongInfo">
+                                    <div class="name">
+                                        <h4>Lucid Dreamer</h4>
+                                        <p> Spazz Cardigan</p>
+                                    </div>
+                                </div>
+                                <div class="totalTime">4:30</div>
+                                <div class="heart becomeRed"><i class="fas fa-heart"></i></div>
+                                <div class="clearfix"></div>
+                            </li>
+                            <li>
+                                <div class="songCover">
+                                    <img src="./img/library/cover5.jpg" alt="">
+                                    <div class="listPlay"><i class="fas fa-play"></i></div>
+                                </div>
+                                <div class="listSongInfo">
+                                    <div class="name">
+                                        <h4>Lucid Dreamer</h4>
+                                        <p> Spazz Cardigan</p>
+                                    </div>
+                                </div>
+                                <div class="totalTime">4:30</div>
+                                <div class="heart becomeRed"><i class="fas fa-heart"></i></div>
+                                <div class="clearfix"></div>
+                            </li>
+                            <li>
+                                <div class="songCover">
+                                    <img src="./img/library/cover6.jpg" alt="">
+                                    <div class="listPlay"><i class="fas fa-play"></i></div>
+                                </div>
+                                <div class="listSongInfo">
+                                    <div class="name">
+                                        <h4>Lucid Dreamer</h4>
+                                        <p> Spazz Cardigan</p>
+                                    </div>
+                                </div>
+                                <div class="totalTime">4:30</div>
+                                <div class="heart becomeRed"><i class="fas fa-heart"></i></div>
+                                <div class="clearfix"></div>
+                            </li>
+                            <li>
+                                <div class="songCover">
+                                    <img src="./img/library/cover1.jpg" alt="">
+                                    <div class="listPlay"><i class="fas fa-play"></i></div>
+                                </div>
+                                <div class="listSongInfo">
+                                    <div class="name">
+                                        <h4>Lucid Dreamer</h4>
+                                        <p> Spazz Cardigan</p>
+                                    </div>
+                                </div>
+                                <div class="totalTime">4:30</div>
+                                <div class="heart becomeRed"><i class="fas fa-heart"></i></div>
+                                <div class="clearfix"></div>
+                            </li>
+                        </ul>
+                    </div>
+                </div>
+                <div class="close" id="closePlayer"><i class="fas fa-times"></i></div>
+                <div class="clearfix"></div>
+            </div>
+        </div>
+        <!-- player end -->
+
+
+
+        <div id="lightCover">
+            <div class="lightbox_s" id="myAllList">
+                <div class="close closeLight"><i class="fas fa-times"></i></div>
+                <h3>My List</h3>
+                <div class="lightSelectMenu">
+                    <ul>
+                        <li>Liked songs</li>
+                        <li>Peaceful songs</li>
+                        <li>party</li>
+                    </ul>
+                </div>
+                <button class="">ok</button>
+            </div>
+        </div>
+
+
     </div>
 
 
 
 
     <script>
-        let vm = new Vue({
+        new Vue({
             el: "#app",
             data: {
+                mobile_list: false,
                 search_bar: false,
                 mem_list: false,
-                mobile_list: false,
+                mem_login: false,
+
+            },
+            mounted() {
+                // nav_bar start
+                document.querySelector('.mem_list ul').setAttribute('style', `height: ${window.innerHeight}px;`);
+                document.querySelector('.mobile_list ul').setAttribute('style', `height: ${window.innerHeight}px;`);
+                document.querySelectorAll('.paint_border')[0].setAttribute('style', `height: ${window.innerHeight}px;`);
+                document.querySelectorAll('.paint_border')[1].setAttribute('style', `height: ${window.innerHeight}px;`);
+
+                document.addEventListener('click', () => {
+                    this.mem_list = false;
+                    this.search_bar = false;
+                    this.mobile_list = false;
+
+                    document
+                        .querySelector(".search_bar")
+                        .setAttribute("style", "height: 0px; filter: opacity(0);");
+                    document
+                        .querySelector(".mem_list")
+                        .setAttribute("style", "transform: translateX(270px); filter: opacity(0);");
+                    document
+                        .querySelector(".mobile_list")
+                        .setAttribute("style", "transform: translateX(-270px); filter: opacity(0);");
+                });
+                // nav_bar end
+
+
+
+                // player start
+                $(document).ready(function () {
+                    //撥放器縮放
+                    $('#expand').click(function () {
+                        $('.player_b').addClass('open');
+                        $('.player_s').animate({
+                            bottom: '-70px'
+                        });
+                    });
+                    $('#closePlayer').click(function () {
+                        $('.player_b').removeClass('open');
+                        $('.player_s').animate({
+                            bottom: '0'
+                        });
+                    });
+
+                    //手機推移
+                    $('.left .pushBtn').click(function () {
+                        $('.left').css('height', '10%');
+                        $('.right').css('height', '90%');
+                        $('.right .pushBtn').show();
+                        $('.left .pushBtn').hide();
+                    });
+                    $('.right .pushBtn').click(function () {
+                        $('.left').css('height', '90%');
+                        $('.right').css('height', '10%');
+                        $('.left .pushBtn').show();
+                        $('.right .pushBtn').hide();
+                    });
+
+                    //select選歌單
+                    $('#selectBtn').click(function () {
+                        $('#lightCover').show();
+                        $('#myAllList').show();
+                    });
+
+                    //歌單清單
+                    $('#closePlayer').click(function () {
+                        $('#lightCover').hide();
+                        $('#myAllList').hide();
+                    });
+                    $('#lightCover').click(function () {
+                        $(this).hide();
+                        $('#myAllList').hide();
+                    });
+
+                    //點愛心
+                    $('.heart').click(function () {
+                        if ($(this).hasClass('becomeRed')) {
+                            $(this).html('<i class="far fa-heart"></i>').removeClass('becomeRed');
+                        } else {
+                            $(this).html('<i class="fas fa-heart"></i>').addClass('becomeRed');
+                        }
+                    });
+
+                    //點歌單撥放，左側專輯唱片動畫
+                    $('.songCover').mouseover(function () {
+                        $(this).find('.listPlay').show();
+                    });
+                    $('.songCover').mouseout(function () {
+                        $(this).find('.listPlay').hide();
+                    });
+
+                    $(".listPlay").click(function () {
+                        if ($(this).hasClass('nowlistening')) {
+                            $(this).html('<i class="fas fa-play"></i>').removeClass("nowlistening");
+                            isPlaying(true);
+                        } else {
+                            $(this).html('<i class="fas fa-pause"></i>').addClass("nowlistening");
+                            $("#player .songCover .listPlay").not(this).removeClass('nowlistening');
+                            isPlaying(false);
+                        }
+                    });
+
+
+
+                    /* -- 音樂播放 -- */
+                    let storage = localStorage;
+                    var autoplay = true,
+                        songTime,
+                        playStatus = false,
+                        nowPlaying = 0, //現在播放的歌
+                        audio = $("audio")[0], //撥放器
+                        myPlaylist = [{
+                            title: "Lucid Dreamer",
+                            creator: "Spazz Cardigan",
+                            cover: "../img/library/cover1.jpg",
+                            filein: "../img/library/Lucid_Dreamer.mp3",
+                            totalTime: "3:11",
+                        },
+                        {
+                            title: "Spring In My Step",
+                            creator: "Silent Partner",
+                            cover: "../img/library/cover2.jpg",
+                            filein: "../img/library/Spring_In_My_Step.mp3",
+                            totalTime: "1:59",
+                        },
+                        {
+                            title: "On My Way Home",
+                            creator: "The 126ers",
+                            cover: "../img/library/cover3.jpg",
+                            filein: "../img/library/On_My_Way_Home.mp3",
+                            totalTime: "1:56",
+                        }
+                        ];
+
+
+                    audio.setAttribute("src", myPlaylist[nowPlaying].filein);
+                    isAutoPlay(true);//測試
+
+                    //播放暫停按鈕 -- 音樂撥放/暫停
+                    $("#player .play").click(function () {
+                        // console.log(nowPlaying);
+                        // console.log(playStatus);
+                        isPlaying(playStatus);
+                    });
+
+                    //下一首按鈕 -- 切換下一首
+                    $("#player .next").click(function () {
+                        if (nowPlaying == myPlaylist.length - 1) {
+                            audio.setAttribute("src", myPlaylist[myPlaylist.length - 1].filein);
+                        } else {
+                            nowPlaying++;
+                            audio.setAttribute("src", myPlaylist[nowPlaying].filein);
+                        }
+                        if (playStatus == true) {
+                            isPlaying(false);
+                        } else {
+                            isPlaying(true);
+                        }
+                    });
+
+                    //上一首按鈕 -- 切換上一首
+                    $("#player .prev").click(function () {
+                        if (nowPlaying == 0) {
+                            audio.setAttribute("src", myPlaylist[0].filein);
+                        } else {
+                            nowPlaying--;
+                            audio.setAttribute("src", myPlaylist[nowPlaying].filein);
+                        }
+                        if (playStatus == true) {
+                            isPlaying(false);
+                        } else {
+                            isPlaying(true);
+                        }
+                    });
+
+                    //停止按鈕 -- 音樂全數停止
+                    $("#player .stop").click(function () {
+                        audio.pause();
+                        audio.currentTime = 0;
+                        isPlaying(true);
+                        $("#player .songCover .listPlay").removeClass('nowlistening');
+                    });
+
+                    //循環播放 -- 單首??未處理
+                    $("#player .loop").click(function () {
+                        if ($(this).hasClass("becomeYel")) {
+                            $(this).removeClass("becomeYel");
+                            audio.loop = false;
+                        } else {
+                            $(this).addClass("becomeYel");
+                            audio.loop = true;
+                        }
+                    });
+                    //隨機播放 -- 清單隨機--未處理
+
+
+
+                    //clickBar -- 詳細(b)/簡易(s)
+                    $(".player_b .progressbar").click(function (e) {
+                        let progressBarSize_b = parseInt($(".player_b .progressbar").css("width"));
+                        let mouseX_b = e.clientX - $(".player_b .progressbar").offset().left;
+                        $(".player_b .progressbar .progress").css('width', `${mouseX_b}px`);
+
+                        let newTime_b = mouseX_b / (progressBarSize_b / audio.duration);
+                        audio.currentTime = newTime_b;
+                    });
+                    $(".player_s .progressbar").click(function (e) {
+                        let progressBarSize_s = parseInt($(".player_s .progressbar").css("width"));
+                        let mouseX_s = e.clientX - $(".player_s .progressbar").offset().left;
+                        $(".player_s .progressbar .progress").css('width', `${mouseX_s}px`);
+
+                        let newTime_s = mouseX_s / (progressBarSize_s / audio.duration);
+                        audio.currentTime = newTime_s;
+                    });
+
+
+                    /* -- 自動撥放 --*/
+                    function isAutoPlay(autoP) {//測試
+                        if (autoP) {
+                            isPlaying(false);
+                        } else {
+                            isPlaying(true);
+                        }
+                    }
+
+                    function isPlaying(isPlaying) {
+                        if (!isPlaying) { //如果沒有播放就讓他撥
+                            playAudio();
+                            $("#player .play").html('<i class="fas fa-pause"></i>');
+                            $("#player .player_b .coverRec").animate({
+                                right: "-50%",
+                                opacity: "1"
+                            }, "fast", "swing").addClass("recRotate");
+                            playStatus = true;
+                            // console.log(playStatus);
+                        } else {
+                            audio.pause();
+                            $("#player .play").html('<i class="fas fa-play"></i>');
+                            playStatus = false;
+                            $("#player .player_b .coverRec").animate({
+                                right: "0%"
+                            }).removeClass("recRotate");
+                            // console.log(playStatus);
+                        }
+                        $("#player .songInfo .name").text(myPlaylist[nowPlaying].title);
+                        $("#player .songInfo .creator").text(myPlaylist[nowPlaying].creator);
+                    }
+
+                    //播放
+                    function playAudio() {
+                        audio.play();
+                    }
+
+
+
+                    //進度條
+                    var progressingTime = setInterval(progressingShow, 100);
+                    let newSong = nowPlaying;//測試
+                    function progressingShow() {
+                        songTime = audio.currentTime;
+                        let progressColor = (songTime / audio.duration) * 100;
+                        if (audio.ended) {
+                            autoChange();
+                        }
+                        /*測試
+                        if(newSong == nowPlaying){
+                          storage.setItem(newSong, songTime);
+                        }else{
+                          storage.clear();
+                          storage.setItem(nowPlaying, songTime);
+                        }
+                        */
+                        // console.log(audio.duration); //歌曲總長秒數
+                        $("#player .progress").css("width", `${progressColor.toFixed(2)}%`);
+                        $("#player span.start").text(`${parseInt(songTime / 60)}:${parseInt(songTime % 60)}`)
+                        $("#player span.end").text(myPlaylist[nowPlaying].totalTime);
+                    }
+
+                    //自動換下一首
+                    function autoChange() {
+                        if (nowPlaying == myPlaylist.length - 1) {
+                            if (audio.ended) {
+                                audio.currentTime = 0;
+                                isPlaying(true);
+                            } else {
+                                isPlaying(false);
+                            }
+                        } else {
+                            nowPlaying++;
+                            audio.setAttribute("src", myPlaylist[nowPlaying].filein);
+                            isPlaying(false);
+                        }
+                    }
+                });
+                // player end
+
+
             },
             methods: {
+                // nav_bar
                 hamburger_click(e) {
                     // e.stopPropagation();
                     document
