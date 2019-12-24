@@ -1112,9 +1112,11 @@
                 BackFormPage(Index) {
                     this.formContent = Index;
                 },
-                changeSignUpImg(imgfile) {
+                changeSignUpImg(img) {
+                    console.log(img);
+                    imgFile=this.files[0];
                     reader = new FileReader();
-                    reader.readAsDataURL(imgfile);
+                    reader.readAsDataURL(imgFile);
                     vml.SignUpImg =this. reader.result;
             
                 },
