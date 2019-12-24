@@ -12,7 +12,7 @@
 </head>
 
 <body>
-  <div id="app">
+  <div id="remix_app">
     <div class="nav_bar flexbox">
       <div class="hamburger" @click="hamburger_click">
         <div class="hamburger-box">
@@ -115,7 +115,7 @@
     <header>
       <img src="./img/remix/REMIX.png">
     </header>
-    <div class="wrapper">
+    <div class="wrapper remix_wrapper">
       <div class="remix_head">
         <div class="demo col-xl-6 col-md-8 col-sm-12">
           <h2>The Playground</h2>
@@ -129,7 +129,9 @@
           </div>
         </div>
         <div class="svg_move col-xl-6 col-md-10 col-sm-12">
-          <img src="./img/remix/rock.png">
+          <div class="remix_rock_move">
+            <img src="./img/remix/rock.png" class="">
+          </div>
           <div class="color"></div>
         </div>
       </div>
@@ -276,6 +278,7 @@
         </table>
       </div>
     </div>
+    <img src="./img/remix/background_color.png" class="remix_bg_color">
   </div>
 
   <script src='https://cdnjs.cloudflare.com/ajax/libs/tone/13.4.0/Tone.js'></script>
@@ -284,7 +287,7 @@
   <script src="./js/vue.js"></script>
   <script>
     var app = new Vue({
-      el: '#app',
+      el: '#remix_app',
       data: {
         className: {
           isActive: 0,
@@ -894,7 +897,10 @@
         }
 
         // 一開始的微動畫
-        
+        TweenMax.to($('.remix_rock_move'),2.5,{
+          rotation: 0,
+          ease: Bounce.easeOut,
+        })
       },
       watch: {
         screenWidth(val) {

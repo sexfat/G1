@@ -143,25 +143,25 @@
                 </div>
 
                 <div id="act_sectionAnchor" v-if=" content=='actNow'">
-                    <a href="#">
+                    <a href="#act_Now-Introduction">
                         <img :src="sectionAnchor" alt="">
                         <span>Introduction</span>
                     </a>
-                    <a href="#">
+                    <a href="#act_Now-Sign-up">
                         <img :src="sectionAnchor" alt="">
                         <span>Sign up</span>
                     </a>
-                    <a href="#"><img :src="sectionAnchor" alt="">
+                    <a href="#act_Now-Vote"><img :src="sectionAnchor" alt="">
                         <span>Vote</span>
                     </a>
 
                 </div>
 
                 <div id="act_oldyear_Anchor" v-if=" content=='actOld'">
-                    <a href="#">
+                    <a href="#act_old_year2018">
                         <span>2018</span><img src="./img/activity/yearbutton.png">
                     </a>
-                    <a href="#">
+                    <a href="#act_old-year2017">
                         <span>2017</span><img src="./img/activity/yearbutton.png">
                     </a>
                 </div>
@@ -1101,7 +1101,7 @@
                     SongName: "",
                     SongInformation: "",
                     SignUpImg: "",
-                    SigbUPSongURL:"",
+                    SigbUPSongURL: "",
                 }
 
             },
@@ -1115,10 +1115,20 @@
                 changeSignUpImg(imgfile) {
                     reader = new FileReader();
                     reader.readAsDataURL(imgfile);
-                    this.imgfile = reader.result;
-                    vml.SignUpImg = this.imgfile;
+                    vml.SignUpImg =this. reader.result;
+            
+                },
+
+                scrollTo(section) {
+                    targetOffsetTop =this.section.href.offsetTop;
+
                 }
-            }
+
+
+
+
+
+            },
 
 
 
@@ -1160,7 +1170,9 @@
                 SongName: "",
                 SongInformation: "",
                 SignUpImg: "",
-                SigbUPSongURL:"",
+                SigbUPSongURL: "",
+
+
 
             },
             computed: {
@@ -1191,6 +1203,10 @@
 
                     }
                 },
+
+
+
+
 
 
             },

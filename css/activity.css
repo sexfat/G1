@@ -28,6 +28,10 @@ a {
   color: #333;
 }
 
+ul {
+  list-style: none;
+}
+
 header {
   height: 300px;
   text-align: center;
@@ -63,7 +67,6 @@ header {
 }
 
 #app {
-  margin: 0;
   position: fixed;
   top: 0;
   left: 0;
@@ -402,7 +405,7 @@ header {
 
 .act_oldsongbox .act_oldTop h3 {
   font-size: 1.5rem;
-  margin: 0 0 30px 20px;
+  margin: 0 0px 30px 20px;
 }
 
 .act_oldsongbox .act_oldTop div {
@@ -480,13 +483,13 @@ header {
   width: 100%;
   margin-top: 75px;
   max-width: 1400px;
-  padding: 100px 0 0 0;
+  padding: 100px 0 0  50px;
   margin: 50px auto 0px auto;
 }
 
 .act_oldAll h3 {
   font-size: 1.5rem;
-  margin: 0 0 30px 20px;
+  margin: 0 0px 30px 0px;
 }
 
 .act_oldAll div {
@@ -858,7 +861,8 @@ header {
   height: 700px;
   max-width: 1300px;
   width: 100%;
-  margin: 250px auto 0 auto;
+  margin: 150px auto 0 auto;
+  padding-top: 50px;
   position: relative;
 }
 

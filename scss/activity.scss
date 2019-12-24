@@ -1,11 +1,11 @@
 @import"public";
 
-#app {
-    margin: 0;
+#app{
     position: fixed;
-    top: 0;
+    top:0;
     left: 0;
     z-index: 999;
+
 }
 
 #act_radioBg {
@@ -365,7 +365,7 @@
 
         h3 {
             font-size: $rem1_5;
-            margin: 0 0 30px 20px;
+            margin: 0 0px 30px 20px;
         }
 
         div {
@@ -452,12 +452,13 @@
     width: 100%;
     margin-top: 75px;
     max-width: 1400px;
-    padding: 100px 0 0 0;
+    padding: 100px 0 0  50px;
     margin: 50px auto 0px auto;
 
     h3 {
         font-size: $rem1_5;
-        margin: 0 0 30px 20px;
+        margin: 0 0px 30px 0px;
+        
     }
 
     div {
@@ -838,7 +839,8 @@
     height: 700px;
     max-width: 1300px;
     width: 100%;
-    margin: 250px auto 0 auto;
+    margin: 150px auto 0 auto;
+    padding-top: 50px;
     position: relative;
 
 

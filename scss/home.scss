@@ -13,7 +13,7 @@
   }
 }
 
-.sec {
+.home_sec {
   position: relative;
   width: 100%;
   // height: 937px
@@ -26,8 +26,8 @@
   }
 }
 
-.sec01 {
-  .img_container {
+.home_sec01 {
+  .home_img_container {
     position: absolute;
     top: 0;
     width: 100%;
@@ -35,7 +35,7 @@
     overflow: hidden;
     pointer-events: none;
 
-    .stylus {
+    .home_stylus {
       position: absolute;
       top: 10px;
       left: -360px;
@@ -45,7 +45,7 @@
       background: url(../img/home/stylus.png);
       animation: test02 0.9s infinite linear alternate;
     }
-    .vinyl_records {
+    .home_vinyl_records {
       position: absolute;
       z-index: -1;
       top: -100px;
@@ -56,7 +56,7 @@
       background-size: cover;
       animation: test 6s infinite linear;
 
-      .cover_img {
+      .home_cover_img {
         position: relative;
         top: calc((100% - 400px) / 2);
         left: calc((100% - 400px) / 2);
@@ -81,17 +81,13 @@
       0% {
         transform: rotate(15deg);
       }
-      // 50% {
-      //   transform: rotate(20deg);
-      // }
-
       100% {
         transform: rotate(20deg);
       }
     }
   }
 
-  .ctrl_container {
+  .home_ctrl_container {
     position: absolute;
     left: 700px;
     top: 350px;
@@ -99,7 +95,7 @@
     height: 300px;
     border: 1px solid red;
 
-    .top_arrow {
+    .home_top_arrow {
       position: relative;
       // left: 700px;
       // top: 350px;
@@ -107,7 +103,7 @@
       height: 100px;
       background: url(../img/home/top_arrow.png) center center no-repeat;
     }
-    .bot_arrow {
+    .home_bot_arrow {
       position: absolute;
       bottom: 0;
       width: 100px;
@@ -116,7 +112,7 @@
     }
   }
 
-  .wave_container {
+  .home_wave_container {
     position: absolute;
     top: 200px;
     right: 0;
@@ -125,8 +121,8 @@
     border: 1px solid blue;
   }
 }
-.sec02 {
-  .mixer {
+.home_sec02 {
+  .home_mixer {
     position: absolute;
     right: 100px;
     width: 556px;
@@ -134,85 +130,241 @@
     background: url(../img/home/mixer.png);
   }
 }
-.sec03 {
-  .pot {
+.home_sec03 {
+  .home_pot {
     position: absolute;
-    top: 60px;
+    top: 40px;
     right: 0;
     width: 407px;
     height: 232px;
     background: url(../img/home/pot.png);
   }
-  .container {
-    width: 210px;
-    height: 140px;
-    top: 100px;
-    left: 800px;
-    position: absolute;
-    perspective: 1000px;
-    .song_container {
-      position: absolute;
-      top: 240px;
-      right: 0;
-      width: 100%;
-      height: 100%;
-      transform-style: preserve-3d;
-      // animation: rotation 20s infinite linear;
 
-      border: 1px solid red;
-      @keyframes rotation {
-        from {
-          transform: rotateY(0deg);
-        }
-        to {
-          transform: rotateY(360deg);
+  .home_slider {
+    position: absolute;
+    top: calc(50% - 320px);
+    width: 100%;
+    height: 740px;
+    // border: 1px solid blue;
+
+    .home_perspective {
+      position: absolute;
+      left: 540px;
+      width: 1280px;
+      height: 640px;
+      perspective: 700px;
+      perspective-origin: 90% 50%;
+      .home_song_container {
+        position: absolute;
+        top: 33%;
+        left: 60%;
+        transform-style: preserve-3d;
+
+        .home_song {
+          position: absolute;
+          width: 200px;
+          height: 200px;
+
+          &.home_song1 {
+            transform: rotateY(0deg) translateZ(360px);
+            backface-visibility: hidden;
+
+            .home_cover_img {
+              position: absolute;
+              z-index: 1;
+              width: 100%;
+              height: 100%;
+              background: url(../img/home/test.jpg);
+              background-size: cover;
+            }
+          }
+
+          &.home_song2 {
+            transform: rotateY(36deg) translateZ(360px);
+            backface-visibility: hidden;
+
+            .home_cover_img {
+              position: absolute;
+              z-index: 1;
+              width: 100%;
+              height: 100%;
+              background: url(../img/home/test.jpg);
+              background-size: cover;
+            }
+          }
+          &.home_song3 {
+            transform: rotateY(72deg) translateZ(360px);
+            backface-visibility: hidden;
+
+            .home_cover_img {
+              position: absolute;
+              z-index: 1;
+              width: 100%;
+              height: 100%;
+              background: url(../img/home/test.jpg);
+              background-size: cover;
+            }
+          }
+          &.home_song4 {
+            transform: rotateY(108deg) translateZ(360px);
+            backface-visibility: hidden;
+
+            .home_cover_img {
+              position: absolute;
+              z-index: 1;
+              width: 100%;
+              height: 100%;
+              background: url(../img/home/test.jpg);
+              background-size: cover;
+            }
+          }
+          &.home_song5 {
+            transform: rotateY(144deg) translateZ(360px);
+            backface-visibility: hidden;
+
+            .home_cover_img {
+              position: absolute;
+              z-index: 1;
+              width: 100%;
+              height: 100%;
+              background: url(../img/home/test.jpg);
+              background-size: cover;
+            }
+          }
+          &.home_song6 {
+            transform: rotateY(180deg) translateZ(360px);
+            backface-visibility: hidden;
+
+            .home_cover_img {
+              position: absolute;
+              z-index: 1;
+              width: 100%;
+              height: 100%;
+              background: url(../img/home/test.jpg);
+              background-size: cover;
+            }
+          }
+          &.home_song7 {
+            transform: rotateY(216deg) translateZ(360px);
+            backface-visibility: hidden;
+
+            .home_cover_img {
+              position: absolute;
+              z-index: 1;
+              width: 100%;
+              height: 100%;
+              background: url(../img/home/test.jpg);
+              background-size: cover;
+            }
+          }
+          &.home_song8 {
+            transform: rotateY(252deg) translateZ(360px);
+            backface-visibility: hidden;
+
+            .home_cover_img {
+              position: absolute;
+              z-index: 1;
+              width: 100%;
+              height: 100%;
+              background: url(../img/home/test.jpg);
+              background-size: cover;
+            }
+          }
+          &.home_song9 {
+            transform: rotateY(288deg) translateZ(360px);
+            backface-visibility: hidden;
+
+            .home_cover_img {
+              position: absolute;
+              z-index: 1;
+              width: 100%;
+              height: 100%;
+              background: url(../img/home/test.jpg);
+              background-size: cover;
+            }
+          }
+          &.home_song10 {
+            transform: rotateY(324deg) translateZ(360px);
+            backface-visibility: hidden;
+
+            .home_cover_img {
+              position: absolute;
+              z-index: 1;
+              width: 100%;
+              height: 100%;
+              background: url(../img/home/test.jpg);
+              background-size: cover;
+            }
+          }
+
+          .home_shadow {
+            width: 100%;
+            height: 100%;
+            transition: all 0.5s;
+          }
+
+          .home_song_info {
+            position: absolute;
+            top: 0;
+            left: 0px;
+            width: 100%;
+            height: 100%;
+            padding: 15px 15px;
+            font-size: 0.6rem;
+            background: #d8d1c5;
+            transition: all 0.3s;
+
+            .home_icon_container {
+              margin: 10px 0 0 0;
+              .home_play {
+                margin: 0 auto 0 0;
+              }
+              .home_favorite {
+                margin: 0 10px 0 0;
+                i {
+                  color: #de267d;
+                }
+              }
+              .home_donate {
+                i {
+                  color: #f1c410;
+                }
+              }
+              i {
+                font-size: 0.5rem;
+              }
+            }
+          }
         }
       }
+    }
 
-      .song {
-        position: absolute;
-        width: 200px;
-        height: 200px;
-        border: 1px solid red;
-
-        &.song01 {
-          transform: rotateY(0deg) translateZ(288px);
-        }
-        &.song02 {
-          // transform: translateX(200px) translateZ(100px);
-          transform: rotateY(40deg) translateZ(288px);
-
-        }
-        &.song03 {
-          transform: rotateY(80deg) translateZ(288px);
-        }
-        &.song04 {
-          transform: rotateY(120deg) translateZ(288px);
-        }
-        &.song05 {
-          transform: rotateY(160deg) translateZ(288px);
-        }
-        &.song06 {
-          transform: rotateY(200deg) translateZ(288px);
-        }
-        &.song07 {
-          transform: rotateY(240deg) translateZ(288px);
-        }
-        &.song08 {
-          transform: rotateY(280deg) translateZ(288px);
-        }
-        &.song09 {
-          transform: rotateY(320deg) translateZ(288px);
-        }
-        &.song10 {
-          transform: rotateY(360deg) translateZ(288px);
-        }
+    .home_arrow_container {
+      position: absolute;
+      width: 600px;
+      top: 580px;
+      left: 85px;
+      .home_left_arrow {
+        float: left;
+        width: 120px;
+        height: 60px;
+        background: url(../img/home/arrow.png) center center;
+        background-size: cover;
+        transform: scaleX(-1);
+      }
+      .home_right_arrow {
+        float: right;
+        width: 120px;
+        height: 60px;
+        background: url(../img/home/arrow.png) center center;
+        background-size: cover;
       }
     }
   }
 }
-.sec04 {
-  .DJ {
+
+.home_sec04 {
+  .home_DJ {
     position: absolute;
     bottom: 0px;
     left: 0;
@@ -221,33 +373,33 @@
     background: url(../img/home/DJ.png);
   }
 }
-.sec05 {
-  .container {
+.home_sec05 {
+  .home_container {
     position: relative;
     top: 240px;
-    .shelf {
+    .home_shelf {
       position: absolute;
       width: 590px;
       height: 141px;
       background: url(../img/home/shelf.png);
       background-size: cover;
     }
-    .shelf01 {
+    .home_shelf01 {
       right: 120px;
       top: 0px;
     }
-    .shelf02 {
+    .home_shelf02 {
       right: 60px;
       top: 240px;
     }
-    .shelf03 {
+    .home_shelf03 {
       right: 180px;
       top: 480px;
     }
   }
 }
-.sec06 {
-  .audio_man {
+.home_sec06 {
+  .home_audio_man {
     position: absolute;
     bottom: 0px;
     left: 0;
