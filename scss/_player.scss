@@ -1,36 +1,7 @@
 @import './public.scss';
-@import './lightBox';
 
 
 $mainRed : #de267d;
-$mainGreen:#d0d6d6;
-
-html {
-  @include respond(latop-max) {
-    font-size: 16px;
-  }
-
-  @include respond(latop-min) {
-    font-size: 16px;
-  }
-
-  @include respond(ipadpro) {
-    font-size: 16px;
-  }
-
-  @include respond(ipad) {
-    font-size: 16px;
-  }
-
-  @include respond(phone) {
-    font-size: 16px;
-  }
-}
-
-ol,
-ul {
-  list-style: none;
-}
 
 #player {
   width: 100%;
@@ -356,6 +327,12 @@ ul {
     transition: all 0.5s;
     position: relative;
 
+    &.open {
+      width: 100%;
+      height: 100vh;
+      opacity: 1;
+    }
+
     .close {
       position: absolute;
       right: 30px;
@@ -374,7 +351,7 @@ ul {
       width: 50%;
       height: 100%;
       padding-top: 2%;
-      background-color: $mainGreen;
+      background-color: $green;
       overflow: hidden;
       position: relative;
       transition: height .5s;
@@ -629,7 +606,7 @@ ul {
               height: 25px;
               float: left;
               color: $fontColor;
-              background-color: $mainGreen;
+              background-color: $green;
               border-radius: 15px;
               text-align: center;
               line-height: 25px;
@@ -800,14 +777,14 @@ ul {
       }
 
       &::-webkit-scrollbar-thumb {
-        background-color: $mainGreen;
+        background-color: $green;
       }
 
       .pushBtn {
         width: 45px;
         height: 10px;
         border-radius: 5px;
-        background-color: $mainGreen;
+        background-color: $green;
         top: 16px;
         left: 50%;
         transform: translateX(-50%);
@@ -891,6 +868,9 @@ ul {
             margin: 5% auto;
             float: none;
           }
+          h2{
+            font-size: $rem2;
+          }
 
           span {
             display: block;
@@ -914,11 +894,7 @@ ul {
 
           li {
             padding: 15px 0;
-            border-bottom: 1px solid $mainGreen;
-
-            // div {
-            //   margin-right: 10px;
-            // }
+            border-bottom: 1px solid $green;
 
             .songCover {
               width: 70px;
@@ -965,12 +941,14 @@ ul {
                 height: 100%;
 
                 h4 {
+                  font-size: $rem1_2;
                   overflow: hidden;
                   white-space: nowrap;
                   text-overflow: ellipsis;
                 }
 
                 p {
+                  font-size: $rem1;
                   display: block;
                   overflow: hidden;
                   white-space: nowrap;
@@ -1045,30 +1023,114 @@ ul {
       }
     }
   }
+
+  #lightCover {
+    background-color: #414141e6;
+    width: 100%;
+    height: 100%;
+    position: fixed;
+    top: 0;
+    left: 0;
+    z-index: 1001;
+    display: none;
+
+
+    #myAllList {
+      width: 90%;
+      max-width: 500px;
+      background-color: white;
+      border-radius: 10px;
+      padding: 1% 0;
+      text-align: center;
+      position: absolute;
+      top: 50%;
+      left: 50%;
+      display: none;
+      transform: translate(-50%, -50%);
+
+      h3{
+        font-size: $rem1_5;
+      }
+      .lightSelectMenu {
+        clear: both;
+
+        ul {
+          width: 80%;
+          margin: 3% auto;
+          padding: 16px 0;
+          min-height: 100px;
+          background-image: url('../img/library/blackline2.svg');
+          background-position: center center;
+
+          li {
+            width: 90%;
+            margin: 0 auto;
+            padding: 16px 0;
+            border-bottom: 1px solid $fontColor;
+
+            &.choose {
+              background-color: #7ed5e5;
+            }
+
+            &:last-child {
+              border-bottom: none;
+            }
+          }
+        }
+      }
+    }
+
+
+    .close {
+      position: absolute;
+      right: 20px;
+      top: 20px;
+      cursor: pointer;
+      transition: transform 0.5s;
+
+      @include respond(phone) {
+        right: 10px;
+        top: 5px;
+      }
+
+      &:hover {
+        transform: scale(1.1);
+      }
+    }
+
+    button {
+      @include butttonn02;
+      transition: transform 0.5s;
+
+      @include respond(phone) {
+        margin-bottom: 10px;
+      }
+
+      &:hover {
+        transform: scale(1.1);
+      }
+    }
+  }
+
+
+  button,
+  .heart {
+    cursor: pointer;
+  }
+
+  .clearfix {
+    clear: both;
+  }
+
+  .becomeRed {
+    color: $mainRed;
+  }
+
+  .becomeYel {
+    background-color: $yellow;
+  }
 }
 
-button,
-.heart {
-  cursor: pointer;
-}
-
-#player .player_b.open {
-  width: 100%;
-  height: 100vh;
-  opacity: 1;
-}
-
-.clearfix {
-  clear: both;
-}
-
-.becomeRed {
-  color: $mainRed;
-}
-
-.becomeYel {
-  background-color: $yellow;
-}
 
 @keyframes recRotate {
   0% {
