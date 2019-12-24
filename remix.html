@@ -119,18 +119,18 @@
       <div class="remix_head">
         <div class="demo col-xl-6 col-md-8 col-sm-12">
           <h2>The Playground</h2>
-          <p class="intro">On this page, you can experiment with the different music making tools you've used so far.
+          <p class="intro">You can experiment with the different music making tools you've used so far.
             They'll all
             play together in sync.</p>
           <div class="choose_song">
-            <h4>1. always with me</h4>
-            <h4>2. Happy Birthday</h4>
-            <h4>3. cat</h4>
+            <h4 @click="npm = 120;song_list('always_with_me')">1. always with me</h4>
+            <h4 @click="song_list(0)">2. Happy Birthday</h4>
+            <h4 @click="npm = 120;song_list('cat')">3. cat</h4>
           </div>
         </div>
         <div class="svg_move col-xl-6 col-md-10 col-sm-12">
           <img src="./img/remix/rock.png">
-          <img src="./img/remix/rock_color.png" class="color">
+          <div class="color"></div>
         </div>
       </div>
       <div class="range">
@@ -138,11 +138,35 @@
         <div class="rangebutton">
           <input type="range" id="input_npm" value="120" min="40" max="220" step="5" v-model="npm" @input="npm_control">
           <div class="button">
-            <button class="start" @click="start_schedule" @mouseenter="buttonclick(1)"><img
-                src="./img/remix/start.png"><span></span></button>
-            <button class="record" @mouseenter="buttonclick(2)"><img src="./img/remix/record.png"><span></span></button>
-            <button class="download" @mouseenter="buttonclick(3)"><img
-                src="./img/remix/download.png"><span></span></button>
+            <button class="start" @click="start_schedule();buttonclick(1)" @mouseenter="buttonclick(1)"
+              v-if="loop == false">
+              <img src="./img/remix/start.png"><span></span>
+            </button>
+            <button class="start" @click="start_schedule();buttonclick(1)" @mouseenter="buttonclick(1)"
+              v-if="loop == true && record == false">
+              <img src="./img/remix/pause.png"><span></span>
+            </button>
+            <button class="start" v-if="loop == true && record == true">
+              <img src="./img/remix/start_disable.png"><span></span>
+            </button>
+            <button class="record" @click="record = true;start_record()" @mouseenter="buttonclick(2)"
+              v-if="record == false">
+              <img src="./img/remix/record.png"><span></span>
+            </button>
+            <button class="record" @click="record = false;start_record()" @mouseenter="buttonclick(2)"
+              v-if="record == true">
+              <img src="./img/remix/record.gif"><span></span>
+            </button>
+            <button class="download" v-if="audioSrc == ''">
+              <img src="./img/remix/download_disabled.png"><span></span>
+            </button>
+            <button class="download" v-else>
+              <a :href="audioSrc" download>
+                <img src="./img/remix/download.png">
+                <audio :href="audioSrc" id='recordAudio'></audio>
+              </a>
+              <span></span>
+            </button>
           </div>
         </div>
       </div>
@@ -158,11 +182,11 @@
           </tr>
           <tr v-for="(res,index_row) in re" class="trclass">
             <td class="note_name">
-              <h6>{{re[index_row]}}</h6>
+              <h6>{{re[index_row]}}</h6><audio :src="'./img/remix/sound/'+(re1[index_row])+'.mp3'"></audio>
             </td>
             <td class="sound_note" v-for="(item,index) in lattice"
               @click="changeClass(index_row,index);one_sound(re[index_row],index_row,index);">
-              <audio :src="'./img/remix/sound/'+(re1[index_row])+'.mp3'"></audio>
+
             </td>
           </tr>
         </table>
@@ -176,11 +200,11 @@
           </tr>
           <tr v-for="(res,index_row) in mi" class="trclass">
             <td class="note_name">
-              <h6>{{mi[index_row]}}</h6>
+              <h6>{{mi[index_row]}}</h6><audio :src="'./img/remix/sound/'+(mi1[index_row])+'.mp3'"></audio>
             </td>
             <td class="sound_note" v-for="(item,index) in lattice"
               @click="changeClass(index_row + 12,index);one_sound(mi[index_row],index_row + 12,index);">
-              <audio :src="'./img/remix/sound/'+(mi1[index_row])+'.mp3'"></audio>
+
             </td>
           </tr>
         </table>
@@ -194,11 +218,10 @@
           </tr>
           <tr v-for="(res,index_row) in fa" class="trclass">
             <td class="note_name">
-              <h6>{{fa[index_row]}}</h6>
+              <h6>{{fa[index_row]}}</h6><audio :src="'./img/remix/sound/'+(fa1[index_row])+'.mp3'"></audio>
             </td>
             <td class="sound_note" v-for="(item,index) in lattice"
               @click="changeClass(index_row + 24,index);one_sound(fa[index_row],index_row + 24,index);">
-              <audio :src="'./img/remix/sound/'+(fa1[index_row])+'.mp3'"></audio>
             </td>
           </tr>
         </table>
@@ -212,11 +235,11 @@
           </tr>
           <tr v-for="(res,index_row) in so" class="trclass">
             <td class="note_name">
-              <h6>{{so[index_row]}}</h6>
+              <h6>{{so[index_row]}}</h6><audio :src="'./img/remix/sound/'+(so1[index_row])+'.mp3'"></audio>
             </td>
             <td class="sound_note" v-for="(item,index) in lattice"
               @click="changeClass(index_row + 36,index);one_sound(so[index_row],index_row + 36,index);">
-              <audio :src="'./img/remix/sound/'+(so1[index_row])+'.mp3'"></audio>
+
             </td>
           </tr>
         </table>
@@ -230,11 +253,11 @@
           </tr>
           <tr v-for="(res,index_row) in la" class="trclass">
             <td class="note_name">
-              <h6>{{la[index_row]}}</h6>
+              <h6>{{la[index_row]}}</h6><audio :src="'./img/remix/sound/'+(la1[index_row])+'.mp3'"></audio>
             </td>
             <td class="sound_note" v-for="(item,index) in lattice"
               @click="changeClass(index_row + 48,index);one_sound(la[index_row],index_row + 48,index);">
-              <audio :src="'./img/remix/sound/'+(la1[index_row])+'.mp3'"></audio>
+
             </td>
           </tr>
         </table>
@@ -243,19 +266,21 @@
         <table class="drum">
           <tr v-for="(res,index_row) in drum" class="trclass">
             <td class="note_name">
-              <h6>{{drum[index_row]}}</h6>
+              <h6>{{drum[index_row]}}</h6><audio :src="'./img/remix/sound/'+(drum[index_row])+'.mp3'"></audio>
             </td>
             <td class="sound_note" v-for="(item,index) in lattice"
               @click="changeClass(index_row + 60,index);one_sound(drum[index_row],index_row + 60,index);">
-              <audio :src="'./img/remix/sound/'+(drum[index_row])+'.mp3'"></audio>
+
             </td>
           </tr>
         </table>
       </div>
     </div>
   </div>
-  <script src='https://cdnjs.cloudflare.com/ajax/libs/tone/14.4.84/Tone.js'></script>
+
+  <script src='https://cdnjs.cloudflare.com/ajax/libs/tone/13.4.0/Tone.js'></script>
   <script src='https://cdnjs.cloudflare.com/ajax/libs/gsap/2.1.3/TweenMax.min.js'></script>
+  <script src='https://cdnjs.cloudflare.com/ajax/libs/jquery/3.4.1/jquery.min.js'></script>
   <script src="./js/vue.js"></script>
   <script>
     var app = new Vue({
@@ -276,6 +301,7 @@
         table_id: ['re', 'mi', 'fa', 'so', 'la'],
         index: 0, // 第幾直排
         audioSrc: "", // 歌曲路徑
+        demostart: false,
         category: ['two', 'three', 'four', 'five', 'six'],
         notes: ['C2', 'C#2', 'D2', 'D#2', 'E2', 'F2', 'F#2', 'G2', 'G#2', 'A2', 'A#2', 'B2', 'C3', 'C#3',
           'D3', 'D#3', 'E3', 'F3', 'F#3', 'G3', 'G#3', 'A3', 'A#3', 'B3', 'C4', 'C#4', 'D4', 'D#4',
@@ -283,6 +309,14 @@
           'F#5', 'G5', 'G#5', 'A5', 'A#5', 'B5', 'C6', 'C#6', 'D6', 'D#6', 'E6', 'F6', 'F#6', 'G6',
           'G#6', 'A6', 'A#6', 'B6', 'C1', 'D1', 'D#1', 'E1', 'F1', 'F#1', 'G1', 'G#1', 'C7', 'D7',
           'D#7', 'E7'
+        ],
+        notes1: ['C2', 'Cs2', 'D2', 'Ds2', 'E2', 'F2', 'Fs2', 'G2', 'Gs2', 'A2', 'As2', 'B2', 'C3', 'Cs3',
+          'D3', 'Ds3', 'E3', 'F3', 'Fs3', 'G3', 'Gs3', 'A3', 'As3', 'B3', 'C4', 'Cs4', 'D4', 'Ds4',
+          'E4', 'F4', 'Fs4', 'G4', 'Gs4', 'A4', 'As4', 'B4', 'C5', 'Cs5', 'D5', 'Ds5', 'E5', 'F5',
+          'Fs5', 'G5', 'Gs5', 'A5', 'As5', 'B5', 'C6', 'Cs6', 'D6', 'Ds6', 'E6', 'F6', 'Fs6', 'G6',
+          'Gs6', 'A6', 'As6', 'B6', 'Ride', 'Tom', 'OpenHat', 'ClosedHat', 'Clap', 'Snare', 'Rim', 'Kick', 'Slam',
+          'Guitar',
+          'Scratch', 'Electric'
         ],
         re: ['C2', 'C#2', 'D2', 'D#2', 'E2', 'F2', 'F#2', 'G2', 'G#2', 'A2', 'A#2', 'B2'],
         re1: ['C2', 'Cs2', 'D2', 'Ds2', 'E2', 'F2', 'Fs2', 'G2', 'Gs2', 'A2', 'As2', 'B2'],
@@ -294,7 +328,7 @@
         so1: ['C5', 'Cs5', 'D5', 'Ds5', 'E5', 'F5', 'Fs5', 'G5', 'Gs5', 'A5', 'As5', 'B5'],
         la: ['C6', 'C#6', 'D6', 'D#6', 'E6', 'F6', 'F#6', 'G6', 'G#6', 'A6', 'A#6', 'B6'],
         la1: ['C6', 'Cs6', 'D6', 'Ds6', 'E6', 'F6', 'Fs6', 'G6', 'Gs6', 'A6', 'As6', 'B6'],
-        drum: ['Ride', 'Tom', 'OpenHat', 'ClosedHat', 'Clap', 'Snare', 'Rim', 'Kick', 'Slam', 'Guitar',
+        drum: ['Ride', 'Tom', 'Open', 'Closed', 'Clap', 'Snare', 'Rim', 'Kick', 'Slam', 'Guitar',
           'Scratch', 'Electric'
         ],
         soundSrc: {
@@ -350,18 +384,18 @@
           "g#6": "./img/remix/sound/Gs6.mp3",
           "a6": "./img/remix/sound/A6.mp3",
           "b6": "./img/remix/sound/B6.mp3",
-          "c1": "./img/remix/sound/Ride.ogg",
-          "d1": "./img/remix/sound/TomHi.ogg",
-          "d#1": "./img/remix/sound/OpenHat.ogg",
-          "e1": "./img/remix/sound/ClosedHat.ogg",
-          "f1": "./img/remix/sound/Clap.ogg",
-          "f#1": "./img/remix/sound/Snare.ogg",
-          "g1": "./img/remix/sound/Rim.ogg",
-          "g#1": "./img/remix/sound/Kick.ogg",
+          "c1": "./img/remix/sound/Ride.mp3",
+          "d1": "./img/remix/sound/Tom.mp3",
+          "d#1": "./img/remix/sound/Open.mp3",
+          "e1": "./img/remix/sound/Closed.mp3",
+          "f1": "./img/remix/sound/Clap.mp3",
+          "f#1": "./img/remix/sound/Snare.mp3",
+          "g1": "./img/remix/sound/Rim.mp3",
+          "g#1": "./img/remix/sound/Kick.mp3",
           "c7": "./img/remix/sound/Slam.mp3",
           "d7": "./img/remix/sound/Guitar.mp3",
           "d#7": "./img/remix/sound/Scratch.mp3",
-          "e7": "./img/remix/sound/Electricity.mp3",
+          "e7": "./img/remix/sound/Electric.mp3",
         },
         song_start: {
           always_with_me: [
@@ -434,14 +468,40 @@
             [39],
             [37, 17],
             [],
-            [13, 37]
+            [13, 37],
+            [11, 18, 39],
+            [39],
+            [39],
+            [39],
+            [39],
+            [],
+            [37],
+            [34],
+            [10, 18, 37],
+            [34],
+            [37],
+            [44],
+            [13, 42],
+            [],
+            [10],
+            [37],
+            [8, 15, 46],
+            [46],
+            [46],
+            [47],
+            [15, 49],
+            [42],
+            [11, 44],
+            [46],
+            [13, 20, 44],
+            []
           ]
         },
       },
       methods: {
         hamburger_click(e) {
           e.stopPropagation();
-          document.querySelector(".hamburger").classList.toggle("is-active");
+          document.querySelector(".hamburger").classList.tmp3le("is-active");
         },
         search_bt_click(e) {
           e.stopPropagation();
@@ -541,20 +601,28 @@
         },
         buttonclick(num) {
           var button = document.querySelector('.button button:nth-of-type(' + num + ') span');
-          TweenMax.set(button, {
-            css: {
-              scale: 1,
-              opacity: 1,
-            }
-          })
-          TweenMax.to(button, 0.5, {
-            css: {
+          if (num == 3) {
+            TweenMax.to(button, 1, {
               scale: 3,
               opacity: 0,
+              repeat: -1,
               // ease: Quad.easeInOut
-            }
-          })
-
+            })
+          } else {
+            TweenMax.set(button, {
+              css: {
+                scale: 1,
+                opacity: 1,
+              }
+            })
+            TweenMax.to(button, 0.5, {
+              css: {
+                scale: 3,
+                opacity: 0,
+                // ease: Quad.easeInOut
+              }
+            })
+          }
         },
         control_table(index) { // 控制table z-index
           var index = document.getElementsByClassName(`${index}`)[0];
@@ -565,44 +633,22 @@
           index.style.zIndex = '5';
         },
         one_sound(note, column, row) { // 按下會發出聲音 
-          // console.log(this.notes.length);
           var vm = this;
-          // var sampler = new Tone.Sampler(vm.soundSrc, function () {
-          //   if (note == 'Ride') note = 'c1';
-          //   if (note == 'Tom') note = 'd1';
-          //   if (note == 'OpenHat') note = 'd#1';
-          //   if (note == 'ClosedHat') note = 'e1';
-          //   if (note == 'Clap') note = 'f1';
-          //   if (note == 'Snare') note = 'f#1';
-          //   if (note == 'Rim') note = 'g1';
-          //   if (note == 'Kick') note = 'g#1';
-          //   if (note == 'Slam') note = 'c7';
-          //   if (note == 'Guitar') note = 'd7';
-          //   if (note == 'Scratch') note = 'd#7';
-          //   if (note == 'Electric') note = 'e7';
-          //   note = note.toLowerCase()
-          //   var trclass = document.getElementsByClassName('trclass');
-          //   var sound_note = trclass[column].getElementsByClassName('sound_note');
-          //   // class 有 active 的才會發出聲音
-          //   if (sound_note[row].classList.contains('active')) {
-          //     sampler.triggerAttack(note);
-          //   }
-          //   // sampler.triggerAttackRelease(note,'4n');
-
-          // }).toMaster();
-
           var trclass = document.getElementsByClassName('trclass');
           var sound_note = trclass[column].getElementsByClassName('sound_note');
-          var audiostart = sound_note[row].querySelector('audio');
+          var note_name = trclass[column].getElementsByClassName('note_name')[0];
+          var audiostart = note_name.querySelector('audio');
 
           if (sound_note[row].classList.contains('active')) {
+            audiostart.pause();
+            audiostart.currentTime = 0;
             audiostart.play();
           } else {
             audiostart.pause();
             audiostart.currentTime = 0;
           }
         },
-        changeClass(column, row) {
+        changeClass(column, row) { // 換 class
           var trclass = document.getElementsByClassName('trclass');
           var sound_note = trclass[column].getElementsByClassName('sound_note');
           sound_note[row].className == 'sound_note active' ? sound_note[row].className = 'sound_note' :
@@ -610,83 +656,194 @@
         },
         start_schedule() {
           // 開始輪播 + 控制 npm
-          // alert('123');
           var vm = this;
           var trclass = document.getElementsByClassName('trclass');
-          this.loop = !this.loop;
-          if (vm.loop) { // 沒有在循環播放
-            start = setInterval(() => {
+          if (!vm.loop) { // 沒有在循環播放
+            vm.loop = !vm.loop;
+            console.log(vm.loop);
+
+            function repeat() {
               var step = vm.index % vm.lattice;
               for (var i = 0; i < trclass.length; i++) {
                 var tr = trclass[i];
                 var beforestep = trclass[i].getElementsByClassName(`sound_note`)[step - 1];
                 var nowstep = trclass[i].getElementsByClassName(`sound_note`)[step];
-                var audiostart = nowstep.querySelector('audio');
-                // console.log(nowstep);
+                // var audiosound = trclass[i].getElementsByClassName(`note_name`)[0];
                 if (step == 0) {
-                  nowstep.style.border = 'solid 1.5px rgba(0, 0, 0, 0.3)';
-                  trclass[i].getElementsByClassName(`sound_note`)[vm.lattice - 1].style.border = 'solid 1px rgba(#333, 0.3)';
+                  nowstep.style.border = 'solid 0.5px rgba(255, 255, 255, 0.3)';
+                  trclass[i].getElementsByClassName(`sound_note`)[vm.lattice - 1].style.border = 'none';
+                  trclass[i].getElementsByClassName(`sound_note`)[vm.lattice - 1].style.borderLeft =
+                    'solid 1px rgba(0,0,0, 1)';
+                  trclass[i].getElementsByClassName(`sound_note`)[vm.lattice - 1].style.borderTop =
+                    'solid 1px rgba(0,0,0, 1)';
                 } else {
-                  nowstep.style.border = 'solid 1.5px rgba(0, 0, 0, 0.3)';
-                  beforestep.style.border = 'solid 1px rgba(#333, 0.3)';
+                  nowstep.style.border = 'solid 0.5px rgba(255,255,255, 0.3)';
+                  beforestep.style.border = 'none';
+                  beforestep.style.borderLeft = 'solid 1px rgba(0,0,0, 1)';
+                  beforestep.style.borderTop = 'solid 1px rgba(0,0,0, 1)';
                 }
+
                 if (nowstep.classList.contains('active')) {
-                  audiostart.play();
+                  var audio = new Audio(`./img/remix/sound/${vm.notes1[i]}.mp3`)
+                  audio.play();
                 }
               }
-              vm.index++
-            }, (60000 / vm.npm) / 4);
+              vm.index++;
+              console.log(vm.index);
+              start = setTimeout(repeat, (60000 / vm.npm) / 2);
+            }
+            repeat();
+          } else {
+            vm.loop = !vm.loop;
+            console.log(start);
+            clearTimeout(start);
           }
-
-
-          // var sampler = new Tone.Sampler(vm.soundSrc, function () {
-          //   if (!vm.loop) { // 控制播放 or 暫停
-          //     Tone.Transport.pause();
-          //     recorder.stop();
-          //     console.log('stop');
-          //   } else {
-          //     var trs = document.getElementsByTagName('tr');
-          //     var sound_note = document.getElementsByClassName('sound_note');
-          //     let index = vm.index // 第幾直排
-
-          //     Tone.Transport.scheduleRepeat(repeat, '8n');
-          //     Tone.Transport.start();
-
-          //     function repeat(time) {
-          //       console.log(`repeat: start`);
-          //       Tone.Transport.bpm.value = vm.npm; // 控制 npm
-          //       let step = index % vm.lattice;
-          //       for (var i = 0; i < trs.length; i++) {
-          //         let note = vm.notes[i],
-          //           $row = trs[i];
-          //         note = note.toLowerCase();
-          //         console.log(note);
-          //         var $td = $row.getElementsByClassName('sound_note')[step - 1];
-          //         var $tds = $row.getElementsByClassName('sound_note')[step];
-
-          //         if (step == 0) {
-          //           $tds.style.border = 'solid 1.5px rgba(0, 0, 0, 0.3)';
-          //           $row.getElementsByClassName('sound_note')[vm.lattice - 1].style
-          //             .border =
-          //             'solid 1px rgba(255, 255, 255, 0.3)';
-          //         } else {
-          //           $tds.style.border = 'solid 1.5px rgba(0, 0, 0, 0.3)';
-          //           $td.style.border = 'solid 1px rgba(255, 255, 255, 0.3)';
-          //         }
-
-          //         if ($tds.className == 'sound_note active') {
-          //           sampler.triggerAttack(note, time);
-          //         }
-          //       }
-          //       index++;
-          //       vm.index = index; // 傳回index值
-          //     }
-          //   }
-
-          // })
-          // sampler.toMaster();
-
         },
+        song_list(list) { // 播放 Demo
+          var vm = this;
+          var trclass = document.getElementsByClassName('trclass');
+          vm.index = 0;
+          if (vm.demostart) {
+            clearTimeout(start);
+            vm.demostart = false;
+            var sound_note = document.getElementsByClassName('sound_note');
+            for (var x = 0; x < sound_note.length; x++) {
+              sound_note[x].style.border = 'none';
+              sound_note[x].style.borderLeft = 'solid 1px rgba(0,0,0,1)';
+              sound_note[x].style.borderTop = 'solid 1px rgba(0,0,0,1)';
+            }
+          };
+
+          function repeat() {
+            vm.demostart = true;
+            var step = vm.index % vm.lattice;
+            for (var i = 0; i < trclass.length; i++) {
+              var tr = trclass[i];
+              var beforestep = trclass[i].getElementsByClassName(`sound_note`)[step - 1];
+              var nowstep = trclass[i].getElementsByClassName(`sound_note`)[step];
+              if (step == 0) {
+                nowstep.style.border = 'solid 0.5px rgba(255, 255, 255, 0.3)';
+                trclass[i].getElementsByClassName(`sound_note`)[vm.lattice - 1].style.border = 'none';
+                trclass[i].getElementsByClassName(`sound_note`)[vm.lattice - 1].style.borderLeft =
+                  'solid 1px rgba(0,0,0, 1)';
+                trclass[i].getElementsByClassName(`sound_note`)[vm.lattice - 1].style.borderTop =
+                  'solid 1px rgba(0,0,0, 1)';
+              } else {
+                nowstep.style.border = 'solid 0.5px rgba(255,255,255, 0.3)';
+                beforestep.style.border = 'none';
+                beforestep.style.borderLeft = 'solid 1px rgba(0,0,0,1)';
+                beforestep.style.borderTop = 'solid 1px rgba(0,0,0,1)';
+              }
+
+              if (vm.index == vm.song_start[list].length) { // 如果大於歌曲陣列就停止時鐘
+                clearTimeout(start);
+                var sound_note = document.getElementsByClassName('sound_note');
+                for (var x = 0; x < sound_note.length; x++) {
+                  sound_note[x].style.border = 'none';
+                  sound_note[x].style.borderLeft = 'solid 1px rgba(0,0,0,1)';
+                  sound_note[x].style.borderTop = 'solid 1px rgba(0,0,0,1)';
+                }
+                return;
+              }
+
+              if (step == 0) { // 清除上一次的紀錄
+                tr.getElementsByClassName('sound_note')[vm.lattice - 1].className = 'sound_note';
+              } else {
+                tr.getElementsByClassName('sound_note')[step].className = 'sound_note';
+              }
+
+              for (var j = 0; j < vm.song_start[list][vm.index].length; j++) {
+                var note = vm.song_start[list][vm.index][j]; // 第一直排的第幾個音
+                if (i == note) {
+                  tr.getElementsByClassName('sound_note')[step].classList.add('active'); // 現在的位置
+                  var audio = new Audio(`./img/remix/sound/${vm.notes1[note]}.mp3`)
+                  audio.play();
+                }
+              }
+            }
+            vm.index++;
+            // console.log(vm.index);
+            start = setTimeout(repeat, 60000 / vm.npm / 2);
+          };
+          repeat();
+        },
+        start_record() { // 開始錄音
+          var vm = this;
+          this.loop = !this.loop;
+
+          // 錄音功能
+          let audio = document.getElementById('recordAudio');
+          const actx = Tone.context;
+          const dest = actx.createMediaStreamDestination();
+          if (vm.loop) {
+            recorder = new MediaRecorder(dest.stream);
+          }
+          const chunks = []; // 音頻陣列
+
+          var sampler = new Tone.Sampler(vm.soundSrc, function () {
+            if (!vm.loop) { // 控制播放 or 暫停
+              Tone.Transport.stop();
+              recorder.stop();
+              console.log('stop');
+            } else {
+              var trs = document.getElementsByClassName('trclass');
+              var sound_note = document.getElementsByClassName('sound_note');
+              let index = vm.index // 第幾直排
+
+              Tone.Transport.scheduleRepeat(repeat, '8n');
+              Tone.Transport.start();
+
+              if (vm.record) {
+                recorder.start();
+                console.log(`record: start`);
+              }
+
+              function repeat(time) {
+                console.log(`repeat: start`);
+                Tone.Transport.bpm.value = vm.npm; // 控制 npm
+                let step = index % vm.lattice;
+                for (var i = 0; i < trs.length; i++) {
+                  let note = vm.notes[i],
+                    $row = trs[i];
+                  note = note.toLowerCase();
+                  var $td = $row.getElementsByClassName('sound_note')[step - 1];
+                  var $tds = $row.getElementsByClassName('sound_note')[step];
+
+                  if (step == 0) {
+                    $tds.style.border = 'solid 0.5px rgba(255, 255, 255, 0.3)';
+                    $row.getElementsByClassName('sound_note')[vm.lattice - 1].style.border = 'none';
+                    $row.getElementsByClassName('sound_note')[vm.lattice - 1].style.borderLeft =
+                      'solid 1px rgba(0,0,0, 1)';
+                    $row.getElementsByClassName('sound_note')[vm.lattice - 1].style.borderTop =
+                      'solid 1px rgba(0,0,0, 1)';
+                  } else {
+                    $tds.style.border = 'solid 0.5px rgba(255, 255, 255, 0.3)';
+                    $td.style.border = 'none';
+                    $td.style.borderLeft = 'solid 1px rgba(0,0,0, 1)';
+                    $td.style.borderTop = 'solid 1px rgba(0,0,0, 1)';
+                  }
+                  if ($tds.className == 'sound_note active') {
+                    sampler.triggerAttack(note, time);
+                  }
+                }
+                index++;
+                vm.index = index; // 傳回index值
+              }
+            }
+
+          })
+          sampler.connect(dest).toMaster();
+
+          recorder.ondataavailable = evt => chunks.push(evt.data);
+          recorder.onstop = evt => {
+            let blob = new Blob(chunks, {
+              type: 'audio/mp3; codecs=opus'
+            });
+            vm.audioSrc = URL.createObjectURL(blob);
+            // audio.src = URL.createObjectURL(blob);
+            // vm.audioSrc = audio.src;
+          };
+        }
       },
       computed: {},
       mounted() {
@@ -716,22 +873,69 @@
           })()
         }
 
-        // 一開始偵測是否為375
-        if (this.screenWidth <= 376) {
+        // 一開始偵測是否為 425
+        if (this.screenWidth <= 425) {
           var intro = document.getElementsByClassName('intro')[0];
-          intro.innerHTML = intro.innerHTML.substr(0, 92);
+          intro.innerHTML = intro.innerHTML.substr(0, 79);
         }
 
+        if (this.screenWidth > 1200) {
+          $('th').attr('colspan', 7);
+          this.lattice = 34;
+        } else if (this.screenWidth > 768) {
+          $('th').attr('colspan', 4);
+          this.lattice = 19;
+        } else if (this.screenWidth > 576) {
+          $('th').attr('colspan', 3);
+          this.lattice = 14;
+        } else {
+          $('th').attr('colspan', 2);
+          this.lattice = 9;
+        }
+
+        // 一開始的微動畫
+        
       },
       watch: {
         screenWidth(val) {
           // 偵測螢幕寬度 切字串
-          this.screenWidth = val
-          if (this.screenWidth <= 376) {
-            var intro = document.getElementsByClassName('intro')[0];
-            intro.innerHTML = intro.innerHTML.substr(0, 92);
+          this.screenWidth = val;
+          if (this.screenWidth > 1200) {
+            $('th').attr('colspan', 7);
+            this.lattice = 34;
+          } else if (this.screenWidth > 768) {
+            $('th').attr('colspan', 4);
+            this.lattice = 19;
+          } else if (this.screenWidth > 576) {
+            $('th').attr('colspan', 3);
+            this.lattice = 14;
+          } else {
+            $('th').attr('colspan', 2);
+            this.lattice = 9;
           }
+
+          if (this.screenWidth <= 425) {
+            var intro = document.getElementsByClassName('intro')[0];
+            intro.innerHTML = intro.innerHTML.substr(0, 79);
+          }
+        },
+        audioSrc(NewaudioSrc) {
+          this.audioSrc = NewaudioSrc;
+          var button = document.querySelector('.button button:nth-of-type(3) span');
+          TweenMax.set(button, {
+            css: {
+              scale: 1,
+              opacity: 1,
+            }
+          })
+          TweenMax.to(button, 1, {
+            scale: 3,
+            opacity: 0,
+            repeat: -1,
+            // ease: Quad.easeInOut
+          })
         }
+
       },
     })
   </script>

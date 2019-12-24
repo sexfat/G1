@@ -80,9 +80,8 @@ p.forget {
 }
 
 header {
-  text-align: center;
   height: 300px;
-  padding: 120px 0;
+  text-align: center;
 }
 
 .wrapper {
@@ -207,11 +206,6 @@ h2 {
   font-weight: bold;
 }
 
-header {
-  height: 300px;
-  padding: 120px 0;
-}
-
 .wrapper {
   margin-top: 0%;
   position: relative;
@@ -224,7 +218,7 @@ header {
 }
 
 .wrapper .stepCount {
-  margin: 0rem auto;
+  margin: 2.5rem auto;
   width: 90%;
   overflow: hidden;
 }
@@ -458,7 +452,6 @@ header {
   border-radius: 5px;
   width: 95%;
   padding: 2%;
-  margin: 0 auto;
 }
 
 .wrapper .stepFlow .step .comfirm_detail .detail {
@@ -490,7 +483,6 @@ header {
 .wrapper .stepFlow .step .comfirm_detail .button .press {
   display: inline-block;
   width: 50%;
-  margin: 0 auto;
 }
 
 .wrapper .stepFlow .step .done {
@@ -657,6 +649,7 @@ header {
 .button {
   position: relative;
   width: 100%;
+  padding: 10%;
   text-align: center;
   margin: 0 auto;
 }
@@ -664,18 +657,8 @@ header {
 .button .btn_s {
   width: 85%;
   max-width: 9rem;
-  margin: 0 auto;
   background-color: #efc318;
   border-radius: 5px;
-  background-color: #f1c40f;
-  font-size: 0.8rem;
-  padding: 10px 30px;
-  border: 1px solid #f1c40f;
-  border-radius: 5px;
-  color: #fff;
-  font-weight: bold;
-  cursor: pointer;
-  padding: 10px 0;
 }
 
 .button .btn_s p {
@@ -768,20 +751,11 @@ header {
 
 @media all and (max-width: 768px) and (min-width: 577px) {
   html {
-    font-size: 17px;
-  }
-  header {
-    padding: 120px 0;
-  }
-  header img {
-    height: 76px;
+    font-size: 18px;
   }
   .wrapper {
     overflow-x: hidden;
     margin: 0 auto;
-  }
-  .wrapper .button {
-    padding: 5%;
   }
   .wrapper .color1 {
     top: 8%;
@@ -818,9 +792,6 @@ header {
   .wrapper .stepFlow .step .enter_card .button {
     width: 95%;
   }
-  .wrapper .stepFlow .step .comfirm_detail .detail p .card_class {
-    width: 40%;
-  }
   .wrapper .support {
     width: 85%;
     margin: 10% auto;
@@ -847,15 +818,6 @@ header {
   html {
     font-size: 17px;
   }
-  header {
-    padding: 120px 0;
-  }
-  header img {
-    height: 76px;
-  }
-  .button {
-    padding: 8%;
-  }
   .wrapper {
     overflow-x: hidden;
   }
@@ -867,9 +829,6 @@ header {
   }
   .wrapper .stepCount .count img {
     max-width: 4rem;
-  }
-  .wrapper .stepFlow .step h2 {
-    margin: 2.625rem auto 1.625rem;
   }
   .wrapper .stepFlow .step .color2 {
     width: 81%;
@@ -1034,15 +993,6 @@ header {
   html {
     font-size: 16px;
   }
-  .button {
-    padding: 10%;
-  }
-  header {
-    padding: 120px 0;
-  }
-  header img {
-    height: 76px;
-  }
   .wrapper {
     overflow-x: hidden;
   }
@@ -1051,7 +1001,7 @@ header {
     top: 6%;
   }
   .wrapper .stepCount {
-    margin: 0rem auto;
+    margin: 1.5rem auto;
   }
   .wrapper .stepCount .count {
     width: 23%;
