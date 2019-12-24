@@ -381,8 +381,7 @@
                 mobile_list: false,
                 search_bar: false,
                 mem_list: false,
-                mem_login: false,
-                
+                mem_login: false, 
             },
             mounted() {
                 // nav_bar start
@@ -717,11 +716,9 @@
                             .setAttribute("style", "transform: translateX(-270px); filter: opacity(0);");
                     }
                 },
-
                 stopPropagation(e) {
                     e.stopPropagation();
                 },
-
                 mem_bt_click(e) {
                     e.stopPropagation();
                     if (this.mem_list == false) {
@@ -750,7 +747,6 @@
                             .setAttribute("style", "transform: translateX(-270px); filter: opacity(0);");
                     }
                 },
-
                 hamburger_click(e) {
                     e.stopPropagation();
                     if (this.mobile_list == false) {

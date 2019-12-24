@@ -5,8 +5,9 @@
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <meta http-equiv="X-UA-Compatible" content="ie=edge">
-  <link rel="stylesheet" href="./css/example.css">
+  <!-- <link rel="stylesheet" href="./scss/main.css"> -->
   <link rel="stylesheet" href="./css/store.css">
+
   <script src='https://cdnjs.cloudflare.com/ajax/libs/jquery/3.4.1/jquery.js'></script>
   <title>Document</title>
 </head>
@@ -14,32 +15,113 @@
 <body>
   <div id="app">
     <div class="nav_bar flexbox">
-      <div class="logo"></div>
-      <div class="main_list flexbox">
-        <h4>REMIX</h4>
-        <h4>COLLECTION</h4>
-        <h4>ACTIVITY</h4>
-        <h4>LIBRARY</h4>
+      <div class="hamburger" @click="hamburger_click">
+        <div class="hamburger-box">
+          <div class="hamburger-inner"></div>
+        </div>
       </div>
-      <label class="search" @click="search_click">
-        <div class="search_icon"></div>
-        <input class="search_bar" type="text" />
+      <div class="mobile_list" @click="stopPropagation">
+        <div class="paint_border"></div>
+        <ul>
+          <li class="REMIX flexbox">
+            <a href="">
+            </a>
+          </li>
+          <li class="COLLECTION flexbox">
+            <a href="">
+            </a>
+          </li>
+          <li class="ACTIVITY flexbox">
+            <a href="">
+            </a>
+          </li>
+          <li class="LIBRARY flexbox">
+            <a href="">
+            </a>
+          </li>
+        </ul>
+      </div>
+
+      <div class="logo_container">
+        <a href="">
+          <div class="logo"></div>
+        </a>
+      </div>
+      <ul class="main_list flexbox">
+        <li class="REMIX flexbox">
+          <a href="">
+          </a>
+        </li>
+        <li class="COLLECTION flexbox">
+          <a href="">
+          </a>
+        </li>
+        <li class="ACTIVITY flexbox">
+          <a href="">
+          </a>
+        </li>
+        <li class="LIBRARY flexbox">
+          <a href="">
+          </a>
+        </li>
+      </ul>
+      <div class="search_bt" @click="search_bt_click">
+        <a href="#"></a>
+      </div>
+      <div class="search_bar" @click="stopPropagation">
+        <input class="search" type="text" />
         <div class="tag_container">
         </div>
-      </label>
-      <div class="mem_bt" @click="mem_bt_click"></div>
+      </div>
+      <div class="login_bt" @click="" v-if="mem_login == false">
+        <a class="flexbox" href="#">Login</a>
+      </div>
+      <div class="mem_bt" @click="mem_bt_click" v-if="mem_login == true">
+        <a href="#"></a>
+      </div>
       <div class="mem_list" @click="stopPropagation">
-        <h4>會員資料</h4>
-        <h4>個人音樂庫</h4>
-        <h4>歌曲上下架</h4>
-        <h4>儲值/儲值紀錄</h4>
-        <h4>贊助紀錄</h4>
+        <div class="paint_border"></div>
+        <ul>
+          <li>
+            <a href="">
+              <h4>Profile</h4>
+            </a>
+          </li>
+          <li>
+            <a href="">
+              <h4>Favorite</h4>
+            </a>
+          </li>
+          <li>
+            <a href="">
+              <h4>
+                Song Upload
+                <br />&amp; Remove
+              </h4>
+            </a>
+          </li>
+          <li>
+            <a href="">
+              <h4>
+                Store Value
+                <br />&amp;Store Record
+              </h4>
+            </a>
+          </li>
+          <li>
+            <a href="">
+              <h4>Donate Record</h4>
+            </a>
+          </li>
+        </ul>
       </div>
     </div>
-    <header>
-      <h1>MEMBER</h1>
-      <div class="header_bg"></div>
-    </header>
+    <!-- nav_bar end -->
+  </div>
+  <header>
+    <img src="./img/member/RESTORE.png" alt="">
+  </header>
+  <div id="store_app">
     <div class="wrapper ">
       <img src="./img/member/color1.png" class="color1">
       <!-- <img src="./img/member/color2.png" class="color2"> -->
@@ -68,7 +150,7 @@
         <div class="step" v-if="step == 1">
           <img src="./img/member/color2.png" class="color2">
           <div class="choose_money">
-            
+
             <h2>Select Amount</h2>
             <div class="rowpick">
               <div class="money">
@@ -248,12 +330,10 @@
     <!--  ↓↓↓↓↓  Code Here  ↓↓↓↓↓  -->
   </div>
   <script src='https://cdnjs.cloudflare.com/ajax/libs/vue/2.6.10/vue.js'></script>
+  <script src="./js/public.js"></script>
   <script>
-    let _search_click = false;
-    let _mem_bt_click = false;
-
     new Vue({
-      el: '#app',
+      el: '#store_app',
       data: {
         step: 1,
         choose_money: 100,
@@ -372,86 +452,6 @@
         ]
       },
       methods: {
-        search_click(e) {
-          _search_click = true;
-          _mem_bt_click = false;
-          e.stopPropagation();
-          if (_search_click) {
-            document.querySelector(".search_bar").focus();
-            document
-              .querySelector("label.search")
-              .setAttribute("style", "width: 250px;");
-            document
-              .querySelector(".search_bar")
-              .setAttribute("style", "filter: opacity(1); width: 250px;");
-            document
-              .querySelector(".tag_container")
-              .setAttribute(
-                "style",
-                "filter: opacity(1); width: 250px; height: 200px;  z-index: 99;"
-              );
-            document
-              .querySelector(".mem_list")
-              .setAttribute("style", "height: 0px;");
-          } else {
-            document
-              .querySelector("label.search")
-              .setAttribute("style", "width: 250px;");
-            document
-              .querySelector(".search_bar")
-              .setAttribute("style", "filter: opacity(1); width: 250px;");
-            document.querySelector(".search_bar").focus();
-
-            document
-              .querySelector(".tag_container")
-              .setAttribute(
-                "style",
-                "filter: opacity(1); width: 250px; height: 200px;  z-index: 99;"
-              );
-          }
-        },
-        stopPropagation(e) {
-          e.stopPropagation();
-        },
-        mem_bt_click(e) {
-          _mem_bt_click = true;
-          _search_click = false;
-
-          e.stopPropagation();
-          if (_mem_bt_click) {
-            document
-              .querySelector(".mem_list")
-              .setAttribute("style", "height: 200px;");
-            document
-              .querySelector("label.search")
-              .setAttribute("style", "width: 50px;");
-            document
-              .querySelector(".search_bar")
-              .setAttribute("style", "opacity: 0; width: 50px;");
-            document
-              .querySelector(".tag_container")
-              .setAttribute(
-                "style",
-                "filter: opacity(0); width: 50px; height: 50px;"
-              );
-          } else {
-            document
-              .querySelector(".mem_list")
-              .setAttribute("style", "height: 200px;");
-          }
-        },
-        app_click() {
-          _search_click = false;
-          _mem_bt_click = false;
-          document.querySelector("label.search").setAttribute("style", "width: 50px;");
-          document.querySelector(".search_bar").setAttribute("style", "opacity: 0; width: 50px;");
-          document.querySelector(".tag_container")
-            .setAttribute(
-              "style",
-              "filter: opacity(0); width: 50px; height: 50px;"
-            );
-          document.querySelector(".mem_list").setAttribute("style", "height: 0px;");
-        },
         moveDiv(move) {
           var step = document.getElementsByClassName('step');
           for (var i = 0; i < step.length; i++) {
@@ -466,13 +466,31 @@
 
           // return false;
         },
-
       },
       mounted() {
-        document.addEventListener('click', this.app_click);
-        // $(window).scroll(function(){
-        //     console.log($(this).scrollTop());
-        // })
+        // 組長的 code
+        // nav_bar start
+        document.querySelector('.mem_list ul').setAttribute('style', `height: ${window.innerHeight}px;`);
+        document.querySelector('.mobile_list ul').setAttribute('style', `height: ${window.innerHeight}px;`);
+        document.querySelectorAll('.paint_border')[0].setAttribute('style', `height: ${window.innerHeight}px;`);
+        document.querySelectorAll('.paint_border')[1].setAttribute('style', `height: ${window.innerHeight}px;`);
+
+        document.addEventListener('click', () => {
+          this.mem_list = false;
+          this.search_bar = false;
+          this.mobile_list = false;
+
+          document
+            .querySelector(".search_bar")
+            .setAttribute("style", "height: 0px; filter: opacity(0);");
+          document
+            .querySelector(".mem_list")
+            .setAttribute("style", "transform: translateX(270px); filter: opacity(0);");
+          document
+            .querySelector(".mobile_list")
+            .setAttribute("style", "transform: translateX(-270px); filter: opacity(0);");
+        });
+        // nav_bar end
       },
     })
   </script>
