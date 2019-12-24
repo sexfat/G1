@@ -119,24 +119,22 @@
     <section id="activity">
         <div id="actHead" class="wrapper">
 
-            <div id="radioBg">
-                <div id="act-title"><img src="./img/activity/title.png" alt=""></div>
+            <div id="act_radioBg">
+                <div id="act_title"><img src="./img/activity/title.png" alt=""></div>
                 <img src="./img/activity/radio.png" alt="">
 
 
                 <h2 v-if=" content=='actNow'">Electronic dance music contest 2019</h2>
                 <h2 v-if=" content=='actOld'">Previous activities</h2>
 
-                <div id="actHeadBtn">
+                <div id="act_HeadBtn">
                     <div @click="content='actNow' ">
-                        <span class="bigSmall">Now</span>
+                        <span>Now</span>
                         <img v-if=" content=='actNow'" :src=" tabImgON" alt="">
                         <img v-else :src=" tabImgOFF" alt="">
-
-
                     </div>
                     <div @click="content='actOld' ">
-                        <span class="bigSmall"> Old</span>
+                        <span> Old</span>
                         <img v-if=" content=='actNow'" :src=" tabImgOFF" alt="">
                         <img v-else :src=" tabImgON" alt="">
                     </div>
@@ -144,7 +142,7 @@
 
                 </div>
 
-                <div id="act-sectionAnchor" v-if=" content=='actNow'">
+                <div id="act_sectionAnchor" v-if=" content=='actNow'">
                     <a href="#">
                         <img :src="sectionAnchor" alt="">
                         <span>Introduction</span>
@@ -159,7 +157,7 @@
 
                 </div>
 
-                <div id="act-oldyear-Anchor" v-if=" content=='actOld'">
+                <div id="act_oldyear_Anchor" v-if=" content=='actOld'">
                     <a href="#">
                         <span>2018</span><img src="./img/activity/yearbutton.png">
                     </a>
@@ -168,8 +166,8 @@
                     </a>
                 </div>
 
-                <div id="countdown" v-if=" content=='actNow'">
-                    <p class="forget">
+                <div id="act_countdown" v-if=" content=='actNow'">
+                    <p>
                         Activity end time countdown
                     </p>
                     <div v-if="distance>0">
@@ -193,7 +191,7 @@
 
                 </div>
 
-                <div id="act-carouselSelect">
+                <div id="act_carouselSelect">
                     <div @click.prevent="changeBanner(0),isActive =0" :class=" {btncolor:isActive==0}">
                     </div>
                     <div @click.prevent="changeBanner(1),isActive =1" :class=" {btncolor:isActive==1}">
@@ -202,7 +200,7 @@
                     </div>
                 </div>
 
-                <div id="act-carousel">
+                <div id="act_carousel">
                     <transition name="fade">
                         <img :src=" imageActive">
                     </transition>
@@ -216,10 +214,10 @@
         <component :is="content"></component>
         <script type="text/x-template" id="act-old">
             <div>
-             <article class="act-old-years " id="act-old-year2018">
-                 <div class="act-oldink"><img src="./img/activity/Splash-ink05.png" alt=""></div>
+             <article class="act_old_years " id="act_old_year2018">
+                 <div class="act_oldink"><img src="./img/activity/Splash-ink05.png" alt=""></div>
                  <div>
-                     <div class="act-year">2018</div>
+                     <div class="act_year">2018</div>
                      <h2>Information</h2>
                      <h3>Electronic dance music contest 2018</h3>
          
@@ -232,25 +230,25 @@
          
          
                      </p>
-                     <div class="act-oldVotes">
+                     <div class="act_oldVotes">
                          <h3>Votes</h3>
                          <span>4185415</span>
                      </div>
                  </div>
          
          
-                 <div class="act-oldposterbox">
+                 <div class="act_oldposterbox">
                      <div class="act-oldposter-linetop">
                          <img src="./img/activity/0.textline-top.svg" alt="">
                      </div>
-                     <div class="act-oldposter">
+                     <div class="act_oldposter">
                          <img src="./img/activity/2018-poster.png" alt="">
                      </div>
          
-                     <div class="act-oldSplash-ink">
+                     <div class="act_oldSplash-ink">
                          <img src="./img/activity/Splash-ink02.png" alt="">
                      </div>
-                     <div class="act-oldposter-linebotom">
+                     <div class="act_oldposter-linebotom">
                          <img src="./img/activity/0.textline-bottom.svg ">
                      </div>
          
@@ -258,17 +256,17 @@
          
          
              </article>
-             <section class="act-oldsongbox wrapper">
-                 <div class="act-oldTop">
+             <section class="act_oldsongbox wrapper">
+                 <div class="act_oldTop">
                      <h3>TOP 3</h3>
                      <div>
                          <p >Votes <span>2458</span></p>
                          <div>
                              <img src="./img/activity/collction-img/9tRTEPCMeYxqdFHAqf3FfA.jpg" alt="">
-                            <div class="act-old-play">
-                                <img class="act-play" src="./img/activity/play-collection.png">
+                            <div class="act_old-play">
+                                <img  src="./img/activity/play-collection.png">
                             </div>
-                            <div class="act-old-hear1"><img src="./img/activity/grayheart.png" alt=""></div>
+                            <div class="act_old-hear1"><img src="./img/activity/grayheart.png" alt=""></div>
                         </div>
                          <h4>
                              'If I Had A Heart'
@@ -281,10 +279,10 @@
                         <p >Votes <span>2458</span></p>
                         <div>
                             <img src="./img/activity/collction-img/9tRTEPCMeYxqdFHAqf3FfA.jpg" alt="">
-                           <div class="act-old-play">
-                               <img class="act-play" src="./img/activity/play-collection.png">
+                           <div class="act_old-play">
+                               <img  src="./img/activity/play-collection.png">
                            </div>
-                           <div class="act-old-hear1"><img src="./img/activity/grayheart.png" alt=""></div>
+                           <div class="act_old-hear1"><img src="./img/activity/grayheart.png" alt=""></div>
                        </div>
                         <h4>
                             'If I Had A Heart'
@@ -297,10 +295,10 @@
                         <p >Votes <span>2458</span></p>
                         <div>
                             <img src="./img/activity/collction-img/9tRTEPCMeYxqdFHAqf3FfA.jpg" alt="">
-                           <div class="act-old-play">
-                               <img class="act-play" src="./img/activity/play-collection.png">
+                           <div class="act_old-play">
+                               <img  src="./img/activity/play-collection.png">
                            </div>
-                           <div class="act-old-hear1"><img src="./img/activity/grayheart.png" alt=""></div>
+                           <div class="act_old-hear1"><img src="./img/activity/grayheart.png" alt=""></div>
                        </div>
                         <h4>
                             'If I Had A Heart'
@@ -310,19 +308,18 @@
                         </h4>
                     </div>
                     
-                    
                  </div>
-                 <div class="act-oldAll">
+                 <div class="act_oldAll">
                      <h3> All contest music </h3>
              
                     <div>
                         <p >Votes <span>2458</span></p>
                         <div>
                             <img src="./img/activity/collction-img/9tRTEPCMeYxqdFHAqf3FfA.jpg" alt="">
-                            <div class="act-old-play">
-                                <img class="act-play" src="./img/activity/play-collection.png">
+                            <div class="act_old-play">
+                                <img src="./img/activity/play-collection.png">
                             </div>
-                           <div class="act-old-hear1"><img src="./img/activity/grayheart.png" alt=""></div>
+                           <div class="act_old-hear1"><img src="./img/activity/grayheart.png" alt=""></div>
                        
                        </div>
                         <h4>
@@ -336,10 +333,10 @@
                         <p >Votes <span>2458</span></p>
                         <div>
                             <img src="./img/activity/collction-img/9tRTEPCMeYxqdFHAqf3FfA.jpg" alt="">
-                            <div class="act-old-play">
-                                <img class="act-play" src="./img/activity/play-collection.png">
+                            <div class="act_old-play">
+                                <img src="./img/activity/play-collection.png">
                             </div>
-                           <div class="act-old-hear1"><img src="./img/activity/grayheart.png" alt=""></div>
+                           <div class="act_old-hear1"><img src="./img/activity/grayheart.png" alt=""></div>
                        
                        </div>
                         <h4>
@@ -353,10 +350,10 @@
                         <p >Votes <span>2458</span></p>
                         <div>
                             <img src="./img/activity/collction-img/9tRTEPCMeYxqdFHAqf3FfA.jpg" alt="">
-                            <div class="act-old-play">
-                                <img class="act-play" src="./img/activity/play-collection.png">
+                            <div class="act_old-play">
+                                <img src="./img/activity/play-collection.png">
                             </div>
-                           <div class="act-old-hear1"><img src="./img/activity/grayheart.png" alt=""></div>
+                           <div class="act_old-hear1"><img src="./img/activity/grayheart.png" alt=""></div>
                        
                        </div>
                         <h4>
@@ -370,10 +367,10 @@
                         <p >Votes <span>2458</span></p>
                         <div>
                             <img src="./img/activity/collction-img/9tRTEPCMeYxqdFHAqf3FfA.jpg" alt="">
-                            <div class="act-old-play">
-                                <img class="act-play" src="./img/activity/play-collection.png">
+                            <div class="act_old-play">
+                                <img src="./img/activity/play-collection.png">
                             </div>
-                           <div class="act-old-hear1"><img src="./img/activity/grayheart.png" alt=""></div>
+                           <div class="act_old-hear1"><img src="./img/activity/grayheart.png" alt=""></div>
                        
                        </div>
                         <h4>
@@ -387,10 +384,10 @@
                         <p >Votes <span>2458</span></p>
                         <div>
                             <img src="./img/activity/collction-img/9tRTEPCMeYxqdFHAqf3FfA.jpg" alt="">
-                            <div class="act-old-play">
-                                <img class="act-play" src="./img/activity/play-collection.png">
+                            <div class="act_old-play">
+                                <img src="./img/activity/play-collection.png">
                             </div>
-                           <div class="act-old-hear1"><img src="./img/activity/grayheart.png" alt=""></div>
+                           <div class="act_old-hear1"><img src="./img/activity/grayheart.png" alt=""></div>
                        
                        </div>
                         <h4>
@@ -404,10 +401,10 @@
                         <p >Votes <span>2458</span></p>
                         <div>
                             <img src="./img/activity/collction-img/9tRTEPCMeYxqdFHAqf3FfA.jpg" alt="">
-                            <div class="act-old-play">
-                                <img class="act-play" src="./img/activity/play-collection.png">
+                            <div class="act_old-play">
+                                <img src="./img/activity/play-collection.png">
                             </div>
-                           <div class="act-old-hear1"><img src="./img/activity/grayheart.png" alt=""></div>
+                           <div class="act_old-hear1"><img src="./img/activity/grayheart.png" alt=""></div>
                        
                        </div>
                         <h4>
@@ -421,10 +418,10 @@
                         <p >Votes <span>2458</span></p>
                         <div>
                             <img src="./img/activity/collction-img/9tRTEPCMeYxqdFHAqf3FfA.jpg" alt="">
-                            <div class="act-old-play">
-                                <img class="act-play" src="./img/activity/play-collection.png">
+                            <div class="act_old-play">
+                                <img src="./img/activity/play-collection.png">
                             </div>
-                           <div class="act-old-hear1"><img src="./img/activity/grayheart.png" alt=""></div>
+                           <div class="act_old-hear1"><img src="./img/activity/grayheart.png" alt=""></div>
                        
                        </div>
                         <h4>
@@ -438,10 +435,10 @@
                         <p >Votes <span>2458</span></p>
                         <div>
                             <img src="./img/activity/collction-img/9tRTEPCMeYxqdFHAqf3FfA.jpg" alt="">
-                            <div class="act-old-play">
-                                <img class="act-play" src="./img/activity/play-collection.png">
+                            <div class="act_old-play">
+                                <img src="./img/activity/play-collection.png">
                             </div>
-                           <div class="act-old-hear1"><img src="./img/activity/grayheart.png" alt=""></div>
+                           <div class="act_old-hear1"><img src="./img/activity/grayheart.png" alt=""></div>
                        
                        </div>
                         <h4>
@@ -451,13 +448,14 @@
                             </p>
                         </h4>
                     </div>
+                    
                    
                 </div> 
              </section>
-             <article class="act-old-years " id="act-old-year2017">
-                 <div class="act-oldink"><img src="./img/activity/Splash-ink06.png" alt=""></div>
+             <article class="act_old_years " id="act_old-year2017">
+                 <div class="act_oldink"><img src="./img/activity/Splash-ink06.png" alt=""></div>
                  <div>
-                     <div class="act-year">2017</div>
+                     <div class="act_year">2017</div>
                      <h2>Information</h2>
                      <h3>Electronic dance music contest 2017</h3>
          
@@ -470,25 +468,25 @@
          
          
                      </p>
-                     <div class="act-oldVotes">
+                     <div class="act_oldVotes">
                          <h3>Votes</h3>
                          <span>4185415</span>
                      </div>
                  </div>
          
          
-                 <div class="act-oldposterbox">
-                     <div class="act-oldposter-linetop">
+                 <div class="act_oldposterbox">
+                     <div class="act_oldposter-linetop">
                          <img src="./img/activity/0.textline-top.svg" alt="">
                      </div>
-                     <div class="act-oldposter">
+                     <div class="act_oldposter">
                          <img src="./img/activity/2017-poster.png" alt="">
                      </div>
          
-                     <div class="act-oldSplash-ink">
+                     <div class="act_oldSplash-ink">
                          <img src="./img/activity/Splash-ink02.png" alt="">
                      </div>
-                     <div class="act-oldposter-linebotom">
+                     <div class="act_oldposter-linebotom">
                          <img src="./img/activity/0.textline-bottom.svg ">
                      </div>
          
@@ -496,17 +494,18 @@
          
          
              </article>
-             <section class="act-oldsongbox wrapper">
-                <div class="act-oldTop">
+             <section class="act_oldsongbox wrapper">
+                <div class="act_oldTop">
                     <h3>TOP 3</h3>
                     <div>
                         <p >Votes <span>2458</span></p>
                         <div>
                             <img src="./img/activity/collction-img/9tRTEPCMeYxqdFHAqf3FfA.jpg" alt="">
-                           <div class="act-old-play">
-                               <img class="act-play" src="./img/activity/play-collection.png">
-                           </div>
-                           <div class="act-old-hear1"><img src="./img/activity/grayheart.png" alt=""></div>
+                            <div class="act_old-play">
+                                <img src="./img/activity/play-collection.png">
+                            </div>
+                           <div class="act_old-hear1"><img src="./img/activity/grayheart.png" alt=""></div>
+                       
                        </div>
                         <h4>
                             'If I Had A Heart'
@@ -516,162 +515,13 @@
                         </h4>
                     </div>
                     <div>
-                       <p >Votes <span>2458</span></p>
-                       <div>
-                           <img src="./img/activity/collction-img/9tRTEPCMeYxqdFHAqf3FfA.jpg" alt="">
-                          <div class="act-old-play">
-                              <img class="act-play" src="./img/activity/play-collection.png">
-                          </div>
-                          <div class="act-old-hear1"><img src="./img/activity/grayheart.png" alt=""></div>
-                      </div>
-                       <h4>
-                           'If I Had A Heart'
-                           <p>
-                               Bob
-                           </p>
-                       </h4>
-                   </div>
-                   <div>
-                       <p >Votes <span>2458</span></p>
-                       <div>
-                           <img src="./img/activity/collction-img/9tRTEPCMeYxqdFHAqf3FfA.jpg" alt="">
-                          <div class="act-old-play">
-                              <img class="act-play" src="./img/activity/play-collection.png">
-                          </div>
-                          <div class="act-old-hear1"><img src="./img/activity/grayheart.png" alt=""></div>
-                      </div>
-                       <h4>
-                           'If I Had A Heart'
-                           <p>
-                               Bob
-                           </p>
-                       </h4>
-                   </div>
-                   
-                   
-                </div>
-                 <div class="act-oldAll">
-                     <h3> All contest music </h3>
-                     <div>
                         <p >Votes <span>2458</span></p>
                         <div>
                             <img src="./img/activity/collction-img/9tRTEPCMeYxqdFHAqf3FfA.jpg" alt="">
-                            <div class="act-old-play">
-                                <img class="act-play" src="./img/activity/play-collection.png">
+                            <div class="act_old-play">
+                                <img src="./img/activity/play-collection.png">
                             </div>
-                           <div class="act-old-hear1"><img src="./img/activity/grayheart.png" alt=""></div>
-                       
-                       </div>
-                        <h4>
-                            'If I Had A Heart'
-                            <p>
-                                Bob
-                            </p>
-                        </h4>
-                    </div><div>
-                        <p >Votes <span>2458</span></p>
-                        <div>
-                            <img src="./img/activity/collction-img/9tRTEPCMeYxqdFHAqf3FfA.jpg" alt="">
-                            <div class="act-old-play">
-                                <img class="act-play" src="./img/activity/play-collection.png">
-                            </div>
-                           <div class="act-old-hear1"><img src="./img/activity/grayheart.png" alt=""></div>
-                       
-                       </div>
-                        <h4>
-                            'If I Had A Heart'
-                            <p>
-                                Bob
-                            </p>
-                        </h4>
-                    </div><div>
-                        <p >Votes <span>2458</span></p>
-                        <div>
-                            <img src="./img/activity/collction-img/9tRTEPCMeYxqdFHAqf3FfA.jpg" alt="">
-                            <div class="act-old-play">
-                                <img class="act-play" src="./img/activity/play-collection.png">
-                            </div>
-                           <div class="act-old-hear1"><img src="./img/activity/grayheart.png" alt=""></div>
-                       
-                       </div>
-                        <h4>
-                            'If I Had A Heart'
-                            <p>
-                                Bob
-                            </p>
-                        </h4>
-                    </div><div>
-                        <p >Votes <span>2458</span></p>
-                        <div>
-                            <img src="./img/activity/collction-img/9tRTEPCMeYxqdFHAqf3FfA.jpg" alt="">
-                            <div class="act-old-play">
-                                <img class="act-play" src="./img/activity/play-collection.png">
-                            </div>
-                           <div class="act-old-hear1"><img src="./img/activity/grayheart.png" alt=""></div>
-                       
-                       </div>
-                        <h4>
-                            'If I Had A Heart'
-                            <p>
-                                Bob
-                            </p>
-                        </h4>
-                    </div><div>
-                        <p >Votes <span>2458</span></p>
-                        <div>
-                            <img src="./img/activity/collction-img/9tRTEPCMeYxqdFHAqf3FfA.jpg" alt="">
-                            <div class="act-old-play">
-                                <img class="act-play" src="./img/activity/play-collection.png">
-                            </div>
-                           <div class="act-old-hear1"><img src="./img/activity/grayheart.png" alt=""></div>
-                       
-                       </div>
-                        <h4>
-                            'If I Had A Heart'
-                            <p>
-                                Bob
-                            </p>
-                        </h4>
-                    </div><div>
-                        <p >Votes <span>2458</span></p>
-                        <div>
-                            <img src="./img/activity/collction-img/9tRTEPCMeYxqdFHAqf3FfA.jpg" alt="">
-                            <div class="act-old-play">
-                                <img class="act-play" src="./img/activity/play-collection.png">
-                            </div>
-                           <div class="act-old-hear1"><img src="./img/activity/grayheart.png" alt=""></div>
-                       
-                       </div>
-                        <h4>
-                            'If I Had A Heart'
-                            <p>
-                                Bob
-                            </p>
-                        </h4>
-                    </div><div>
-                        <p >Votes <span>2458</span></p>
-                        <div>
-                            <img src="./img/activity/collction-img/9tRTEPCMeYxqdFHAqf3FfA.jpg" alt="">
-                            <div class="act-old-play">
-                                <img class="act-play" src="./img/activity/play-collection.png">
-                            </div>
-                           <div class="act-old-hear1"><img src="./img/activity/grayheart.png" alt=""></div>
-                       
-                       </div>
-                        <h4>
-                            'If I Had A Heart'
-                            <p>
-                                Bob
-                            </p>
-                        </h4>
-                    </div><div>
-                        <p >Votes <span>2458</span></p>
-                        <div>
-                            <img src="./img/activity/collction-img/9tRTEPCMeYxqdFHAqf3FfA.jpg" alt="">
-                            <div class="act-old-play">
-                                <img class="act-play" src="./img/activity/play-collection.png">
-                            </div>
-                           <div class="act-old-hear1"><img src="./img/activity/grayheart.png" alt=""></div>
+                           <div class="act_old-hear1"><img src="./img/activity/grayheart.png" alt=""></div>
                        
                        </div>
                         <h4>
@@ -681,7 +531,163 @@
                             </p>
                         </h4>
                     </div>
-         
+                    <div>
+                        <p >Votes <span>2458</span></p>
+                        <div>
+                            <img src="./img/activity/collction-img/9tRTEPCMeYxqdFHAqf3FfA.jpg" alt="">
+                            <div class="act_old-play">
+                                <img src="./img/activity/play-collection.png">
+                            </div>
+                           <div class="act_old-hear1"><img src="./img/activity/grayheart.png" alt=""></div>
+                       
+                       </div>
+                        <h4>
+                            'If I Had A Heart'
+                            <p>
+                                Bob
+                            </p>
+                        </h4>
+                    </div>
+                   
+                </div>
+                 <div class="act_oldAll">
+                     <h3> All contest music </h3>
+                     <div>
+                        <p >Votes <span>2458</span></p>
+                        <div>
+                            <img src="./img/activity/collction-img/9tRTEPCMeYxqdFHAqf3FfA.jpg" alt="">
+                            <div class="act_old-play">
+                                <img src="./img/activity/play-collection.png">
+                            </div>
+                           <div class="act_old-hear1"><img src="./img/activity/grayheart.png" alt=""></div>
+                       
+                       </div>
+                        <h4>
+                            'If I Had A Heart'
+                            <p>
+                                Bob
+                            </p>
+                        </h4>
+                    </div>
+                    <div>
+                        <p >Votes <span>2458</span></p>
+                        <div>
+                            <img src="./img/activity/collction-img/9tRTEPCMeYxqdFHAqf3FfA.jpg" alt="">
+                            <div class="act_old-play">
+                                <img src="./img/activity/play-collection.png">
+                            </div>
+                           <div class="act_old-hear1"><img src="./img/activity/grayheart.png" alt=""></div>
+                       
+                       </div>
+                        <h4>
+                            'If I Had A Heart'
+                            <p>
+                                Bob
+                            </p>
+                        </h4>
+                    </div>
+                    <div>
+                        <p >Votes <span>2458</span></p>
+                        <div>
+                            <img src="./img/activity/collction-img/9tRTEPCMeYxqdFHAqf3FfA.jpg" alt="">
+                            <div class="act_old-play">
+                                <img src="./img/activity/play-collection.png">
+                            </div>
+                           <div class="act_old-hear1"><img src="./img/activity/grayheart.png" alt=""></div>
+                       
+                       </div>
+                        <h4>
+                            'If I Had A Heart'
+                            <p>
+                                Bob
+                            </p>
+                        </h4>
+                    </div>
+                    <div>
+                        <p >Votes <span>2458</span></p>
+                        <div>
+                            <img src="./img/activity/collction-img/9tRTEPCMeYxqdFHAqf3FfA.jpg" alt="">
+                            <div class="act_old-play">
+                                <img src="./img/activity/play-collection.png">
+                            </div>
+                           <div class="act_old-hear1"><img src="./img/activity/grayheart.png" alt=""></div>
+                       
+                       </div>
+                        <h4>
+                            'If I Had A Heart'
+                            <p>
+                                Bob
+                            </p>
+                        </h4>
+                    </div>
+                    <div>
+                        <p >Votes <span>2458</span></p>
+                        <div>
+                            <img src="./img/activity/collction-img/9tRTEPCMeYxqdFHAqf3FfA.jpg" alt="">
+                            <div class="act_old-play">
+                                <img src="./img/activity/play-collection.png">
+                            </div>
+                           <div class="act_old-hear1"><img src="./img/activity/grayheart.png" alt=""></div>
+                       
+                       </div>
+                        <h4>
+                            'If I Had A Heart'
+                            <p>
+                                Bob
+                            </p>
+                        </h4>
+                    </div>
+                    <div>
+                        <p >Votes <span>2458</span></p>
+                        <div>
+                            <img src="./img/activity/collction-img/9tRTEPCMeYxqdFHAqf3FfA.jpg" alt="">
+                            <div class="act_old-play">
+                                <img src="./img/activity/play-collection.png">
+                            </div>
+                           <div class="act_old-hear1"><img src="./img/activity/grayheart.png" alt=""></div>
+                       
+                       </div>
+                        <h4>
+                            'If I Had A Heart'
+                            <p>
+                                Bob
+                            </p>
+                        </h4>
+                    </div>
+                    <div>
+                        <p >Votes <span>2458</span></p>
+                        <div>
+                            <img src="./img/activity/collction-img/9tRTEPCMeYxqdFHAqf3FfA.jpg" alt="">
+                            <div class="act_old-play">
+                                <img src="./img/activity/play-collection.png">
+                            </div>
+                           <div class="act_old-hear1"><img src="./img/activity/grayheart.png" alt=""></div>
+                       
+                       </div>
+                        <h4>
+                            'If I Had A Heart'
+                            <p>
+                                Bob
+                            </p>
+                        </h4>
+                    </div>
+                    <div>
+                        <p >Votes <span>2458</span></p>
+                        <div>
+                            <img src="./img/activity/collction-img/9tRTEPCMeYxqdFHAqf3FfA.jpg" alt="">
+                            <div class="act_old-play">
+                                <img src="./img/activity/play-collection.png">
+                            </div>
+                           <div class="act_old-hear1"><img src="./img/activity/grayheart.png" alt=""></div>
+                       
+                       </div>
+                        <h4>
+                            'If I Had A Heart'
+                            <p>
+                                Bob
+                            </p>
+                        </h4>
+                    </div>
                  </div>
          
          
@@ -697,7 +703,7 @@
 
         <script type="text/x-template" id="act-now">
             <div>
-                 <article class="act-now-year" id="Now-Introduction">
+                 <article class="act_now-year" id="act_Now-Introduction">
      
                      <div>
                          <h2>Introduction</h2>
@@ -718,18 +724,18 @@
                      </div>
              
              
-                     <div class="act-nowposterbox">
-                         <div class="act-nowposter-linetop">
+                     <div class="act_nowposterbox">
+                         <div class="act_nowposter-linetop">
                              <img src="./img/activity/0.textline-top.svg" alt="">
                          </div>
-                         <div class="act-nowposter">
+                         <div class="act_nowposter">
                              <img src="./img/activity/rock-poster.png" alt="">
                          </div>
              
-                         <div class="act-nowSplash-ink">
+                         <div class="act_nowSplash-ink">
                              <img src="./img/activity/Splash-ink02.png" alt="">
                          </div>
-                         <div class="act-nowposter-linebotom">
+                         <div class="act_nowposter-linebotom">
                              <img src="./img/activity/0.textline-bottom.svg ">
                          </div>
              
@@ -739,101 +745,122 @@
              
                  </article>
              
-                 <section  id="Now-Sign-up">
+                 <section  id="act_Now-Sign-up">
                    <h2>Sign up</h2>
                    
                    
                     
                     <div>
-                        <div class="now-marry">
+                        <div class="act_now-marry">
                         <img src="./img/activity/mary.png" alt=""> 
                          </div>
-                        <div class="now-marry-ink">
+                        <div class="act_now-marry-ink">
                         <img src="./img/activity/Splash-ink01.png" alt="">
                          </div>    
                     </div>
                     
-                   <article  class="fromPageShow">
+                   <article  v-if="formContent==0">
                        <div >
                           <h3>Qualifications</h3>
                           <p>American Idol is an annual American singing competition 
                              which began its first season in June 11, 2002. 
                              Part of the Idol franchise, it originated from the UK reality program Pop Idol.
                          </p>
-                          <button type="button">GO</button>
+                          <button type="button" @click="NextFormPage(1)">GO</button>
                        </div>
                    </article>
                   
-                   <article>
+                   <article  v-if="formContent==1">
                     <div >
                        <h3>Choose your contest song!</h3>
                       
                          <p>  
-                             <label for="SignUp-UpLoadSong">Upload from my local</label>
-                            <input type="file" id="SignUp-UpLoadSong" style="display:none"> 
+                             <label  class="act_SignUPButton"for="act_SignUp-UpLoadSong">Upload from my local</label>
+                            <input type="file" id="act_SignUp-UpLoadSong" style="display:none"> 
                         </p>
                          <p>
-                            <label for="SignUp-selectSong">  Select from my music list</label>
+                            <label class="act_SignUPButton" for="act_SignUp-selectSong">  Select from my music list</label>
                             <br>   
-                            <select id="SignUp-selectSong" >
+                            <select id="act_SignUp-selectSong" >
                                <option value="">1.cat</option>
                                <option value="">2.hollo</option>
                               </select>
                         </p>
                      
-                       <button type="button" >Back</button>
-                       <button type="button"  >Next </button>
+                       <button type="button"  @click="BackFormPage(0)">Back</button>
+                       <button type="button"  @click="NextFormPage(2)">Next </button>
                     </div>
                     
                 </article>
                
-                 <article>
+                 <article v-if="formContent==2">
                     <div >
                        <h3>Fill in your song information!</h3>
-                      
-                          <p>  
-                              <h4>Song-name</h4>
-                              <input type="text" name="" id="song-name">
-                         
-                              <h4>Song-information</h4>
-                              <textarea name="" id="song-information" cols="30" rows="10" ></textarea>
-                         
-                              <h4>Song-img</h4>
-                              <label for="SignUp-Song-img">Upload The album cover</label>
-                              <input type="file" id="SignUp-Song-img" style="display:none">
-                              <div><img src="" alt=""></div>
-                            </p>
+                     <p>
+                        <h4>Song-name:</h4>
+                        <input type="text"  
+                         id="act_Sign-up-song-name"
+                         maxlength="20"
+                         v-model="SongName" 
+                         placeholder="Your song name!">
+                   
+                        <h4>Song-information:</h4>
+                        <textarea  
+                        id="act_Sign-up-song-information" 
+                        cols="40" rows="5"
+                        maxlength="150"
+                         v-model="SongInformation"
+                         placeholder="Introduce your song!"></textarea>
+                   
+                        <h4>Song-img:</h4>
+                       
+                        <label class="act_SignUPButton2" 
+                        for="act_SignUp-Song-img">Upload The album cover</label>
+                        <br>
+                       
+                        <input type="file" id="act_SignUp-Song-img" 
+                        style="display:none" @change="changeSignUpImg">
+                       
+                        <div class="act_showSignUpImg">
+                            <img :src="SignUpImg" alt="">
+                          </div>
+                     </p>
                                 
-                      <button type="button" >Back</button>
-                      <button type="button" >Next </button>
+                      <button type="button"  @click="BackFormPage(1)">Back</button>
+                      <button type="button" @click="NextFormPage(3)">Next </button>
                     </div>
                     
                 </article> 
-                <article >
+                <article  v-if="formContent==3">
                     <div >
                        <h3>Fill in your song information!</h3>   
                        <p>
-                         <h4>Member-name:
-                             <span></span>
-                            </h4>
-                         <h4>Menber-email:
-                             <span></span>
-                            </h4>
-                        <h4>Song-img</h4>
-                        <div><img src="" alt=""></div>
+                         <h4>Member-name: </h4>
+                         <p>{{MemberName}}</p>
+                           
+                         <h4>Menber-email:</h4>
+                         <p>{{MenberEmail}}</p>
+                          
+                           
+                          <h4>Song-img:</h4>
+                          <div><img :src="SignUpImg" alt=""></div>
+
+                        <h4>Song-name:</h4>
+                        <p>{{SongName}}</p>
+                      
+                        <h4>Song-information:</h4>
+                        <p>{{SongInformation}}</p> 
                         
-                        <h4>Song-name</h4>
-                        <div></div>
-                        
-                        <h4>Song-information</h4>
-                        <div></div>
-                       </p>             
-                      <button type="button">Back</button>
-                     <input type="submit" value="Comfirm">
+                        <h4>Song-URL:</h4>      
+                        <p>{{SigbUPSongURL}}</p>
+                       </p>  
+                      
+                      <button type="button"  @click="BackFormPage(2)">Back</button>
+                     <input type="submit" value="Comfirm" @click="NextFormPage(4)" class="signUpComfirm">
                     </div>
                     
                 </article> 
-                <article >
+                <article  v-if="formContent==4">
                     <div >
                        <h3>Qualifications</h3>
                        <p>American Idol is an annual American singing competition 
@@ -845,9 +872,9 @@
                 </article>
              
                  </section>
-                 <section id="Now-Vote"> 
+                 <section id="act_Now-Vote"> 
                     
-                     <article class="Now-Vote-content">
+                     <article class="act_Now-Vote-content">
                        <img src="./img/activity/Splash-ink07.png" alt="">
                        <h2>Vote</h2>
                        <h3>Rules</h3>
@@ -873,12 +900,12 @@
                            
                              <div>
                                  <img src="./img/activity/collction-img/9tRTEPCMeYxqdFHAqf3FfA.jpg" alt="">
-                                 <div class="act-old-play">
+                                 <div class="act_old-play">
                                     <img class="act-play" src="./img/activity/play-collection.png">
                                 </div>
-                                <div class="act-old-hear1"><img src="./img/activity/grayheart.png" alt=""></div>
+                                <div class="act_old-hear1"><img src="./img/activity/grayheart.png" alt=""></div>
 
-                                </div>
+                            </div>
                              <h4>
                                  'If I Had A Heart'
                                  <p>
@@ -895,12 +922,12 @@
                           
                             <div>
                                 <img src="./img/activity/collction-img/9tRTEPCMeYxqdFHAqf3FfA.jpg" alt="">
-                                <div class="act-old-play">
+                                <div class="act_old-play">
                                    <img class="act-play" src="./img/activity/play-collection.png">
                                </div>
-                               <div class="act-old-hear1"><img src="./img/activity/grayheart.png" alt=""></div>
+                               <div class="act_old-hear1"><img src="./img/activity/grayheart.png" alt=""></div>
 
-                               </div>
+                           </div>
                             <h4>
                                 'If I Had A Heart'
                                 <p>
@@ -917,12 +944,12 @@
                           
                             <div>
                                 <img src="./img/activity/collction-img/9tRTEPCMeYxqdFHAqf3FfA.jpg" alt="">
-                                <div class="act-old-play">
+                                <div class="act_old-play">
                                    <img class="act-play" src="./img/activity/play-collection.png">
                                </div>
-                               <div class="act-old-hear1"><img src="./img/activity/grayheart.png" alt=""></div>
+                               <div class="act_old-hear1"><img src="./img/activity/grayheart.png" alt=""></div>
 
-                               </div>
+                           </div>
                             <h4>
                                 'If I Had A Heart'
                                 <p>
@@ -939,12 +966,12 @@
                           
                             <div>
                                 <img src="./img/activity/collction-img/9tRTEPCMeYxqdFHAqf3FfA.jpg" alt="">
-                                <div class="act-old-play">
+                                <div class="act_old-play">
                                    <img class="act-play" src="./img/activity/play-collection.png">
                                </div>
-                               <div class="act-old-hear1"><img src="./img/activity/grayheart.png" alt=""></div>
+                               <div class="act_old-hear1"><img src="./img/activity/grayheart.png" alt=""></div>
 
-                               </div>
+                           </div>
                             <h4>
                                 'If I Had A Heart'
                                 <p>
@@ -961,34 +988,12 @@
                           
                             <div>
                                 <img src="./img/activity/collction-img/9tRTEPCMeYxqdFHAqf3FfA.jpg" alt="">
-                                <div class="act-old-play">
+                                <div class="act_old-play">
                                    <img class="act-play" src="./img/activity/play-collection.png">
                                </div>
-                               <div class="act-old-hear1"><img src="./img/activity/grayheart.png" alt=""></div>
+                               <div class="act_old-hear1"><img src="./img/activity/grayheart.png" alt=""></div>
 
-                               </div>
-                            <h4>
-                                'If I Had A Heart''
-                                <p>
-                                    Bob
-                                </p>
-                            </h4>
-                        </div>
-                        <div>  
-                            <button type="button">Vote</button>
-                            <p>
-                                Votes 
-                                <span>2458</span>
-                            </p> 
-                          
-                            <div>
-                                <img src="./img/activity/collction-img/9tRTEPCMeYxqdFHAqf3FfA.jpg" alt="">
-                                <div class="act-old-play">
-                                   <img class="act-play" src="./img/activity/play-collection.png">
-                               </div>
-                               <div class="act-old-hear1"><img src="./img/activity/grayheart.png" alt=""></div>
-
-                               </div>
+                           </div>
                             <h4>
                                 'If I Had A Heart'
                                 <p>
@@ -1005,12 +1010,12 @@
                           
                             <div>
                                 <img src="./img/activity/collction-img/9tRTEPCMeYxqdFHAqf3FfA.jpg" alt="">
-                                <div class="act-old-play">
+                                <div class="act_old-play">
                                    <img class="act-play" src="./img/activity/play-collection.png">
                                </div>
-                               <div class="act-old-hear1"><img src="./img/activity/grayheart.png" alt=""></div>
+                               <div class="act_old-hear1"><img src="./img/activity/grayheart.png" alt=""></div>
 
-                               </div>
+                           </div>
                             <h4>
                                 'If I Had A Heart'
                                 <p>
@@ -1027,12 +1032,12 @@
                           
                             <div>
                                 <img src="./img/activity/collction-img/9tRTEPCMeYxqdFHAqf3FfA.jpg" alt="">
-                                <div class="act-old-play">
+                                <div class="act_old-play">
                                    <img class="act-play" src="./img/activity/play-collection.png">
                                </div>
-                               <div class="act-old-hear1"><img src="./img/activity/grayheart.png" alt=""></div>
+                               <div class="act_old-hear1"><img src="./img/activity/grayheart.png" alt=""></div>
 
-                               </div>
+                           </div>
                             <h4>
                                 'If I Had A Heart'
                                 <p>
@@ -1040,6 +1045,29 @@
                                 </p>
                             </h4>
                         </div>
+                        <div>  
+                            <button type="button">Vote</button>
+                            <p>
+                                Votes 
+                                <span>2458</span>
+                            </p> 
+                          
+                            <div>
+                                <img src="./img/activity/collction-img/9tRTEPCMeYxqdFHAqf3FfA.jpg" alt="">
+                                <div class="act_old-play">
+                                   <img class="act-play" src="./img/activity/play-collection.png">
+                               </div>
+                               <div class="act_old-hear1"><img src="./img/activity/grayheart.png" alt=""></div>
+
+                           </div>
+                            <h4>
+                                'If I Had A Heart'
+                                <p>
+                                    Bob
+                                </p>
+                            </h4>
+                        </div>
+                       
                          
                       
                      </section>
@@ -1064,6 +1092,35 @@
     <script>
         Vue.component('actNow', {
             template: '#act-now',
+
+            data: function () {
+                return {
+                    formContent: 0,
+                    MemberName: "Bob",
+                    MenberEmail: "Bob@gmail.com",
+                    SongName: "",
+                    SongInformation: "",
+                    SignUpImg: "",
+                    SigbUPSongURL:"",
+                }
+
+            },
+            methods: {
+                NextFormPage(Index) {
+                    this.formContent = Index;
+                },
+                BackFormPage(Index) {
+                    this.formContent = Index;
+                },
+                changeSignUpImg(imgfile) {
+                    reader = new FileReader();
+                    reader.readAsDataURL(imgfile);
+                    this.imgfile = reader.result;
+                    vml.SignUpImg = this.imgfile;
+                }
+            }
+
+
 
         });
 
@@ -1098,23 +1155,12 @@
                 imageActive: `./img/activity/banner-activ.jpg`,
                 isActive: 0,
                 currentIndex: 1,
-              
-               
-               
-
-                // MemberName:'Bob',
-                // MemberEmail:'djfijdsk@gmail.com',
-                // SongName:'songname',
-                // SongInformation:'SongInformation',
-                // SongImgURL:new FileReader(),
-                // signUpFrom:[
-                //        {MemberName:'Bob'},
-                //        {MemberEmail:'djfijdsk@gmail.com'},
-                //        {SongName:'songname'},
-                //        {SongInformation:'SongInformation'},
-                //        {imgURL:'The album cover'},
-                // ],
-
+                MemberName: "Bob",
+                MenberEmail: "Bob@gmail.com",
+                SongName: "",
+                SongInformation: "",
+                SignUpImg: "",
+                SigbUPSongURL:"",
 
             },
             computed: {
@@ -1145,7 +1191,6 @@
 
                     }
                 },
-
 
 
             },

@@ -14,6 +14,7 @@ body {
   font-family: "Lucida Sans Unicode", Geneva, Verdana, sans-serif;
   background: #fafaf1;
   color: #333;
+  overflow-x: hidden;
 }
 
 .flexbox {
@@ -27,60 +28,9 @@ a {
   color: #333;
 }
 
-h1,
-h2,
-h3,
-h4,
-h5,
-h6,
-p {
-  margin: 0;
-  padding: 0;
-}
-
-h1 {
-  /*60px*/
-  font-size: 3rem;
-}
-
-h2 {
-  /* 40px*/
-  font-size: 2rem;
-  /*副標的h2 font-weight:bold*/
-}
-
-h3 {
-  /*30px*/
-  font-size: 1.5rem;
-}
-
-h4 {
-  /*24px*/
-  font-size: 1.2rem;
-}
-
-p {
-  /*內文 20px*/
-  font-size: 1rem;
-}
-
-p.bigSmall {
-  /*大小 16px*/
-  font-size: 0.8rem;
-}
-
-p.doubleSmall {
-  /*小小 14px*/
-  font-size: 0.7rem;
-}
-
-p.forget {
-  /*旺季 12px*/
-  font-size: 0.6rem;
-}
-
 header {
   height: 300px;
+  text-align: center;
   padding: 120px 0;
 }
 
@@ -106,6 +56,12 @@ header {
 }
 
 /*button mixin*/
+@media all and (max-width: 768px) {
+  header img {
+    height: 76px;
+  }
+}
+
 #app {
   margin: 0;
   position: fixed;
@@ -114,19 +70,19 @@ header {
   z-index: 999;
 }
 
-#radioBg {
+#act_radioBg {
   position: relative;
   max-width: 1400px;
   height: 650px;
   margin: 180px auto 50px 0px;
 }
 
-#radioBg img {
+#act_radioBg img {
   width: 100%;
   height: 100%;
 }
 
-#radioBg #act-title {
+#act_radioBg #act_title {
   margin: 0 auto;
   text-align: center;
   position: absolute;
@@ -137,7 +93,7 @@ header {
   z-index: 1;
 }
 
-#radioBg h2 {
+#act_radioBg h2 {
   margin: 0;
   display: inline-block;
   max-width: 550px;
@@ -145,9 +101,10 @@ header {
   top: 13%;
   left: 18%;
   z-index: 1;
+  font-size: 2rem;
 }
 
-#radioBg #act-sectionAnchor {
+#act_radioBg #act_sectionAnchor {
   display: inline-block;
   width: 800px;
   height: 75px;
@@ -157,7 +114,7 @@ header {
   z-index: 1;
 }
 
-#radioBg #act-sectionAnchor a {
+#act_radioBg #act_sectionAnchor a {
   display: inline-block;
   width: 200px;
   margin-left: 50px;
@@ -166,12 +123,12 @@ header {
   position: relative;
 }
 
-#radioBg #act-sectionAnchor a img {
+#act_radioBg #act_sectionAnchor a img {
   width: 100%;
   height: 100%;
 }
 
-#radioBg #act-sectionAnchor a span {
+#act_radioBg #act_sectionAnchor a span {
   color: #333;
   font-size: 0.7rem;
   position: absolute;
@@ -182,31 +139,31 @@ header {
           transform: translate(-50%, -50%);
 }
 
-#radioBg #act-oldyear-Anchor {
+#act_radioBg #act_oldyear_Anchor {
   position: absolute;
   right: -10%;
   bottom: 10%;
   width: 100px;
 }
 
-#radioBg #act-oldyear-Anchor a img {
+#act_radioBg #act_oldyear_Anchor a img {
   width: 30px;
   height: 30px;
 }
 
-#radioBg #act-oldyear-Anchor a span {
+#act_radioBg #act_oldyear_Anchor a span {
   font-size: 0.7rem;
   margin-right: 10px;
 }
 
-#actHeadBtn {
+#act_HeadBtn {
   position: absolute;
   top: 16%;
   right: 5%;
   z-index: 1;
 }
 
-#actHeadBtn div {
+#act_HeadBtn div {
   position: relative;
   margin: 0;
   width: 150px;
@@ -216,17 +173,17 @@ header {
   text-align: center;
 }
 
-#actHeadBtn div:hover {
+#act_HeadBtn div:hover {
   -webkit-transform: scale(1.1);
           transform: scale(1.1);
 }
 
-#actHeadBtn div img {
+#act_HeadBtn div img {
   width: 80%;
   height: 80%;
 }
 
-#actHeadBtn div span {
+#act_HeadBtn div span {
   position: absolute;
   top: 32%;
   left: 35%;
@@ -235,7 +192,7 @@ header {
   font-weight: bold;
 }
 
-#act-carousel {
+#act_carousel {
   width: 80%;
   height: 60%;
   max-width: 1200px;
@@ -247,12 +204,12 @@ header {
   overflow: hidden;
 }
 
-#act-carousel img {
+#act_carousel img {
   width: 100%;
   height: 100%;
 }
 
-#act-carouselSelect {
+#act_carouselSelect {
   width: 30px;
   height: 80px;
   position: absolute;
@@ -260,7 +217,7 @@ header {
   top: 60%;
 }
 
-#act-carouselSelect div {
+#act_carouselSelect div {
   width: 20px;
   height: 20px;
   border-radius: 50%;
@@ -272,11 +229,11 @@ header {
   opacity: 0.5;
 }
 
-#act-carouselSelect .btncolor {
+#act_carouselSelect .btncolor {
   opacity: 1;
 }
 
-#countdown {
+#act_countdown {
   display: block;
   width: 350px;
   height: 100px;
@@ -286,15 +243,17 @@ header {
   text-align: center;
 }
 
-#countdown p {
+#act_countdown p {
   vertical-align: bottom;
+  font-size: 0.6rem;
+  margin: 0;
 }
 
-#countdown div {
+#act_countdown div {
   margin: 0 auto;
 }
 
-#countdown div div {
+#act_countdown div div {
   display: inline-block;
   text-align: center;
   width: 70px;
@@ -302,21 +261,21 @@ header {
   margin: 5px;
 }
 
-#countdown div div p {
+#act_countdown div div p {
   margin: 0;
   padding: 0;
   font-size: 1.5rem;
   color: white;
 }
 
-#countdown div div span {
+#act_countdown div div span {
   font-size: 0.6rem;
   position: relative;
   top: -20px;
   color: #333;
 }
 
-.act-old-years {
+.act_old_years {
   position: relative;
   background-image: url(../img/activity/0.blackline.svg);
   height: 700px;
@@ -326,7 +285,7 @@ header {
   margin: 150px auto 0 auto;
 }
 
-.act-old-years .act-oldink {
+.act_old_years .act_oldink {
   position: absolute;
   top: -30%;
   left: -15%;
@@ -335,37 +294,51 @@ header {
   height: 400px;
 }
 
-.act-old-years .act-oldink img {
+.act_old_years .act_oldink img {
   width: 100%;
   height: 100%;
 }
 
-.act-old-years div {
+.act_old_years div {
   width: 40%;
 }
 
-.act-old-years div .act-year {
+.act_old_years div .act_year {
   font-size: 2.5rem;
   font-weight: bold;
   display: inline-block;
 }
 
-.act-old-years div p {
+.act_old_years div h2 {
+  font-size: 2rem;
+  margin: 0;
+}
+
+.act_old_years div h3 {
+  display: inline-block;
+  font-size: 1.5rem;
+  margin: 0;
+}
+
+.act_old_years div p {
   display: inline-block;
   max-width: 600px;
+  font-size: 1rem;
 }
 
-.act-old-years div .act-oldVotes h3 {
+.act_old_years div .act_oldVotes h3 {
   display: inline-block;
+  font-size: 1.5rem;
+  margin: 0;
 }
 
-.act-old-years div .act-oldVotes span {
+.act_old_years div .act_oldVotes span {
   font-size: 2.5rem;
   font-weight: bold;
   color: #333;
 }
 
-.act-old-years .act-oldposterbox {
+.act_old_years .act_oldposterbox {
   display: inline-block;
   position: absolute;
   height: 100%;
@@ -373,7 +346,7 @@ header {
   right: 0%;
 }
 
-.act-old-years .act-oldposterbox .act-oldposter {
+.act_old_years .act_oldposterbox .act_oldposter {
   width: 350px;
   height: 500px;
   position: absolute;
@@ -382,12 +355,12 @@ header {
   z-index: 2;
 }
 
-.act-old-years .act-oldposterbox .act-oldposter img {
+.act_old_years .act_oldposterbox .act_oldposter img {
   width: 100%;
   height: 100%;
 }
 
-.act-old-years .act-oldposterbox .act-oldSplash-ink {
+.act_old_years .act_oldposterbox .act_oldSplash-ink {
   position: absolute;
   bottom: -20%;
   left: -25%;
@@ -396,71 +369,82 @@ header {
   height: 600px;
 }
 
-.act-old-years .act-oldposterbox .act-oldSplash-ink img {
+.act_old_years .act_oldposterbox .act_oldSplash-ink img {
   width: 100%;
   height: 100%;
 }
 
-.act-old-years .act-oldposterbox .act-oldposter-linetop {
+.act_old_years .act_oldposterbox .act_oldposter-linetop {
   position: absolute;
   top: 10%;
 }
 
-.act-old-years .act-oldposterbox .act-oldposter-linebotom {
+.act_old_years .act_oldposterbox .act_oldposter-linebotom {
   position: absolute;
   bottom: -15%;
   right: -15%;
   z-index: 2;
 }
 
-.act-oldsongbox {
+.act_oldsongbox {
   margin-top: 75px;
   padding: 100px 135px;
   width: 1500px;
   margin: 50px auto 0 auto;
 }
 
-.act-oldsongbox .act-oldTop {
+.act_oldsongbox .act_oldTop {
   text-align: left;
   width: 100%;
   max-width: 1400px;
   padding: 100px 0 0 50px;
 }
 
-.act-oldsongbox .act-oldTop h3 {
-  margin-bottom: 30px;
-  margin-left: 20px;
+.act_oldsongbox .act_oldTop h3 {
+  font-size: 1.5rem;
+  margin: 0 0 30px 20px;
 }
 
-.act-oldsongbox .act-oldTop div {
+.act_oldsongbox .act_oldTop div {
   text-align: left;
   width: 30%;
   margin-left: 2%;
   display: inline-block;
 }
 
-.act-oldsongbox .act-oldTop div p {
+.act_oldsongbox .act_oldTop div h4 {
+  margin: 0;
+  font-size: 1.2rem;
+}
+
+.act_oldsongbox .act_oldTop div h4 p {
+  margin: 0;
+  font-size: 1rem;
+}
+
+.act_oldsongbox .act_oldTop div p {
   font-size: 0.6rem;
+  margin: 0 auto;
   margin-bottom: 10px;
 }
 
-.act-oldsongbox .act-oldTop div p span {
+.act_oldsongbox .act_oldTop div p span {
   font-size: 0.8rem;
 }
 
-.act-oldsongbox .act-oldTop div div {
+.act_oldsongbox .act_oldTop div div {
   width: 100%;
   margin: 0;
   position: relative;
 }
 
-.act-oldsongbox .act-oldTop div div:hover .act-old-play {
+.act_oldsongbox .act_oldTop div div:hover .act_old-play {
   display: block;
   cursor: pointer;
   z-index: 2;
 }
 
-.act-oldsongbox .act-oldTop div div .act-old-play {
+.act_oldsongbox .act_oldTop div div .act_old-play {
   width: 100px;
   height: 100px;
   text-align: center;
@@ -471,27 +455,27 @@ header {
   z-index: 2;
 }
 
-.act-oldsongbox .act-oldTop div div .act-old-play img {
+.act_oldsongbox .act_oldTop div div .act_old-play img {
   width: 100%;
   height: 100%;
 }
 
-.act-oldsongbox .act-oldTop div div img {
+.act_oldsongbox .act_oldTop div div img {
   width: 250px;
   height: 250px;
 }
 
-.act-oldsongbox .act-oldTop div .act-old-hear1 {
+.act_oldsongbox .act_oldTop div .act_old-hear1 {
   width: 25px;
   height: 25px;
 }
 
-.act-oldsongbox .act-oldTop div .act-old-hear1 img {
+.act_oldsongbox .act_oldTop div .act_old-hear1 img {
   width: 100%;
   height: 100%;
 }
 
-.act-oldAll {
+.act_oldAll {
   text-align: left;
   width: 100%;
   margin-top: 75px;
@@ -500,12 +484,12 @@ header {
   margin: 50px auto 0px auto;
 }
 
-.act-oldAll h3 {
-  margin-bottom: 30px;
-  margin-left: 50px;
+.act_oldAll h3 {
+  font-size: 1.5rem;
+  margin: 0 0 30px 20px;
 }
 
-.act-oldAll div {
+.act_oldAll div {
   text-align: left;
   width: 20%;
   margin-left: 3.5%;
@@ -513,28 +497,39 @@ header {
   display: inline-block;
 }
 
-.act-oldAll div p {
+.act_oldAll div h4 {
+  margin: 0;
+  font-size: 1.2rem;
+}
+
+.act_oldAll div h4 p {
+  margin: 0;
+  font-size: 1rem;
+}
+
+.act_oldAll div p {
   font-size: 0.6rem;
+  margin: 0 auto;
   margin-bottom: 10px;
 }
 
-.act-oldAll div p span {
+.act_oldAll div p span {
   font-size: 0.8rem;
 }
 
-.act-oldAll div div {
+.act_oldAll div div {
   width: 100%;
   margin: 0;
   position: relative;
 }
 
-.act-oldAll div div:hover .act-old-play {
+.act_oldAll div div:hover .act_old-play {
   display: block;
   cursor: pointer;
   z-index: 2;
 }
 
-.act-oldAll div div .act-old-play {
+.act_oldAll div div .act_old-play {
   width: 100px;
   height: 100px;
   text-align: center;
@@ -545,27 +540,27 @@ header {
   z-index: 2;
 }
 
-.act-oldAll div div .act-old-play img {
+.act_oldAll div div .act_old-play img {
   width: 100%;
   height: 100%;
 }
 
-.act-oldAll div div img {
+.act_oldAll div div img {
   width: 200px;
   height: 200px;
 }
 
-.act-oldAll div div .act-old-hear1 {
+.act_oldAll div div .act_old-hear1 {
   width: 25px;
   height: 25px;
 }
 
-.act-oldAll div div .act-old-hear1 img {
+.act_oldAll div div .act_old-hear1 img {
   width: 100%;
   height: 100%;
 }
 
-.act-now-year {
+.act_now-year {
   position: relative;
   height: 700px;
   max-width: 1400px;
@@ -574,22 +569,34 @@ header {
   margin: 150px auto 0 auto;
 }
 
-.act-now-year div {
+.act_now-year div {
   width: 50%;
 }
 
-.act-now-year div div {
+.act_now-year div h2 {
+  margin: 0;
+  font-size: 2rem;
+}
+
+.act_now-year div h3 {
+  margin: 0;
+  font-size: 1.5rem;
+}
+
+.act_now-year div div {
   margin: 20px 0;
   width: 70%;
   font-size: 2.5rem;
   line-height: 1;
 }
 
-.act-now-year div p {
+.act_now-year div p {
   width: 80%;
+  font-size: 1rem;
+  margin: 0 auto 20px 0;
 }
 
-.act-nowposterbox {
+.act_nowposterbox {
   display: inline-block;
   position: absolute;
   height: 100%;
@@ -597,7 +604,7 @@ header {
   right: 0%;
 }
 
-.act-nowposterbox .act-nowposter {
+.act_nowposterbox .act_nowposter {
   width: 350px;
   height: 450px;
   position: absolute;
@@ -607,12 +614,12 @@ header {
   margin: auto auto;
 }
 
-.act-nowposterbox .act-nowposter img {
+.act_nowposterbox .act_nowposter img {
   width: 100%;
   height: 100%;
 }
 
-.act-nowposterbox .act-nowSplash-ink {
+.act_nowposterbox .act_nowSplash-ink {
   position: absolute;
   bottom: -10%;
   left: 0%;
@@ -621,12 +628,12 @@ header {
   height: 600px;
 }
 
-.act-nowposterbox .act-nowSplash-ink img {
+.act_nowposterbox .act_nowSplash-ink img {
   width: 100%;
   height: 100%;
 }
 
-.act-nowposterbox .act-nowposter-linetop {
+.act_nowposterbox .act_nowposter-linetop {
   width: 400px;
   height: 400px;
   position: absolute;
@@ -635,12 +642,12 @@ header {
   margin: auto auto;
 }
 
-.act-nowposterbox .act-nowposter-linetop img {
+.act_nowposterbox .act_nowposter-linetop img {
   width: 100%;
   height: 100%;
 }
 
-.act-nowposterbox .act-nowposter-linebotom {
+.act_nowposterbox .act_nowposter-linebotom {
   position: absolute;
   bottom: -10%;
   right: -12%;
@@ -650,27 +657,27 @@ header {
   height: 400px;
 }
 
-.act-nowposterbox .act-nowposter-linebotom img {
+.act_nowposterbox .act_nowposter-linebotom img {
   width: 100%;
   height: 100%;
 }
 
-#Now-Sign-up {
-  border: 1px red solid;
+#act_Now-Sign-up {
   max-width: 1400px;
   width: 100%;
   min-height: 850px;
-  padding: 50px 0 0 150px;
+  padding: 50px 0 0 100px;
   margin: 150px auto 100px auto;
   position: relative;
 }
 
-#Now-Sign-up h2 {
-  margin-bottom: 100px;
+#act_Now-Sign-up h2 {
+  font-size: 2rem;
+  margin: 0 0 100px 50px;
 }
 
-#Now-Sign-up div {
-  width: 40%;
+#act_Now-Sign-up div {
+  width: 35%;
   min-width: 300px;
   height: 100%;
   display: inline-block;
@@ -678,47 +685,46 @@ header {
   text-align: right;
 }
 
-#Now-Sign-up div .now-marry {
+#act_Now-Sign-up div .act_now-marry {
   width: 80%;
   height: 80%;
   margin: auto auto;
 }
 
-#Now-Sign-up div .now-marry img {
+#act_Now-Sign-up div .act_now-marry img {
   width: 100%;
   height: 100%;
 }
 
-#Now-Sign-up div .now-marry-ink {
-  width: 1000px;
+#act_Now-Sign-up div .act_now-marry-ink {
+  width: 900px;
   height: 720px;
   position: absolute;
   z-index: -1;
-  left: -50%;
+  left: -45%;
   top: -10%;
 }
 
-#Now-Sign-up div .now-marry-ink img {
+#act_Now-Sign-up div .act_now-marry-ink img {
   width: 100%;
   height: 100%;
 }
 
-#Now-Sign-up article {
-  display: none;
-  width: 50%;
+#act_Now-Sign-up article {
+  width: 60%;
   min-height: 600px;
   display: inline-block;
   margin: auto auto;
   background-image: url(../img/activity/0.text-circle.svg), url(../img/activity/text.circle-wh.png);
   background-repeat: no-repeat;
-  background-size: contain,95% 95%;
-  background-position-x: center,right;
+  background-size: contain, 95% 95%;
+  background-position-x: center, right;
   text-align: center;
-  padding: 100px 0 0 0;
+  padding: 50px 0 0 0;
   position: absolute;
 }
 
-#Now-Sign-up article div {
+#act_Now-Sign-up article div {
   text-align: left;
   width: 70%;
   margin: auto auto;
@@ -726,18 +732,22 @@ header {
   text-align: center;
 }
 
-#Now-Sign-up article div h3 {
-  margin-bottom: 20px;
+#act_Now-Sign-up article div h3 {
+  margin: 0 0 20px 0;
+  padding: 0;
+  font-size: 1.5rem;
 }
 
-#Now-Sign-up article div p {
+#act_Now-Sign-up article div p {
+  font-size: 1rem;
   display: inline-block;
   width: 80%;
   margin: 0 auto;
   text-align: left;
+  padding-bottom: 0;
 }
 
-#Now-Sign-up article div p label {
+#act_Now-Sign-up article div p .act_SignUPButton {
   margin-bottom: 10px;
   font-size: 0.7rem;
   display: inline-block;
@@ -747,7 +757,15 @@ header {
   cursor: pointer;
 }
 
-#Now-Sign-up article div p select {
+#act_Now-Sign-up article div p h4 {
+  text-align: left;
+}
+
+#act_Now-Sign-up article div p h4 span {
+  font-size: 1rem;
+}
+
+#act_Now-Sign-up article div p select {
   font-size: 0.7rem;
   display: inline-block;
   padding: 5px 8px;
@@ -758,29 +776,23 @@ header {
   background-color: #d0d6d6;
 }
 
-#Now-Sign-up article div p select option {
+#act_Now-Sign-up article div p select option {
   background-color: #d0d6d6;
 }
 
-#Now-Sign-up article div p #song-name {
-  margin: 0 auto 20px  auto;
-  border: 1px #d0d6d6 solid;
-  background-color: #d0d6d6;
-}
-
-#Now-Sign-up article div p #song-information {
-  margin: 0 auto 20px  auto;
+#act_Now-Sign-up article div .signUpComfirm {
   margin: 0;
-  border: 1px #d0d6d6 solid;
-  background-color: #d0d6d6;
+  background-color: #f1c40f;
+  font-size: 0.8rem;
+  padding: 10px 30px;
+  border: 1px solid #f1c40f;
+  border-radius: 5px;
+  color: #fff;
+  font-weight: bold;
+  cursor: pointer;
 }
 
-#Now-Sign-up article div p div {
-  margin: 0;
-  padding: 0;
-}
-
-#Now-Sign-up article div input {
+#act_Now-Sign-up article div button {
   background-color: #f1c40f;
   font-size: 0.8rem;
   padding: 10px 30px;
@@ -792,28 +804,56 @@ header {
   margin: 30px 20px 50px 0;
 }
 
-#Now-Sign-up article div button {
-  background-color: #f1c40f;
-  font-size: 0.8rem;
-  padding: 10px 30px;
-  border: 1px solid #f1c40f;
-  border-radius: 5px;
-  color: #fff;
-  font-weight: bold;
-  cursor: pointer;
-  margin: 30px 20px 50px 0;
-}
-
-#Now-Sign-up article div button:hover {
+#act_Now-Sign-up article div button:hover {
   -webkit-transform: scale(1.1);
           transform: scale(1.1);
 }
 
-.fromPageShow {
-  display: block;
+#act_Now-Sign-up h4 {
+  margin: 0 0 10px 0;
+  font-size: 1.2rem;
+  text-align: left;
 }
 
-#Now-Vote {
+#act_Now-Sign-up .act_SignUPButton2 {
+  margin-bottom: 10px;
+  font-size: 0.7rem;
+  display: inline-block;
+  padding: 5px 8px;
+  background-color: #f1c40f6b;
+  border: 1.5px solid #f1c40f;
+  cursor: pointer;
+}
+
+#act_Now-Sign-up .act_showSignUpImg {
+  width: 65%;
+  height: 150px;
+  border: 1px #d0d6d6 solid;
+  margin: 0;
+  padding: 0;
+}
+
+#act_Now-Sign-up .act_showSignUpImg img {
+  max-width: 100%;
+  max-height: 100%;
+}
+
+#act_Now-Sign-up #act_Sign-up-song-name {
+  margin: 0;
+  border: 1px #d0d6d6 solid;
+  background-color: #d0d6d6;
+  width: 65%;
+  height: 30px;
+}
+
+#act_Now-Sign-up #act_Sign-up-song-information {
+  margin: 0;
+  border: 1px #d0d6d6 solid;
+  background-color: #d0d6d6;
+  width: 65%;
+}
+
+#act_Now-Vote {
   text-align: left;
   height: 700px;
   max-width: 1300px;
@@ -822,10 +862,10 @@ header {
   position: relative;
 }
 
-#Now-Vote .Now-Vote-content {
+#act_Now-Vote .act_Now-Vote-content {
   height: 400px;
   max-width: 1500px;
-  padding: 100px 0 0 100px;
+  padding: 50px 0 0 100px;
   position: relative;
   margin: 0 auto;
   background-image: url(../img/activity/0.blackline.svg), url(../img/activity/text-wh.png);
@@ -833,27 +873,41 @@ header {
   background-repeat: no-repeat, no-repeat;
 }
 
-#Now-Vote .Now-Vote-content p {
-  width: 60%;
+#act_Now-Vote .act_Now-Vote-content h2 {
+  margin: 0;
+  font-size: 2rem;
 }
 
-#Now-Vote .Now-Vote-content div {
+#act_Now-Vote .act_Now-Vote-content h3 {
+  margin: 0;
+  font-size: 1.5rem;
+}
+
+#act_Now-Vote .act_Now-Vote-content p {
+  width: 60%;
+  font-size: 1rem;
+  margin: 0;
+}
+
+#act_Now-Vote .act_Now-Vote-content div {
   text-align: right;
   vertical-align: middle;
   padding-right: 100px;
 }
 
-#Now-Vote .Now-Vote-content div h3 {
+#act_Now-Vote .act_Now-Vote-content div h3 {
   display: inline-block;
+  margin: 0;
+  font-size: 1.5rem;
 }
 
-#Now-Vote .Now-Vote-content div span {
+#act_Now-Vote .act_Now-Vote-content div span {
   font-size: 2.5rem;
   font-weight: bold;
   color: #333;
 }
 
-#Now-Vote .Now-Vote-content img {
+#act_Now-Vote .act_Now-Vote-content img {
   position: absolute;
   right: -13%;
   bottom: -20%;
@@ -862,37 +916,46 @@ header {
   height: 125%;
 }
 
-#Now-Vote h3 {
-  margin-bottom: 30px;
-}
-
-#Now-Vote section {
+#act_Now-Vote section {
   max-width: 1400px;
   width: 100%;
-  padding: 100px 0 0 50px;
+  padding: 0 0 0 50px;
   margin: 150px auto 0 auto;
 }
 
-#Now-Vote section div {
+#act_Now-Vote section div {
   text-align: left;
   width: 20%;
+  margin: 0;
   margin-left: 3.5%;
-  margin-bottom: 50px;
   display: inline-block;
+  margin-bottom: 50px;
 }
 
-#Now-Vote section div p {
+#act_Now-Vote section div p {
   font-size: 0.6rem;
   text-align: right;
-  margin: 0 auto 0 0;
+  margin: 0 auto 0 10px;
   display: inline-block;
+  vertical-align: bottom;
 }
 
-#Now-Vote section div p span {
+#act_Now-Vote section div p span {
   font-size: 0.8rem;
 }
 
-#Now-Vote section div button {
+#act_Now-Vote section div h4 {
+  width: 90%;
+  margin: 0;
+  font-size: 1.2rem;
+}
+
+#act_Now-Vote section div h4 p {
+  margin: 0;
+  font-size: 1rem;
+}
+
+#act_Now-Vote section div button {
   display: inline-block;
   background-color: #f1c40f;
   font-size: 0.8rem;
@@ -905,24 +968,24 @@ header {
   margin: 0 0 10px 0;
 }
 
-#Now-Vote section div button:hover {
+#act_Now-Vote section div button:hover {
   -webkit-transform: scale(1.1);
           transform: scale(1.1);
 }
 
-#Now-Vote section div div {
+#act_Now-Vote section div div {
   width: 100%;
   margin: 0;
   position: relative;
 }
 
-#Now-Vote section div div:hover .act-old-play {
+#act_Now-Vote section div div:hover .act-old-play {
   display: block;
   cursor: pointer;
   z-index: 2;
 }
 
-#Now-Vote section div div .act-old-play {
+#act_Now-Vote section div div .act_old-play {
   width: 100px;
   height: 100px;
   text-align: center;
@@ -933,22 +996,22 @@ header {
   z-index: 2;
 }
 
-#Now-Vote section div div .act-old-play img {
+#act_Now-Vote section div div .act_old-play img {
   width: 100%;
   height: 100%;
 }
 
-#Now-Vote section div div img {
+#act_Now-Vote section div div img {
   width: 200px;
   height: 200px;
 }
 
-#Now-Vote section div .act-old-hear1 {
+#act_Now-Vote section div .act_old-hear1 {
   width: 25px;
   height: 25px;
 }
 
-#Now-Vote section div .act-old-hear1 img {
+#act_Now-Vote section div .act_old-hear1 img {
   width: 100%;
   height: 100%;
 }
