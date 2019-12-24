@@ -5,9 +5,7 @@
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <meta http-equiv="X-UA-Compatible" content="ie=edge">
-  <link rel="stylesheet" href="./css/public.css">
-  <link rel="stylesheet" href="./css/nav_bar.css">
-  <link rel="stylesheet" href="./css/remix.css">
+  <link rel="stylesheet" href="./css/main.css">
   <title>remix</title>
 </head>
 
@@ -117,52 +115,52 @@
     </header>
     <div class="wrapper remix_wrapper">
       <div class="remix_head">
-        <div class="demo col-xl-6 col-md-8 col-sm-12">
-          <h2>The Playground</h2>
-          <p class="intro">You can experiment with the different music making tools you've used so far.
+        <div class="remix_demo col-xl-6 col-md-8 col-sm-12">
+          <h2 class="remix_h2">The Playground</h2>
+          <p class="remix_intro">You can experiment with the different music making tools you've used so far.
             They'll all
             play together in sync.</p>
-          <div class="choose_song">
-            <h4 @click="npm = 120;song_list('always_with_me')">1. always with me</h4>
-            <h4 @click="song_list(0)">2. Happy Birthday</h4>
-            <h4 @click="npm = 120;song_list('cat')">3. cat</h4>
+          <div class="remix_choose_song">
+            <h4 class="remix_h4" @click="npm = 120;song_list('always_with_me')">1. always with me</h4>
+            <h4 class="remix_h4" @click="song_list(0)">2. Happy Birthday</h4>
+            <h4 class="remix_h4" @click="npm = 120;song_list('cat')">3. cat</h4>
           </div>
         </div>
-        <div class="svg_move col-xl-6 col-md-10 col-sm-12">
+        <div class="remix_svg_move col-xl-6 col-md-10 col-sm-12">
           <div class="remix_rock_move">
             <img src="./img/remix/rock.png" class="">
           </div>
-          <div class="color"></div>
+          <div class="remix_color"></div>
         </div>
       </div>
-      <div class="range">
-        <p>npm: {{ npm }}</p>
-        <div class="rangebutton">
+      <div class="remix_range">
+        <p class="remix_npm">npm: {{ npm }}</p>
+        <div class="remix_rangebutton">
           <input type="range" id="input_npm" value="120" min="40" max="220" step="5" v-model="npm" @input="npm_control">
-          <div class="button">
-            <button class="start" @click="start_schedule();buttonclick(1)" @mouseenter="buttonclick(1)"
+          <div class="remix_button">
+            <button class="start remix_btn" @click="start_schedule();buttonclick(1)" @mouseenter="buttonclick(1)"
               v-if="loop == false">
               <img src="./img/remix/start.png"><span></span>
             </button>
-            <button class="start" @click="start_schedule();buttonclick(1)" @mouseenter="buttonclick(1)"
+            <button class="start remix_btn" @click="start_schedule();buttonclick(1)" @mouseenter="buttonclick(1)"
               v-if="loop == true && record == false">
               <img src="./img/remix/pause.png"><span></span>
             </button>
-            <button class="start" v-if="loop == true && record == true">
+            <button class="start remix_btn" v-if="loop == true && record == true">
               <img src="./img/remix/start_disable.png"><span></span>
             </button>
-            <button class="record" @click="record = true;start_record()" @mouseenter="buttonclick(2)"
+            <button class="record remix_btn" @click="record = true;start_record()" @mouseenter="buttonclick(2)"
               v-if="record == false">
               <img src="./img/remix/record.png"><span></span>
             </button>
-            <button class="record" @click="record = false;start_record()" @mouseenter="buttonclick(2)"
+            <button class="record remix_btn" @click="record = false;start_record()" @mouseenter="buttonclick(2)"
               v-if="record == true">
               <img src="./img/remix/record.gif"><span></span>
             </button>
-            <button class="download" v-if="audioSrc == ''">
+            <button class="download remix_btn" v-if="audioSrc == ''">
               <img src="./img/remix/download_disabled.png"><span></span>
             </button>
-            <button class="download" v-else>
+            <button class="download remix_btn" v-else>
               <a :href="audioSrc" download>
                 <img src="./img/remix/download.png">
                 <audio :href="audioSrc" id='recordAudio'></audio>
@@ -172,19 +170,19 @@
           </div>
         </div>
       </div>
-      <div class="table">
+      <div class="remix_table">
         <h3>Paino</h3>
         <!-- re -->
-        <table class="re poa" style="z-index: 5;">
+        <table class="re poa remix_play" style="z-index: 5;">
           <tr>
             <th v-for="(tr,index) in table_id" colspan="7" @click="className.isActive = index;control_table(tr)"
               :class="{active: className.isActive == index}">
-              <h4>{{ tr }}</h4>
+              <h4 class="remix_h4"> {{ tr }}</h4>
             </th>
           </tr>
           <tr v-for="(res,index_row) in re" class="trclass">
             <td class="note_name">
-              <h6>{{re[index_row]}}</h6><audio :src="'./img/remix/sound/'+(re1[index_row])+'.mp3'"></audio>
+              <h6 class="remix_h6">{{re[index_row]}}</h6><audio :src="'./img/remix/sound/'+(re1[index_row])+'.mp3'"></audio>
             </td>
             <td class="sound_note" v-for="(item,index) in lattice"
               @click="changeClass(index_row,index);one_sound(re[index_row],index_row,index);">
@@ -193,16 +191,16 @@
           </tr>
         </table>
         <!-- mi -->
-        <table class="mi poa">
+        <table class="mi poa remix_play">
           <tr>
             <th v-for="(tr,index) in table_id" colspan="7" @click="className.isActive = index;control_table(tr)"
               :class="{active: className.isActive == index}">
-              <h4>{{ tr }}</h4>
+              <h4 class="remix_h4"> {{ tr }}</h4>
             </th>
           </tr>
           <tr v-for="(res,index_row) in mi" class="trclass">
             <td class="note_name">
-              <h6>{{mi[index_row]}}</h6><audio :src="'./img/remix/sound/'+(mi1[index_row])+'.mp3'"></audio>
+              <h6 class="remix_h6">{{mi[index_row]}}</h6><audio :src="'./img/remix/sound/'+(mi1[index_row])+'.mp3'"></audio>
             </td>
             <td class="sound_note" v-for="(item,index) in lattice"
               @click="changeClass(index_row + 12,index);one_sound(mi[index_row],index_row + 12,index);">
@@ -211,16 +209,16 @@
           </tr>
         </table>
         <!-- fa -->
-        <table class="fa poa">
+        <table class="fa poa remix_play">
           <tr>
             <th v-for="(tr,index) in table_id" colspan="7" @click="className.isActive = index;control_table(tr)"
               :class="{active: className.isActive == index}">
-              <h4>{{ tr }}</h4>
+              <h4 class="remix_h4"> {{ tr }}</h4>
             </th>
           </tr>
           <tr v-for="(res,index_row) in fa" class="trclass">
             <td class="note_name">
-              <h6>{{fa[index_row]}}</h6><audio :src="'./img/remix/sound/'+(fa1[index_row])+'.mp3'"></audio>
+              <h6 class="remix_h6">{{fa[index_row]}}</h6><audio :src="'./img/remix/sound/'+(fa1[index_row])+'.mp3'"></audio>
             </td>
             <td class="sound_note" v-for="(item,index) in lattice"
               @click="changeClass(index_row + 24,index);one_sound(fa[index_row],index_row + 24,index);">
@@ -228,16 +226,16 @@
           </tr>
         </table>
         <!-- so -->
-        <table class="so poa">
+        <table class="so poa remix_play">
           <tr>
             <th v-for="(tr,index) in table_id" colspan="7" @click="className.isActive = index;control_table(tr)"
               :class="{active: className.isActive == index}">
-              <h4>{{ tr }}</h4>
+              <h4 class="remix_h4"> {{ tr }}</h4>
             </th>
           </tr>
           <tr v-for="(res,index_row) in so" class="trclass">
             <td class="note_name">
-              <h6>{{so[index_row]}}</h6><audio :src="'./img/remix/sound/'+(so1[index_row])+'.mp3'"></audio>
+              <h6 class="remix_h6">{{so[index_row]}}</h6><audio :src="'./img/remix/sound/'+(so1[index_row])+'.mp3'"></audio>
             </td>
             <td class="sound_note" v-for="(item,index) in lattice"
               @click="changeClass(index_row + 36,index);one_sound(so[index_row],index_row + 36,index);">
@@ -246,16 +244,16 @@
           </tr>
         </table>
         <!-- la -->
-        <table class="la ">
+        <table class="la remix_play">
           <tr>
             <th v-for="(tr,index) in table_id" colspan="7" @click="className.isActive = index;control_table(tr)"
               :class="{active: className.isActive == index}">
-              <h4>{{ tr }}</h4>
+              <h4 class="remix_h4"> {{ tr }}</h4>
             </th>
           </tr>
           <tr v-for="(res,index_row) in la" class="trclass">
             <td class="note_name">
-              <h6>{{la[index_row]}}</h6><audio :src="'./img/remix/sound/'+(la1[index_row])+'.mp3'"></audio>
+              <h6 class="remix_h6">{{la[index_row]}}</h6><audio :src="'./img/remix/sound/'+(la1[index_row])+'.mp3'"></audio>
             </td>
             <td class="sound_note" v-for="(item,index) in lattice"
               @click="changeClass(index_row + 48,index);one_sound(la[index_row],index_row + 48,index);">
@@ -263,12 +261,12 @@
             </td>
           </tr>
         </table>
-        <h3 class="drumh3">Beat</h3>
+        <h3 class="remix_drumh3">Beat</h3>
         <!-- drum -->
-        <table class="drum">
+        <table class="drum remix_play">
           <tr v-for="(res,index_row) in drum" class="trclass">
             <td class="note_name">
-              <h6>{{drum[index_row]}}</h6><audio :src="'./img/remix/sound/'+(drum[index_row])+'.mp3'"></audio>
+              <h6 class="remix_h6">{{drum[index_row]}}</h6><audio :src="'./img/remix/sound/'+(drum[index_row])+'.mp3'"></audio>
             </td>
             <td class="sound_note" v-for="(item,index) in lattice"
               @click="changeClass(index_row + 60,index);one_sound(drum[index_row],index_row + 60,index);">
@@ -280,11 +278,252 @@
     </div>
     <img src="./img/remix/background_color.png" class="remix_bg_color">
   </div>
+  <!-- 音樂撥放器 -->
+  <div id="player">
+    <audio src="" id="audioPlayer"></audio>
+    <div class="player_s">
+      <div class="info">
+        <div class="cover"><img src="./img/library/cover1.jpg"></div>
+        <div class="songInfo">
+          <span class="name">Lucid Dreamer</span>
+          <span class="creator">Spazz Cardigan</span>
+        </div>
+        <div class="heart becomeRed"><i class="fas fa-heart"></i></div>
+        <div class="clearfix"></div>
+      </div>
 
+      <div class="controlPanel">
+        <div class="progressbar">
+          <div class="progress"></div>
+        </div>
+        <div class="time">
+          <span class="start">00:00</span>
+          <span class="end">04:30</span>
+          <div class="clearfix"></div>
+        </div>
+        <div class="btns">
+          <div class="controls">
+            <button class="prev"><i class="fas fa-step-backward"></i></button>
+            <button class="play"><i class="fas fa-play"></i></button>
+            <button class="next"><i class="fas fa-step-forward"></i></button>
+            <button class="stop"><i class="fas fa-stop"></i></button>
+            <button class="rand"><i class="fas fa-random"></i></button>
+            <button class="loop"><i class="fas fa-undo-alt"></i></button>
+            <div class="clearfix"></div>
+          </div>
+          <div class="vol">
+            <div class="volicon"><i class="fas fa-volume-down"></i></div>
+            <div class="volLine">
+              <div class="volControl"></div>
+            </div>
+            <div class="clearfix"></div>
+          </div>
+          <div class="clearfix"></div>
+        </div>
+      </div>
+
+      <div class="expand" id="expand"><i class="fas fa-expand"></i></div>
+      <div class="clearfix"></div>
+    </div>
+
+    <!-- 詳細版 -->
+    <div class="player_b">
+      <div class="left">
+        <div class="songCover">
+          <div class="coverImg">
+            <img src="./img/library/cover1.jpg">
+            <div class="coverRec"><img src="./img/library/player_record.png" alt=""></div>
+          </div>
+        </div>
+        <div class="songInfo">
+          <div class="name">
+            Lucid Dreamer
+          </div>
+          <div class="creator">
+            Spazz Cardigan
+          </div>
+          <div class="heart becomeRed"><i class="fas fa-heart"></i></div>
+          <div class="clearfix"></div>
+        </div>
+        <div class="controlPanel">
+          <div class="progressbar">
+            <div class="progress"></div>
+          </div>
+          <div class="time">
+            <span class="start">00:00</span>
+            <span class="end">04:30</span>
+            <div class="clearfix"></div>
+          </div>
+          <div class="btns">
+            <div class="controls">
+              <button class="rand"><i class="fas fa-random"></i></button>
+              <button class="prev"><i class="fas fa-step-backward"></i></button>
+              <button class="play"><i class="fas fa-play"></i></button>
+              <button class="next"><i class="fas fa-step-forward"></i></button>
+              <button class="stop"><i class="fas fa-stop"></i></button>
+              <button class="loop"><i class="fas fa-undo-alt"></i></button>
+              <div class="clearfix"></div>
+            </div>
+            <div class="vol">
+              <div class="volicon"><i class="fas fa-volume-down"></i></div>
+              <div class="volLine">
+                <div class="volControl"></div>
+              </div>
+              <div class="clearfix"></div>
+            </div>
+            <div class="clearfix"></div>
+          </div>
+        </div>
+        <div class="pushBtn"></div>
+      </div>
+
+      <div class="right">
+        <div class="pushBtn"></div>
+        <div class="listTitle">
+          <div class="listCover">
+            <img src="./img/library/list_pic1.jpg"></div>
+          <div class="listName">
+            <h2>peaceful list</h2>
+            <span>8 songs</span>
+          </div>
+          <button class="selectBtn" id="selectBtn">SELECT</button>
+          <div class="clearfix"></div>
+        </div>
+        <div class="list">
+          <ul>
+            <li>
+              <div class="songCover">
+                <img src="./img/library/cover1.jpg" alt="">
+                <div class="listPlay"><i class="fas fa-play"></i></div>
+              </div>
+              <div class="listSongInfo">
+                <div class="name">
+                  <h4 class="remix_h4"> Lucid Dreamer</h4>
+                  <p> Spazz Cardigan</p>
+                </div>
+              </div>
+              <div class="totalTime">4:30</div>
+              <div class="heart becomeRed"><i class="fas fa-heart"></i></div>
+              <div class="clearfix"></div>
+            </li>
+            <li>
+              <div class="songCover">
+                <img src="./img/library/cover2.jpg" alt="">
+                <div class="listPlay"><i class="fas fa-play"></i></div>
+              </div>
+              <div class="listSongInfo">
+                <div class="name">
+                  <h4>Lucid Dreamer</h4>
+                  <p> Spazz Cardigan</p>
+                </div>
+              </div>
+              <div class="totalTime">4:30</div>
+              <div class="heart becomeRed"><i class="fas fa-heart"></i></div>
+              <div class="clearfix"></div>
+            </li>
+            <li>
+              <div class="songCover">
+                <img src="./img/library/cover3.jpg" alt="">
+                <div class="listPlay"><i class="fas fa-play"></i></div>
+              </div>
+              <div class="listSongInfo">
+                <div class="name">
+                  <h4>Lucid Dreamer</h4>
+                  <p> Spazz Cardigan</p>
+                </div>
+              </div>
+              <div class="totalTime">4:30</div>
+              <div class="heart becomeRed"><i class="fas fa-heart"></i></div>
+              <div class="clearfix"></div>
+            </li>
+            <li>
+              <div class="songCover">
+                <img src="./img/library/cover4.jpg" alt="">
+                <div class="listPlay"><i class="fas fa-play"></i></div>
+              </div>
+              <div class="listSongInfo">
+                <div class="name">
+                  <h4>Lucid Dreamer</h4>
+                  <p> Spazz Cardigan</p>
+                </div>
+              </div>
+              <div class="totalTime">4:30</div>
+              <div class="heart becomeRed"><i class="fas fa-heart"></i></div>
+              <div class="clearfix"></div>
+            </li>
+            <li>
+              <div class="songCover">
+                <img src="./img/library/cover5.jpg" alt="">
+                <div class="listPlay"><i class="fas fa-play"></i></div>
+              </div>
+              <div class="listSongInfo">
+                <div class="name">
+                  <h4>Lucid Dreamer</h4>
+                  <p> Spazz Cardigan</p>
+                </div>
+              </div>
+              <div class="totalTime">4:30</div>
+              <div class="heart becomeRed"><i class="fas fa-heart"></i></div>
+              <div class="clearfix"></div>
+            </li>
+            <li>
+              <div class="songCover">
+                <img src="./img/library/cover6.jpg" alt="">
+                <div class="listPlay"><i class="fas fa-play"></i></div>
+              </div>
+              <div class="listSongInfo">
+                <div class="name">
+                  <h4>Lucid Dreamer</h4>
+                  <p> Spazz Cardigan</p>
+                </div>
+              </div>
+              <div class="totalTime">4:30</div>
+              <div class="heart becomeRed"><i class="fas fa-heart"></i></div>
+              <div class="clearfix"></div>
+            </li>
+            <li>
+              <div class="songCover">
+                <img src="./img/library/cover1.jpg" alt="">
+                <div class="listPlay"><i class="fas fa-play"></i></div>
+              </div>
+              <div class="listSongInfo">
+                <div class="name">
+                  <h4>Lucid Dreamer</h4>
+                  <p> Spazz Cardigan</p>
+                </div>
+              </div>
+              <div class="totalTime">4:30</div>
+              <div class="heart becomeRed"><i class="fas fa-heart"></i></div>
+              <div class="clearfix"></div>
+            </li>
+
+          </ul>
+        </div>
+      </div>
+      <div class="close" id="closePlayer"><i class="fas fa-times"></i></div>
+      <div class="clearfix"></div>
+    </div>
+
+  </div>
+  <div id="lightCover">
+    <div class="lightbox_s" id="myAllList">
+      <div class="close closeLight"><i class="fas fa-times"></i></div>
+      <h3>My List</h3>
+      <div class="lightSelectMenu">
+        <ul>
+          <li>Liked songs</li>
+          <li>Peaceful songs</li>
+          <li>party</li>
+        </ul>
+      </div>
+      <button class="">ok</button>
+    </div>
+  </div>
   <script src='https://cdnjs.cloudflare.com/ajax/libs/tone/13.4.0/Tone.js'></script>
   <script src='https://cdnjs.cloudflare.com/ajax/libs/gsap/2.1.3/TweenMax.min.js'></script>
   <script src='https://cdnjs.cloudflare.com/ajax/libs/jquery/3.4.1/jquery.min.js'></script>
   <script src="./js/vue.js"></script>
+  <!-- <script src="./js/player.js"></script> -->
   <script>
     var app = new Vue({
       el: '#remix_app',
@@ -603,7 +842,7 @@
             "%, #333)";
         },
         buttonclick(num) {
-          var button = document.querySelector('.button button:nth-of-type(' + num + ') span');
+          var button = document.querySelector('.remix_button button:nth-of-type(' + num + ') span');
           if (num == 3) {
             TweenMax.to(button, 1, {
               scale: 3,
@@ -878,8 +1117,8 @@
 
         // 一開始偵測是否為 425
         if (this.screenWidth <= 425) {
-          var intro = document.getElementsByClassName('intro')[0];
-          intro.innerHTML = intro.innerHTML.substr(0, 79);
+          var remix_intro = document.getElementsByClassName('remix_intro')[0];
+          remix_intro.innerHTML = remix_intro.innerHTML.substr(0, 79);
         }
 
         if (this.screenWidth > 1200) {
@@ -921,13 +1160,15 @@
           }
 
           if (this.screenWidth <= 425) {
-            var intro = document.getElementsByClassName('intro')[0];
-            intro.innerHTML = intro.innerHTML.substr(0, 79);
+            var remix_intro = document.getElementsByClassName('remix_intro')[0];
+            remix_intro.innerHTML = remix_intro.innerHTML.substr(0, 79);
           }
+
+          $('.sound_note').css('width',`calc(100% - 70px) / ${this.lattice - 2}`);
         },
         audioSrc(NewaudioSrc) {
           this.audioSrc = NewaudioSrc;
-          var button = document.querySelector('.button button:nth-of-type(3) span');
+          var button = document.querySelector('.remix_button button:nth-of-type(3) span');
           TweenMax.set(button, {
             css: {
               scale: 1,
