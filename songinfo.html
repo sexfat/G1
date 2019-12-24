@@ -146,10 +146,10 @@
                     <div class="vinyl"></div><!--  /.vinyl -->
                 </div><!--  /.album-art -->
             </div><!--  /.music-player -->
-            <!-- <div>
-                    <audio id="music" src="./music/Paul Flint - SAVAGE Worlds First 21 Launchpad Cover.mp3"
-                        autoplay="autoplay"></audio>
-                </div> -->
+            <div>
+                    <audio id="music" src="./music/Paul_Flint.mp3">
+                    </audio>
+            </div>
         </div>
     </section>
     <section class="infos3">
@@ -357,18 +357,20 @@
             });
         })(jQuery);
     </script>
-    <!-- <script>
-        document.getElementById(".control-play").onclick = function () {
+    <script>
+        document.getElementById("control-play").onclick = function () {
             var mu = document.getElementById("music");
-            if (this.innerHTML == "play") {
-                this.innerHTML = "stop";
-                mu.src = "./music/Paul Flint - SAVAGE Worlds First 21 Launchpad Cover.mp3";
-            } else {
-                this.innerHTML = "play";
-                mu.src = "";
-            }
+             mu.play();
+            
+            // if (this.innerHTML == "play") {
+            //     this.innerHTML = "stop";
+            //     mu.src = "./music/Paul Flint - SAVAGE Worlds First 21 Launchpad Cover.mp3";
+            // } else {
+            //     this.innerHTML = "play";
+            //     mu.src = "";
+            // }
         }
-    </script> -->
+    </script>
 </body>
 
 </html>
