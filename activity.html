@@ -1034,8 +1034,10 @@
                       
                          <p>  
                              <label  class="act_SignUPButton"for="act_SignUp-UpLoadSong">Upload from my local</label>
-                            <input type="file" id="act_SignUp-UpLoadSong" style="display:none"> 
+                            <input type="file" id="act_SignUp-UpLoadSong" style="display:none"
+                             @change="changeSignUpload"> 
                         </p>
+                        <p  class="act_SignSongURL-box" v-if="SignSongURL">{{SignSongURL}}</p>
                          <p>
                             <label class="act_SignUPButton" for="act_SignUp-selectSong">  Select from my music list</label>
                             <br>   
@@ -1079,8 +1081,8 @@
                         <input type="file" id="act_SignUp-Song-img" 
                         style="display:none" @change="changeSignUpImg">
                        
-                        <div class="act_showSignUpImg" v-if="SigbUPSongURL">
-                            <img :src="SigbUPSongURL" alt="">
+                        <div class="act_showSignUpImg" v-if="SignUpImg">
+                            <img :src="SignUpImg" alt="">
                           </div>
                      </p>
                                 
@@ -1101,16 +1103,17 @@
                           
                            
                           <h4>Song-img:</h4>
-                          <div class="act_showSignUpImgSmall" v-if="SigbUPSongURL"><img :src="SigbUPSongURL" alt=""></div>
+                          <div class="act_showSignUpImgSmall" 
+                          v-if="SignUpImg"><img :src="SignUpImg" alt=""></div>
 
                         <h4>Song-name:</h4>
                         <p>{{SongName}}</p>
                       
                         <h4>Song-information:</h4>
                         <p>{{SongInformation}}</p> 
-                        
+                   
                         <h4>Song-URL:</h4>      
-                        <p></p>
+                        <p  class="act_SignSongURL-box" v-if="SignSongURL">{{SignSongURL}}</p> 
                        </p>  
                       
                       <button type="button"  @click="BackFormPage(2)">Back</button>
@@ -1359,7 +1362,9 @@
                     SongName: "",
                     SongInformation: "",
                     SignUpImg: "",
-                    SigbUPSongURL: "",
+                    SignSongURL:"",
+                   
+                  
                 }
 
             },
@@ -1378,13 +1383,18 @@
 
                 },
                 imageLoader(img) {
-                    this.SigbUPSongURL = img.target.result;
+                    this.SignUpImg = img.target.result;
                 },
-
-                scrollTo(section) {
-                    targetOffsetTop = this.section.href.offsetTop;
-
-                }
+                changeSignUpload(song){
+                    const songFile = song.target.files.item(0);
+                    const readers = new FileReader();
+                    readers.addEventListener('load', this.SignUploadLoader);
+                    readers.readAsDataURL(songFile);
+                },
+                SignUploadLoader(song) {
+                    this. SignSongURL = song.target.result;
+                },
+             
 
 
 
@@ -1432,8 +1442,7 @@
                 SongName: "",
                 SongInformation: "",
                 SignUpImg: "",
-                SigbUPSongURL: "",
-
+                SignSongURL:"",
 
 
             },

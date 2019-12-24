@@ -724,7 +724,13 @@
         text-align: center;
         padding: 50px 0 0 0;
         position: absolute;
-
+        .act_SignSongURL-box{
+            width: 80%;
+            height: 20px;
+            overflow: hidden;
+            font-size: 0.6rem;
+        }
+        
         div {
             text-align: left;
             width: 70%;
@@ -812,6 +818,7 @@
         width: 65%;
         height: 150px;
         border: 1px #d0d6d6 solid;
+        background-color: #d0d6d6;
         margin: 0;
         padding: 0;
 
