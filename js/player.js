@@ -106,8 +106,6 @@ $(document).ready(function () {
 
   $('#player audio').attr("src", myPlaylist[nowPlaying].filein);
   // isStorageHave();
-  
-  // isAutoPlay(true);//測試
 
   //播放暫停按鈕 -- 音樂撥放/暫停
   $("#player .play").click(function () {
@@ -185,17 +183,6 @@ $(document).ready(function () {
     let newTime_s = mouseX_s / (progressBarSize_s / audio.duration);
     audio.currentTime = newTime_s;
   });
-
-
-  /* -- 自動撥放 --*/
-  // function isAutoPlay(autoP){//測試
-  //   if(autoP){
-  //     isPlaying(false);
-  //   }else{
-  //     isPlaying(true);
-  //   }
-  // }
-
 
   /* -- local -- */
   // function isStorageHave() {

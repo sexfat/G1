@@ -12,6 +12,7 @@
         "../scss/_library.scss",
         "../scss/_login.scss",
         "../scss/collection.scss",
+        "../scss/public.scss",
         "../scss/activity.scss",
         "../scss/_public.scss",
         "../scss/infotop.scss",
