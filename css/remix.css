@@ -195,6 +195,19 @@ body {
   overflow-x: hidden;
 }
 
+#remix_app {
+  position: relative;
+  padding-bottom: 10%;
+  overflow: hidden;
+}
+
+#remix_app .remix_bg_color {
+  position: absolute;
+  z-index: -100;
+  bottom: 0;
+  left: 0;
+}
+
 h4 {
   font-weight: normal;
 }
@@ -205,13 +218,12 @@ header {
   padding: 120px 0;
 }
 
-.wrapper {
-  overflow-y: hidden;
-  margin-bottom: 10%;
+.remix_wrapper {
+  overflow-x: hidden;
   font-size: 0;
 }
 
-.wrapper .remix_head {
+.remix_wrapper .remix_head {
   margin: 0 auto;
   width: 95%;
   display: -webkit-box;
@@ -226,7 +238,7 @@ header {
   position: relative;
 }
 
-.wrapper .remix_head .demo {
+.remix_wrapper .remix_head .demo {
   margin: 0 auto;
   padding: 8%;
   position: relative;
@@ -234,7 +246,7 @@ header {
           box-sizing: border-box;
 }
 
-.wrapper .remix_head .demo::before {
+.remix_wrapper .remix_head .demo::before {
   content: "";
   position: absolute;
   width: 100%;
@@ -248,32 +260,39 @@ header {
   z-index: -10;
 }
 
-.wrapper .remix_head .demo .choose_song {
+.remix_wrapper .remix_head .demo .choose_song {
   background-color: #d0d6d6;
   margin: 3% auto;
   padding: 5%;
   border-radius: 5px;
 }
 
-.wrapper .remix_head .demo .choose_song h4 {
+.remix_wrapper .remix_head .demo .choose_song h4 {
   z-index: 10;
   cursor: pointer;
 }
 
-.wrapper .remix_head .demo .choose_song h4:hover {
+.remix_wrapper .remix_head .demo .choose_song h4:hover {
   font-weight: bold;
 }
 
-.wrapper .remix_head .svg_move {
+.remix_wrapper .remix_head .svg_move {
   margin: 0 auto;
   position: relative;
 }
 
-.wrapper .remix_head .svg_move img {
+.remix_wrapper .remix_head .svg_move .remix_rock_move {
+  -webkit-transform-origin: right bottom;
+          transform-origin: right bottom;
+  -webkit-transform: rotate(90deg);
+          transform: rotate(90deg);
+}
+
+.remix_wrapper .remix_head .svg_move img {
   width: 100%;
 }
 
-.wrapper .remix_head .svg_move .color {
+.remix_wrapper .remix_head .svg_move .color {
   position: absolute;
   width: 100%;
   padding-top: 75%;
@@ -285,18 +304,18 @@ header {
   background-position: 50% 75%;
 }
 
-.wrapper .range {
+.remix_wrapper .range {
   position: relative;
   margin: 0% auto;
   margin: 4% 0% 1%;
 }
 
-.wrapper .range p {
+.remix_wrapper .range p {
   position: absolute;
   left: 5.5%;
 }
 
-.wrapper .range .rangebutton {
+.remix_wrapper .range .rangebutton {
   width: 95%;
   margin: 0 auto;
   display: -webkit-box;
@@ -307,7 +326,7 @@ header {
           justify-content: center;
 }
 
-.wrapper .range .rangebutton input[type='range'] {
+.remix_wrapper .range .rangebutton input[type='range'] {
   margin: 3%;
   width: 75%;
   text-align: center;
@@ -317,7 +336,7 @@ header {
   background: linear-gradient(to right, #fff 0%, #fff 44%, #333 44%, #333);
 }
 
-.wrapper .range .rangebutton input[type='range']::-webkit-slider-thumb {
+.remix_wrapper .range .rangebutton input[type='range']::-webkit-slider-thumb {
   -webkit-appearance: none;
   height: 20px;
   width: 20px;
@@ -331,7 +350,7 @@ header {
   /*添加底部阴影*/
 }
 
-.wrapper .range .rangebutton input[type='range']::-webkit-slider-runnable-track {
+.remix_wrapper .range .rangebutton input[type='range']::-webkit-slider-runnable-track {
   height: 8px;
   border-radius: 10px;
   /*将轨道设为圆角的*/
@@ -340,17 +359,17 @@ header {
   /*轨道内置阴影效果*/
 }
 
-.wrapper .range .rangebutton input[type='range']:focus {
+.remix_wrapper .range .rangebutton input[type='range']:focus {
   outline: none;
 }
 
-.wrapper .range .rangebutton .button {
+.remix_wrapper .range .rangebutton .button {
   -webkit-box-flex: 1;
       -ms-flex-positive: 1;
           flex-grow: 1;
 }
 
-.wrapper .range .rangebutton .button button {
+.remix_wrapper .range .rangebutton .button button {
   width: calc(100% / 3);
   border: none;
   background-color: transparent;
@@ -360,12 +379,12 @@ header {
   padding-top: 33%;
 }
 
-.wrapper .range .rangebutton .button button:hover {
+.remix_wrapper .range .rangebutton .button button:hover {
   -webkit-animation: pulse 1s;
           animation: pulse 1s;
 }
 
-.wrapper .range .rangebutton .button button img {
+.remix_wrapper .range .rangebutton .button button img {
   position: absolute;
   left: 50%;
   top: 50%;
@@ -376,7 +395,7 @@ header {
   max-width: 67px;
 }
 
-.wrapper .range .rangebutton .button button span {
+.remix_wrapper .range .rangebutton .button button span {
   display: inline-block;
   position: absolute;
   left: 50%;
@@ -391,7 +410,7 @@ header {
   pointer-events: none;
 }
 
-.wrapper .range .rangebutton .button button a {
+.remix_wrapper .range .rangebutton .button button a {
   width: 100%;
   height: 100%;
   left: 0;
@@ -400,21 +419,21 @@ header {
   display: inline-block;
 }
 
-.wrapper .table {
+.remix_wrapper .table {
   width: 100%;
   max-width: 100%;
   position: relative;
 }
 
-.wrapper .table h3 {
+.remix_wrapper .table h3 {
   margin: 0.5rem 0;
 }
 
-.wrapper .table .drumh3 {
+.remix_wrapper .table .drumh3 {
   margin-top: 5%;
 }
 
-.wrapper .table table {
+.remix_wrapper .table table {
   margin: 0 auto;
   width: 100%;
   max-width: 100%;
@@ -425,21 +444,21 @@ header {
   border-collapse: separate;
 }
 
-.wrapper .table table.poa {
+.remix_wrapper .table table.poa {
   width: 100%;
   left: 0%;
   position: absolute;
 }
 
-.wrapper .table table th:first-child {
+.remix_wrapper .table table th:first-child {
   border-radius: 10px 0 0 0;
 }
 
-.wrapper .table table th:last-child {
+.remix_wrapper .table table th:last-child {
   border-radius: 0 10px 0 0;
 }
 
-.wrapper .table table th, .wrapper .table table td {
+.remix_wrapper .table table th, .remix_wrapper .table table td {
   background-color: #d1d2d4;
   border-left: solid 1px #333;
   border-top: solid 1px #333;
@@ -447,22 +466,22 @@ header {
   cursor: pointer;
 }
 
-.wrapper .table table th h6, .wrapper .table table td h6 {
+.remix_wrapper .table table th h6, .remix_wrapper .table table td h6 {
   font-weight: normal;
   font-size: 1rem;
   line-height: 1.8rem;
 }
 
-.wrapper .table table td.active {
+.remix_wrapper .table table td.active {
   background-color: #efc318;
 }
 
-.wrapper .table table th.active {
+.remix_wrapper .table table th.active {
   background-color: #444;
   color: #fff;
 }
 
-.wrapper .table table .note_name {
+.remix_wrapper .table table .note_name {
   max-width: 7px;
   text-align: center;
 }
@@ -909,32 +928,32 @@ header {
   html {
     font-size: 17px;
   }
-  .wrapper .remix_head {
+  .remix_wrapper .remix_head {
     -webkit-box-orient: vertical;
     -webkit-box-direction: normal;
         -ms-flex-direction: column;
             flex-direction: column;
     margin-bottom: 10%;
   }
-  .wrapper .remix_head .demo {
+  .remix_wrapper .remix_head .demo {
     padding: 12% 12% 12%;
   }
-  .wrapper .remix_head .demo::before {
+  .remix_wrapper .remix_head .demo::before {
     -webkit-transform: translate(-50%, -50%) rotate(90deg);
             transform: translate(-50%, -50%) rotate(90deg);
     width: 80%;
   }
-  .wrapper .remix_head .demo .choose_song {
+  .remix_wrapper .remix_head .demo .choose_song {
     margin: 5% auto;
   }
-  .wrapper .range p {
+  .remix_wrapper .range p {
     top: 15%;
   }
-  .wrapper .range .rangebutton input[type='range'] {
+  .remix_wrapper .range .rangebutton input[type='range'] {
     margin: 6% 3% 3%;
     width: 65%;
   }
-  .wrapper .range .rangebutton .button button img {
+  .remix_wrapper .range .rangebutton .button button img {
     width: 100%;
   }
 }
@@ -2019,8 +2038,8 @@ header {
     padding: 18% 13% 18% 16%;
   }
   .wrapper .remix_head .demo::before {
-    width: 110%;
-    height: 85%;
+    width: 100vw;
+    height: 100vw;
     -webkit-transform: translate(-50%, -50%) rotate(90deg);
             transform: translate(-50%, -50%) rotate(90deg);
   }
