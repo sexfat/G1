@@ -16,6 +16,7 @@ body{
     background-image: url(../img/collection/collectionnavback.jpg);
     background-position:bottom;
     background-size: cover;
+    background-repeat: no-repeat;
     header{
         text-align: center;
         padding:120px;
@@ -51,7 +52,7 @@ body{
       }
     section{
         text-align: center;
-        .radio{
+        .collectionradio{
             img{
                 width:100vw;
                 max-width:1200px;
@@ -72,18 +73,31 @@ body{
                 }
             }
         }
-        #tabcontainer{
-            .tabtitle{
+        #collectiontabcontainer{
+            .collectiontabtitle{
                 li{
                     list-style: none;
                     vertical-align: middle;
                     display: inline-block;
                     font-size: 2rem;
+                    border-radius: 5px;
+                    background-color: $yellow;
+                    margin: 20px;
+                    &:hover{
+                        transform: scale(1.1);
+                        background-color: $mainBg;
+                        border:2px solid $yellow;
+                    }
                     a{
                         margin: 0px 50px 0px 50px;
+                        color: #fff;
                         // img{
                         //     border: 1px solid green;
                         // }
+                        &:hover{
+                            color: $fontColor;
+                        }
+
                     }
                 }
             }
@@ -123,7 +137,8 @@ h6{
     color : #ccc; 
     position: relative;
     left: 102%;
-    top: 76%;
+    top: 30%;
+    width: 50px;
     cursor : pointer;
 } 
 .redheartshape{
@@ -137,14 +152,14 @@ h6{
     text-align: left;
     p{
         position: relative;
-        top: 180px;
         font-size: 1.2rem;
         display: flex;
+        top: -20px;
     }
     span{
         position: relative;
-        top: 180px;
         font-size: 1rem;
+        top: -50px;
     }
     img{
         cursor: pointer;
@@ -165,7 +180,7 @@ h6{
 
 .albumshelf .sample,
 .albumshelf-row .sample{
-    border: 1px solid red;
+    border: 1px solid #ffffff00;
 	margin:auto;
 	position: relative;
 	z-index:1;
