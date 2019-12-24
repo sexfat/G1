@@ -508,34 +508,42 @@
               <div class="heart becomeRed"><i class="fas fa-heart"></i></div>
               <div class="clearfix"></div>
             </li>
+
           </ul>
         </div>
       </div>
       <div class="close" id="closePlayer"><i class="fas fa-times"></i></div>
       <div class="clearfix"></div>
+
+      <!-- 撥放器燈箱 -->
+      <div class="lightCover">
+        <div class="lightbox_s" id="myAllList">
+          <div class="closeLight"><i class="fas fa-times"></i></div>
+          <h3>My List</h3>
+          <div class="lightSelectMenu">
+            <ul>
+              <li>Liked songs</li>
+              <li>Peaceful songs</li>
+              <li>party</li>
+            </ul>
+          </div>
+          <button class="">ok</button>
+        </div>
+      </div>
     </div>
   </div>
   <!-- player end -->
-  <div id="lightCover">
-    <div class="lightbox_s" id="myAllList">
-      <div class="close closeLight"><i class="fas fa-times"></i></div>
-      <h3>My List</h3>
-      <div class="lightSelectMenu">
-        <ul>
-          <li>Liked songs</li>
-          <li>Peaceful songs</li>
-          <li>party</li>
-        </ul>
-      </div>
-      <button class="">ok</button>
-    </div>
-  </div>
+
+
+
+
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.11.2/css/all.min.css" />
   <script src='https://cdnjs.cloudflare.com/ajax/libs/tone/13.4.0/Tone.js'></script>
   <script src='https://cdnjs.cloudflare.com/ajax/libs/gsap/2.1.3/TweenMax.min.js'></script>
   <script src='https://cdnjs.cloudflare.com/ajax/libs/jquery/3.4.1/jquery.min.js'></script>
   <script src="./js/vue.js"></script>
   <script src="./js/player.js"></script>
+  
   <script>
     var app = new Vue({
       el: '#remix_app',
