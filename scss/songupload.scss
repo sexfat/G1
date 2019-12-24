@@ -1,6 +1,5 @@
-@import "./player.scss";
-@import "./public.scss";
 
+@import "./public.scss";
 
 
 //songadd
@@ -101,7 +100,8 @@
 }
 
 .songsadded_inside2 li {
-    // border: 1px solid blue;
+    border: 1px solid gray;
+    padding: 15px;
     width: 800px;
     margin: 0 auto;
 }
@@ -155,10 +155,10 @@
 // }
 
 .songsadded_inside2 ol{
-    border: 1px solid mediumaquamarine;
+    // border: 1px solid mediumaquamarine;
     height: 350px;
     padding: 20px 0px;
-    margin-left: 180px;
+    margin-left: 200px;
 }
 .songsadded_inside2 article{
    float: left;
@@ -185,5 +185,5 @@
 // }
 .songsadded_adds3{
     border: 1px solid rgba(0, 128, 0, 0);
-    height: 200px;
+    height: 250px;
 }
