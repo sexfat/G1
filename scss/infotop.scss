@@ -1,20 +1,20 @@
 @import url(https://fonts.googleapis.com/css?family=Raleway:400,300,700);
 
-* {
-  box-sizing: border-box;
+// * {
+//   box-sizing: border-box;
 
-  &:before, &:after {
-    box-sizing: border-box;
-  }
-}
+//   &:before, &:after {
+//     box-sizing: border-box;
+//   }
+// }
 
-body {
-  background-color: #fef29c;
-  color: #515044;
-  font-family: 'Raleway', sans-serif;
-}
+// body {
+//   background-color: #fef29c;
+//   color: #515044;
+//   font-family: 'Raleway', sans-serif;
+// }
 
-.music-player-container {
+.songinfo_infoplay .music-player-container {
   -webkit-transform: translate(-50%, -50%);
   -moz-transform: translate(-50%, -50%);
   -ms-transform: translate(-50%, -50%);
@@ -43,7 +43,7 @@ body {
   }
 }
 
-.music-player {
+.songinfo_infoplay .music-player {
   background-color: #fff;
   height: 370px;
   padding: 60px 250px 40px 40px;
@@ -53,7 +53,7 @@ body {
   z-index: 3;
 }
 
-.player-content-container {
+.songinfo_infoplay .player-content-container {
   -webkit-transform: translateY(-50%);
   -moz-transform: translateY(-50%);
   -ms-transform: translateY(-50%);
@@ -63,25 +63,25 @@ body {
   position: relative;
 }
 
-.artist-name {
+.songinfo_infoplay .artist-name {
   font-size: 28px;
   font-weight: normal;
   margin: 0 0 0.75em 0;
 }
 
-.album-title {
+.songinfo_infoplay .album-title {
   font-weight: 200;
   font-size: 24px;
   margin: 0 0 1.75em 0;
 }
 
-.song-title {
+.songinfo_infoplay .song-title {
   font-size: 18px;
   font-weight: 200;
   margin: 0 0 1.5em 0;
 }
 
-.album {
+.songinfo_infoplay .album {
   box-shadow: 3px 3px 15px rgba(0, 0, 0, 0.65);
   height: 315px;
   margin-left: 250px;
@@ -91,7 +91,7 @@ body {
   z-index: 10;
 }
 
-.album-art {
+.songinfo_infoplay .album-art {
   background: #fff url("https://s3-us-west-2.amazonaws.com/s.cdpn.io/83141/incubus-make-yourself.jpg") (center / cover) no-repeat;
   height: 315px;
   position: relative;
@@ -99,7 +99,7 @@ body {
   z-index: 10;
 }
 
-.vinyl {
+.songinfo_infoplay .vinyl {
   -webkit-animation: spin 2s linear infinite;
   -moz-animation: spin 2s linear infinite;
   animation: spin 2s linear infinite;
@@ -121,11 +121,11 @@ body {
   will-change: transform, left;
 }
 
-.is-playing .vinyl {
+.songinfo_infoplay .is-playing .vinyl {
   left: 52%;
 }
 
-.music-player-controls {
+.songinfo_infoplay .music-player-controls {
   text-align: center;
 }
 
@@ -145,19 +145,25 @@ body {
   }
 }
 
-.control-play {
-  background: transparent url("https://s3-us-west-2.amazonaws.com/s.cdpn.io/83141/play.svg") (center / cover) no-repeat;
+// .songinfo_infoplay .control-play {
+//   background: transparent url("https://s3-us-west-2.amazonaws.com/s.cdpn.io/83141/play.svg") (center / cover) no-repeat;
+// }
+.songinfo_infoplay .control-play {
+  background: transparent url("../img/songinfo/do6bFSIxcx.png") (center / cover) no-repeat;
 }
 
-.is-playing .control-play {
-  background: transparent url("https://s3-us-west-2.amazonaws.com/s.cdpn.io/83141/pause.svg") (center / cover) no-repeat;
+// .songinfo_infoplay .is-playing .control-play {
+//   background: transparent url("https://s3-us-west-2.amazonaws.com/s.cdpn.io/83141/pause.svg") (center / cover) no-repeat;
+// }
+.songinfo_infoplay .is-playing .control-play {
+  background: transparent url("../img/songinfo/XThO6FR4Yt.png") (center / cover) no-repeat;
 }
 
-.control-forwards {
+.songinfo_infoplay .control-forwards {
   background: transparent url("https://s3-us-west-2.amazonaws.com/s.cdpn.io/83141/forwards.svg") (center / cover) no-repeat;
 }
 
-.control-back {
+.songinfo_infoplay .control-back {
   background: transparent url("https://s3-us-west-2.amazonaws.com/s.cdpn.io/83141/backwards.svg") (center / cover) no-repeat;
 }
 
