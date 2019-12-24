@@ -445,146 +445,155 @@ div.nav_bar .mem_list li:not(:nth-child(5))::after {
   }
 }
 
-.bookshelf-row {
-  display: none;
+.profile_content {
+  position: relative;
+  background: url(../img/member/border.png) top center no-repeat;
+  background-size: 1280px 640px;
+  border-top: 1px solid transparent;
 }
 
-.bookshelf {
-  -webkit-transition: all 1s;
-  transition: all 1s;
+.profile_content .profile_password_modify {
+  position: absolute;
+  top: 90px;
+  right: 600px;
+  width: 100px;
+  height: 50px;
+  border: 1px solid #f1c40f;
+  -webkit-box-pack: center;
+      -ms-flex-pack: center;
+          justify-content: center;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+  text-align: center;
+  line-height: 1rem;
 }
 
-.bookshelf {
-  display: -webkit-box;
-  display: -ms-flexbox;
-  display: flex;
-  margin-top: 19vh;
+.profile_content .profile_modify {
+  position: absolute;
+  top: 90px;
+  right: 480px;
+  width: 100px;
+  height: 50px;
+  border: 1px solid #f1c40f;
+  -webkit-box-pack: center;
+      -ms-flex-pack: center;
+          justify-content: center;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+  text-align: center;
+  line-height: 1rem;
+}
+
+.profile_content .profile_complete {
+  position: absolute;
+  top: 480px;
+  right: 714px;
+  width: 100px;
+  height: 50px;
+  border: 1px solid #f1c40f;
+  -webkit-box-pack: center;
+      -ms-flex-pack: center;
+          justify-content: center;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+  text-align: center;
+  line-height: 1rem;
+}
+
+.profile_content .profile_container {
+  max-width: 1280px;
+  min-height: 640px;
+  margin: 150px auto 0 auto;
   -webkit-box-pack: center;
       -ms-flex-pack: center;
           justify-content: center;
 }
 
-.bookshelf .shelf {
-  width: 70%;
-  height: 440px;
+.profile_content .profile_container .profile_leftbox {
+  -webkit-box-flex: 0;
+      -ms-flex: 0 1 25%;
+          flex: 0 1 25%;
 }
 
-.bookshelf .shelf .row-1 {
-  position: relative;
+.profile_content .profile_container .profile_leftbox .profile_mem_img {
+  width: 300px;
+  height: 300px;
+  background: url(../img/home/test.jpg);
+  background-size: cover;
+}
+
+.profile_content .profile_container .profile_rightbox {
+  -webkit-box-flex: 0;
+      -ms-flex: 0 1 40%;
+          flex: 0 1 40%;
+  margin: 0 0 0 60px;
+}
+
+.profile_content .profile_container .profile_rightbox table {
+  text-align: left;
+}
+
+.profile_content .profile_container .profile_rightbox table th,
+.profile_content .profile_container .profile_rightbox table td {
+  padding: 15px;
+}
+
+.profile_lightCover {
+  position: fixed;
+  top: 0;
+  left: 0;
   width: 100%;
-  height: 158px;
+  height: 500px;
 }
 
-.bookshelf .shelf .row-2 {
-  position: relative;
-  margin-top: 20px;
-  width: 100%;
-  height: 164px;
-}
-
-.bookshelf .shelf .row-1:after {
-  background: url("https://netzulim.org/R/OrgR/Library/sherut/shelfR.png");
-  background-size: 100%;
-  background-repeat: no-repeat;
-  background-position: bottom left;
-  width: 100%;
-  height: 210px;
-  display: block;
-  content: "";
-}
-
-.bookshelf .shelf .row-2:after {
-  background: url("https://netzulim.org/R/OrgR/Library/sherut/shelfR.png");
-  background-size: 100%;
-  background-repeat: no-repeat;
-  background-position: bottom left;
-  width: 100%;
-  height: 216px;
-  display: block;
-  content: "";
-}
-
-.bookshelf .shelf .loc {
+.profile_lightCover .profile_lightbox_s {
   position: absolute;
-  bottom: 0;
-  width: 100%;
+  top: 50%;
+  left: calc(50% - 250px);
+  height: 430px;
+  margin: 0 auto;
+  background: #FFFFFF;
+  border-radius: 5%;
 }
 
-.bookshelf .shelf .loc > div {
-  width: 33%;
-  height: 100%;
-  background-size: contain;
-  float: left;
+.profile_lightCover .profile_lightbox_s i {
+  position: absolute;
+  top: 20px;
+  right: 20px;
+  font-size: 1.5rem;
 }
 
-.bookshelf .sample,
-.bookshelf-row .sample {
-  margin: auto;
-  position: relative;
-  z-index: 1;
-  -webkit-box-shadow: 2px 2px 5px rgba(0, 0, 0, 0.6);
-          box-shadow: 2px 2px 5px rgba(0, 0, 0, 0.6);
-  -webkit-transition: -webkit-transform 0.1s;
-  transition: -webkit-transform 0.1s;
-  transition: transform 0.1s;
-  transition: transform 0.1s, -webkit-transform 0.1s;
-  -webkit-transform: translate(0, 0);
-          transform: translate(0, 0);
+.profile_lightCover .profile_lightbox_s h4 {
+  margin: 60px 0 30px 0;
+  text-align: center;
 }
 
-.sample:hover {
-  z-index: 2;
-  cursor: pointer;
-  background-color: white;
-  -webkit-transform: scale3d(1.1, 1.1, 1) translate3d(0, -5px, 0);
-          transform: scale3d(1.1, 1.1, 1) translate3d(0, -5px, 0);
+.profile_lightCover .profile_lightbox_s div {
+  width: 300px;
+  margin: 0 auto;
 }
 
-.bookshelf .book1,
-.bookshelf-row .book1 {
-  background-image: url("https://images.booksense.com/images/books/134/800/FC9780394800134.JPG");
-  background-size: 83px 115px;
-  width: 83px;
-  height: 115px;
+.profile_lightCover .profile_lightbox_s div input[type="password"] {
+  width: 300px;
 }
 
-.bookshelf .book2,
-.bookshelf-row .book2 {
-  background-image: url("https://images.booksense.com/images/books/899/800/FC9780394800899.JPG");
-  background-size: 85px 115px;
-  width: 85px;
-  height: 115px;
+.profile_lightCover .profile_lightbox_s .profile_modify_confirm {
+  position: absolute;
+  top: 300px;
+  left: 300px;
+  width: 100px;
+  height: 50px;
+  border: 1px solid #f1c40f;
+  -webkit-box-pack: center;
+      -ms-flex-pack: center;
+          justify-content: center;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+  text-align: center;
+  line-height: 1rem;
 }
-
-.bookshelf .book3,
-.bookshelf-row .book3 {
-  background-image: url("https://images.booksense.com/images/books/783/800/FC9780394800783.JPG");
-  background-size: 84px 115px;
-  width: 84px;
-  height: 115px;
-}
-
-.bookshelf .book4,
-.bookshelf-row .book4 {
-  background-image: url("http://ecx.images-amazon.com/images/I/51KXmt4Ur-L.jpg");
-  background-size: 91px 125px;
-  width: 91px;
-  height: 125px;
-}
-
-.bookshelf .book5,
-.bookshelf-row .book5 {
-  background-image: url("https://toppsta.com/images/book-covers/9780007169917");
-  background-size: 91px 125px;
-  width: 91px;
-  height: 125px;
-}
-
-.bookshelf .book6,
-.bookshelf-row .book6 {
-  background-image: url("https://d1w7fb2mkkr3kw.cloudfront.net/assets/images/book/lrg/9780/0071/9780007158461.jpg");
-  background-size: 91px 125px;
-  width: 91px;
-  height: 125px;
-}
-/*# sourceMappingURL=bookshelf.css.map */
+/*# sourceMappingURL=profile.css.map */

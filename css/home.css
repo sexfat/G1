@@ -6,18 +6,18 @@
   background: #ffcb1e !important;
 }
 
-.sec {
+.home_sec {
   position: relative;
   width: 100%;
   background: #fafaf1;
   overflow: hidden;
 }
 
-.sec header {
+.home_sec header {
   margin: 60px 0 0 0;
 }
 
-.sec01 .img_container {
+.home_sec01 .home_img_container {
   position: absolute;
   top: 0;
   width: 100%;
@@ -26,7 +26,7 @@
   pointer-events: none;
 }
 
-.sec01 .img_container .stylus {
+.home_sec01 .home_img_container .home_stylus {
   position: absolute;
   top: 10px;
   left: -360px;
@@ -38,7 +38,7 @@
           animation: test02 0.9s infinite linear alternate;
 }
 
-.sec01 .img_container .vinyl_records {
+.home_sec01 .home_img_container .home_vinyl_records {
   position: absolute;
   z-index: -1;
   top: -100px;
@@ -51,7 +51,7 @@
           animation: test 6s infinite linear;
 }
 
-.sec01 .img_container .vinyl_records .cover_img {
+.home_sec01 .home_img_container .home_vinyl_records .home_cover_img {
   position: relative;
   top: calc((100% - 400px) / 2);
   left: calc((100% - 400px) / 2);
@@ -106,7 +106,7 @@
   }
 }
 
-.sec01 .ctrl_container {
+.home_sec01 .home_ctrl_container {
   position: absolute;
   left: 700px;
   top: 350px;
@@ -115,14 +115,14 @@
   border: 1px solid red;
 }
 
-.sec01 .ctrl_container .top_arrow {
+.home_sec01 .home_ctrl_container .home_top_arrow {
   position: relative;
   width: 100px;
   height: 100px;
   background: url(../img/home/top_arrow.png) center center no-repeat;
 }
 
-.sec01 .ctrl_container .bot_arrow {
+.home_sec01 .home_ctrl_container .home_bot_arrow {
   position: absolute;
   bottom: 0;
   width: 100px;
@@ -130,7 +130,7 @@
   background: url(../img/home/bot_arrow.png) center center no-repeat;
 }
 
-.sec01 .wave_container {
+.home_sec01 .home_wave_container {
   position: absolute;
   top: 200px;
   right: 0;
@@ -139,7 +139,7 @@
   border: 1px solid blue;
 }
 
-.sec02 .mixer {
+.home_sec02 .home_mixer {
   position: absolute;
   right: 100px;
   width: 556px;
@@ -147,116 +147,277 @@
   background: url(../img/home/mixer.png);
 }
 
-.sec03 .pot {
+.home_sec03 .home_pot {
   position: absolute;
-  top: 60px;
+  top: 40px;
   right: 0;
   width: 407px;
   height: 232px;
   background: url(../img/home/pot.png);
 }
 
-.sec03 .container {
-  width: 210px;
-  height: 140px;
-  top: 100px;
-  left: 800px;
+.home_sec03 .home_slider {
   position: absolute;
-  -webkit-perspective: 1000px;
-          perspective: 1000px;
+  top: calc(50% - 320px);
+  width: 100%;
+  height: 740px;
 }
 
-.sec03 .container .song_container {
+.home_sec03 .home_slider .home_perspective {
   position: absolute;
-  top: 240px;
-  right: 0;
-  width: 100%;
-  height: 100%;
+  left: 540px;
+  width: 1280px;
+  height: 640px;
+  -webkit-perspective: 700px;
+          perspective: 700px;
+  -webkit-perspective-origin: 90% 50%;
+          perspective-origin: 90% 50%;
+}
+
+.home_sec03 .home_slider .home_perspective .home_song_container {
+  position: absolute;
+  top: 33%;
+  left: 60%;
   -webkit-transform-style: preserve-3d;
           transform-style: preserve-3d;
-  border: 1px solid red;
 }
 
-@-webkit-keyframes rotation {
-  from {
-    -webkit-transform: rotateY(0deg);
-            transform: rotateY(0deg);
-  }
-  to {
-    -webkit-transform: rotateY(360deg);
-            transform: rotateY(360deg);
-  }
-}
-
-@keyframes rotation {
-  from {
-    -webkit-transform: rotateY(0deg);
-            transform: rotateY(0deg);
-  }
-  to {
-    -webkit-transform: rotateY(360deg);
-            transform: rotateY(360deg);
-  }
-}
-
-.sec03 .container .song_container .song {
+.home_sec03 .home_slider .home_perspective .home_song_container .home_song {
   position: absolute;
   width: 200px;
   height: 200px;
-  border: 1px solid red;
 }
 
-.sec03 .container .song_container .song.song01 {
-  -webkit-transform: rotateY(0deg) translateZ(288px);
-          transform: rotateY(0deg) translateZ(288px);
+.home_sec03 .home_slider .home_perspective .home_song_container .home_song.home_song1 {
+  -webkit-transform: rotateY(0deg) translateZ(360px);
+          transform: rotateY(0deg) translateZ(360px);
+  -webkit-backface-visibility: hidden;
+          backface-visibility: hidden;
 }
 
-.sec03 .container .song_container .song.song02 {
-  -webkit-transform: rotateY(40deg) translateZ(288px);
-          transform: rotateY(40deg) translateZ(288px);
+.home_sec03 .home_slider .home_perspective .home_song_container .home_song.home_song1 .home_cover_img {
+  position: absolute;
+  z-index: 1;
+  width: 100%;
+  height: 100%;
+  background: url(../img/home/test.jpg);
+  background-size: cover;
 }
 
-.sec03 .container .song_container .song.song03 {
-  -webkit-transform: rotateY(80deg) translateZ(288px);
-          transform: rotateY(80deg) translateZ(288px);
+.home_sec03 .home_slider .home_perspective .home_song_container .home_song.home_song2 {
+  -webkit-transform: rotateY(36deg) translateZ(360px);
+          transform: rotateY(36deg) translateZ(360px);
+  -webkit-backface-visibility: hidden;
+          backface-visibility: hidden;
 }
 
-.sec03 .container .song_container .song.song04 {
-  -webkit-transform: rotateY(120deg) translateZ(288px);
-          transform: rotateY(120deg) translateZ(288px);
+.home_sec03 .home_slider .home_perspective .home_song_container .home_song.home_song2 .home_cover_img {
+  position: absolute;
+  z-index: 1;
+  width: 100%;
+  height: 100%;
+  background: url(../img/home/test.jpg);
+  background-size: cover;
 }
 
-.sec03 .container .song_container .song.song05 {
-  -webkit-transform: rotateY(160deg) translateZ(288px);
-          transform: rotateY(160deg) translateZ(288px);
+.home_sec03 .home_slider .home_perspective .home_song_container .home_song.home_song3 {
+  -webkit-transform: rotateY(72deg) translateZ(360px);
+          transform: rotateY(72deg) translateZ(360px);
+  -webkit-backface-visibility: hidden;
+          backface-visibility: hidden;
 }
 
-.sec03 .container .song_container .song.song06 {
-  -webkit-transform: rotateY(200deg) translateZ(288px);
-          transform: rotateY(200deg) translateZ(288px);
+.home_sec03 .home_slider .home_perspective .home_song_container .home_song.home_song3 .home_cover_img {
+  position: absolute;
+  z-index: 1;
+  width: 100%;
+  height: 100%;
+  background: url(../img/home/test.jpg);
+  background-size: cover;
 }
 
-.sec03 .container .song_container .song.song07 {
-  -webkit-transform: rotateY(240deg) translateZ(288px);
-          transform: rotateY(240deg) translateZ(288px);
+.home_sec03 .home_slider .home_perspective .home_song_container .home_song.home_song4 {
+  -webkit-transform: rotateY(108deg) translateZ(360px);
+          transform: rotateY(108deg) translateZ(360px);
+  -webkit-backface-visibility: hidden;
+          backface-visibility: hidden;
 }
 
-.sec03 .container .song_container .song.song08 {
-  -webkit-transform: rotateY(280deg) translateZ(288px);
-          transform: rotateY(280deg) translateZ(288px);
+.home_sec03 .home_slider .home_perspective .home_song_container .home_song.home_song4 .home_cover_img {
+  position: absolute;
+  z-index: 1;
+  width: 100%;
+  height: 100%;
+  background: url(../img/home/test.jpg);
+  background-size: cover;
 }
 
-.sec03 .container .song_container .song.song09 {
-  -webkit-transform: rotateY(320deg) translateZ(288px);
-          transform: rotateY(320deg) translateZ(288px);
+.home_sec03 .home_slider .home_perspective .home_song_container .home_song.home_song5 {
+  -webkit-transform: rotateY(144deg) translateZ(360px);
+          transform: rotateY(144deg) translateZ(360px);
+  -webkit-backface-visibility: hidden;
+          backface-visibility: hidden;
 }
 
-.sec03 .container .song_container .song.song10 {
-  -webkit-transform: rotateY(360deg) translateZ(288px);
-          transform: rotateY(360deg) translateZ(288px);
+.home_sec03 .home_slider .home_perspective .home_song_container .home_song.home_song5 .home_cover_img {
+  position: absolute;
+  z-index: 1;
+  width: 100%;
+  height: 100%;
+  background: url(../img/home/test.jpg);
+  background-size: cover;
 }
 
-.sec04 .DJ {
+.home_sec03 .home_slider .home_perspective .home_song_container .home_song.home_song6 {
+  -webkit-transform: rotateY(180deg) translateZ(360px);
+          transform: rotateY(180deg) translateZ(360px);
+  -webkit-backface-visibility: hidden;
+          backface-visibility: hidden;
+}
+
+.home_sec03 .home_slider .home_perspective .home_song_container .home_song.home_song6 .home_cover_img {
+  position: absolute;
+  z-index: 1;
+  width: 100%;
+  height: 100%;
+  background: url(../img/home/test.jpg);
+  background-size: cover;
+}
+
+.home_sec03 .home_slider .home_perspective .home_song_container .home_song.home_song7 {
+  -webkit-transform: rotateY(216deg) translateZ(360px);
+          transform: rotateY(216deg) translateZ(360px);
+  -webkit-backface-visibility: hidden;
+          backface-visibility: hidden;
+}
+
+.home_sec03 .home_slider .home_perspective .home_song_container .home_song.home_song7 .home_cover_img {
+  position: absolute;
+  z-index: 1;
+  width: 100%;
+  height: 100%;
+  background: url(../img/home/test.jpg);
+  background-size: cover;
+}
+
+.home_sec03 .home_slider .home_perspective .home_song_container .home_song.home_song8 {
+  -webkit-transform: rotateY(252deg) translateZ(360px);
+          transform: rotateY(252deg) translateZ(360px);
+  -webkit-backface-visibility: hidden;
+          backface-visibility: hidden;
+}
+
+.home_sec03 .home_slider .home_perspective .home_song_container .home_song.home_song8 .home_cover_img {
+  position: absolute;
+  z-index: 1;
+  width: 100%;
+  height: 100%;
+  background: url(../img/home/test.jpg);
+  background-size: cover;
+}
+
+.home_sec03 .home_slider .home_perspective .home_song_container .home_song.home_song9 {
+  -webkit-transform: rotateY(288deg) translateZ(360px);
+          transform: rotateY(288deg) translateZ(360px);
+  -webkit-backface-visibility: hidden;
+          backface-visibility: hidden;
+}
+
+.home_sec03 .home_slider .home_perspective .home_song_container .home_song.home_song9 .home_cover_img {
+  position: absolute;
+  z-index: 1;
+  width: 100%;
+  height: 100%;
+  background: url(../img/home/test.jpg);
+  background-size: cover;
+}
+
+.home_sec03 .home_slider .home_perspective .home_song_container .home_song.home_song10 {
+  -webkit-transform: rotateY(324deg) translateZ(360px);
+          transform: rotateY(324deg) translateZ(360px);
+  -webkit-backface-visibility: hidden;
+          backface-visibility: hidden;
+}
+
+.home_sec03 .home_slider .home_perspective .home_song_container .home_song.home_song10 .home_cover_img {
+  position: absolute;
+  z-index: 1;
+  width: 100%;
+  height: 100%;
+  background: url(../img/home/test.jpg);
+  background-size: cover;
+}
+
+.home_sec03 .home_slider .home_perspective .home_song_container .home_song .home_shadow {
+  width: 100%;
+  height: 100%;
+  -webkit-transition: all 0.5s;
+  transition: all 0.5s;
+}
+
+.home_sec03 .home_slider .home_perspective .home_song_container .home_song .home_song_info {
+  position: absolute;
+  top: 0;
+  left: 0px;
+  width: 100%;
+  height: 100%;
+  padding: 15px 15px;
+  font-size: 0.6rem;
+  background: #d8d1c5;
+  -webkit-transition: all 0.3s;
+  transition: all 0.3s;
+}
+
+.home_sec03 .home_slider .home_perspective .home_song_container .home_song .home_song_info .home_icon_container {
+  margin: 10px 0 0 0;
+}
+
+.home_sec03 .home_slider .home_perspective .home_song_container .home_song .home_song_info .home_icon_container .home_play {
+  margin: 0 auto 0 0;
+}
+
+.home_sec03 .home_slider .home_perspective .home_song_container .home_song .home_song_info .home_icon_container .home_favorite {
+  margin: 0 10px 0 0;
+}
+
+.home_sec03 .home_slider .home_perspective .home_song_container .home_song .home_song_info .home_icon_container .home_favorite i {
+  color: #de267d;
+}
+
+.home_sec03 .home_slider .home_perspective .home_song_container .home_song .home_song_info .home_icon_container .home_donate i {
+  color: #f1c410;
+}
+
+.home_sec03 .home_slider .home_perspective .home_song_container .home_song .home_song_info .home_icon_container i {
+  font-size: 0.5rem;
+}
+
+.home_sec03 .home_slider .home_arrow_container {
+  position: absolute;
+  width: 600px;
+  top: 580px;
+  left: 85px;
+}
+
+.home_sec03 .home_slider .home_arrow_container .home_left_arrow {
+  float: left;
+  width: 120px;
+  height: 60px;
+  background: url(../img/home/arrow.png) center center;
+  background-size: cover;
+  -webkit-transform: scaleX(-1);
+          transform: scaleX(-1);
+}
+
+.home_sec03 .home_slider .home_arrow_container .home_right_arrow {
+  float: right;
+  width: 120px;
+  height: 60px;
+  background: url(../img/home/arrow.png) center center;
+  background-size: cover;
+}
+
+.home_sec04 .home_DJ {
   position: absolute;
   bottom: 0px;
   left: 0;
@@ -265,12 +426,12 @@
   background: url(../img/home/DJ.png);
 }
 
-.sec05 .container {
+.home_sec05 .home_container {
   position: relative;
   top: 240px;
 }
 
-.sec05 .container .shelf {
+.home_sec05 .home_container .home_shelf {
   position: absolute;
   width: 590px;
   height: 141px;
@@ -278,22 +439,22 @@
   background-size: cover;
 }
 
-.sec05 .container .shelf01 {
+.home_sec05 .home_container .home_shelf01 {
   right: 120px;
   top: 0px;
 }
 
-.sec05 .container .shelf02 {
+.home_sec05 .home_container .home_shelf02 {
   right: 60px;
   top: 240px;
 }
 
-.sec05 .container .shelf03 {
+.home_sec05 .home_container .home_shelf03 {
   right: 180px;
   top: 480px;
 }
 
-.sec06 .audio_man {
+.home_sec06 .home_audio_man {
   position: absolute;
   bottom: 0px;
   left: 0;
