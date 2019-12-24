@@ -1,4 +1,5 @@
 @charset "UTF-8";
+@import url(https://fonts.googleapis.com/css?family=Raleway:400,300,700);
 * {
   -webkit-box-sizing: border-box;
           box-sizing: border-box;
@@ -4059,35 +4060,35 @@ main.library_main .clearfix {
           transform: scale(1.1);
 }
 
-.collectionbody section {
+.collectionbody .collectionsection {
   text-align: center;
 }
 
-.collectionbody section .collectionradio img {
+.collectionbody .collectionsection .collectionradio img {
   width: 100vw;
   max-width: 1200px;
 }
 
-.collectionbody section .collectionradio .eyes1 {
+.collectionbody .collectionsection .collectionradio .eyes1 {
   position: absolute;
   top: 40%;
   margin: 0 auto;
   width: 100vw;
 }
 
-.collectionbody section .collectionradio .eyes1 img {
+.collectionbody .collectionsection .collectionradio .eyes1 img {
   margin: 35px 60px 0px 10px;
   max-width: 130px;
   width: 100vw;
 }
 
-.collectionbody section .collectionradio .eyes1 img:hover {
+.collectionbody .collectionsection .collectionradio .eyes1 img:hover {
   -webkit-transform: scale(1.1);
           transform: scale(1.1);
   cursor: pointer;
 }
 
-.collectionbody section #collectiontabcontainer .collectiontabtitle li {
+.collectionbody .collectionsection #collectiontabcontainer .collectiontabtitle li {
   list-style: none;
   vertical-align: middle;
   display: inline-block;
@@ -4097,27 +4098,27 @@ main.library_main .clearfix {
   margin: 20px;
 }
 
-.collectionbody section #collectiontabcontainer .collectiontabtitle li:hover {
+.collectionbody .collectionsection #collectiontabcontainer .collectiontabtitle li:hover {
   -webkit-transform: scale(1.1);
           transform: scale(1.1);
   background-color: #fafaf1;
   border: 2px solid #f1c40f;
 }
 
-.collectionbody section #collectiontabcontainer .collectiontabtitle li a {
+.collectionbody .collectionsection #collectiontabcontainer .collectiontabtitle li a {
   margin: 0px 50px 0px 50px;
   color: #fff;
 }
 
-.collectionbody section #collectiontabcontainer .collectiontabtitle li a:hover {
+.collectionbody .collectionsection #collectiontabcontainer .collectiontabtitle li a:hover {
   color: #333;
 }
 
-.collectionbody section #collectiontabcontainer .albumshelf-row {
+.collectionbody .collectionsection #collectiontabcontainer .albumshelf-row {
   display: none;
 }
 
-.collectionbody section #collectiontabcontainer .albumshelf {
+.collectionbody .collectionsection #collectiontabcontainer .albumshelf {
   display: -webkit-box;
   display: -ms-flexbox;
   display: flex;
@@ -4127,12 +4128,12 @@ main.library_main .clearfix {
           justify-content: center;
 }
 
-.collectionbody section #collectiontabcontainer .albumshelf .shelf {
+.collectionbody .collectionsection #collectiontabcontainer .albumshelf .shelf {
   width: 65vw;
   margin-top: 80px;
 }
 
-.collectionbody section #collectiontabcontainer .sample .like {
+.collectionbody .collectionsection #collectiontabcontainer .sample .like {
   font-size: 40px;
   color: #ccc;
   position: relative;
@@ -4142,7 +4143,7 @@ main.library_main .clearfix {
   cursor: pointer;
 }
 
-.collectionbody section #collectiontabcontainer .sample p {
+.collectionbody .collectionsection #collectiontabcontainer .sample p {
   position: relative;
   font-size: 1.2rem;
   display: -webkit-box;
@@ -4151,19 +4152,19 @@ main.library_main .clearfix {
   top: 160px;
 }
 
-.collectionbody section #collectiontabcontainer .sample span {
+.collectionbody .collectionsection #collectiontabcontainer .sample span {
   position: relative;
   font-size: 1rem;
   top: 160px;
 }
 
-.collectionbody section #collectiontabcontainer .albumshelf .shelf .row-1 {
+.collectionbody .collectionsection #collectiontabcontainer .albumshelf .shelf .row-1 {
   position: relative;
   width: 100%;
   height: 400px;
 }
 
-.collectionbody section #collectiontabcontainer .albumshelf .shelf .row-1:after {
+.collectionbody .collectionsection #collectiontabcontainer .albumshelf .shelf .row-1:after {
   background: url("../img/collection/shelf.png");
   background-size: 100%;
   background-repeat: no-repeat;
@@ -4174,18 +4175,18 @@ main.library_main .clearfix {
   content: "";
 }
 
-.collectionbody section #collectiontabcontainer .redheartshape {
+.collectionbody .collectionsection #collectiontabcontainer .redheartshape {
   color: #de267d;
 }
 
-.collectionbody section #collectiontabcontainer .albumshelf .shelf .loc {
+.collectionbody .collectionsection #collectiontabcontainer .albumshelf .shelf .loc {
   position: absolute;
   bottom: 0;
   width: 100%;
   text-align: left;
 }
 
-.collectionbody section #collectiontabcontainer .albumshelf .shelf .loc img {
+.collectionbody .collectionsection #collectiontabcontainer .albumshelf .shelf .loc img {
   cursor: pointer;
   position: relative;
   top: 160px;
@@ -4194,15 +4195,15 @@ main.library_main .clearfix {
   max-width: 40px;
 }
 
-.collectionbody section #collectiontabcontainer .albumshelf .shelf .loc > div {
+.collectionbody .collectionsection #collectiontabcontainer .albumshelf .shelf .loc > div {
   width: 25%;
   height: 100%;
   background-size: contain;
   float: left;
 }
 
-.collectionbody section #collectiontabcontainer .albumshelf .sample,
-.collectionbody section #collectiontabcontainer .albumshelf-row .sample {
+.collectionbody .collectionsection #collectiontabcontainer .albumshelf .sample,
+.collectionbody .collectionsection #collectiontabcontainer .albumshelf-row .sample {
   border: 1px solid #ffffff00;
   margin: auto;
   position: relative;
@@ -4211,8 +4212,8 @@ main.library_main .clearfix {
           box-shadow: 2px 2px 5px rgba(0, 0, 0, 0.6);
 }
 
-.collectionbody section #collectiontabcontainer .albumshelf .album1,
-.collectionbody section #collectiontabcontainer .albumshelf-row .album1 {
+.collectionbody .collectionsection #collectiontabcontainer .albumshelf .album1,
+.collectionbody .collectionsection #collectiontabcontainer .albumshelf-row .album1 {
   background-image: url("../img/collection/album1.jpg");
   background-size: 100%;
   width: 200px;
@@ -4221,8 +4222,8 @@ main.library_main .clearfix {
   bottom: 340px;
 }
 
-.collectionbody section #collectiontabcontainer .albumshelf .album2,
-.collectionbody section #collectiontabcontainer .albumshelf-row .album2 {
+.collectionbody .collectionsection #collectiontabcontainer .albumshelf .album2,
+.collectionbody .collectionsection #collectiontabcontainer .albumshelf-row .album2 {
   background-image: url("../img/collection/album2.jpg");
   background-size: 100%;
   width: 200px;
@@ -4231,8 +4232,8 @@ main.library_main .clearfix {
   bottom: 340px;
 }
 
-.collectionbody section #collectiontabcontainer .albumshelf .album3,
-.collectionbody section #collectiontabcontainer .albumshelf-row .album3 {
+.collectionbody .collectionsection #collectiontabcontainer .albumshelf .album3,
+.collectionbody .collectionsection #collectiontabcontainer .albumshelf-row .album3 {
   background-image: url("../img/collection/album3.jpg");
   background-size: 100%;
   width: 200px;
@@ -4241,8 +4242,8 @@ main.library_main .clearfix {
   bottom: 340px;
 }
 
-.collectionbody section #collectiontabcontainer .albumshelf .album4,
-.collectionbody section #collectiontabcontainer .albumshelf-row .album4 {
+.collectionbody .collectionsection #collectiontabcontainer .albumshelf .album4,
+.collectionbody .collectionsection #collectiontabcontainer .albumshelf-row .album4 {
   background-image: url("../img/collection/album4.jpg");
   background-size: 100%;
   width: 200px;
@@ -4251,8 +4252,8 @@ main.library_main .clearfix {
   bottom: 340px;
 }
 
-.collectionbody section #collectiontabcontainer .albumshelf .album5,
-.collectionbody section #collectiontabcontainer .albumshelf-row .album5 {
+.collectionbody .collectionsection #collectiontabcontainer .albumshelf .album5,
+.collectionbody .collectionsection #collectiontabcontainer .albumshelf-row .album5 {
   background-image: url("../img/collection/album5.jpg");
   background-size: 100%;
   width: 200px;
@@ -4261,8 +4262,8 @@ main.library_main .clearfix {
   bottom: 340px;
 }
 
-.collectionbody section #collectiontabcontainer .albumshelf .album6,
-.collectionbody section #collectiontabcontainer .albumshelf-row .album6 {
+.collectionbody .collectionsection #collectiontabcontainer .albumshelf .album6,
+.collectionbody .collectionsection #collectiontabcontainer .albumshelf-row .album6 {
   background-image: url("../img/collection/album6.jpg");
   background-size: 100%;
   width: 200px;
@@ -4271,8 +4272,8 @@ main.library_main .clearfix {
   bottom: 340px;
 }
 
-.collectionbody section #collectiontabcontainer .albumshelf .album7,
-.collectionbody section #collectiontabcontainer .albumshelf-row .album7 {
+.collectionbody .collectionsection #collectiontabcontainer .albumshelf .album7,
+.collectionbody .collectionsection #collectiontabcontainer .albumshelf-row .album7 {
   background-image: url("../img/collection/album7.jpg");
   background-size: 100%;
   width: 200px;
@@ -4281,8 +4282,8 @@ main.library_main .clearfix {
   bottom: 340px;
 }
 
-.collectionbody section #collectiontabcontainer .albumshelf .album8,
-.collectionbody section #collectiontabcontainer .albumshelf-row .album8 {
+.collectionbody .collectionsection #collectiontabcontainer .albumshelf .album8,
+.collectionbody .collectionsection #collectiontabcontainer .albumshelf-row .album8 {
   background-image: url("../img/collection/album8.jpg");
   background-size: 100%;
   width: 200px;
@@ -4291,8 +4292,8 @@ main.library_main .clearfix {
   bottom: 340px;
 }
 
-.collectionbody section #collectiontabcontainer .albumshelf .album9,
-.collectionbody section #collectiontabcontainer .albumshelf-row .album9 {
+.collectionbody .collectionsection #collectiontabcontainer .albumshelf .album9,
+.collectionbody .collectionsection #collectiontabcontainer .albumshelf-row .album9 {
   background-image: url("../img/collection/album9.jpg");
   background-size: 100%;
   width: 200px;
@@ -4301,8 +4302,8 @@ main.library_main .clearfix {
   bottom: 340px;
 }
 
-.collectionbody section #collectiontabcontainer .albumshelf .album10,
-.collectionbody section #collectiontabcontainer .albumshelf-row .album10 {
+.collectionbody .collectionsection #collectiontabcontainer .albumshelf .album10,
+.collectionbody .collectionsection #collectiontabcontainer .albumshelf-row .album10 {
   background-image: url("../img/collection/album10.jpg");
   background-size: 100%;
   width: 200px;
@@ -5360,6 +5361,418 @@ header {
 #act_Now-Vote section div .act_old-hear1 img {
   width: 100%;
   height: 100%;
+}
+
+* {
+  -webkit-box-sizing: border-box;
+          box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+}
+
+html {
+  font-size: 20px;
+}
+
+body {
+  margin: 0;
+  padding: 0;
+  font-family: "Lucida Sans Unicode", Geneva, Verdana, sans-serif;
+  background: #fafaf1;
+  color: #333;
+  overflow-x: hidden;
+}
+
+.flexbox {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+}
+
+a {
+  text-decoration: none;
+  color: #333;
+}
+
+header {
+  height: 300px;
+  text-align: center;
+  padding: 120px 0;
+}
+
+.wrapper {
+  max-width: 1500px;
+  margin: 0 auto;
+  width: 100%;
+}
+
+/*燈箱寬*/
+.lightbox_s {
+  width: 500px;
+}
+
+/*新手教學用*/
+.lightbox_b {
+  width: 1000px;
+}
+
+/*燈箱的遮罩顏色*/
+.lightCover {
+  background-color: #414141e6;
+}
+
+/*button mixin*/
+@media all and (max-width: 768px) {
+  header img {
+    height: 76px;
+  }
+}
+
+.songinfo_infoplay .music-player-container {
+  -webkit-transform: translate(-50%, -50%);
+  transform: translate(-50%, -50%);
+  display: inline-block;
+  height: 370px;
+  position: absolute;
+  max-width: 650px;
+  left: 50%;
+  top: 55%;
+}
+
+.songinfo_infoplay .music-player-container:after {
+  -webkit-filter: blur(8px);
+  filter: blur(8px);
+  background-color: rgba(0, 0, 0, 0.8);
+  bottom: -2px;
+  content: ' ';
+  display: block;
+  height: 10px;
+  left: -175px;
+  position: absolute;
+  -webkit-transform: rotate(-3deg);
+          transform: rotate(-3deg);
+  width: 70%;
+  z-index: 0;
+}
+
+.songinfo_infoplay .music-player {
+  background-color: #fff;
+  height: 370px;
+  padding: 60px 250px 40px 40px;
+  position: absolute;
+  text-align: right;
+  width: 500px;
+  right: 250px;
+  z-index: 3;
+}
+
+.songinfo_infoplay .player-content-container {
+  -webkit-transform: translateY(-50%);
+  transform: translateY(-50%);
+  top: 50%;
+  position: relative;
+}
+
+.songinfo_infoplay .artist-name {
+  font-size: 1rem;
+  font-weight: normal;
+  margin: 0 0 20px 0;
+}
+
+.songinfo_infoplay .song-title {
+  font-size: 1.5rem;
+  margin: 0px 0px 30px 0px;
+}
+
+.songinfo_infoplay .album {
+  -webkit-box-shadow: 3px 3px 15px rgba(0, 0, 0, 0.65);
+          box-shadow: 3px 3px 15px rgba(0, 0, 0, 0.65);
+  height: 315px;
+  margin-left: 250px;
+  margin-top: 27px;
+  position: relative;
+  width: 315px;
+  z-index: 10;
+}
+
+.songinfo_infoplay .album-art {
+  background: #fff url("../img/songinfo/cover1.jpg") center/cover no-repeat;
+  height: 400px;
+  position: relative;
+  bottom: 40px;
+  right: 50px;
+  width: 400px;
+  z-index: 10;
+}
+
+.songinfo_infoplay .vinyl {
+  -webkit-animation: spin 2s linear infinite;
+  animation: spin 2s linear infinite;
+  -webkit-transition: all 500ms;
+  transition: all 500ms;
+  background-image: url("../img/songinfo/player_record.png") !important;
+  background-position: center, center;
+  background-size: cover, 40% auto;
+  background-repeat: no-repeat;
+  border-radius: 100%;
+  height: 350px;
+  left: 0;
+  position: absolute;
+  top: -15px;
+  width: 350px;
+  z-index: 5;
+  will-change: transform, left;
+}
+
+.songinfo_infoplay .is-playing .vinyl {
+  left: 52%;
+}
+
+.songinfo_infoplay .music-player-controls {
+  text-align: center;
+}
+
+[class^="control-"] {
+  -webkit-filter: brightness(95%);
+  filter: brightness(95%);
+  border-radius: 100%;
+  display: inline-block;
+  height: 44px;
+  margin: 0 3px;
+  width: 44px;
+}
+
+[class^="control-"]:hover {
+  -webkit-filter: brightness(85%);
+  filter: brightness(85%);
+  cursor: pointer;
+}
+
+.songinfo_infoplay .control-play {
+  background: transparent url("../img/songinfo/do6bFSIxcx.png") center/cover no-repeat;
+  position: relative;
+  left: -70px;
+}
+
+.songinfo_infoplay .is-playing .control-play {
+  background: transparent url("../img/songinfo/XThO6FR4Yt.png") center/cover no-repeat;
+}
+
+.songinfo_infoplay .control-forwards {
+  background: transparent url("https://s3-us-west-2.amazonaws.com/s.cdpn.io/83141/forwards.svg") center/cover no-repeat;
+}
+
+.songinfo_infoplay .control-back {
+  background: transparent url("https://s3-us-west-2.amazonaws.com/s.cdpn.io/83141/backwards.svg") center/cover no-repeat;
+}
+
+@-webkit-keyframes spin {
+  0% {
+    -webkit-transform: rotate(0deg);
+  }
+  100% {
+    -webkit-transform: rotate(360deg);
+  }
+}
+
+@keyframes spin {
+  0% {
+    -webkit-transform: rotate(0deg);
+    transform: rotate(0deg);
+  }
+  100% {
+    -webkit-transform: rotate(360deg);
+    transform: rotate(360deg);
+  }
+}
+
+.songinfo_infos2 {
+  border: 1px solid red;
+  height: 600px;
+}
+
+.songinfo_infoplay {
+  border: 1px solid purple;
+  width: 1200px;
+  height: 600px;
+  margin: 0 auto;
+}
+
+.songinfo_info {
+  border: 1px solid red;
+}
+
+.songinfo_infos3 {
+  border: 1px solid navy;
+  height: 600px;
+}
+
+.songinfo_infos3 p {
+  width: 130px;
+  font-size: 1.2rem;
+  font-weight: bold;
+}
+
+.songinfo_titl {
+  border: 1px solid blue;
+  width: 1200px;
+  margin: 0 auto;
+  padding: 130px 0px 0px 0px;
+  height: 600px;
+}
+
+.info_square {
+  border: 1px solid #d0d6d6;
+  background-color: #d0d6d6;
+  z-index: -1;
+  width: 1050px;
+  height: 400px;
+  position: relative;
+  bottom: 320px;
+  left: 45px;
+}
+
+.songinfo_infos4 {
+  border: 1px solid blue;
+  height: 600px;
+}
+
+.message {
+  border: 1px solid palevioletred;
+  width: 1200px;
+  margin: 0 auto;
+}
+
+.mess {
+  border: 1px solid black;
+  width: 1000px;
+  margin: 0 auto;
+}
+
+.mess_write {
+  border: 1px solid black;
+  width: 1000px;
+  margin: 0 auto;
+  padding: 0px 50px;
+}
+
+.songinfo_infos5 {
+  height: 200px;
+}
+
+.songsadded_adds2 {
+  -webkit-box-sizing: border-box;
+          box-sizing: border-box;
+}
+
+.songsadded_leftli {
+  width: 1200px;
+  height: 600px !important;
+  margin: 0 auto;
+  -webkit-box-sizing: border-box;
+          box-sizing: border-box;
+  padding: 0px;
+}
+
+.songsadded_lif {
+  border: 1px solid #b2c0c0;
+  width: 1200px;
+  padding: 30px 0px;
+  background-color: #d0d6d6;
+}
+
+.songsadded_inside,
+.songsadded_inside2 {
+  border: 1px solid rgba(128, 128, 128, 0.5);
+  width: 1200px;
+  margin: 0 auto;
+  background-color: white;
+}
+
+.songsadded_inside div {
+  width: 500px;
+  height: 320px;
+  position: relative;
+  right: -100px;
+  top: 0px;
+  padding: 30px 0px;
+  display: inline-block;
+}
+
+.songsadded_inside article {
+  width: 500px;
+  height: 300px;
+  position: relative;
+  left: 120px;
+  top: 20px;
+  float: left;
+}
+
+.songsadded_inside article #theFile {
+  position: relative;
+  top: 140px;
+  left: 65px;
+}
+
+.songsadded_ff {
+  position: relative;
+  top: 150px;
+  left: 130px;
+}
+
+.songsadded_inside section {
+  text-align: center;
+  margin-left: -70px;
+}
+
+#sd {
+  z-index: 10;
+}
+
+.uploadmic img {
+  position: absolute;
+  right: 50px;
+  bottom: 70px;
+  width: 200px;
+  height: 420px;
+}
+
+.songsadded_inside2 {
+  padding: 40px 0px;
+}
+
+.songsadded_inside2 li {
+  border: 1px solid gray;
+  padding: 15px;
+  width: 800px;
+  margin: 0 auto;
+}
+
+.songsadded_inside2 input {
+  position: relative;
+  left: 60px;
+  top: 140px;
+}
+
+.songsadded_inside2 ol {
+  height: 350px;
+  padding: 20px 0px;
+  margin-left: 200px;
+}
+
+.songsadded_inside2 article {
+  float: left;
+}
+
+.songsadded_inside2 div {
+  position: relative;
+  left: 100px;
+  float: left;
+}
+
+.songsadded_adds3 {
+  border: 1px solid rgba(0, 128, 0, 0);
+  height: 250px;
 }
 
 .profile_content {
