@@ -5,59 +5,30 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
-    <title>Document</title>
+    <title>Song Upload</title>
+    <link rel="stylesheet" href="./css/songupload.css">
     <link rel="stylesheet" href="./css/public.css">
     <link rel="stylesheet" href="./css/nav_bar.css">
     <link rel="stylesheet" href="./css/home.css">
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/pagePiling.js/1.5.6/jquery.pagepiling.min.css">
     <script src="https://cdnjs.cloudflare.com/ajax/libs/vue/2.6.10/vue.js"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
 
     <script src="https://cdnjs.cloudflare.com/ajax/libs/pagePiling.js/1.5.6/jquery.pagepiling.min.js"></script>
-
     <style>
+        .leftli {
+            list-style-type: none;
+        }
 
+        .leftli ul {
+            list-style-type: none;
+            padding: 0px;
+        }
 
+        body {
+            background: url(./img/songupload/addimg0.jpg);
+            background-repeat: no-repeat;
+        }
     </style>
-    <script>
-
-        $(document).ready(() => {
-            $('#pagepiling').pagepiling(
-                {
-                    verticalCentered: false, //section 內物件置中對齊
-                    navigation: {
-                        'bulletsColor': '#F1C40F', // 框線
-                        'position': 'right',
-                        'tooltips': ['SOUND WAVE', 'REMIX', 'RANK', 'ACTIVITY', 'COLLECTION', 'ABOUT']
-                    },
-                }
-            );
-
-            $('.mem_list').css({ 'height': $(window).height() });
-            $('.mobile_list').css({ 'height': $(window).height() });
-            $('.mem_list ul').css({ 'height': $(window).height() });
-            $('.mobile_list ul').css({ 'height': $(window).height() });
-            $('.paint_border').css({ 'height': $(window).height() });
-
-            $(document).click(() => {
-                vm.mem_list = false;
-                vm.search_bar = false;
-                vm.mobile_list = false;
-
-                document
-                    .querySelector(".search_bar")
-                    .setAttribute("style", "height: 0px; filter: opacity(0);");
-                document
-                    .querySelector(".mem_list")
-                    .setAttribute("style", "transform: translateX(270px); filter: opacity(0);");
-                document
-                    .querySelector(".mobile_list")
-                    .setAttribute("style", "transform: translateX(-270px); filter: opacity(0);");
-            })
-
-        });
-
-    </script>
 </head>
 
 <body>
@@ -162,75 +133,148 @@
             </div>
 
         </div>
-
-        <div id="pagepiling">
-            <div class="sec sec01 section">
-                <div class="img_container">
-                    <div class="stylus"></div>
-                    <div class="vinyl_records">
-                        <div class="cover_img">
-                        </div>
-                    </div>
-                </div>
-                <div class="ctrl_container">
-                    <div class="top_arrow"></div>
-                    <div songInfo_container>
-
-                    </div>
-                    <div class="bot_arrow"></div>
-                </div>
-                <div class="wave_container">
-
-                </div>
-            </div>
-            <div class="sec sec02 section">
-                <header>
-                    <h1>
-                        REMIX
-                    </h1>
-                </header>
-                <div class="mixer">
-
-                </div>
-            </div>
-            <div class="sec sec03 section">
-                <div class="pot">
-                </div>
-                <div class="container">
-                    <div class="song_container">
-                        <div class="song song01"></div>
-                        <div class="song song02"></div>
-                        <div class="song song03"></div>
-                        <div class="song song04"></div>
-                        <div class="song song05"></div>
-                        <div class="song song06"></div>
-                        <div class="song song07"></div>
-                        <div class="song song08"></div>
-                        <div class="song song09"></div>
-                        <div class="song song10"></div>
-                    </div>
-                </div>
-            </div>
-            <div class="sec sec04 section">
-                <div class="DJ">
-
-                </div>
-            </div>
-            <div class="sec sec05 section">
-                <div class="container">
-                    <div class="shelf shelf01"></div>
-                    <div class="shelf shelf02"></div>
-                    <div class="shelf shelf03"></div>
-                </div>
-            </div>
-            <div class="sec sec06 section">
-                <div class="audio_man">
-                </div>
-            </div>
-        </div>
     </div>
+    <header>
+        <div class="bnr">
+            <!-- <h1>Songs Added</h1> -->
+            <img src="./img/songupload/addtitle.png" alt="">
+        </div>
+    </header>
 
+    <section class="adds2">
+        <ol class="leftli">
+            <li class="lif">&emsp;UPLOAD SONG</li>
+            <ol class="inside">
+                <form action="" method="POST">
+                    <article>
+                        <p style="width: 100px;height: 100px;">
+                            <img id="image" style="width: 300px;height: 300px;">
+                        </p>
+                        <img class="ff" style="width: 50px;height: 30px;" src="./img/songupload/button_edit.png">
+                        <input style="opacity:0;" type="file" name="" id="theFile" style="color: rgba(0, 0, 0, 0);">
 
+                    </article>
+                    <div>
+                        <p>Song Title : <input type="text" style="border: 1px solid #d0d6d6;"></p>
+                        <input type="file" name="" id="" style="border: 1px solid #d0d6d6;">
+                        <br>
+                        <br>
+                        <input type="checkbox" name="" id=""> House&emsp;&emsp;&emsp;&ensp;&ensp;&ensp;
+                        <input type="checkbox" style="border-radius: 5px;" name="" id="">Trap
+                        <br>
+                        <input type="checkbox" name="" id="">#111111 &emsp;&emsp;&emsp;
+                        <input type="checkbox" name="" id="">#222222 &emsp;&emsp;&emsp;
+                        <input type="checkbox" name="" id="">#333333
+                        <br>
+                        <br>
+                        <p>Introduction :</p>
+                        <textarea name="" id="" cols="68" rows="4" style="border: 1px solid #d0d6d6;"></textarea>
+                    </div>
+                    <section><input type="image" id="sd" name="submit" src="./img/songupload/button_send.png"
+                            onClick="document.form.submit()" style="width:80px;height:50px;margin-left:50px;"></section>
+                </form>
+
+            </ol>
+
+            <li class="lif">&emsp;UPLOADED</li>
+            <ol class="inside2">
+                <li>Andy Warhol - Because of you</li>
+                <ol>
+                    <article>
+                        <p style="width: 100px;height: 100px;">
+                            <img src="./img/songupload/0075yYLSly1fruy9e4oj9j30i20i2jsp.jpg"
+                                style="width: 300px;height: 300px;">
+                        </p>
+                        <img class="ff" style="width: 50px;height: 30px;" src="./img/songupload/button_edit.png">
+                        <input style="opacity:0;" type="file" name="" class="theFile" style="color: rgba(0, 0, 0, 0);">
+                    </article>
+                    <div>
+                        <span>Song Title : Because of you</span><br>
+                        <span>Author : Andy Warhol</span><br>
+                        <span>Song Type : House</span><br>
+                        <span>HashTag :  #111111</span><br>
+                        <span>Introduction :</span><br>
+                        <span>"Hold It Against Me" is three <br>
+                            minutes and forty-nine seconds <br>
+                            long.It is a dance-pop song that <br>
+                            blends pulsating industrial and trance <br>
+                            beats with elements of grime.</span>
+                    </div>
+                </ol>
+                <li>Andy Warhol - Because of you</li>
+                <ol>
+                    <article>
+                        <p style="width: 100px;height: 100px;">
+                            <img src="./img/songupload/0075yYLSly1fruy9e4oj9j30i20i2jsp.jpg"
+                                style="width: 300px;height: 300px;">
+                        </p>
+                        <img class="ff" style="width: 50px;height: 30px;" src="./img/songupload/button_edit.png">
+                        <input style="opacity:0;" type="file" name="" class="theFile" style="color: rgba(0, 0, 0, 0);">
+                    </article>
+                    <div>
+                        <span>Song Title : Because of you</span><br>
+                        <span>Author : Andy Warhol</span><br>
+                        <span>Song Type : House</span><br>
+                        <span>HashTag : #111111</span><br>
+                        <span>Introduction :</span><br>
+                        <span>"Hold It Against Me" is three <br>
+                            minutes and forty-nine seconds <br>
+                            long.It is a dance-pop song that <br>
+                            blends pulsating industrial and trance <br>
+                            beats with elements of grime.</span>
+                    </div>
+                </ol>
+                <li>Andy Warhol - Because of you</li>
+                <ol>
+                    <article>
+                        <p style="width: 100px;height: 100px;">
+                            <img src="./img/songupload/0075yYLSly1fruy9e4oj9j30i20i2jsp.jpg"
+                                style="width: 300px;height: 300px;">
+                        </p>
+                        <img class="ff" style="width: 50px;height: 30px;" src="./img/songupload/button_edit.png">
+                        <input style="opacity:0;" type="file" name="" class="theFile" style="color: rgba(0, 0, 0, 0);">
+                    </article>
+                    <div>
+                        <span>Song Title : Because of you</span><br>
+                        <span>Author : Andy Warhol</span><br>
+                        <span>Song Type : House</span><br>
+                        <span>HashTag : #111111</span><br>
+                        <span>Introduction :</span><br>
+                        <span>"Hold It Against Me" is three <br>
+                            minutes and forty-nine seconds <br>
+                            long.It is a dance-pop song that <br>
+                            blends pulsating industrial and trance <br>
+                            beats with elements of grime.</span>
+                    </div>
+                </ol>
+            </ol>
+        </ol>
+        <div class="uploadmic">
+            <img src="./img/songupload/mic.png" alt="">
+        </div>
+    </section>
+
+    <script>
+        function doFirst() {
+            document.getElementById('theFile').onchange = fileChange;
+        }
+
+        function fileChange() {
+            let file = document.getElementById('theFile').files[0];
+            let content = '';
+            //========================
+
+            let readFile = new FileReader();
+            readFile.readAsDataURL(file);
+            readFile.addEventListener('load', function () {
+                let image = document.getElementById('image');
+                image.src = this.result;
+                image.style.maxWidth = '500px';
+                image.style.maxHeight = '400px';
+            });
+        }
+        window.addEventListener('load', doFirst);
+    </script>
 
 
     <script>
@@ -340,6 +384,26 @@
                     }
                 },
             }
+        });
+    </script>
+    <script>
+        $(function () {
+            //設定DIV的高度跟隨螢幕變化而變化，類似於自適應
+            $(".leftli").height(document.body.scrollHeight);
+
+            $(".leftli ol.inside2").hide();
+            $(".inside2 ol").hide();
+
+            //bind()為.leftli li的li生成點選事件
+            $(".leftli li").bind("click", function () {
+                /**
+                .netx("ol")獲取同級的下一個ol元素
+                slideToggle(300)展開/關閉當前被點選的ol元素，300為速度，除了可以是數字還可以"slow"、"normal"、"fast"
+                siblings("ol")遍歷所有的ul元素
+                **/
+                // $(this).next("ol").slideToggle(300).siblings("ol").slideUp(300);
+                $(this).next("ol").slideToggle(300).siblings("ol").slideUp(300);
+            })
         });
     </script>
 </body>

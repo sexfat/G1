@@ -1,0 +1,35 @@
+div.table_box{
+    width: 1400px;
+    border: 1px solid rgb(255, 0, 0);
+    margin: 0 auto;
+    padding: 20px 0px;
+}
+
+// div.upload .title{
+//     border: 1px solid red;
+//     padding: 25px 0px;
+// }
+// div.uploaded .title{
+//     border: 1px solid rgb(186, 48, 221);
+//     padding: 25px 0px;
+// }
+
+div.title{
+    border: 1px solid gray;
+    padding: 15px 0px;
+    font-size: 40px;
+}
+
+.fileimg{
+    float: left;
+}
+
+.filemessage{
+    margin-left: 500px;
+}
+
+.loadcontent{
+    border: 1px solid purple;
+    width: 1000px;
+    margin: 0 auto;
+}
