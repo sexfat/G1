@@ -6,9 +6,9 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
     <title>Songinfo</title>
-    <link rel="stylesheet" href="./css/infotop.css">
-    <link rel="stylesheet" href="./css/songinfo.css">
-    <link rel="stylesheet" href="./css/nav_bar.css">
+    <link rel="stylesheet" href="./css/main.css">
+    <!-- <link rel="stylesheet" href="./css/infotop.css"> -->
+    <!-- <link rel="stylesheet" href="./css/songinfo.css"> -->
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.11.2/css/all.min.css" />
     <script src="https://cdnjs.cloudflare.com/ajax/libs/vue/2.6.10/vue.js"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
@@ -152,10 +152,32 @@
                 <audio id="music" src="./music/Paul_Flint.mp3"></audio>
             </div>
         </div>
+        <!-- <div>
+            <iframe width="420" height="315" src="https://www.youtube.com/embed/oHg5SJYRHA0?autoplay=1" frameborder="0"
+                allowfullscreen></iframe>
+            <div class="jumping-things-wrap">
+                <span></span>
+                <span></span>
+                <span></span>
+                <span></span>
+                <span></span>
+                <span></span>
+                <span></span>
+                <span></span>
+                <span></span>
+                <span></span>
+                <span></span>
+                <span></span>
+                <span></span>
+                <span></span>
+            </div>
+            <h4 class="title">Darko's &amp; Timo's Randomly jumping music player</h4>
+        </div> -->
     </section>
     <section class="songinfo_infos3">
-        <div>
+        <div class="songinfo_titl">
             <p>Introduction</p>
+            <br>
             <div class="songinfo_info">
                 "Hold It Against Me" is three minutes and forty-nine seconds long.<br>
                 It is a dance-pop song that blends pulsating industrial and trance <br>
@@ -165,7 +187,9 @@
                 the United Kingdom on February 20, 2011, but the date was moved <br>
                 up to January 17, 2011, due to overwhelming demand.
             </div>
+            <div class="info_square"></div>
         </div>
+
     </section>
     <section class="songinfo_infos4">
         <div>
@@ -174,27 +198,27 @@
                 <h3>Message</h3>
                 <br>
                 <div class="mess">
-                    <ul>
-                        <li>
+                    <ul class="infomess_ul">
+                        <li class="infomess_li">
                             <p>Alice</p>
                             WOW ! Awesome !<button class="delete">删除</button>
                         </li>
-                        <li>
+                        <li class="infomess_li">
                             <p>Bella</p>
                             Nice !<button class="delete">删除</button>
                         </li>
                     </ul>
                 </div>
                 <div class="mess_write">
-                    <textarea name="" rows="8" cols="125"></textarea>
+                    <textarea class="infomess_ta" name="" rows="8" cols="125"></textarea>
                     <br>
-                    <button>提交</button>
-                    <button>清空</button>
+                    <button class="infomess_btn">提交</button>
+                    <button class="infomess_btn">清空</button>
                 </div>
             </div>
         </div>
     </section>
-    <section>
+    <section class="songinfo_infos5">
         <div id="player">
             <audio src="" id="audioPlayer"></audio>
             <div class="player_s">
@@ -444,15 +468,15 @@
 
         function message() {
             //獲取留言區的內容
-            var text = document.getElementsByTagName('textarea')[0]; //返回一個Nodelist節點列表
+            var text = document.getElementsByClassName('infomess_ta')[0]; //返回一個Nodelist節點列表
             //獲取提交按鈕
-            var submit = document.getElementsByTagName('button')[0];
+            var submit = document.getElementsByClassName('infomess_btn')[0];
             //獲取清空按鈕
-            var empty = document.getElementsByTagName('button')[1];
+            var empty = document.getElementsByClassName('infomess_btn')[1];
             //獲取評論區
             var mess = document.getElementsByClassName('mess')[0]
             //獲取評論區的列表
-            var messlist = mess.getElementsByTagName('ul')[0];
+            var messlist = mess.getElementsByClassName('infomess_ul')[0];
             //獲取到messlist下面的所有的子節點
             var li = mess.getElementsByTagName('li');
             submit.onclick = function () {
