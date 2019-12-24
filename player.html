@@ -6,15 +6,22 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <meta http-equiv="X-UA-Compatible" content="ie=edge">
   <title>player</title>
-  <link rel="stylesheet" href="./css/player.css">
+  <link rel="stylesheet" href="./css/main.css">
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.11.2/css/all.min.css" />
   <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
-  <script src="./js/player.js"></script>
 
 </head>
 
 
 <body>
+  <!-- 
+抓player的時候<head>裡面的↓要抓
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.11.2/css/all.min.css" />
+下面的js也要抓→ <script src="./js/player.js"></script> 
+
+player的高度是70px,頁面下面要留70px，以免資訊被蓋掉喔
+ -->
+
   <div id="player">
     <audio src="" id="audioPlayer"></audio>
     <div class="player_s">
@@ -238,25 +245,27 @@
       </div>
       <div class="close" id="closePlayer"><i class="fas fa-times"></i></div>
       <div class="clearfix"></div>
-    </div>
 
-  </div>
-
-  <div id="lightCover">
-    <div class="lightbox_s" id="myAllList">
-      <div class="close closeLight"><i class="fas fa-times"></i></div>
-      <h3>My List</h3>
-      <div class="lightSelectMenu">
-        <ul>
-          <li>Liked songs</li>
-          <li>Peaceful songs</li>
-          <li>party</li>
-        </ul>
+      <!-- 撥放器燈箱 -->
+      <div class="lightCover">
+        <div class="lightbox_s" id="myAllList">
+          <div class="closeLight"><i class="fas fa-times"></i></div>
+          <h3>My List</h3>
+          <div class="lightSelectMenu">
+            <ul>
+              <li>Liked songs</li>
+              <li>Peaceful songs</li>
+              <li>party</li>
+            </ul>
+          </div>
+          <button class="">ok</button>
+        </div>
       </div>
-      <button class="">ok</button>
     </div>
   </div>
 
+
+  <script src="./js/player.js"></script>
 </body>
 
 </html>
