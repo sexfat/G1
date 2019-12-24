@@ -28,17 +28,17 @@ $(document).ready(function () {
   });
 
   //select選歌單
-  $('#selectBtn').click(function () {
-    $('#lightCover').show();
-    $('#myAllList').show();
+  $('#player .selectBtn').click(function () {
+    $('#player .lightCover').show();
+    $('#player #myAllList').show();
   });
 
   //歌單清單
-  $('#closePlayer').click(function () {
-    $('#lightCover').hide();
+  $('.closeLight').click(function () {
+    $('.lightCover').hide();
     $('#myAllList').hide();
   });
-  $('#lightCover').click(function () {
+  $('.lightCover').click(function () {
     $(this).hide();
     $('#myAllList').hide();
   });

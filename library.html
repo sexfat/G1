@@ -7,117 +7,116 @@
   <meta http-equiv="X-UA-Compatible" content="ie=edge">
   <title>sound wave | library</title>
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.11.2/css/all.min.css" />
-  <link rel="stylesheet" href="./css/player.css">
-  <link rel="stylesheet" href="./css/library.css">
+  <link rel="stylesheet" href="./css/main.css">
   <script src="https://cdnjs.cloudflare.com/ajax/libs/vue/2.6.10/vue.js"></script>
   <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
 
 </head>
 
-<body>
+<body class="librarybg">
   <!-- nav -->
-  <div id="app">
-    <div class="nav_bar flexbox">
-      <div class="hamburger" @click="hamburger_click">
+  <div class="nav_bar flexbox">
+    <div class="hamburger" @click="hamburger_click">
         <div class="hamburger-box">
-          <div class="hamburger-inner"></div>
+            <div class="hamburger-inner"></div>
         </div>
-      </div>
-      <div class="mobile_list" @click="stopPropagation">
+    </div>
+    <div class="mobile_list" @click="stopPropagation">
         <div class="paint_border"></div>
         <ul>
-          <li class="REMIX flexbox">
-            <a href="">
-            </a>
-          </li>
-          <li class="COLLECTION flexbox">
-            <a href="">
-            </a>
-          </li>
-          <li class="ACTIVITY flexbox">
-            <a href="">
-            </a>
-          </li>
-          <li class="LIBRARY flexbox">
-            <a href="">
-            </a>
-          </li>
+            <li class="REMIX flexbox">
+                <a href="">
+                </a>
+            </li>
+            <li class="COLLECTION flexbox">
+                <a href="">
+                </a>
+            </li>
+            <li class="ACTIVITY flexbox">
+                <a href="">
+                </a>
+            </li>
+            <li class="LIBRARY flexbox">
+                <a href="">
+                </a>
+            </li>
         </ul>
-      </div>
+    </div>
 
-      <div class="logo_container">
+    <div class="logo_container">
         <a href="">
-          <div class="logo"></div>
+            <div class="logo"></div>
         </a>
-      </div>
-      <ul class="main_list flexbox">
+    </div>
+    <ul class="main_list flexbox">
         <li class="REMIX flexbox">
-          <a href="">
-          </a>
+            <a href="">
+            </a>
         </li>
         <li class="COLLECTION flexbox">
-          <a href="">
-          </a>
+            <a href="">
+            </a>
         </li>
         <li class="ACTIVITY flexbox">
-          <a href="">
-          </a>
+            <a href="">
+            </a>
         </li>
         <li class="LIBRARY flexbox">
-          <a href="">
-          </a>
+            <a href="">
+            </a>
         </li>
-      </ul>
-      <div class="search_bt" @click="search_bt_click">
+    </ul>
+    <div class="search_bt" @click="search_bt_click">
         <a href="#"></a>
-      </div>
-      <div class="search_bar">
+    </div>
+    <div class="search_bar">
         <input class="search" type="text" />
         <div class="tag_container">
         </div>
-      </div>
-      <div class="mem_bt" @click="mem_bt_click">
+    </div>
+    <div class="login_bt" @click="" v-if="mem_login == false">
+        <a class="flexbox" href="#">Login</a>
+    </div>
+    <div class="mem_bt" @click="mem_bt_click" v-if="mem_login == true">
         <a href="#"></a>
-      </div>
-      <div class="mem_list" @click="stopPropagation">
+    </div>
+    <div class="mem_list" @click="stopPropagation">
         <div class="paint_border"></div>
         <ul>
-          <li>
-            <a href="">
-              <h4>Profile</h4>
-            </a>
-          </li>
-          <li>
-            <a href="">
-              <h4>Favorite</h4>
-            </a>
-          </li>
-          <li>
-            <a href="">
-              <h4>
-                Song Upload
-                <br />&amp; Remove
-              </h4>
-            </a>
-          </li>
-          <li>
-            <a href="">
-              <h4>
-                Store Value
-                <br />&amp;Store Record
-              </h4>
-            </a>
-          </li>
-          <li>
-            <a href="">
-              <h4>Donate Record</h4>
-            </a>
-          </li>
+            <li>
+                <a href="">
+                    <h4>Profile</h4>
+                </a>
+            </li>
+            <li>
+                <a href="">
+                    <h4>Favorite</h4>
+                </a>
+            </li>
+            <li>
+                <a href="">
+                    <h4>
+                        Song Upload
+                        <br />&amp; Remove
+                    </h4>
+                </a>
+            </li>
+            <li>
+                <a href="">
+                    <h4>
+                        Store Value
+                        <br />&amp;Store Record
+                    </h4>
+                </a>
+            </li>
+            <li>
+                <a href="">
+                    <h4>Donate Record</h4>
+                </a>
+            </li>
         </ul>
-      </div>
-
     </div>
-  </div>
+</div>
 
   <!-- header -->
   <header>
@@ -192,9 +191,9 @@
           </div>
           <div class="songInfo">
             <div class="name">
-              <h4><a href="">Lucid Dreamer</a></h4>
-              <p>Spazz Cardigan</p>
+              <a href="">Lucid Dreamer</a>
             </div>
+            <div class="creator">Spazz Cardigan</div>
           </div>
           <div class="totalTime">4:30</div>
           <div class="heart becomeRed"><i class="fas fa-heart"></i></div>
@@ -213,9 +212,9 @@
           </div>
           <div class="songInfo">
             <div class="name">
-              <h4><a href="">Lucid Dreamer</a> </h4>
-              <p>Spazz Cardigan</p>
+              <a href="">Lucid Dreamer</a>
             </div>
+            <div class="creator">Spazz Cardigan</div>
           </div>
           <div class="totalTime">4:30</div>
           <div class="heart becomeRed"><i class="fas fa-heart"></i></div>
@@ -234,9 +233,9 @@
           </div>
           <div class="songInfo">
             <div class="name">
-              <h4><a href="">Lucid Dreamer</a></h4>
-              <p>Spazz Cardigan</p>
+              <a href="">Lucid Dreamer</a>
             </div>
+            <div class="creator">Spazz Cardigan</div>
           </div>
           <div class="totalTime">4:30</div>
           <div class="heart becomeRed"><i class="fas fa-heart"></i></div>
@@ -255,9 +254,9 @@
           </div>
           <div class="songInfo">
             <div class="name">
-              <h4><a href="">Lucid Dreamer</a></h4>
-              <p>Spazz Cardigan</p>
+              <a href="">Lucid Dreamer</a>
             </div>
+            <div class="creator">Spazz Cardigan</div>
           </div>
           <div class="totalTime">4:30</div>
           <div class="heart becomeRed"><i class="fas fa-heart"></i></div>
@@ -276,9 +275,9 @@
           </div>
           <div class="songInfo">
             <div class="name">
-              <h4><a href="">Lucid Dreamer</a></h4>
-              <p>Spazz Cardigan</p>
+              <a href="">Lucid Dreamer</a>
             </div>
+            <div class="creator">Spazz Cardigan</div>
           </div>
           <div class="totalTime">4:30</div>
           <div class="heart becomeRed"><i class="fas fa-heart"></i></div>
@@ -297,9 +296,9 @@
           </div>
           <div class="songInfo">
             <div class="name">
-              <h4><a href="">Lucid Dreamer</a></h4>
-              <p>Spazz Cardigan</p>
+              <a href="">Lucid Dreamer</a>
             </div>
+            <div class="creator">Spazz Cardigan</div>
           </div>
           <div class="totalTime">4:30</div>
           <div class="heart becomeRed"><i class="fas fa-heart"></i></div>
@@ -312,12 +311,10 @@
       </ul>
     </div>
     <div class="clearfix"></div>
-  </main>
-
-  <!-- 燈箱 -->
-  <div id="lightCover">
+    <!-- 燈箱 -->
+  <div class="lightCover">
     <div class="lightbox_s" id="myAllList">
-      <div class="close closeLight"><i class="fas fa-times"></i></div>
+      <div class="closeLight"><i class="fas fa-times"></i></div>
       <h3>My List</h3>
       <div class="lightSelectMenu">
         <ul>
@@ -330,14 +327,14 @@
     </div>
 
     <div class="lightbox_s" id="deleteCheck">
-      <div class="close closeLight"><i class="fas fa-times"></i></div>
+      <div class="closeLight"><i class="fas fa-times"></i></div>
       <h3>Sure to delete?</h3>
       <button class="">ok</button>
       <button class="">cancel</button>
     </div>
 
     <div class="lightbox_s" id="createListBox">
-      <div class="close closeLight"><i class="fas fa-times"></i></div>
+      <div class="closeLight"><i class="fas fa-times"></i></div>
       <h3>Create the new playlist</h3>
       <form action="">
         <input type="text" name="createListName" id="createList">
@@ -346,7 +343,7 @@
       </form>
     </div>
   </div>
-
+  </main>
 
   <!-- 播放器 -->
   <div id="player">
@@ -572,8 +569,23 @@
       </div>
       <div class="close" id="closePlayer"><i class="fas fa-times"></i></div>
       <div class="clearfix"></div>
-    </div>
 
+      <!-- 撥放器燈箱 -->
+      <div class="lightCover">
+        <div class="lightbox_s" id="myAllList">
+          <div class="close closeLight"><i class="fas fa-times"></i></div>
+          <h3>My List</h3>
+          <div class="lightSelectMenu">
+            <ul>
+              <li>Liked songs</li>
+              <li>Peaceful songs</li>
+              <li>party</li>
+            </ul>
+          </div>
+          <button class="">ok</button>
+        </div>
+      </div>
+    </div>
   </div>
 
 
@@ -699,21 +711,21 @@
 
     //changeList跳窗
     $('.changeList').click(function () {
-      $('#lightCover').show();
+      $('.lightCover').show();
       $('#myAllList').show();
     });
     $('.closeLight').click(function () {
-      $('#lightCover').hide();
-      $('#lightCover').children('div').hide();
+      $('.lightCover').hide();
+      $('.lightCover').children('div').hide();
     });
-    $('#lightCover').click(function () {
+    $('.lightCover').click(function () {
       $(this).hide();
       $(this).children('div').hide();
     });
 
     //createBtn -- 跳窗
     $('#createBtn').click(function () {
-      $('#lightCover').show();
+      $('.lightCover').show();
       $('#createListBox').show();
     });
 

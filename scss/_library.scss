@@ -1,40 +1,12 @@
-@import './public.scss';
-@import './nav_bar.scss';
-
-
 $mainRed : #de267d;
 
-
-body {
+.librarybg {
   background-color: $mainBg;
   background-image: url('../img/library/library_bg.jpg');
   background-position: bottom right;
   background-repeat: no-repeat;
   background-size: cover;
-  font-size: 1rem;
-  color: $fontColor;
-
-}
-
-
-
-header {
-  text-align: center;
-  vertical-align: middle;
-
-  img {
-    @include respond(ipadpro) {
-      height: 76px;
-    }
-
-    @include respond(ipad) {
-      height: 76px;
-    }
-
-    @include respond(phone) {
-      height: 76px;
-    }
-  }
+  font-size: $rem1;
 }
 
 main.library_main {
@@ -49,7 +21,8 @@ main.library_main {
   h2,
   h3,
   h4,
-  p {
+  p,
+  ul {
     margin: 0;
     padding: 0;
   }
@@ -157,7 +130,7 @@ main.library_main {
       select {
         width: 100%;
         background-color: $green;
-        font-size: 1rem;
+        font-size: $rem1;
         padding: 16px 8px;
         display: none;
 
@@ -181,7 +154,6 @@ main.library_main {
           display: block;
         }
       }
-
     }
 
     .list_pic {
@@ -212,7 +184,6 @@ main.library_main {
       margin: 0 auto;
       float: none;
     }
-
   }
 
   .right {
@@ -311,17 +282,14 @@ main.library_main {
 
           .name {
             h2 {
+              font-size: $rem2;
               display: inline-block;
-              vertical-align: middle;
 
-              @include respond(ipadpro) {
-                display: block;
-                overflow: hidden;
-                text-overflow: ellipsis;
-                white-space: nowrap;
+              @include respond(laptop-min) {
+                font-size: $rem1_5;
               }
 
-              @include respond(phone) {
+              @include respond(ipadpro) {
                 display: block;
                 overflow: hidden;
                 text-overflow: ellipsis;
@@ -333,7 +301,7 @@ main.library_main {
               height: 60px;
               width: 100%;
               max-width: 300px;
-              font-size: 2rem;
+              font-size: $rem2;
               padding: 5px;
               display: none;
               background-color: $green;
@@ -344,8 +312,6 @@ main.library_main {
               margin-left: 10px;
             }
           }
-
-
         }
 
         .playall_btn {
@@ -355,7 +321,6 @@ main.library_main {
             width: 100%;
           }
         }
-
       }
     }
 
@@ -394,7 +359,7 @@ main.library_main {
 
               i {
                 color: white;
-                font-size: 0.8rem;
+                font-size: $rem0_8;
               }
             }
           }
@@ -423,13 +388,13 @@ main.library_main {
 
           .name {
             padding: 2% 0;
+            vertical-align: top;
+            font-size: $rem1_2;
+            display: inline-block;
+            vertical-align: top;
 
-            h4 {
-              display: inline-block;
-
-              @include respond(phone) {
-                display: block;
-              }
+            @include respond(phone) {
+              display: block;
 
               a {
                 display: block;
@@ -448,37 +413,22 @@ main.library_main {
                 }
               }
             }
+          }
+          .creator{
+            overflow: hidden;
+            text-overflow: ellipsis;
+            white-space: nowrap;
+            display: inline-block;
+            vertical-align: top;
+            margin-left: 5%;
 
-            p {
-              overflow: hidden;
-              text-overflow: ellipsis;
-              white-space: nowrap;
-              display: inline-block;
-              margin-left: 5%;
-
-              @include respond(latop-min) {
-                display: block;
-                margin-left: 0;
-              }
-
-              @include respond(ipadpro) {
-                display: block;
-                margin-left: 0;
-              }
-
-              @include respond(ipad) {
-                display: block;
-                margin-left: 0;
-              }
-
-              @include respond(phone) {
-                display: block;
-                margin-left: 0;
-              }
+            @include respond(latop-max) {
+              display: block;
+              margin-left: 0;
             }
+
           }
         }
-
 
         .totalTime {
           float: left;
@@ -486,7 +436,7 @@ main.library_main {
           width: 10%;
 
           @include respond(ipad) {
-            font-size: 0.9rem;
+            font-size: $rem0_8;
           }
 
           @include respond(phone) {
@@ -555,7 +505,7 @@ main.library_main {
             white-space: nowrap;
             padding: 8px 16px;
             margin-top: 8px;
-            font-size: 0.8rem;
+            font-size: $rem0_8;
             border: 2px $fontColor solid;
             background-color: white;
             display: none;
@@ -584,8 +534,7 @@ main.library_main {
     }
   }
 
-
-  #lightCover {
+  .lightCover {
     background-color: #414141e6;
     width: 100%;
     height: 100%;
@@ -594,6 +543,21 @@ main.library_main {
     left: 0;
     z-index: 1001;
     display: none;
+
+    .closeLight {
+      position: absolute;
+      right: 20px;
+      top: 20px;
+      cursor: pointer;
+      transition: transform 0.5s;
+      @include respond(phone){
+          right: 10px;
+          top: 5px;
+      }
+      &:hover {
+          transform: scale(1.1);
+      }
+  }
 
     #myAllList {
       width: 90%;
@@ -673,63 +637,63 @@ main.library_main {
         background-color: $green;
       }
     }
+  }
 
-    .circlebtn {
-      width: 50px;
-      height: 50px;
-      line-height: 50px;
-      border-radius: 25px;
-      font-size: 0.8rem;
-      font-weight: bold;
-      border: 1px solid $yellow;
-      background-color: $yellow;
-      color: white;
-      outline: none;
-      cursor: pointer;
-      transition: transform .5s;
+  .circlebtn {
+    width: 50px;
+    height: 50px;
+    line-height: 50px;
+    border-radius: 25px;
+    font-size: $rem0_8;
+    font-weight: bold;
+    border: 1px solid $yellow;
+    background-color: $yellow;
+    color: white;
+    outline: none;
+    cursor: pointer;
+    transition: transform .5s;
 
-      &:hover {
-        transform: scale(1.1);
-      }
+    &:hover {
+      transform: scale(1.1);
+    }
+  }
+
+  .normalbtn {
+    @include butttonn02;
+    display: block;
+    margin: 20px auto 0;
+    transition: transform .5s;
+
+    &:hover {
+      transform: scale(1.1);
     }
 
-    .normalbtn {
-      @include butttonn02;
-      display: block;
-      margin: 20px auto 0;
-      transition: transform .5s;
-
-      &:hover {
-        transform: scale(1.1);
-      }
-
-      @include respond(latop-min) {
-        width: 100%;
-      }
-
-      @include respond(ipadpro) {
-        width: 47%;
-        margin: 20px 1% 0;
-        display: inline-block;
-      }
-
-      @include respond(phone) {
-        width: 100%;
-      }
+    @include respond(latop-min) {
+      width: 100%;
     }
 
-    .editBtn,
-    .enterBtn {
-      @include buttonno03;
-      display: none;
+    @include respond(ipadpro) {
+      width: 47%;
+      margin: 20px 1% 0;
+      display: inline-block;
     }
 
-    .becomeRed {
-      color: $mainRed;
+    @include respond(phone) {
+      width: 100%;
     }
+  }
 
-    .clearfix {
-      clear: both;
-    }
+  .editBtn,
+  .enterBtn {
+    @include buttonno03;
+    display: none;
+  }
+
+  .becomeRed {
+    color: $mainRed;
+  }
+
+  .clearfix {
+    clear: both;
   }
 }
