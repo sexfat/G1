@@ -2,6 +2,8 @@
 * {
   -webkit-box-sizing: border-box;
           box-sizing: border-box;
+  margin: 0;
+  padding: 0;
 }
 
 html {
@@ -448,6 +450,8 @@ div.nav_bar .mem_list li:not(:nth-child(5))::after {
 * {
   -webkit-box-sizing: border-box;
           box-sizing: border-box;
+  margin: 0;
+  padding: 0;
 }
 
 html {
@@ -2074,6 +2078,31 @@ body section #collectiontabcontainer .albumshelf .shelf {
   margin-top: 80px;
 }
 
+body section #collectiontabcontainer .sample .like {
+  font-size: 40px;
+  color: #ccc;
+  position: relative;
+  left: 102%;
+  top: 75%;
+  width: 50px;
+  cursor: pointer;
+}
+
+body section #collectiontabcontainer .sample p {
+  position: relative;
+  font-size: 1.2rem;
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  top: 160px;
+}
+
+body section #collectiontabcontainer .sample span {
+  position: relative;
+  font-size: 1rem;
+  top: 160px;
+}
+
 body section #collectiontabcontainer .albumshelf .shelf .row-1 {
   position: relative;
   width: 100%;
@@ -2091,16 +2120,6 @@ body section #collectiontabcontainer .albumshelf .shelf .row-1:after {
   content: "";
 }
 
-body section #collectiontabcontainer h6 {
-  font-size: 40px;
-  color: #ccc;
-  position: relative;
-  left: 102%;
-  top: 30%;
-  width: 50px;
-  cursor: pointer;
-}
-
 body section #collectiontabcontainer .redheartshape {
   color: #de267d;
 }
@@ -2110,21 +2129,6 @@ body section #collectiontabcontainer .albumshelf .shelf .loc {
   bottom: 0;
   width: 100%;
   text-align: left;
-}
-
-body section #collectiontabcontainer .albumshelf .shelf .loc p {
-  position: relative;
-  font-size: 1.2rem;
-  display: -webkit-box;
-  display: -ms-flexbox;
-  display: flex;
-  top: -20px;
-}
-
-body section #collectiontabcontainer .albumshelf .shelf .loc span {
-  position: relative;
-  font-size: 1rem;
-  top: -50px;
 }
 
 body section #collectiontabcontainer .albumshelf .shelf .loc img {
