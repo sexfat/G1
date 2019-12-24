@@ -1,24 +1,30 @@
-.bnr h1{ 
-    // border: 1px solid rgb(24, 27, 199);
-    position: relative;
-    top: 130px;
-}
+@import "./player.scss";
+@import "./infotop.scss";
 
-.infos2{
+// .bnr h1{ 
+//     border: 1px solid rgb(24, 27, 199);
+//     position: relative;
+//     top: 130px;
+// }
+
+.songinfo_infos2{
     border: 1px solid red;
     height: 600px;
 }
-.infoplay{
+.songinfo_infoplay{
     border: 1px solid purple;
     width: 1200px;
-    height: 500px;
+    height: 600px;
     margin: 0 auto;
 }
-.infos3{
+.songinfo_infos3{
     border: 1px solid navy;
     height: 600px;
 }
-.infos4{
+.songinfo_infos3 p{
+    border: 1px solid blue;
+}
+.songinfo_infos4{
     border: 1px solid blue;
     height: 600px;
 }

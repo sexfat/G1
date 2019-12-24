@@ -6,6 +6,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
     <title>Document</title>
+    <link rel="stylesheet" href="./css/main.css">
     <link rel="stylesheet" href="./css/profile.css">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.11.2/css/all.min.css" />
 
@@ -153,7 +154,9 @@
             </div>
             <div class="profile_container flexbox" v-if="profile_modify == true">
                 <div class="profile_leftbox">
-                    <div class="profile_mem_img"></div>
+                    <div class="profile_mem_img">
+                        <i class="fas fa-pen-square"></i>
+                    </div>
                 </div>
                 <div class="profile_rightbox">
                     <table>
@@ -186,11 +189,11 @@
                 <h4>Password Modify</h4>
                 <div>
                     Password：<br>
-                    <input type="password" name="" >
+                    <input type="password" name="">
                 </div>
                 <div>
                     Password Confirm：<br>
-                    <input type="password" name="" >
+                    <input type="password" name="">
                 </div>
                 <div class="profile_modify_confirm doubleSmall flexbox">Modify Confirm</div>
             </div>
@@ -207,7 +210,7 @@
                 mobile_list: false,
 
                 // profile
-                profile_modify: true,
+                profile_modify: false,
                 password_modify: false,
                 account: 'abc123',
                 mem_name: 'QQ',
@@ -337,6 +340,10 @@
                         this.password_modify = false;
                     } else {
                         this.password_modify = true;
+                        this.$nextTick(() => {
+                            // DOM 更新
+                            document.querySelector('.profile_lightCover').setAttribute('style', `height: ${window.innerHeight}px`)
+                        });
                     }
                 },
 

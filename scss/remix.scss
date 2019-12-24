@@ -62,12 +62,6 @@ $buttonyellow: #efc318;
 
 @include xl-grid(12);
 
-body {
-  width: 100%;
-  overflow-x: hidden;
-  // background-color: #333;
-  // position: relative;
-}
 #remix_app{
   position: relative;
   padding-bottom: 10%;
@@ -79,19 +73,25 @@ body {
     left: 0; 
   }
 }
-
-h4 {
+.remix_h4 {
   font-weight: normal;
+  font-size: $rem1_2;
+  margin: 0;
 }
-header{
-  text-align: center;
-  height: 300px;
-  padding: 120px 0;
-  img{
-    // width: 300px;
-  }
+.remix_h2 {
+  font-weight: 900;
+  font-size: $rem2;
+  margin: 0;
+}
+.remix_h6 {
+  font-weight: 900;
+  font-size: $rem0_8;
+  margin: 0;
 }
 
+.remix_intro{
+  font-size: $rem1;
+}
 .remix_wrapper {
   overflow-x: hidden;
   // padding-top: 8%;
@@ -104,7 +104,7 @@ header{
     align-items: center;
     position: relative;
 
-    .demo {
+    .remix_demo {
       margin: 0 auto;
       padding: 8%;
       position: relative;
@@ -126,7 +126,7 @@ header{
       }
 
       // border: solid 1px #333;
-      .choose_song {
+      .remix_choose_song {
         background-color: $gray;
         margin: 3% auto;
         padding: 5%;
@@ -144,7 +144,7 @@ header{
       }
     }
 
-    .svg_move {
+    .remix_svg_move {
       margin: 0 auto;
       position: relative;
 
@@ -157,7 +157,7 @@ header{
         width: 100%;
       }
 
-      .color {
+      .remix_color {
         position: absolute;
         width: 100%;
         padding-top: 75%;
@@ -173,16 +173,17 @@ header{
 
   }
 
-  .range {
+  .remix_range {
     position: relative;
     margin: 0% auto;
     margin: 4% 0% 1%;
-    p{
+    .remix_npm{
       position: absolute;
       left: 5.5%;
+      font-size: $rem1;
     }
 
-    .rangebutton {
+    .remix_rangebutton {
       width: 95%;
       margin: 0 auto;
       display: flex;
@@ -222,9 +223,9 @@ header{
           outline: none;
         }
       }
-      .button{
+      .remix_button{
         flex-grow: 1;
-        button{
+        .remix_btn{
           width: calc(100% / 3);
           border: none;
           // border: solid 1px #333;
@@ -272,19 +273,18 @@ header{
       }
     }
   }
-  .table{
+  .remix_table{
     width: 100%;
     max-width: 100%;
     position: relative;
-    // overflow-x: scroll;
-    // display: table;
     h3{
+      font-size: $rem1_5;
       margin: 0.5rem 0;
     }
-    .drumh3{
+    .remix_drumh3{
       margin-top: 5%;
     }
-    table{
+    .remix_play{
       margin: 0 auto;
       width: 100%;
       max-width: 100%;
@@ -310,15 +310,18 @@ header{
         background-color: #d1d2d4;
         border-left: solid 1px #333;
         border-top: solid 1px #333;
-        max-width: 6px; 
+        width: 20px;
         cursor: pointer;
-        h6{
+        .remix_h6{
           font-weight: normal;
           font-size: 1rem;
           line-height: 1.8rem;
-
+          margin: 0;
+          margin-block-start: 0rem;
+          margin-block-end: 0rem;
         }
       }
+
       td.active{
         background-color: $buttonyellow;
       }
@@ -329,6 +332,7 @@ header{
       .note_name{
         max-width: 7px;
         text-align: center;
+        width: 70px;
       }
     }
   }
@@ -344,17 +348,13 @@ header{
 
 @include respond(latop-max) {
   // 996-1200
-  @include xl-grid(12);
   @include lg-grid(12);
 
-  html {
-    // font-size: 18px;
-  }
   .remix_wrapper{
-    .range {
+    .remix_range {
       p{
       }
-      .rangebutton {
+      .remix_rangebutton {
         input[type='range'] {
           &::-webkit-slider-thumb {
           }
@@ -364,8 +364,8 @@ header{
           &:focus {
           }
         }
-        .button{
-          button{
+        .remix_button{
+          .remix_btn{
             &:hover{
             }
             img{
@@ -383,8 +383,6 @@ header{
 
 @include respond(latop-min) {
   // 996-768
-  @include xl-grid(12);
-  @include lg-grid(12);
   @include md-grid(12);
 
   html {
@@ -397,32 +395,31 @@ header{
     .remix_head {
       flex-direction: column;
       margin-bottom: 10%;
-      .demo {
+      .remix_demo {
         padding: 12% 12% 12%;
-
         &::before {
           transform: translate(-50%, -50%) rotate(90deg);
           width: 80%;
         }
 
-        .choose_song {
+        .remix_choose_song {
           margin: 5% auto;
 
           h4:hover {}
         }
       }
 
-      .svg_move {
+      .remix_svg_move {
         img {}
 
-        .color {}
+        .remix_color {}
       }
     }
-    .range {
-      p{
-        top: 15%;
+    .remix_range {
+      .remix_npm{
+        top: 0%;
       }
-      .rangebutton {
+      .remix_rangebutton {
         input[type='range'] {
           margin: 6% 3% 3%;
           width: 65%;
@@ -434,8 +431,8 @@ header{
           &:focus {
           }
         }
-        .button{
-          button{
+        .remix_button{
+          .remix_btn{
             &:hover{
             }
             img{
@@ -454,26 +451,13 @@ header{
 
 @include respond(ipadpro) {
   // 768-576
-  @include xl-grid(12);
-  @include lg-grid(12);
-  @include md-grid(12);
   @include sm-grid(12);
 
-  html {
-    font-size: 17px;
-  }
-  header{
-    img{
-      height: 76px;
-    }
-  }
-  .wrapper {
-    .remix_title {}
-
+  .remix_wrapper {
     .remix_head {
       flex-direction: column;
       margin-bottom: 10%;
-      .demo {
+      .remix_demo {
         padding: 24% 18%;
 
         &::before {
@@ -482,22 +466,22 @@ header{
           transform: translate(-50%, -50%) rotate(90deg);
         }
 
-        .choose_song {
+        .remix_choose_song {
           h4:hover {}
         }
       }
 
-      .svg_move {
+      .remix_svg_move {
         img {}
 
-        .color {}
+        .remix_color {}
       }
     }
-    .range {
-      p{
+    .remix_range {
+      .remix_npm{
         top: 40%;
       }
-      .rangebutton {
+      .remix_rangebutton {
         flex-direction: column;
         position: relative;
 
@@ -513,13 +497,13 @@ header{
           &:focus {
           }
         }
-        .button{
+        .remix_button{
           position: relative;
           order: 1;
           max-width: 250px;
           margin-left: 65%;
           transform: translateY(10px);
-          button{
+          .remix_btn{
             // max-width: 67px;
             &:hover{
             }
@@ -539,28 +523,12 @@ header{
 
 @include respond(ipad) {
   // 576-375
-  @include xl-grid(12);
-  @include lg-grid(12);
-  @include md-grid(12);
-  @include sm-grid(12);
-
-  html {
-    font-size: 17px;
-  }
-  header{
-    padding: 120px 0;
-    img{
-      height: 76px;
-    }
-  }
-  .wrapper {
-    .remix_title {}
-
+  .remix_wrapper {
     .remix_head {
       flex-direction: column;
       margin-bottom: 20%;
-      .demo {
-        padding: 30% 6% 30%;
+      .remix_demo {
+        padding: 20% 19% 26%;
         &::before {
           width: 100vw;
           height: 100vw;
@@ -575,24 +543,24 @@ header{
           font-size: 0.9rem;
         }
 
-        .choose_song {
+        .remix_choose_song {
           margin: 3% auto;
 
           h4:hover {}
         }
       }
 
-      .svg_move {
+      .remix_svg_move {
         img {}
 
-        .color {}
+        .remix_color {}
       }
     }
-    .range {
-      p{
-        top: 40%;
+    .remix_range {
+      .remix_npm{
+        top: 25%;
       }
-      .rangebutton {
+      .remix_rangebutton {
         flex-direction: column;
         position: relative;
 
@@ -608,14 +576,14 @@ header{
           &:focus {
           }
         }
-        .button{
+        .remix_button{
           position: relative;
           order: 1;
           max-width: 250px;
           margin-left: 55%;
           transform: translateY(0px);
 
-          button{
+          .remix_btn{
             // max-width: 67px;
             &:hover{
             }
@@ -635,35 +603,21 @@ header{
 
 @include respond(phone) {
   // 375-0
-  @include xl-grid(12);
-  @include lg-grid(12);
-  @include md-grid(12);
-  @include sm-grid(12);
   @include grid(12);
 
   html {
     font-size: 16px;
   }
-  header{
-    padding: 120px 0;
-    img{
-      height: 76px;
-    }
+  #remix_app{
+    margin-bottom: 3rem;
   }
-  body{
-    // overflow-x: hidden;
-  }
-  .wrapper {
-    // overflow-x: hidden;
-
-    .remix_title {}
-
+  .remix_wrapper {
     .remix_head {
       flex-direction: column;
       width: 100%;
       margin-bottom: 20%;
 
-      .demo {
+      .remix_demo {
         padding: 18% 13% 18% 16%;
 
         &::before {
@@ -672,32 +626,34 @@ header{
           transform: translate(-50%, -50%) rotate(90deg);
         }
 
-        h2 {
+        h2{
+          margin: 0;
           font-size: 1.6rem;
         }
 
-        p {
+        .remix_intro{
           font-size: 0.9rem;
+          margin: 0;
         }
 
-        .choose_song {
-          margin: 4% auto 10%;
+        .remix_choose_song {
+          margin: 4% auto 4%;
 
           h4:hover {}
         }
       }
 
-      .svg_move {
+      .remix_svg_move {
         img {}
 
-        .color {}
+        .remix_color {}
       }
     }
-    .range {
-      p{
-        top: 25%;
+    .remix_range {
+      .remix_npm{
+        top: 15%;
       }
-      .rangebutton {
+      .remix_rangebutton {
         flex-direction: column;
         position: relative;
 
@@ -713,13 +669,13 @@ header{
           &:focus {
           }
         }
-        .button{
+        .remix_button{
           position: relative;
           order: 1;
           max-width: 250px;
           margin-left: 55%;
           transform: translateY(0px);
-          button{
+          .remix_btn{
             // max-width: 67px;
             &:hover{
             }
@@ -734,5 +690,6 @@ header{
         }
       }
     }
+
   }
 }
