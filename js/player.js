@@ -105,7 +105,7 @@ $(document).ready(function () {
     ];
 
   $('#player audio').attr("src", myPlaylist[nowPlaying].filein);
-  isStorageHave();
+  // isStorageHave();
   
   // isAutoPlay(true);//測試
 
@@ -198,16 +198,16 @@ $(document).ready(function () {
 
 
   /* -- local -- */
-  function isStorageHave() {
-    let newSongTime;
-    if(storage.length != 0){
-      newSongTime = storage.getItem(1);
-      console.log(newSongTime);
-    }else{
-      console.log(newSongTime);
-    }
-    progressingTime = setInterval(progressingShow, 100);
-  }
+  // function isStorageHave() {
+  //   let newSongTime;
+  //   if(storage.length != 0){
+  //     newSongTime = storage.getItem(1);
+  //     console.log(newSongTime);
+  //   }else{
+  //     console.log(newSongTime);
+  //   }
+    
+  // }
 
 
 
@@ -242,7 +242,7 @@ $(document).ready(function () {
 
 
   //進度條
-  // var 
+  progressingTime = setInterval(progressingShow, 100);
   let newSong = nowPlaying; //測試
   function progressingShow() {
     songTime = audio.currentTime;
@@ -251,12 +251,12 @@ $(document).ready(function () {
       autoChange();
     }
     
-    if(newSong == nowPlaying){
-      storage.setItem(newSong, songTime);
-    }else{
-      storage.clear();
-      storage.setItem(nowPlaying, songTime);
-    }
+    // if(newSong == nowPlaying){
+    //   storage.setItem(newSong, songTime);
+    // }else{
+    //   storage.clear();
+    //   storage.setItem(nowPlaying, songTime);
+    // }
     
     // console.log(audio.duration); //歌曲總長秒數
     $("#player .progress").css("width", `${progressColor.toFixed(2)}%`);

@@ -488,6 +488,14 @@ main.library_main img {
   width: 100%;
 }
 
+main.library_main h2,
+main.library_main h3,
+main.library_main h4,
+main.library_main p {
+  margin: 0;
+  padding: 0;
+}
+
 main.library_main aside {
   float: left;
   width: 25%;

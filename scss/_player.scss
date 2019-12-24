@@ -9,6 +9,14 @@ $mainRed : #de267d;
   bottom: 0;
   z-index: 1000;
 
+  h2,
+  h3,
+  h4,
+  p {
+    margin: 0;
+    padding: 0;
+  }
+
   i {
     display: block;
   }
@@ -868,7 +876,8 @@ $mainRed : #de267d;
             margin: 5% auto;
             float: none;
           }
-          h2{
+
+          h2 {
             font-size: $rem2;
           }
 
@@ -1048,9 +1057,10 @@ $mainRed : #de267d;
       display: none;
       transform: translate(-50%, -50%);
 
-      h3{
+      h3 {
         font-size: $rem1_5;
       }
+
       .lightSelectMenu {
         clear: both;
 
