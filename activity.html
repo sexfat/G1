@@ -1080,7 +1080,7 @@
                         style="display:none" @change="changeSignUpImg">
                        
                         <div class="act_showSignUpImg">
-                            <img :src="SignUpImg" alt="">
+                            <img :src="SigbUPSongURL" alt="">
                           </div>
                      </p>
                                 
@@ -1101,7 +1101,7 @@
                           
                            
                           <h4>Song-img:</h4>
-                          <div><img :src="SignUpImg" alt=""></div>
+                          <div><img :src="SigbUPSongURL" alt=""></div>
 
                         <h4>Song-name:</h4>
                         <p>{{SongName}}</p>
@@ -1372,9 +1372,12 @@
                 },
                 changeSignUpImg(img) {
                     console.log(img);
-                    imgFile=this.files[0];
+                    imgFile=this.files;
+                    console.log(imgFile);
                     reader = new FileReader();
+                    console.log( reader);
                     reader.readAsDataURL(imgFile);
+                    console.log(  reader.readAsDataURL(imgFile));
                     vml.SignUpImg =this. reader.result;
             
                 },
