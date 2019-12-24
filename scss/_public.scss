@@ -15,8 +15,6 @@ $rem0_6: 0.6rem;
 
 * {
   box-sizing: border-box;
-  margin: 0;
-  padding: 0;
 }
 
 html {
@@ -46,57 +44,9 @@ a {
   color: $fontColor;
 }
 
-// h1,
-// h2,
-// h3,
-// h4,
-// h5,
-// h6,
-// p {
-//   margin: 0;
-//   padding: 0;
-// }
-
-// h1 {
-//   /*60px*/
-//   font-size: 3rem;
-// }
-
-// h2 {
-//   /* 40px*/
-//   font-size: 2rem;
-//   /*副標的h2 font-weight:bold*/
-// }
-
-// h3 {
-//   /*30px*/
-//   font-size: 1.5rem;
-// }
-
-// h4 {
-//   /*24px*/
-//   font-size: 1.2rem;
-// }
-
-// p {
-//   /*內文 20px*/
-//   font-size: 1rem;
-
-//   &.bigSmall {
-//     /*大小 16px*/
-//     font-size: 0.8rem;
-//   }
-
-//   &.doubleSmall {
-//     /*小小 14px*/
-//     font-size: 0.7rem;
-//   }
-
-//   &.forget {
-//     /*旺季 12px*/
-//     font-size: 0.6rem;
-//   }
-// }
+ul {
+  list-style: none;
+}
 
 header {
   height: 300px;
