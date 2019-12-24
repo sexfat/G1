@@ -445,14 +445,13 @@ div.nav_bar .mem_list li:not(:nth-child(5))::after {
   }
 }
 
-body {
+.loginbody {
   height: 100vh;
-  background-image: url(../img/register/login.jpg);
   background-size: cover;
   background-position: center;
 }
 
-body .signupcontainer {
+.loginbody .signupcontainer {
   margin: 0 auto;
   width: 900px;
   height: 600px;
@@ -460,13 +459,60 @@ body .signupcontainer {
   top: 230px;
 }
 
-body .signupcontainer .greenblock {
+@media all and (max-width: 576px) {
+  .loginbody .signupcontainer {
+    display: none;
+  }
+}
+
+@media all and (max-width: 376px) {
+  .loginbody .signupcontainer {
+    display: none;
+  }
+}
+
+@media all and (max-width: 768px) {
+  .loginbody .signupcontainer {
+    width: 550px;
+    top: 150px;
+  }
+}
+
+@media all and (max-width: 992px) {
+  .loginbody .signupcontainer {
+    width: 750px;
+    top: 180px;
+  }
+}
+
+.loginbody .signupcontainer .greenblock {
   background-color: #d0d6d6;
   width: 100%;
   height: 600px;
 }
 
-body .signupcontainer .whiteform {
+@media all and (max-width: 376px) {
+  .loginbody .signupcontainer .greenblock {
+    width: 300px;
+    height: 500px;
+  }
+}
+
+@media all and (max-width: 768px) {
+  .loginbody .signupcontainer .greenblock {
+    height: 450px;
+    width: 700px;
+    margin: 0 auto;
+  }
+}
+
+@media all and (max-width: 992px) {
+  .loginbody .signupcontainer .greenblock {
+    height: 500px;
+  }
+}
+
+.loginbody .signupcontainer .whiteform {
   position: absolute;
   top: -10%;
   left: 7%;
@@ -481,67 +527,167 @@ body .signupcontainer .whiteform {
   z-index: 2;
 }
 
-body .signupcontainer .displaynone {
+@media all and (max-width: 768px) {
+  .loginbody .signupcontainer .whiteform {
+    width: 200px;
+    height: 525px;
+    top: -20%;
+  }
+}
+
+@media all and (max-width: 992px) {
+  .loginbody .signupcontainer .whiteform {
+    width: 360px;
+    height: 600px;
+    top: -8%;
+  }
+}
+
+.loginbody .signupcontainer .displaynone {
   display: none;
   -webkit-transition: all .5s ease;
   transition: all .5s ease;
 }
 
-body .signupcontainer h1 {
+.loginbody .signupcontainer h1 {
   text-align: center;
   margin-top: 55px;
 }
 
-body .signupcontainer .leftbox, body .signupcontainer .rightbox {
+@media all and (max-width: 768px) {
+  .loginbody .signupcontainer h1 {
+    margin-top: 25px;
+  }
+}
+
+@media all and (max-width: 992px) {
+  .loginbody .signupcontainer h1 {
+    margin-top: 25px;
+  }
+}
+
+.loginbody .signupcontainer .leftbox, .loginbody .signupcontainer .rightbox {
   position: absolute;
   width: 50%;
   -webkit-transition: 1s all ease;
   transition: 1s all ease;
 }
 
-body .signupcontainer .leftbox h2, body .signupcontainer .rightbox h2 {
+.loginbody .signupcontainer .leftbox h2, .loginbody .signupcontainer .rightbox h2 {
   text-align: center;
   margin: 17px;
 }
 
-body .signupcontainer .leftbox {
+.loginbody .signupcontainer .leftbox {
   left: -2%;
 }
 
-body .signupcontainer .rightbox {
+.loginbody .signupcontainer .rightbox {
   right: -2%;
 }
 
-body .signupcontainer .signin a {
+.loginbody .signupcontainer .signin a {
   font-size: 0.6rem;
   margin-left: 170px;
   margin-bottom: 90px;
 }
 
-body .signupcontainer .emailinput {
+@media all and (max-width: 768px) {
+  .loginbody .signupcontainer .signin a {
+    margin-left: 12px;
+    margin-bottom: 0px;
+  }
+}
+
+@media all and (max-width: 992px) {
+  .loginbody .signupcontainer .signin a {
+    margin-left: 150px;
+  }
+}
+
+.loginbody .signupcontainer .emailinput {
   margin-bottom: 30px;
 }
 
-body .signupcontainer input {
+@media all and (max-width: 768px) {
+  .loginbody .signupcontainer .emailinput {
+    margin-bottom: 20px;
+  }
+}
+
+@media all and (max-width: 992px) {
+  .loginbody .signupcontainer .emailinput {
+    margin-bottom: 20px;
+  }
+}
+
+.loginbody .signupcontainer input {
   background-color: #d0d6d6;
-  padding: 15px;
   border: none;
   padding: 12px;
 }
 
-body .signupcontainer .signin form {
+@media all and (max-width: 768px) {
+  .loginbody .signupcontainer input {
+    padding: 10px;
+  }
+}
+
+@media all and (max-width: 992px) {
+  .loginbody .signupcontainer input {
+    padding: 10px;
+  }
+}
+
+.loginbody .signupcontainer .signin form {
   padding-top: 35px;
 }
 
-body .signupcontainer .signin form button {
+@media all and (max-width: 768px) {
+  .loginbody .signupcontainer .signin form {
+    padding-top: 10px;
+  }
+}
+
+@media all and (max-width: 992px) {
+  .loginbody .signupcontainer .signin form {
+    padding-top: 5px;
+  }
+}
+
+.loginbody .signupcontainer .signin form button {
   margin-top: 82px;
 }
 
-body .signupcontainer .signup button {
+@media all and (max-width: 768px) {
+  .loginbody .signupcontainer .signin form button {
+    margin-top: 122px;
+  }
+}
+
+@media all and (max-width: 992px) {
+  .loginbody .signupcontainer .signin form button {
+    margin-top: 120px;
+  }
+}
+
+.loginbody .signupcontainer .signup button {
   margin-top: 92px;
 }
 
-body .signupcontainer button {
+@media all and (max-width: 768px) {
+  .loginbody .signupcontainer .signup button {
+    margin-top: 50px;
+  }
+}
+
+@media all and (max-width: 992px) {
+  .loginbody .signupcontainer .signup button {
+    margin-top: 130px;
+  }
+}
+
+.loginbody .signupcontainer button {
   background-color: #f1c40f;
   font-size: 0.8rem;
   padding: 10px 30px;
@@ -556,12 +702,12 @@ body .signupcontainer button {
   margin-top: 10px;
 }
 
-body .signupcontainer button:hover {
+.loginbody .signupcontainer button:hover {
   -webkit-transform: scale(1.1);
           transform: scale(1.1);
 }
 
-body .signupcontainer form {
+.loginbody .signupcontainer form {
   display: -webkit-box;
   display: -ms-flexbox;
   display: flex;
@@ -575,77 +721,318 @@ body .signupcontainer form {
   margin: 30px 60px 60px 65px;
 }
 
-body .signupcontainer .title {
+@media all and (max-width: 768px) {
+  .loginbody .signupcontainer form {
+    margin: 30px 20px 0px 40px;
+  }
+}
+
+@media all and (max-width: 992px) {
+  .loginbody .signupcontainer form {
+    margin: 30px 30px 0px 50px;
+  }
+}
+
+.loginbody .signupcontainer .title {
   font-size: 1.5em;
   padding-top: 10px;
 }
 
-body .signupcontainer .title span {
+.loginbody .signupcontainer .title span {
   color: #fff;
 }
 
-body .signupcontainer .account {
+.loginbody .signupcontainer .account {
   margin-top: 45%;
 }
 
-body .signupcontainer p {
+.loginbody .signupcontainer p {
   color: #333;
   text-align: center;
   padding-top: 150px;
 }
 
-body .signupcontainer .flower {
+@media all and (max-width: 768px) {
+  .loginbody .signupcontainer p {
+    padding-top: 110px;
+  }
+}
+
+@media all and (max-width: 992px) {
+  .loginbody .signupcontainer p {
+    padding-top: 120px;
+  }
+}
+
+.loginbody .signupcontainer .flower {
   position: absolute;
   height: 320px;
   top: 25%;
   left: 25%;
 }
 
-body .signupcontainer .smaller {
+@media all and (max-width: 768px) {
+  .loginbody .signupcontainer .flower {
+    height: 200px;
+  }
+}
+
+@media all and (max-width: 992px) {
+  .loginbody .signupcontainer .flower {
+    height: 280px;
+    left: 30%;
+  }
+}
+
+.loginbody .signupcontainer .smaller {
   height: 320px;
   top: 25%;
   left: 28%;
 }
 
-body .signupcontainer input {
+@media all and (max-width: 768px) {
+  .loginbody .signupcontainer .smaller {
+    height: 200px;
+  }
+}
+
+@media all and (max-width: 992px) {
+  .loginbody .signupcontainer .smaller {
+    height: 270px;
+    left: 30%;
+    top: 25%;
+  }
+}
+
+.loginbody .signupcontainer input {
   width: 90%;
 }
 
-body .signupcontainer input::-webkit-input-placeholder {
+.loginbody .signupcontainer input::-webkit-input-placeholder {
   font-size: 1.3em;
 }
 
-body .signupcontainer input:-ms-input-placeholder {
+.loginbody .signupcontainer input:-ms-input-placeholder {
   font-size: 1.3em;
 }
 
-body .signupcontainer input::-ms-input-placeholder {
+.loginbody .signupcontainer input::-ms-input-placeholder {
   font-size: 1.3em;
 }
 
-body .signupcontainer input::placeholder {
+.loginbody .signupcontainer input::placeholder {
   font-size: 1.3em;
 }
 
-body .signupcontainer input:focus {
+.loginbody .signupcontainer input:focus {
   font-size: 1em;
   -webkit-transition: .8s all ease;
   transition: .8s all ease;
 }
 
-body .signupcontainer input:focus::-webkit-input-placeholder {
+.loginbody .signupcontainer input:focus::-webkit-input-placeholder {
   opacity: 0;
 }
 
-body .signupcontainer input:focus:-ms-input-placeholder {
+.loginbody .signupcontainer input:focus:-ms-input-placeholder {
   opacity: 0;
 }
 
-body .signupcontainer input:focus::-ms-input-placeholder {
+.loginbody .signupcontainer input:focus::-ms-input-placeholder {
   opacity: 0;
 }
 
-body .signupcontainer input:focus::placeholder {
+.loginbody .signupcontainer input:focus::placeholder {
   opacity: 0;
+}
+
+@media all and (max-width: 768px) {
+  #mobilelogintab {
+    display: none;
+  }
+}
+
+@media all and (max-width: 992px) {
+  #mobilelogintab {
+    display: none;
+  }
+}
+
+@media all and (max-width: 1200px) {
+  #mobilelogintab {
+    display: none;
+  }
+}
+
+@media all and (max-width: 376px) {
+  #mobilelogintab {
+    display: inline-block;
+    border: 1px solid #d0d6d6;
+    background-color: #fff;
+    position: absolute;
+    padding: 50px 0px 50px 0px;
+    width: 80vw;
+    top: 50%;
+    left: 50%;
+    -webkit-transform: translate(-50%, -50%);
+            transform: translate(-50%, -50%);
+    background-image: url(../img/register/register.jpg);
+    background-position: center;
+    background-repeat: no-repeat;
+  }
+  #mobilelogintab .motabtitle {
+    text-align: center;
+  }
+  #mobilelogintab .motabtitle li {
+    display: inline-block;
+    padding: 10px;
+    border: 1px solid red;
+    position: relative;
+    top: 50%;
+    left: 10%;
+  }
+  #mobilelogintab .motabtitle li:hover {
+    background-color: #d0d6d6;
+  }
+  #mobilelogintab .motabtitle li a {
+    font-weight: bold;
+    font-size: 1.2rem;
+  }
+  #mobilelogintab .motabtitle li a:hover {
+    color: #fff;
+    background-color: #d0d6d6;
+  }
+  #mobilelogintab .motabinner form {
+    display: -webkit-box;
+    display: -ms-flexbox;
+    display: flex;
+    -webkit-box-align: left;
+        -ms-flex-align: left;
+            align-items: left;
+    -webkit-box-orient: vertical;
+    -webkit-box-direction: normal;
+        -ms-flex-direction: column;
+            flex-direction: column;
+    margin: 0px 20px 0px 60px;
+  }
+  #mobilelogintab .motabinner form button {
+    background-color: #f1c40f;
+    font-size: 0.8rem;
+    padding: 10px 30px;
+    border: 1px solid #f1c40f;
+    border-radius: 5px;
+    color: #fff;
+    font-weight: bold;
+    cursor: pointer;
+    border-radius: 10px;
+    margin: 0 auto;
+    display: block;
+    position: relative;
+    right: 10%;
+    margin-top: 40px;
+  }
+  #mobilelogintab .motabinner form button:hover {
+    -webkit-transform: scale(1.1);
+            transform: scale(1.1);
+  }
+  #mobilelogintab .motabinner form input {
+    background-color: #d0d6d6;
+    border: none;
+    padding: 5px;
+    width: 80%;
+  }
+  #mobilelogintab .motabinner form .mobileemailinput {
+    margin-bottom: 15px;
+  }
+  #mobilelogintab .motabinner form a {
+    margin-left: 41px;
+  }
+}
+
+@media all and (max-width: 576px) {
+  #mobilelogintab {
+    display: inline-block;
+    border: 1px solid #d0d6d6;
+    background-color: #fff;
+    position: absolute;
+    padding: 50px 0px 50px 0px;
+    width: 80vw;
+    top: 50%;
+    left: 50%;
+    -webkit-transform: translate(-50%, -50%);
+            transform: translate(-50%, -50%);
+    background-image: url(../img/register/register.jpg);
+    background-position: center;
+    background-repeat: no-repeat;
+  }
+  #mobilelogintab .motabtitle {
+    text-align: center;
+  }
+  #mobilelogintab .motabtitle li {
+    display: inline-block;
+    padding: 20px;
+    position: relative;
+    top: 50%;
+    left: 9%;
+    -webkit-transform: translate(-50%, -50%);
+            transform: translate(-50%, -50%);
+    border: 1px solid #d0d6d6;
+  }
+  #mobilelogintab .motabtitle li:hover {
+    background-color: #d0d6d6;
+  }
+  #mobilelogintab .motabtitle li a {
+    font-weight: bold;
+    font-size: 1.2rem;
+  }
+  #mobilelogintab .motabtitle li a:hover {
+    color: #fff;
+    background-color: #d0d6d6;
+  }
+  #mobilelogintab .motabinner form {
+    display: -webkit-box;
+    display: -ms-flexbox;
+    display: flex;
+    -webkit-box-align: left;
+        -ms-flex-align: left;
+            align-items: left;
+    -webkit-box-orient: vertical;
+    -webkit-box-direction: normal;
+        -ms-flex-direction: column;
+            flex-direction: column;
+    margin: 0px 0px 0px 50px;
+  }
+  #mobilelogintab .motabinner form button {
+    background-color: #f1c40f;
+    font-size: 0.8rem;
+    padding: 10px 30px;
+    border: 1px solid #f1c40f;
+    border-radius: 5px;
+    color: #fff;
+    font-weight: bold;
+    cursor: pointer;
+    border-radius: 10px;
+    margin: 0 auto;
+    display: block;
+    position: relative;
+    right: 10%;
+    margin-top: 70px;
+  }
+  #mobilelogintab .motabinner form button:hover {
+    -webkit-transform: scale(1.1);
+            transform: scale(1.1);
+  }
+  #mobilelogintab .motabinner form input {
+    background-color: #d0d6d6;
+    border: none;
+    padding: 10px;
+    width: 80%;
+  }
+  #mobilelogintab .motabinner form .mobileemailinput {
+    margin-bottom: 15px;
+  }
+  #mobilelogintab .motabinner form a {
+    margin-left: 165px;
+  }
 }
 /*# sourceMappingURL=login.css.map */
