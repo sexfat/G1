@@ -174,27 +174,27 @@
                 <h3>Message</h3>
                 <br>
                 <div class="mess">
-                    <ul>
-                        <li>
+                    <ul class="infomess_ul">
+                        <li class="infomess_li">
                             <p>Alice</p>
                             WOW ! Awesome !<button class="delete">删除</button>
                         </li>
-                        <li>
+                        <li class="infomess_li">
                             <p>Bella</p>
                             Nice !<button class="delete">删除</button>
                         </li>
                     </ul>
                 </div>
                 <div class="mess_write">
-                    <textarea name="" rows="8" cols="125"></textarea>
+                    <textarea class="infomess_ta" name="" rows="8" cols="125"></textarea>
                     <br>
-                    <button>提交</button>
-                    <button>清空</button>
+                    <button class="infomess_btn">提交</button>
+                    <button class="infomess_btn">清空</button>
                 </div>
             </div>
         </div>
     </section>
-    <section>
+    <section class="songinfo_infos5">
         <div id="player">
             <audio src="" id="audioPlayer"></audio>
             <div class="player_s">
@@ -444,15 +444,15 @@
 
         function message() {
             //獲取留言區的內容
-            var text = document.getElementsByTagName('textarea')[0]; //返回一個Nodelist節點列表
+            var text = document.getElementsByClassName('infomess_ta')[0]; //返回一個Nodelist節點列表
             //獲取提交按鈕
-            var submit = document.getElementsByTagName('button')[0];
+            var submit = document.getElementsByClassName('infomess_btn')[0];
             //獲取清空按鈕
-            var empty = document.getElementsByTagName('button')[1];
+            var empty = document.getElementsByClassName('infomess_btn')[1];
             //獲取評論區
             var mess = document.getElementsByClassName('mess')[0]
             //獲取評論區的列表
-            var messlist = mess.getElementsByTagName('ul')[0];
+            var messlist = mess.getElementsByClassName('infomess_ul')[0];
             //獲取到messlist下面的所有的子節點
             var li = mess.getElementsByTagName('li');
             submit.onclick = function () {
