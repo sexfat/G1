@@ -1,3 +1,6 @@
+@import "./player.scss";
+@import "./infotop.scss";
+
 // .bnr h1{ 
 //     border: 1px solid rgb(24, 27, 199);
 //     position: relative;
@@ -14,11 +17,14 @@
     height: 600px;
     margin: 0 auto;
 }
-.infos3{
+.songinfo_infos3{
     border: 1px solid navy;
     height: 600px;
 }
-.infos4{
+.songinfo_infos3 p{
+    border: 1px solid blue;
+}
+.songinfo_infos4{
     border: 1px solid blue;
     height: 600px;
 }

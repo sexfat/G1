@@ -1,5 +1,9 @@
-//songadd
+@import "./player.scss";
+@import "./public.scss";
 
+
+
+//songadd
 // .bnr img {
 //     border: 1px solid rgb(24, 27, 199);
 //     position: relative;
@@ -10,7 +14,7 @@
     // border: 1px solid black;
     box-sizing: border-box;
     // width: 100vw;
-    // height: 630px;
+    // height: 700px;
 }
 
 .songsadded_leftli {
@@ -87,7 +91,7 @@
     // border: 1px solid red;
     position: absolute;
     right: 50px;
-    bottom: 0px;
+    bottom: 70px;
     width: 200px;
     height: 420px;
 }
@@ -179,3 +183,7 @@
 //         max-width: 900px;
 //     }
 // }
+.songsadded_adds3{
+    border: 1px solid rgba(0, 128, 0, 0);
+    height: 200px;
+}
