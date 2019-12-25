@@ -1,0 +1,1091 @@
+@charset "UTF-8";
+* {
+  -webkit-box-sizing: border-box;
+          box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+}
+
+html {
+  font-size: 20px;
+}
+
+body {
+  margin: 0;
+  padding: 0;
+  font-family: "Lucida Sans Unicode", Geneva, Verdana, sans-serif;
+  background: #fafaf1;
+  color: #333;
+  overflow-x: hidden;
+}
+
+.flexbox {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+}
+
+a {
+  text-decoration: none;
+  color: #333;
+}
+
+header {
+  height: 300px;
+  text-align: center;
+  padding: 120px 0;
+}
+
+.wrapper {
+  max-width: 1500px;
+  margin: 0 auto;
+  width: 100%;
+}
+
+/*燈箱寬*/
+.lightbox_s {
+  width: 500px;
+}
+
+/*新手教學用*/
+.lightbox_b {
+  width: 1000px;
+}
+
+/*燈箱的遮罩顏色*/
+.lightCover {
+  background-color: #414141e6;
+}
+
+/*button mixin*/
+@media all and (max-width: 768px) {
+  header img {
+    height: 76px;
+  }
+}
+
+.col-1 {
+  width: 8.33333%;
+  display: inline-block;
+  -webkit-box-sizing: border-box;
+          box-sizing: border-box;
+}
+
+.col-2 {
+  width: 16.66667%;
+  display: inline-block;
+  -webkit-box-sizing: border-box;
+          box-sizing: border-box;
+}
+
+.col-3 {
+  width: 25%;
+  display: inline-block;
+  -webkit-box-sizing: border-box;
+          box-sizing: border-box;
+}
+
+.col-4 {
+  width: 33.33333%;
+  display: inline-block;
+  -webkit-box-sizing: border-box;
+          box-sizing: border-box;
+}
+
+.col-5 {
+  width: 41.66667%;
+  display: inline-block;
+  -webkit-box-sizing: border-box;
+          box-sizing: border-box;
+}
+
+.col-6 {
+  width: 50%;
+  display: inline-block;
+  -webkit-box-sizing: border-box;
+          box-sizing: border-box;
+}
+
+.col-7 {
+  width: 58.33333%;
+  display: inline-block;
+  -webkit-box-sizing: border-box;
+          box-sizing: border-box;
+}
+
+.col-8 {
+  width: 66.66667%;
+  display: inline-block;
+  -webkit-box-sizing: border-box;
+          box-sizing: border-box;
+}
+
+.col-9 {
+  width: 75%;
+  display: inline-block;
+  -webkit-box-sizing: border-box;
+          box-sizing: border-box;
+}
+
+.col-10 {
+  width: 83.33333%;
+  display: inline-block;
+  -webkit-box-sizing: border-box;
+          box-sizing: border-box;
+}
+
+.col-11 {
+  width: 91.66667%;
+  display: inline-block;
+  -webkit-box-sizing: border-box;
+          box-sizing: border-box;
+}
+
+.col-12 {
+  width: 100%;
+  display: inline-block;
+  -webkit-box-sizing: border-box;
+          box-sizing: border-box;
+}
+
+* {
+  padding: 0;
+  margin: 0;
+}
+
+h2 {
+  font-weight: bold;
+}
+
+.wrapper {
+  margin-top: 0%;
+  position: relative;
+}
+
+.wrapper .color1 {
+  width: 50%;
+  position: absolute;
+  left: -20%;
+}
+
+.wrapper .stepCount {
+  margin: 2.5rem auto;
+  width: 90%;
+  overflow: hidden;
+}
+
+.wrapper .stepCount .count {
+  text-align: center;
+  position: relative;
+  display: inline-block;
+  width: 23%;
+}
+
+.wrapper .stepCount .count img {
+  width: 40%;
+  min-width: 4.5rem;
+}
+
+.wrapper .stepCount .count .step_color {
+  min-width: 3rem;
+  position: absolute;
+  width: 40%;
+  top: 4%;
+  left: 30%;
+  z-index: -10;
+  min-width: 79px;
+}
+
+.wrapper .stepFlow {
+  width: 85%;
+  margin: 0 auto;
+  margin-top: 4rem;
+  white-space: nowrap;
+  font-size: 0;
+}
+
+.wrapper .stepFlow .step {
+  display: inline-block;
+  width: 100%;
+  -webkit-transition: all 0.3s;
+  transition: all 0.3s;
+  vertical-align: top;
+  position: relative;
+  margin: 0 0%;
+  background: url("../img/member/blackline.svg");
+}
+
+.wrapper .stepFlow .step .color2 {
+  width: 81%;
+  position: absolute;
+  right: -25%;
+  top: 60%;
+  z-index: -10;
+}
+
+.wrapper .stepFlow .step h2 {
+  margin: 2.625rem auto 2.625rem;
+  font-weight: bold;
+  position: relative;
+  left: 0%;
+  width: 87%;
+  -webkit-transform: translateY(0%);
+          transform: translateY(0%);
+}
+
+.wrapper .stepFlow .step .choose_money {
+  padding: 2%;
+  z-index: 1;
+  border-radius: 5px;
+  width: 95%;
+  margin: 0 auto;
+}
+
+.wrapper .stepFlow .step .choose_money .rowpick {
+  width: 95%;
+  margin: 0 auto;
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -ms-flex-wrap: wrap;
+      flex-wrap: wrap;
+  -webkit-box-pack: center;
+      -ms-flex-pack: center;
+          justify-content: center;
+}
+
+.wrapper .stepFlow .step .choose_money .rowpick .money {
+  display: inline-block;
+  text-align: center;
+  margin-top: 0.625rem;
+  padding: 0;
+  width: 25%;
+}
+
+.wrapper .stepFlow .step .choose_money .rowpick .money .select_money {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-pack: center;
+      -ms-flex-pack: center;
+          justify-content: center;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+  border-radius: 10px;
+  padding: 2.25rem 0;
+  margin-right: 0.625rem;
+  font-size: 24px;
+  position: relative;
+}
+
+.wrapper .stepFlow .step .choose_money .rowpick .money .select_money img {
+  width: 70%;
+  position: absolute;
+  z-index: 0;
+}
+
+.wrapper .stepFlow .step .choose_money .rowpick .money .select_money p {
+  z-index: 1;
+}
+
+.wrapper .stepFlow .step .choose_money .rowpick .money .select_money.active {
+  border: none;
+}
+
+.wrapper .stepFlow .step .enter_card {
+  width: 95%;
+  margin: 0 auto;
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -ms-flex-wrap: wrap;
+      flex-wrap: wrap;
+  padding: 2%;
+  -webkit-box-pack: center;
+      -ms-flex-pack: center;
+          justify-content: center;
+  border-radius: 5px;
+}
+
+.wrapper .stepFlow .step .enter_card h2 {
+  width: 90%;
+}
+
+.wrapper .stepFlow .step .enter_card .enter {
+  padding: 0;
+  margin: 0 auto;
+}
+
+.wrapper .stepFlow .step .enter_card .enter.mem {
+  width: 30%;
+  margin-left: 5%;
+}
+
+.wrapper .stepFlow .step .enter_card .enter .mem_info {
+  width: 85%;
+  border-radius: 5px;
+  padding: 10%;
+  background-color: #d0d6d6;
+}
+
+.wrapper .stepFlow .step .enter_card .enter .mem_info h4 {
+  text-align: center;
+  margin: 2rem auto;
+}
+
+.wrapper .stepFlow .step .enter_card .enter .mem_info .stored_value {
+  border-radius: 10px;
+  text-align: center;
+  position: relative;
+  padding-bottom: 0%;
+}
+
+.wrapper .stepFlow .step .enter_card .enter .mem_info .stored_value h3 {
+  margin: 0.625rem auto;
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  -webkit-transform: translate(-50%, -80%);
+          transform: translate(-50%, -80%);
+}
+
+.wrapper .stepFlow .step .enter_card .enter .mem_info .stored_value img {
+  width: 100%;
+}
+
+.wrapper .stepFlow .step .enter_card .enter.enterNumber {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-orient: vertical;
+  -webkit-box-direction: normal;
+      -ms-flex-direction: column;
+          flex-direction: column;
+  -ms-flex-pack: distribute;
+      justify-content: space-around;
+  width: 65%;
+}
+
+.wrapper .stepFlow .step .enter_card .enter.enterNumber .input {
+  position: relative;
+}
+
+.wrapper .stepFlow .step .enter_card .enter.enterNumber .input h6 {
+  position: relative;
+  left: 6%;
+  font-size: 1rem;
+  line-height: 1.5rem;
+  color: #5093FF;
+  padding-top: 5%;
+}
+
+.wrapper .stepFlow .step .enter_card .enter.enterNumber .input input {
+  width: 80%;
+  display: block;
+  margin-left: 5%;
+  padding: 0.625rem 1%;
+  border: solid 1px #B2B2B2;
+  border-radius: 5px;
+}
+
+.wrapper .stepFlow .step .enter_card .button {
+  width: 80%;
+  margin: 0 auto;
+}
+
+.wrapper .stepFlow .step .enter_card .button .press {
+  display: inline-block;
+  width: 50%;
+}
+
+.wrapper .stepFlow .step .comfirm_detail {
+  border-radius: 5px;
+  width: 95%;
+  padding: 2%;
+}
+
+.wrapper .stepFlow .step .comfirm_detail .detail {
+  width: 85%;
+  margin: 0 auto;
+  background-color: #d0d6d6;
+  padding: 5% 3%;
+  border-radius: 5px;
+}
+
+.wrapper .stepFlow .step .comfirm_detail .detail p {
+  width: 100%;
+}
+
+.wrapper .stepFlow .step .comfirm_detail .detail p .card_class {
+  width: 20%;
+}
+
+.wrapper .stepFlow .step .comfirm_detail .detail p span {
+  display: inline-block;
+  font-size: 1rem;
+  width: 50%;
+}
+
+.wrapper .stepFlow .step .comfirm_detail .button {
+  width: 80%;
+}
+
+.wrapper .stepFlow .step .comfirm_detail .button .press {
+  display: inline-block;
+  width: 50%;
+}
+
+.wrapper .stepFlow .step .done {
+  width: 95%;
+  padding: 2%;
+}
+
+.wrapper .stepFlow .step .done .success {
+  width: 75%;
+  margin-left: 7%;
+  background-color: #d0d6d6;
+  padding: 10% 0%;
+  border-radius: 5px;
+}
+
+.wrapper .stepFlow .step .done .success .success_info p {
+  line-height: 3rem;
+  text-align: center;
+}
+
+.wrapper .stepFlow .step .done .success img {
+  position: absolute;
+  width: 30%;
+  right: 0%;
+  -webkit-transform: rotate(10deg);
+          transform: rotate(10deg);
+  z-index: 10;
+}
+
+.wrapper .support {
+  width: 100%;
+  margin: 10% auto;
+  font-size: 0;
+}
+
+.wrapper .support h2 {
+  margin: 2.625rem auto;
+  width: 70%;
+}
+
+.wrapper .support .box {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  width: 100%;
+  margin: 0 auto;
+  max-width: 1200px;
+}
+
+.wrapper .support .phone_member_info {
+  display: none;
+  background: url("../img/member/blackline.svg") no-repeat;
+  background-size: 100%;
+  width: 100%;
+  -webkit-box-pack: center;
+      -ms-flex-pack: center;
+          justify-content: center;
+  padding: 4% 0%;
+  margin: 5% auto;
+}
+
+.wrapper .support .phone_member_info .pic img {
+  width: 100%;
+}
+
+.wrapper .support .phone_member_info .meminfos {
+  padding: 4%;
+}
+
+.wrapper .support .member_info {
+  position: relative;
+  padding-bottom: 16%;
+  vertical-align: top;
+  text-align: center;
+  background: url(../img/member/mp3.png) no-repeat;
+  background-size: 100%;
+  max-width: 320px;
+  width: 30%;
+}
+
+.wrapper .support .member_info .gem {
+  width: 70%;
+  margin-top: 10%;
+  position: relative;
+  left: 1%;
+  max-width: 228px;
+}
+
+.wrapper .support .member_info .member {
+  width: 90%;
+  margin: 0 auto;
+  position: relative;
+  text-align: center;
+}
+
+.wrapper .support .member_info .member .member_detail {
+  margin: 8% 0%;
+  text-align: left;
+  margin-left: 15%;
+}
+
+.wrapper .support .member_info .member .member_detail p {
+  line-height: 2rem;
+}
+
+.wrapper .support .support_history {
+  font-size: 1rem;
+  vertical-align: top;
+  display: inline-block;
+  position: relative;
+  -webkit-box-flex: 1;
+      -ms-flex-positive: 1;
+          flex-grow: 1;
+}
+
+.wrapper .support .support_history .table {
+  margin: 0 auto;
+  width: 90%;
+  border: solid 1px #d0d6d6;
+  border-radius: 5px;
+}
+
+.wrapper .support .support_history .table .th {
+  background-color: #d0d6d6;
+  padding: 0.5%;
+  font-size: 0;
+}
+
+.wrapper .support .support_history .table div {
+  padding: 10px;
+  text-align: center;
+  font-size: 1rem;
+}
+
+.wrapper .support .support_history .table .tbody {
+  font-size: 0;
+  max-height: 23rem;
+  overflow-x: hidden;
+  overflow-y: scroll;
+  padding: 0;
+}
+
+.wrapper .support .support_history .table .tbody::-webkit-scrollbar {
+  width: 16px;
+  height: 16px;
+  background-color: #dadada;
+}
+
+.wrapper .support .support_history .table .tbody::-webkit-scrollbar-thumb {
+  border-radius: 10px;
+  -webkit-box-shadow: inset 0 0 3px rgba(0, 0, 0, 0.3);
+  background-color: #555;
+}
+
+.wrapper .support .support_history .table .tr {
+  font-size: 0;
+  border-top: solid 1px rgba(208, 214, 214, 0.5);
+}
+
+.wrapper .support .support_history .table .tr:nth-of-type(even) {
+  background-color: rgba(208, 214, 214, 0.3);
+}
+
+.button {
+  position: relative;
+  width: 100%;
+  padding: 10%;
+  text-align: center;
+  margin: 0 auto;
+}
+
+.button .btn_s {
+  width: 85%;
+  max-width: 9rem;
+  background-color: #efc318;
+  border-radius: 5px;
+}
+
+.button .btn_s p {
+  cursor: pointer;
+}
+
+@media all and (min-width: 1200px) {
+  .button {
+    padding: 5%;
+  }
+}
+
+@media all and (max-width: 1200px) and (min-width: 993px) {
+  html {
+    font-size: 18px;
+  }
+  .button {
+    padding: 5%;
+  }
+  .wrapper {
+    overflow-x: hidden;
+  }
+  .wrapper .stepFlow .step .enter_card .enter .mem_info {
+    width: 100%;
+  }
+  .wrapper .support {
+    width: 85%;
+    margin: 10% auto;
+    font-size: 0;
+    display: block;
+  }
+  .wrapper .support h2 {
+    width: 80%;
+  }
+  .wrapper .support .member_info {
+    display: block;
+  }
+  .wrapper .support .member_info .member .member_detail p {
+    font-size: 0.9rem;
+  }
+  .wrapper .support .phone_member_info {
+    display: none;
+  }
+}
+
+@media all and (max-width: 992px) and (min-width: 769px) {
+  html {
+    font-size: 17px;
+  }
+  .button {
+    padding: 5%;
+  }
+  .wrapper {
+    overflow-x: hidden;
+  }
+  .wrapper .color1 {
+    top: 3%;
+  }
+  .wrapper .stepFlow .step .color2 {
+    width: 81%;
+    position: absolute;
+    right: -25%;
+    top: 70%;
+    z-index: -10;
+  }
+  .wrapper .stepFlow .step .enter_card .enter .mem_info {
+    width: 100%;
+  }
+  .wrapper .support {
+    width: 85%;
+    margin: 10% auto;
+    font-size: 0;
+    display: block;
+  }
+  .wrapper .support .box {
+    -webkit-box-orient: vertical;
+    -webkit-box-direction: normal;
+        -ms-flex-direction: column;
+            flex-direction: column;
+  }
+  .wrapper .support .member_info {
+    display: none;
+  }
+  .wrapper .support .phone_member_info {
+    display: -webkit-box;
+    display: -ms-flexbox;
+    display: flex;
+  }
+}
+
+@media all and (max-width: 768px) and (min-width: 577px) {
+  html {
+    font-size: 18px;
+  }
+  .wrapper {
+    overflow-x: hidden;
+    margin: 0 auto;
+  }
+  .wrapper .color1 {
+    top: 8%;
+  }
+  .wrapper .stepFlow .step .color2 {
+    width: 81%;
+    right: -25%;
+    top: 80%;
+  }
+  .wrapper .stepFlow .step h2 {
+    margin: 2rem auto;
+  }
+  .wrapper .stepFlow .step .choose_money .rowpick .money .select_money img {
+    width: 100%;
+  }
+  .wrapper .stepFlow .step .enter_card .enter.mem {
+    width: 100%;
+    max-width: 15rem;
+    margin: 0 auto;
+  }
+  .wrapper .stepFlow .step .enter_card .enter .mem_info {
+    width: 100%;
+  }
+  .wrapper .stepFlow .step .enter_card .enter .mem_info h4 {
+    margin: 1rem auto;
+  }
+  .wrapper .stepFlow .step .enter_card .enter .mem_info .stored_value img {
+    width: 86%;
+  }
+  .wrapper .stepFlow .step .enter_card .enter.enterNumber {
+    width: 100%;
+    margin-top: 8%;
+  }
+  .wrapper .stepFlow .step .enter_card .button {
+    width: 95%;
+  }
+  .wrapper .support {
+    width: 85%;
+    margin: 10% auto;
+    font-size: 0;
+    display: block;
+  }
+  .wrapper .support .box {
+    -webkit-box-orient: vertical;
+    -webkit-box-direction: normal;
+        -ms-flex-direction: column;
+            flex-direction: column;
+  }
+  .wrapper .support .member_info {
+    display: none;
+  }
+  .wrapper .support .phone_member_info {
+    display: -webkit-box;
+    display: -ms-flexbox;
+    display: flex;
+  }
+}
+
+@media all and (max-width: 576px) and (min-width: 377px) {
+  html {
+    font-size: 17px;
+  }
+  .wrapper {
+    overflow-x: hidden;
+  }
+  .wrapper .color1 {
+    width: 68%;
+    position: absolute;
+    left: -23%;
+    top: 7%;
+  }
+  .wrapper .stepCount .count img {
+    max-width: 4rem;
+  }
+  .wrapper .stepFlow .step .color2 {
+    width: 81%;
+    right: -25%;
+    top: 80%;
+  }
+  .wrapper .stepFlow .step .choose_money .rowpick .money {
+    width: 50%;
+  }
+  .wrapper .stepFlow .step .choose_money .rowpick .money .select_money {
+    padding: 2.25rem 0;
+  }
+  .wrapper .stepFlow .step .choose_money .rowpick .money .select_money img {
+    width: 100%;
+  }
+  .wrapper .stepFlow .step .enter_card .enter.mem {
+    width: 100%;
+    max-width: 15rem;
+    margin: 0 auto;
+  }
+  .wrapper .stepFlow .step .enter_card .enter .mem_info {
+    width: 100%;
+  }
+  .wrapper .stepFlow .step .enter_card .enter .mem_info h4 {
+    margin: 1rem auto;
+  }
+  .wrapper .stepFlow .step .enter_card .enter .mem_info .stored_value img {
+    width: 86%;
+  }
+  .wrapper .stepFlow .step .enter_card .enter.enterNumber {
+    width: 100%;
+    margin-top: 8%;
+  }
+  .wrapper .stepFlow .step .enter_card .enter.enterNumber .input h6 {
+    left: 11%;
+  }
+  .wrapper .stepFlow .step .enter_card .enter.enterNumber .input input {
+    margin: 0 auto;
+    width: 80%;
+  }
+  .wrapper .stepFlow .step .enter_card .button {
+    width: 95%;
+  }
+  .wrapper .stepFlow .step .comfirm_detail .detail p .card_class {
+    width: 50%;
+  }
+  .wrapper .support {
+    width: 85%;
+    margin: 10% auto;
+    font-size: 0;
+    display: block;
+  }
+  .wrapper .support h2 {
+    margin: 4.625rem auto 1.625rem;
+  }
+  .wrapper .support .box {
+    -webkit-box-orient: vertical;
+    -webkit-box-direction: normal;
+        -ms-flex-direction: column;
+            flex-direction: column;
+    width: 100%;
+  }
+  .wrapper .support .phone_member_info {
+    display: -webkit-box;
+    display: -ms-flexbox;
+    display: flex;
+  }
+  .wrapper .support .phone_member_info .pic {
+    vertical-align: bottom;
+  }
+  .wrapper .support .member_info {
+    display: none;
+  }
+  .wrapper .support .support_history .table {
+    width: 100%;
+  }
+  .wrapper .support .support_history .table .tbody {
+    max-height: 18rem;
+  }
+  .wrapper .support .support_history .table .td {
+    width: 50%;
+  }
+  .wrapper .support .support_history .table .tr .date,
+  .wrapper .support .support_history .table .th .date {
+    display: none;
+  }
+}
+
+@media all and (max-width: 376px) {
+  .col-sm-1 {
+    width: 8.33333%;
+    display: inline-block;
+    -webkit-box-sizing: border-box;
+            box-sizing: border-box;
+  }
+  .col-sm-2 {
+    width: 16.66667%;
+    display: inline-block;
+    -webkit-box-sizing: border-box;
+            box-sizing: border-box;
+  }
+  .col-sm-3 {
+    width: 25%;
+    display: inline-block;
+    -webkit-box-sizing: border-box;
+            box-sizing: border-box;
+  }
+  .col-sm-4 {
+    width: 33.33333%;
+    display: inline-block;
+    -webkit-box-sizing: border-box;
+            box-sizing: border-box;
+  }
+  .col-sm-5 {
+    width: 41.66667%;
+    display: inline-block;
+    -webkit-box-sizing: border-box;
+            box-sizing: border-box;
+  }
+  .col-sm-6 {
+    width: 50%;
+    display: inline-block;
+    -webkit-box-sizing: border-box;
+            box-sizing: border-box;
+  }
+  .col-sm-7 {
+    width: 58.33333%;
+    display: inline-block;
+    -webkit-box-sizing: border-box;
+            box-sizing: border-box;
+  }
+  .col-sm-8 {
+    width: 66.66667%;
+    display: inline-block;
+    -webkit-box-sizing: border-box;
+            box-sizing: border-box;
+  }
+  .col-sm-9 {
+    width: 75%;
+    display: inline-block;
+    -webkit-box-sizing: border-box;
+            box-sizing: border-box;
+  }
+  .col-sm-10 {
+    width: 83.33333%;
+    display: inline-block;
+    -webkit-box-sizing: border-box;
+            box-sizing: border-box;
+  }
+  .col-sm-11 {
+    width: 91.66667%;
+    display: inline-block;
+    -webkit-box-sizing: border-box;
+            box-sizing: border-box;
+  }
+  .col-sm-12 {
+    width: 100%;
+    display: inline-block;
+    -webkit-box-sizing: border-box;
+            box-sizing: border-box;
+  }
+  html {
+    font-size: 16px;
+  }
+  .wrapper {
+    overflow-x: hidden;
+  }
+  .wrapper .color1 {
+    width: 77%;
+    top: 6%;
+  }
+  .wrapper .stepCount {
+    margin: 1.5rem auto;
+  }
+  .wrapper .stepCount .count {
+    width: 23%;
+  }
+  .wrapper .stepCount .count img {
+    width: 40%;
+    min-width: 4rem;
+  }
+  .wrapper .stepFlow {
+    margin-top: 2rem;
+    width: 95%;
+  }
+  .wrapper .stepFlow .step h2 {
+    font-size: 1.5rem;
+    font-weight: 900;
+    margin: 2rem auto;
+  }
+  .wrapper .stepFlow .step .color2 {
+    width: 81%;
+    right: -25%;
+    top: 85%;
+  }
+  .wrapper .stepFlow .step .choose_money .rowpick .money {
+    width: 50%;
+    white-space: wrap;
+  }
+  .wrapper .stepFlow .step .choose_money .rowpick .money .select_money {
+    margin: 10% auto;
+    padding: 1.25rem 0 !important;
+  }
+  .wrapper .stepFlow .step .choose_money .rowpick .money .select_money.select_money_margin {
+    margin-left: 0rem;
+    margin-right: 0.3125rem;
+  }
+  .wrapper .stepFlow .step .choose_money .rowpick .money .select_money img {
+    width: 100%;
+    max-width: 10rem;
+  }
+  .wrapper .stepFlow .step .choose_money .rowpick .button {
+    padding: 10%;
+  }
+  .wrapper .stepFlow .step .enter_card .enter.mem {
+    width: 100%;
+    max-width: 15rem;
+    margin: 0% 5%;
+  }
+  .wrapper .stepFlow .step .enter_card .enter .mem_info {
+    padding: 5%;
+    width: 100%;
+  }
+  .wrapper .stepFlow .step .enter_card .enter .mem_info h4 {
+    margin: 1rem auto;
+  }
+  .wrapper .stepFlow .step .enter_card .enter .mem_info .stored_value img {
+    width: 60%;
+    margin-bottom: 5%;
+  }
+  .wrapper .stepFlow .step .enter_card .enter.enterNumber {
+    width: 100%;
+    margin-top: 8%;
+  }
+  .wrapper .stepFlow .step .enter_card .enter.enterNumber .input h6 {
+    left: 11%;
+  }
+  .wrapper .stepFlow .step .enter_card .enter.enterNumber .input input {
+    margin: 0 auto;
+    width: 80%;
+  }
+  .wrapper .stepFlow .step .enter_card .button {
+    width: 100%;
+  }
+  .wrapper .stepFlow .step .comfirm_detail .detail p .card_class {
+    width: 50%;
+  }
+  .wrapper .stepFlow .step .comfirm_detail .button {
+    width: 100%;
+  }
+  .wrapper .stepFlow .step .done .success {
+    width: 85%;
+  }
+  .wrapper .support {
+    width: 95%;
+    margin: 10% auto;
+    font-size: 0;
+    display: block;
+  }
+  .wrapper .support h2 {
+    margin-top: 40%;
+    font-size: 1.5rem;
+  }
+  .wrapper .support .box {
+    width: 95%;
+    -webkit-box-orient: vertical;
+    -webkit-box-direction: normal;
+        -ms-flex-direction: column;
+            flex-direction: column;
+  }
+  .wrapper .support .phone_member_info {
+    margin-bottom: 15%;
+    -webkit-box-pack: center;
+        -ms-flex-pack: center;
+            justify-content: center;
+    -webkit-box-orient: vertical;
+    -webkit-box-direction: normal;
+        -ms-flex-direction: column;
+            flex-direction: column;
+    padding: 6%;
+    padding-top: 10%;
+    display: -webkit-box;
+    display: -ms-flexbox;
+    display: flex;
+  }
+  .wrapper .support .phone_member_info .meminfos {
+    padding-left: 3%;
+    margin: 0 auto;
+  }
+  .wrapper .support .phone_member_info .pic {
+    margin: 0 auto;
+    text-align: center;
+    border-radius: 5px;
+  }
+  .wrapper .support .member_info {
+    display: none;
+  }
+  .wrapper .support .support_history .table {
+    width: 100%;
+  }
+  .wrapper .support .support_history .table .tbody {
+    max-height: 18rem;
+  }
+  .wrapper .support .support_history .table .tr .date,
+  .wrapper .support .support_history .table .th .date {
+    display: none;
+  }
+}
+/*# sourceMappingURL=store.css.map */
