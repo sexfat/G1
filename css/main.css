@@ -4394,26 +4394,23 @@ header {
   background-repeat: no-repeat;
 }
 
-.collectionbody header {
+.collectionbody .collectionheader {
   text-align: center;
   padding: 120px;
   width: 100%;
 }
 
-.collectionbody header img {
+.collectionbody .collectionheader img {
   max-width: 500px;
   width: 100%;
 }
 
 .collectionbody .collectionalbumsection1 {
-  border: 1px solid pink;
   width: 100%;
-  height: 1500px;
   display: inline-block;
 }
 
 .collectionbody .collectionalbumsection1 .collectionsinglealbum {
-  border: 1px solid green;
   width: 100%;
   margin-bottom: 50px;
   display: inline-block;
@@ -4421,7 +4418,6 @@ header {
 }
 
 .collectionbody .collectionalbumsection1 .collectionsinglealbum .collectionsinglecover {
-  border: 1px solid blue;
   margin: 20px;
   display: inline-block;
   font-size: 1.2rem;
@@ -4484,7 +4480,6 @@ header {
 }
 
 .collectionbody .collectionalbumsection1 .collectionsinglealbum .collectionsinglecover .collheart {
-  border: 1px solid pink;
   text-align: left;
 }
 
@@ -4689,6 +4684,14 @@ header {
   }
 }
 
+.collectionbody .collectionsection .collectionflower {
+  text-align: right;
+  position: relative;
+  bottom: 100px;
+  right: 100px;
+  z-index: -1;
+}
+
 * {
   -webkit-box-sizing: border-box;
           box-sizing: border-box;
@@ -4772,6 +4775,13 @@ header {
   margin: 180px auto 50px 0px;
 }
 
+@media all and (max-width: 1200px) {
+  #act_radioBg {
+    max-width: 1000px;
+    height: 450px;
+  }
+}
+
 #act_radioBg img {
   width: 100%;
   height: 100%;
@@ -4788,6 +4798,13 @@ header {
   z-index: 1;
 }
 
+@media all and (max-width: 1200px) {
+  #act_radioBg #act_title {
+    width: 222px;
+    height: 58px;
+  }
+}
+
 #act_radioBg h2 {
   margin: 0;
   display: inline-block;
@@ -4797,6 +4814,12 @@ header {
   left: 18%;
   z-index: 1;
   font-size: 2rem;
+}
+
+@media all and (max-width: 1200px) {
+  #act_radioBg h2 {
+    font-size: 1.5rem;
+  }
 }
 
 #act_radioBg #act_sectionAnchor {
@@ -4809,6 +4832,13 @@ header {
   z-index: 1;
 }
 
+@media all and (max-width: 1200px) {
+  #act_radioBg #act_sectionAnchor {
+    width: 600px;
+    height: 50px;
+  }
+}
+
 #act_radioBg #act_sectionAnchor a {
   display: inline-block;
   width: 200px;
@@ -4816,6 +4846,14 @@ header {
   height: 75px;
   text-decoration: none;
   position: relative;
+}
+
+@media all and (max-width: 1200px) {
+  #act_radioBg #act_sectionAnchor a {
+    width: 150px;
+    height: 50px;
+    margin-left: 30px;
+  }
 }
 
 #act_radioBg #act_sectionAnchor a img {
@@ -4836,14 +4874,15 @@ header {
 
 #act_radioBg #act_oldyear_Anchor {
   position: absolute;
-  right: -10%;
-  bottom: 10%;
-  width: 100px;
+  left: 50%;
+  bottom: 5%;
+  width: 300px;
+  height: 50px;
 }
 
 #act_radioBg #act_oldyear_Anchor a img {
-  width: 30px;
-  height: 30px;
+  width: 50px;
+  height: 50px;
 }
 
 #act_radioBg #act_oldyear_Anchor a span {
@@ -4868,6 +4907,13 @@ header {
   text-align: center;
 }
 
+@media all and (max-width: 1200px) {
+  #act_HeadBtn div {
+    width: 120px;
+    height: 110px;
+  }
+}
+
 #act_HeadBtn div:hover {
   -webkit-transform: scale(1.1);
           transform: scale(1.1);
@@ -4885,6 +4931,13 @@ header {
   z-index: 2;
   font-size: 0.8rem;
   font-weight: bold;
+}
+
+@media all and (max-width: 1200px) {
+  #act_HeadBtn div span {
+    font-size: 0.6rem;
+    left: 36%;
+  }
 }
 
 #act_carousel {
@@ -4938,6 +4991,13 @@ header {
   text-align: center;
 }
 
+@media all and (max-width: 1200px) {
+  #act_countdown {
+    width: 250px;
+    height: 60px;
+  }
+}
+
 #act_countdown p {
   vertical-align: bottom;
   font-size: 0.6rem;
@@ -4956,11 +5016,25 @@ header {
   margin: 5px;
 }
 
+@media all and (max-width: 1200px) {
+  #act_countdown div div {
+    width: 30px;
+    height: 30px;
+    margin: 2px;
+  }
+}
+
 #act_countdown div div p {
   margin: 0;
   padding: 0;
   font-size: 1.5rem;
   color: white;
+}
+
+@media all and (max-width: 1200px) {
+  #act_countdown div div p {
+    font-size: 1.2rem;
+  }
 }
 
 #act_countdown div div span {
@@ -5108,13 +5182,38 @@ header {
 }
 
 .act_oldsongbox .act_oldTop div h4 {
+  width: 90%;
   margin: 0;
   font-size: 1.2rem;
 }
 
-.act_oldsongbox .act_oldTop div h4 p {
+@media all and (max-width: 1200px) {
+  .act_oldsongbox .act_oldTop div h4 {
+    font-size: 0.8rem;
+  }
+}
+
+.act_oldsongbox .act_oldTop div p {
   margin: 0;
   font-size: 1rem;
+}
+
+@media all and (max-width: 1200px) {
+  .act_oldsongbox .act_oldTop div p {
+    width: 100%;
+    font-size: 0.8rem;
+  }
+}
+
+.act_oldsongbox .act_oldTop div p .act_old-hear1 {
+  width: 25px;
+  height: 25px;
+  margin: 0;
+}
+
+.act_oldsongbox .act_oldTop div p .act_old-hear1 img {
+  width: 100%;
+  height: 100%;
 }
 
 .act_oldsongbox .act_oldTop div p {
@@ -5160,22 +5259,12 @@ header {
   height: 250px;
 }
 
-.act_oldsongbox .act_oldTop div .act_old-hear1 {
-  width: 25px;
-  height: 25px;
-}
-
-.act_oldsongbox .act_oldTop div .act_old-hear1 img {
-  width: 100%;
-  height: 100%;
-}
-
 .act_oldAll {
   text-align: left;
   width: 100%;
   margin-top: 75px;
   max-width: 1400px;
-  padding: 100px 0 0  50px;
+  padding: 100px 0 0 50px;
   margin: 50px auto 0px auto;
 }
 
@@ -5192,14 +5281,46 @@ header {
   display: inline-block;
 }
 
-.act_oldAll div h4 {
+.act_oldAll div .act_songBox {
+  margin: 0;
+  padding: 0;
+  font-size: 0;
+}
+
+.act_oldAll div .act_songBox h4 {
+  width: 90%;
   margin: 0;
   font-size: 1.2rem;
 }
 
-.act_oldAll div h4 p {
+@media all and (max-width: 1200px) {
+  .act_oldAll div .act_songBox h4 {
+    font-size: 0.8rem;
+  }
+}
+
+.act_oldAll div .act_songBox p {
   margin: 0;
+  padding: 0;
   font-size: 1rem;
+}
+
+@media all and (max-width: 1200px) {
+  .act_oldAll div .act_songBox p {
+    width: 100%;
+    font-size: 0.8rem;
+  }
+}
+
+.act_oldAll div .act_songBox p .act_old-hear1 {
+  width: 25px;
+  height: 25px;
+  margin: 0;
+}
+
+.act_oldAll div .act_songBox p .act_old-hear1 img {
+  width: 100%;
+  height: 100%;
 }
 
 .act_oldAll div p {
@@ -5245,16 +5366,6 @@ header {
   height: 200px;
 }
 
-.act_oldAll div div .act_old-hear1 {
-  width: 25px;
-  height: 25px;
-}
-
-.act_oldAll div div .act_old-hear1 img {
-  width: 100%;
-  height: 100%;
-}
-
 .act_now-year {
   position: relative;
   height: 700px;
@@ -5262,6 +5373,13 @@ header {
   width: 100%;
   padding: 100px 0 0 150px;
   margin: 150px auto 0 auto;
+}
+
+@media all and (max-width: 1200px) {
+  .act_now-year {
+    margin: 75px auto 0 auto;
+    padding: 75px 0 0 150px;
+  }
 }
 
 .act_now-year div {
@@ -5273,9 +5391,21 @@ header {
   font-size: 2rem;
 }
 
+@media all and (max-width: 1200px) {
+  .act_now-year div h2 {
+    font-size: 1.5rem;
+  }
+}
+
 .act_now-year div h3 {
   margin: 0;
   font-size: 1.5rem;
+}
+
+@media all and (max-width: 1200px) {
+  .act_now-year div h3 {
+    font-size: 1.2rem;
+  }
 }
 
 .act_now-year div div {
@@ -5285,10 +5415,23 @@ header {
   line-height: 1;
 }
 
+@media all and (max-width: 1200px) {
+  .act_now-year div div {
+    font-size: 2rem;
+  }
+}
+
 .act_now-year div p {
   width: 80%;
   font-size: 1rem;
   margin: 0 auto 20px 0;
+}
+
+@media all and (max-width: 1200px) {
+  .act_now-year div p {
+    font-size: 0.8rem;
+    margin: 0 auto 10px 0;
+  }
 }
 
 .act_nowposterbox {
@@ -5309,6 +5452,15 @@ header {
   margin: auto auto;
 }
 
+@media all and (max-width: 1200px) {
+  .act_nowposterbox .act_nowposter {
+    width: 250px;
+    height: 300px;
+    bottom: 15%;
+    left: 15%;
+  }
+}
+
 .act_nowposterbox .act_nowposter img {
   width: 100%;
   height: 100%;
@@ -5323,6 +5475,15 @@ header {
   height: 600px;
 }
 
+@media all and (max-width: 1200px) {
+  .act_nowposterbox .act_nowSplash-ink {
+    width: 450px;
+    height: 300px;
+    bottom: 15%;
+    left: 15%;
+  }
+}
+
 .act_nowposterbox .act_nowSplash-ink img {
   width: 100%;
   height: 100%;
@@ -5332,9 +5493,18 @@ header {
   width: 400px;
   height: 400px;
   position: absolute;
-  top: -10%;
-  left: 10%;
+  top: -8%;
+  left: 5%;
   margin: auto auto;
+}
+
+@media all and (max-width: 1200px) {
+  .act_nowposterbox .act_nowposter-linetop {
+    width: 200px;
+    height: 200px;
+    top: 12%;
+    left: 10%;
+  }
 }
 
 .act_nowposterbox .act_nowposter-linetop img {
@@ -5352,6 +5522,15 @@ header {
   height: 400px;
 }
 
+@media all and (max-width: 1200px) {
+  .act_nowposterbox .act_nowposter-linebotom {
+    width: 200px;
+    height: 200px;
+    bottom: 15%;
+    right: 0%;
+  }
+}
+
 .act_nowposterbox .act_nowposter-linebotom img {
   width: 100%;
   height: 100%;
@@ -5361,18 +5540,31 @@ header {
   max-width: 1400px;
   width: 100%;
   min-height: 850px;
-  padding: 50px 0 0 100px;
-  margin: 150px auto 100px auto;
+  padding: 50px 0 0 30px;
+  margin: 100px auto 100px auto;
   position: relative;
+}
+
+@media all and (max-width: 1200px) {
+  #act_Now-Sign-up {
+    margin: 0px auto 100px auto;
+    min-height: 750px;
+  }
 }
 
 #act_Now-Sign-up h2 {
   font-size: 2rem;
-  margin: 0 0 20px 50px;
+  margin: 0 0 20px 120px;
+}
+
+@media all and (max-width: 1200px) {
+  #act_Now-Sign-up h2 {
+    font-size: 1.5rem;
+  }
 }
 
 #act_Now-Sign-up div {
-  width: 35%;
+  width: 30%;
   min-width: 300px;
   height: 100%;
   display: inline-block;
@@ -5380,10 +5572,23 @@ header {
   text-align: right;
 }
 
+@media all and (max-width: 1200px) {
+  #act_Now-Sign-up div {
+    min-width: 200px;
+  }
+}
+
 #act_Now-Sign-up div .act_now-marry {
   width: 80%;
   height: 80%;
   margin: auto auto;
+}
+
+@media all and (max-width: 1200px) {
+  #act_Now-Sign-up div .act_now-marry {
+    width: 95%;
+    height: 95%;
+  }
 }
 
 #act_Now-Sign-up div .act_now-marry img {
@@ -5398,6 +5603,15 @@ header {
   z-index: -1;
   left: -45%;
   top: -10%;
+}
+
+@media all and (max-width: 1200px) {
+  #act_Now-Sign-up div .act_now-marry-ink {
+    width: 850px;
+    height: 600px;
+    top: -20%;
+    left: -10%;
+  }
 }
 
 #act_Now-Sign-up div .act_now-marry-ink img {
@@ -5421,11 +5635,22 @@ header {
   position: absolute;
 }
 
+@media all and (max-width: 1200px) {
+  #act_Now-Sign-up article {
+    min-height: 400px;
+    top: 10%;
+    right: 2%;
+    width: 68%;
+  }
+}
+
 #act_Now-Sign-up article .act_SignSongURL-box {
   width: 80%;
   height: 20px;
   overflow: hidden;
   font-size: 0.6rem;
+  word-break: break-all;
+  border: 1px #d0d6d6 solid;
 }
 
 #act_Now-Sign-up article div {
@@ -5442,6 +5667,12 @@ header {
   font-size: 1.5rem;
 }
 
+@media all and (max-width: 1200px) {
+  #act_Now-Sign-up article div h3 {
+    font-size: 1.2rem;
+  }
+}
+
 #act_Now-Sign-up article div p {
   font-size: 1rem;
   display: inline-block;
@@ -5449,6 +5680,12 @@ header {
   margin: 0 auto;
   text-align: left;
   padding-bottom: 0;
+}
+
+@media all and (max-width: 1200px) {
+  #act_Now-Sign-up article div p {
+    font-size: 0.8rem;
+  }
 }
 
 #act_Now-Sign-up article div p .act_SignUPButton {
@@ -5465,8 +5702,20 @@ header {
   text-align: left;
 }
 
+@media all and (max-width: 1200px) {
+  #act_Now-Sign-up article div p h4 {
+    font-size: 1rem;
+  }
+}
+
 #act_Now-Sign-up article div p h4 span {
   font-size: 1rem;
+}
+
+@media all and (max-width: 1200px) {
+  #act_Now-Sign-up article div p h4 span {
+    font-size: 0.8rem;
+  }
 }
 
 #act_Now-Sign-up article div p select {
@@ -5487,6 +5736,12 @@ header {
 #act_Now-Sign-up article div p p {
   display: inline-block;
   margin: 0;
+}
+
+@media all and (max-width: 1200px) {
+  #act_Now-Sign-up article div p p {
+    font-size: 0.8rem;
+  }
 }
 
 #act_Now-Sign-up article div .signUpComfirm {
@@ -5513,6 +5768,12 @@ header {
   margin: 30px 20px 50px 0;
 }
 
+@media all and (max-width: 1200px) {
+  #act_Now-Sign-up article div button {
+    margin: 15px 10px 30px 10px;
+  }
+}
+
 #act_Now-Sign-up article div button:hover {
   -webkit-transform: scale(1.1);
           transform: scale(1.1);
@@ -5522,6 +5783,12 @@ header {
   margin: 0 0 10px 0;
   font-size: 1.2rem;
   text-align: left;
+}
+
+@media all and (max-width: 1200px) {
+  #act_Now-Sign-up h4 {
+    font-size: 1rem;
+  }
 }
 
 #act_Now-Sign-up .act_SignUPButton2 {
@@ -5543,6 +5810,12 @@ header {
   padding: 0;
 }
 
+@media all and (max-width: 1200px) {
+  #act_Now-Sign-up .act_showSignUpImg {
+    height: 75px;
+  }
+}
+
 #act_Now-Sign-up .act_showSignUpImg img {
   max-width: 100%;
   max-height: 100%;
@@ -5556,6 +5829,12 @@ header {
   padding: 0;
 }
 
+@media all and (max-width: 1200px) {
+  #act_Now-Sign-up .act_showSignUpImgSmall {
+    height: 50px;
+  }
+}
+
 #act_Now-Sign-up .act_showSignUpImgSmall img {
   max-width: 100%;
   max-height: 100%;
@@ -5567,6 +5846,7 @@ header {
   background-color: #d0d6d6;
   width: 65%;
   height: 30px;
+  overflow: hidden;
 }
 
 #act_Now-Sign-up #act_Sign-up-song-information {
@@ -5574,6 +5854,22 @@ header {
   border: 1px #d0d6d6 solid;
   background-color: #d0d6d6;
   width: 65%;
+  overflow: hidden;
+}
+
+#act_Now-Sign-up .act_showSong-information {
+  width: 65%;
+  overflow: hidden;
+  max-height: 100px;
+  border: 1px #d0d6d6 solid;
+  word-break: break-all;
+  font-size: 0.8rem;
+}
+
+@media all and (max-width: 1200px) {
+  #act_Now-Sign-up .act_showSong-information {
+    font-size: 0.6rem;
+  }
 }
 
 #act_Now-Vote {
@@ -5584,6 +5880,14 @@ header {
   margin: 150px auto 0px auto;
   padding-top: 50px;
   position: relative;
+}
+
+@media all and (max-width: 1200px) {
+  #act_Now-Vote {
+    height: 300px;
+    max-width: 900px;
+    margin: 0px auto 0px auto;
+  }
 }
 
 #act_Now-Vote .act_Now-Vote-content {
@@ -5597,9 +5901,22 @@ header {
   background-repeat: no-repeat, no-repeat;
 }
 
+@media all and (max-width: 1200px) {
+  #act_Now-Vote .act_Now-Vote-content {
+    height: 300px;
+    max-width: 900px;
+  }
+}
+
 #act_Now-Vote .act_Now-Vote-content h2 {
   margin: 0;
   font-size: 2rem;
+}
+
+@media all and (max-width: 1200px) {
+  #act_Now-Vote .act_Now-Vote-content h2 {
+    font-size: 1.5rem;
+  }
 }
 
 #act_Now-Vote .act_Now-Vote-content h3 {
@@ -5607,10 +5924,22 @@ header {
   font-size: 1.5rem;
 }
 
+@media all and (max-width: 1200px) {
+  #act_Now-Vote .act_Now-Vote-content h3 {
+    font-size: 1.2rem;
+  }
+}
+
 #act_Now-Vote .act_Now-Vote-content p {
   width: 60%;
   font-size: 1rem;
   margin: 0;
+}
+
+@media all and (max-width: 1200px) {
+  #act_Now-Vote .act_Now-Vote-content p {
+    font-size: 0.8rem;
+  }
 }
 
 #act_Now-Vote .act_Now-Vote-content div {
@@ -5625,10 +5954,22 @@ header {
   font-size: 1.5rem;
 }
 
+@media all and (max-width: 1200px) {
+  #act_Now-Vote .act_Now-Vote-content div h3 {
+    font-size: 0.8rem;
+  }
+}
+
 #act_Now-Vote .act_Now-Vote-content div span {
   font-size: 2.5rem;
   font-weight: bold;
   color: #333;
+}
+
+@media all and (max-width: 1200px) {
+  #act_Now-Vote .act_Now-Vote-content div span {
+    font-size: 2rem;
+  }
 }
 
 #act_Now-Vote .act_Now-Vote-content img {
@@ -5647,6 +5988,13 @@ header {
   margin: 150px auto 0 auto;
 }
 
+@media all and (max-width: 1200px) {
+  #act_Now-Vote section {
+    max-width: 900px;
+    margin: 100px auto 0 auto;
+  }
+}
+
 #act_Now-Vote section div {
   text-align: left;
   width: 20%;
@@ -5658,7 +6006,7 @@ header {
 
 #act_Now-Vote section div p {
   font-size: 0.6rem;
-  text-align: right;
+  text-align: left;
   margin: 0 auto 0 10px;
   display: inline-block;
   vertical-align: bottom;
@@ -5668,15 +6016,46 @@ header {
   font-size: 0.8rem;
 }
 
-#act_Now-Vote section div h4 {
+#act_Now-Vote section div .act_songBox {
+  margin: 0;
+  padding: 0;
+  font-size: 0;
+}
+
+#act_Now-Vote section div .act_songBox h4 {
   width: 90%;
   margin: 0;
   font-size: 1.2rem;
 }
 
-#act_Now-Vote section div h4 p {
+@media all and (max-width: 1200px) {
+  #act_Now-Vote section div .act_songBox h4 {
+    font-size: 0.8rem;
+  }
+}
+
+#act_Now-Vote section div .act_songBox p {
   margin: 0;
+  padding: 0;
   font-size: 1rem;
+}
+
+@media all and (max-width: 1200px) {
+  #act_Now-Vote section div .act_songBox p {
+    width: 100%;
+    font-size: 0.8rem;
+  }
+}
+
+#act_Now-Vote section div .act_songBox p .act_old-hear1 {
+  width: 25px;
+  height: 25px;
+  margin: 0;
+}
+
+#act_Now-Vote section div .act_songBox p .act_old-hear1 img {
+  width: 100%;
+  height: 100%;
 }
 
 #act_Now-Vote section div button {
@@ -5690,6 +6069,12 @@ header {
   font-weight: bold;
   cursor: pointer;
   margin: 0 0 10px 0;
+}
+
+@media all and (max-width: 1200px) {
+  #act_Now-Vote section div button {
+    margin: 0 auto;
+  }
 }
 
 #act_Now-Vote section div button:hover {
@@ -5720,6 +6105,13 @@ header {
   z-index: 2;
 }
 
+@media all and (max-width: 1200px) {
+  #act_Now-Vote section div div .act_old-play {
+    left: 15%;
+    top: 15%;
+  }
+}
+
 #act_Now-Vote section div div .act_old-play img {
   width: 100%;
   height: 100%;
@@ -5730,14 +6122,11 @@ header {
   height: 200px;
 }
 
-#act_Now-Vote section div .act_old-hear1 {
-  width: 25px;
-  height: 25px;
-}
-
-#act_Now-Vote section div .act_old-hear1 img {
-  width: 100%;
-  height: 100%;
+@media all and (max-width: 1200px) {
+  #act_Now-Vote section div div img {
+    width: 150px;
+    height: 150px;
+  }
 }
 
 * {

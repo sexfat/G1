@@ -36,6 +36,117 @@
                 }
             );
 
+<<<<<<< HEAD
+=======
+            // audio
+            audio = document.getElementById('audioPlayer');
+            context = new (window.AudioContext || window.webkitAudioContext)();
+            analyser = context.createAnalyser();
+            analyser.fftSize = 16384;
+
+            analyser.minDecibels = -70;
+            analyser.maxDecibels = 100;
+            analyser.smoothingTimeConstant = 0.85;
+            audio.src = "./Azusa-master/src/static/test.mp3"; // the source path
+            source = context.createMediaElementSource(audio);
+            source.connect(analyser);
+            analyser.connect(context.destination);
+            frequency_array = new Float32Array(analyser.frequencyBinCount); //音頻取值
+
+            document.querySelector('.home_wave_container').appendChild(app.view);
+
+            context.resume().then(() => { });
+            audio.play();
+
+            waveLooper();
+
+            function waveLooper() {
+                analyser.getFloatFrequencyData(frequency_array);
+
+                x = new Array();
+                y = new Array();
+
+                // shuffle(frequency_array, 101);
+
+                // frequency_array
+
+                for (let i = 20; i <= 120; i++) {
+                    x.push((window.innerWidth / 100) * (i - 19));
+                    y.push(Math.sqrt(-frequency_array[i] * 5) * 30 - 210 >= 450 ? 450 : Math.sqrt(-frequency_array[i] * 5) * 30 - 210);
+                    // console.log(y)
+                    draw(x, y);
+                }
+                window.requestAnimationFrame(waveLooper);
+            }
+
+            function draw(x, y) {
+                graphics.clear(0, 0, window.innerWidth, window.innerHeight);
+
+                // set a line style
+                graphics.lineStyle(10, 0xffd900, 10);
+                // draw a shape
+
+                graphics.moveTo(0, 450);
+
+                for (var i = 0; i < 100; i++) {
+                    graphics.lineTo(x[i], y[i]);
+                    // console.log(-y[i]);
+                }
+
+            }
+
+
+
+            // window.addEventListener('resize', function () {
+            //     app.renderer.resize(window.innerWidth, window.innerHeight);
+            // });
+
+            // Fisher-Yates shuffle
+            function shuffle(array, size) {
+                var index = -1,
+                    length = array.length,
+                    lastIndex = length - 1;
+
+                size = size === undefined ? length : size;
+                while (++index < size) {
+                    // var rand = baseRandom(index, lastIndex),
+                    var rand = index + Math.floor(Math.random() * (lastIndex - index + 1))
+                    value = array[rand];
+
+                    array[rand] = array[index];
+
+                    array[index] = value;
+                }
+                array.length = size;
+                return array;
+            }
+
+            granimInstance = new Granim({
+                element: '.home_line',
+                direction: 'left-right',
+                isPausedWhenNotInView: true,
+                states: {
+                    "default-state": {
+                        gradients: [
+                            ['#EB3349', '#F45C43'],
+                            ['#FF8008', '#FFC837'],
+                            ['#4CB8C4', '#3CD3AD'],
+                            ['#24C6DC', '#514A9D'],
+                            ['#FF512F', '#DD2476'],
+                            ['#DA22FF', '#9733EE']
+                        ],
+                        transitionSpeed: 1000
+
+                    }
+                }
+            });
+
+
+
+
+
+
+>>>>>>> 89b5e006ed9fdff8e336505e86a7f70e02104b09
 
 
             // RANK
@@ -529,6 +640,15 @@
                 <div class="home_mixer">
 
                 </div>
+<<<<<<< HEAD
+=======
+                <p>
+                    You can mix andmaster EDM in here.It’s easy for everyonewho want create music on their own.
+                </p>
+                <div class="home_more_bt">
+                    <a href="./remix.html"></a>
+                </div>
+>>>>>>> 89b5e006ed9fdff8e336505e86a7f70e02104b09
             </div>
             <div class="home_sec home_sec03 section">
                 <div class="home_pot">
@@ -768,6 +888,7 @@
             </div>
             <div class="home_sec home_sec04 section">
                 <div class="home_DJ">
+<<<<<<< HEAD
 
                 </div>
             </div>
@@ -776,6 +897,50 @@
                     <div class="home_shelf home_shelf01"></div>
                     <div class="home_shelf home_shelf02"></div>
                     <div class="home_shelf home_shelf03"></div>
+=======
+                </div>
+                <div class="home_activity_img">
+                </div>
+                <div class="home_activity_info">
+                    <h2>
+                        Electronic dance music contest 2019
+                    </h2>
+                    <h3>
+                        Information
+                    </h3>
+                    <p>
+                        American Idol is an annual American singing competition which began its first season in June 11,
+                        2002. Part of the Idol franchise, it originated from the UK reality program Pop Idol.
+                    </p>
+                    <h3>
+                        Time
+                    </h3>
+                    <p>
+                        2019 Dec 31 to 2020 Dec 31
+                    </p>
+                    <div class="enter_bt">
+                        <a href="./activity.html"></a>
+                    </div>
+                </div>
+            </div>
+            <div class="home_sec home_sec05 section">
+                <div class="home_collection">
+                </div>
+                <p>
+                    We have more than 10,000,00 songs in here. enjoy together!
+                </p>
+                <div class="home_shelf_container">
+                    <div class="home_shelf home_shelf01">
+                        <div class="home_collection home_collection01 flexbox"><a class="flexbox" href="./collection.html">Rock</a></div>
+                        <div class="home_collection home_collection02 flexbox"><a class="flexbox" href="./collection.html">Matel</a></div>
+                        <div class="home_collection home_collection03 flexbox"><a class="flexbox" href="./collection.html">R & B</a></div>
+                    </div>
+                    <div class="home_shelf home_shelf02">
+                        <div class="home_collection home_collection04 flexbox"><a class="flexbox" href="./collection.html">Hip-hop</a></div>
+                        <div class="home_collection home_collection05 flexbox"><a class="flexbox" href="./collection.html">Classical</a></div>
+                        <div class="home_collection home_collection06 flexbox"><a class="flexbox" href="./collection.html">Country</a></div>
+                    </div>
+>>>>>>> 89b5e006ed9fdff8e336505e86a7f70e02104b09
                 </div>
             </div>
             <div class="home_sec home_sec06 section">
