@@ -544,28 +544,33 @@
                 <div class="mess">
                     <ul class="infomess_ul">
                         <li class="infomess_li">
-                            <p>Alice</p>
-                            WOW ! Awesome !<button class="delete">删除</button>
+                            <p>ID : Alice</p>
+                            WOW ! Awesome !
+                            <div class="re-report"></div>
                         </li>
                         <li class="infomess_li">
-                            <p>Bella</p>
-                            Nice !<button class="delete">删除</button>
+                            <p>ID : Bella</p>
+                            WOW ! Awesome !
+                            <div class="re-report"></div>
                         </li>
                         <li class="infomess_li">
-                            <p>Tina</p>
-                            Nice !<button class="delete">删除</button>
+                            <p>ID : Tina</p>
+                            WOW ! Awesome !
+                            <div class="re-report"></div>
                         </li>
                         <li class="infomess_li">
-                            <p>Rose</p>
-                            Nice !<button class="delete">删除</button>
+                            <p>ID : Rose</p>
+                            WOW ! Awesome !
+                            <div class="re-report"></div>
                         </li>
                     </ul>
                 </div>
                 <div class="mess_write">
-                    <textarea class="infomess_ta" name="" rows="8" cols="140"></textarea>
+                    <textarea class="infomess_ta" name="" rows="8" cols="125"></textarea>
                     <br>
-                    <button class="infomess_btn">提交</button>
-                    <button class="infomess_btn">清空</button>
+                    <div class="infose-send"></div>
+                    <!-- <button class="infomess_btn">提交</button> -->
+                    <!-- <button class="infomess_btn">清空</button> -->
                 </div>
             </div>
         </div>
@@ -597,7 +602,8 @@
                 var item = document.createElement('li');
                 //給新創建的節點創建內容：innerHTML
                 //item.innerHTML = content;
-                item.innerHTML = content + '<button class="delete">删除</button>'
+                // item.innerHTML = content + '<button class="delete">删除</button>'
+                item.innerHTML = content + '<div class="re-report"></div>'
                 //將新節點添加到評論區：添加到頁面父節點.appendChild 
                 //messlist.appendChild(item)
                 //將新節點插入到某個節點之前，父節點.insertBefore(子節點，在那個子節點之前)

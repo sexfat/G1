@@ -5501,7 +5501,7 @@ header {
 }
 
 [class^="dona-"] {
-  border-radius: 15px;
+  border-radius: 5px;
   display: inline-block;
   height: 30px;
   width: 70px;
@@ -5521,7 +5521,7 @@ header {
 }
 
 [class^="heart-"] {
-  border-radius: 15px;
+  border-radius: 5px;
   display: inline-block;
   height: 40px;
   width: 40px;
@@ -5626,9 +5626,11 @@ header {
 }
 
 .songinfo_infos4 .mess_write {
-  border: 1px solid black;
+  border: 1px solid #d0d6d6;
+  background-color: #d0d6d6;
   width: 1000px;
   margin: 0 auto;
+  padding: 30px 50px;
 }
 
 .songinfo_infos5 {
@@ -5639,6 +5641,47 @@ header {
   border: 2px solid #d0d6d6;
   background-color: #d0d6d6;
   margin-bottom: 20px;
+  padding: 0px 20px;
+}
+
+[class^="re-"] {
+  border-radius: 5px;
+  display: inline-block;
+  height: 30px;
+  width: 70px;
+}
+
+[class^="re-"]:hover {
+  -webkit-filter: brightness(85%);
+  filter: brightness(85%);
+  cursor: pointer;
+}
+
+.songinfo_infos4 .re-report {
+  background: transparent url("../img/songinfo/report.png") center/cover no-repeat;
+  position: relative;
+  top: 5px;
+  left: 700px;
+}
+
+[class^="infose-"] {
+  border-radius: 5px;
+  display: inline-block;
+  height: 30px;
+  width: 70px;
+}
+
+[class^="infose-"]:hover {
+  -webkit-filter: brightness(85%);
+  filter: brightness(85%);
+  cursor: pointer;
+}
+
+.songinfo_infos4 .infose-send {
+  background: transparent url("../img/songinfo/send.png") center/cover no-repeat;
+  position: relative;
+  top: 5px;
+  left: 700px;
 }
 
 .songinfo_wave {
