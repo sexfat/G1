@@ -1,4 +1,7 @@
+<<<<<<< HEAD
 @import "./main.scss";
+=======
+>>>>>>> 90ab29b26c7ccab12e784fe1b4651e7a917743dc
 
 .profile_content {
   position: relative;
@@ -75,6 +78,15 @@
         th,
         td {
           padding: 15px;
+        }
+        input[type="text"] {
+          border-radius: 5px;
+          border: 1px solid darkgray;
+          height: 25px;
+          text-indent: 10px;
+          font-family: 微軟正黑體;
+          font-size:16px;
+          outline:none;
         }
       }
     }
