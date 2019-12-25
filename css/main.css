@@ -5568,6 +5568,12 @@ header {
   }
 }
 
+.songinfo_back {
+  background-image: url(../img/songinfo/songinfo_back.jpg);
+  background-repeat: no-repeat;
+  background-size: cover;
+}
+
 .songinfo_infos2 {
   height: 600px;
 }
