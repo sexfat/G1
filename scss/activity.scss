@@ -1,8 +1,9 @@
-@import"public";
 
-#app{
+@import"public.scss";
+
+#app {
     position: fixed;
-    top:0;
+    top: 0;
     left: 0;
     z-index: 999;
 
@@ -13,6 +14,11 @@
     max-width: 1400px;
     height: 650px;
     margin: 180px auto 50px 0px;
+
+    @include respond(latop-max) {
+        max-width: 1000px;
+        height: 450px;
+    }
 
     img {
         width: 100%;
@@ -28,6 +34,11 @@
         transform: translate(-30%, 0%);
 
         z-index: 1;
+
+        @include respond(latop-max) {
+            width: 222px;
+            height: 58px;
+        }
     }
 
 
@@ -41,6 +52,10 @@
         left: 18%;
         z-index: 1;
         font-size: $rem2;
+
+        @include respond(latop-max) {
+            font-size: $rem1_5;
+        }
     }
 
     #act_sectionAnchor {
@@ -53,6 +68,11 @@
         // transform: translate(-50%, -50%);
         z-index: 1;
 
+        @include respond(latop-max) {
+            width: 600px;
+            height: 50px;
+        }
+
         a {
             display: inline-block;
             width: 200px;
@@ -60,6 +80,12 @@
             height: 75px;
             text-decoration: none;
             position: relative;
+
+            @include respond(latop-max) {
+                width: 150px;
+                height: 50px;
+                margin-left: 30px;
+            }
 
             img {
                 width: 100%;
@@ -78,22 +104,23 @@
         }
     }
 
-    #act_oldyear_Anchor {
+    #act_oldyear-Anchor {
 
         position: absolute;
-        right: -10%;
-        bottom: 10%;
-        width: 100px;
+        left: 50%;
+        bottom: 5%;
+        width: 300px;
+        height: 50px;
 
         a {
             img {
-                width: 30px;
-                height: 30px;
+                width: 50px;
+                height: 50px;
             }
 
             span {
                 font-size: $rem0_7;
-                margin-right: 10px;
+                margin-right: 20px;
             }
         }
 
@@ -121,6 +148,13 @@
         cursor: pointer;
         text-align: center;
 
+        @include respond(latop-max) {
+            width: 120px;
+            height: 110px;
+
+
+        }
+
         &:hover {
             transform: scale(1.1);
         }
@@ -138,6 +172,13 @@
             z-index: 2;
             font-size: $rem0_8;
             font-weight: bold;
+
+            @include respond(latop-max) {
+                font-size: $rem0_6;
+                left: 36%;
+
+
+            }
 
         }
     }
@@ -197,6 +238,12 @@
     left: 40%;
     text-align: center;
 
+    @include respond(latop-max) {
+        width: 250px;
+        height: 60px;
+
+    }
+
     p {
         vertical-align: bottom;
         font-size: $rem0_6;
@@ -213,11 +260,23 @@
             height: 70px;
             margin: 5px;
 
+            @include respond(latop-max) {
+                width: 30px;
+                height: 30px;
+                margin: 2px;
+
+            }
+
             p {
                 margin: 0;
                 padding: 0;
                 font-size: $rem1_5;
                 color: white;
+
+                @include respond(latop-max) {
+                    font-size: $rem1_2;
+
+                }
 
             }
 
@@ -375,661 +434,925 @@
             margin-left: 2%;
             display: inline-block;
 
-            h4 {
+            .act_songBox {
                 margin: 0;
-                font-size: $rem1_2;
+                padding: 0;
+                font-size: 0;
+
+                h4 {
+                    width: 90%;
+                    margin: 0;
+                    font-size: $rem1_2;
+
+                    @include respond(latop-max) {
+                        font-size: $rem0_8;
+                    }
+
+
+                }
 
                 p {
                     margin: 0;
                     font-size: $rem1;
+
+                    @include respond(latop-max) {
+                        width: 100%;
+                        font-size: $rem0_8;
+                    }
+
+                    .act_old-hear1 {
+                        width: 25px;
+                        height: 25px;
+                        margin: 0;
+
+                        img {
+                            width: 100%;
+                            height: 100%;
+                        }
+                    }
+                }
+
+                p {
+                    font-size: $rem0_6;
+                    margin: 0 auto;
+
+                    span {
+                        font-size: $rem0_8;
+                    }
+
+                    margin-bottom: 10px;
+                }
+
+                div {
+                    width: 100%;
+                    margin: 0;
+                    position: relative;
+
+                    &:hover .act_old-play {
+                        display: block;
+                        cursor: pointer;
+                        z-index: 2;
+
+                    }
+
+                    .act_old-play {
+                        width: 100px;
+                        height: 100px;
+                        text-align: center;
+                        position: absolute;
+                        top: 25%;
+                        left: 20%;
+                        display: none;
+                        // transform: translate(-50%, -50%);
+                        z-index: 2;
+
+                        img {
+                            width: 100%;
+                            height: 100%;
+                        }
+
+                    }
+
+
+
+                    img {
+                        width: 250px;
+                        height: 250px;
+                    }
+                }
+
+
+            }
+        }
+    }
+
+    .act_oldAll {
+        text-align: left;
+        width: 100%;
+        margin-top: 75px;
+        max-width: 1400px;
+        padding: 100px 0 0 50px;
+        margin: 50px auto 0px auto;
+
+        h3 {
+            font-size: $rem1_5;
+            margin: 0 0px 30px 0px;
+
+        }
+
+        div {
+
+
+            text-align: left;
+            width: 20%;
+            margin-left: 3.5%;
+            margin-bottom: 50px;
+            display: inline-block;
+
+            .act_songBox {
+                margin: 0;
+                padding: 0;
+                font-size: 0;
+
+                h4 {
+                    width: 90%;
+                    margin: 0;
+                    font-size: $rem1_2;
+
+                    @include respond(latop-max) {
+                        font-size: $rem0_8;
+                    }
+
+
+                }
+
+                p {
+                    margin: 0;
+                    font-size: $rem1;
+
+                    @include respond(latop-max) {
+                        width: 100%;
+                        font-size: $rem0_8;
+                    }
+
+                    .act_old-hear1 {
+                        width: 25px;
+                        height: 25px;
+                        margin: 0;
+
+                        img {
+                            width: 100%;
+                            height: 100%;
+                        }
+                    }
+                }
+
+                p {
+                    font-size: $rem0_6;
+                    margin: 0 auto;
+
+                    span {
+                        font-size: $rem0_8;
+                    }
+
+                    margin-bottom: 10px;
+                }
+
+                div {
+                    width: 100%;
+                    margin: 0;
+                    position: relative;
+
+                    &:hover .act_old-play {
+                        display: block;
+                        cursor: pointer;
+                        z-index: 2;
+
+                    }
+
+                    .act_old-play {
+                        width: 100px;
+                        height: 100px;
+                        text-align: center;
+                        position: absolute;
+                        top: 20%;
+                        left: 20%;
+                        display: none;
+                        // transform: translate(-50%, -50%);
+                        z-index: 2;
+
+                        img {
+                            width: 100%;
+                            height: 100%;
+                        }
+
+                    }
+
+
+                    img {
+                        width: 200px;
+                        height: 200px;
+
+
+                    }
+
                 }
             }
+        }
 
-            p {
-                font-size: $rem0_6;
-                margin: 0 auto;
 
-                span {
-                    font-size: $rem0_8;
-                }
 
-                margin-bottom: 10px;
+
+        .act_now-year {
+            position: relative;
+            height: 700px;
+            max-width: 1400px;
+            width: 100%;
+            padding: 100px 0 0 150px;
+            margin: 150px auto 0 auto;
+
+            @include respond(latop-max) {
+                margin: 75px auto 0 auto;
+                padding: 75px 0 0 150px;
             }
 
             div {
-                width: 100%;
-                margin: 0;
-                position: relative;
+                width: 50%;
 
-                &:hover .act_old-play {
-                    display: block;
-                    cursor: pointer;
-                    z-index: 2;
+                h2 {
+                    margin: 0;
+                    font-size: $rem2;
+
+                    @include respond(latop-max) {
+                        font-size: $rem1_5;
+
+                    }
+                }
+
+                h3 {
+                    margin: 0;
+                    font-size: $rem1_5;
+
+                    @include respond(latop-max) {
+                        font-size: $rem1_2;
+
+                    }
+                }
+
+                div {
+                    margin: 20px 0;
+                    width: 70%;
+                    font-size: 2.5rem;
+                    line-height: 1;
+
+                    @include respond(latop-max) {
+                        font-size: 2rem;
+
+                    }
+                }
+
+                p {
+                    width: 80%;
+                    font-size: $rem1;
+                    margin: 0 auto 20px 0;
+
+                    @include respond(latop-max) {
+                        font-size: $rem0_8;
+                        margin: 0 auto 10px 0;
+                    }
+                }
+            }
+        }
+
+
+        .act_nowposterbox {
+            display: inline-block;
+            position: absolute;
+            height: 100%;
+            top: 0%;
+            right: 0%;
+
+            .act_nowposter {
+                width: 350px;
+                height: 450px;
+                position: absolute;
+                top: 10%;
+                right: 20%;
+                z-index: 2;
+                margin: auto auto;
+
+                @include respond(latop-max) {
+                    width: 250px;
+                    height: 300px;
+                    top: 25%;
+                }
+
+                img {
+                    width: 100%;
+                    height: 100%;
+                }
+            }
+
+            .act_nowSplash-ink {
+                position: absolute;
+                bottom: -10%;
+                left: 0%;
+                z-index: 1;
+                width: 800px;
+                height: 600px;
+
+                @include respond(latop-max) {
+                    width: 450px;
+                    height: 300px;
+                    bottom: 15%;
+                    left: 15%;
 
                 }
 
-                .act_old-play {
-                    width: 100px;
-                    height: 100px;
-                    text-align: center;
+                img {
+                    width: 100%;
+                    height: 100%;
+                }
+            }
+
+            .act_nowposter-linetop {
+                width: 400px;
+                height: 400px;
+                position: absolute;
+                top: -10%;
+                left: 10%;
+                margin: auto auto;
+
+                @include respond(latop-max) {
+                    width: 200px;
+                    height: 200px;
+                    top: 12%;
+                    left: 15%;
+
+                }
+
+                img {
+                    width: 100%;
+                    height: 100%;
+                }
+            }
+
+
+            .act_nowposter-linebotom {
+                position: absolute;
+                bottom: -10%;
+                right: -12%;
+                z-index: 2;
+                margin: auto auto;
+                width: 400px;
+                height: 400px;
+
+                @include respond(latop-max) {
+                    width: 200px;
+                    height: 200px;
+                    bottom: 15%;
+                    right: 0%;
+
+                }
+
+                img {
+                    width: 100%;
+                    height: 100%;
+                }
+            }
+
+        }
+
+        #act_Now-Sign-up {
+            max-width: 1400px;
+            width: 100%;
+            min-height: 850px;
+            padding: 50px 0 0 30px;
+            margin: 150px auto 100px auto;
+            position: relative;
+
+            @include respond(latop-max) {
+                margin: 50px auto 100px auto;
+                min-height: 750px;
+            }
+
+            h2 {
+
+                font-size: $rem2;
+                margin: 0 0 20px 120px;
+
+                @include respond(latop-max) {
+                    font-size: $rem1_5;
+                }
+
+            }
+
+            div {
+                width: 30%;
+                min-width: 300px;
+                height: 100%;
+                display: inline-block;
+                position: relative;
+                text-align: right;
+
+                @include respond(latop-max) {
+                    min-width: 200px;
+                }
+
+                .act_now-marry {
+                    width: 80%;
+                    height: 80%;
+                    margin: auto auto;
+
+                    @include respond(latop-max) {
+                        width: 90%;
+                        height: 90%;
+                    }
+
+                    img {
+                        width: 100%;
+                        height: 100%;
+
+                    }
+                }
+
+                .act_now-marry-ink {
+                    width: 900px;
+                    height: 720px;
                     position: absolute;
-                    top: 25%;
-                    left: 20%;
-                    display: none;
-                    // transform: translate(-50%, -50%);
-                    z-index: 2;
+                    z-index: -1;
+                    left: -45%;
+                    top: -10%;
+
+                    @include respond(latop-max) {
+                        width: 850px;
+                        height: 600px;
+                        top: -20%;
+                        left: -10%;
+                    }
 
                     img {
                         width: 100%;
                         height: 100%;
                     }
-
-                }
-
-
-
-                img {
-                    width: 250px;
-                    height: 250px;
                 }
             }
 
-            .act_old-hear1 {
-                width: 25px;
-                height: 25px;
 
-                img {
-                    width: 100%;
-                    height: 100%;
-                }
-            }
-        }
-    }
-}
-
-.act_oldAll {
-    text-align: left;
-    width: 100%;
-    margin-top: 75px;
-    max-width: 1400px;
-    padding: 100px 0 0  50px;
-    margin: 50px auto 0px auto;
-
-    h3 {
-        font-size: $rem1_5;
-        margin: 0 0px 30px 0px;
-        
-    }
-
-    div {
-
-
-        text-align: left;
-        width: 20%;
-        margin-left: 3.5%;
-        margin-bottom: 50px;
-        display: inline-block;
-
-        h4 {
-            margin: 0;
-            font-size: $rem1_2;
-
-            p {
-                margin: 0;
-                font-size: $rem1;
-            }
         }
 
-        p {
-            font-size: $rem0_6;
-            margin: 0 auto;
+        #act_Now-Sign-up {
 
-            span {
-                font-size: $rem0_8;
-            }
+            article {
 
-            margin-bottom: 10px;
-        }
-
-        div {
-            width: 100%;
-            margin: 0;
-            position: relative;
-
-            &:hover .act_old-play {
-                display: block;
-                cursor: pointer;
-                z-index: 2;
-
-            }
-
-            .act_old-play {
-                width: 100px;
-                height: 100px;
-                text-align: center;
                 position: absolute;
-                top: 20%;
-                left: 20%;
-                display: none;
-                // transform: translate(-50%, -50%);
-                z-index: 2;
-
-                img {
-                    width: 100%;
-                    height: 100%;
-                }
-
-            }
-
-
-            img {
-                width: 200px;
-                height: 200px;
-
-
-            }
-
-
-
-            .act_old-hear1 {
-                width: 25px;
-                height: 25px;
-
-                img {
-                    width: 100%;
-                    height: 100%;
-                }
-            }
-        }
-    }
-}
-
-
-
-
-.act_now-year {
-    position: relative;
-    height: 700px;
-    max-width: 1400px;
-    width: 100%;
-    padding: 100px 0 0 150px;
-    margin: 150px auto 0 auto;
-
-
-    div {
-        width: 50%;
-
-        h2 {
-            margin: 0;
-            font-size: $rem2;
-        }
-
-        h3 {
-            margin: 0;
-            font-size: $rem1_5;
-        }
-
-        div {
-            margin: 20px 0;
-            width: 70%;
-            font-size: 2.5rem;
-            line-height: 1;
-        }
-
-        p {
-            width: 80%;
-            font-size: $rem1;
-            margin: 0 auto 20px 0;
-        }
-    }
-}
-
-
-.act_nowposterbox {
-    display: inline-block;
-    position: absolute;
-    height: 100%;
-    top: 0%;
-    right: 0%;
-
-    .act_nowposter {
-        width: 350px;
-        height: 450px;
-        position: absolute;
-        top: 10%;
-        right: 20%;
-        z-index: 2;
-        margin: auto auto;
-
-        img {
-            width: 100%;
-            height: 100%;
-        }
-    }
-
-    .act_nowSplash-ink {
-        position: absolute;
-        bottom: -10%;
-        left: 0%;
-        z-index: 1;
-        width: 800px;
-        height: 600px;
-
-        img {
-            width: 100%;
-            height: 100%;
-        }
-    }
-
-    .act_nowposter-linetop {
-        width: 400px;
-        height: 400px;
-        position: absolute;
-        top: -10%;
-        left: 10%;
-        margin: auto auto;
-
-        img {
-            width: 100%;
-            height: 100%;
-        }
-    }
-
-
-    .act_nowposter-linebotom {
-        position: absolute;
-        bottom: -10%;
-        right: -12%;
-        z-index: 2;
-        margin: auto auto;
-        width: 400px;
-        height: 400px;
-
-        img {
-            width: 100%;
-            height: 100%;
-        }
-    }
-
-}
-
-#act_Now-Sign-up {
-    max-width: 1400px;
-    width: 100%;
-    min-height: 850px;
-    padding: 50px 0 0 100px;
-    margin: 150px auto 100px auto;
-    position: relative;
-
-    h2 {
-
-        font-size: $rem2;
-        margin: 0 0 20px 50px;
-    }
-
-    div {
-        width: 35%;
-        min-width: 300px;
-        height: 100%;
-        display: inline-block;
-        position: relative;
-        text-align: right;
-
-        .act_now-marry {
-            width: 80%;
-            height: 80%;
-            margin: auto auto;
-
-            img {
-                width: 100%;
-                height: 100%;
-
-            }
-        }
-
-        .act_now-marry-ink {
-            width: 900px;
-            height: 720px;
-            position: absolute;
-            z-index: -1;
-            left: -45%;
-            top: -10%;
-
-            img {
-                width: 100%;
-                height: 100%;
-            }
-        }
-    }
-
-
-}
-
-#act_Now-Sign-up {
-
-    article {
- 
-        position: absolute;
-        top: 5%;
-        width: 60%;
-        min-height: 600px;
-        display: inline-block;
-        margin: 0 auto;
-        background-image:
-            url(../img/activity/0.text-circle.svg),
-            url(../img/activity/text.circle-wh.png);
-        background-repeat: no-repeat;
-        background-size: contain, 95% 95%;
-        background-position-x: center, right;
-        text-align: center;
-        padding: 50px 0 0 0;
-        position: absolute;
-        .act_SignSongURL-box{
-            width: 80%;
-            height: 20px;
-            overflow: hidden;
-            font-size: 0.6rem;
-        }
-        
-        div {
-            text-align: left;
-            width: 70%;
-            margin: auto auto;
-            padding: 20px;
-            text-align: center;
-
-            h3 {
-                margin: 0 0 20px 0;
-                padding: 0;
-                font-size: $rem1_5;
-            }
-
-            p {
-                font-size: $rem1;
+                top: 8%;
+                right: 5%;
+                width: 60%;
+                font-size: 0;
+                min-height: 600px;
                 display: inline-block;
-                width: 80%;
                 margin: 0 auto;
-                text-align: left;
-                padding-bottom: 0;
+                background-image:
+                    url(../img/activity/0.text-circle.svg),
+                    url(../img/activity/text.circle-wh.png);
+                background-repeat: no-repeat;
+                background-size: contain, 95% 95%;
+                background-position-x: center, right;
+                text-align: center;
+                padding: 50px 0 0 0;
+                position: absolute;
 
-                .act_SignUPButton {
-                    margin-bottom: 10px;
-                    @include buttonno03();
+                @include respond(latop-max) {
+                    min-height: 400px;
+                    top: 10%;
+                    right: 2%;
+                    width: 68%;
                 }
 
-                h4 {
-                    text-align: left;
 
-                    span {
-                        font-size: $rem1;
-                    }
-                }
-
-                select {
-                    @include buttonno03();
+                .act_SignSongURL-box {
+                    width: 80%;
+                    height: 20px;
+                    overflow: hidden;
+                    font-size: 0.6rem;
+                    word-break: break-all;
                     border: 1px #d0d6d6 solid;
-                    background-color: #d0d6d6;
 
-                    option {
-                        background-color: #d0d6d6;
+                }
+
+                div {
+                    text-align: left;
+                    width: 70%;
+                    margin: auto auto;
+                    padding: 20px;
+                    text-align: center;
+
+                    h3 {
+                        margin: 20px 0 20px 0;
+                        padding: 0;
+                        font-size: $rem1_5;
+
+                        @include respond(latop-max) {
+                            font-size: $rem1_2;
+                        }
                     }
-                }
-                p{
-                    display: inline-block;
-                    margin: 0;
-                }
+
+                    p {
+                        font-size: $rem1;
+                        display: inline-block;
+                        width: 80%;
+                        margin: 0 auto;
+                        text-align: left;
+                        padding-bottom: 0;
+
+                        @include respond(latop-max) {
+                            font-size: $rem0_8;
+                        }
+
+                        .act_SignUPButton {
+                            margin-bottom: 10px;
+                            @include buttonno03();
+                        }
+
+                        h4 {
+                            text-align: left;
+
+                            @include respond(latop-max) {
+                                font-size: $rem1;
+                            }
+
+                            span {
+                                font-size: $rem1;
+
+                                @include respond(latop-max) {
+                                    font-size: $rem0_8;
+                                }
+                            }
+                        }
+
+                        select {
+                            @include buttonno03();
+                            border: 1px #d0d6d6 solid;
+                            background-color: #d0d6d6;
+
+                            option {
+                                background-color: #d0d6d6;
+                            }
+                        }
+
+                        p {
+                            display: inline-block;
+                            margin: 0;
+
+                            @include respond(latop-max) {
+                                font-size: $rem0_8;
+                            }
+                        }
 
 
-            }
+                    }
 
-            .signUpComfirm {
-                margin: 0;
-                @include butttonn02();
-            }
+                    .signUpComfirm {
+                        margin: 0;
+                        @include butttonn02();
+                    }
 
-            button {
+                    button {
 
-                @include butttonn02();
-                margin: 30px 20px 50px 0;
+                        @include butttonn02();
+                        margin: 30px 20px 50px 0;
 
-                &:hover {
-                    transform: scale(1.1);
-                }
-            }
+                        @include respond(latop-max) {
+                            margin: 15px 10px 30px 10px;
+                        }
 
-        }
-    }
-}
-
-#act_Now-Sign-up {
-
-    h4 {
-        margin: 0 0 10px 0;
-        font-size: $rem1_2;
-        text-align: left;
-    }
-
-    .act_SignUPButton2 {
-        margin-bottom: 10px;
-        @include buttonno03();
-    }
-
-    .act_showSignUpImg {
-        width: 65%;
-        height: 150px;
-        border: 1px #d0d6d6 solid;
-        background-color: #d0d6d6;
-        margin: 0;
-        padding: 0;
-
-        img {
-            max-width: 100%;
-            max-height: 100%;
-        }
-
-    }
-    .act_showSignUpImgSmall{
-        width: 65%;
-        height: 100px;
-        border: 1px #d0d6d6 solid;
-        margin: 0;
-        padding: 0;
-        img {
-            max-width: 100%;
-            max-height: 100%;
-        }
-
-    }
-
-    #act_Sign-up-song-name {
-        margin: 0;
-        border: 1px #d0d6d6 solid;
-        background-color: #d0d6d6;
-        width: 65%;
-        height: 30px;
-    }
-
-    #act_Sign-up-song-information {
-        margin: 0;
-        border: 1px #d0d6d6 solid;
-        background-color: #d0d6d6;
-        width: 65%;
-    }
-
-}
-
-
-#act_Now-Vote {
-    text-align: left;
-    height: 700px;
-    max-width: 1300px;
-    width: 100%;
-    margin: 150px auto 0px auto;
-    padding-top: 50px;
-    position: relative;
-
-
-    .act_Now-Vote-content {
-        height: 400px;
-        max-width: 1500px;
-        padding: 50px 0 0 100px;
-        position: relative;
-        margin: 0 auto;
-        background-image:
-            url(../img/activity/0.blackline.svg),
-            url(../img/activity/text-wh.png);
-        background-size: contain, 100% 100%;
-        background-repeat:
-            no-repeat,
-            no-repeat;
-
-        h2 {
-            margin: 0;
-            font-size: $rem2;
-        }
-
-        h3 {
-            margin: 0;
-            font-size: $rem1_5;
-        }
-
-        p {
-            width: 60%;
-            font-size: $rem1;
-            margin: 0;
-        }
-
-        div {
-            text-align: right;
-            vertical-align: middle;
-            padding-right: 100px;
-
-            h3 {
-                display: inline-block;
-                margin: 0;
-                font-size: $rem1_5;
-            }
-
-            span {
-                font-size: 2.5rem;
-                font-weight: bold;
-                color: #333;
-            }
-
-        }
-
-        img {
-            position: absolute;
-            right: -13%;
-            bottom: -20%;
-            z-index: -1;
-            width: 50%;
-            height: 125%;
-
-        }
-
-
-    }
-
-
-
-
-    section {
-        max-width: 1400px;
-        width: 100%;
-        padding: 0 0 100px 50px;
-        margin: 150px auto 0 auto;
-
-        div {
-
-            text-align: left;
-            width: 20%;
-            margin: 0;
-            margin-left: 3.5%;
-            display: inline-block;
-            margin-bottom:50px;
-
-
-            p {
-                font-size:$rem0_6;
-                text-align: right;
-                margin: 0 auto 0 10px;
-                display: inline-block;
-                vertical-align: bottom;
-
-                span {
-                    font-size: $rem0_8;
+                        &:hover {
+                            transform: scale(1.1);
+                        }
+                    }
 
                 }
-
-
             }
-            h4{
-                width: 90%;
-                margin: 0;
+        }
+
+        #act_Now-Sign-up {
+
+            h4 {
+                margin: 0 0 10px 0;
                 font-size: $rem1_2;
-                p{
-                    margin: 0;
+                text-align: left;
+
+                @include respond(latop-max) {
                     font-size: $rem1;
                 }
             }
 
-            button {
-                display: inline-block;
-                @include butttonn02();
-                margin: 0 0 10px 0;
+            .act_SignUPButton2 {
+                margin-bottom: 10px;
+                @include buttonno03();
+            }
 
-                &:hover {
-                    transform: scale(1.1);
+            .act_showSignUpImg {
+                width: 65%;
+                height: 150px;
+                border: 1px #d0d6d6 solid;
+                background-color: #d0d6d6;
+                margin: 0;
+                padding: 0;
+
+                @include respond(latop-max) {
+                    height: 75px;
+                }
+
+                img {
+                    max-width: 100%;
+                    max-height: 100%;
+                }
+
+            }
+
+            .act_showSignUpImgSmall {
+                width: 65%;
+                height: 100px;
+                border: 1px #d0d6d6 solid;
+                margin: 0;
+                padding: 0;
+
+                @include respond(latop-max) {
+                    height: 50px;
+                }
+
+                img {
+                    max-width: 100%;
+                    max-height: 100%;
+                }
+
+            }
+
+            #act_Sign-up-song-name {
+                margin: 0;
+                border: 1px #d0d6d6 solid;
+                background-color: #d0d6d6;
+                width: 65%;
+                height: 30px;
+                overflow: hidden;
+            }
+
+            #act_Sign-up-song-information {
+                margin: 0;
+                border: 1px #d0d6d6 solid;
+                background-color: #d0d6d6;
+                width: 65%;
+                overflow: hidden;
+            }
+
+            .act_showSong-information {
+                width: 65%;
+                overflow: hidden;
+                max-height: 100px;
+                border: 1px #d0d6d6 solid;
+                word-break: break-all;
+                font-size: $rem0_8;
+
+                @include respond(latop-max) {
+                    font-size: $rem0_6;
                 }
             }
 
-            div {
-                width: 100%;
-                margin: 0;
-                position: relative;
+        }
 
-                &:hover .act-old-play {
-                    display: block;
-                    cursor: pointer;
-                    z-index: 2;
+
+        #act_Now-Vote {
+            text-align: left;
+            height: 700px;
+            max-width: 1300px;
+            width: 100%;
+            margin: 150px auto 0px auto;
+            padding-top: 50px;
+            position: relative;
+
+            @include respond(latop-max) {
+                height: 300px;
+                max-width: 900px;
+                margin: 0px auto 0px auto;
+            }
+
+
+            .act_Now-Vote-content {
+                height: 400px;
+                max-width: 1500px;
+                padding: 50px 0 0 100px;
+                position: relative;
+                margin: 0 auto;
+                background-image:
+                    url(../img/activity/0.blackline.svg),
+                    url(../img/activity/text-wh.png);
+                background-size: contain, 100% 100%;
+                background-repeat:
+                    no-repeat,
+                    no-repeat;
+
+                @include respond(latop-max) {
+                    height: 300px;
+                    max-width: 900px;
 
                 }
 
-                .act_old-play {
-                    width: 100px;
-                    height: 100px;
-                    text-align: center;
-                    position: absolute;
-                    top: 20%;
-                    left: 20%;
-                    display: none;
-                    // transform: translate(-50%, -50%);
-                    z-index: 2;
+                h2 {
+                    margin: 0;
+                    font-size: $rem2;
 
-                    img {
-                        width: 100%;
-                        height: 100%;
+                    @include respond(latop-max) {
+                        font-size: $rem1_5;
+                    }
+                }
+
+                h3 {
+                    margin: 0;
+                    font-size: $rem1_5;
+
+                    @include respond(latop-max) {
+                        font-size: $rem1_2;
+                    }
+                }
+
+                p {
+                    width: 60%;
+                    font-size: $rem1;
+                    margin: 0 0 20px 0;
+
+                    @include respond(latop-max) {
+                        font-size: $rem0_8;
+                    }
+                }
+
+                div {
+                    text-align: right;
+                    vertical-align: middle;
+                    padding-right: 100px;
+
+                    h3 {
+                        display: inline-block;
+                        margin: 0;
+                        font-size: $rem1_5;
+
+                        @include respond(latop-max) {
+                            font-size: $rem1_2;
+                        }
+                    }
+
+                    span {
+                        font-size: 2.5rem;
+                        font-weight: bold;
+                        color: #333;
+
+                        @include respond(latop-max) {
+                            font-size: 2rem;
+                        }
                     }
 
                 }
 
                 img {
-                    width: 200px;
-                    height: 200px;
+                    position: absolute;
+                    right: -13%;
+                    bottom: -20%;
+                    z-index: -1;
+                    width: 50%;
+                    height: 125%;
+
                 }
+
+
             }
 
-            .act_old-hear1 {
-                width: 25px;
-                height: 25px;
 
-                img {
-                    width: 100%;
-                    height: 100%;
+
+
+            section {
+                max-width: 1400px;
+                width: 100%;
+                padding: 0 0 100px 50px;
+                margin: 150px auto 0 auto;
+
+                @include respond(latop-max) {
+                    max-width: 900px;
+                    margin: 100px auto 0 auto;
+                }
+
+                div {
+                    text-align: left;
+                    width: 20%;
+                    margin: 0;
+                    margin-left: 3.5%;
+                    display: inline-block;
+                    margin-bottom: 50px;
+
+
+
+                    p {
+                        font-size: $rem0_6;
+                        text-align: left;
+                        margin: 0 auto 0 10px;
+                        display: inline-block;
+                        vertical-align: bottom;
+
+                        span {
+                            font-size: $rem0_8;
+
+
+                        }
+
+
+                    }
+
+                    .act_songBox {
+                        margin: 0;
+                        padding: 0;
+                        font-size: 0;
+
+                        h4 {
+                            width: 90%;
+                            margin: 0;
+                            font-size: $rem1_2;
+
+                            @include respond(latop-max) {
+                                font-size: $rem0_8;
+                            }
+
+
+                        }
+
+                        p {
+                            margin: 0;
+                            font-size: $rem1;
+
+                            @include respond(latop-max) {
+                                width: 100%;
+                                font-size: $rem0_8;
+                            }
+
+                            .act_old-hear1 {
+                                width: 25px;
+                                height: 25px;
+                                margin: 0;
+
+                                img {
+                                    width: 100%;
+                                    height: 100%;
+                                }
+                            }
+                        }
+
+
+
+                    }
+
+                    button {
+                        display: inline-block;
+                        @include butttonn02();
+                        margin: 0 0 10px 0;
+
+                        @include respond(latop-max) {
+                            margin: 0 auto;
+                        }
+
+                        &:hover {
+                            transform: scale(1.1);
+                        }
+                    }
+
+                    div {
+                        width: 100%;
+                        margin: 0;
+                        position: relative;
+
+                        &:hover .act_old-play {
+                            display: block;
+                            cursor: pointer;
+                            z-index: 2;
+
+                        }
+
+                        .act_old-play {
+                            width: 100px;
+                            height: 100px;
+                            text-align: center;
+                            position: absolute;
+
+                            top: 20%;
+                            left: 20%;
+                            display: none;
+                            // transform: translate(-50%, -50%);
+                            z-index: 2;
+
+                            @include respond(latop-max) {
+                                left: 15%;
+                                top: 15%;
+                            }
+
+                            img {
+                                width: 100%;
+                                height: 100%;
+                            }
+
+                        }
+
+                        img {
+                            width: 200px;
+                            height: 200px;
+
+                            @include respond(latop-max) {
+                                width: 150px;
+                                height: 150px;
+                            }
+                        }
+                    }
+
+
                 }
             }
         }
     }
-
 }
