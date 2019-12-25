@@ -1,26 +1,50 @@
-.bnr h1 {
-  position: relative;
-  top: 130px;
-}
-
-.infos2 {
+.songinfo_infos2 {
   border: 1px solid red;
   height: 600px;
 }
 
-.infoplay {
+.songinfo_infoplay {
   border: 1px solid purple;
   width: 1200px;
-  height: 500px;
+  height: 600px;
   margin: 0 auto;
 }
 
-.infos3 {
+.songinfo_info {
+  border: 1px solid red;
+}
+
+.songinfo_infos3 {
   border: 1px solid navy;
   height: 600px;
 }
 
-.infos4 {
+.songinfo_infos3 p {
+  width: 130px;
+  font-size: 1.2rem;
+  font-weight: bold;
+}
+
+.songinfo_titl {
+  border: 1px solid blue;
+  width: 1200px;
+  margin: 0 auto;
+  padding: 130px 0px 0px 0px;
+  height: 600px;
+}
+
+.info_square {
+  border: 1px solid #d0d6d6;
+  background-color: #d0d6d6;
+  z-index: -1;
+  width: 1050px;
+  height: 400px;
+  position: relative;
+  bottom: 320px;
+  left: 45px;
+}
+
+.songinfo_infos4 {
   border: 1px solid blue;
   height: 600px;
 }
@@ -42,5 +66,9 @@
   width: 1000px;
   margin: 0 auto;
   padding: 0px 50px;
+}
+
+.songinfo_infos5 {
+  height: 200px;
 }
 /*# sourceMappingURL=songinfo.css.map */
