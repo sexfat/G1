@@ -1,62 +1,24 @@
-// .bnr h1{ 
-//     border: 1px solid rgb(24, 27, 199);
-//     position: relative;
-//     top: 130px;
-// }
+.bnr h1{ 
+    // border: 1px solid rgb(24, 27, 199);
+    position: relative;
+    top: 130px;
+}
 
-.songinfo_infos2{
+.infos2{
     border: 1px solid red;
     height: 600px;
 }
-.songinfo_infoplay{
+.infoplay{
     border: 1px solid purple;
     width: 1200px;
-    height: 600px;
+    height: 500px;
     margin: 0 auto;
 }
-.songinfo_info{
-    border: 1px solid red;
-}
-
-.songinfo_infos3{
+.infos3{
     border: 1px solid navy;
     height: 600px;
 }
-
-// @mixin infos2p {
-//     font-size: $rem1_2;
-// }
-
-.songinfo_infos3 p{
-    // border: 1px solid blue;
-    width: 130px;
-    font-size: 1.2rem;
-    // @include infos2p();
-    font-weight: bold;
-    
-}
-.songinfo_titl{
-    border: 1px solid blue;
-    width: 1200px;
-    margin: 0 auto;
-    padding: 130px 0px 0px 0px;
-    height: 600px;
-}
-
-
-
-.info_square{
-    border: 1px solid #d0d6d6;
-    background-color: #d0d6d6;
-    z-index: -1;
-    width: 1050px;
-    height: 400px;
-    position: relative;
-    bottom: 320px;
-    left: 45px;
-}
-
-.songinfo_infos4{
+.infos4{
     border: 1px solid blue;
     height: 600px;
 }
@@ -75,7 +37,4 @@
     width: 1000px;
     margin: 0 auto;
     padding: 0px 50px;
-}
-.songinfo_infos5{
-    height: 200px;
 }

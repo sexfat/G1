@@ -78,26 +78,28 @@
         }
     }
 
-    #act_oldyear_Anchor {
+    #act_oldyear-Anchor {
 
         position: absolute;
-        right: -10%;
-        bottom: 10%;
-        width: 100px;
+        left: 50%;
+        bottom: 5%;
+        width: 300px;
+        height: 50px;
 
         a {
             img {
-                width: 30px;
-                height: 30px;
+                width: 50px;
+                height: 50px;
             }
 
             span {
                 font-size: $rem0_7;
-                margin-right: 10px;
+                margin-right: 20px;
             }
         }
 
     }
+
 
 }
 
@@ -664,7 +666,7 @@
     h2 {
 
         font-size: $rem2;
-        margin: 0 0 20px 50px;
+        margin: 0 0 100px 50px;
     }
 
     div {
@@ -708,13 +710,11 @@
 #act_Now-Sign-up {
 
     article {
- 
-        position: absolute;
-        top: 5%;
+
         width: 60%;
         min-height: 600px;
         display: inline-block;
-        margin: 0 auto;
+        margin: auto auto;
         background-image:
             url(../img/activity/0.text-circle.svg),
             url(../img/activity/text.circle-wh.png);
@@ -724,13 +724,7 @@
         text-align: center;
         padding: 50px 0 0 0;
         position: absolute;
-        .act_SignSongURL-box{
-            width: 80%;
-            height: 20px;
-            overflow: hidden;
-            font-size: 0.6rem;
-        }
-        
+
         div {
             text-align: left;
             width: 70%;
@@ -774,10 +768,6 @@
                         background-color: #d0d6d6;
                     }
                 }
-                p{
-                    display: inline-block;
-                    margin: 0;
-                }
 
 
             }
@@ -818,22 +808,9 @@
         width: 65%;
         height: 150px;
         border: 1px #d0d6d6 solid;
-        background-color: #d0d6d6;
         margin: 0;
         padding: 0;
 
-        img {
-            max-width: 100%;
-            max-height: 100%;
-        }
-
-    }
-    .act_showSignUpImgSmall{
-        width: 65%;
-        height: 100px;
-        border: 1px #d0d6d6 solid;
-        margin: 0;
-        padding: 0;
         img {
             max-width: 100%;
             max-height: 100%;
@@ -864,7 +841,7 @@
     height: 700px;
     max-width: 1300px;
     width: 100%;
-    margin: 150px auto 0px auto;
+    margin: 150px auto 0 auto;
     padding-top: 50px;
     position: relative;
 
@@ -937,7 +914,7 @@
     section {
         max-width: 1400px;
         width: 100%;
-        padding: 0 0 100px 50px;
+        padding: 0 0 0 50px;
         margin: 150px auto 0 auto;
 
         div {

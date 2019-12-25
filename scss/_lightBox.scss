@@ -1,5 +1,5 @@
-
-.lightCover {
+$mainGreen:#d0d6d6;
+#lightCover {
     background-color: #414141e6;
     width: 100%;
     height: 100%;
@@ -8,8 +8,92 @@
     left: 0;
     z-index: 1001;
     display: none;
+    
 
-    .closeLight {
+    #myAllList {
+        width: 90%;
+        max-width: 500px;
+        background-color: white;
+        border-radius: 10px;
+        padding: 1% 0;
+        text-align: center;
+        position: absolute;
+        top: 50%;
+        left: 50%;
+        display: none;
+        transform: translate(-50%, -50%);
+
+        //   &.show {
+        //     opacity: 1;
+        //   }
+
+        .lightSelectMenu {
+            clear: both;
+
+            ul {
+                width: 80%;
+                margin: 3% auto;
+                padding: 16px 0;
+                min-height: 100px;
+                background-image: url('../img/library/blackline2.svg');
+                background-position: center center;
+
+                li {
+                    width: 90%;
+                    margin: 0 auto;
+                    padding: 16px 0;
+                    border-bottom: 1px solid $fontColor;
+
+                    &.choose {
+                        background-color: #7ed5e5;
+                    }
+
+                    &:last-child {
+                        border-bottom: none;
+                    }
+                }
+            }
+        }
+    }
+
+    #deleteCheck {
+        width: 90%;
+        max-width: 500px;
+        background-color: white;
+        border-radius: 10px;
+        padding: 1% 0;
+        text-align: center;
+        position: absolute;
+        top: 50%;
+        left: 50%;
+        transform: translate(-50%, -50%);
+        display: none;
+    }
+
+    #createListBox {
+        width: 90%;
+        max-width: 500px;
+        background-color: white;
+        border-radius: 10px;
+        padding: 1% 0;
+        text-align: center;
+        position: absolute;
+        top: 50%;
+        left: 50%;
+        transform: translate(-50%, -50%);
+        display: none;
+        #createList{
+            width: 80%;
+            height: 60px;
+            margin: 3% auto;
+            display: block;
+            border: 1px solid $mainGreen;
+            background-color:$mainGreen ;
+        }
+    }
+
+
+    .close {
         position: absolute;
         right: 20px;
         top: 20px;
