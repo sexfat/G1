@@ -6,11 +6,14 @@
           box-sizing: border-box;
   padding: 0;
   margin: 0;
+<<<<<<< HEAD
 =======
 * {
   -webkit-box-sizing: border-box;
           box-sizing: border-box;
 >>>>>>> 20bd061cf6c41b3e9185c305db48a18cde906d39
+=======
+>>>>>>> Fifi
 }
 
 html {
@@ -75,6 +78,7 @@ header {
   }
 }
 
+<<<<<<< HEAD
 div.nav_bar {
   position: fixed;
   z-index: 999;
@@ -6646,6 +6650,8 @@ header {
 .profile_content .profile_container .profile_rightbox table td {
   padding: 15px;
 =======
+=======
+>>>>>>> Fifi
 .profile_content {
   position: relative;
   background: url(../img/member/border.png) top center no-repeat;
