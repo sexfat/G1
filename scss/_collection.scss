@@ -16,7 +16,7 @@ $albumbottom: 340px;
 }
 
 .collectionbody{
-    // background-image: url(../img/collection/collectionnavback.jpg);
+    background-image: url(../img/collection/collectionnavback.jpg);
     background-position:bottom;
     background-size: cover;
     background-repeat: no-repeat;
@@ -31,22 +31,78 @@ $albumbottom: 340px;
     }
     .collectionalbumsection1{
         border: 1px solid pink;
-        width:70%;
-        height:900px;
+        width:100%;
         display: inline-block;
         .collectionsinglealbum{
             border: 1px solid green;
+            width:100%;
+            // background-image: url(../img/collection/shelf.png);
+            // background-repeat: no-repeat;
+            // background-position: bottom;
+            margin-bottom:50px;
             display: inline-block;
             font-size: 0px;
             .collectionsinglecover{
                 border:1px solid blue;
+                margin:20px;
                 display: inline-block;
-                font-size:$rem1;
-                width:50%;
+                font-size:$rem1_2;
+                width:250px;
+                height: 250px;
+                text-align: left;
+                @include respond(latop-max) {
+                    width:200px;
+                    height: 200px;
+                    font-size:$rem1;
+                    margin:10px;
+                }
+                @include respond(latop-min) {
+                    width:180px;
+                    height:180px;
+                }
                 .collalbumpic{
                     background-size:cover;
                     width: 100%;
                     height: 100%;
+                    text-align: left;
+                   
+                    p{
+                        position: relative;
+                        top:200px;
+                    }
+                    span{
+                        font-size: $rem1;
+                    }
+                    .collplayer{
+                        position: relative;
+                        top:50%;
+                        left:85%;
+                        transform: translate(-50%,-50%);
+                        display: none;
+                        img{
+                            width:80px;
+                            height: 80px;
+                            @include respond(latop-max) {
+                                width: 50px;
+                                height: 50px;
+                            }
+                        }
+                        
+                    }
+
+                }
+                .collheart{
+                    border: 1px solid pink;
+                    text-align: left;
+                    img{
+                        width: 40px;
+                        height: 40px;
+                        @include respond(latop-max) {
+                            width: 30px;
+                            height: 30px;
+                        }
+                    }
+                    
                 }
                 .sampleblum1{
                     background-image: url(../img/collection/album1.jpg);
@@ -59,15 +115,37 @@ $albumbottom: 340px;
                 }
                 .sampleblum4{
                     background-image: url(../img/collection/album4.jpg);
-
+                }
+                .sampleblum5{
+                    background-image:url(../img/collection/album5.jpg);
+                }
+                .sampleblum6{
+                    background-image:url(../img/collection/album6.jpg);
+                }
+                .sampleblum7{
+                    background-image:url(../img/collection/album7.jpg);
+                }
+                .sampleblum8{
+                    background-image:url(../img/collection/album8.jpg);
+                }
+                .sampleblum9{
+                    background-image:url(../img/collection/album9.jpg);
+                }
+                .sampleblum10{
+                    background-image:url(../img/collection/album10.jpg);
+                }
+                .sampleblum11{
+                    background-image:url(../img/collection/album11.jpg);
+                }
+                .sampleblum12{
+                    background-image:url(../img/collection/album12.jpg);
                 }
             }
         }
     }
-    .playall_btn{
+    .playall_btns{
         text-align: right;
-        margin: 0vw 20vw;
-        
+        margin: 2vw 20vw; 
     }
     .circlebtn {
         width: 50px;
@@ -114,184 +192,69 @@ $albumbottom: 340px;
         #collectiontabcontainer{
             .collectiontabtitle{
                 border: 1px solid red;
+                margin: 2vw 0vw;
                 li{
                     list-style: none;
                     vertical-align: middle;
                     display: inline-block;
                     font-size: 2rem;
-                    border-radius: 5px;
-                    background-color: $yellow;
                     margin: 20px;
-                    
-                    
+                    @include respond(ipadpro) {
+                        margin:5px;
+                    }
+                    @include respond(ipad) {
+                        margin:0px;
+                    }
                     &:hover{
                         transform: scale(1.1);
-                        background-color: $mainBg;
-                        border:2px solid $yellow;
-                        color: $fontColor;
+                        // background-color: $mainBg;
                         cursor: pointer;
                         }
                         a{
                             color: $fontColor;
                             cursor: pointer;
+                            padding: 10px 20px;
                         }
                     }
                     a{
-                        margin: 0px 50px 0px 50px;
-                        color: #fff;
+                        margin: 0px 40px 0px 40px;
+                        background-color: $yellow;
+                        border-radius: 5px;
+                        padding:10px 25px;
+                        @include respond(latop-max) {
+                            margin: 0px 20px 0px 20px;
+                        }
+                        @include respond(latop-min) {
+                            margin: 0px 10px 0px 10px;
+                            font-size:$rem1_5;
+                        }
+                        @include respond(latop-min) {
+                            margin: 0px 10px 0px 10px;
+                            font-size:$rem1_5;
+                        }
+                        @include respond(ipadpro) {
+                            font-size:$rem1_5;
+                            margin: 0px;
+                        }
+                        @include respond(ipad) {
+                            font-size:$rem1;
+                            margin: 0px;
+                        }
+                        @include respond(phone) {
+                            font-size:0.9rem;
+                            margin: 0px;
+                        }
+                        
                     }
                 }
             }
-            
-.albumshelf-row{
-	display:none;
-}
-
-.albumshelf{
-    display: flex;
-    margin-top: 19vh;
-    border: 1px solid pink;
-    justify-content: center;
-}
-
-.albumshelf .shelf{
-    width:70%;
-    margin-top:80px;
-    border: 1px solid blue;
-}
-.sample{
-    border: 1px solid orange;
-    .like{ 
-        font-size : 40px;   
-        color : #ccc; 
-        position: relative;
-        left: 102%;
-        top: 75%;
-        width: 50px;
-        border: 1px solid green;
-        cursor : pointer;
-    }
-    p{
-        position: relative;
-        font-size: 1.2rem;
-        display: flex;
-        top: 160px;
-    }
-    span{
-        position: relative;
-        font-size: 1rem;
-        top: 160px;
-    }
-}
-.albumshelf .shelf .row-1{
-	position:relative;
-	width:100%;
-    height:400px;
-}
-.albumshelf .shelf .row-1:after {
-	// background:url("../img/collection/shelf.png");
-	background-size:100%;
-	background-repeat: no-repeat;
-	background-position:bottom left;
-	width:100%;
-	height:$albumsize;
-	display:block;
-    content:"";
-    border: 1px solid purple;
-}
-
-.redheartshape{
-    color:#de267d;
-}
-
-.albumshelf .shelf .loc{
-	position:absolute;
-	bottom:0;
-    width:100%;
-    text-align: left;
-    
-    img{
-        cursor: pointer;
-        position: relative;
-        top: 160px;
-        left: 200px;
-        width:100%;
-        max-width:40px;
-    }
-}
-
-.albumshelf .shelf .loc > div{
-	width:25%;
-    height:100%;
-    background-size: contain;
-    float: left;
-    
-}
-
-.albumshelf .sample,
-.albumshelf-row .sample{
-    border: 1px solid #ffffff00;
-	margin:auto;
-	position: relative;
-	z-index:1;
-	box-shadow:2px 2px 5px rgba(0,0,0,0.6);
-}
-.albumshelf .album1,
-.albumshelf-row .album1{
-    background-image:url("../img/collection/album1.jpg");
-    @include collectionalbum;
-}
-
-.albumshelf .album2,
-.albumshelf-row .album2{
-	background-image:url("../img/collection/album2.jpg");
-    @include collectionalbum;
-}
-
-.albumshelf .album3,
-.albumshelf-row .album3{
-	background-image:url("../img/collection/album3.jpg");
-    @include collectionalbum;
-}
-
-.albumshelf .album4,
-.albumshelf-row .album4{
-	background-image:url("../img/collection/album4.jpg");
-    @include collectionalbum;
-
-}
-.albumshelf .album5,
-.albumshelf-row .album5{
-	background-image:url("../img/collection/album5.jpg");
-    @include collectionalbum;
-}
-
-.albumshelf .album6,
-.albumshelf-row .album6{
-    background-image:url("../img/collection/album6.jpg");
-    @include collectionalbum;
-}
-.albumshelf .album7,
-.albumshelf-row .album7{
-    background-image:url("../img/collection/album7.jpg");
-    @include collectionalbum;
-}
-.albumshelf .album8,
-.albumshelf-row .album8{
-    background-image:url("../img/collection/album8.jpg");
-    @include collectionalbum;
-}
-.albumshelf .album9,
-.albumshelf-row .album9{
-    background-image:url("../img/collection/album9.jpg");
-    @include collectionalbum;
-}
-.albumshelf .album10,
-.albumshelf-row .album10{
-    background-image:url("../img/collection/album10.jpg");
-    @include collectionalbum;
-}
+            .collectionflower{
+                text-align: right;
+                position: relative;
+                bottom:100px;
+                right:100px;
+                z-index:-1;
+            }
         }
 
-
-}
+    }
