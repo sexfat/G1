@@ -6018,6 +6018,12 @@ header {
   left: 1800px;
 }
 
+.songinfo_ear {
+  position: relative;
+  bottom: 850px;
+  left: 480px;
+}
+
 .songsadded_adds2 {
   -webkit-box-sizing: border-box;
           box-sizing: border-box;

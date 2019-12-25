@@ -1,12 +1,12 @@
 @import url(https://fonts.googleapis.com/css?family=Raleway:400,300,700);
 
-@import "./public.scss";
-@mixin infoname(){
-  font-size: $rem1;
-}
-@mixin infosongtitle() {
-  font-size: $rem1_5;
-}
+// @import "./public.scss";
+// @mixin infoname(){
+//   font-size: $rem1;
+// }
+// @mixin infosongtitle() {
+//   font-size: $rem1_5;
+// }
 
 // * {
 //   box-sizing: border-box;
@@ -73,8 +73,8 @@
 }
 
 .songinfo_infoplay .artist-name {
-  // font-size: 28px;
-  @include infoname();
+  font-size: 1rem;
+  // @include infoname();
   font-weight: normal;
   // margin: 0 0 0.75em 0;
   margin: 0 0 20px 0;
@@ -91,8 +91,8 @@
 // }
 
 .songinfo_infoplay .song-title {
-  // font-size: 18px;
-  @include infosongtitle();
+  font-size: 1.5rem;
+  // @include infosongtitle();
   // font-weight: 200;
   // margin: 0 0 1.5em 0;
   margin: 0px 0px 30px 0px;
