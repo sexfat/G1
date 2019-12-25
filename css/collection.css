@@ -2,6 +2,8 @@
 * {
   -webkit-box-sizing: border-box;
           box-sizing: border-box;
+  margin: 0;
+  padding: 0;
 }
 
 html {
@@ -14,6 +16,7 @@ body {
   font-family: "Lucida Sans Unicode", Geneva, Verdana, sans-serif;
   background: #fafaf1;
   color: #333;
+  overflow-x: hidden;
 }
 
 .flexbox {
@@ -27,61 +30,10 @@ a {
   color: #333;
 }
 
-h1,
-h2,
-h3,
-h4,
-h5,
-h6,
-p {
-  margin: 0;
-  padding: 0;
-}
-
-h1 {
-  /*60px*/
-  font-size: 3rem;
-}
-
-h2 {
-  /* 40px*/
-  font-size: 2rem;
-  /*副標的h2 font-weight:bold*/
-}
-
-h3 {
-  /*30px*/
-  font-size: 1.5rem;
-}
-
-h4 {
-  /*24px*/
-  font-size: 1.2rem;
-}
-
-p {
-  /*內文 20px*/
-  font-size: 1rem;
-}
-
-p.bigSmall {
-  /*大小 16px*/
-  font-size: 0.8rem;
-}
-
-p.doubleSmall {
-  /*小小 14px*/
-  font-size: 0.7rem;
-}
-
-p.forget {
-  /*旺季 12px*/
-  font-size: 0.6rem;
-}
-
 header {
   height: 300px;
   text-align: center;
+  padding: 120px 0;
 }
 
 .wrapper {
@@ -106,6 +58,12 @@ header {
 }
 
 /*button mixin*/
+@media all and (max-width: 768px) {
+  header img {
+    height: 76px;
+  }
+}
+
 div.nav_bar {
   position: fixed;
   z-index: 999;

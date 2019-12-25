@@ -2,6 +2,8 @@
 * {
   -webkit-box-sizing: border-box;
           box-sizing: border-box;
+  margin: 0;
+  padding: 0;
 }
 
 html {
@@ -14,6 +16,7 @@ body {
   font-family: "Lucida Sans Unicode", Geneva, Verdana, sans-serif;
   background: #fafaf1;
   color: #333;
+  overflow-x: hidden;
 }
 
 .flexbox {
@@ -27,61 +30,10 @@ a {
   color: #333;
 }
 
-h1,
-h2,
-h3,
-h4,
-h5,
-h6,
-p {
-  margin: 0;
-  padding: 0;
-}
-
-h1 {
-  /*60px*/
-  font-size: 3rem;
-}
-
-h2 {
-  /* 40px*/
-  font-size: 2rem;
-  /*副標的h2 font-weight:bold*/
-}
-
-h3 {
-  /*30px*/
-  font-size: 1.5rem;
-}
-
-h4 {
-  /*24px*/
-  font-size: 1.2rem;
-}
-
-p {
-  /*內文 20px*/
-  font-size: 1rem;
-}
-
-p.bigSmall {
-  /*大小 16px*/
-  font-size: 0.8rem;
-}
-
-p.doubleSmall {
-  /*小小 14px*/
-  font-size: 0.7rem;
-}
-
-p.forget {
-  /*旺季 12px*/
-  font-size: 0.6rem;
-}
-
 header {
   height: 300px;
   text-align: center;
+  padding: 120px 0;
 }
 
 .wrapper {
@@ -106,6 +58,12 @@ header {
 }
 
 /*button mixin*/
+@media all and (max-width: 768px) {
+  header img {
+    height: 76px;
+  }
+}
+
 div.nav_bar {
   position: fixed;
   z-index: 999;
@@ -489,19 +447,19 @@ div.nav_bar .mem_list li:not(:nth-child(5))::after {
   }
 }
 
-@media all and (max-width: 992px) and (min-width: 769px) {
+@media all and (max-width: 992px) {
   html {
     font-size: 16px;
   }
 }
 
-@media all and (max-width: 768px) and (min-width: 577px) {
+@media all and (max-width: 768px) {
   html {
     font-size: 16px;
   }
 }
 
-@media all and (max-width: 576px) and (min-width: 377px) {
+@media all and (max-width: 576px) {
   html {
     font-size: 16px;
   }
@@ -525,28 +483,18 @@ iframe {
   padding: 0;
 }
 
-body {
-  background-color: #fafaf1;
-  background-image: url("../img/library/library_bg.jpg");
-  background-position: bottom right;
-  background-repeat: no-repeat;
-  background-size: cover;
-  font-size: 1rem;
-  color: #333;
-}
-
 header {
   text-align: center;
   vertical-align: middle;
 }
 
-@media all and (max-width: 768px) and (min-width: 577px) {
+@media all and (max-width: 768px) {
   header img {
     height: 76px;
   }
 }
 
-@media all and (max-width: 576px) and (min-width: 377px) {
+@media all and (max-width: 576px) {
   header img {
     height: 76px;
   }
@@ -665,19 +613,19 @@ main.library_main aside .my_list .lists li .delete:hover {
           transform: scale(1.1) translateY(-50%);
 }
 
-@media all and (max-width: 992px) and (min-width: 769px) {
+@media all and (max-width: 992px) {
   main.library_main aside .my_list .lists {
     display: none;
   }
 }
 
-@media all and (max-width: 768px) and (min-width: 577px) {
+@media all and (max-width: 768px) {
   main.library_main aside .my_list .lists {
     display: none;
   }
 }
 
-@media all and (max-width: 576px) and (min-width: 377px) {
+@media all and (max-width: 576px) {
   main.library_main aside .my_list .lists {
     display: none;
   }
@@ -701,19 +649,19 @@ main.library_main aside .my_list select option {
   padding: 16px 0;
 }
 
-@media all and (max-width: 992px) and (min-width: 769px) {
+@media all and (max-width: 992px) {
   main.library_main aside .my_list select {
     display: block;
   }
 }
 
-@media all and (max-width: 768px) and (min-width: 577px) {
+@media all and (max-width: 768px) {
   main.library_main aside .my_list select {
     display: block;
   }
 }
 
-@media all and (max-width: 576px) and (min-width: 377px) {
+@media all and (max-width: 576px) {
   main.library_main aside .my_list select {
     display: block;
   }
@@ -736,7 +684,7 @@ main.library_main aside .list_pic img {
   vertical-align: bottom;
 }
 
-@media all and (max-width: 768px) and (min-width: 577px) {
+@media all and (max-width: 768px) {
   main.library_main aside {
     width: 90%;
     margin: 0 auto;
@@ -744,7 +692,7 @@ main.library_main aside .list_pic img {
   }
 }
 
-@media all and (max-width: 576px) and (min-width: 377px) {
+@media all and (max-width: 576px) {
   main.library_main aside {
     width: 90%;
     margin: 0 auto;
@@ -788,13 +736,13 @@ main.library_main .right::after {
   left: -350px;
 }
 
-@media all and (max-width: 768px) and (min-width: 577px) {
+@media all and (max-width: 768px) {
   main.library_main .right::after {
     display: none;
   }
 }
 
-@media all and (max-width: 576px) and (min-width: 377px) {
+@media all and (max-width: 576px) {
   main.library_main .right::after {
     display: none;
   }
@@ -813,7 +761,7 @@ main.library_main .right .listInfo .listCover {
   position: relative;
 }
 
-@media all and (max-width: 576px) and (min-width: 377px) {
+@media all and (max-width: 576px) {
   main.library_main .right .listInfo .listCover {
     margin: 0 auto;
     float: none;
@@ -848,7 +796,7 @@ main.library_main .right .listInfo .nameAndBtn {
   float: left;
 }
 
-@media all and (max-width: 576px) and (min-width: 377px) {
+@media all and (max-width: 576px) {
   main.library_main .right .listInfo .nameAndBtn {
     width: 100%;
   }
@@ -860,7 +808,7 @@ main.library_main .right .listInfo .nameAndBtn {
   }
 }
 
-@media all and (max-width: 576px) and (min-width: 377px) {
+@media all and (max-width: 576px) {
   main.library_main .right .listInfo .nameAndBtn .listName {
     width: 85%;
     text-align: center;
@@ -879,7 +827,7 @@ main.library_main .right .listInfo .nameAndBtn .listName .name h2 {
   vertical-align: middle;
 }
 
-@media all and (max-width: 768px) and (min-width: 577px) {
+@media all and (max-width: 768px) {
   main.library_main .right .listInfo .nameAndBtn .listName .name h2 {
     display: block;
     overflow: hidden;
@@ -916,7 +864,7 @@ main.library_main .right .listInfo .nameAndBtn .playall_btn {
   text-align: right;
 }
 
-@media all and (max-width: 576px) and (min-width: 377px) {
+@media all and (max-width: 576px) {
   main.library_main .right .listInfo .nameAndBtn .playall_btn {
     width: 100%;
   }
@@ -972,19 +920,19 @@ main.library_main .right ul.songs li .songInfo {
   width: 60%;
 }
 
-@media all and (max-width: 992px) and (min-width: 769px) {
+@media all and (max-width: 992px) {
   main.library_main .right ul.songs li .songInfo {
     width: 55%;
   }
 }
 
-@media all and (max-width: 768px) and (min-width: 577px) {
+@media all and (max-width: 768px) {
   main.library_main .right ul.songs li .songInfo {
     width: 50%;
   }
 }
 
-@media all and (max-width: 576px) and (min-width: 377px) {
+@media all and (max-width: 576px) {
   main.library_main .right ul.songs li .songInfo {
     width: 48%;
   }
@@ -1041,21 +989,21 @@ main.library_main .right ul.songs li .songInfo .name p {
   margin-left: 5%;
 }
 
-@media all and (max-width: 992px) and (min-width: 769px) {
+@media all and (max-width: 992px) {
   main.library_main .right ul.songs li .songInfo .name p {
     display: block;
     margin-left: 0;
   }
 }
 
-@media all and (max-width: 768px) and (min-width: 577px) {
+@media all and (max-width: 768px) {
   main.library_main .right ul.songs li .songInfo .name p {
     display: block;
     margin-left: 0;
   }
 }
 
-@media all and (max-width: 576px) and (min-width: 377px) {
+@media all and (max-width: 576px) {
   main.library_main .right ul.songs li .songInfo .name p {
     display: block;
     margin-left: 0;
@@ -1075,7 +1023,7 @@ main.library_main .right ul.songs li .totalTime {
   width: 10%;
 }
 
-@media all and (max-width: 576px) and (min-width: 377px) {
+@media all and (max-width: 576px) {
   main.library_main .right ul.songs li .totalTime {
     font-size: 0.9rem;
   }
@@ -1099,14 +1047,14 @@ main.library_main .right ul.songs li .heart {
   transition: transform .5s, -webkit-transform .5s;
 }
 
-@media all and (max-width: 768px) and (min-width: 577px) {
+@media all and (max-width: 768px) {
   main.library_main .right ul.songs li .heart {
     width: 10%;
     text-align: center;
   }
 }
 
-@media all and (max-width: 576px) and (min-width: 377px) {
+@media all and (max-width: 576px) {
   main.library_main .right ul.songs li .heart {
     width: 10%;
     text-align: center;
@@ -1166,7 +1114,7 @@ main.library_main .right ul.songs li .more .changeList {
   display: none;
 }
 
-@media all and (max-width: 768px) and (min-width: 577px) {
+@media all and (max-width: 768px) {
   main.library_main .right {
     width: 90%;
     margin: 5%;
@@ -1174,7 +1122,7 @@ main.library_main .right ul.songs li .more .changeList {
   }
 }
 
-@media all and (max-width: 576px) and (min-width: 377px) {
+@media all and (max-width: 576px) {
   main.library_main .right {
     width: 90%;
     margin: 5%;
@@ -1235,13 +1183,13 @@ main.library_main .right ul.songs li .more .changeList {
           transform: scale(1.1);
 }
 
-@media all and (max-width: 992px) and (min-width: 769px) {
+@media all and (max-width: 992px) {
   .normalbtn {
     width: 100%;
   }
 }
 
-@media all and (max-width: 768px) and (min-width: 577px) {
+@media all and (max-width: 768px) {
   .normalbtn {
     width: 47%;
     margin: 20px 1% 0;
