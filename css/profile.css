@@ -6119,6 +6119,97 @@ header {
   height: 250px;
 }
 
+* {
+  -webkit-box-sizing: border-box;
+          box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+}
+
+html {
+  font-size: 20px;
+}
+
+body {
+  margin: 0;
+  padding: 0;
+  font-family: "Lucida Sans Unicode", Geneva, Verdana, sans-serif;
+  background: #fafaf1;
+  color: #333;
+  overflow-x: hidden;
+}
+
+.flexbox {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+}
+
+a {
+  text-decoration: none;
+  color: #333;
+}
+
+header {
+  height: 300px;
+  text-align: center;
+  padding: 120px 0;
+}
+
+.wrapper {
+  max-width: 1500px;
+  margin: 0 auto;
+  width: 100%;
+}
+
+/*燈箱寬*/
+.lightbox_s {
+  width: 500px;
+}
+
+/*新手教學用*/
+.lightbox_b {
+  width: 1000px;
+}
+
+/*燈箱的遮罩顏色*/
+.lightCover {
+  background-color: #414141e6;
+}
+
+/*button mixin*/
+@media all and (max-width: 768px) {
+  header img {
+    height: 76px;
+  }
+}
+
+.songinfo_bb {
+  font-size: 0.7rem;
+  display: inline-block;
+  padding: 5px 8px;
+  background-color: #f1c40f6b;
+  border: 1.5px solid #f1c40f;
+  cursor: pointer;
+  position: relative;
+  top: -3px;
+  right: 0px;
+}
+
+#infopath {
+  width: 400px;
+  height: 10px;
+}
+
+.songinfo_nn {
+  border: 1px solid #d0d6d6;
+  background-color: #d0d6d6;
+  width: 470px !important;
+  height: 10px !important;
+  position: relative;
+  left: -100px;
+}
+
 .profile_content {
   position: relative;
   background: url(../img/member/border.png) top center no-repeat;

@@ -5,6 +5,7 @@
 //     top: 55px;
 // }
 
+
 .songsadded_adds2 {
     // border: 1px solid black;
     box-sizing: border-box;
@@ -182,4 +183,26 @@
 .songsadded_adds3{
     border: 1px solid rgba(0, 128, 0, 0);
     height: 250px;
+}
+
+@import './public.scss';
+
+.songinfo_bb{
+    @include buttonno03();
+    position: relative;
+    top: -3px;
+    right: 0px;
+}
+#infopath{
+    // border: 1px solid #d0d6d6;
+    width: 400px;
+    height: 10px;
+}
+.songinfo_nn{
+    border: 1px solid #d0d6d6;
+    background-color: #d0d6d6;
+    width: 470px !important;
+    height: 10px !important;
+    position: relative;
+    left: -100px;
 }
