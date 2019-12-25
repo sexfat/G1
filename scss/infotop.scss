@@ -1,20 +1,28 @@
 @import url(https://fonts.googleapis.com/css?family=Raleway:400,300,700);
 
-* {
-  box-sizing: border-box;
-
-  &:before, &:after {
-    box-sizing: border-box;
-  }
+@import "./public.scss";
+@mixin infoname(){
+  font-size: $rem1;
+}
+@mixin infosongtitle() {
+  font-size: $rem1_5;
 }
 
-body {
-  background-color: #fef29c;
-  color: #515044;
-  font-family: 'Raleway', sans-serif;
-}
+// * {
+//   box-sizing: border-box;
 
-.music-player-container {
+//   &:before, &:after {
+//     box-sizing: border-box;
+//   }
+// }
+
+// body {
+//   background-color: #fef29c;
+//   color: #515044;
+//   font-family: 'Raleway', sans-serif;
+// }
+
+.songinfo_infoplay .music-player-container {
   -webkit-transform: translate(-50%, -50%);
   -moz-transform: translate(-50%, -50%);
   -ms-transform: translate(-50%, -50%);
@@ -23,7 +31,7 @@ body {
   display: inline-block;
   height: 370px;
   position: absolute;
-  min-width: 460px;
+  max-width: 650px;
   left: 50%;
   top: 55%;
 
@@ -35,7 +43,7 @@ body {
     content: ' ';
     display: block;
     height: 10px;
-    left: 19px;
+    left: -175px;
     position: absolute;
     transform: rotate(-3deg);
     width: 70%;
@@ -43,17 +51,18 @@ body {
   }
 }
 
-.music-player {
+.songinfo_infoplay .music-player {
   background-color: #fff;
   height: 370px;
   padding: 60px 250px 40px 40px;
   position: absolute;
   text-align: right;
-  width: 460px;
+  width: 500px;
+  right: 250px;
   z-index: 3;
 }
 
-.player-content-container {
+.songinfo_infoplay .player-content-container {
   -webkit-transform: translateY(-50%);
   -moz-transform: translateY(-50%);
   -ms-transform: translateY(-50%);
@@ -63,25 +72,29 @@ body {
   position: relative;
 }
 
-.artist-name {
-  font-size: 28px;
+.songinfo_infoplay .artist-name {
+  // font-size: 28px;
+  @include infoname();
   font-weight: normal;
-  margin: 0 0 0.75em 0;
+  // margin: 0 0 0.75em 0;
+  margin: 0 0 20px 0;
 }
 
-.album-title {
-  font-weight: 200;
-  font-size: 24px;
-  margin: 0 0 1.75em 0;
+// .songinfo_infoplay .album-title {
+//   font-weight: 200;
+//   font-size: 24px;
+//   margin: 0 0 1.75em 0;
+// }
+
+.songinfo_infoplay .song-title {
+  // font-size: 18px;
+  @include infosongtitle();
+  // font-weight: 200;
+  // margin: 0 0 1.5em 0;
+  margin: 0px 0px 30px 0px;
 }
 
-.song-title {
-  font-size: 18px;
-  font-weight: 200;
-  margin: 0 0 1.5em 0;
-}
-
-.album {
+.songinfo_infoplay .album {
   box-shadow: 3px 3px 15px rgba(0, 0, 0, 0.65);
   height: 315px;
   margin-left: 250px;
@@ -91,41 +104,44 @@ body {
   z-index: 10;
 }
 
-.album-art {
-  background: #fff url("https://s3-us-west-2.amazonaws.com/s.cdpn.io/83141/incubus-make-yourself.jpg") (center / cover) no-repeat;
-  height: 315px;
+.songinfo_infoplay .album-art {
+  background: #fff url("../img/songinfo/cover1.jpg") (center / cover) no-repeat;
+  height: 400px;
   position: relative;
-  width: 315px;
+  bottom: 40px;
+  right: 50px;
+  width: 400px;
   z-index: 10;
 }
 
-.vinyl {
+.songinfo_infoplay .vinyl {
   -webkit-animation: spin 2s linear infinite;
   -moz-animation: spin 2s linear infinite;
   animation: spin 2s linear infinite;
   -webkit-transition: all 500ms;
   -moz-transition: all 500ms;
   transition: all 500ms;
-  background-image: url("https://s3-us-west-2.amazonaws.com/s.cdpn.io/83141/vinyl.png"), url("https://s3-us-west-2.amazonaws.com/s.cdpn.io/83141/incubus-make-yourself.jpg");
+  background-image: url("../img/songinfo/player_record.png") !important;
   background-position: center, center;
   background-size: cover, 40% auto;
   background-repeat: no-repeat;
   border-radius: 100%;
-  box-shadow: 0 0 10px rgba(0, 0, 0, 0.8);
-  height: 300px;
+  // box-shadow: 0 0 10px rgba(0, 0, 0, 0.8);
+  height: 350px;
   left: 0;
   position: absolute;
-  top: 5px;
-  width: 300px;
+  top: -15px;
+  // bottom: 0px;
+  width: 350px;
   z-index: 5;
   will-change: transform, left;
 }
 
-.is-playing .vinyl {
+.songinfo_infoplay .is-playing .vinyl {
   left: 52%;
 }
 
-.music-player-controls {
+.songinfo_infoplay .music-player-controls {
   text-align: center;
 }
 
@@ -145,19 +161,27 @@ body {
   }
 }
 
-.control-play {
-  background: transparent url("https://s3-us-west-2.amazonaws.com/s.cdpn.io/83141/play.svg") (center / cover) no-repeat;
+// .songinfo_infoplay .control-play {
+//   background: transparent url("https://s3-us-west-2.amazonaws.com/s.cdpn.io/83141/play.svg") (center / cover) no-repeat;
+// }
+.songinfo_infoplay .control-play {
+  background: transparent url("../img/songinfo/do6bFSIxcx.png") (center / cover) no-repeat;
+  position: relative;
+  left: -70px;
 }
 
-.is-playing .control-play {
-  background: transparent url("https://s3-us-west-2.amazonaws.com/s.cdpn.io/83141/pause.svg") (center / cover) no-repeat;
+// .songinfo_infoplay .is-playing .control-play {
+//   background: transparent url("https://s3-us-west-2.amazonaws.com/s.cdpn.io/83141/pause.svg") (center / cover) no-repeat;
+// }
+.songinfo_infoplay .is-playing .control-play {
+  background: transparent url("../img/songinfo/XThO6FR4Yt.png") (center / cover) no-repeat;
 }
 
-.control-forwards {
+.songinfo_infoplay .control-forwards {
   background: transparent url("https://s3-us-west-2.amazonaws.com/s.cdpn.io/83141/forwards.svg") (center / cover) no-repeat;
 }
 
-.control-back {
+.songinfo_infoplay .control-back {
   background: transparent url("https://s3-us-west-2.amazonaws.com/s.cdpn.io/83141/backwards.svg") (center / cover) no-repeat;
 }
 

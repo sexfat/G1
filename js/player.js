@@ -28,17 +28,17 @@ $(document).ready(function () {
   });
 
   //select選歌單
-  $('#selectBtn').click(function () {
-    $('#lightCover').show();
-    $('#myAllList').show();
+  $('#player .selectBtn').click(function () {
+    $('#player .lightCover').show();
+    $('#player #myAllList').show();
   });
 
   //歌單清單
-  $('#closePlayer').click(function () {
-    $('#lightCover').hide();
+  $('.closeLight').click(function () {
+    $('.lightCover').hide();
     $('#myAllList').hide();
   });
-  $('#lightCover').click(function () {
+  $('.lightCover').click(function () {
     $(this).hide();
     $('#myAllList').hide();
   });
@@ -73,10 +73,11 @@ $(document).ready(function () {
 
 
 
-  /* -- 音樂播放 -- */
+  /* -------------- 音樂播放 -------------- */
   let storage = localStorage;
-  var autoplay = true,
+  var autoplay = false,
     songTime,
+    progressingTime,
     playStatus = false,
     nowPlaying = 0, //現在播放的歌
     audio = $("audio")[0], //撥放器
@@ -103,9 +104,8 @@ $(document).ready(function () {
       }
     ];
 
-  
-  audio.setAttribute("src", myPlaylist[nowPlaying].filein);
-  isAutoPlay(true);//測試
+  $('#player audio').attr("src", myPlaylist[nowPlaying].filein);
+  // isStorageHave();
 
   //播放暫停按鈕 -- 音樂撥放/暫停
   $("#player .play").click(function () {
@@ -117,10 +117,10 @@ $(document).ready(function () {
   //下一首按鈕 -- 切換下一首
   $("#player .next").click(function () {
     if (nowPlaying == myPlaylist.length - 1) {
-      audio.setAttribute("src", myPlaylist[myPlaylist.length - 1].filein);
+      $("#player audio").attr("src", myPlaylist[myPlaylist.length - 1].filein);
     } else {
       nowPlaying++;
-      audio.setAttribute("src", myPlaylist[nowPlaying].filein);
+      $("#player audio").attr("src", myPlaylist[nowPlaying].filein);
     }
     if (playStatus == true) {
       isPlaying(false);
@@ -132,10 +132,10 @@ $(document).ready(function () {
   //上一首按鈕 -- 切換上一首
   $("#player .prev").click(function () {
     if (nowPlaying == 0) {
-      audio.setAttribute("src", myPlaylist[0].filein);
+      $("#player audio").attr("src", myPlaylist[0].filein);
     } else {
       nowPlaying--;
-      audio.setAttribute("src", myPlaylist[nowPlaying].filein);
+      $("#player audio").attr("src", myPlaylist[nowPlaying].filein);
     }
     if (playStatus == true) {
       isPlaying(false);
@@ -152,17 +152,21 @@ $(document).ready(function () {
     $("#player .songCover .listPlay").removeClass('nowlistening');
   });
 
-  //循環播放 -- 單首??未處理
+  //循環播放 -- 單首
   $("#player .loop").click(function () {
     if ($(this).hasClass("becomeYel")) {
       $(this).removeClass("becomeYel");
       audio.loop = false;
+      autoChange(true);
     } else {
       $(this).addClass("becomeYel");
       audio.loop = true;
+      autoChange(false);
     }
   });
   //隨機播放 -- 清單隨機--未處理
+
+  //maybe有靜音 volIcon
 
 
 
@@ -184,15 +188,18 @@ $(document).ready(function () {
     audio.currentTime = newTime_s;
   });
 
+  /* -- local -- */
+  // function isStorageHave() {
+  //   let newSongTime;
+  //   if(storage.length != 0){
+  //     newSongTime = storage.getItem(1);
+  //     console.log(newSongTime);
+  //   }else{
+  //     console.log(newSongTime);
+  //   }
+  // }
 
-  /* -- 自動撥放 --*/
-  function isAutoPlay(autoP){//測試
-    if(autoP){
-      isPlaying(false);
-    }else{
-      isPlaying(true);
-    }
-  }
+
 
   function isPlaying(isPlaying) {
     if (!isPlaying) { //如果沒有播放就讓他撥
@@ -223,24 +230,22 @@ $(document).ready(function () {
   }
 
 
-  
   //進度條
-  var progressingTime = setInterval(progressingShow, 100);
-  let newSong = nowPlaying;//測試
+  progressingTime = setInterval(progressingShow, 100);
+  let newSong = nowPlaying; //測試
   function progressingShow() {
     songTime = audio.currentTime;
     let progressColor = (songTime / audio.duration) * 100;
     if (audio.ended) {
-      autoChange();
+      autoChange(true);
     }
-    /*測試
-    if(newSong == nowPlaying){
-      storage.setItem(newSong, songTime);
-    }else{
-      storage.clear();
-      storage.setItem(nowPlaying, songTime);
-    }
-    */
+    // if(newSong == nowPlaying){
+    //   storage.setItem(newSong, songTime);
+    // }else{
+    //   storage.clear();
+    //   storage.setItem(nowPlaying, songTime);
+    // }
+
     // console.log(audio.duration); //歌曲總長秒數
     $("#player .progress").css("width", `${progressColor.toFixed(2)}%`);
     $("#player span.start").text(`${parseInt(songTime / 60)}:${parseInt(songTime % 60)}`)
@@ -248,18 +253,48 @@ $(document).ready(function () {
   }
 
   //自動換下一首
-  function autoChange() {
-    if (nowPlaying == myPlaylist.length - 1) { 
-      if (audio.ended) {
-        audio.currentTime = 0;
-        isPlaying(true);
+  function autoChange(autoStatus) {
+    if (autoStatus) {
+      if (nowPlaying == myPlaylist.length - 1) {
+        if (audio.ended) {
+          audio.currentTime = 0;
+          isPlaying(true);
+        } else {
+          isPlaying(false);
+        }
       } else {
-        isPlaying(false);
+        if (audio.ended) {
+          nowPlaying++;
+          $("#player audio").attr("src", myPlaylist[nowPlaying].filein);
+          isPlaying(false);
+        }
       }
-    } else {
-      nowPlaying++;
-      audio.setAttribute("src", myPlaylist[nowPlaying].filein);
-      isPlaying(false);
     }
   }
+
+  //清單播放狀態
+  // let NowPlaySong = document.querySelector(".player_s .songInfo .name").innerText;
+  // let listCover = document.querySelectorAll(".player_b .songCover .listPlay");
+  // console.log(NowPlaySong);
+  // console.log(listCover);
+  // console.log(listCover[0].innerHTML);
+  // for(let listNum = 0 ;listNum<myPlaylist.length;listNum++){
+  //   if(myPlaylist[listNum].title == NowPlaySong){
+  //     listCover[listNum].innerHTML ='<i class="fas fa-pause"></i>';
+  //   }else{
+  //     listCover[listNum].innerHTML ='<i class="fas fa-play"></i>';
+  //   }
+  // }
+
+  console.log($(".list .listPlay").text());
+  // if($(".list .listPlay").text()=='<i class="fas fa-pause"></i>'){
+  //   $(this).click(function(){
+  //     isPlaying(false);
+  //   });
+  // }else{
+  //   $(this).click(function(){
+  //     isPlaying(true);
+  //   });
+  // }
+
 });

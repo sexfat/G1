@@ -5,13 +5,18 @@
 	<meta name="viewport" content="width=device-width, initial-scale=1.0">
 	<meta http-equiv="X-UA-Compatible" content="ie=edge">
   <title>Document</title>
-  <link rel="stylesheet" href="./css/login.css">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.11.2/css/all.min.css" />
   <script src="https://cdnjs.cloudflare.com/ajax/libs/vue/2.6.10/vue.js"></script>
   <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
+  <link rel="stylesheet" href="./css/main.css">
 
 </head>
-<body>
+<body class="loginbody">
   <div id="app">
+    <!-- 記得包在 Vue 裡-->
+
+
+    <!-- nav_bar start -->
     <div class="nav_bar flexbox">
         <div class="hamburger" @click="hamburger_click">
             <div class="hamburger-box">
@@ -22,72 +27,75 @@
             <div class="paint_border"></div>
             <ul>
                 <li class="REMIX flexbox">
-                    <a href="">
+                    <a href="./remix.html">
                     </a>
                 </li>
                 <li class="COLLECTION flexbox">
-                    <a href="">
+                    <a href="./collection.html">
                     </a>
                 </li>
                 <li class="ACTIVITY flexbox">
-                    <a href="">
+                    <a href="./activity.html">
                     </a>
                 </li>
                 <li class="LIBRARY flexbox">
-                    <a href="">
+                    <a href="./library.html">
                     </a>
                 </li>
             </ul>
         </div>
         <div class="logo_container">
-            <a href="">
+            <a href="./index.html">
                 <div class="logo"></div>
             </a>
         </div>
         <ul class="main_list flexbox">
             <li class="REMIX flexbox">
-                <a href="">
+                <a href="./remix.html">
                 </a>
             </li>
             <li class="COLLECTION flexbox">
-                <a href="">
+                <a href="./collection.html">
                 </a>
             </li>
             <li class="ACTIVITY flexbox">
-                <a href="">
+                <a href="./activity.html">
                 </a>
             </li>
             <li class="LIBRARY flexbox">
-                <a href="">
+                <a href="./library.html">
                 </a>
             </li>
         </ul>
         <div class="search_bt" @click="search_bt_click">
             <a href="#"></a>
         </div>
-        <div class="search_bar">
+        <div class="search_bar" @click="stopPropagation">
             <input class="search" type="text" />
             <div class="tag_container">
             </div>
         </div>
-        <div class="mem_bt" @click="mem_bt_click">
+        <div class="login_bt" @click="" v-if="mem_login == false">
+            <a class="flexbox" href="#">Login</a>
+        </div>
+        <div class="mem_bt" @click="mem_bt_click" v-if="mem_login == true">
             <a href="#"></a>
         </div>
         <div class="mem_list" @click="stopPropagation">
             <div class="paint_border"></div>
             <ul>
                 <li>
-                    <a href="">
+                    <a href="./profile.html">
                         <h4>Profile</h4>
                     </a>
                 </li>
                 <li>
-                    <a href="">
-                        <h4>Favorite</h4>
+                    <a href="./library.html">
+                        <h4>Library</h4>
                     </a>
                 </li>
                 <li>
-                    <a href="">
+                    <a href="./songsadded.html">
                         <h4>
                             Song Upload
                             <br />&amp; Remove
@@ -95,7 +103,7 @@
                     </a>
                 </li>
                 <li>
-                    <a href="">
+                    <a href="./store.html">
                         <h4>
                             Store Value
                             <br />&amp;Store Record
@@ -109,8 +117,255 @@
                 </li>
             </ul>
         </div>
-
     </div>
+    <!-- nav_bar end -->
+
+
+
+
+    <!-- player start -->
+    <div id="player">
+      <audio src="" id="audioPlayer"></audio>
+      <div class="player_s">
+        <div class="info">
+          <div class="cover"><img src="./img/library/cover1.jpg"></div>
+          <div class="songInfo">
+            <span class="name">Lucid Dreamer</span>
+            <span class="creator">Spazz Cardigan</span>
+          </div>
+          <div class="heart becomeRed"><i class="fas fa-heart"></i></div>
+          <div class="clearfix"></div>
+        </div>
+  
+        <div class="controlPanel">
+          <div class="progressbar">
+            <div class="progress"></div>
+          </div>
+          <div class="time">
+            <span class="start">00:00</span>
+            <span class="end">04:30</span>
+            <div class="clearfix"></div>
+          </div>
+          <div class="btns">
+            <div class="controls">
+              <button class="prev"><i class="fas fa-step-backward"></i></button>
+              <button class="play"><i class="fas fa-play"></i></button>
+              <button class="next"><i class="fas fa-step-forward"></i></button>
+              <button class="stop"><i class="fas fa-stop"></i></button>
+              <button class="rand"><i class="fas fa-random"></i></button>
+              <button class="loop"><i class="fas fa-undo-alt"></i></button>
+              <div class="clearfix"></div>
+            </div>
+            <div class="vol">
+              <div class="volicon"><i class="fas fa-volume-down"></i></div>
+              <div class="volLine">
+                <div class="volControl"></div>
+              </div>
+              <div class="clearfix"></div>
+            </div>
+            <div class="clearfix"></div>
+          </div>
+        </div>
+  
+        <div class="expand" id="expand"><i class="fas fa-expand"></i></div>
+        <div class="clearfix"></div>
+      </div>
+  
+      <!-- 詳細版 -->
+      <div class="player_b">
+        <div class="left">
+          <div class="songCover">
+            <div class="coverImg">
+              <img src="./img/library/cover1.jpg">
+              <div class="coverRec"><img src="./img/library/player_record.png" alt=""></div>
+            </div>
+          </div>
+          <div class="songInfo">
+            <div class="name">Lucid Dreamer</div>
+            <div class="creator">Spazz Cardigan</div>
+            <div class="heart becomeRed"><i class="fas fa-heart"></i></div>
+            <div class="clearfix"></div>
+          </div>
+          <div class="controlPanel">
+            <div class="progressbar">
+              <div class="progress"></div>
+            </div>
+            <div class="time">
+              <span class="start">00:00</span>
+              <span class="end">00:00</span>
+              <div class="clearfix"></div>
+            </div>
+            <div class="btns">
+              <div class="controls">
+                <button class="rand"><i class="fas fa-random"></i></button>
+                <button class="prev"><i class="fas fa-step-backward"></i></button>
+                <button class="play"><i class="fas fa-play"></i></button>
+                <button class="next"><i class="fas fa-step-forward"></i></button>
+                <button class="stop"><i class="fas fa-stop"></i></button>
+                <button class="loop"><i class="fas fa-undo-alt"></i></button>
+                <div class="clearfix"></div>
+              </div>
+              <div class="vol">
+                <div class="volicon"><i class="fas fa-volume-down"></i></div>
+                <div class="volLine">
+                  <div class="volControl"></div>
+                </div>
+                <div class="clearfix"></div>
+              </div>
+              <div class="clearfix"></div>
+            </div>
+          </div>
+          <div class="pushBtn"></div>
+        </div>
+  
+        <div class="right">
+          <div class="pushBtn"></div>
+          <div class="listTitle">
+            <div class="listCover">
+              <img src="./img/library/list_pic1.jpg"></div>
+            <div class="listName">
+              <h2>peaceful list</h2>
+              <span>8 songs</span>
+            </div>
+            <button class="selectBtn" id="selectBtn">SELECT</button>
+            <div class="clearfix"></div>
+          </div>
+          <div class="list">
+            <ul>
+              <li>
+                <div class="songCover">
+                  <img src="./img/library/cover1.jpg" alt="">
+                  <div class="listPlay"><i class="fas fa-play"></i></div>
+                </div>
+                <div class="listSongInfo">
+                  <div class="name">
+                    <h4>Lucid Dreamer</h4>
+                    <p> Spazz Cardigan</p>
+                  </div>
+                </div>
+                <div class="totalTime">3:11</div>
+                <div class="heart becomeRed"><i class="fas fa-heart"></i></div>
+                <div class="clearfix"></div>
+              </li>
+              <li>
+                <div class="songCover">
+                  <img src="./img/library/cover2.jpg" alt="">
+                  <div class="listPlay"><i class="fas fa-play"></i></div>
+                </div>
+                <div class="listSongInfo">
+                  <div class="name">
+                    <h4>Spring In My Step</h4>
+                    <p>Silent Partner</p>
+                  </div>
+                </div>
+                <div class="totalTime">1:59</div>
+                <div class="heart becomeRed"><i class="fas fa-heart"></i></div>
+                <div class="clearfix"></div>
+              </li>
+              <li>
+                <div class="songCover">
+                  <img src="./img/library/cover3.jpg" alt="">
+                  <div class="listPlay"><i class="fas fa-play"></i></div>
+                </div>
+                <div class="listSongInfo">
+                  <div class="name">
+                    <h4>On My Way Home</h4>
+                    <p>The 126ers</p>
+                  </div>
+                </div>
+                <div class="totalTime">1:56</div>
+                <div class="heart becomeRed"><i class="fas fa-heart"></i></div>
+                <div class="clearfix"></div>
+              </li>
+              <li>
+                <div class="songCover">
+                  <img src="./img/library/cover4.jpg" alt="">
+                  <div class="listPlay"><i class="fas fa-play"></i></div>
+                </div>
+                <div class="listSongInfo">
+                  <div class="name">
+                    <h4>Lucid Dreamer</h4>
+                    <p> Spazz Cardigan</p>
+                  </div>
+                </div>
+                <div class="totalTime">4:30</div>
+                <div class="heart becomeRed"><i class="fas fa-heart"></i></div>
+                <div class="clearfix"></div>
+              </li>
+              <li>
+                <div class="songCover">
+                  <img src="./img/library/cover5.jpg" alt="">
+                  <div class="listPlay"><i class="fas fa-play"></i></div>
+                </div>
+                <div class="listSongInfo">
+                  <div class="name">
+                    <h4>Lucid Dreamer</h4>
+                    <p> Spazz Cardigan</p>
+                  </div>
+                </div>
+                <div class="totalTime">4:30</div>
+                <div class="heart becomeRed"><i class="fas fa-heart"></i></div>
+                <div class="clearfix"></div>
+              </li>
+              <li>
+                <div class="songCover">
+                  <img src="./img/library/cover6.jpg" alt="">
+                  <div class="listPlay"><i class="fas fa-play"></i></div>
+                </div>
+                <div class="listSongInfo">
+                  <div class="name">
+                    <h4>Lucid Dreamer</h4>
+                    <p> Spazz Cardigan</p>
+                  </div>
+                </div>
+                <div class="totalTime">4:30</div>
+                <div class="heart becomeRed"><i class="fas fa-heart"></i></div>
+                <div class="clearfix"></div>
+              </li>
+              <li>
+                <div class="songCover">
+                  <img src="./img/library/cover1.jpg" alt="">
+                  <div class="listPlay"><i class="fas fa-play"></i></div>
+                </div>
+                <div class="listSongInfo">
+                  <div class="name">
+                    <h4>Lucid Dreamer</h4>
+                    <p> Spazz Cardigan</p>
+                  </div>
+                </div>
+                <div class="totalTime">4:30</div>
+                <div class="heart becomeRed"><i class="fas fa-heart"></i></div>
+                <div class="clearfix"></div>
+              </li>
+  
+            </ul>
+          </div>
+        </div>
+        <div class="close" id="closePlayer"><i class="fas fa-times"></i></div>
+        <div class="clearfix"></div>
+  
+        <!-- 撥放器燈箱 -->
+        <div class="lightCover">
+          <div class="lightbox_s" id="myAllList">
+            <div class="closeLight"><i class="fas fa-times"></i></div>
+            <h3>My List</h3>
+            <div class="lightSelectMenu">
+              <ul>
+                <li>Liked songs</li>
+                <li>Peaceful songs</li>
+                <li>party</li>
+              </ul>
+            </div>
+            <button class="">ok</button>
+          </div>
+        </div>
+      </div>
+    </div>
+    <!-- player end -->
+
+
+
+
 </div>
   <div class="signupcontainer">
     <div class="greenblock">
@@ -153,8 +408,37 @@
         </div>
       </div>
     </div>
-  <script>
-	$('#signup').click(function() {
+<div id=mobilelogintab>
+  <ul class="motabtitle">
+    <li><a href="#mobilelogintab1">Sign in</a></li>
+    <li><a href="#mobilelogintab2">Register</a></li>
+  </ul>
+  <div id="mobilelogintab1" class="motabinner">
+    <form>
+      <label>E-mail:</label>
+      <input type="text" class="mobileemailinput">
+      <label >Password:</label>
+      <input type="password" >
+      <a href="">forget password?</a>
+      <button>Log in</button>
+    </form>
+  </div>
+  <div id="mobilelogintab2" class="motabinner">
+    <form autocomplete="off">
+              <label>E-mail:</label>
+              <input type="email" class="mobileemailinput">
+              <label>Password:</label>
+              <input type="password" class="mobileemailinput">
+              <label>Confirm password:</label>
+              <input type="password" class="mobileemailinput">
+            <button>Create</button>
+            </form>
+  </div>
+</div>
+
+</body>
+<script>
+  $('#signup').click(function() {
   $('.whiteform').css('transform', 'translateX(80%)');
   $('.signin').addClass('displaynone');
   $('.signup').removeClass('displaynone');
@@ -167,113 +451,457 @@ $('#signin').click(function() {
 });
 </script>
 <script>
-    let vm = new Vue({
-        el: "#app",
-        data: {
-            search_bar: false,
-            mem_list: false,
-            mobile_list: false,
-        },
-        methods: {
-            hamburger_click(e) {
-                // e.stopPropagation();
-                document
-                    .querySelector(".hamburger").classList.toggle("is-active");
-            },
-            search_bt_click(e) {
-                e.stopPropagation();
-                if (this.search_bar == false) {
-                    this.search_bar = true;
-                    this.mem_list = false;
-                    this.mobile_list = false;
-                    document
-                        .querySelector(".search_bar")
-                        .setAttribute("style", "height: 240px; filter: opacity(1);");
-                    document.querySelector("input.search").focus();
-                    document
-                        .querySelector(".mem_list")
-                        .setAttribute("style", "transform: translateX(270px); filter: opacity(0);");
-                    document
-                        .querySelector(".mobile_list")
-                        .setAttribute("style", "transform: translateX(-270px); filter: opacity(0);");
-                } else {
-                    this.search_bar = false;
-                    document
-                        .querySelector(".search_bar")
-                        .setAttribute("style", "height: 0px; filter: opacity(0);");
-                    document.querySelector("input.search").blur();
-                    document
-                        .querySelector(".mem_list")
-                        .setAttribute("style", "transform: translateX(270px); filter: opacity(0);");
-                    document
-                        .querySelector(".mobile_list")
-                        .setAttribute("style", "transform: translateX(-270px); filter: opacity(0);");
-                }
-            },
-
-            stopPropagation(e) {
-                e.stopPropagation();
-            },
-
-            mem_bt_click(e) {
-                e.stopPropagation();
-                if (this.mem_list == false) {
-                    this.mem_list = true;
-                    this.search_bar = false;
-                    this.mobile_list = false;
-                    document
-                        .querySelector(".mem_list")
-                        .setAttribute("style", "transform: translateX(0); filter: opacity(1);");
-                    document
-                        .querySelector(".search_bar")
-                        .setAttribute("style", "height: 0px; filter: opacity(0);");
-                    document
-                        .querySelector(".mobile_list")
-                        .setAttribute("style", "transform: translateX(-270px); filter: opacity(0);");
-                } else {
-                    this.mem_list = false;
-                    document
-                        .querySelector(".mem_list")
-                        .setAttribute("style", "transform: translateX(270px); filter: opacity(0);");
-                    document
-                        .querySelector(".search_bar")
-                        .setAttribute("style", "height: 0px; filter: opacity(0);");
-                    document
-                        .querySelector(".mobile_list")
-                        .setAttribute("style", "transform: translateX(-270px); filter: opacity(0);");
-                }
-            },
-
-            hamburger_click(e) {
-                e.stopPropagation();
-                if (this.mobile_list == false) {
-                    this.mobile_list = true;
-                    this.mem_list = false;
-                    this.search_bar = false;
-                    document
-                        .querySelector(".mobile_list")
-                        .setAttribute("style", "transform: translateX(0); filter: opacity(1);");
-                    document
-                        .querySelector(".mem_list")
-                        .setAttribute("style", "transform: translateX(270px); filter: opacity(0);");
-                    document
-                        .querySelector(".search_bar")
-                        .setAttribute("style", "height: 0px; filter: opacity(0);");
-                } else {
-                    this.mobile_list = false;
-                    document
-                        .querySelector(".mobile_list")
-                        .setAttribute("style", "transform: translateX(-270px); filter: opacity(0);");
-                    document
-                        .querySelector(".mem_list")
-                        .setAttribute("style", "transform: translateX(270px); filter: opacity(0);");
-                    document
-                        .querySelector(".search_bar")
-                        .setAttribute("style", "height: 0px; filter: opacity(0);");
-                }
-            },
-        }
-    });
+$(function(){
+  var $li = $('ul.motabtitle li');
+      $($li. eq(0) .addClass('active').find('a').attr('href')).siblings('.motabinner').hide();
+  
+      $li.click(function(){
+          $($(this).find('a'). attr ('href')).show().siblings ('.motabinner').hide();
+          $(this).addClass('active'). siblings ('.active').removeClass('active');
+      });
+  });
 </script>
-</body>
+<script>
+  new Vue({
+      el: "#app",
+      data: {
+          mobile_list: false,
+          search_bar: false,
+          mem_list: false,
+          mem_login: false,
+          
+      },
+      mounted() {
+          // nav_bar start
+          document.querySelector('.mem_list ul').setAttribute('style', `height: ${window.innerHeight}px;`);
+          document.querySelector('.mobile_list ul').setAttribute('style', `height: ${window.innerHeight}px;`);
+          document.querySelectorAll('.paint_border')[0].setAttribute('style', `height: ${window.innerHeight}px;`);
+          document.querySelectorAll('.paint_border')[1].setAttribute('style', `height: ${window.innerHeight}px;`);
+
+          document.addEventListener('click', () => {
+              this.mem_list = false;
+              this.search_bar = false;
+              this.mobile_list = false;
+
+              document
+                  .querySelector(".search_bar")
+                  .setAttribute("style", "height: 0px; filter: opacity(0);");
+              document
+                  .querySelector(".mem_list")
+                  .setAttribute("style", "transform: translateX(270px); filter: opacity(0);");
+              document
+                  .querySelector(".mobile_list")
+                  .setAttribute("style", "transform: translateX(-270px); filter: opacity(0);");
+          });
+          // nav_bar end
+
+
+
+          // player start
+          $(document).ready(function () {
+  //撥放器縮放
+  $('#expand').click(function () {
+    $('.player_b').addClass('open');
+    $('.player_s').animate({
+      bottom: '-70px'
+    });
+  });
+  $('#closePlayer').click(function () {
+    $('.player_b').removeClass('open');
+    $('.player_s').animate({
+      bottom: '0'
+    });
+  });
+
+  //手機推移
+  $('.left .pushBtn').click(function () {
+    $('.left').css('height', '10%');
+    $('.right').css('height', '90%');
+    $('.right .pushBtn').show();
+    $('.left .pushBtn').hide();
+  });
+  $('.right .pushBtn').click(function () {
+    $('.left').css('height', '90%');
+    $('.right').css('height', '10%');
+    $('.left .pushBtn').show();
+    $('.right .pushBtn').hide();
+  });
+
+  //select選歌單
+  $('#player .selectBtn').click(function () {
+    $('#player .lightCover').show();
+    $('#player #myAllList').show();
+  });
+
+  //歌單清單
+  $('.closeLight').click(function () {
+    $('.lightCover').hide();
+    $('#myAllList').hide();
+  });
+  $('.lightCover').click(function () {
+    $(this).hide();
+    $('#myAllList').hide();
+  });
+
+  //點愛心
+  $('.heart').click(function () {
+    if ($(this).hasClass('becomeRed')) {
+      $(this).html('<i class="far fa-heart"></i>').removeClass('becomeRed');
+    } else {
+      $(this).html('<i class="fas fa-heart"></i>').addClass('becomeRed');
+    }
+  });
+
+  //點歌單撥放，左側專輯唱片動畫
+  $('.songCover').mouseover(function () {
+    $(this).find('.listPlay').show();
+  });
+  $('.songCover').mouseout(function () {
+    $(this).find('.listPlay').hide();
+  });
+
+  $(".listPlay").click(function () {
+    if ($(this).hasClass('nowlistening')) {
+      $(this).html('<i class="fas fa-play"></i>').removeClass("nowlistening");
+      isPlaying(true);
+    } else {
+      $(this).html('<i class="fas fa-pause"></i>').addClass("nowlistening");
+      $("#player .songCover .listPlay").not(this).removeClass('nowlistening');
+      isPlaying(false);
+    }
+  });
+
+
+
+  /* -------------- 音樂播放 -------------- */
+  let storage = localStorage;
+  var autoplay = false,
+    songTime,
+    progressingTime,
+    playStatus = false,
+    nowPlaying = 0, //現在播放的歌
+    audio = $("audio")[0], //撥放器
+    myPlaylist = [{
+        title: "Lucid Dreamer",
+        creator: "Spazz Cardigan",
+        cover: "../img/library/cover1.jpg",
+        filein: "../img/library/Lucid_Dreamer.mp3",
+        totalTime: "3:11",
+      },
+      {
+        title: "Spring In My Step",
+        creator: "Silent Partner",
+        cover: "../img/library/cover2.jpg",
+        filein: "../img/library/Spring_In_My_Step.mp3",
+        totalTime: "1:59",
+      },
+      {
+        title: "On My Way Home",
+        creator: "The 126ers",
+        cover: "../img/library/cover3.jpg",
+        filein: "../img/library/On_My_Way_Home.mp3",
+        totalTime: "1:56",
+      }
+    ];
+
+  $('#player audio').attr("src", myPlaylist[nowPlaying].filein);
+  // isStorageHave();
+
+  //播放暫停按鈕 -- 音樂撥放/暫停
+  $("#player .play").click(function () {
+    // console.log(nowPlaying);
+    // console.log(playStatus);
+    isPlaying(playStatus);
+  });
+
+  //下一首按鈕 -- 切換下一首
+  $("#player .next").click(function () {
+    if (nowPlaying == myPlaylist.length - 1) {
+      $("#player audio").attr("src", myPlaylist[myPlaylist.length - 1].filein);
+    } else {
+      nowPlaying++;
+      $("#player audio").attr("src", myPlaylist[nowPlaying].filein);
+    }
+    if (playStatus == true) {
+      isPlaying(false);
+    } else {
+      isPlaying(true);
+    }
+  });
+
+  //上一首按鈕 -- 切換上一首
+  $("#player .prev").click(function () {
+    if (nowPlaying == 0) {
+      $("#player audio").attr("src", myPlaylist[0].filein);
+    } else {
+      nowPlaying--;
+      $("#player audio").attr("src", myPlaylist[nowPlaying].filein);
+    }
+    if (playStatus == true) {
+      isPlaying(false);
+    } else {
+      isPlaying(true);
+    }
+  });
+
+  //停止按鈕 -- 音樂全數停止
+  $("#player .stop").click(function () {
+    audio.pause();
+    audio.currentTime = 0;
+    isPlaying(true);
+    $("#player .songCover .listPlay").removeClass('nowlistening');
+  });
+
+  //循環播放 -- 單首
+  $("#player .loop").click(function () {
+    if ($(this).hasClass("becomeYel")) {
+      $(this).removeClass("becomeYel");
+      audio.loop = false;
+      autoChange(true);
+    } else {
+      $(this).addClass("becomeYel");
+      audio.loop = true;
+      autoChange(false);
+    }
+  });
+  //隨機播放 -- 清單隨機--未處理
+
+  //maybe有靜音 volIcon
+
+
+
+  //clickBar -- 詳細(b)/簡易(s)
+  $(".player_b .progressbar").click(function (e) {
+    let progressBarSize_b = parseInt($(".player_b .progressbar").css("width"));
+    let mouseX_b = e.clientX - $(".player_b .progressbar").offset().left;
+    $(".player_b .progressbar .progress").css('width', `${mouseX_b}px`);
+
+    let newTime_b = mouseX_b / (progressBarSize_b / audio.duration);
+    audio.currentTime = newTime_b;
+  });
+  $(".player_s .progressbar").click(function (e) {
+    let progressBarSize_s = parseInt($(".player_s .progressbar").css("width"));
+    let mouseX_s = e.clientX - $(".player_s .progressbar").offset().left;
+    $(".player_s .progressbar .progress").css('width', `${mouseX_s}px`);
+
+    let newTime_s = mouseX_s / (progressBarSize_s / audio.duration);
+    audio.currentTime = newTime_s;
+  });
+
+  /* -- local -- */
+  // function isStorageHave() {
+  //   let newSongTime;
+  //   if(storage.length != 0){
+  //     newSongTime = storage.getItem(1);
+  //     console.log(newSongTime);
+  //   }else{
+  //     console.log(newSongTime);
+  //   }
+  // }
+
+
+
+  function isPlaying(isPlaying) {
+    if (!isPlaying) { //如果沒有播放就讓他撥
+      playAudio();
+      $("#player .play").html('<i class="fas fa-pause"></i>');
+      $("#player .player_b .coverRec").animate({
+        right: "-50%",
+        opacity: "1"
+      }, "fast", "swing").addClass("recRotate");
+      playStatus = true;
+      // console.log(playStatus);
+    } else {
+      audio.pause();
+      $("#player .play").html('<i class="fas fa-play"></i>');
+      playStatus = false;
+      $("#player .player_b .coverRec").animate({
+        right: "0%"
+      }).removeClass("recRotate");
+      // console.log(playStatus);
+    }
+    $("#player .songInfo .name").text(myPlaylist[nowPlaying].title);
+    $("#player .songInfo .creator").text(myPlaylist[nowPlaying].creator);
+  }
+
+  //播放
+  function playAudio() {
+    audio.play();
+  }
+
+
+  //進度條
+  progressingTime = setInterval(progressingShow, 100);
+  let newSong = nowPlaying; //測試
+  function progressingShow() {
+    songTime = audio.currentTime;
+    let progressColor = (songTime / audio.duration) * 100;
+    if (audio.ended) {
+      autoChange(true);
+    }
+    // if(newSong == nowPlaying){
+    //   storage.setItem(newSong, songTime);
+    // }else{
+    //   storage.clear();
+    //   storage.setItem(nowPlaying, songTime);
+    // }
+
+    // console.log(audio.duration); //歌曲總長秒數
+    $("#player .progress").css("width", `${progressColor.toFixed(2)}%`);
+    $("#player span.start").text(`${parseInt(songTime / 60)}:${parseInt(songTime % 60)}`)
+    $("#player span.end").text(myPlaylist[nowPlaying].totalTime);
+  }
+
+  //自動換下一首
+  function autoChange(autoStatus) {
+    if (autoStatus) {
+      if (nowPlaying == myPlaylist.length - 1) {
+        if (audio.ended) {
+          audio.currentTime = 0;
+          isPlaying(true);
+        } else {
+          isPlaying(false);
+        }
+      } else {
+        if (audio.ended) {
+          nowPlaying++;
+          $("#player audio").attr("src", myPlaylist[nowPlaying].filein);
+          isPlaying(false);
+        }
+      }
+    }
+  }
+
+  //清單播放狀態
+  // let NowPlaySong = document.querySelector(".player_s .songInfo .name").innerText;
+  // let listCover = document.querySelectorAll(".player_b .songCover .listPlay");
+  // console.log(NowPlaySong);
+  // console.log(listCover);
+  // console.log(listCover[0].innerHTML);
+  // for(let listNum = 0 ;listNum<myPlaylist.length;listNum++){
+  //   if(myPlaylist[listNum].title == NowPlaySong){
+  //     listCover[listNum].innerHTML ='<i class="fas fa-pause"></i>';
+  //   }else{
+  //     listCover[listNum].innerHTML ='<i class="fas fa-play"></i>';
+  //   }
+  // }
+
+  console.log($(".list .listPlay").text());
+  // if($(".list .listPlay").text()=='<i class="fas fa-pause"></i>'){
+  //   $(this).click(function(){
+  //     isPlaying(false);
+  //   });
+  // }else{
+  //   $(this).click(function(){
+  //     isPlaying(true);
+  //   });
+  // }
+
+});
+          // player end
+
+
+      },
+      methods: {
+          // nav_bar
+          hamburger_click(e) {
+              // e.stopPropagation();
+              document
+                  .querySelector(".hamburger").classList.toggle("is-active");
+          },
+          search_bt_click(e) {
+              e.stopPropagation();
+              if (this.search_bar == false) {
+                  this.search_bar = true;
+                  this.mem_list = false;
+                  this.mobile_list = false;
+                  document
+                      .querySelector(".search_bar")
+                      .setAttribute("style", "height: 240px; filter: opacity(1);");
+                  document.querySelector("input.search").focus();
+                  document
+                      .querySelector(".mem_list")
+                      .setAttribute("style", "transform: translateX(270px); filter: opacity(0);");
+                  document
+                      .querySelector(".mobile_list")
+                      .setAttribute("style", "transform: translateX(-270px); filter: opacity(0);");
+              } else {
+                  this.search_bar = false;
+                  document
+                      .querySelector(".search_bar")
+                      .setAttribute("style", "height: 0px; filter: opacity(0);");
+                  document.querySelector("input.search").blur();
+                  document
+                      .querySelector(".mem_list")
+                      .setAttribute("style", "transform: translateX(270px); filter: opacity(0);");
+                  document
+                      .querySelector(".mobile_list")
+                      .setAttribute("style", "transform: translateX(-270px); filter: opacity(0);");
+              }
+          },
+
+          stopPropagation(e) {
+              e.stopPropagation();
+          },
+
+          mem_bt_click(e) {
+              e.stopPropagation();
+              if (this.mem_list == false) {
+                  this.mem_list = true;
+                  this.search_bar = false;
+                  this.mobile_list = false;
+                  document
+                      .querySelector(".mem_list")
+                      .setAttribute("style", "transform: translateX(0); filter: opacity(1);");
+                  document
+                      .querySelector(".search_bar")
+                      .setAttribute("style", "height: 0px; filter: opacity(0);");
+                  document
+                      .querySelector(".mobile_list")
+                      .setAttribute("style", "transform: translateX(-270px); filter: opacity(0);");
+              } else {
+                  this.mem_list = false;
+                  document
+                      .querySelector(".mem_list")
+                      .setAttribute("style", "transform: translateX(270px); filter: opacity(0);");
+                  document
+                      .querySelector(".search_bar")
+                      .setAttribute("style", "height: 0px; filter: opacity(0);");
+                  document
+                      .querySelector(".mobile_list")
+                      .setAttribute("style", "transform: translateX(-270px); filter: opacity(0);");
+              }
+          },
+
+          hamburger_click(e) {
+              e.stopPropagation();
+              if (this.mobile_list == false) {
+                  this.mobile_list = true;
+                  this.mem_list = false;
+                  this.search_bar = false;
+                  document
+                      .querySelector(".mobile_list")
+                      .setAttribute("style", "transform: translateX(0); filter: opacity(1);");
+                  document
+                      .querySelector(".mem_list")
+                      .setAttribute("style", "transform: translateX(270px); filter: opacity(0);");
+                  document
+                      .querySelector(".search_bar")
+                      .setAttribute("style", "height: 0px; filter: opacity(0);");
+              } else {
+                  this.mobile_list = false;
+                  document
+                      .querySelector(".mobile_list")
+                      .setAttribute("style", "transform: translateX(-270px); filter: opacity(0);");
+                  document
+                      .querySelector(".mem_list")
+                      .setAttribute("style", "transform: translateX(270px); filter: opacity(0);");
+                  document
+                      .querySelector(".search_bar")
+                      .setAttribute("style", "height: 0px; filter: opacity(0);");
+              }
+          },
+      }
+  });
+</script>
 </html>
