@@ -437,6 +437,7 @@
             <ol class="songsadded_inside">
                 <form action="" method="POST">
                     <article>
+                        <br>
                         <p style="width: 100px;height: 100px;">
                             <img id="image" style="width: 300px;height: 300px;">
                         </p>
@@ -450,11 +451,9 @@
                                 style="border: 1px solid #d0d6d6;width:350px;height:28px;background-color: #d0d6d6;">
                         </p>
                         <div id="infopath">
-                            <p  class="songsadd_path" v-if="infopathURL">{{infopathURL}}</p>
+                            <p  class="songsadd_path" >{{infopathURL}}</p>
                             <input type="file" name="" id="songinfo_btn" @change="changeSignUpload" style="display: none;">
-                            <div class="songinfo_nn">
                                 <label class="songinfo_bb" for="songinfo_btn">choose</label>
-                            </div>
                         </div>
                         <br>
                         <input type="checkbox" name="" id="">House&emsp;&emsp;&emsp;&ensp;&ensp;&ensp;

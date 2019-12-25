@@ -6035,7 +6035,7 @@ header {
 
 .songsadded_inside div {
   width: 500px;
-  height: 320px;
+  height: 300px;
   position: relative;
   right: -100px;
   top: 0px;
@@ -6192,22 +6192,23 @@ header {
   border: 1.5px solid #f1c40f;
   cursor: pointer;
   position: relative;
-  top: -3px;
-  right: 0px;
+  top: -32px;
+  right: -300px;
 }
 
 #infopath {
   width: 400px;
-  height: 10px;
+  height: 5px;
 }
 
-.songinfo_nn {
+.songsadd_path {
   border: 1px solid #d0d6d6;
   background-color: #d0d6d6;
-  width: 470px !important;
-  height: 10px !important;
+  width: 390px !important;
+  height: 30px !important;
   position: relative;
   left: -100px;
+  overflow: hidden;
 }
 
 .profile_content {
