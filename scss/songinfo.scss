@@ -30,7 +30,7 @@
 .songinfo_infos3 p{
     // border: 1px solid blue;
     width: 130px;
-    font-size: 1.2rem;
+    font-size: 2rem;
     // @include infos2p();
     font-weight: bold;
     
@@ -60,8 +60,9 @@
     // border: 1px solid blue;
     height: 90vh;
 }
-.songinfo_infos4 h4{
+.songinfo_infos4 h3{
     font-weight: bold;
+    font-size: 2rem;
 }
 .songinfo_infos4 .message{
     // border: 1px solid palevioletred;
@@ -74,10 +75,10 @@
     margin: 0 auto;
 }
 .songinfo_infos4 .mess_write{
-    // border: 1px solid black;
+    border: 1px solid black;
     width: 1000px;
     margin: 0 auto;
-    padding: 0px 50px;
+    // padding: 0px 50px;
 }
 .songinfo_infos5{
     height: 200px;
