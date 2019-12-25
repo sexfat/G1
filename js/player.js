@@ -281,7 +281,7 @@ $(document).ready(function () {
     // console.log(listCover);
     // console.log(listCover[0].innerHTML);
 
-    if(playStatus == false){
+    console.log("0");
       for (let listNum = 0; listNum < myPlaylist.length; listNum++) {
         if (myPlaylist[listNum].title == NowPlaySong) {
           listCover[listNum].innerHTML = '<i class="fas fa-pause"></i>';
@@ -291,18 +291,19 @@ $(document).ready(function () {
           listCover[listNum].classList.remove("now");
         }
       }
-    }
-    
   }
 
-  $(".listPlay .now").click (function () {
-    console.log("2");
-    if (playStatus == true) {
-      isPlaying(false);
-    } else {
-      isPlaying(true);
-    }
-  });
+  // $(".listPlay .now").click (function () {
+  //   console.log("2");
+  //   if (playStatus == true) {
+  //     isPlaying(false);
+  //   } else {
+  //     isPlaying(true);
+  //   }
+  // });
+  // $(".listPlay").not(".listPlay .now").click (function () {
+  //   console.log("1");
+  // });
 
 
 });
