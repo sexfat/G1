@@ -5,10 +5,10 @@
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <meta http-equiv="X-UA-Compatible" content="ie=edge">
-  <!-- <link rel="stylesheet" href="./scss/main.css"> -->
-  <link rel="stylesheet" href="./css/store.css">
-
+  <link rel="stylesheet" href="./css/main.css">
+  <!-- <link rel="stylesheet" href="./css/store.css"> -->
   <script src='https://cdnjs.cloudflare.com/ajax/libs/jquery/3.4.1/jquery.js'></script>
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.11.2/css/all.min.css" />
   <title>Document</title>
 </head>
 
@@ -122,220 +122,467 @@
     <img src="./img/member/RESTORE.png" alt="">
   </header>
   <div id="store_app">
-    <div class="wrapper ">
-      <img src="./img/member/color1.png" class="color1">
-      <!-- <img src="./img/member/color2.png" class="color2"> -->
-      <div class="stepCount">
-        <div class="rowCount">
-          <div class="count">
-            <!-- <img src="./img/member/step1.png"> -->
-            <img src="./img/member/step1_color.png" v-if="step >= 1">
-            <!-- <img src="./img/member/step_color.png" class="step_color"> -->
-          </div>
-          <div class="count">
-            <img src="./img/member/step2.png" v-if="step < 2">
-            <img src="./img/member/step2_color.png" v-if="step >= 2">
-          </div>
-          <div class="count">
-            <img src="./img/member/step3.png" v-if="step < 3">
-            <img src="./img/member/step3_color.png" v-if="step >= 3">
-          </div>
-          <div class="count">
-            <img src="./img/member/step4.png" v-if="step < 4">
-            <img src="./img/member/step4_color.png" v-if="step >= 4">
+    <div class="store_big_box">
+      <div class="wrapper store_wrapper">
+        <img src="./img/member/color1.png" class="store_color1">
+        <!-- <img src="./img/member/color2.png" class="color2"> -->
+        <div class="store_stepCount">
+          <div class="rowCount">
+            <div class="count col-xl-3">
+              <!-- <img src="./img/member/step1.png"> -->
+              <img src="./img/member/step1_color.png" v-if="step >= 1">
+              <!-- <img src="./img/member/step_color.png" class="step_color"> -->
+            </div>
+            <div class="count col-xl-3">
+              <img src="./img/member/step2.png" v-if="step < 2">
+              <img src="./img/member/step2_color.png" v-if="step >= 2">
+            </div>
+            <div class="count col-xl-3">
+              <img src="./img/member/step3.png" v-if="step < 3">
+              <img src="./img/member/step3_color.png" v-if="step >= 3">
+            </div>
+            <div class="count col-xl-3">
+              <img src="./img/member/step4.png" v-if="step < 4">
+              <img src="./img/member/step4_color.png" v-if="step >= 4">
+            </div>
           </div>
         </div>
-      </div>
-      <div class="stepFlow">
-        <div class="step" v-if="step == 1">
-          <img src="./img/member/color2.png" class="color2">
-          <div class="choose_money">
-
-            <h2>Select Amount</h2>
-            <div class="rowpick">
-              <div class="money">
-                <div :class="{select_money: true,select_money_margin: true,active:isActive == 1}"
-                  @click="isActive = 1;choose_money = 100">
-                  <img src="./img/member/choose_money.png" v-if="isActive !== 1">
-                  <img src="./img/member/choose_money_blue.png" v-if="isActive == 1">
-                  <p>100$</p>
-
+        <div class="store_stepFlow">
+          <div class="store_step" v-if="step == 1">
+            <div class="step choose_money">
+              <img src="./img/member/color2.png" class="color2">
+              <h2 class="store_h2">Select Amount</h2>
+              <div class="rowpick">
+                <div class="store_money col-xl-3 col-sm-6">
+                  <div :class="{select_money: true,select_money_margin: true,active:isActive == 1}"
+                    @click="isActive = 1;choose_money = 100">
+                    <img src="./img/member/choose_money.png" v-if="isActive !== 1">
+                    <img src="./img/member/choose_money_blue.png" v-if="isActive == 1">
+                    <p class="poa_center">100$</p>
+                  </div>
+                </div>
+                <div class="store_money col-xl-3 col-sm-6">
+                  <div :class="{select_money: true,active:isActive == 2}" @click="isActive = 2;choose_money = 300">
+                    <img src="./img/member/choose_money.png" v-if="isActive !== 2">
+                    <img src="./img/member/choose_money_blue.png" v-if="isActive == 2">
+                    <p class="poa_center">300$</p>
+                  </div>
+                </div>
+                <div class="store_money col-xl-3 col-sm-6">
+                  <div :class="{select_money: true,select_money_margin: true,active:isActive == 3}"
+                    @click="isActive = 3;choose_money = 500">
+                    <img src="./img/member/choose_money.png" v-if="isActive !== 3">
+                    <img src="./img/member/choose_money_blue.png" v-if="isActive == 3">
+                    <p class="poa_center">500$</p>
+                  </div>
+                </div>
+                <div class="store_money col-xl-3 col-sm-6">
+                  <div :class="{select_money: true,active:isActive == 4}" @click="isActive = 4;choose_money = 1000">
+                    <img src="./img/member/choose_money.png" v-if="isActive !== 4">
+                    <img src="./img/member/choose_money_blue.png" v-if="isActive == 4">
+                    <p class="poa_center">1000$</p>
+                  </div>
                 </div>
               </div>
-              <div class="money">
-                <div :class="{select_money: true,active:isActive == 2}" @click="isActive = 2;choose_money = 300">
-                  <img src="./img/member/choose_money.png" v-if="isActive !== 2">
-                  <img src="./img/member/choose_money_blue.png" v-if="isActive == 2">
-                  <p>300$</p>
-                </div>
-              </div>
-              <div class="money">
-                <div :class="{select_money: true,select_money_margin: true,active:isActive == 3}"
-                  @click="isActive = 3;choose_money = 500">
-                  <img src="./img/member/choose_money.png" v-if="isActive !== 3">
-                  <img src="./img/member/choose_money_blue.png" v-if="isActive == 3">
-                  <p>500$</p>
-                </div>
-              </div>
-              <div class="money">
-                <div :class="{select_money: true,active:isActive == 4}" @click="isActive = 4;choose_money = 1000">
-                  <img src="./img/member/choose_money.png" v-if="isActive !== 4">
-                  <img src="./img/member/choose_money_blue.png" v-if="isActive == 4">
-                  <p>1000$</p>
-                </div>
-              </div>
-              <div class="button">
+              <div class="store_button">
                 <div class="btn_s" @click="step = 2">
                   <p>Next</p>
                 </div>
               </div>
             </div>
           </div>
-        </div>
-        <div class="step" v-if="step == 2">
-          <img src="./img/member/color2.png" class="color2">
-          <div class="enter_card">
-            <h2>Enter card number</h2>
-            <!-- <img  class="moneybox" src="./img/member/selectbox.png"> -->
-            <div class="enter mem">
-              <div class="mem_info">
-                <h4>Stored value</h4>
-                <div class="stored_value">
-                  <img src="./img/member/choose_money.png">
-                  <h3>${{choose_money}}</h3>
+          <div class="store_step" v-if="step == 2">
+            <div class="step enter_card">
+              <img src="./img/member/color2.png" class="color2">
+              <h2 class="store_h2">Enter card number</h2>
+              <!-- <img  class="moneybox" src="./img/member/selectbox.png"> -->
+              <div class="enter mem col-xl-3 col-md-4 col-sm-8 col-10">
+                <div class="mem_info">
+                  <h4 class="store_h4">Stored value</h4>
+                  <div class="stored_value">
+                    <img src="./img/member/choose_money.png">
+                    <h3 class="store_h3 poa_center">${{choose_money}}</h3>
+                  </div>
                 </div>
               </div>
-            </div>
-            <div class="enter enterNumber">
-              <div class="input">
-                <h6>CARD NUMBER</h6>
-                <input type="text" v-model="card_infos.card_number" maxlength="16" placeholder="4444 4444 4444 4444">
-              </div>
-              <div class="input">
-                <h6>CVC</h6>
-                <input type="text" v-model="card_infos.cvc" maxlength="3" placeholder="444">
-              </div>
-              <div class="input">
-                <h6>VALID THROUGH</h6>
-                <input type="date" v-model="card_infos.vaild_through" placeholder="06/21">
-              </div>
-            </div>
-
-            <div class="button">
-              <div class="press">
-                <div class="btn_s">
-                  <p @click="step=1">back</p>
+              <div class="enter enterNumber flexbox col-xl-7 col-md-6 col-sm-8 col-10">
+                <div class="store_input">
+                  <h6 class="store_h6">CARD NUMBER</h6>
+                  <input type="text" v-model="card_infos.card_number" maxlength="16" placeholder="4444 4444 4444 4444">
                 </div>
-              </div>
-              <div class="press">
-                <div class="btn_s">
-                  <p @click="step=3">Next</p>
+                <div class="store_input">
+                  <h6 class="store_h6">CVC</h6>
+                  <input type="text" v-model="card_infos.cvc" maxlength="3" placeholder="444">
+                </div>
+                <div class="store_input">
+                  <h6 class="store_h6">VALID THROUGH</h6>
+                  <input type="date" v-model="card_infos.vaild_through" placeholder="06/21">
                 </div>
               </div>
 
+              <div class="store_button">
+                <div class="press col-xl-4 col-6">
+                  <div class="btn_s">
+                    <p @click="step=1">Back</p>
+                  </div>
+                </div>
+                <div class="press col-xl-4 col-6">
+                  <div class="btn_s">
+                    <p @click="step=3">Next</p>
+                  </div>
+                </div>
+
+              </div>
+            </div>
+          </div>
+          <div class="store_step" v-if="step==3">
+            <div class="step comfirm_detail">
+              <img src="./img/member/color2.png" class="color2">
+              <h2 class="store_h2">Confirm details</h2>
+              <div class="detail col-xl-10">
+                <p class="store_p"><span class="card_class col-xl-3 col-md-5 col-sm-6 col-7">Stored
+                    value:</span><span>${{ choose_money }}</span></p>
+                <p class="store_p"><span class="card_class col-xl-3 col-md-5 col-sm-6 col-7">Card number:
+                  </span><span>{{ card_infos.card_number }}</span>
+                </p>
+                <p class="store_p"><span class="card_class col-xl-3 col-md-5 col-sm-6 col-7">CVC:
+                  </span><span>{{ card_infos.cvc }}</span></p>
+                <p class="store_p"><span class="card_class col-xl-3 col-md-5 col-sm-6 col-7">Vaild through:
+                  </span><span>{{ card_infos.vaild_through }}</span></p>
+              </div>
+              <div class="store_button">
+                <div class="press col-xl-4 col-6">
+                  <div class="btn_s step3">
+                    <p @click="step = 2">Back</p>
+                  </div>
+                </div>
+                <div class="press col-xl-4 col-6">
+                  <div class="btn_s step3">
+                    <p @click="step = 4">Checkout</p>
+                  </div>
+                </div>
+
+              </div>
+            </div>
+          </div>
+          <div class="store_step" v-if="step == 4">
+            <div class="step done">
+              <img src="./img/member/color2.png" class="color2">
+              <h2 class="store_h2">Done</h2>
+              <div class="store_success col-xl-10">
+                <div class="success_info col-xl-11 col-12">
+                  <p>Stored value successfully</p>
+                  <p>Your Point: 1100</p>
+                </div>
+                <img src="./img/member/sound.png" alt="">
+              </div>
+              <div class="store_button">
+                <div class="btn_s store_back_home" @click="step = 3">
+                  <p>Back home</p>
+                </div>
+              </div>
             </div>
           </div>
         </div>
-        <div class="step" v-if="step==3">
-          <img src="./img/member/color2.png" class="color2">
-          <div class="comfirm_detail">
-            <h2>Confirm details</h2>
-            <div class="detail">
-              <p><span class="card_class">Stored value:</span><span>${{ choose_money }}</span></p>
-              <p><span class="card_class">Card number: </span><span>{{ card_infos.card_number }}</span>
-              </p>
-              <p><span class="card_class">CVC: </span><span>{{ card_infos.cvc }}</span></p>
-              <p><span class="card_class">Vaild through:
-                </span><span>{{ card_infos.vaild_through }}</span></p>
-            </div>
-            <div class="button">
-              <div class="press">
-                <div class="btn_s">
-                  <p @click="step = 2">Back</p>
+        <div class="store_support">
+          <h2 class="store_h2">Trade Record</h2>
+          <div class="store_box">
+            <div class="phone_member_info col-md-12 col-sm-12">
+              <div class="pic col-md-4 col-sm-10"><img src="./img/member/gem.jpg"></div>
+              <div class="meminfos col-md-6 col-sm-6 col-10">
+                <div class="flexbox">
+                  <p>MemberID: 21468</p>
+                  <p>MemberName: G.E.M</p>
+                  <p>Points: 1021</p>
                 </div>
               </div>
-              <div class="press">
-                <div class="btn_s">
-                  <p @click="step = 4">Checkout</p>
+            </div>
+            <div class="member_info col-xl-3">
+              <!-- <img class="mp3" src="./img/member/mp3.png"> -->
+              <img class="gem" src="./img/member/gem.jpg">
+              <div class="member">
+                <div class="member_detail">
+                  <p>MemberID: 21468</p>
+                  <p>MemberName: G.E.M</p>
+                  <p>Points: 1021</p>
                 </div>
               </div>
-
             </div>
-          </div>
-        </div>
-        <div class="step" v-if="step == 4">
-          <img src="./img/member/color2.png" class="color2">
-          <h2>Done</h2>
-          <div class="done">
-            <div class="success">
-              <div class="success_info">
-                <p>Stored value successfully</p>
-                <p>Your Point: 1100</p>
-              </div>
-              <img src="./img/member/sound.png" alt="">
-            </div>
-            <div class="button">
-              <div class="btn_s" @click="step = 3">
-                <p>Back home</p>
-              </div>
-            </div>
-          </div>
-        </div>
-      </div>
-
-      <div class="support">
-        <h2>Trade Record</h2>
-        <div class="box">
-          <div class="phone_member_info">
-            <div class="pic col-4 col-sm-10"><img src="./img/member/gem.jpg"></div>
-            <div class="meminfos col-6 col-sm-10">
-              <p>MemberID: 21468</p>
-              <p>MemberName: G.E.M</p>
-              <p>Points: 1021</p>
-            </div>
-          </div>
-          <div class="member_info">
-            <!-- <img class="mp3" src="./img/member/mp3.png"> -->
-            <img class="gem" src="./img/member/gem.jpg">
-            <div class="member">
-              <div class="member_detail">
-                <p>MemberID: 21468</p>
-                <p>MemberName: G.E.M</p>
-                <p>Points: 1021</p>
-              </div>
-            </div>
-          </div>
-          <div class="support_history">
-            <div class="table">
-              <div class="th">
-                <div class="col-3 col-sm-5 td" style="border-radius: 5px 0 0 0;">Trade no</div>
-                <div class="col-4 col-sm-6 td" style="">Cost</div>
-                <div class="col-5 date td" style="border-radius: 0 5px 0 0;">Date</div>
-              </div>
-              <div class="tbody">
-                <div v-for="item in history" class="tr">
-                  <div class="col-3 col-sm-6 td">{{item.no}}</div>
-                  <div class="col-4 col-sm-6 td">${{item.cost}}</div>
-                  <div class="col-5 date td">{{item.date}}</div>
+            <div class="support_history col-xl-8 col-md-12">
+              <div class="table">
+                <div class="th">
+                  <div class="col-xl-3 col-sm-3 col-6 td" style="border-radius: 5px 0 0 0;">Trade no</div>
+                  <div class="col-xl-4 col-sm-4 col-6 td" style="">Cost</div>
+                  <div class="col-xl-5 col-sm-5 date td" style="border-radius: 0 5px 0 0;">Date</div>
                 </div>
-              </div>
+                <div class="tbody">
+                  <div v-for="item in history" class="tr">
+                    <div class="col-xl-3 col-sm-3 col-6 td">{{item.no}}</div>
+                    <div class="col-xl-4 col-sm-4 col-6 td">${{item.cost}}</div>
+                    <div class="col-xl-5 col-sm-5 date td">{{item.date}}</div>
+                  </div>
+                </div>
 
+              </div>
             </div>
           </div>
-        </div>
 
+        </div>
       </div>
     </div>
 
+
     <!--  ↓↓↓↓↓  Code Here  ↓↓↓↓↓  -->
+  </div>
+  <div id="player"> class="store_h4"
+    <audio src="" id="audioPlayer"></audio>
+    <div class="player_s">
+      <div class="info">
+        <div class="cover"><img src="./img/library/cover1.jpg"></div>
+        <div class="songInfo">
+          <span class="name">Lucid Dreamer</span>
+          <span class="creator">Spazz Cardigan</span>
+        </div>
+        <div class="heart becomeRed"><i class="fas fa-heart"></i></div>
+        <div class="clearfix"></div>
+      </div>
+
+      <div class="controlPanel">
+        <div class="progressbar">
+          <div class="progress"></div>
+        </div>
+        <div class="time">
+          <span class="start">00:00</span>
+          <span class="end">04:30</span>
+          <div class="clearfix"></div>
+        </div>
+        <div class="btns">
+          <div class="controls">
+            <button class="prev"><i class="fas fa-step-backward"></i></button>
+            <button class="play"><i class="fas fa-play"></i></button>
+            <button class="next"><i class="fas fa-step-forward"></i></button>
+            <button class="stop"><i class="fas fa-stop"></i></button>
+            <button class="rand"><i class="fas fa-random"></i></button>
+            <button class="loop"><i class="fas fa-undo-alt"></i></button>
+            <div class="clearfix"></div>
+          </div>
+          <div class="vol">
+            <div class="volicon"><i class="fas fa-volume-down"></i></div>
+            <div class="volLine">
+              <div class="volControl"></div>
+            </div>
+            <div class="clearfix"></div>
+          </div>
+          <div class="clearfix"></div>
+        </div>
+      </div>
+
+      <div class="expand" id="expand"><i class="fas fa-expand"></i></div>
+      <div class="clearfix"></div>
+    </div>
+
+    <!-- 詳細版 -->
+    <div class="player_b">
+      <div class="left">
+        <div class="songCover">
+          <div class="coverImg">
+            <img src="./img/library/cover1.jpg">
+            <div class="coverRec"><img src="./img/library/player_record.png" alt=""></div>
+          </div>
+        </div>
+        <div class="songInfo">
+          <div class="name">
+            Lucid Dreamer
+          </div>
+          <div class="creator">
+            Spazz Cardigan
+          </div>
+          <div class="heart becomeRed"><i class="fas fa-heart"></i></div>
+          <div class="clearfix"></div>
+        </div>
+        <div class="controlPanel">
+          <div class="progressbar">
+            <div class="progress"></div>
+          </div>
+          <div class="time">
+            <span class="start">00:00</span>
+            <span class="end">04:30</span>
+            <div class="clearfix"></div>
+          </div>
+          <div class="btns">
+            <div class="controls">
+              <button class="rand"><i class="fas fa-random"></i></button>
+              <button class="prev"><i class="fas fa-step-backward"></i></button>
+              <button class="play"><i class="fas fa-play"></i></button>
+              <button class="next"><i class="fas fa-step-forward"></i></button>
+              <button class="stop"><i class="fas fa-stop"></i></button>
+              <button class="loop"><i class="fas fa-undo-alt"></i></button>
+              <div class="clearfix"></div>
+            </div>
+            <div class="vol">
+              <div class="volicon"><i class="fas fa-volume-down"></i></div>
+              <div class="volLine">
+                <div class="volControl"></div>
+              </div>
+              <div class="clearfix"></div>
+            </div>
+            <div class="clearfix"></div>
+          </div>
+        </div>
+        <div class="pushBtn"></div>
+      </div>
+
+      <div class="right">
+        <div class="pushBtn"></div>
+        <div class="listTitle">
+          <div class="listCover">
+            <img src="./img/library/list_pic1.jpg"></div>
+          <div class="listName">
+            <h2 class="store_h2">peaceful list</h2>
+            <span>8 songs</span>
+          </div>
+          <button class="selectBtn" id="selectBtn">SELECT</button>
+          <div class="clearfix"></div>
+        </div>
+        <div class="list">
+          <ul>
+            <li>
+              <div class="songCover">
+                <img src="./img/library/cover1.jpg" alt="">
+                <div class="listPlay"><i class="fas fa-play"></i></div>
+              </div>
+              <div class="listSongInfo">
+                <div class="name">
+                  <h4>Lucid Dreamer</h4>
+                  <p> Spazz Cardigan</p>
+                </div>
+              </div>
+              <div class="totalTime">4:30</div>
+              <div class="heart becomeRed"><i class="fas fa-heart"></i></div>
+              <div class="clearfix"></div>
+            </li>
+            <li>
+              <div class="songCover">
+                <img src="./img/library/cover2.jpg" alt="">
+                <div class="listPlay"><i class="fas fa-play"></i></div>
+              </div>
+              <div class="listSongInfo">
+                <div class="name">
+                  <h4>Lucid Dreamer</h4>
+                  <p> Spazz Cardigan</p>
+                </div>
+              </div>
+              <div class="totalTime">4:30</div>
+              <div class="heart becomeRed"><i class="fas fa-heart"></i></div>
+              <div class="clearfix"></div>
+            </li>
+            <li>
+              <div class="songCover">
+                <img src="./img/library/cover3.jpg" alt="">
+                <div class="listPlay"><i class="fas fa-play"></i></div>
+              </div>
+              <div class="listSongInfo">
+                <div class="name">
+                  <h4>Lucid Dreamer</h4>
+                  <p> Spazz Cardigan</p>
+                </div>
+              </div>
+              <div class="totalTime">4:30</div>
+              <div class="heart becomeRed"><i class="fas fa-heart"></i></div>
+              <div class="clearfix"></div>
+            </li>
+            <li>
+              <div class="songCover">
+                <img src="./img/library/cover4.jpg" alt="">
+                <div class="listPlay"><i class="fas fa-play"></i></div>
+              </div>
+              <div class="listSongInfo">
+                <div class="name">
+                  <h4>Lucid Dreamer</h4>
+                  <p> Spazz Cardigan</p>
+                </div>
+              </div>
+              <div class="totalTime">4:30</div>
+              <div class="heart becomeRed"><i class="fas fa-heart"></i></div>
+              <div class="clearfix"></div>
+            </li>
+            <li>
+              <div class="songCover">
+                <img src="./img/library/cover5.jpg" alt="">
+                <div class="listPlay"><i class="fas fa-play"></i></div>
+              </div>
+              <div class="listSongInfo">
+                <div class="name">
+                  <h4>Lucid Dreamer</h4>
+                  <p> Spazz Cardigan</p>
+                </div>
+              </div>
+              <div class="totalTime">4:30</div>
+              <div class="heart becomeRed"><i class="fas fa-heart"></i></div>
+              <div class="clearfix"></div>
+            </li>
+            <li>
+              <div class="songCover">
+                <img src="./img/library/cover6.jpg" alt="">
+                <div class="listPlay"><i class="fas fa-play"></i></div>
+              </div>
+              <div class="listSongInfo">
+                <div class="name">
+                  <h4>Lucid Dreamer</h4>
+                  <p> Spazz Cardigan</p>
+                </div>
+              </div>
+              <div class="totalTime">4:30</div>
+              <div class="heart becomeRed"><i class="fas fa-heart"></i></div>
+              <div class="clearfix"></div>
+            </li>
+            <li>
+              <div class="songCover">
+                <img src="./img/library/cover1.jpg" alt="">
+                <div class="listPlay"><i class="fas fa-play"></i></div>
+              </div>
+              <div class="listSongInfo">
+                <div class="name">
+                  <h4>Lucid Dreamer</h4>
+                  <p> Spazz Cardigan</p>
+                </div>
+              </div>
+              <div class="totalTime">4:30</div>
+              <div class="heart becomeRed"><i class="fas fa-heart"></i></div>
+              <div class="clearfix"></div>
+            </li>
+
+          </ul>
+        </div>
+      </div>
+      <div class="close" id="closePlayer"><i class="fas fa-times"></i></div>
+      <div class="clearfix"></div>
+
+      <!-- 撥放器燈箱 -->
+      <div class="lightCover">
+        <div class="lightbox_s" id="myAllList">
+          <div class="closeLight"><i class="fas fa-times"></i></div>
+          <h3>My List</h3>
+          <div class="lightSelectMenu">
+            <ul>
+              <li>Liked songs</li>
+              <li>Peaceful songs</li>
+              <li>party</li>
+            </ul>
+          </div>
+          <button class="">ok</button>
+        </div>
+      </div>
+    </div>
   </div>
   <script src='https://cdnjs.cloudflare.com/ajax/libs/vue/2.6.10/vue.js'></script>
   <script src="./js/public.js"></script>
+  <script src="./js/player.js"></script>
   <script>
     new Vue({
       el: '#store_app',
       data: {
-        step: 1,
+        step: 3,
         choose_money: 100,
         isActive: 1, // 選金錢的是否active
         card_infos: {
@@ -452,11 +699,7 @@
         ]
       },
       methods: {
-        moveDiv(move) {
-          var step = document.getElementsByClassName('step');
-          for (var i = 0; i < step.length; i++) {
-            step[i].style.transform = `translateX(-${move*100}%)`
-          }
+        moveDiv() {
           setTimeout(function () {
             $('body,html').animate({
               scrollTop: 370
