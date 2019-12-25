@@ -5607,20 +5607,24 @@ header {
 }
 
 .songinfo_infos4 {
-  height: 600px;
+  height: 90vh;
 }
 
-.message {
+.songinfo_infos4 h4 {
+  font-weight: bold;
+}
+
+.songinfo_infos4 .message {
   width: 1200px;
   margin: 0 auto;
 }
 
-.mess {
+.songinfo_infos4 .mess {
   width: 1000px;
   margin: 0 auto;
 }
 
-.mess_write {
+.songinfo_infos4 .mess_write {
   width: 1000px;
   margin: 0 auto;
   padding: 0px 50px;
@@ -5628,6 +5632,12 @@ header {
 
 .songinfo_infos5 {
   height: 200px;
+}
+
+.songinfo_infos4 .mess li {
+  border: 2px solid #d0d6d6;
+  background-color: #d0d6d6;
+  margin-bottom: 20px;
 }
 
 .songinfo_wave {
