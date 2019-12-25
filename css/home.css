@@ -214,6 +214,12 @@
   background: url(../img/home/more_bt.png) center center no-repeat;
 }
 
+.home_sec02 .home_more_bt a {
+  display: block;
+  width: 100%;
+  height: 100%;
+}
+
 .home_sec03 .home_pot {
   position: absolute;
   top: 40px;
@@ -562,6 +568,12 @@
   background: url(../img/home/enter_bt.png);
 }
 
+.home_sec04 .home_activity_info .enter_bt a {
+  display: block;
+  width: 100%;
+  height: 100%;
+}
+
 .home_sec05 .home_collection {
   position: absolute;
   top: 80px;
@@ -597,15 +609,17 @@
   background-size: cover;
 }
 
-.home_sec05 .home_shelf_container .home_shelf .home_collection {
+.home_sec05 .home_shelf_container .home_shelf .home_collection a {
+  width: 100%;
+  height: 100%;
   color: #FFFFFF;
-  font-size: 2.4rem;
   -webkit-box-pack: center;
       -ms-flex-pack: center;
           justify-content: center;
   -webkit-box-align: center;
       -ms-flex-align: center;
           align-items: center;
+  font-size: 2.4rem;
   text-shadow: 0px 0px 5px black,0px 0px 10px black;
 }
 
