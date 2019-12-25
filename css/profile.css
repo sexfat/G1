@@ -5663,11 +5663,12 @@ header {
 .songsadded_adds2 {
   -webkit-box-sizing: border-box;
           box-sizing: border-box;
+  height: 900px;
 }
 
 .songsadded_leftli {
   width: 1200px;
-  height: 600px !important;
+  height: 650px !important;
   margin: 0 auto;
   -webkit-box-sizing: border-box;
           box-sizing: border-box;
