@@ -861,6 +861,7 @@ header {
 
 #act_Now-Sign-up h2 {
   font-size: 2rem;
+<<<<<<< HEAD
   margin: 0 0 20px 120px;
 }
 
@@ -868,6 +869,9 @@ header {
   #act_Now-Sign-up h2 {
     font-size: 1.5rem;
   }
+=======
+  margin: 0 0 20px 50px;
+>>>>>>> dev
 }
 
 #act_Now-Sign-up div {
@@ -942,6 +946,7 @@ header {
   position: absolute;
 }
 
+<<<<<<< HEAD
 @media all and (max-width: 1200px) {
   #act_Now-Sign-up article {
     min-height: 400px;
@@ -951,6 +956,8 @@ header {
   }
 }
 
+=======
+>>>>>>> dev
 #act_Now-Sign-up article .act_SignSongURL-box {
   width: 80%;
   height: 20px;
@@ -1045,12 +1052,15 @@ header {
   margin: 0;
 }
 
+<<<<<<< HEAD
 @media all and (max-width: 1200px) {
   #act_Now-Sign-up article div p p {
     font-size: 0.8rem;
   }
 }
 
+=======
+>>>>>>> dev
 #act_Now-Sign-up article div .signUpComfirm {
   margin: 0;
   background-color: #f1c40f;

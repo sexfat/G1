@@ -1,14 +1,18 @@
 @charset "UTF-8";
 <<<<<<< HEAD
+<<<<<<< HEAD
 =======
 <<<<<<< HEAD
 >>>>>>> 89b5e006ed9fdff8e336505e86a7f70e02104b09
 @import url(https://fonts.googleapis.com/css?family=Raleway:400,300,700);
+=======
+>>>>>>> dev
 * {
   -webkit-box-sizing: border-box;
           box-sizing: border-box;
   padding: 0;
   margin: 0;
+<<<<<<< HEAD
 <<<<<<< HEAD
 =======
 <<<<<<< HEAD
@@ -20,6 +24,8 @@
 =======
 >>>>>>> Fifi
 >>>>>>> 89b5e006ed9fdff8e336505e86a7f70e02104b09
+=======
+>>>>>>> dev
 }
 
 html {
@@ -84,6 +90,7 @@ header {
   }
 }
 
+<<<<<<< HEAD
 <<<<<<< HEAD
 div.nav_bar {
   position: fixed;
@@ -7165,6 +7172,8 @@ header {
 =======
 =======
 >>>>>>> Fifi
+=======
+>>>>>>> dev
 .profile_content {
   position: relative;
   background: url(../img/member/border.png) top center no-repeat;
@@ -7276,8 +7285,11 @@ header {
   font-family: 微軟正黑體;
   font-size: 16px;
   outline: none;
+<<<<<<< HEAD
 >>>>>>> 20bd061cf6c41b3e9185c305db48a18cde906d39
 >>>>>>> 89b5e006ed9fdff8e336505e86a7f70e02104b09
+=======
+>>>>>>> dev
 }
 
 .profile_lightCover {
