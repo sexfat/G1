@@ -9,7 +9,7 @@ $mainRed : #de267d;
   font-size: $rem1;
 }
 
-main.library_main {
+.library_main {
   width: 100%;
   max-width: 1200px;
   padding-bottom: 70px;
@@ -392,29 +392,34 @@ main.library_main {
             font-size: $rem1_2;
             display: inline-block;
             vertical-align: top;
+            @include respond(laptop-min) {
+              padding: 0;
+            }
 
             @include respond(phone) {
               display: block;
+            }
 
-              a {
-                display: block;
-                color: $fontColor;
-                text-decoration: none;
-                transition: transform .5s;
+            a {
+              display: block;
+              color: $fontColor;
+              text-decoration: none;
+              transition: transform .5s;
 
-                @include respond(phone) {
-                  overflow: hidden;
-                  text-overflow: ellipsis;
-                  white-space: nowrap;
-                }
+              @include respond(phone) {
+                overflow: hidden;
+                text-overflow: ellipsis;
+                white-space: nowrap;
+              }
 
-                &:hover {
-                  transform: scale(1.1);
-                }
+              &:hover {
+                transform: scale(1.1);
               }
             }
           }
-          .creator{
+
+          .creator {
+            padding: 2% 0;
             overflow: hidden;
             text-overflow: ellipsis;
             white-space: nowrap;
@@ -426,7 +431,6 @@ main.library_main {
               display: block;
               margin-left: 0;
             }
-
           }
         }
 
@@ -550,14 +554,16 @@ main.library_main {
       top: 20px;
       cursor: pointer;
       transition: transform 0.5s;
-      @include respond(phone){
-          right: 10px;
-          top: 5px;
+
+      @include respond(phone) {
+        right: 10px;
+        top: 5px;
       }
+
       &:hover {
-          transform: scale(1.1);
+        transform: scale(1.1);
       }
-  }
+    }
 
     #myAllList {
       width: 90%;
