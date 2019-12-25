@@ -1,4 +1,4 @@
-@import './public.scss';
+// @import './public.scss';
 
 $green: #d0d6d6;
 $yellow: #f1c40f;
@@ -16,7 +16,7 @@ $albumbottom: 340px;
 }
 
 .collectionbody{
-    background-image: url(../img/collection/collectionnavback.jpg);
+    // background-image: url(../img/collection/collectionnavback.jpg);
     background-position:bottom;
     background-size: cover;
     background-repeat: no-repeat;
@@ -27,6 +27,41 @@ $albumbottom: 340px;
         img{
             max-width:500px;
             width: 100%;
+        }
+    }
+    .collectionalbumsection1{
+        border: 1px solid pink;
+        width:70%;
+        height:900px;
+        display: inline-block;
+        .collectionsinglealbum{
+            border: 1px solid green;
+            display: inline-block;
+            font-size: 0px;
+            .collectionsinglecover{
+                border:1px solid blue;
+                display: inline-block;
+                font-size:$rem1;
+                width:50%;
+                .collalbumpic{
+                    background-size:cover;
+                    width: 100%;
+                    height: 100%;
+                }
+                .sampleblum1{
+                    background-image: url(../img/collection/album1.jpg);
+                }
+                .sampleblum2{
+                    background-image: url(../img/collection/album2.jpg);
+                }
+                .sampleblum3{
+                    background-image: url(../img/collection/album3.jpg);
+                }
+                .sampleblum4{
+                    background-image: url(../img/collection/album4.jpg);
+
+                }
+            }
         }
     }
     .playall_btn{
@@ -78,6 +113,7 @@ $albumbottom: 340px;
         }
         #collectiontabcontainer{
             .collectiontabtitle{
+                border: 1px solid red;
                 li{
                     list-style: none;
                     vertical-align: middle;
@@ -86,21 +122,23 @@ $albumbottom: 340px;
                     border-radius: 5px;
                     background-color: $yellow;
                     margin: 20px;
+                    
+                    
                     &:hover{
                         transform: scale(1.1);
                         background-color: $mainBg;
                         border:2px solid $yellow;
+                        color: $fontColor;
+                        cursor: pointer;
+                        }
+                        a{
+                            color: $fontColor;
+                            cursor: pointer;
+                        }
                     }
                     a{
                         margin: 0px 50px 0px 50px;
                         color: #fff;
-                        // img{
-                        //     border: 1px solid green;
-                        // }
-                        &:hover{
-                            color: $fontColor;
-                        }
-
                     }
                 }
             }
@@ -112,14 +150,17 @@ $albumbottom: 340px;
 .albumshelf{
     display: flex;
     margin-top: 19vh;
+    border: 1px solid pink;
     justify-content: center;
 }
 
 .albumshelf .shelf{
-    width:65vw;
+    width:70%;
     margin-top:80px;
+    border: 1px solid blue;
 }
 .sample{
+    border: 1px solid orange;
     .like{ 
         font-size : 40px;   
         color : #ccc; 
@@ -127,6 +168,7 @@ $albumbottom: 340px;
         left: 102%;
         top: 75%;
         width: 50px;
+        border: 1px solid green;
         cursor : pointer;
     }
     p{
@@ -147,14 +189,15 @@ $albumbottom: 340px;
     height:400px;
 }
 .albumshelf .shelf .row-1:after {
-	background:url("../img/collection/shelf.png");
+	// background:url("../img/collection/shelf.png");
 	background-size:100%;
 	background-repeat: no-repeat;
 	background-position:bottom left;
 	width:100%;
 	height:$albumsize;
 	display:block;
-	content:"";
+    content:"";
+    border: 1px solid purple;
 }
 
 .redheartshape{
@@ -181,7 +224,8 @@ $albumbottom: 340px;
 	width:25%;
     height:100%;
     background-size: contain;
-	float:left;
+    float: left;
+    
 }
 
 .albumshelf .sample,
@@ -249,5 +293,5 @@ $albumbottom: 340px;
 }
         }
 
-    }
+
 }
