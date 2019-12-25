@@ -100,11 +100,11 @@
     height: 30px;
     width: 70px;
   
-    &:hover {
-      -webkit-filter: brightness(85%);
-      filter: brightness(85%);
-      cursor: pointer;
-    }
+    // &:hover {
+    //   -webkit-filter: brightness(85%);
+    //   filter: brightness(85%);
+    //   cursor: pointer;
+    // }
   }
   
   .songinfo_infos4 .re-report{
@@ -123,19 +123,13 @@
     display: inline-block;
     height: 30px;
     width: 70px;
-  
-    &:hover {
-      -webkit-filter: brightness(85%);
-      filter: brightness(85%);
-      cursor: pointer;
-    }
   }
   
   .songinfo_infos4 .infose-send{
     background: transparent url("../img/songinfo/send.png") (center / cover) no-repeat;
     position: relative;
     top: 5px;
-    left: 700px;
+    left: 845px;
   }
 
 
