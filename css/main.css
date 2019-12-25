@@ -5464,13 +5464,11 @@ header {
 }
 
 .collectionbody .collectionalbumsection1 {
-  border: 1px solid pink;
   width: 100%;
   display: inline-block;
 }
 
 .collectionbody .collectionalbumsection1 .collectionsinglealbum {
-  border: 1px solid green;
   width: 100%;
   margin-bottom: 50px;
   display: inline-block;
@@ -5478,7 +5476,6 @@ header {
 }
 
 .collectionbody .collectionalbumsection1 .collectionsinglealbum .collectionsinglecover {
-  border: 1px solid blue;
   margin: 20px;
   display: inline-block;
   font-size: 1.2rem;
@@ -5541,7 +5538,6 @@ header {
 }
 
 .collectionbody .collectionalbumsection1 .collectionsinglealbum .collectionsinglecover .collheart {
-  border: 1px solid pink;
   text-align: left;
 }
 
@@ -5663,7 +5659,6 @@ header {
 }
 
 .collectionbody .collectionsection #collectiontabcontainer .collectiontabtitle {
-  border: 1px solid red;
   margin: 2vw 0vw;
 }
 

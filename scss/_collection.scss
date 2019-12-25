@@ -30,11 +30,11 @@ $albumbottom: 340px;
         }
     }
     .collectionalbumsection1{
-        border: 1px solid pink;
+        // border: 1px solid pink;
         width:100%;
         display: inline-block;
         .collectionsinglealbum{
-            border: 1px solid green;
+            // border: 1px solid green;
             width:100%;
             // background-image: url(../img/collection/shelf.png);
             // background-repeat: no-repeat;
@@ -43,7 +43,7 @@ $albumbottom: 340px;
             display: inline-block;
             font-size: 0px;
             .collectionsinglecover{
-                border:1px solid blue;
+                // border:1px solid blue;
                 margin:20px;
                 display: inline-block;
                 font-size:$rem1_2;
@@ -92,7 +92,7 @@ $albumbottom: 340px;
 
                 }
                 .collheart{
-                    border: 1px solid pink;
+                    // border: 1px solid pink;
                     text-align: left;
                     img{
                         width: 40px;
@@ -191,7 +191,7 @@ $albumbottom: 340px;
         }
         #collectiontabcontainer{
             .collectiontabtitle{
-                border: 1px solid red;
+                // border: 1px solid red;
                 margin: 2vw 0vw;
                 li{
                     list-style: none;
