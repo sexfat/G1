@@ -1,0 +1,381 @@
+@import './public.scss';
+@import './nav_bar.scss';
+@import './player.scss';
+
+$labelfontsize:1.2rem;
+$forgetfontsize:0.6rem;
+$buttonhover:scale(1.1);
+
+body{
+    height: 100vh;
+    background-image: url(../img/register/login.jpg);
+    background-size: cover;
+    background-position: center;
+    .signupcontainer {
+          @include respond(ipad) {
+            display: none;
+          }
+          @include respond(phone) {
+            display: none;
+          }
+          @include respond(ipadpro) {
+            width: 600px;
+            height: 200px;
+            top: 120px;
+          }
+          @include respond(latop-min) {
+            width: 750px;
+            top: 150px;
+          }
+        margin: 0 auto;
+        width: 900px;
+        height: 600px;
+        position: relative;
+        top: 230px;
+        .greenblock {
+            background-color: $green;
+            width: 100%;
+            height: 600px;
+            @include respond(phone) {
+              width: 300px;
+              height: 500px;
+            }
+            @include respond(ipadpro) {
+                height: 450px;
+            }
+            @include respond(latop-min) {
+                height:400px;
+              }
+            
+        }
+        .whiteform {
+            position: absolute;
+            top: -10%;
+            left: 7%;
+            background-color: #fff;
+            border: 1px solid #aaa;
+            width: 430px;
+            height: 700px;
+            box-shadow: 2px 0 10px rgba(0,0,0,.1);
+            transition: all .5s ease-in-out;
+            z-index: 2;
+            @include respond(phone) {
+              
+            }
+            @include respond(ipadpro) {
+                width: 290px;
+                height: 525px;
+                top: -20%;
+              }
+              @include respond(latop-min) {
+                width: 360px;
+                height: 455px;
+                top: -5%;
+              }
+            }
+        .displaynone {
+            display:none;
+            transition: all .5s ease;
+        }
+        h1{
+            text-align: center;
+            margin-top: 55px;
+            @include respond(ipadpro) {
+                margin-top: 25px;
+                // font-size: 2rem;
+              }
+              @include respond(latop-min) {
+                margin-top: 25px;
+              }
+        }
+        .leftbox, .rightbox {
+            position: absolute;
+            width: 50%;
+            transition: 1s all ease;
+            h2{
+                text-align: center;
+                margin: 17px;
+            }
+        }
+        .leftbox{
+            left: -2%;
+        }
+        .rightbox{
+            right: -2%;
+        }
+        .signin{
+            a{
+                font-size: 0.6rem;
+                margin-left:170px; 
+                margin-bottom: 90px;
+                @include respond(ipadpro) {
+                    margin-left:12px;
+                    margin-bottom: 0px;
+                  }
+                  @include respond(latop-min) {
+                    margin-left:150px;
+                    
+                  }
+            }
+        }
+        .emailinput{
+            margin-bottom: 30px;
+            @include respond(ipadpro) {
+                margin-bottom: 20px;
+              }
+              @include respond(latop-min) {
+                margin-bottom: 20px;
+              }             
+        }
+        input{
+            background-color:$green;
+            border: none;
+            padding: 12px;
+            @include respond(ipadpro) {
+                padding:10px;
+              }
+            @include respond(latop-min) {
+                padding:10px;
+              }   
+        }
+        .signin{
+            form{
+                padding-top: 35px;
+                @include respond(ipadpro) {
+                    padding-top:10px;
+                  }
+                  @include respond(latop-min) {
+                    padding-top:5px;
+                  }   
+                button{
+                    margin-top: 82px;
+                    @include respond(ipadpro) {
+                        margin-top: 122px;
+                    }
+                    @include respond(latop-min) {
+                        margin-top: -13px;
+                      }  
+                }
+            }
+        }
+        .signup{
+            button{
+                margin-top: 92px;
+                @include respond(ipadpro) {
+                    margin-top: 50px;
+                }
+                @include respond(latop-min) {
+                    margin-top: 1px;
+                  }  
+            }
+        }
+        button{
+            @include butttonn02;
+            border-radius: 10px;
+            margin: auto;
+            display: block;
+            margin-top: 10px;
+            &:hover{
+                transform: scale(1.1);
+            }
+        }
+        form {
+            display: flex;
+            align-items: left;
+            flex-direction: column;
+            margin:30px 60px 60px 65px;
+            @include respond(ipadpro) {
+               margin:30px 20px 0px 40px;
+              }
+              @include respond(latop-min) {
+                margin:30px 30px 0px 50px;
+              } 
+        }
+        .title {
+            font-size: 1.5em;
+            padding-top:10px;
+            span {
+                color: #fff;
+            }
+        }
+        .account {
+            margin-top: 45%;
+        }
+        p{
+            color: #333;
+            text-align: center;
+            padding-top: 150px;
+            @include respond(ipadpro) {
+                padding-top: 110px;
+            }
+            @include respond(latop-min) {
+                padding-top: 35px;
+              }  
+        }
+        .flower {
+            position: absolute;
+            height: 320px;
+            top: 25%;
+            left: 25%;
+            @include respond(ipadpro) {
+                height: 250px;
+              }
+              @include respond(latop-min) {
+                height: 220px;
+                left: 30%;
+              }  
+              
+
+        }
+        .smaller {
+            height: 320px;
+            top: 25%;
+            left: 28%;
+            @include respond(ipadpro) {
+                height: 230px;
+              }
+              @include respond(latop-min) {
+                height: 215px;
+                left: 30%;
+                top: 25%;
+              }  
+        }
+        input {
+            width: 90%;
+            &::placeholder {
+              font-size: 1.3em;
+            }
+            &:focus {
+              font-size: 1em;
+              transition: .8s all ease;
+              &::placeholder {
+                opacity: 0;
+                }
+            }
+        }
+    }
+}
+#mobilelogintab{
+  @include respond(laptop-bigmax) {
+    display: none;
+  }
+  @include respond(ipadpro) {
+    display: none;
+  }
+  @include respond(latop-min) {
+    display: none;
+  }
+  @include respond(latop-max){
+    display: none;
+  }
+  @include respond(phone) {
+    display: inline-block;
+    border: 1px solid gray;
+    background-color: #fff;
+    position: absolute;
+    padding: 50px 0px 50px 0px;
+    width:80vw;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%,-50%);
+    background-image: url(../img/register/register.jpg);
+    background-position: center;
+    background-repeat: no-repeat;
+    .motabtitle{
+      text-align: center;
+      li{
+        display: inline-block;
+        padding:10px;
+        border: 1px solid red;
+      }
+    }
+    .motabinner{
+      form {
+        display: flex;
+        align-items: left;
+        flex-direction: column;
+        margin: 0px 20px 0px 60px;
+        button{
+          @include butttonn02;
+          border-radius: 10px;
+          margin: 0 auto;
+          display: block;
+          position: relative;
+          right:10%;
+          margin-top: 40px;
+          &:hover{
+            transform: scale(1.1);
+          }
+      }
+      input{
+        background-color: $green;
+        border: none;
+        padding:5px;
+        width: 80%;
+      }
+      .mobileemailinput{
+        margin-bottom: 15px;
+      }
+      a{
+        margin-left: 41px;
+      }
+    }
+
+    }
+  }
+  @include respond(ipad) {
+    display: inline-block;
+    border: 1px solid gray;
+    background-color: #fff;
+    position: absolute;
+    padding: 50px 0px 50px 0px;
+    width:80vw;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%,-50%);
+    background-image: url(../img/register/register.jpg);
+    background-position: center;
+    background-repeat: no-repeat;
+    // .motabtitle{
+    //   text-align: center;
+    //   li{
+    //     display: inline-block;
+    //     padding:10px;
+    //     border: 1px solid red;
+    //   }
+    // }
+    .motabinner{
+      form {
+        display: flex;
+        align-items: left;
+        flex-direction: column;
+        margin: 0px 40px 0px 100px;
+        button{
+          @include butttonn02;
+          border-radius: 10px;
+          margin: 0 auto;
+          display: block;
+          position: relative;
+          right:10%;
+          margin-top: 10px;
+          &:hover{
+            transform: scale(1.1);
+          }
+      }
+      input{
+        background-color: $green;
+        border: none;
+        padding:5px;
+        width: 80%;
+      }
+      .mobileemailinput{
+        margin-bottom: 15px;
+      }
+      a{
+        margin-left: 72px;
+      }
+    }
+
+    }
+  }
+}

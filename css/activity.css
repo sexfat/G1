@@ -1,0 +1,1086 @@
+@charset "UTF-8";
+* {
+  -webkit-box-sizing: border-box;
+          box-sizing: border-box;
+<<<<<<< HEAD
+  padding: 0;
+  margin: 0;
+=======
+>>>>>>> 20bd061cf6c41b3e9185c305db48a18cde906d39
+}
+
+html {
+  font-size: 20px;
+}
+
+body {
+  margin: 0;
+  padding: 0;
+  font-family: "Lucida Sans Unicode", Geneva, Verdana, sans-serif;
+  background: #fafaf1;
+  color: #333;
+  overflow-x: hidden;
+}
+
+.flexbox {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+}
+
+a {
+  text-decoration: none;
+  color: #333;
+}
+
+ul {
+  list-style: none;
+}
+
+header {
+  height: 300px;
+  text-align: center;
+  padding: 120px 0;
+}
+
+.wrapper {
+  max-width: 1500px;
+  margin: 0 auto;
+  width: 100%;
+}
+
+/*燈箱寬*/
+.lightbox_s {
+  width: 500px;
+}
+
+/*新手教學用*/
+.lightbox_b {
+  width: 1000px;
+}
+
+/*燈箱的遮罩顏色*/
+.lightCover {
+  background-color: #414141e6;
+}
+
+/*button mixin*/
+@media all and (max-width: 768px) {
+  header img {
+    height: 76px;
+  }
+}
+
+#app {
+  position: fixed;
+  top: 0;
+  left: 0;
+  z-index: 999;
+}
+
+#act_radioBg {
+  position: relative;
+  max-width: 1400px;
+  height: 650px;
+  margin: 180px auto 50px 0px;
+}
+
+#act_radioBg img {
+  width: 100%;
+  height: 100%;
+}
+
+#act_radioBg #act_title {
+  margin: 0 auto;
+  text-align: center;
+  position: absolute;
+  top: -5%;
+  left: 50%;
+  -webkit-transform: translate(-30%, 0%);
+          transform: translate(-30%, 0%);
+  z-index: 1;
+}
+
+#act_radioBg h2 {
+  margin: 0;
+  display: inline-block;
+  max-width: 550px;
+  position: absolute;
+  top: 13%;
+  left: 18%;
+  z-index: 1;
+  font-size: 2rem;
+}
+
+#act_radioBg #act_sectionAnchor {
+  display: inline-block;
+  width: 800px;
+  height: 75px;
+  position: absolute;
+  bottom: 4%;
+  left: 23%;
+  z-index: 1;
+}
+
+#act_radioBg #act_sectionAnchor a {
+  display: inline-block;
+  width: 200px;
+  margin-left: 50px;
+  height: 75px;
+  text-decoration: none;
+  position: relative;
+}
+
+#act_radioBg #act_sectionAnchor a img {
+  width: 100%;
+  height: 100%;
+}
+
+#act_radioBg #act_sectionAnchor a span {
+  color: #333;
+  font-size: 0.7rem;
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  z-index: 1;
+  -webkit-transform: translate(-50%, -50%);
+          transform: translate(-50%, -50%);
+}
+
+#act_radioBg #act_oldyear_Anchor {
+  position: absolute;
+  right: -10%;
+  bottom: 10%;
+  width: 100px;
+}
+
+#act_radioBg #act_oldyear_Anchor a img {
+  width: 30px;
+  height: 30px;
+}
+
+#act_radioBg #act_oldyear_Anchor a span {
+  font-size: 0.7rem;
+  margin-right: 10px;
+}
+
+#act_HeadBtn {
+  position: absolute;
+  top: 16%;
+  right: 5%;
+  z-index: 1;
+}
+
+#act_HeadBtn div {
+  position: relative;
+  margin: 0;
+  width: 150px;
+  height: 140px;
+  display: inline-block;
+  cursor: pointer;
+  text-align: center;
+}
+
+#act_HeadBtn div:hover {
+  -webkit-transform: scale(1.1);
+          transform: scale(1.1);
+}
+
+#act_HeadBtn div img {
+  width: 80%;
+  height: 80%;
+}
+
+#act_HeadBtn div span {
+  position: absolute;
+  top: 32%;
+  left: 35%;
+  z-index: 2;
+  font-size: 0.8rem;
+  font-weight: bold;
+}
+
+#act_carousel {
+  width: 80%;
+  height: 60%;
+  max-width: 1200px;
+  max-height: 400px;
+  position: absolute;
+  top: 35%;
+  left: 15%;
+  z-index: -1;
+  overflow: hidden;
+}
+
+#act_carousel img {
+  width: 100%;
+  height: 100%;
+}
+
+#act_carouselSelect {
+  width: 30px;
+  height: 80px;
+  position: absolute;
+  right: 7%;
+  top: 60%;
+}
+
+#act_carouselSelect div {
+  width: 20px;
+  height: 20px;
+  border-radius: 50%;
+  background-color: white;
+  border: yellow;
+  -webkit-box-shadow: 1px 1px 5px black;
+          box-shadow: 1px 1px 5px black;
+  margin: 5px 5px auto;
+  opacity: 0.5;
+}
+
+#act_carouselSelect .btncolor {
+  opacity: 1;
+}
+
+#act_countdown {
+  display: block;
+  width: 350px;
+  height: 100px;
+  position: absolute;
+  top: 25%;
+  left: 40%;
+  text-align: center;
+}
+
+#act_countdown p {
+  vertical-align: bottom;
+  font-size: 0.6rem;
+  margin: 0;
+}
+
+#act_countdown div {
+  margin: 0 auto;
+}
+
+#act_countdown div div {
+  display: inline-block;
+  text-align: center;
+  width: 70px;
+  height: 70px;
+  margin: 5px;
+}
+
+#act_countdown div div p {
+  margin: 0;
+  padding: 0;
+  font-size: 1.5rem;
+  color: white;
+}
+
+#act_countdown div div span {
+  font-size: 0.6rem;
+  position: relative;
+  top: -20px;
+  color: #333;
+}
+
+.act_old_years {
+  position: relative;
+  background-image: url(../img/activity/0.blackline.svg);
+  height: 700px;
+  max-width: 1300px;
+  width: 100%;
+  padding: 100px 0 0 150px;
+  margin: 150px auto 0 auto;
+}
+
+.act_old_years .act_oldink {
+  position: absolute;
+  top: -30%;
+  left: -15%;
+  z-index: -1;
+  width: 500px;
+  height: 400px;
+}
+
+.act_old_years .act_oldink img {
+  width: 100%;
+  height: 100%;
+}
+
+.act_old_years div {
+  width: 40%;
+}
+
+.act_old_years div .act_year {
+  font-size: 2.5rem;
+  font-weight: bold;
+  display: inline-block;
+}
+
+.act_old_years div h2 {
+  font-size: 2rem;
+  margin: 0;
+}
+
+.act_old_years div h3 {
+  display: inline-block;
+  font-size: 1.5rem;
+  margin: 0;
+}
+
+.act_old_years div p {
+  display: inline-block;
+  max-width: 600px;
+  font-size: 1rem;
+}
+
+.act_old_years div .act_oldVotes h3 {
+  display: inline-block;
+  font-size: 1.5rem;
+  margin: 0;
+}
+
+.act_old_years div .act_oldVotes span {
+  font-size: 2.5rem;
+  font-weight: bold;
+  color: #333;
+}
+
+.act_old_years .act_oldposterbox {
+  display: inline-block;
+  position: absolute;
+  height: 100%;
+  top: 0%;
+  right: 0%;
+}
+
+.act_old_years .act_oldposterbox .act_oldposter {
+  width: 350px;
+  height: 500px;
+  position: absolute;
+  bottom: 5%;
+  right: 15%;
+  z-index: 2;
+}
+
+.act_old_years .act_oldposterbox .act_oldposter img {
+  width: 100%;
+  height: 100%;
+}
+
+.act_old_years .act_oldposterbox .act_oldSplash-ink {
+  position: absolute;
+  bottom: -20%;
+  left: -25%;
+  z-index: 1;
+  width: 800px;
+  height: 600px;
+}
+
+.act_old_years .act_oldposterbox .act_oldSplash-ink img {
+  width: 100%;
+  height: 100%;
+}
+
+.act_old_years .act_oldposterbox .act_oldposter-linetop {
+  position: absolute;
+  top: 10%;
+}
+
+.act_old_years .act_oldposterbox .act_oldposter-linebotom {
+  position: absolute;
+  bottom: -15%;
+  right: -15%;
+  z-index: 2;
+}
+
+.act_oldsongbox {
+  margin-top: 75px;
+  padding: 100px 135px;
+  width: 1500px;
+  margin: 50px auto 0 auto;
+}
+
+.act_oldsongbox .act_oldTop {
+  text-align: left;
+  width: 100%;
+  max-width: 1400px;
+  padding: 100px 0 0 50px;
+}
+
+.act_oldsongbox .act_oldTop h3 {
+  font-size: 1.5rem;
+  margin: 0 0px 30px 20px;
+}
+
+.act_oldsongbox .act_oldTop div {
+  text-align: left;
+  width: 30%;
+  margin-left: 2%;
+  display: inline-block;
+}
+
+.act_oldsongbox .act_oldTop div h4 {
+  margin: 0;
+  font-size: 1.2rem;
+}
+
+.act_oldsongbox .act_oldTop div h4 p {
+  margin: 0;
+  font-size: 1rem;
+}
+
+.act_oldsongbox .act_oldTop div p {
+  font-size: 0.6rem;
+  margin: 0 auto;
+  margin-bottom: 10px;
+}
+
+.act_oldsongbox .act_oldTop div p span {
+  font-size: 0.8rem;
+}
+
+.act_oldsongbox .act_oldTop div div {
+  width: 100%;
+  margin: 0;
+  position: relative;
+}
+
+.act_oldsongbox .act_oldTop div div:hover .act_old-play {
+  display: block;
+  cursor: pointer;
+  z-index: 2;
+}
+
+.act_oldsongbox .act_oldTop div div .act_old-play {
+  width: 100px;
+  height: 100px;
+  text-align: center;
+  position: absolute;
+  top: 25%;
+  left: 20%;
+  display: none;
+  z-index: 2;
+}
+
+.act_oldsongbox .act_oldTop div div .act_old-play img {
+  width: 100%;
+  height: 100%;
+}
+
+.act_oldsongbox .act_oldTop div div img {
+  width: 250px;
+  height: 250px;
+}
+
+.act_oldsongbox .act_oldTop div .act_old-hear1 {
+  width: 25px;
+  height: 25px;
+}
+
+.act_oldsongbox .act_oldTop div .act_old-hear1 img {
+  width: 100%;
+  height: 100%;
+}
+
+.act_oldAll {
+  text-align: left;
+  width: 100%;
+  margin-top: 75px;
+  max-width: 1400px;
+  padding: 100px 0 0  50px;
+  margin: 50px auto 0px auto;
+}
+
+.act_oldAll h3 {
+  font-size: 1.5rem;
+  margin: 0 0px 30px 0px;
+}
+
+.act_oldAll div {
+  text-align: left;
+  width: 20%;
+  margin-left: 3.5%;
+  margin-bottom: 50px;
+  display: inline-block;
+}
+
+.act_oldAll div h4 {
+  margin: 0;
+  font-size: 1.2rem;
+}
+
+.act_oldAll div h4 p {
+  margin: 0;
+  font-size: 1rem;
+}
+
+.act_oldAll div p {
+  font-size: 0.6rem;
+  margin: 0 auto;
+  margin-bottom: 10px;
+}
+
+.act_oldAll div p span {
+  font-size: 0.8rem;
+}
+
+.act_oldAll div div {
+  width: 100%;
+  margin: 0;
+  position: relative;
+}
+
+.act_oldAll div div:hover .act_old-play {
+  display: block;
+  cursor: pointer;
+  z-index: 2;
+}
+
+.act_oldAll div div .act_old-play {
+  width: 100px;
+  height: 100px;
+  text-align: center;
+  position: absolute;
+  top: 20%;
+  left: 20%;
+  display: none;
+  z-index: 2;
+}
+
+.act_oldAll div div .act_old-play img {
+  width: 100%;
+  height: 100%;
+}
+
+.act_oldAll div div img {
+  width: 200px;
+  height: 200px;
+}
+
+.act_oldAll div div .act_old-hear1 {
+  width: 25px;
+  height: 25px;
+}
+
+.act_oldAll div div .act_old-hear1 img {
+  width: 100%;
+  height: 100%;
+}
+
+.act_now-year {
+  position: relative;
+  height: 700px;
+  max-width: 1400px;
+  width: 100%;
+  padding: 100px 0 0 150px;
+  margin: 150px auto 0 auto;
+}
+
+.act_now-year div {
+  width: 50%;
+}
+
+.act_now-year div h2 {
+  margin: 0;
+  font-size: 2rem;
+}
+
+.act_now-year div h3 {
+  margin: 0;
+  font-size: 1.5rem;
+}
+
+.act_now-year div div {
+  margin: 20px 0;
+  width: 70%;
+  font-size: 2.5rem;
+  line-height: 1;
+}
+
+.act_now-year div p {
+  width: 80%;
+  font-size: 1rem;
+  margin: 0 auto 20px 0;
+}
+
+.act_nowposterbox {
+  display: inline-block;
+  position: absolute;
+  height: 100%;
+  top: 0%;
+  right: 0%;
+}
+
+.act_nowposterbox .act_nowposter {
+  width: 350px;
+  height: 450px;
+  position: absolute;
+  top: 10%;
+  right: 20%;
+  z-index: 2;
+  margin: auto auto;
+}
+
+.act_nowposterbox .act_nowposter img {
+  width: 100%;
+  height: 100%;
+}
+
+.act_nowposterbox .act_nowSplash-ink {
+  position: absolute;
+  bottom: -10%;
+  left: 0%;
+  z-index: 1;
+  width: 800px;
+  height: 600px;
+}
+
+.act_nowposterbox .act_nowSplash-ink img {
+  width: 100%;
+  height: 100%;
+}
+
+.act_nowposterbox .act_nowposter-linetop {
+  width: 400px;
+  height: 400px;
+  position: absolute;
+  top: -10%;
+  left: 10%;
+  margin: auto auto;
+}
+
+.act_nowposterbox .act_nowposter-linetop img {
+  width: 100%;
+  height: 100%;
+}
+
+.act_nowposterbox .act_nowposter-linebotom {
+  position: absolute;
+  bottom: -10%;
+  right: -12%;
+  z-index: 2;
+  margin: auto auto;
+  width: 400px;
+  height: 400px;
+}
+
+.act_nowposterbox .act_nowposter-linebotom img {
+  width: 100%;
+  height: 100%;
+}
+
+#act_Now-Sign-up {
+  max-width: 1400px;
+  width: 100%;
+  min-height: 850px;
+  padding: 50px 0 0 100px;
+  margin: 150px auto 100px auto;
+  position: relative;
+}
+
+#act_Now-Sign-up h2 {
+  font-size: 2rem;
+<<<<<<< HEAD
+  margin: 0 0 20px 50px;
+=======
+  margin: 0 0 100px 50px;
+>>>>>>> 20bd061cf6c41b3e9185c305db48a18cde906d39
+}
+
+#act_Now-Sign-up div {
+  width: 35%;
+  min-width: 300px;
+  height: 100%;
+  display: inline-block;
+  position: relative;
+  text-align: right;
+}
+
+#act_Now-Sign-up div .act_now-marry {
+  width: 80%;
+  height: 80%;
+  margin: auto auto;
+}
+
+#act_Now-Sign-up div .act_now-marry img {
+  width: 100%;
+  height: 100%;
+}
+
+#act_Now-Sign-up div .act_now-marry-ink {
+  width: 900px;
+  height: 720px;
+  position: absolute;
+  z-index: -1;
+  left: -45%;
+  top: -10%;
+}
+
+#act_Now-Sign-up div .act_now-marry-ink img {
+  width: 100%;
+  height: 100%;
+}
+
+#act_Now-Sign-up article {
+<<<<<<< HEAD
+  position: absolute;
+  top: 5%;
+  width: 60%;
+  min-height: 600px;
+  display: inline-block;
+  margin: 0 auto;
+=======
+  width: 60%;
+  min-height: 600px;
+  display: inline-block;
+  margin: auto auto;
+>>>>>>> 20bd061cf6c41b3e9185c305db48a18cde906d39
+  background-image: url(../img/activity/0.text-circle.svg), url(../img/activity/text.circle-wh.png);
+  background-repeat: no-repeat;
+  background-size: contain, 95% 95%;
+  background-position-x: center, right;
+  text-align: center;
+  padding: 50px 0 0 0;
+  position: absolute;
+}
+
+<<<<<<< HEAD
+#act_Now-Sign-up article .act_SignSongURL-box {
+  width: 80%;
+  height: 20px;
+  overflow: hidden;
+  font-size: 0.6rem;
+}
+
+=======
+>>>>>>> 20bd061cf6c41b3e9185c305db48a18cde906d39
+#act_Now-Sign-up article div {
+  text-align: left;
+  width: 70%;
+  margin: auto auto;
+  padding: 20px;
+  text-align: center;
+}
+
+#act_Now-Sign-up article div h3 {
+  margin: 0 0 20px 0;
+  padding: 0;
+  font-size: 1.5rem;
+}
+
+#act_Now-Sign-up article div p {
+  font-size: 1rem;
+  display: inline-block;
+  width: 80%;
+  margin: 0 auto;
+  text-align: left;
+  padding-bottom: 0;
+}
+
+#act_Now-Sign-up article div p .act_SignUPButton {
+  margin-bottom: 10px;
+  font-size: 0.7rem;
+  display: inline-block;
+  padding: 5px 8px;
+  background-color: #f1c40f6b;
+  border: 1.5px solid #f1c40f;
+  cursor: pointer;
+}
+
+#act_Now-Sign-up article div p h4 {
+  text-align: left;
+}
+
+#act_Now-Sign-up article div p h4 span {
+  font-size: 1rem;
+}
+
+#act_Now-Sign-up article div p select {
+  font-size: 0.7rem;
+  display: inline-block;
+  padding: 5px 8px;
+  background-color: #f1c40f6b;
+  border: 1.5px solid #f1c40f;
+  cursor: pointer;
+  border: 1px #d0d6d6 solid;
+  background-color: #d0d6d6;
+}
+
+#act_Now-Sign-up article div p select option {
+  background-color: #d0d6d6;
+}
+
+<<<<<<< HEAD
+#act_Now-Sign-up article div p p {
+  display: inline-block;
+  margin: 0;
+}
+
+=======
+>>>>>>> 20bd061cf6c41b3e9185c305db48a18cde906d39
+#act_Now-Sign-up article div .signUpComfirm {
+  margin: 0;
+  background-color: #f1c40f;
+  font-size: 0.8rem;
+  padding: 10px 30px;
+  border: 1px solid #f1c40f;
+  border-radius: 5px;
+  color: #fff;
+  font-weight: bold;
+  cursor: pointer;
+}
+
+#act_Now-Sign-up article div button {
+  background-color: #f1c40f;
+  font-size: 0.8rem;
+  padding: 10px 30px;
+  border: 1px solid #f1c40f;
+  border-radius: 5px;
+  color: #fff;
+  font-weight: bold;
+  cursor: pointer;
+  margin: 30px 20px 50px 0;
+}
+
+#act_Now-Sign-up article div button:hover {
+  -webkit-transform: scale(1.1);
+          transform: scale(1.1);
+}
+
+#act_Now-Sign-up h4 {
+  margin: 0 0 10px 0;
+  font-size: 1.2rem;
+  text-align: left;
+}
+
+#act_Now-Sign-up .act_SignUPButton2 {
+  margin-bottom: 10px;
+  font-size: 0.7rem;
+  display: inline-block;
+  padding: 5px 8px;
+  background-color: #f1c40f6b;
+  border: 1.5px solid #f1c40f;
+  cursor: pointer;
+}
+
+#act_Now-Sign-up .act_showSignUpImg {
+  width: 65%;
+  height: 150px;
+  border: 1px #d0d6d6 solid;
+<<<<<<< HEAD
+  background-color: #d0d6d6;
+=======
+>>>>>>> 20bd061cf6c41b3e9185c305db48a18cde906d39
+  margin: 0;
+  padding: 0;
+}
+
+#act_Now-Sign-up .act_showSignUpImg img {
+  max-width: 100%;
+  max-height: 100%;
+}
+
+<<<<<<< HEAD
+#act_Now-Sign-up .act_showSignUpImgSmall {
+  width: 65%;
+  height: 100px;
+  border: 1px #d0d6d6 solid;
+  margin: 0;
+  padding: 0;
+}
+
+#act_Now-Sign-up .act_showSignUpImgSmall img {
+  max-width: 100%;
+  max-height: 100%;
+}
+
+=======
+>>>>>>> 20bd061cf6c41b3e9185c305db48a18cde906d39
+#act_Now-Sign-up #act_Sign-up-song-name {
+  margin: 0;
+  border: 1px #d0d6d6 solid;
+  background-color: #d0d6d6;
+  width: 65%;
+  height: 30px;
+}
+
+#act_Now-Sign-up #act_Sign-up-song-information {
+  margin: 0;
+  border: 1px #d0d6d6 solid;
+  background-color: #d0d6d6;
+  width: 65%;
+}
+
+#act_Now-Vote {
+  text-align: left;
+  height: 700px;
+  max-width: 1300px;
+  width: 100%;
+<<<<<<< HEAD
+  margin: 150px auto 0px auto;
+=======
+  margin: 150px auto 0 auto;
+>>>>>>> 20bd061cf6c41b3e9185c305db48a18cde906d39
+  padding-top: 50px;
+  position: relative;
+}
+
+#act_Now-Vote .act_Now-Vote-content {
+  height: 400px;
+  max-width: 1500px;
+  padding: 50px 0 0 100px;
+  position: relative;
+  margin: 0 auto;
+  background-image: url(../img/activity/0.blackline.svg), url(../img/activity/text-wh.png);
+  background-size: contain, 100% 100%;
+  background-repeat: no-repeat, no-repeat;
+}
+
+#act_Now-Vote .act_Now-Vote-content h2 {
+  margin: 0;
+  font-size: 2rem;
+}
+
+#act_Now-Vote .act_Now-Vote-content h3 {
+  margin: 0;
+  font-size: 1.5rem;
+}
+
+#act_Now-Vote .act_Now-Vote-content p {
+  width: 60%;
+  font-size: 1rem;
+  margin: 0;
+}
+
+#act_Now-Vote .act_Now-Vote-content div {
+  text-align: right;
+  vertical-align: middle;
+  padding-right: 100px;
+}
+
+#act_Now-Vote .act_Now-Vote-content div h3 {
+  display: inline-block;
+  margin: 0;
+  font-size: 1.5rem;
+}
+
+#act_Now-Vote .act_Now-Vote-content div span {
+  font-size: 2.5rem;
+  font-weight: bold;
+  color: #333;
+}
+
+#act_Now-Vote .act_Now-Vote-content img {
+  position: absolute;
+  right: -13%;
+  bottom: -20%;
+  z-index: -1;
+  width: 50%;
+  height: 125%;
+}
+
+#act_Now-Vote section {
+  max-width: 1400px;
+  width: 100%;
+<<<<<<< HEAD
+  padding: 0 0 100px 50px;
+=======
+  padding: 0 0 0 50px;
+>>>>>>> 20bd061cf6c41b3e9185c305db48a18cde906d39
+  margin: 150px auto 0 auto;
+}
+
+#act_Now-Vote section div {
+  text-align: left;
+  width: 20%;
+  margin: 0;
+  margin-left: 3.5%;
+  display: inline-block;
+  margin-bottom: 50px;
+}
+
+#act_Now-Vote section div p {
+  font-size: 0.6rem;
+  text-align: right;
+  margin: 0 auto 0 10px;
+  display: inline-block;
+  vertical-align: bottom;
+}
+
+#act_Now-Vote section div p span {
+  font-size: 0.8rem;
+}
+
+#act_Now-Vote section div h4 {
+  width: 90%;
+  margin: 0;
+  font-size: 1.2rem;
+}
+
+#act_Now-Vote section div h4 p {
+  margin: 0;
+  font-size: 1rem;
+}
+
+#act_Now-Vote section div button {
+  display: inline-block;
+  background-color: #f1c40f;
+  font-size: 0.8rem;
+  padding: 10px 30px;
+  border: 1px solid #f1c40f;
+  border-radius: 5px;
+  color: #fff;
+  font-weight: bold;
+  cursor: pointer;
+  margin: 0 0 10px 0;
+}
+
+#act_Now-Vote section div button:hover {
+  -webkit-transform: scale(1.1);
+          transform: scale(1.1);
+}
+
+#act_Now-Vote section div div {
+  width: 100%;
+  margin: 0;
+  position: relative;
+}
+
+#act_Now-Vote section div div:hover .act-old-play {
+  display: block;
+  cursor: pointer;
+  z-index: 2;
+}
+
+#act_Now-Vote section div div .act_old-play {
+  width: 100px;
+  height: 100px;
+  text-align: center;
+  position: absolute;
+  top: 20%;
+  left: 20%;
+  display: none;
+  z-index: 2;
+}
+
+#act_Now-Vote section div div .act_old-play img {
+  width: 100%;
+  height: 100%;
+}
+
+#act_Now-Vote section div div img {
+  width: 200px;
+  height: 200px;
+}
+
+#act_Now-Vote section div .act_old-hear1 {
+  width: 25px;
+  height: 25px;
+}
+
+#act_Now-Vote section div .act_old-hear1 img {
+  width: 100%;
+  height: 100%;
+}
+/*# sourceMappingURL=activity.css.map */
