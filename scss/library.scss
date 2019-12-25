@@ -1,0 +1,572 @@
+@import './public.scss';
+@import './nav_bar.scss';
+
+
+$mainRed : #de267d;
+
+html {
+  @include respond(latop-min) {
+    font-size: 16px;
+  }
+
+  @include respond(ipadpro) {
+    font-size: 16px;
+  }
+
+  @include respond(ipad) {
+    font-size: 16px;
+  }
+
+  @include respond(phone) {
+    font-size: 16px;
+  }
+}
+
+ol,
+ul {
+  list-style: none;
+  padding: 0;
+  margin: 0;
+}
+
+body {
+  background-color: $mainBg;
+  background-image: url('../img/library/library_bg.jpg');
+  background-position: bottom right;
+  background-repeat: no-repeat;
+  background-size: cover;
+  font-size: 1rem;
+  color: $fontColor;
+
+}
+
+
+header {
+  text-align: center;
+  vertical-align: middle;
+  padding-top: 120px;
+
+  img {
+    @include respond(phone) {
+      width: 100%;
+
+    }
+  }
+}
+
+main.library_main {
+  width: 100%;
+  max-width: 1200px;
+  padding-bottom: 70px;
+
+  img {
+    width: 100%;
+  }
+
+  aside {
+    // border: 1px solid gold;
+    float: left;
+    width: 25%;
+    position: relative;
+    z-index: 3;
+
+    .my_list {
+      background-color: #d0d6d6;
+      padding: 8%;
+
+      .favor {
+        cursor: pointer;
+        transition: transform .5s;
+
+        &:hover {
+          transform: scale(1.1);
+        }
+
+        i {
+          color: $mainRed;
+          margin-right: 8px;
+        }
+      }
+
+      .listSubtitle{
+        &:nth-child(2) {
+          text-align: center;
+          padding: 20px 0;
+          color: #b3b3b3;
+          position: relative;
+
+          &::before {
+            content: '';
+            width: 30%;
+            height: 2px;
+            top: 50%;
+            left: 0;
+            position: absolute;
+            background-color: #cacaca;
+          }
+
+          &::after {
+            content: '';
+            width: 30%;
+            height: 2px;
+            top: 50%;
+            right: 0;
+            position: absolute;
+            background-color: #cacaca;
+          }
+        }
+      }
+
+      .lists {
+        text-align: left;
+
+        li {
+          padding: 10px 0;
+          border-bottom: 1px solid #b3b3b3;
+          position: relative;
+          cursor: pointer;
+          transition: transform .5s;
+
+          &:hover {
+            transform: scale(1.1);
+          }
+
+          .delete {
+            color: $fontColor;
+            position: absolute;
+            right: 0;
+            top: 50%;
+            transform: translateY(-50%);
+            transition: transform .5s;
+            display: none;
+            cursor: pointer;
+
+            &:hover {
+              transform: scale(1.1) translateY(-50%);
+            }
+          }
+        }
+
+        @include respond(latop-min) {
+          display: none;
+        }
+
+        @include respond(ipadpro) {
+          display: none;
+        }
+
+        @include respond(ipad) {
+          display: none;
+        }
+
+        @include respond(phone) {
+          display: none;
+        }
+      }
+
+      select {
+        width: 100%;
+        background-color: #d0d6d6;
+        font-size: 1rem;
+        padding: 16px 8px;
+        display: none;
+
+        option {
+          padding: 16px 0;
+        }
+
+        @include respond(latop-min) {
+          display: block;
+        }
+
+        @include respond(ipadpro) {
+          display: block;
+        }
+
+        @include respond(ipad) {
+          display: block;
+        }
+
+        @include respond(phone) {
+          display: block;
+        }
+      }
+
+    }
+
+    .list_pic {
+      margin-top: 20px;
+      text-align: center;
+
+      img {
+        width: 100%;
+        max-width: 250px;
+        vertical-align: bottom;
+      }
+    }
+
+    @include respond(ipadpro) {
+      width: 90%;
+      margin: 0 auto;
+      float: none;
+    }
+
+    @include respond(ipad) {
+      width: 90%;
+      margin: 0 auto;
+      float: none;
+    }
+
+    @include respond(phone) {
+      width: 90%;
+      margin: 0 auto;
+      float: none;
+    }
+
+  }
+
+  .right {
+    float: left;
+    width: 70%;
+    padding: 5%;
+    margin-left: 5%;
+    margin-bottom: 10px;
+    min-height: 400px;
+    background-image: url('../img/library/blackline2.svg');
+    background-repeat: no-repeat;
+    background-size: cover;
+    background-position: top center;
+    position: relative;
+
+    &::after {
+      content: "";
+      position: absolute;
+      background-image: url("../img/library/list_hand.png");
+      background-repeat: no-repeat;
+      background-position: bottom center;
+      width: 350px;
+      max-width: 350px;
+      height: 520px;
+      background-size: contain;
+      bottom: -10px;
+      left: -350px;
+
+      @include respond(ipadpro) {
+        display: none;
+      }
+
+      @include respond(ipad) {
+        display: none;
+      }
+
+      @include respond(phone) {
+        display: none;
+      }
+    }
+
+    .listInfo {
+      .listCover {
+        width: 200px;
+        height: 200px;
+        float: left;
+        position: relative;
+
+        @include respond(ipad) {
+          margin: 0 auto;
+          float: none;
+        }
+
+        @include respond(phone) {
+          margin: 0 auto;
+          float: none;
+        }
+
+        button {
+          position: absolute;
+          bottom: 10px;
+          left: 50%;
+          transform: translateX(-50%);
+        }
+
+        @include respond(phone) {
+          margin: 5% auto;
+        }
+      }
+
+      .nameAndBtn {
+        width: calc(100% - 200px);
+        height: 200px;
+        padding: 5%;
+        float: left;
+
+        @include respond(ipad) {
+          width: 100%;
+        }
+
+        @include respond(phone) {
+          width: 100%;
+        }
+
+        .listName {
+          .name {
+            h2 {
+              display: inline-block;
+              vertical-align: middle;
+            }
+            #inputListTitle{
+              height: 60px;
+              width: 100%;
+              max-width: 300px;
+              font-size: 2rem;
+              padding: 5px;
+              display: none;
+            }
+
+            button {
+              margin-left: 10px;
+            }
+          }
+
+          @include respond(ipad) {
+            width: 85%;
+          }
+
+          @include respond(phone) {
+            width: 100%;
+          }
+        }
+
+        .playall_btn {
+          text-align: right;
+
+          @include respond(ipad) {
+            width: 14%;
+          }
+        }
+
+      }
+    }
+
+    ul.songs {
+      padding-top: 20px;
+
+      li {
+        // border: 1px skyblue solid;
+        padding: 10px 0;
+        border-bottom: 1px solid #cacaca;
+
+        &:last-child {
+          border: none;
+        }
+
+        .songPlay {
+          float: left;
+
+          .songCover {
+            width: 60px;
+            height: 60px;
+            position: relative;
+
+            .listPlay {
+              width: 30px;
+              height: 30px;
+              line-height: 30px;
+              text-align: center;
+              background-color: rgba(255, 255, 255, 0.5);
+              border-radius: 15px;
+              position: absolute;
+              top: 50%;
+              left: 50%;
+              display: none;
+              transform: translate(-50%, -50%);
+              cursor: pointer;
+
+              i {
+                color: white;
+                font-size: 0.8rem;
+              }
+            }
+          }
+        }
+
+        .songInfo {
+          float: left;
+          margin: 0 3%;
+          width: 60%;
+          @include respond(phone){
+            width: 58%;
+          }
+
+          .name {
+            padding: 2% 0;
+
+            a {
+              display: block;
+              color: $fontColor;
+              text-decoration: none;
+              transition: transform .5s;
+
+              &:hover {
+                transform: scale(1.1);
+              }
+            }
+
+            h4 {
+              display: inline-block;
+            }
+
+            p {
+              display: inline-block;
+              margin-left: 5%;
+
+              @include respond(phone){
+                margin-left: 0;
+              }
+            }
+          }
+        }
+
+
+        .totalTime {
+          float: left;
+          padding: 2% 0;
+          width: 10%;
+
+          @include respond(phone) {
+            display: none;
+          }
+        }
+
+        .heart {
+          float: left;
+          text-align: right;
+          padding: 2% 0;
+          width: 5%;
+          cursor: pointer;
+          transition: transform .5s;
+          @include respond(phone){
+            width: 7%;
+            text-align: left;
+          }
+
+          &:hover {
+            transform: scale(1.1);
+          }
+        }
+
+        .more {
+          float: left;
+          text-align: right;
+          padding: 2% 0;
+          width: 5%;
+          position: relative;
+          cursor: pointer;
+          @include respond(phone){
+            width: 8%;
+            text-align: left;
+          }
+
+          i {
+            transition: transform .5s;
+
+            &:hover {
+              transform: scale(1.1);
+            }
+          }
+
+          .changeList {
+            text-align: center;
+            position: absolute;
+            right: 0;
+            white-space: nowrap;
+            padding: 8px 16px;
+            margin-top: 8px;
+            font-size: 0.8rem;
+            border: 2px $fontColor solid;
+            background-color: white;
+            display: none;
+          }
+
+        }
+      }
+    }
+
+    @include respond(ipadpro) {
+      width: 90%;
+      margin: 5%;
+      padding: 10% 5%;
+    }
+
+    @include respond(ipad) {
+      width: 90%;
+      margin: 5%;
+      padding: 10% 5%;
+    }
+
+    @include respond(phone) {
+      width: 90%;
+      margin: 5%;
+      padding: 10% 5%;
+    }
+  }
+}
+
+
+.circlebtn {
+  width: 50px;
+  height: 50px;
+  line-height: 50px;
+  border-radius: 25px;
+  font-size: 0.8rem;
+  font-weight: bold;
+  border: 1px solid $yellow;
+  background-color: $yellow;
+  color: white;
+  outline: none;
+  cursor: pointer;
+  transition: transform .5s;
+
+  &:hover {
+    transform: scale(1.1);
+  }
+}
+
+.normalbtn {
+  @include butttonn02;
+  display: block;
+  margin: 20px auto 0;
+  transition: transform .5s;
+
+  &:hover {
+    transform: scale(1.1);
+  }
+
+  @include respond(latop-min) {
+    width: 100%;
+  }
+
+  @include respond(ipadpro) {
+    width: 47%;
+    margin: 20px 1% 0;
+    display: inline-block;
+  }
+
+  @include respond(phone) {
+    width: 100%;
+  }
+}
+
+.editBtn,.enterBtn {
+  @include buttonno03;
+  display: none;
+}
+
+.becomeRed {
+  color: $mainRed;
+}
+
+.clearfix {
+  clear: both;
+}
+
+@import './lightBox';
