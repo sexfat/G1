@@ -512,25 +512,15 @@ header {
   }
 }
 
-.act_oldsongbox .act_oldTop div p .act_old-hear1 {
+.act_oldsongbox .act_oldTop div .act_old-hear1 {
   width: 25px;
   height: 25px;
   margin: 0;
 }
 
-.act_oldsongbox .act_oldTop div p .act_old-hear1 img {
+.act_oldsongbox .act_oldTop div .act_old-hear1 img {
   width: 100%;
   height: 100%;
-}
-
-.act_oldsongbox .act_oldTop div p {
-  font-size: 0.6rem;
-  margin: 0 auto;
-  margin-bottom: 10px;
-}
-
-.act_oldsongbox .act_oldTop div p span {
-  font-size: 0.8rem;
 }
 
 .act_oldsongbox .act_oldTop div div {
@@ -564,6 +554,16 @@ header {
 .act_oldsongbox .act_oldTop div div img {
   width: 250px;
   height: 250px;
+}
+
+.act_oldsongbox .act_oldTop p {
+  font-size: 0.6rem;
+  margin: 0 auto;
+  margin-bottom: 10px;
+}
+
+.act_oldsongbox .act_oldTop p span {
+  font-size: 0.8rem;
 }
 
 .act_oldAll {
@@ -619,13 +619,13 @@ header {
   }
 }
 
-.act_oldAll div .act_songBox p .act_old-hear1 {
+.act_oldAll div .act_songBox .act_old-hear1 {
   width: 25px;
   height: 25px;
   margin: 0;
 }
 
-.act_oldAll div .act_songBox p .act_old-hear1 img {
+.act_oldAll div .act_songBox .act_old-hear1 img {
   width: 100%;
   height: 100%;
 }
@@ -861,7 +861,6 @@ header {
 
 #act_Now-Sign-up h2 {
   font-size: 2rem;
-<<<<<<< HEAD
   margin: 0 0 20px 120px;
 }
 
@@ -869,9 +868,6 @@ header {
   #act_Now-Sign-up h2 {
     font-size: 1.5rem;
   }
-=======
-  margin: 0 0 20px 50px;
->>>>>>> dev
 }
 
 #act_Now-Sign-up div {
@@ -946,7 +942,6 @@ header {
   position: absolute;
 }
 
-<<<<<<< HEAD
 @media all and (max-width: 1200px) {
   #act_Now-Sign-up article {
     min-height: 400px;
@@ -956,8 +951,6 @@ header {
   }
 }
 
-=======
->>>>>>> dev
 #act_Now-Sign-up article .act_SignSongURL-box {
   width: 80%;
   height: 20px;
@@ -1052,15 +1045,12 @@ header {
   margin: 0;
 }
 
-<<<<<<< HEAD
 @media all and (max-width: 1200px) {
   #act_Now-Sign-up article div p p {
     font-size: 0.8rem;
   }
 }
 
-=======
->>>>>>> dev
 #act_Now-Sign-up article div .signUpComfirm {
   margin: 0;
   background-color: #f1c40f;
@@ -1364,13 +1354,13 @@ header {
   }
 }
 
-#act_Now-Vote section div .act_songBox p .act_old-hear1 {
+#act_Now-Vote section div .act_songBox .act_old-hear1 {
   width: 25px;
   height: 25px;
   margin: 0;
 }
 
-#act_Now-Vote section div .act_songBox p .act_old-hear1 img {
+#act_Now-Vote section div .act_songBox .act_old-hear1 img {
   width: 100%;
   height: 100%;
 }
