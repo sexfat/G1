@@ -273,18 +273,18 @@ $(document).ready(function () {
   }
 
   //清單播放狀態
-  let NowPlaySong = document.querySelector(".player_s .songInfo .name").innerText;
-  let listCover = document.querySelectorAll(".player_b .songCover .listPlay");
-  console.log(NowPlaySong);
-  console.log(listCover);
-  console.log(listCover[0].innerHTML);
-  for(let listNum = 0 ;listNum<myPlaylist.length;listNum++){
-    if(myPlaylist[listNum].title == NowPlaySong){
-      listCover[listNum].innerHTML ='<i class="fas fa-pause"></i>';
-    }else{
-      listCover[listNum].innerHTML ='<i class="fas fa-play"></i>';
-    }
-  }
+  // let NowPlaySong = document.querySelector(".player_s .songInfo .name").innerText;
+  // let listCover = document.querySelectorAll(".player_b .songCover .listPlay");
+  // console.log(NowPlaySong);
+  // console.log(listCover);
+  // console.log(listCover[0].innerHTML);
+  // for(let listNum = 0 ;listNum<myPlaylist.length;listNum++){
+  //   if(myPlaylist[listNum].title == NowPlaySong){
+  //     listCover[listNum].innerHTML ='<i class="fas fa-pause"></i>';
+  //   }else{
+  //     listCover[listNum].innerHTML ='<i class="fas fa-play"></i>';
+  //   }
+  // }
 
   console.log($(".list .listPlay").text());
   // if($(".list .listPlay").text()=='<i class="fas fa-pause"></i>'){
