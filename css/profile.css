@@ -5363,71 +5363,6 @@ header {
   height: 100%;
 }
 
-* {
-  -webkit-box-sizing: border-box;
-          box-sizing: border-box;
-  margin: 0;
-  padding: 0;
-}
-
-html {
-  font-size: 20px;
-}
-
-body {
-  margin: 0;
-  padding: 0;
-  font-family: "Lucida Sans Unicode", Geneva, Verdana, sans-serif;
-  background: #fafaf1;
-  color: #333;
-  overflow-x: hidden;
-}
-
-.flexbox {
-  display: -webkit-box;
-  display: -ms-flexbox;
-  display: flex;
-}
-
-a {
-  text-decoration: none;
-  color: #333;
-}
-
-header {
-  height: 300px;
-  text-align: center;
-  padding: 120px 0;
-}
-
-.wrapper {
-  max-width: 1500px;
-  margin: 0 auto;
-  width: 100%;
-}
-
-/*燈箱寬*/
-.lightbox_s {
-  width: 500px;
-}
-
-/*新手教學用*/
-.lightbox_b {
-  width: 1000px;
-}
-
-/*燈箱的遮罩顏色*/
-.lightCover {
-  background-color: #414141e6;
-}
-
-/*button mixin*/
-@media all and (max-width: 768px) {
-  header img {
-    height: 76px;
-  }
-}
-
 .songinfo_infoplay .music-player-container {
   -webkit-transform: translate(-50%, -50%);
   transform: translate(-50%, -50%);
@@ -5641,10 +5576,6 @@ header {
   width: 1200px;
   height: 600px;
   margin: 0 auto;
-}
-
-.songinfo_info {
-  border: 1px solid red;
 }
 
 .songinfo_infos3 {
@@ -6020,8 +5951,8 @@ header {
 
 .songinfo_ear {
   position: relative;
-  bottom: 850px;
-  left: 480px;
+  bottom: 863px;
+  left: 650px;
 }
 
 .songsadded_adds2 {
