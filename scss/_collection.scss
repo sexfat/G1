@@ -20,14 +20,25 @@ $albumbottom: 340px;
     background-position:bottom;
     background-size: cover;
     background-repeat: no-repeat;
+    header{
+        text-align: center;
+        padding:120px;
+        width: 100%;
+        img{
+            max-width:500px;
+            width: 100%;
+        }
+    }
     .collectionalbumsection1{
         border: 1px solid pink;
         width:100%;
-        height:1500px;
         display: inline-block;
         .collectionsinglealbum{
             border: 1px solid green;
             width:100%;
+            // background-image: url(../img/collection/shelf.png);
+            // background-repeat: no-repeat;
+            // background-position: bottom;
             margin-bottom:50px;
             display: inline-block;
             font-size: 0px;
@@ -180,6 +191,7 @@ $albumbottom: 340px;
         }
         #collectiontabcontainer{
             .collectiontabtitle{
+                border: 1px solid red;
                 margin: 2vw 0vw;
                 li{
                     list-style: none;
@@ -199,7 +211,7 @@ $albumbottom: 340px;
                         cursor: pointer;
                         }
                         a{
-                            color: #fff;
+                            color: $fontColor;
                             cursor: pointer;
                             padding: 10px 20px;
                         }
@@ -235,6 +247,13 @@ $albumbottom: 340px;
                         
                     }
                 }
+            }
+            .collectionflower{
+                text-align: right;
+                position: relative;
+                bottom:100px;
+                right:100px;
+                z-index:-1;
             }
         }
 
