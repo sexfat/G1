@@ -2,17 +2,13 @@ $labelfontsize:1.2rem;
 $forgetfontsize:0.6rem;
 $buttonhover:scale(1.1);
 $latop-maxer: 1920px;
-@mixin respond($breakpoint) {
-  @if $breakpoint== "latop-maxer" {
-    @media all and (max-width:latop-maxer) {
-      @content;
-    }
-  }
-}
+
 .loginbody{
     height: 100vh;
+    background-image: url(../img/register/login.jpg);
+    background-position:center;
     background-size: cover;
-    background-position: center;
+    background-repeat: no-repeat;
     .signupcontainer {
           @include respond(ipad) {
             display: none;
@@ -62,16 +58,17 @@ $latop-maxer: 1920px;
             box-shadow: 2px 0 10px rgba(0,0,0,.1);
             transition: all .5s ease-in-out;
             z-index: 2;
+            @include respond(latop-min) {
+              width: 360px;
+              height: 600px;
+              top: -8%;
+            }
             @include respond(ipadpro) {
-                width: 200px;
-                height: 525px;
-                top: -20%;
-              }
-              @include respond(latop-min) {
-                width: 360px;
+                width: 350px;
                 height: 600px;
-                top: -8%;
+                top: -10%;
               }
+
             }
         .displaynone {
             display:none;
@@ -219,6 +216,7 @@ $latop-maxer: 1920px;
             left: 25%;
             @include respond(ipadpro) {
                 height: 200px;
+                left: 15%;
               }
               @include respond(latop-min) {
                 height: 280px;
@@ -255,17 +253,80 @@ $latop-maxer: 1920px;
         }
     }
     #mobilelogintab{
-      @include respond(latop-maxer) {
-        display: none;
-      }
-      @include respond(ipadpro) {
-        display: none;
-      }
-      @include respond(latop-min) {
-        display: none;
-      }
-      @include respond(latop-max){
-        display: none;
+      display: none;
+      @include respond(ipad) {
+        display: inline-block;
+        border: 1px solid $green;
+        background-color: #fff;
+        box-shadow: 2px 0 10px rgba(0,0,0,.2);
+        position: absolute;
+        padding: 50px 0px 50px 0px;
+        width:80vw;
+        top: 50%;
+        left: 50%;
+        transform: translate(-50%,-50%);
+        background-image: url(../img/register/register.jpg);
+        background-position: center;
+        background-repeat: no-repeat;
+        .motabtitle{
+          text-align: center;
+          li{
+            display: inline-block;
+            padding:20px;
+            position: relative;
+            top: 50%;
+            left: 15%;
+            
+            margin-top: 40px;
+            transform: translate(-50%,-50%);
+            border: 1px solid $green;
+            &:hover{
+              background-color: $green;
+            }
+            a{
+              font-weight: bold;
+              font-size: $rem1_2;
+              &:hover{
+                color:#fff;
+                background-color: $green;
+              }
+            }
+          }
+        }
+        .motabinner{
+          form {
+            display: flex;
+            align-items: left;
+            flex-direction: column;
+            margin: 0px 0px 0px 50px;
+            button{
+              @include butttonn02;
+              border-radius: 10px;
+              margin: 0 auto;
+              display: block;
+              position: relative;
+              
+              right:10%;
+              margin-top: 70px;
+              &:hover{
+                transform: scale(1.1);
+              }
+          }
+          input{
+            background-color: $green;
+            border: none;
+            padding:10px;
+            width: 80%;
+          }
+          .mobileemailinput{
+            margin-bottom: 15px;
+          }
+          a{
+            margin-left: 110px;
+          }
+        }
+    
+        }
       }
       @include respond(phone) {
         display: inline-block;
@@ -286,7 +347,7 @@ $latop-maxer: 1920px;
             padding:10px;
             position: relative;
             top: 50%;
-            left: 10%;
+            left: 20%;
             &:hover{
               background-color: $green;
             }
@@ -318,94 +379,23 @@ $latop-maxer: 1920px;
                 transform: scale(1.1);
               }
           }
+          a{
+            margin-left: 70px;
+            font-size:$rem0_7;
+          }
           input{
             background-color: $green;
             border: none;
             padding:5px;
-            width: 80%;
+            width: 85%;
           }
           .mobileemailinput{
-            margin-bottom: 15px;
+            margin-bottom: 20px;
           }
-          a{
-            margin-left: 41px;
-          }
+  
         }
     
         }
       }
-      @include respond(ipad) {
-        display: inline-block;
-        border: 1px solid $green;
-        background-color: #fff;
-        box-shadow: 2px 0 10px rgba(0,0,0,.2);
-        position: absolute;
-        padding: 50px 0px 50px 0px;
-        width:80vw;
-        top: 50%;
-        left: 50%;
-        transform: translate(-50%,-50%);
-        background-image: url(../img/register/register.jpg);
-        background-position: center;
-        background-repeat: no-repeat;
-        .motabtitle{
-          text-align: center;
-          li{
-            display: inline-block;
-            padding:20px;
-            position: relative;
-            top: 50%;
-            left: 9%;
-            transform: translate(-50%,-50%);
-            border: 1px solid $green;
-            &:hover{
-              background-color: $green;
-            }
-            a{
-              font-weight: bold;
-              font-size: $rem1_2;
-              &:hover{
-                color:#fff;
-                background-color: $green;
-              }
-            }
-          }
-        }
-        .motabinner{
-          form {
-            display: flex;
-            align-items: left;
-            flex-direction: column;
-            margin: 0px 0px 0px 50px;
-            
-            button{
-              @include butttonn02;
-              border-radius: 10px;
-              margin: 0 auto;
-              display: block;
-              position: relative;
-              
-              right:10%;
-              margin-top: 70px;
-              &:hover{
-                transform: scale(1.1);
-              }
-          }
-          input{
-            background-color: $green;
-            border: none;
-            padding:10px;
-            width: 80%;
-          }
-          .mobileemailinput{
-            margin-bottom: 15px;
-          }
-          a{
-            margin-left: 165px;
-          }
-        }
-    
-        }
-      }
-    }
+  }
 }
