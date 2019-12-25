@@ -1,5 +1,3 @@
-@import "./public.scss";
-@import "./nav_bar.scss";
 
 .profile_content {
   position: relative;
@@ -59,6 +57,13 @@
         height: 300px;
         background: url(../img/home/test.jpg);
         background-size: cover;
+
+        i {
+          position: relative;
+          top: 5px;
+          left: 267px;
+          font-size: 1.5rem;
+        }
       }
     }
     .profile_rightbox {
@@ -69,6 +74,15 @@
         th,
         td {
           padding: 15px;
+        }
+        input[type="text"] {
+          border-radius: 5px;
+          border: 1px solid darkgray;
+          height: 25px;
+          text-indent: 10px;
+          font-family: 微軟正黑體;
+          font-size:16px;
+          outline:none;
         }
       }
     }
@@ -83,11 +97,11 @@
   height: 500px;
   .profile_lightbox_s {
     position: absolute;
-    top: 50%;
+    top: calc(50% - 215px);
     left: calc(50% - 250px);
     height: 430px;
     margin: 0 auto;
-    background: #FFFFFF;
+    background: #ffffff;
     border-radius: 5%;
 
     i {

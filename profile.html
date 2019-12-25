@@ -6,6 +6,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
     <title>Document</title>
+    <link rel="stylesheet" href="./css/main.css">
     <link rel="stylesheet" href="./css/profile.css">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.11.2/css/all.min.css" />
 
@@ -14,7 +15,7 @@
 </head>
 
 <body>
-    <div id="app">
+    <div id="profile_app">
         <div class="nav_bar flexbox">
             <div class="hamburger" @click="hamburger_click">
                 <div class="hamburger-box">
@@ -25,73 +26,75 @@
                 <div class="paint_border"></div>
                 <ul>
                     <li class="REMIX flexbox">
-                        <a href="">
+                        <a href="./remix.html">
                         </a>
                     </li>
                     <li class="COLLECTION flexbox">
-                        <a href="">
+                        <a href="./collection.html">
                         </a>
                     </li>
                     <li class="ACTIVITY flexbox">
-                        <a href="">
+                        <a href="./activity.html">
                         </a>
                     </li>
                     <li class="LIBRARY flexbox">
-                        <a href="">
+                        <a href="./library.html">
                         </a>
                     </li>
                 </ul>
             </div>
-
             <div class="logo_container">
-                <a href="">
+                <a href="./index.html">
                     <div class="logo"></div>
                 </a>
             </div>
             <ul class="main_list flexbox">
                 <li class="REMIX flexbox">
-                    <a href="">
+                    <a href="./remix.html">
                     </a>
                 </li>
                 <li class="COLLECTION flexbox">
-                    <a href="">
+                    <a href="./collection.html">
                     </a>
                 </li>
                 <li class="ACTIVITY flexbox">
-                    <a href="">
+                    <a href="./activity.html">
                     </a>
                 </li>
                 <li class="LIBRARY flexbox">
-                    <a href="">
+                    <a href="./library.html">
                     </a>
                 </li>
             </ul>
             <div class="search_bt" @click="search_bt_click">
                 <a href="#"></a>
             </div>
-            <div class="search_bar">
+            <div class="search_bar" @click="stopPropagation">
                 <input class="search" type="text" />
                 <div class="tag_container">
                 </div>
             </div>
-            <div class="mem_bt" @click="mem_bt_click">
+            <div class="login_bt" @click="" v-if="mem_login == false">
+                <a class="flexbox" href="#">Login</a>
+            </div>
+            <div class="mem_bt" @click="mem_bt_click" v-if="mem_login == true">
                 <a href="#"></a>
             </div>
             <div class="mem_list" @click="stopPropagation">
                 <div class="paint_border"></div>
                 <ul>
                     <li>
-                        <a href="">
+                        <a href="./profile.html">
                             <h4>Profile</h4>
                         </a>
                     </li>
                     <li>
-                        <a href="">
-                            <h4>Favorite</h4>
+                        <a href="./library.html">
+                            <h4>Library</h4>
                         </a>
                     </li>
                     <li>
-                        <a href="">
+                        <a href="./songsadded.html">
                             <h4>
                                 Song Upload
                                 <br />&amp; Remove
@@ -99,7 +102,7 @@
                         </a>
                     </li>
                     <li>
-                        <a href="">
+                        <a href="./store.html">
                             <h4>
                                 Store Value
                                 <br />&amp;Store Record
@@ -153,27 +156,29 @@
             </div>
             <div class="profile_container flexbox" v-if="profile_modify == true">
                 <div class="profile_leftbox">
-                    <div class="profile_mem_img"></div>
+                    <div class="profile_mem_img">
+                        <i class="fas fa-pen-square"></i>
+                    </div>
                 </div>
                 <div class="profile_rightbox">
                     <table>
                         <tr>
                             <th>Account</th>
                             <td>
-                                <input type="text" :value="account" name="account">
+                                <input class="account" type="text" :value="account" name="account">
                             </td>
                         </tr>
                         <tr>
                             <th>Name</th>
-                            <td><input type="text" :value="mem_name" name="mem_name"></td>
+                            <td><input class="mem_name" type="text" :value="mem_name" name="mem_name"></td>
                         </tr>
                         <tr>
                             <th>Email</th>
-                            <td><input type="text" :value="email" name="email"></td>
+                            <td><input class="email" type="text" :value="email" name="email"></td>
                         </tr>
                         <tr>
                             <th>Point</th>
-                            <td><input type="text" :value="point" name="point"></td>
+                            <td><input class="point" type="text" :value="point" name="point"></td>
                         </tr>
                     </table>
                 </div>
@@ -186,11 +191,11 @@
                 <h4>Password Modify</h4>
                 <div>
                     Password：<br>
-                    <input type="password" name="" >
+                    <input type="password" name="">
                 </div>
                 <div>
                     Password Confirm：<br>
-                    <input type="password" name="" >
+                    <input type="password" name="">
                 </div>
                 <div class="profile_modify_confirm doubleSmall flexbox">Modify Confirm</div>
             </div>
@@ -199,15 +204,16 @@
 
     <script>
         let vm = new Vue({
-            el: "#app",
+            el: "#profile_app",
             data: {
                 // nav_bar
                 search_bar: false,
                 mem_list: false,
                 mobile_list: false,
+                mem_login: true,
 
                 // profile
-                profile_modify: true,
+                profile_modify: false,
                 password_modify: false,
                 account: 'abc123',
                 mem_name: 'QQ',
@@ -337,6 +343,10 @@
                         this.password_modify = false;
                     } else {
                         this.password_modify = true;
+                        this.$nextTick(() => {
+                            // DOM 更新
+                            document.querySelector('.profile_lightCover').setAttribute('style', `height: ${window.innerHeight}px`)
+                        });
                     }
                 },
 
