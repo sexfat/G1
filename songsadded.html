@@ -59,6 +59,7 @@
             -webkit-transform: rotate(-45deg);
             transform: rotate(-45deg);
         }
+
     </style>
 </head>
 
@@ -448,8 +449,11 @@
                         <p>Song Title : <input type="text"
                                 style="border: 1px solid #d0d6d6;width:350px;height:28px;background-color: #d0d6d6;">
                         </p>
-                        <input type="file" name="" id=""
-                            style="border: 1px solid #d0d6d6;color: rgba(0, 0, 0, 0.5);width:465px;height:25px;background-color: #d0d6d6;"><br>
+                        <div id="infopath">
+                            <p  class="songsadd_path" v-if="infopathURL">{{infopathURL}}</p>
+                            <input type="file" name="" id="songinfo_btn" @change="changeSignUpload" style="display: none;">
+                            <label for="songinfo_btn">choose</label>
+                        </div>
                         <input type="checkbox" name="" id=""> House&emsp;&emsp;&emsp;&ensp;&ensp;&ensp;
                         <input type="checkbox" style="border-radius: 5px;" name="" id="">Trap
                         <br>
@@ -567,7 +571,26 @@
         }
         window.addEventListener('load', doFirst);
     </script>
-
+    <script>
+        new Vue({
+            el: "#infopath",
+            data: {
+                infopathURL:"",
+            },
+            methods: {
+                changeSignUpload(song){
+                    const songFile = song.target.files.item(0);
+                    const readers = new FileReader();
+                    readers.addEventListener('load', this.SignUploadLoader);
+                    readers.readAsDataURL(songFile);
+                },
+                SignUploadLoader(song){
+                    this. infopathURL = song.target.result;
+                }
+            },
+        });
+    </script>
+    
 
     <script>
         new Vue({
