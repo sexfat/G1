@@ -209,6 +209,7 @@ $(document).ready(function () {
         right: "-50%",
         opacity: "1"
       }, "fast", "swing").addClass("recRotate");
+      listStatus();
       playStatus = true;
       // console.log(playStatus);
     } else {
@@ -273,28 +274,35 @@ $(document).ready(function () {
   }
 
   //清單播放狀態
-  // let NowPlaySong = document.querySelector(".player_s .songInfo .name").innerText;
-  // let listCover = document.querySelectorAll(".player_b .songCover .listPlay");
-  // console.log(NowPlaySong);
-  // console.log(listCover);
-  // console.log(listCover[0].innerHTML);
-  // for(let listNum = 0 ;listNum<myPlaylist.length;listNum++){
-  //   if(myPlaylist[listNum].title == NowPlaySong){
-  //     listCover[listNum].innerHTML ='<i class="fas fa-pause"></i>';
-  //   }else{
-  //     listCover[listNum].innerHTML ='<i class="fas fa-play"></i>';
-  //   }
-  // }
+  function listStatus() {
+    let NowPlaySong = document.querySelector(".player_s .songInfo .name").innerText;
+    let listCover = document.querySelectorAll(".player_b .songCover .listPlay");
+    // console.log(NowPlaySong);
+    // console.log(listCover);
+    // console.log(listCover[0].innerHTML);
 
-  console.log($(".list .listPlay").text());
-  // if($(".list .listPlay").text()=='<i class="fas fa-pause"></i>'){
-  //   $(this).click(function(){
-  //     isPlaying(false);
-  //   });
-  // }else{
-  //   $(this).click(function(){
-  //     isPlaying(true);
-  //   });
-  // }
+    if(playStatus == false){
+      for (let listNum = 0; listNum < myPlaylist.length; listNum++) {
+        if (myPlaylist[listNum].title == NowPlaySong) {
+          listCover[listNum].innerHTML = '<i class="fas fa-pause"></i>';
+          listCover[listNum].classList.add("now");
+        } else {
+          listCover[listNum].innerHTML = '<i class="fas fa-play"></i>';
+          listCover[listNum].classList.remove("now");
+        }
+      }
+    }
+    
+  }
+
+  $(".listPlay .now").click (function () {
+    console.log("2");
+    if (playStatus == true) {
+      isPlaying(false);
+    } else {
+      isPlaying(true);
+    }
+  });
+
 
 });
