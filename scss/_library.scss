@@ -9,7 +9,7 @@ $mainRed : #de267d;
   font-size: $rem1;
 }
 
-main.library_main {
+.library_main {
   width: 100%;
   max-width: 1200px;
   padding-bottom: 70px;
@@ -285,7 +285,7 @@ main.library_main {
               font-size: $rem2;
               display: inline-block;
 
-              @include respond(laptop-min) {
+              @include respond(latop-min) {
                 font-size: $rem1_5;
               }
 
@@ -295,6 +295,7 @@ main.library_main {
                 text-overflow: ellipsis;
                 white-space: nowrap;
               }
+
             }
 
             #inputListTitle {
@@ -391,30 +392,43 @@ main.library_main {
             vertical-align: top;
             font-size: $rem1_2;
             display: inline-block;
-            vertical-align: top;
+            @include respond(latop-min) {
+              padding: 0;
+            }
+
+            @include respond(ipad){
+              font-size: $rem1;
+            }
 
             @include respond(phone) {
               display: block;
+            }
 
-              a {
-                display: block;
-                color: $fontColor;
-                text-decoration: none;
-                transition: transform .5s;
+            a {
+              display: block;
+              color: $fontColor;
+              text-decoration: none;
+              transition: transform .5s;
 
-                @include respond(phone) {
-                  overflow: hidden;
-                  text-overflow: ellipsis;
-                  white-space: nowrap;
-                }
+              @include respond(ipad) {
+                overflow: hidden;
+                text-overflow: ellipsis;
+                white-space: nowrap;
+              }
+              @include respond(phone) {
+                overflow: hidden;
+                text-overflow: ellipsis;
+                white-space: nowrap;
+              }
 
-                &:hover {
-                  transform: scale(1.1);
-                }
+              &:hover {
+                transform: scale(1.1);
               }
             }
           }
-          .creator{
+
+          .creator {
+            padding: 2% 0;
             overflow: hidden;
             text-overflow: ellipsis;
             white-space: nowrap;
@@ -422,11 +436,12 @@ main.library_main {
             vertical-align: top;
             margin-left: 5%;
 
-            @include respond(latop-max) {
+            @include respond(latop-min) {
               display: block;
               margin-left: 0;
+              padding: 0;
+              font-size: $rem0_8;
             }
-
           }
         }
 
@@ -436,7 +451,7 @@ main.library_main {
           width: 10%;
 
           @include respond(ipad) {
-            font-size: $rem0_8;
+            font-size: $rem0_7;
           }
 
           @include respond(phone) {
@@ -452,7 +467,7 @@ main.library_main {
           cursor: pointer;
           transition: transform .5s;
 
-          @include respond(laptop-min) {
+          @include respond(latop-min) {
             width: 8%;
             text-align: center;
           }
@@ -550,14 +565,16 @@ main.library_main {
       top: 20px;
       cursor: pointer;
       transition: transform 0.5s;
-      @include respond(phone){
-          right: 10px;
-          top: 5px;
+
+      @include respond(phone) {
+        right: 10px;
+        top: 5px;
       }
+
       &:hover {
-          transform: scale(1.1);
+        transform: scale(1.1);
       }
-  }
+    }
 
     #myAllList {
       width: 90%;

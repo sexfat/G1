@@ -1,0 +1,260 @@
+// @import './public.scss';
+
+$green: #d0d6d6;
+$yellow: #f1c40f;
+$mainBg: #fafaf1;
+$fontColor: #333;
+$albumsize: 200px;
+$albumbottom: 340px;
+
+@mixin collectionalbum {
+    background-size: 100%;
+    width:$albumsize;
+    height:$albumsize;
+    position: relative;
+    bottom:$albumbottom;
+}
+
+.collectionbody{
+    background-image: url(../img/collection/collectionnavback.jpg);
+    background-position:bottom;
+    background-size: cover;
+    background-repeat: no-repeat;
+    .collectionheader{
+        text-align: center;
+        padding:120px;
+        width: 100%;
+        img{
+            max-width:500px;
+            width: 100%;
+        }
+    }
+    .collectionalbumsection1{
+        // border: 1px solid pink;
+        width:100%;
+        display: inline-block;
+        .collectionsinglealbum{
+            // border: 1px solid green;
+            width:100%;
+            // background-image: url(../img/collection/shelf.png);
+            // background-repeat: no-repeat;
+            // background-position: bottom;
+            margin-bottom:50px;
+            display: inline-block;
+            font-size: 0px;
+            .collectionsinglecover{
+                // border:1px solid blue;
+                margin:20px;
+                display: inline-block;
+                font-size:$rem1_2;
+                width:250px;
+                height: 250px;
+                text-align: left;
+                @include respond(latop-max) {
+                    width:200px;
+                    height: 200px;
+                    font-size:$rem1;
+                    margin:10px;
+                }
+                @include respond(latop-min) {
+                    width:180px;
+                    height:180px;
+                }
+                .collalbumpic{
+                    background-size:cover;
+                    width: 100%;
+                    height: 100%;
+                    text-align: left;
+                   
+                    p{
+                        position: relative;
+                        top:200px;
+                    }
+                    span{
+                        font-size: $rem1;
+                    }
+                    .collplayer{
+                        position: relative;
+                        top:50%;
+                        left:85%;
+                        transform: translate(-50%,-50%);
+                        display: none;
+                        img{
+                            width:80px;
+                            height: 80px;
+                            @include respond(latop-max) {
+                                width: 50px;
+                                height: 50px;
+                            }
+                        }
+                        
+                    }
+
+                }
+                .collheart{
+                    // border: 1px solid pink;
+                    text-align: left;
+                    img{
+                        width: 40px;
+                        height: 40px;
+                        @include respond(latop-max) {
+                            width: 30px;
+                            height: 30px;
+                        }
+                    }
+                    
+                }
+                .sampleblum1{
+                    background-image: url(../img/collection/album1.jpg);
+                }
+                .sampleblum2{
+                    background-image: url(../img/collection/album2.jpg);
+                }
+                .sampleblum3{
+                    background-image: url(../img/collection/album3.jpg);
+                }
+                .sampleblum4{
+                    background-image: url(../img/collection/album4.jpg);
+                }
+                .sampleblum5{
+                    background-image:url(../img/collection/album5.jpg);
+                }
+                .sampleblum6{
+                    background-image:url(../img/collection/album6.jpg);
+                }
+                .sampleblum7{
+                    background-image:url(../img/collection/album7.jpg);
+                }
+                .sampleblum8{
+                    background-image:url(../img/collection/album8.jpg);
+                }
+                .sampleblum9{
+                    background-image:url(../img/collection/album9.jpg);
+                }
+                .sampleblum10{
+                    background-image:url(../img/collection/album10.jpg);
+                }
+                .sampleblum11{
+                    background-image:url(../img/collection/album11.jpg);
+                }
+                .sampleblum12{
+                    background-image:url(../img/collection/album12.jpg);
+                }
+            }
+        }
+    }
+    .playall_btns{
+        text-align: right;
+        margin: 2vw 20vw; 
+    }
+    .circlebtn {
+        width: 50px;
+        height: 50px;
+        vertical-align: middle;
+        line-height: 50px;
+        border-radius: 25px;
+        font-size: 0.8rem;
+        font-weight: bold;
+        border: 1px solid $yellow;
+        background-color: $yellow;
+        color: white;
+        outline: none;
+        cursor: pointer;
+        transition: transform .5s;
+      
+        &:hover {
+          transform: scale(1.1);
+        }
+      }
+    .collectionsection{
+        text-align: center;
+        .collectionradio{
+            img{
+                width:100vw;
+                max-width:1200px;
+            }
+            .eyes1{
+                position: absolute;
+                top: 40%;
+                margin:0 auto;
+                width:100vw;
+                img{
+                    margin:35px 60px 0px 10px;
+                    max-width:130px;
+                    width:100vw;
+                    &:hover{
+                        transform: scale(1.1);
+                        cursor: pointer;
+                    }
+                }
+            }
+        }
+        #collectiontabcontainer{
+            .collectiontabtitle{
+                // border: 1px solid red;
+                margin: 2vw 0vw;
+                li{
+                    list-style: none;
+                    vertical-align: middle;
+                    display: inline-block;
+                    font-size: 2rem;
+                    margin: 20px;
+                    @include respond(ipadpro) {
+                        margin:5px;
+                    }
+                    @include respond(ipad) {
+                        margin:0px;
+                    }
+                    &:hover{
+                        transform: scale(1.1);
+                        // background-color: $mainBg;
+                        cursor: pointer;
+                        }
+                        a{
+                            color: $fontColor;
+                            cursor: pointer;
+                            padding: 10px 20px;
+                        }
+                    }
+                    a{
+                        margin: 0px 40px 0px 40px;
+                        background-color: $yellow;
+                        border-radius: 5px;
+                        padding:10px 25px;
+                        @include respond(latop-max) {
+                            margin: 0px 20px 0px 20px;
+                        }
+                        @include respond(latop-min) {
+                            margin: 0px 10px 0px 10px;
+                            font-size:$rem1_5;
+                        }
+                        @include respond(latop-min) {
+                            margin: 0px 10px 0px 10px;
+                            font-size:$rem1_5;
+                        }
+                        @include respond(ipadpro) {
+                            font-size:$rem1_5;
+                            margin: 0px;
+                        }
+                        @include respond(ipad) {
+                            font-size:$rem1;
+                            margin: 0px;
+                        }
+                        @include respond(phone) {
+                            font-size:0.9rem;
+                            margin: 0px;
+                        }
+                        
+                    }
+                }
+            }
+            .collectionflower{
+                text-align: right;
+                position: relative;
+                bottom:100px;
+                right:100px;
+                z-index:-1;
+            }
+        }
+
+    }

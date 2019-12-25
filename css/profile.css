@@ -69,6 +69,7 @@ header {
   }
 }
 
+<<<<<<< HEAD
 div.nav_bar {
   position: fixed;
   z-index: 999;
@@ -6211,6 +6212,8 @@ header {
   overflow: hidden;
 }
 
+=======
+>>>>>>> dev
 .profile_content {
   position: relative;
   background: url(../img/member/border.png) top center no-repeat;
@@ -6312,6 +6315,16 @@ header {
 .profile_content .profile_container .profile_rightbox table th,
 .profile_content .profile_container .profile_rightbox table td {
   padding: 15px;
+}
+
+.profile_content .profile_container .profile_rightbox table input[type="text"] {
+  border-radius: 5px;
+  border: 1px solid darkgray;
+  height: 25px;
+  text-indent: 10px;
+  font-family: 微軟正黑體;
+  font-size: 16px;
+  outline: none;
 }
 
 .profile_lightCover {
