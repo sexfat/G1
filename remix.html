@@ -21,73 +21,75 @@
         <div class="paint_border"></div>
         <ul>
           <li class="REMIX flexbox">
-            <a href="">
+            <a href="./remix.html">
             </a>
           </li>
           <li class="COLLECTION flexbox">
-            <a href="">
+            <a href="./collection.html">
             </a>
           </li>
           <li class="ACTIVITY flexbox">
-            <a href="">
+            <a href="./activity.html">
             </a>
           </li>
           <li class="LIBRARY flexbox">
-            <a href="">
+            <a href="./library.html">
             </a>
           </li>
         </ul>
       </div>
-
       <div class="logo_container">
-        <a href="">
+        <a href="./index.html">
           <div class="logo"></div>
         </a>
       </div>
       <ul class="main_list flexbox">
         <li class="REMIX flexbox">
-          <a href="">
+          <a href="./remix.html">
           </a>
         </li>
         <li class="COLLECTION flexbox">
-          <a href="">
+          <a href="./collection.html">
           </a>
         </li>
         <li class="ACTIVITY flexbox">
-          <a href="">
+          <a href="./activity.html">
           </a>
         </li>
         <li class="LIBRARY flexbox">
-          <a href="">
+          <a href="./library.html">
           </a>
         </li>
       </ul>
       <div class="search_bt" @click="search_bt_click">
         <a href="#"></a>
       </div>
-      <div class="search_bar">
+      <div class="search_bar" @click="stopPropagation">
         <input class="search" type="text" />
         <div class="tag_container">
         </div>
       </div>
-      <div class="mem_bt" @click="mem_bt_click">
+      <div class="login_bt" @click="" v-if="mem_login == false">
+        <a class="flexbox" href="#">Login</a>
+      </div>
+      <div class="mem_bt" @click="mem_bt_click" v-if="mem_login == true">
         <a href="#"></a>
       </div>
       <div class="mem_list" @click="stopPropagation">
         <div class="paint_border"></div>
         <ul>
           <li>
-            <a href="">
+            <a href="./profile.html">
               <h4>Profile</h4>
             </a>
           </li>
           <li>
-            <a href="">
-              <h4>Favorite</h4>
+            <a href="./library.html">
+              <h4>Library</h4>
             </a>
           </li>
           <li>
-            <a href="">
+            <a href="./songsadded.html">
               <h4>
                 Song Upload
                 <br />&amp; Remove
@@ -182,7 +184,8 @@
           </tr>
           <tr v-for="(res,index_row) in re" class="trclass">
             <td class="note_name">
-              <h6 class="remix_h6">{{re[index_row]}}</h6><audio :src="'./img/remix/sound/'+(re1[index_row])+'.mp3'"></audio>
+              <h6 class="remix_h6">{{re[index_row]}}</h6><audio
+                :src="'./img/remix/sound/'+(re1[index_row])+'.mp3'"></audio>
             </td>
             <td class="sound_note" v-for="(item,index) in lattice"
               @click="changeClass(index_row,index);one_sound(re[index_row],index_row,index);">
@@ -200,7 +203,8 @@
           </tr>
           <tr v-for="(res,index_row) in mi" class="trclass">
             <td class="note_name">
-              <h6 class="remix_h6">{{mi[index_row]}}</h6><audio :src="'./img/remix/sound/'+(mi1[index_row])+'.mp3'"></audio>
+              <h6 class="remix_h6">{{mi[index_row]}}</h6><audio
+                :src="'./img/remix/sound/'+(mi1[index_row])+'.mp3'"></audio>
             </td>
             <td class="sound_note" v-for="(item,index) in lattice"
               @click="changeClass(index_row + 12,index);one_sound(mi[index_row],index_row + 12,index);">
@@ -218,7 +222,8 @@
           </tr>
           <tr v-for="(res,index_row) in fa" class="trclass">
             <td class="note_name">
-              <h6 class="remix_h6">{{fa[index_row]}}</h6><audio :src="'./img/remix/sound/'+(fa1[index_row])+'.mp3'"></audio>
+              <h6 class="remix_h6">{{fa[index_row]}}</h6><audio
+                :src="'./img/remix/sound/'+(fa1[index_row])+'.mp3'"></audio>
             </td>
             <td class="sound_note" v-for="(item,index) in lattice"
               @click="changeClass(index_row + 24,index);one_sound(fa[index_row],index_row + 24,index);">
@@ -235,7 +240,8 @@
           </tr>
           <tr v-for="(res,index_row) in so" class="trclass">
             <td class="note_name">
-              <h6 class="remix_h6">{{so[index_row]}}</h6><audio :src="'./img/remix/sound/'+(so1[index_row])+'.mp3'"></audio>
+              <h6 class="remix_h6">{{so[index_row]}}</h6><audio
+                :src="'./img/remix/sound/'+(so1[index_row])+'.mp3'"></audio>
             </td>
             <td class="sound_note" v-for="(item,index) in lattice"
               @click="changeClass(index_row + 36,index);one_sound(so[index_row],index_row + 36,index);">
@@ -253,7 +259,8 @@
           </tr>
           <tr v-for="(res,index_row) in la" class="trclass">
             <td class="note_name">
-              <h6 class="remix_h6">{{la[index_row]}}</h6><audio :src="'./img/remix/sound/'+(la1[index_row])+'.mp3'"></audio>
+              <h6 class="remix_h6">{{la[index_row]}}</h6><audio
+                :src="'./img/remix/sound/'+(la1[index_row])+'.mp3'"></audio>
             </td>
             <td class="sound_note" v-for="(item,index) in lattice"
               @click="changeClass(index_row + 48,index);one_sound(la[index_row],index_row + 48,index);">
@@ -266,7 +273,8 @@
         <table class="drum remix_play">
           <tr v-for="(res,index_row) in drum" class="trclass">
             <td class="note_name">
-              <h6 class="remix_h6">{{drum[index_row]}}</h6><audio :src="'./img/remix/sound/'+(drum[index_row])+'.mp3'"></audio>
+              <h6 class="remix_h6">{{drum[index_row]}}</h6><audio
+                :src="'./img/remix/sound/'+(drum[index_row])+'.mp3'"></audio>
             </td>
             <td class="sound_note" v-for="(item,index) in lattice"
               @click="changeClass(index_row + 60,index);one_sound(drum[index_row],index_row + 60,index);">
@@ -1136,7 +1144,7 @@
         }
 
         // 一開始的微動畫
-        TweenMax.to($('.remix_rock_move'),2.5,{
+        TweenMax.to($('.remix_rock_move'), 2.5, {
           rotation: 0,
           ease: Bounce.easeOut,
         })
@@ -1164,7 +1172,7 @@
             remix_intro.innerHTML = remix_intro.innerHTML.substr(0, 79);
           }
 
-          $('.sound_note').css('width',`calc(100% - 70px) / ${this.lattice - 2}`);
+          $('.sound_note').css('width', `calc(100% - 70px) / ${this.lattice - 2}`);
         },
         audioSrc(NewaudioSrc) {
           this.audioSrc = NewaudioSrc;
