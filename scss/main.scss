@@ -6,10 +6,16 @@
 
 // ==================================
 
+@import './home.scss';
+@import './profile.scss';
+
 @import './remix.scss';
 @import './library';
-@import './login.scss';
-@import './collection.scss';
-// @import './store.scss';
+@import './login';
+@import './collection';
+@import'./activity.scss';
+@import './infotop.scss';
+@import './songinfo.scss';
+@import './songupload.scss';
 
-// @import './store.scss';
+@import './store.scss';
