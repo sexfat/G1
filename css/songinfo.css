@@ -1,10 +1,8 @@
 .songinfo_infos2 {
-  border: 1px solid red;
   height: 600px;
 }
 
 .songinfo_infoplay {
-  border: 1px solid purple;
   width: 1200px;
   height: 600px;
   margin: 0 auto;
@@ -15,7 +13,6 @@
 }
 
 .songinfo_infos3 {
-  border: 1px solid navy;
   height: 600px;
 }
 
@@ -26,7 +23,6 @@
 }
 
 .songinfo_titl {
-  border: 1px solid blue;
   width: 1200px;
   margin: 0 auto;
   padding: 130px 0px 0px 0px;
@@ -45,24 +41,20 @@
 }
 
 .songinfo_infos4 {
-  border: 1px solid blue;
   height: 600px;
 }
 
 .message {
-  border: 1px solid palevioletred;
   width: 1200px;
   margin: 0 auto;
 }
 
 .mess {
-  border: 1px solid black;
   width: 1000px;
   margin: 0 auto;
 }
 
 .mess_write {
-  border: 1px solid black;
   width: 1000px;
   margin: 0 auto;
   padding: 0px 50px;
@@ -70,5 +62,324 @@
 
 .songinfo_infos5 {
   height: 200px;
+}
+
+.songinfo_wave {
+  position: relative;
+  top: -480px;
+  z-index: -1;
+}
+
+.songinfo_wave iframe {
+  display: none;
+}
+
+.jumping-things-wrap {
+  width: 800px;
+  min-height: 120px;
+  max-height: 120px;
+  text-align: center;
+  left: 27px;
+  position: relative;
+}
+
+.jumping-things-wrap span {
+  width: 20px;
+  margin: 0;
+  padding: 0;
+  background: #d0d6d6;
+  -webkit-transition: all 0.2s;
+  transition: all 0.2s;
+  display: inline-block;
+  position: absolute;
+  bottom: 0;
+}
+
+.jumping-things-wrap span:nth-child(1) {
+  left: 25px;
+}
+
+.jumping-things-wrap span:nth-child(2) {
+  left: 50px;
+}
+
+.jumping-things-wrap span:nth-child(3) {
+  left: 75px;
+}
+
+.jumping-things-wrap span:nth-child(4) {
+  left: 100px;
+}
+
+.jumping-things-wrap span:nth-child(5) {
+  left: 125px;
+}
+
+.jumping-things-wrap span:nth-child(6) {
+  left: 150px;
+}
+
+.jumping-things-wrap span:nth-child(7) {
+  left: 175px;
+}
+
+.jumping-things-wrap span:nth-child(8) {
+  left: 200px;
+}
+
+.jumping-things-wrap span:nth-child(9) {
+  left: 225px;
+}
+
+.jumping-things-wrap span:nth-child(10) {
+  left: 250px;
+}
+
+.jumping-things-wrap span:nth-child(11) {
+  left: 275px;
+}
+
+.jumping-things-wrap span:nth-child(12) {
+  left: 300px;
+}
+
+.jumping-things-wrap span:nth-child(13) {
+  left: 325px;
+}
+
+.jumping-things-wrap span:nth-child(14) {
+  left: 350px;
+}
+
+.jumping-things-wrap span:nth-child(15) {
+  left: 375px;
+}
+
+.jumping-things-wrap span:nth-child(16) {
+  left: 400px;
+}
+
+.jumping-things-wrap span:nth-child(17) {
+  left: 425px;
+}
+
+.jumping-things-wrap span:nth-child(18) {
+  left: 450px;
+}
+
+.jumping-things-wrap span:nth-child(19) {
+  left: 475px;
+}
+
+.jumping-things-wrap span:nth-child(20) {
+  left: 500px;
+}
+
+.jumping-things-wrap span:nth-child(21) {
+  left: 525px;
+}
+
+.jumping-things-wrap span:nth-child(22) {
+  left: 550px;
+}
+
+.jumping-things-wrap span:nth-child(23) {
+  left: 575px;
+}
+
+.jumping-things-wrap span:nth-child(24) {
+  left: 600px;
+}
+
+.jumping-things-wrap span:nth-child(25) {
+  left: 625px;
+}
+
+.jumping-things-wrap span:nth-child(26) {
+  left: 650px;
+}
+
+.jumping-things-wrap span:nth-child(27) {
+  left: 675px;
+}
+
+.jumping-things-wrap span:nth-child(28) {
+  left: 700px;
+}
+
+.jumping-things-wrap span:nth-child(29) {
+  left: 725px;
+}
+
+.jumping-things-wrap span:nth-child(30) {
+  left: 750px;
+}
+
+.jumping-things-wrap span:nth-child(31) {
+  left: 775px;
+}
+
+.jumping-things-wrap span:nth-child(32) {
+  left: 800px;
+}
+
+.jumping-things-wrap span:nth-child(33) {
+  left: 825px;
+}
+
+.jumping-things-wrap span:nth-child(34) {
+  left: 850px;
+}
+
+.jumping-things-wrap span:nth-child(35) {
+  left: 875px;
+}
+
+.jumping-things-wrap span:nth-child(36) {
+  left: 900px;
+}
+
+.jumping-things-wrap span:nth-child(37) {
+  left: 925px;
+}
+
+.jumping-things-wrap span:nth-child(38) {
+  left: 950px;
+}
+
+.jumping-things-wrap span:nth-child(39) {
+  left: 975px;
+}
+
+.jumping-things-wrap span:nth-child(40) {
+  left: 1000px;
+}
+
+.jumping-things-wrap span:nth-child(41) {
+  left: 1025px;
+}
+
+.jumping-things-wrap span:nth-child(42) {
+  left: 1050px;
+}
+
+.jumping-things-wrap span:nth-child(43) {
+  left: 1075px;
+}
+
+.jumping-things-wrap span:nth-child(44) {
+  left: 1100px;
+}
+
+.jumping-things-wrap span:nth-child(45) {
+  left: 1125px;
+}
+
+.jumping-things-wrap span:nth-child(46) {
+  left: 1150px;
+}
+
+.jumping-things-wrap span:nth-child(47) {
+  left: 1175px;
+}
+
+.jumping-things-wrap span:nth-child(48) {
+  left: 1200px;
+}
+
+.jumping-things-wrap span:nth-child(49) {
+  left: 1225px;
+}
+
+.jumping-things-wrap span:nth-child(50) {
+  left: 1250px;
+}
+
+.jumping-things-wrap span:nth-child(51) {
+  left: 1275px;
+}
+
+.jumping-things-wrap span:nth-child(52) {
+  left: 1300px;
+}
+
+.jumping-things-wrap span:nth-child(53) {
+  left: 1325px;
+}
+
+.jumping-things-wrap span:nth-child(54) {
+  left: 1350px;
+}
+
+.jumping-things-wrap span:nth-child(55) {
+  left: 1375px;
+}
+
+.jumping-things-wrap span:nth-child(56) {
+  left: 1400px;
+}
+
+.jumping-things-wrap span:nth-child(57) {
+  left: 1425px;
+}
+
+.jumping-things-wrap span:nth-child(58) {
+  left: 1450px;
+}
+
+.jumping-things-wrap span:nth-child(59) {
+  left: 1475px;
+}
+
+.jumping-things-wrap span:nth-child(60) {
+  left: 1500px;
+}
+
+.jumping-things-wrap span:nth-child(61) {
+  left: 1525px;
+}
+
+.jumping-things-wrap span:nth-child(62) {
+  left: 1550px;
+}
+
+.jumping-things-wrap span:nth-child(63) {
+  left: 1575px;
+}
+
+.jumping-things-wrap span:nth-child(64) {
+  left: 1600px;
+}
+
+.jumping-things-wrap span:nth-child(65) {
+  left: 1625px;
+}
+
+.jumping-things-wrap span:nth-child(66) {
+  left: 1650px;
+}
+
+.jumping-things-wrap span:nth-child(67) {
+  left: 1675px;
+}
+
+.jumping-things-wrap span:nth-child(68) {
+  left: 1700px;
+}
+
+.jumping-things-wrap span:nth-child(69) {
+  left: 1725px;
+}
+
+.jumping-things-wrap span:nth-child(70) {
+  left: 1750px;
+}
+
+.jumping-things-wrap span:nth-child(71) {
+  left: 1775px;
+}
+
+.jumping-things-wrap span:nth-child(72) {
+  left: 1800px;
 }
 /*# sourceMappingURL=songinfo.css.map */
