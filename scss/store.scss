@@ -16,8 +16,8 @@ $buttonyellow: #efc318;
 .store_wrapper {
   margin-top: 0%;
   position: relative;
-  max-width: 960px;
-
+  max-width: 1200px;
+  width: 80%;
   // width: 80%;
   .store_color1 {
     width: 50%;
@@ -365,14 +365,14 @@ $buttonyellow: #efc318;
           }
 
           .tbody {
-            max-height: 20rem;
+            max-height: 26rem;
             overflow-y: scroll;
 
             .tr {
               font-size: 0;
               padding: 3% 0% 2%;
 
-              &:nth-of-type(even) {
+              &:nth-of-type(odd) {
                 background-color: rgba($green, 0.3);
               }
 
@@ -776,7 +776,7 @@ $buttonyellow: #efc318;
           display: block;
           text-align: center;
           background: url(../img/member/blackline.svg) no-repeat;
-          padding: 4% 0%;
+          padding: 10% 3%;
           
           .pic {
             img {
