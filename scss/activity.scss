@@ -953,7 +953,7 @@
     h2 {
 
         font-size: $rem2;
-        margin: 0 0 20px 120px;
+        margin: 0 0 40px 120px;
 
         @include respond(latop-max) {
             font-size: $rem1_5;
@@ -970,19 +970,20 @@
         display: inline-block;
         position: relative;
         text-align: right;
+        top: 20px;
 
         @include respond(latop-max) {
             min-width: 200px;
         }
       
         .act_now-marry {
-            width: 80%;
-            height: 80%;
+            width: 90%;
+            height:90%;
             margin: auto auto;
 
             @include respond(latop-max) {
-                width: 95%;
-                height: 95%;
+                width: 100%;
+                height: 100%;
             }
 
             img {
@@ -1031,17 +1032,17 @@
         display: inline-block;
         margin: 0 0 0 50px;
         background-image:
-            // url(../img/activity/0.text-circle.svg),
-            url(../img/activity/0text-wh-bg.svg);
+            // url(../img/activity/0.blackline.svg),
+            url(../img/activity/text-wh.png);
+        background-size: 100% 100%;
         background-repeat: no-repeat;
-        background-size: contain, 50% 50%;
-        background-position-x: center, right;
+        background-position-x: center;
         border: 5px black solid;
         border-radius: 15px;
         text-align: center;
         padding: 10px 0 0 0;
         position: absolute;
-        top: 15%;
+        top: 20%;
      
         @include respond(latop-max) {
             min-height: 500px;
@@ -1161,7 +1162,7 @@
             .signUpComfirm {
                 margin: 0;
                 @include butttonn02();
-                margin: 20px 20px 50px 0;
+                margin: 20px 20px 20px 0;
                 @include respond(latop-max) {
                     margin: 15px 10px 10px 10px;
                 }
@@ -1172,7 +1173,7 @@
 
                 vertical-align: bottom;
                 @include butttonn02();
-                margin: 20px 20px 50px 0;
+                margin: 20px 20px 20px 0;
               
                 @include respond(latop-max) {
                     margin: 15px 10px 10px 10px;
@@ -1305,12 +1306,11 @@
         background-image:
             // url(../img/activity/0.blackline.svg),
             url(../img/activity/text-wh.png);
-        background-size: contain, 100% 100%;
+        background-size: 100% 100%;
         background-repeat:
-            no-repeat,
             no-repeat;
-            border: 5px black solid;
-            border-radius: 15px;
+        border: 5px black solid;
+        border-radius: 15px;
 
         @include respond(latop-max) {
             height: 300px;
