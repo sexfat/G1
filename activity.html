@@ -1142,7 +1142,7 @@
                         <p>{{SongName}}</p>
                       
                         <h4>Song-information:</h4>
-                        <p class="act_showSong-information">{{SongInformation}}</p> 
+                        <p class="act_showSong-information" v-if="SongInformation" >{{SongInformation}}</p> 
                    
                         <h4>Song-URL:</h4>      
                         <p  class="act_SignSongURL-box" v-if="SignSongURL">{{SignSongURL}}</p> 
@@ -1190,9 +1190,9 @@
                                 <p >Votes <span>2458</span></p>
                                 <div>
                                     <img src="./img/activity/collction-img/9tRTEPCMeYxqdFHAqf3FfA.jpg" alt="">
-                                   <div class="act_old-play">
-                                       <img  src="./img/activity/play-collection.png">
-                                   </div>
+                                    <div class="act_old-play">
+                                        <img  src="./img/activity/play-collection.png">
+                                    </div>
                                  
                                </div>
                                <div class="act_songBox"> 
