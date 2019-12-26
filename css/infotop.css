@@ -1,70 +1,4 @@
-@charset "UTF-8";
 @import url(https://fonts.googleapis.com/css?family=Raleway:400,300,700);
-* {
-  -webkit-box-sizing: border-box;
-          box-sizing: border-box;
-  margin: 0;
-  padding: 0;
-}
-
-html {
-  font-size: 20px;
-}
-
-body {
-  margin: 0;
-  padding: 0;
-  font-family: "Lucida Sans Unicode", Geneva, Verdana, sans-serif;
-  background: #fafaf1;
-  color: #333;
-  overflow-x: hidden;
-}
-
-.flexbox {
-  display: -webkit-box;
-  display: -ms-flexbox;
-  display: flex;
-}
-
-a {
-  text-decoration: none;
-  color: #333;
-}
-
-header {
-  height: 300px;
-  text-align: center;
-  padding: 120px 0;
-}
-
-.wrapper {
-  max-width: 1500px;
-  margin: 0 auto;
-  width: 100%;
-}
-
-/*燈箱寬*/
-.lightbox_s {
-  width: 500px;
-}
-
-/*新手教學用*/
-.lightbox_b {
-  width: 1000px;
-}
-
-/*燈箱的遮罩顏色*/
-.lightCover {
-  background-color: #414141e6;
-}
-
-/*button mixin*/
-@media all and (max-width: 768px) {
-  header img {
-    height: 76px;
-  }
-}
-
 .songinfo_infoplay .music-player-container {
   -webkit-transform: translate(-50%, -50%);
   transform: translate(-50%, -50%);
@@ -114,11 +48,19 @@ header {
   font-size: 1rem;
   font-weight: normal;
   margin: 0 0 20px 0;
+  text-align: left;
+  position: relative;
+  left: 20px;
+  top: 30px;
 }
 
 .songinfo_infoplay .song-title {
   font-size: 1.5rem;
   margin: 0px 0px 30px 0px;
+  text-align: left;
+  position: relative;
+  left: 20px;
+  top: 40px;
 }
 
 .songinfo_infoplay .album {
@@ -170,8 +112,6 @@ header {
 }
 
 [class^="control-"] {
-  -webkit-filter: brightness(95%);
-  filter: brightness(95%);
   border-radius: 100%;
   display: inline-block;
   height: 44px;
@@ -189,18 +129,59 @@ header {
   background: transparent url("../img/songinfo/do6bFSIxcx.png") center/cover no-repeat;
   position: relative;
   left: -70px;
+  top: 20px;
 }
 
 .songinfo_infoplay .is-playing .control-play {
   background: transparent url("../img/songinfo/XThO6FR4Yt.png") center/cover no-repeat;
 }
 
-.songinfo_infoplay .control-forwards {
-  background: transparent url("https://s3-us-west-2.amazonaws.com/s.cdpn.io/83141/forwards.svg") center/cover no-repeat;
+[class^="dona-"] {
+  border-radius: 5px;
+  display: inline-block;
+  height: 30px;
+  width: 70px;
 }
 
-.songinfo_infoplay .control-back {
-  background: transparent url("https://s3-us-west-2.amazonaws.com/s.cdpn.io/83141/backwards.svg") center/cover no-repeat;
+[class^="dona-"]:hover {
+  -webkit-filter: brightness(85%);
+  filter: brightness(85%);
+  cursor: pointer;
+}
+
+.songinfo_infoplay .dona-donate {
+  background: transparent url("../img/songinfo/donate.png") center/cover no-repeat;
+  position: relative;
+  top: -78px;
+  left: 210px;
+}
+
+[class^="heart-"] {
+  border-radius: 5px;
+  display: inline-block;
+  height: 40px;
+  width: 40px;
+}
+
+[class^="heart-"]:hover {
+  -webkit-filter: brightness(85%);
+  filter: brightness(85%);
+  cursor: pointer;
+}
+
+.songinfo_infoplay .heart-like {
+  background: transparent url("../img/songinfo/songlike.png") center/cover no-repeat;
+  position: relative;
+  top: -75px;
+  left: 75px;
+}
+
+.song_tllike {
+  width: 80px;
+  position: relative;
+  left: 120px;
+  top: -32px;
+  font-size: 0.7rem;
 }
 
 @-webkit-keyframes spin {
