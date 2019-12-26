@@ -16,7 +16,6 @@
     <script src="https://cdnjs.cloudflare.com/ajax/libs/pixi.js/5.2.0/pixi.min.js"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/three.js/110/three.min.js"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/2.1.3/TweenMax.min.js"></script>
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/granim/2.0.0/granim.min.js"></script>
 
 
     <style>
@@ -24,16 +23,6 @@
 
     </style>
     <script>
-        // pixi
-        app = new PIXI.Application({
-            width: 1320,
-            height: 500,
-            transparent: true,
-            antialias: true,
-        });
-        graphics = new PIXI.Graphics();
-
-        app.stage.addChild(graphics);
 
         $(document).ready(() => {
             $('#pagepiling').pagepiling(
@@ -47,6 +36,8 @@
                 }
             );
 
+<<<<<<< HEAD
+=======
             // audio
             audio = document.getElementById('audioPlayer');
             context = new (window.AudioContext || window.webkitAudioContext)();
@@ -155,6 +146,7 @@
 
 
 
+>>>>>>> 89b5e006ed9fdff8e336505e86a7f70e02104b09
 
 
             // RANK
@@ -515,7 +507,7 @@
 </head>
 
 <body>
-    <div id="home_app">
+    <div id="app">
         <div class="nav_bar flexbox">
             <div class="hamburger" @click="hamburger_click">
                 <div class="hamburger-box">
@@ -526,50 +518,51 @@
                 <div class="paint_border"></div>
                 <ul>
                     <li class="REMIX flexbox">
-                        <a href="./remix.html">
+                        <a href="">
                         </a>
                     </li>
                     <li class="COLLECTION flexbox">
-                        <a href="./collection.html">
+                        <a href="">
                         </a>
                     </li>
                     <li class="ACTIVITY flexbox">
-                        <a href="./activity.html">
+                        <a href="">
                         </a>
                     </li>
                     <li class="LIBRARY flexbox">
-                        <a href="./library.html">
+                        <a href="">
                         </a>
                     </li>
                 </ul>
             </div>
+
             <div class="logo_container">
-                <a href="./index.html">
+                <a href="">
                     <div class="logo"></div>
                 </a>
             </div>
             <ul class="main_list flexbox">
                 <li class="REMIX flexbox">
-                    <a href="./remix.html">
+                    <a href="">
                     </a>
                 </li>
                 <li class="COLLECTION flexbox">
-                    <a href="./collection.html">
+                    <a href="">
                     </a>
                 </li>
                 <li class="ACTIVITY flexbox">
-                    <a href="./activity.html">
+                    <a href="">
                     </a>
                 </li>
                 <li class="LIBRARY flexbox">
-                    <a href="./library.html">
+                    <a href="">
                     </a>
                 </li>
             </ul>
             <div class="search_bt" @click="search_bt_click">
                 <a href="#"></a>
             </div>
-            <div class="search_bar" @click="stopPropagation">
+            <div class="search_bar">
                 <input class="search" type="text" />
                 <div class="tag_container">
                 </div>
@@ -584,17 +577,17 @@
                 <div class="paint_border"></div>
                 <ul>
                     <li>
-                        <a href="./profile.html">
+                        <a href="">
                             <h4>Profile</h4>
                         </a>
                     </li>
                     <li>
-                        <a href="./library.html">
-                            <h4>Library</h4>
+                        <a href="">
+                            <h4>Favorite</h4>
                         </a>
                     </li>
                     <li>
-                        <a href="./songsadded.html">
+                        <a href="">
                             <h4>
                                 Song Upload
                                 <br />&amp; Remove
@@ -602,7 +595,7 @@
                         </a>
                     </li>
                     <li>
-                        <a href="./store.html">
+                        <a href="">
                             <h4>
                                 Store Value
                                 <br />&amp;Store Record
@@ -620,7 +613,6 @@
 
         <div id="pagepiling">
             <div class="home_sec home_sec01 section">
-                <div class="home_paint01"></div>
                 <div class="home_img_container">
                     <div class="home_stylus"></div>
                     <div class="home_vinyl_records">
@@ -628,43 +620,38 @@
                         </div>
                     </div>
                 </div>
-                <div class="home_ctrl_container flexbox">
+                <div class="home_ctrl_container">
                     <div class="home_top_arrow"></div>
-                    <div class="home_songInfo_container">
-                        <span class="home_song_name">Lucid Dreamer</span>
-                        <span class="home_song_author">Spazz Cardigan</span>
+                    <div songInfo_container>
+
                     </div>
                     <div class="home_bot_arrow"></div>
                 </div>
                 <div class="home_wave_container">
-                    <canvas class="home_line"></canvas>
-                    <!-- <div class="home_line"></div> -->
+
                 </div>
             </div>
             <div class="home_sec home_sec02 section">
-                <div class="home_paint01"></div>
-                <div class="home_remix">
-                </div>
+                <header>
+                    <h1>
+                        REMIX
+                    </h1>
+                </header>
                 <div class="home_mixer">
+
                 </div>
+<<<<<<< HEAD
+=======
                 <p>
                     You can mix andmaster EDM in here.It’s easy for everyonewho want create music on their own.
                 </p>
                 <div class="home_more_bt">
                     <a href="./remix.html"></a>
                 </div>
+>>>>>>> 89b5e006ed9fdff8e336505e86a7f70e02104b09
             </div>
             <div class="home_sec home_sec03 section">
                 <div class="home_pot">
-                </div>
-                <div class="home_rank">
-                </div>
-                <div class="home_title">
-                    <h1>Favorite TOP 10</h1>
-                </div>
-                <div class="home_paint01">
-                </div>
-                <div class="home_paint02">
                 </div>
                 <div class="home_slider">
                     <div class="home_perspective">
@@ -901,6 +888,16 @@
             </div>
             <div class="home_sec home_sec04 section">
                 <div class="home_DJ">
+<<<<<<< HEAD
+
+                </div>
+            </div>
+            <div class="home_sec home_sec05 section">
+                <div class="home_container">
+                    <div class="home_shelf home_shelf01"></div>
+                    <div class="home_shelf home_shelf02"></div>
+                    <div class="home_shelf home_shelf03"></div>
+=======
                 </div>
                 <div class="home_activity_img">
                 </div>
@@ -943,14 +940,10 @@
                         <div class="home_collection home_collection05 flexbox"><a class="flexbox" href="./collection.html">Classical</a></div>
                         <div class="home_collection home_collection06 flexbox"><a class="flexbox" href="./collection.html">Country</a></div>
                     </div>
+>>>>>>> 89b5e006ed9fdff8e336505e86a7f70e02104b09
                 </div>
             </div>
             <div class="home_sec home_sec06 section">
-                <div class="home_about">
-                </div>
-                <p>
-                    We love EDM, so we get togehterto share morew music for you.
-                </p>
                 <canvas class="home_map"></canvas>
             </div>
         </div>
@@ -1207,12 +1200,12 @@
 
     <script>
         new Vue({
-            el: "#home_app",
+            el: "#app",
             data: {
                 mobile_list: false,
                 search_bar: false,
                 mem_list: false,
-                mem_login: true,
+                mem_login: false,
 
             },
             mounted() {

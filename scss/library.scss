@@ -1,15 +1,60 @@
+@import './public.scss';
+@import './nav_bar.scss';
+
+
 $mainRed : #de267d;
 
-.librarybg {
+html {
+  @include respond(latop-min) {
+    font-size: 16px;
+  }
+
+  @include respond(ipadpro) {
+    font-size: 16px;
+  }
+
+  @include respond(ipad) {
+    font-size: 16px;
+  }
+
+  @include respond(phone) {
+    font-size: 16px;
+  }
+}
+
+ol,
+ul {
+  list-style: none;
+  padding: 0;
+  margin: 0;
+}
+
+body {
   background-color: $mainBg;
   background-image: url('../img/library/library_bg.jpg');
   background-position: bottom right;
   background-repeat: no-repeat;
   background-size: cover;
-  font-size: $rem1;
+  font-size: 1rem;
+  color: $fontColor;
+
 }
 
-.library_main {
+
+header {
+  text-align: center;
+  vertical-align: middle;
+  padding-top: 120px;
+
+  img {
+    @include respond(phone) {
+      width: 100%;
+
+    }
+  }
+}
+
+main.library_main {
   width: 100%;
   max-width: 1200px;
   padding-bottom: 70px;
@@ -18,23 +63,15 @@ $mainRed : #de267d;
     width: 100%;
   }
 
-  h2,
-  h3,
-  h4,
-  p,
-  ul {
-    margin: 0;
-    padding: 0;
-  }
-
   aside {
+    // border: 1px solid gold;
     float: left;
     width: 25%;
     position: relative;
     z-index: 3;
 
     .my_list {
-      background-color: $green;
+      background-color: #d0d6d6;
       padding: 8%;
 
       .favor {
@@ -51,7 +88,7 @@ $mainRed : #de267d;
         }
       }
 
-      .listSubtitle {
+      .listSubtitle{
         &:nth-child(2) {
           text-align: center;
           padding: 20px 0;
@@ -129,8 +166,8 @@ $mainRed : #de267d;
 
       select {
         width: 100%;
-        background-color: $green;
-        font-size: $rem1;
+        background-color: #d0d6d6;
+        font-size: 1rem;
         padding: 16px 8px;
         display: none;
 
@@ -154,6 +191,7 @@ $mainRed : #de267d;
           display: block;
         }
       }
+
     }
 
     .list_pic {
@@ -184,6 +222,7 @@ $mainRed : #de267d;
       margin: 0 auto;
       float: none;
     }
+
   }
 
   .right {
@@ -192,7 +231,7 @@ $mainRed : #de267d;
     padding: 5%;
     margin-left: 5%;
     margin-bottom: 10px;
-    min-height: 580px;
+    min-height: 400px;
     background-image: url('../img/library/blackline2.svg');
     background-repeat: no-repeat;
     background-size: cover;
@@ -269,48 +308,31 @@ $mainRed : #de267d;
         }
 
         .listName {
-
-          @include respond(ipad) {
-            width: 85%;
-            text-align: center;
-            margin: 0 auto;
-          }
-
-          @include respond(phone) {
-            width: 100%;
-          }
-
           .name {
             h2 {
-              font-size: $rem2;
               display: inline-block;
-
-              @include respond(laptop-min) {
-                font-size: $rem1_5;
-              }
-
-              @include respond(ipadpro) {
-                display: block;
-                overflow: hidden;
-                text-overflow: ellipsis;
-                white-space: nowrap;
-              }
+              vertical-align: middle;
             }
-
-            #inputListTitle {
+            #inputListTitle{
               height: 60px;
               width: 100%;
               max-width: 300px;
-              font-size: $rem2;
+              font-size: 2rem;
               padding: 5px;
               display: none;
-              background-color: $green;
-              border: 1px solid $green;
             }
 
             button {
               margin-left: 10px;
             }
+          }
+
+          @include respond(ipad) {
+            width: 85%;
+          }
+
+          @include respond(phone) {
+            width: 100%;
           }
         }
 
@@ -318,9 +340,10 @@ $mainRed : #de267d;
           text-align: right;
 
           @include respond(ipad) {
-            width: 100%;
+            width: 14%;
           }
         }
+
       }
     }
 
@@ -328,6 +351,7 @@ $mainRed : #de267d;
       padding-top: 20px;
 
       li {
+        // border: 1px skyblue solid;
         padding: 10px 0;
         border-bottom: 1px solid #cacaca;
 
@@ -359,7 +383,7 @@ $mainRed : #de267d;
 
               i {
                 color: white;
-                font-size: $rem0_8;
+                font-size: 0.8rem;
               }
             }
           }
@@ -369,36 +393,12 @@ $mainRed : #de267d;
           float: left;
           margin: 0 3%;
           width: 60%;
-
-          @include respond(latop-min) {
-            width: 55%;
-          }
-
-          @include respond(ipadpro) {
-            width: 50%;
-          }
-
-          @include respond(ipad) {
-            width: 48%;
-          }
-
-          @include respond(phone) {
+          @include respond(phone){
             width: 58%;
           }
 
           .name {
             padding: 2% 0;
-            vertical-align: top;
-            font-size: $rem1_2;
-            display: inline-block;
-            vertical-align: top;
-            @include respond(laptop-min) {
-              padding: 0;
-            }
-
-            @include respond(phone) {
-              display: block;
-            }
 
             a {
               display: block;
@@ -406,42 +406,31 @@ $mainRed : #de267d;
               text-decoration: none;
               transition: transform .5s;
 
-              @include respond(phone) {
-                overflow: hidden;
-                text-overflow: ellipsis;
-                white-space: nowrap;
-              }
-
               &:hover {
                 transform: scale(1.1);
               }
             }
-          }
 
-          .creator {
-            padding: 2% 0;
-            overflow: hidden;
-            text-overflow: ellipsis;
-            white-space: nowrap;
-            display: inline-block;
-            vertical-align: top;
-            margin-left: 5%;
+            h4 {
+              display: inline-block;
+            }
 
-            @include respond(latop-max) {
-              display: block;
-              margin-left: 0;
+            p {
+              display: inline-block;
+              margin-left: 5%;
+
+              @include respond(phone){
+                margin-left: 0;
+              }
             }
           }
         }
+
 
         .totalTime {
           float: left;
           padding: 2% 0;
           width: 10%;
-
-          @include respond(ipad) {
-            font-size: $rem0_8;
-          }
 
           @include respond(phone) {
             display: none;
@@ -455,23 +444,7 @@ $mainRed : #de267d;
           width: 5%;
           cursor: pointer;
           transition: transform .5s;
-
-          @include respond(laptop-min) {
-            width: 8%;
-            text-align: center;
-          }
-
-          @include respond(ipadpro) {
-            width: 10%;
-            text-align: center;
-          }
-
-          @include respond(ipad) {
-            width: 10%;
-            text-align: center;
-          }
-
-          @include respond(phone) {
+          @include respond(phone){
             width: 7%;
             text-align: left;
           }
@@ -488,8 +461,7 @@ $mainRed : #de267d;
           width: 5%;
           position: relative;
           cursor: pointer;
-
-          @include respond(phone) {
+          @include respond(phone){
             width: 8%;
             text-align: left;
           }
@@ -509,7 +481,7 @@ $mainRed : #de267d;
             white-space: nowrap;
             padding: 8px 16px;
             margin-top: 8px;
-            font-size: $rem0_8;
+            font-size: 0.8rem;
             border: 2px $fontColor solid;
             background-color: white;
             display: none;
@@ -537,169 +509,64 @@ $mainRed : #de267d;
       padding: 10% 5%;
     }
   }
+}
 
-  .lightCover {
-    background-color: #414141e6;
-    width: 100%;
-    height: 100%;
-    position: fixed;
-    top: 0;
-    left: 0;
-    z-index: 1001;
-    display: none;
 
-    .closeLight {
-      position: absolute;
-      right: 20px;
-      top: 20px;
-      cursor: pointer;
-      transition: transform 0.5s;
+.circlebtn {
+  width: 50px;
+  height: 50px;
+  line-height: 50px;
+  border-radius: 25px;
+  font-size: 0.8rem;
+  font-weight: bold;
+  border: 1px solid $yellow;
+  background-color: $yellow;
+  color: white;
+  outline: none;
+  cursor: pointer;
+  transition: transform .5s;
 
-      @include respond(phone) {
-        right: 10px;
-        top: 5px;
-      }
-
-      &:hover {
-        transform: scale(1.1);
-      }
-    }
-
-    #myAllList {
-      width: 90%;
-      max-width: 500px;
-      background-color: white;
-      border-radius: 10px;
-      padding: 1% 0;
-      text-align: center;
-      position: absolute;
-      top: 50%;
-      left: 50%;
-      display: none;
-      transform: translate(-50%, -50%);
-
-      .lightSelectMenu {
-        clear: both;
-
-        ul {
-          width: 80%;
-          margin: 3% auto;
-          padding: 16px 0;
-          min-height: 100px;
-          background-image: url('../img/library/blackline2.svg');
-          background-position: center center;
-
-          li {
-            width: 90%;
-            margin: 0 auto;
-            padding: 16px 0;
-            border-bottom: 1px solid $fontColor;
-
-            &.choose {
-              background-color: #7ed5e5;
-            }
-
-            &:last-child {
-              border-bottom: none;
-            }
-          }
-        }
-      }
-    }
-
-    #deleteCheck {
-      width: 90%;
-      max-width: 500px;
-      background-color: white;
-      border-radius: 10px;
-      padding: 1% 0;
-      text-align: center;
-      position: absolute;
-      top: 50%;
-      left: 50%;
-      transform: translate(-50%, -50%);
-      display: none;
-    }
-
-    #createListBox {
-      width: 90%;
-      max-width: 500px;
-      background-color: white;
-      border-radius: 10px;
-      padding: 1% 0;
-      text-align: center;
-      position: absolute;
-      top: 50%;
-      left: 50%;
-      transform: translate(-50%, -50%);
-      display: none;
-
-      #createList {
-        width: 80%;
-        height: 60px;
-        margin: 3% auto;
-        display: block;
-        border: 1px solid $green;
-        background-color: $green;
-      }
-    }
-  }
-
-  .circlebtn {
-    width: 50px;
-    height: 50px;
-    line-height: 50px;
-    border-radius: 25px;
-    font-size: $rem0_8;
-    font-weight: bold;
-    border: 1px solid $yellow;
-    background-color: $yellow;
-    color: white;
-    outline: none;
-    cursor: pointer;
-    transition: transform .5s;
-
-    &:hover {
-      transform: scale(1.1);
-    }
-  }
-
-  .normalbtn {
-    @include butttonn02;
-    display: block;
-    margin: 20px auto 0;
-    transition: transform .5s;
-
-    &:hover {
-      transform: scale(1.1);
-    }
-
-    @include respond(latop-min) {
-      width: 100%;
-    }
-
-    @include respond(ipadpro) {
-      width: 47%;
-      margin: 20px 1% 0;
-      display: inline-block;
-    }
-
-    @include respond(phone) {
-      width: 100%;
-    }
-  }
-
-  .editBtn,
-  .enterBtn {
-    @include buttonno03;
-    display: none;
-  }
-
-  .becomeRed {
-    color: $mainRed;
-  }
-
-  .clearfix {
-    clear: both;
+  &:hover {
+    transform: scale(1.1);
   }
 }
+
+.normalbtn {
+  @include butttonn02;
+  display: block;
+  margin: 20px auto 0;
+  transition: transform .5s;
+
+  &:hover {
+    transform: scale(1.1);
+  }
+
+  @include respond(latop-min) {
+    width: 100%;
+  }
+
+  @include respond(ipadpro) {
+    width: 47%;
+    margin: 20px 1% 0;
+    display: inline-block;
+  }
+
+  @include respond(phone) {
+    width: 100%;
+  }
+}
+
+.editBtn,.enterBtn {
+  @include buttonno03;
+  display: none;
+}
+
+.becomeRed {
+  color: $mainRed;
+}
+
+.clearfix {
+  clear: both;
+}
+
+@import './lightBox';

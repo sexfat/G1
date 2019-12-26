@@ -1,973 +1,963 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
-	<meta charset="UTF-8">
-	<meta name="viewport" content="width=device-width, initial-scale=1.0">
-	<meta http-equiv="X-UA-Compatible" content="ie=edge">
-    <title>Document</title>
-    <link rel="stylesheet" href="./css/main.css">
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.11.2/css/all.min.css" />
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/vue/2.6.10/vue.js"></script>
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
-    <!-- <script src="./js/player.js"></script> -->
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta http-equiv="X-UA-Compatible" content="ie=edge">
+  <title>Document</title>
+  <link rel="stylesheet" href="./css/main.css">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.11.2/css/all.min.css" />
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/vue/2.6.10/vue.js"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
+  <!-- <script src="./js/player.js"></script> -->
 </head>
+
 <body class="collectionbody">
-    <div id="app">
-        <!-- 記得包在 Vue 裡-->
+  <div id="app">
+    <!-- 記得包在 Vue 裡-->
 
 
-        <!-- nav_bar start -->
-        <div class="nav_bar flexbox">
-            <div class="hamburger" @click="hamburger_click">
-                <div class="hamburger-box">
-                    <div class="hamburger-inner"></div>
-                </div>
-            </div>
-            <div class="mobile_list" @click="stopPropagation">
-                <div class="paint_border"></div>
-                <ul>
-                    <li class="REMIX flexbox">
-                        <a href="./remix.html">
-                        </a>
-                    </li>
-                    <li class="COLLECTION flexbox">
-                        <a href="./collection.html">
-                        </a>
-                    </li>
-                    <li class="ACTIVITY flexbox">
-                        <a href="./activity.html">
-                        </a>
-                    </li>
-                    <li class="LIBRARY flexbox">
-                        <a href="./library.html">
-                        </a>
-                    </li>
-                </ul>
-            </div>
-            <div class="logo_container">
-                <a href="./index.html">
-                    <div class="logo"></div>
-                </a>
-            </div>
-            <ul class="main_list flexbox">
-                <li class="REMIX flexbox">
-                    <a href="./remix.html">
-                    </a>
-                </li>
-                <li class="COLLECTION flexbox">
-                    <a href="./collection.html">
-                    </a>
-                </li>
-                <li class="ACTIVITY flexbox">
-                    <a href="./activity.html">
-                    </a>
-                </li>
-                <li class="LIBRARY flexbox">
-                    <a href="./library.html">
-                    </a>
-                </li>
-            </ul>
-            <div class="search_bt" @click="search_bt_click">
-                <a href="#"></a>
-            </div>
-            <div class="search_bar" @click="stopPropagation">
-                <input class="search" type="text" />
-                <div class="tag_container">
-                </div>
-            </div>
-            <div class="login_bt" @click="" v-if="mem_login == false">
-                <a class="flexbox" href="#">Login</a>
-            </div>
-            <div class="mem_bt" @click="mem_bt_click" v-if="mem_login == true">
-                <a href="#"></a>
-            </div>
-            <div class="mem_list" @click="stopPropagation">
-                <div class="paint_border"></div>
-                <ul>
-                    <li>
-                        <a href="./profile.html">
-                            <h4>Profile</h4>
-                        </a>
-                    </li>
-                    <li>
-                        <a href="./library.html">
-                            <h4>Library</h4>
-                        </a>
-                    </li>
-                    <li>
-                        <a href="./songsadded.html">
-                            <h4>
-                                Song Upload
-                                <br />&amp; Remove
-                            </h4>
-                        </a>
-                    </li>
-                    <li>
-                        <a href="./store.html">
-                            <h4>
-                                Store Value
-                                <br />&amp;Store Record
-                            </h4>
-                        </a>
-                    </li>
-                    <li>
-                        <a href="">
-                            <h4>Donate Record</h4>
-                        </a>
-                    </li>
-                </ul>
-            </div>
+    <!-- nav_bar start -->
+    <div class="nav_bar flexbox">
+      <div class="hamburger" @click="hamburger_click">
+        <div class="hamburger-box">
+          <div class="hamburger-inner"></div>
         </div>
-        <!-- nav_bar end -->
+      </div>
+      <div class="mobile_list" @click="stopPropagation">
+        <div class="paint_border"></div>
+        <ul>
+          <li class="REMIX flexbox">
+            <a href="./remix.html">
+            </a>
+          </li>
+          <li class="COLLECTION flexbox">
+            <a href="./collection.html">
+            </a>
+          </li>
+          <li class="ACTIVITY flexbox">
+            <a href="./activity.html">
+            </a>
+          </li>
+          <li class="LIBRARY flexbox">
+            <a href="./library.html">
+            </a>
+          </li>
+        </ul>
+      </div>
+      <div class="logo_container">
+        <a href="./index.html">
+          <div class="logo"></div>
+        </a>
+      </div>
+      <ul class="main_list flexbox">
+        <li class="REMIX flexbox">
+          <a href="./remix.html">
+          </a>
+        </li>
+        <li class="COLLECTION flexbox">
+          <a href="./collection.html">
+          </a>
+        </li>
+        <li class="ACTIVITY flexbox">
+          <a href="./activity.html">
+          </a>
+        </li>
+        <li class="LIBRARY flexbox">
+          <a href="./library.html">
+          </a>
+        </li>
+      </ul>
+      <div class="search_bt" @click="search_bt_click">
+        <a href="#"></a>
+      </div>
+      <div class="search_bar" @click="stopPropagation">
+        <input class="search" type="text" />
+        <div class="tag_container">
+        </div>
+      </div>
+      <div class="login_bt" @click="" v-if="mem_login == false">
+        <a class="flexbox" href="#">Login</a>
+      </div>
+      <div class="mem_bt" @click="mem_bt_click" v-if="mem_login == true">
+        <a href="#"></a>
+      </div>
+      <div class="mem_list" @click="stopPropagation">
+        <div class="paint_border"></div>
+        <ul>
+          <li>
+            <a href="./profile.html">
+              <h4>Profile</h4>
+            </a>
+          </li>
+          <li>
+            <a href="./library.html">
+              <h4>Library</h4>
+            </a>
+          </li>
+          <li>
+            <a href="./songsadded.html">
+              <h4>
+                Song Upload
+                <br />&amp; Remove
+              </h4>
+            </a>
+          </li>
+          <li>
+            <a href="./store.html">
+              <h4>
+                Store Value
+                <br />&amp;Store Record
+              </h4>
+            </a>
+          </li>
+          <li>
+            <a href="">
+              <h4>Donate Record</h4>
+            </a>
+          </li>
+        </ul>
+      </div>
+    </div>
+    <!-- nav_bar end -->
 
 
 
 
-        <!-- player start -->
-        <div id="player">
-            <audio src="" id="audioPlayer"></audio>
-            <div class="player_s">
-              <div class="info">
-                <div class="cover"><img src="./img/library/cover1.jpg"></div>
-                <div class="songInfo">
-                  <span class="name">Lucid Dreamer</span>
-                  <span class="creator">Spazz Cardigan</span>
-                </div>
-                <div class="heart becomeRed"><i class="fas fa-heart"></i></div>
-                <div class="clearfix"></div>
-              </div>
-        
-              <div class="controlPanel">
-                <div class="progressbar">
-                  <div class="progress"></div>
-                </div>
-                <div class="time">
-                  <span class="start">00:00</span>
-                  <span class="end">04:30</span>
-                  <div class="clearfix"></div>
-                </div>
-                <div class="btns">
-                  <div class="controls">
-                    <button class="prev"><i class="fas fa-step-backward"></i></button>
-                    <button class="play"><i class="fas fa-play"></i></button>
-                    <button class="next"><i class="fas fa-step-forward"></i></button>
-                    <button class="stop"><i class="fas fa-stop"></i></button>
-                    <button class="rand"><i class="fas fa-random"></i></button>
-                    <button class="loop"><i class="fas fa-undo-alt"></i></button>
-                    <div class="clearfix"></div>
-                  </div>
-                  <div class="vol">
-                    <div class="volicon"><i class="fas fa-volume-down"></i></div>
-                    <div class="volLine">
-                      <div class="volControl"></div>
-                    </div>
-                    <div class="clearfix"></div>
-                  </div>
-                  <div class="clearfix"></div>
-                </div>
-              </div>
-        
-              <div class="expand" id="expand"><i class="fas fa-expand"></i></div>
+    <!-- player start -->
+    <div id="player">
+      <audio src="" id="audioPlayer"></audio>
+      <div class="player_s">
+        <div class="info">
+          <div class="cover"><img src="./img/library/cover1.jpg"></div>
+          <div class="songInfo">
+            <span class="name">Lucid Dreamer</span>
+            <span class="creator">Spazz Cardigan</span>
+          </div>
+          <div class="heart becomeRed"><i class="fas fa-heart"></i></div>
+          <div class="clearfix"></div>
+        </div>
+  
+        <div class="controlPanel">
+          <div class="progressbar">
+            <div class="progress"></div>
+          </div>
+          <div class="time">
+            <span class="start">00:00</span>
+            <span class="end">04:30</span>
+            <div class="clearfix"></div>
+          </div>
+          <div class="btns">
+            <div class="controls">
+              <button class="prev"><i class="fas fa-step-backward"></i></button>
+              <button class="play"><i class="fas fa-play"></i></button>
+              <button class="next"><i class="fas fa-step-forward"></i></button>
+              <button class="stop"><i class="fas fa-stop"></i></button>
+              <button class="rand"><i class="fas fa-random"></i></button>
+              <button class="loop"><i class="fas fa-undo-alt"></i></button>
               <div class="clearfix"></div>
             </div>
-        
-            <!-- 詳細版 -->
-            <div class="player_b">
-              <div class="left">
-                <div class="songCover">
-                  <div class="coverImg">
-                    <img src="./img/library/cover1.jpg">
-                    <div class="coverRec"><img src="./img/library/player_record.png" alt=""></div>
-                  </div>
-                </div>
-                <div class="songInfo">
-                  <div class="name">Lucid Dreamer</div>
-                  <div class="creator">Spazz Cardigan</div>
-                  <div class="heart becomeRed"><i class="fas fa-heart"></i></div>
-                  <div class="clearfix"></div>
-                </div>
-                <div class="controlPanel">
-                  <div class="progressbar">
-                    <div class="progress"></div>
-                  </div>
-                  <div class="time">
-                    <span class="start">00:00</span>
-                    <span class="end">00:00</span>
-                    <div class="clearfix"></div>
-                  </div>
-                  <div class="btns">
-                    <div class="controls">
-                      <button class="rand"><i class="fas fa-random"></i></button>
-                      <button class="prev"><i class="fas fa-step-backward"></i></button>
-                      <button class="play"><i class="fas fa-play"></i></button>
-                      <button class="next"><i class="fas fa-step-forward"></i></button>
-                      <button class="stop"><i class="fas fa-stop"></i></button>
-                      <button class="loop"><i class="fas fa-undo-alt"></i></button>
-                      <div class="clearfix"></div>
-                    </div>
-                    <div class="vol">
-                      <div class="volicon"><i class="fas fa-volume-down"></i></div>
-                      <div class="volLine">
-                        <div class="volControl"></div>
-                      </div>
-                      <div class="clearfix"></div>
-                    </div>
-                    <div class="clearfix"></div>
-                  </div>
-                </div>
-                <div class="pushBtn"></div>
+            <div class="vol">
+              <div class="volicon"><i class="fas fa-volume-down"></i></div>
+              <div class="volLine">
+                <div class="volControl"></div>
               </div>
-        
-              <div class="right">
-                <div class="pushBtn"></div>
-                <div class="listTitle">
-                  <div class="listCover">
-                    <img src="./img/library/list_pic1.jpg"></div>
-                  <div class="listName">
-                    <h2>peaceful list</h2>
-                    <span>8 songs</span>
-                  </div>
-                  <button class="selectBtn" id="selectBtn">SELECT</button>
-                  <div class="clearfix"></div>
-                </div>
-                <div class="list">
-                  <ul>
-                    <li>
-                      <div class="songCover">
-                        <img src="./img/library/cover1.jpg" alt="">
-                        <div class="listPlay"><i class="fas fa-play"></i></div>
-                      </div>
-                      <div class="listSongInfo">
-                        <div class="name">
-                          <h4>Lucid Dreamer</h4>
-                          <p> Spazz Cardigan</p>
-                        </div>
-                      </div>
-                      <div class="totalTime">3:11</div>
-                      <div class="heart becomeRed"><i class="fas fa-heart"></i></div>
-                      <div class="clearfix"></div>
-                    </li>
-                    <li>
-                      <div class="songCover">
-                        <img src="./img/library/cover2.jpg" alt="">
-                        <div class="listPlay"><i class="fas fa-play"></i></div>
-                      </div>
-                      <div class="listSongInfo">
-                        <div class="name">
-                          <h4>Spring In My Step</h4>
-                          <p>Silent Partner</p>
-                        </div>
-                      </div>
-                      <div class="totalTime">1:59</div>
-                      <div class="heart becomeRed"><i class="fas fa-heart"></i></div>
-                      <div class="clearfix"></div>
-                    </li>
-                    <li>
-                      <div class="songCover">
-                        <img src="./img/library/cover3.jpg" alt="">
-                        <div class="listPlay"><i class="fas fa-play"></i></div>
-                      </div>
-                      <div class="listSongInfo">
-                        <div class="name">
-                          <h4>On My Way Home</h4>
-                          <p>The 126ers</p>
-                        </div>
-                      </div>
-                      <div class="totalTime">1:56</div>
-                      <div class="heart becomeRed"><i class="fas fa-heart"></i></div>
-                      <div class="clearfix"></div>
-                    </li>
-                    <li>
-                      <div class="songCover">
-                        <img src="./img/library/cover4.jpg" alt="">
-                        <div class="listPlay"><i class="fas fa-play"></i></div>
-                      </div>
-                      <div class="listSongInfo">
-                        <div class="name">
-                          <h4>Lucid Dreamer</h4>
-                          <p> Spazz Cardigan</p>
-                        </div>
-                      </div>
-                      <div class="totalTime">4:30</div>
-                      <div class="heart becomeRed"><i class="fas fa-heart"></i></div>
-                      <div class="clearfix"></div>
-                    </li>
-                    <li>
-                      <div class="songCover">
-                        <img src="./img/library/cover5.jpg" alt="">
-                        <div class="listPlay"><i class="fas fa-play"></i></div>
-                      </div>
-                      <div class="listSongInfo">
-                        <div class="name">
-                          <h4>Lucid Dreamer</h4>
-                          <p> Spazz Cardigan</p>
-                        </div>
-                      </div>
-                      <div class="totalTime">4:30</div>
-                      <div class="heart becomeRed"><i class="fas fa-heart"></i></div>
-                      <div class="clearfix"></div>
-                    </li>
-                    <li>
-                      <div class="songCover">
-                        <img src="./img/library/cover6.jpg" alt="">
-                        <div class="listPlay"><i class="fas fa-play"></i></div>
-                      </div>
-                      <div class="listSongInfo">
-                        <div class="name">
-                          <h4>Lucid Dreamer</h4>
-                          <p> Spazz Cardigan</p>
-                        </div>
-                      </div>
-                      <div class="totalTime">4:30</div>
-                      <div class="heart becomeRed"><i class="fas fa-heart"></i></div>
-                      <div class="clearfix"></div>
-                    </li>
-                    <li>
-                      <div class="songCover">
-                        <img src="./img/library/cover1.jpg" alt="">
-                        <div class="listPlay"><i class="fas fa-play"></i></div>
-                      </div>
-                      <div class="listSongInfo">
-                        <div class="name">
-                          <h4>Lucid Dreamer</h4>
-                          <p> Spazz Cardigan</p>
-                        </div>
-                      </div>
-                      <div class="totalTime">4:30</div>
-                      <div class="heart becomeRed"><i class="fas fa-heart"></i></div>
-                      <div class="clearfix"></div>
-                    </li>
-        
-                  </ul>
-                </div>
-              </div>
-              <div class="close" id="closePlayer"><i class="fas fa-times"></i></div>
               <div class="clearfix"></div>
-        
-              <!-- 撥放器燈箱 -->
-              <div class="lightCover">
-                <div class="lightbox_s" id="myAllList">
-                  <div class="closeLight"><i class="fas fa-times"></i></div>
-                  <h3>My List</h3>
-                  <div class="lightSelectMenu">
-                    <ul>
-                      <li>Liked songs</li>
-                      <li>Peaceful songs</li>
-                      <li>party</li>
-                    </ul>
-                  </div>
-                  <button class="">ok</button>
-                </div>
-              </div>
+            </div>
+            <div class="clearfix"></div>
+          </div>
+        </div>
+  
+        <div class="expand" id="expand"><i class="fas fa-expand"></i></div>
+        <div class="clearfix"></div>
+      </div>
+  
+      <!-- 詳細版 -->
+      <div class="player_b">
+        <div class="left">
+          <div class="songCover">
+            <div class="coverImg">
+              <img src="./img/library/cover1.jpg">
+              <div class="coverRec"><img src="./img/library/player_record.png" alt=""></div>
             </div>
           </div>
-        <!-- player end -->
-
-
-
-
-
-
-
+          <div class="songInfo">
+            <div class="name">Lucid Dreamer</div>
+            <div class="creator">Spazz Cardigan</div>
+            <div class="heart becomeRed"><i class="fas fa-heart"></i></div>
+            <div class="clearfix"></div>
+          </div>
+          <div class="controlPanel">
+            <div class="progressbar">
+              <div class="progress"></div>
+            </div>
+            <div class="time">
+              <span class="start">00:00</span>
+              <span class="end">00:00</span>
+              <div class="clearfix"></div>
+            </div>
+            <div class="btns">
+              <div class="controls">
+                <button class="rand"><i class="fas fa-random"></i></button>
+                <button class="prev"><i class="fas fa-step-backward"></i></button>
+                <button class="play"><i class="fas fa-play"></i></button>
+                <button class="next"><i class="fas fa-step-forward"></i></button>
+                <button class="stop"><i class="fas fa-stop"></i></button>
+                <button class="loop"><i class="fas fa-undo-alt"></i></button>
+                <div class="clearfix"></div>
+              </div>
+              <div class="vol">
+                <div class="volicon"><i class="fas fa-volume-down"></i></div>
+                <div class="volLine">
+                  <div class="volControl"></div>
+                </div>
+                <div class="clearfix"></div>
+              </div>
+              <div class="clearfix"></div>
+            </div>
+          </div>
+          <div class="pushBtn"></div>
+        </div>
+  
+        <div class="right">
+          <div class="pushBtn"></div>
+          <div class="listTitle">
+            <div class="listCover">
+              <img src="./img/library/list_pic1.jpg"></div>
+            <div class="listName">
+              <h2>peaceful list</h2>
+              <span>8 songs</span>
+            </div>
+            <button class="selectBtn" id="selectBtn">SELECT</button>
+            <div class="clearfix"></div>
+          </div>
+          <div class="list">
+            <ul>
+              <li>
+                <div class="songCover">
+                  <img src="./img/library/cover1.jpg" alt="">
+                  <div class="listPlay"><i class="fas fa-play"></i></div>
+                </div>
+                <div class="listSongInfo">
+                  <div class="name">
+                    <h4>Lucid Dreamer</h4>
+                    <p> Spazz Cardigan</p>
+                  </div>
+                </div>
+                <div class="totalTime">3:11</div>
+                <div class="heart becomeRed"><i class="fas fa-heart"></i></div>
+                <div class="clearfix"></div>
+              </li>
+              <li>
+                <div class="songCover">
+                  <img src="./img/library/cover2.jpg" alt="">
+                  <div class="listPlay"><i class="fas fa-play"></i></div>
+                </div>
+                <div class="listSongInfo">
+                  <div class="name">
+                    <h4>Spring In My Step</h4>
+                    <p>Silent Partner</p>
+                  </div>
+                </div>
+                <div class="totalTime">1:59</div>
+                <div class="heart becomeRed"><i class="fas fa-heart"></i></div>
+                <div class="clearfix"></div>
+              </li>
+              <li>
+                <div class="songCover">
+                  <img src="./img/library/cover3.jpg" alt="">
+                  <div class="listPlay"><i class="fas fa-play"></i></div>
+                </div>
+                <div class="listSongInfo">
+                  <div class="name">
+                    <h4>On My Way Home</h4>
+                    <p>The 126ers</p>
+                  </div>
+                </div>
+                <div class="totalTime">1:56</div>
+                <div class="heart becomeRed"><i class="fas fa-heart"></i></div>
+                <div class="clearfix"></div>
+              </li>
+              <li>
+                <div class="songCover">
+                  <img src="./img/library/cover4.jpg" alt="">
+                  <div class="listPlay"><i class="fas fa-play"></i></div>
+                </div>
+                <div class="listSongInfo">
+                  <div class="name">
+                    <h4>Lucid Dreamer</h4>
+                    <p> Spazz Cardigan</p>
+                  </div>
+                </div>
+                <div class="totalTime">4:30</div>
+                <div class="heart becomeRed"><i class="fas fa-heart"></i></div>
+                <div class="clearfix"></div>
+              </li>
+              <li>
+                <div class="songCover">
+                  <img src="./img/library/cover5.jpg" alt="">
+                  <div class="listPlay"><i class="fas fa-play"></i></div>
+                </div>
+                <div class="listSongInfo">
+                  <div class="name">
+                    <h4>Lucid Dreamer</h4>
+                    <p> Spazz Cardigan</p>
+                  </div>
+                </div>
+                <div class="totalTime">4:30</div>
+                <div class="heart becomeRed"><i class="fas fa-heart"></i></div>
+                <div class="clearfix"></div>
+              </li>
+              <li>
+                <div class="songCover">
+                  <img src="./img/library/cover6.jpg" alt="">
+                  <div class="listPlay"><i class="fas fa-play"></i></div>
+                </div>
+                <div class="listSongInfo">
+                  <div class="name">
+                    <h4>Lucid Dreamer</h4>
+                    <p> Spazz Cardigan</p>
+                  </div>
+                </div>
+                <div class="totalTime">4:30</div>
+                <div class="heart becomeRed"><i class="fas fa-heart"></i></div>
+                <div class="clearfix"></div>
+              </li>
+              <li>
+                <div class="songCover">
+                  <img src="./img/library/cover1.jpg" alt="">
+                  <div class="listPlay"><i class="fas fa-play"></i></div>
+                </div>
+                <div class="listSongInfo">
+                  <div class="name">
+                    <h4>Lucid Dreamer</h4>
+                    <p> Spazz Cardigan</p>
+                  </div>
+                </div>
+                <div class="totalTime">4:30</div>
+                <div class="heart becomeRed"><i class="fas fa-heart"></i></div>
+                <div class="clearfix"></div>
+              </li>
+  
+            </ul>
+          </div>
+        </div>
+        <div class="close" id="closePlayer"><i class="fas fa-times"></i></div>
+        <div class="clearfix"></div>
+  
+        <!-- 撥放器燈箱 -->
+        <div class="lightCover">
+          <div class="lightbox_s" id="myAllList">
+            <div class="closeLight"><i class="fas fa-times"></i></div>
+            <h3>My List</h3>
+            <div class="lightSelectMenu">
+              <ul>
+                <li>Liked songs</li>
+                <li>Peaceful songs</li>
+                <li>party</li>
+              </ul>
+            </div>
+            <button class="">ok</button>
+          </div>
+        </div>
+      </div>
     </div>
-<header class="collectionheader">
+    <!-- player end -->
+
+
+
+  </div>
+  <header class="collectionheader">
     <img src="./img/collection/colltitle.png" alt="">
-</header>
-<section class="collectionsection">
+  </header>
+  <section class="collectionsection">
     <div class="collectionradio">
-        <img src="./img/collection/radio.png" alt="">
-        <!-- <div class="eyes1">
+      <img src="./img/collection/radio.png" alt="">
+      <!-- <div class="eyes1">
             <img class="closeeyes1"src="./img/collection/closeeye.png" alt="">
             <img class="closeeyes2"src="./img/collection/closeeye.png" alt="">
             <img class="closeeyes3"src="./img/collection/closeeye.png" alt="">
             <img class="closeeyes4"src="./img/collection/closeeye.png" alt="">
         </div> -->
     </div>
-    <script>
-        $(".closeeyes1").click(function(){
-            $(".closeeyes1").attr('src','./img/collection/openeye.png');
-            $(".closeeyes2").attr('src','./img/collection/closeeye.png'); 
-            $(".closeeyes3").attr('src','./img/collection/closeeye.png'); 
-            $(".closeeyes4").attr('src','./img/collection/closeeye.png');  
-        });
-    </script>
 
     <div id="collectiontabcontainer">
-        <ul class="collectiontabtitle">
-            <li><a class="tabtitlechange1" href="#tab01">Favorite</a></li>
-            <li><a class="tabtitlechange2" href="#tab02">Trap</a></li>
-            <li><a class="tabtitlechange3" href="#tab03">All</a></li>
-            <li><a class="tabtitlechange4" href="#tab04">House</a></li>
-        </ul>
-        <div class="playall_btns">
-            <button id="listAllPlay" class="circlebtn"><i class="fas fa-play"></i></button>
-            play all
-          </div> 
-        <div id="tab01" class="collectiontabinner">
-            <section class="collectionalbumsection1">
-                <div class="collectionsinglealbum">
-                    <div class="collectionsinglecover">
-                        <div class="collalbumpic sampleblum1">
-                            <div class="collplayer"><a href=""><img src="./img/activity/play-collection.png" alt=""></a></div>
-                        </div>
-                        <div class="collheart"><img src="./img/collection/grayheart.png" alt=""></div>
-                        <p>Hey<br>
-                            <span>Fais ft. Afrojack</span>
-                        </p>
-                    </div>
-                    <div class="collectionsinglecover">
-                        <div class="collalbumpic sampleblum2">
-                            <div class="collplayer"><a href=""><img src="./img/activity/play-collection.png" alt=""></a></div>
-                        </div>
-                        <div class="collheart"><img src="./img/collection/grayheart.png" alt=""></div>
-                        <p>Hey<br>
-                            <span>Fais ft. Afrojack</span>
-                        </p>
-                    </div>
-                    <div class="collectionsinglecover">
-                        <div class="collalbumpic sampleblum3">
-                            <div class="collplayer"><a href=""><img src="./img/activity/play-collection.png" alt=""></a></div>
-                        </div>
-                        <div class="collheart"><img src="./img/collection/grayheart.png" alt=""></div>
-                        <p>Hey<br>
-                            <span>Fais ft. Afrojack</span>
-                        </p>
-                    </div>
-                    <div class="collectionsinglecover">
-                        <div class="collalbumpic sampleblum4">
-                            <div class="collplayer"><a href=""><img src="./img/activity/play-collection.png" alt=""></a></div>
-                        </div>
-                        <div class="collheart"><img src="./img/collection/grayheart.png" alt=""></div>
-                        <p>Hey<br>
-                            <span>Fais ft. Afrojack</span>
-                        </p>
-                    </div>
-                </div>
-                <div class="collectionsinglealbum">
-                    <div class="collectionsinglecover">
-                        <div class="collalbumpic sampleblum5">
-                            <div class="collplayer"><a href=""><img src="./img/activity/play-collection.png" alt=""></a></div>
-                        </div>
-                        <div class="collheart"><img src="./img/collection/grayheart.png" alt=""></div>
-                        <p>Hey<br>
-                            <span>Fais ft. Afrojack</span>
-                        </p>
-                    </div>
-                    <div class="collectionsinglecover">
-                        <div class="collalbumpic sampleblum6">
-                            <div class="collplayer"><a href=""><img src="./img/activity/play-collection.png" alt=""></a></div>
-                        </div>
-                        <div class="collheart"><img src="./img/collection/grayheart.png" alt=""></div>
-                        <p> Dharma<br>
-                            <span>Headhunterz</span>
-                        </p>
-                    </div>
-                    <div class="collectionsinglecover">
-                        <div class="collalbumpic sampleblum7">
-                            <div class="collplayer"><a href=""><img src="./img/activity/play-collection.png" alt=""></a></div>
-                        </div>
-                        <div class="collheart"><img src="./img/collection/grayheart.png" alt=""></div>
-                        <p> Survivors<br>
-                            <span>Hardwel</span>
-                        </p>
-                    </div>
-                    <div class="collectionsinglecover">
-                        <div class="collalbumpic sampleblum8">
-                            <div class="collplayer"><a href=""><img src="./img/activity/play-collection.png" alt=""></a></div>
-                        </div>
-                        <div class="collheart"><img src="./img/collection/grayheart.png" alt=""></div>
-                        <p> Solo Dance<br>
-                            <span>Martin Jensen</span>
-                        </p>
-                    </div>
-                </div>
-                <div class="collectionsinglealbum">
-                    <div class="collectionsinglecover">
-                        <div class="collalbumpic sampleblum9">
-                            <div class="collplayer"><a href=""><img src="./img/activity/play-collection.png" alt=""></a></div>
-                        </div>
-                        <div class="collheart"><img src="./img/collection/grayheart.png" alt=""></div>
-                        <p> 16 Steps<br>
-                            <span> Olivia Holt</span>
-                        </p>
-                    </div>
-                    <div class="collectionsinglecover">
-                        <div class="collalbumpic sampleblum10">
-                            <div class="collplayer"><a href=""><img src="./img/activity/play-collection.png" alt=""></a></div>
-                        </div>
-                        <div class="collheart"><img src="./img/collection/grayheart.png" alt=""></div>
-                        <p>Welcome<br>
-                            <span>Julian Jordan</span>
-                        </p>
-                    </div>
-                    <div class="collectionsinglecover">
-                        <div class="collalbumpic sampleblum11">
-                            <div class="collplayer"><a href=""><img src="./img/activity/play-collection.png" alt=""></a></div>
-                        </div>
-                        <div class="collheart"><img src="./img/collection/grayheart.png" alt=""></div>
-                        <p>BFAM<br>
-                            <span>Martin Garrix</span>
-                        </p>
-                    </div>
-                    <div class="collectionsinglecover">
-                        <div class="collalbumpic sampleblum12">
-                            <div class="collplayer"><a href=""><img src="./img/activity/play-collection.png" alt=""></a></div>
-                        </div>
-                        <div class="collheart"><img src="./img/collection/grayheart.png" alt=""></div>
-                        <p>Phatt Bass<br>
-                            <span>Warp Brothersk</span>
-                        </p>
-                    </div>
-                </div>
-            </section>
-        </div>
-        <div id="tab02" class="collectiontabinner">
-            <section class="collectionalbumsection1">
-                <div class="collectionsinglealbum">
-                    <div class="collectionsinglecover">
-                        <div class="collalbumpic sampleblum12">
-                            <div class="collplayer"><a href=""><img src="./img/activity/play-collection.png" alt=""></a></div>
-                        </div>
-                        <div class="collheart"><img src="./img/collection/grayheart.png" alt=""></div>
-                        <p>Hey<br>
-                            <span>Fais ft. Afrojack</span>
-                        </p>
-                    </div>
-                    <div class="collectionsinglecover">
-                        <div class="collalbumpic sampleblum11">
-                            <div class="collplayer"><a href=""><img src="./img/activity/play-collection.png" alt=""></a></div>
-                        </div>
-                        <div class="collheart"><img src="./img/collection/grayheart.png" alt=""></div>
-                        <p>All Aboard<br>
-                            <span>Bassjackers</span>
-                        </p>
-                    </div>
-                    <div class="collectionsinglecover">
-                        <div class="collalbumpic sampleblum10">
-                            <div class="collplayer"><a href=""><img src="./img/activity/play-collection.png" alt=""></a></div>
-                        </div>
-                        <div class="collheart"><img src="./img/collection/grayheart.png" alt=""></div>
-                        <p>Renegade Master<br>
-                            <span>Jamis</span>
-                        </p>
-                    </div>
-                    <div class="collectionsinglecover">
-                        <div class="collalbumpic sampleblum9">
-                            <div class="collplayer"><a href=""><img src="./img/activity/play-collection.png" alt=""></a></div>
-                        </div>
-                        <div class="collheart"><img src="./img/collection/grayheart.png" alt=""></div>
-                        <p>Renegade Master<br>
-                            <span>Playmen</span>
-                        </p>
-                    </div>
-                </div>
-                <div class="collectionsinglealbum">
-                    <div class="collectionsinglecover">
-                        <div class="collalbumpic sampleblum8">
-                            <div class="collplayer"><a href=""><img src="./img/activity/play-collection.png" alt=""></a></div>
-                        </div>
-                        <div class="collheart"><img src="./img/collection/grayheart.png" alt=""></div>
-                        <p>Hey<br>
-                            <span>Fais ft. Afrojack</span>
-                        </p>
-                    </div>
-                    <div class="collectionsinglecover">
-                        <div class="collalbumpic sampleblum7">
-                            <div class="collplayer"><a href=""><img src="./img/activity/play-collection.png" alt=""></a></div>
-                        </div>
-                        <div class="collheart"><img src="./img/collection/grayheart.png" alt=""></div>
-                        <p>Hey<br>
-                            <span>Fais ft. Afrojack</span>
-                        </p>
-                    </div>
-                    <div class="collectionsinglecover">
-                        <div class="collalbumpic sampleblum6">
-                            <div class="collplayer"><a href=""><img src="./img/activity/play-collection.png" alt=""></a></div>
-                        </div>
-                        <div class="collheart"><img src="./img/collection/grayheart.png" alt=""></div>
-                        <p>Hey<br>
-                            <span>Fais ft. Afrojack</span>
-                        </p>
-                    </div>
-                    <div class="collectionsinglecover">
-                        <div class="collalbumpic sampleblum5">
-                            <div class="collplayer"><a href=""><img src="./img/activity/play-collection.png" alt=""></a></div>
-                        </div>
-                        <div class="collheart"><img src="./img/collection/grayheart.png" alt=""></div>
-                        <p>Hey<br>
-                            <span>Fais ft. Afrojack</span>
-                        </p>
-                    </div>
-                </div>
-                <div class="collectionsinglealbum">
-                    <div class="collectionsinglecover">
-                        <div class="collalbumpic sampleblum4">
-                            <div class="collplayer"><a href=""><img src="./img/activity/play-collection.png" alt=""></a></div>
-                        </div>
-                        <div class="collheart"><img src="./img/collection/grayheart.png" alt=""></div>
-                        <p>Hey<br>
-                            <span>Fais ft. Afrojack</span>
-                        </p>
-                    </div>
-                    <div class="collectionsinglecover">
-                        <div class="collalbumpic sampleblum3">
-                            <div class="collplayer"><a href=""><img src="./img/activity/play-collection.png" alt=""></a></div>
-                        </div>
-                        <div class="collheart"><img src="./img/collection/grayheart.png" alt=""></div>
-                        <p>Hey<br>
-                            <span>Fais ft. Afrojack</span>
-                        </p>
-                    </div>
-                    <div class="collectionsinglecover">
-                        <div class="collalbumpic sampleblum2">
-                            <div class="collplayer"><a href=""><img src="./img/activity/play-collection.png" alt=""></a></div>
-                        </div>
-                        <div class="collheart"><img src="./img/collection/grayheart.png" alt=""></div>
-                        <p>Hey<br>
-                            <span>Fais ft. Afrojack</span>
-                        </p>
-                    </div>
-                    <div class="collectionsinglecover">
-                        <div class="collalbumpic sampleblum1">
-                            <div class="collplayer"><a href=""><img src="./img/activity/play-collection.png" alt=""></a></div>
-                        </div>
-                        <div class="collheart"><img src="./img/collection/grayheart.png" alt=""></div>
-                        <p>Hey<br>
-                            <span>Fais ft. Afrojack</span>
-                        </p>
-                    </div>
-                </div>
-            </section>
-        </div>
-        <div id="tab03" class="collectiontabinner">
-            <section class="collectionalbumsection1">
-                <div class="collectionsinglealbum">
-                    <div class="collectionsinglecover">
-                        <div class="collalbumpic sampleblum1">
-                            <div class="collplayer"><a href=""><img src="./img/activity/play-collection.png" alt=""></a></div>
-                        </div>
-                        <div class="collheart"><img src="./img/collection/grayheart.png" alt=""></div>
-                        <p>Hey<br>
-                            <span>Fais ft. Afrojack</span>
-                        </p>
-                    </div>
-                    <div class="collectionsinglecover">
-                        <div class="collalbumpic sampleblum2">
-                            <div class="collplayer"><a href=""><img src="./img/activity/play-collection.png" alt=""></a></div>
-                        </div>
-                        <div class="collheart"><img src="./img/collection/grayheart.png" alt=""></div>
-                        <p>Hey<br>
-                            <span>Fais ft. Afrojack</span>
-                        </p>
-                    </div>
-                    <div class="collectionsinglecover">
-                        <div class="collalbumpic sampleblum3">
-                            <div class="collplayer"><a href=""><img src="./img/activity/play-collection.png" alt=""></a></div>
-                        </div>
-                        <div class="collheart"><img src="./img/collection/grayheart.png" alt=""></div>
-                        <p>Hey<br>
-                            <span>Fais ft. Afrojack</span>
-                        </p>
-                    </div>
-                    <div class="collectionsinglecover">
-                        <div class="collalbumpic sampleblum4">
-                            <div class="collplayer"><a href=""><img src="./img/activity/play-collection.png" alt=""></a></div>
-                        </div>
-                        <div class="collheart"><img src="./img/collection/grayheart.png" alt=""></div>
-                        <p>Hey<br>
-                            <span>Fais ft. Afrojack</span>
-                        </p>
-                    </div>
-                </div>
-                <div class="collectionsinglealbum">
-                    <div class="collectionsinglecover">
-                        <div class="collalbumpic sampleblum5">
-                            <div class="collplayer"><a href=""><img src="./img/activity/play-collection.png" alt=""></a></div>
-                        </div>
-                        <div class="collheart"><img src="./img/collection/grayheart.png" alt=""></div>
-                        <p>Hey<br>
-                            <span>Fais ft. Afrojack</span>
-                        </p>
-                    </div>
-                    <div class="collectionsinglecover">
-                        <div class="collalbumpic sampleblum6">
-                            <div class="collplayer"><a href=""><img src="./img/activity/play-collection.png" alt=""></a></div>
-                        </div>
-                        <div class="collheart"><img src="./img/collection/grayheart.png" alt=""></div>
-                        <p>Hey<br>
-                            <span>Fais ft. Afrojack</span>
-                        </p>
-                    </div>
-                    <div class="collectionsinglecover">
-                        <div class="collalbumpic sampleblum7">
-                            <div class="collplayer"><a href=""><img src="./img/activity/play-collection.png" alt=""></a></div>
-                        </div>
-                        <div class="collheart"><img src="./img/collection/grayheart.png" alt=""></div>
-                        <p>Hey<br>
-                            <span>Fais ft. Afrojack</span>
-                        </p>
-                    </div>
-                    <div class="collectionsinglecover">
-                        <div class="collalbumpic sampleblum8">
-                            <div class="collplayer"><a href=""><img src="./img/activity/play-collection.png" alt=""></a></div>
-                        </div>
-                        <div class="collheart"><img src="./img/collection/grayheart.png" alt=""></div>
-                        <p>Hey<br>
-                            <span>Fais ft. Afrojack</span>
-                        </p>
-                    </div>
-                </div>
-                <div class="collectionsinglealbum">
-                    <div class="collectionsinglecover">
-                        <div class="collalbumpic sampleblum9">
-                            <div class="collplayer"><a href=""><img src="./img/activity/play-collection.png" alt=""></a></div>
-                        </div>
-                        <div class="collheart"><img src="./img/collection/grayheart.png" alt=""></div>
-                        <p>Hey<br>
-                            <span>Fais ft. Afrojack</span>
-                        </p>
-                    </div>
-                    <div class="collectionsinglecover">
-                        <div class="collalbumpic sampleblum10">
-                            <div class="collplayer"><a href=""><img src="./img/activity/play-collection.png" alt=""></a></div>
-                        </div>
-                        <div class="collheart"><img src="./img/collection/grayheart.png" alt=""></div>
-                        <p>Hey<br>
-                            <span>Fais ft. Afrojack</span>
-                        </p>
-                    </div>
-                    <div class="collectionsinglecover">
-                        <div class="collalbumpic sampleblum11">
-                            <div class="collplayer"><a href=""><img src="./img/activity/play-collection.png" alt=""></a></div>
-                        </div>
-                        <div class="collheart"><img src="./img/collection/grayheart.png" alt=""></div>
-                        <p>Hey<br>
-                            <span>Fais ft. Afrojack</span>
-                        </p>
-                    </div>
-                    <div class="collectionsinglecover">
-                        <div class="collalbumpic sampleblum12">
-                            <div class="collplayer"><a href=""><img src="./img/activity/play-collection.png" alt=""></a></div>
-                        </div>
-                        <div class="collheart"><img src="./img/collection/grayheart.png" alt=""></div>
-                        <p>Hey<br>
-                            <span>Fais ft. Afrojack</span>
-                        </p>
-                    </div>
-                </div>
-            </section>
-        </div>
-        <div id="tab04" class="collectiontabinner">
-            <section class="collectionalbumsection1">
-                <div class="collectionsinglealbum">
-                    <div class="collectionsinglecover">
-                        <div class="collalbumpic sampleblum2">
-                            <div class="collplayer"><a href=""><img src="./img/activity/play-collection.png" alt=""></a></div>
-                        </div>
-                        <div class="collheart"><img src="./img/collection/grayheart.png" alt=""></div>
-                        <p>Hey<br>
-                            <span>Fais ft. Afrojack</span>
-                        </p>
-                    </div>
-                    <div class="collectionsinglecover">
-                        <div class="collalbumpic sampleblum4">
-                            <div class="collplayer"><a href=""><img src="./img/activity/play-collection.png" alt=""></a></div>
-                        </div>
-                        <div class="collheart"><img src="./img/collection/grayheart.png" alt=""></div>
-                        <p>Hey<br>
-                            <span>Fais ft. Afrojack</span>
-                        </p>
-                    </div>
-                    <div class="collectionsinglecover">
-                        <div class="collalbumpic sampleblum6">
-                            <div class="collplayer"><a href=""><img src="./img/activity/play-collection.png" alt=""></a></div>
-                        </div>
-                        <div class="collheart"><img src="./img/collection/grayheart.png" alt=""></div>
-                        <p>Hey<br>
-                            <span>Fais ft. Afrojack</span>
-                        </p>
-                    </div>
-                    <div class="collectionsinglecover">
-                        <div class="collalbumpic sampleblum8">
-                            <div class="collplayer"><a href=""><img src="./img/activity/play-collection.png" alt=""></a></div>
-                        </div>
-                        <div class="collheart"><img src="./img/collection/grayheart.png" alt=""></div>
-                        <p>Hey<br>
-                            <span>Fais ft. Afrojack</span>
-                        </p>
-                    </div>
-                    <div class="collectionsinglecover">
-                        <div class="collalbumpic sampleblum3">
-                            <div class="collplayer"><a href=""><img src="./img/activity/play-collection.png" alt=""></a></div>
-                        </div>
-                        <div class="collheart"><img src="./img/collection/grayheart.png" alt=""></div>
-                        <p>Hey<br>
-                            <span>Fais ft. Afrojack</span>
-                        </p>
-                    </div>
-                    <div class="collectionsinglecover">
-                        <div class="collalbumpic sampleblum4">
-                            <div class="collplayer"><a href=""><img src="./img/activity/play-collection.png" alt=""></a></div>
-                        </div>
-                        <div class="collheart"><img src="./img/collection/grayheart.png" alt=""></div>
-                        <p>Hey<br>
-                            <span>Fais ft. Afrojack</span>
-                        </p>
-                    </div>
-                </div>
-                <div class="collectionsinglealbum">
-                    <div class="collectionsinglecover">
-                        <div class="collalbumpic sampleblum5">
-                            <div class="collplayer"><a href=""><img src="./img/activity/play-collection.png" alt=""></a></div>
-                        </div>
-                        <div class="collheart"><img src="./img/collection/grayheart.png" alt=""></div>
-                        <p>Hey<br>
-                            <span>Fais ft. Afrojack</span>
-                        </p>
-                    </div>
-                    <div class="collectionsinglecover">
-                        <div class="collalbumpic sampleblum6">
-                            <div class="collplayer"><a href=""><img src="./img/activity/play-collection.png" alt=""></a></div>
-                        </div>
-                        <div class="collheart"><img src="./img/collection/grayheart.png" alt=""></div>
-                        <p>Hey<br>
-                            <span>Fais ft. Afrojack</span>
-                        </p>
-                    </div>
-                    <div class="collectionsinglecover">
-                        <div class="collalbumpic sampleblum7">
-                            <div class="collplayer"><a href=""><img src="./img/activity/play-collection.png" alt=""></a></div>
-                        </div>
-                        <div class="collheart"><img src="./img/collection/grayheart.png" alt=""></div>
-                        <p>Hey<br>
-                            <span>Fais ft. Afrojack</span>
-                        </p>
-                    </div>
-                    <div class="collectionsinglecover">
-                        <div class="collalbumpic sampleblum8">
-                            <div class="collplayer"><a href=""><img src="./img/activity/play-collection.png" alt=""></a></div>
-                        </div>
-                        <div class="collheart"><img src="../img/collection/grayheart.png" alt=""></div>
-                        <p>Hey<br>
-                            <span>Fais ft. Afrojack</span>
-                        </p>
-                    </div>
-                </div>
-                <div class="collectionsinglealbum">
-                    <div class="collectionsinglecover">
-                        <div class="collalbumpic sampleblum9">
-                            <div class="collplayer"><a href=""><img src="./img/activity/play-collection.png" alt=""></a></div>
-                        </div>
-                        <div class="collheart"><img src="./img/collection/grayheart.png" alt=""></div>
-                        <p>Hey<br>
-                            <span>Fais ft. Afrojack</span>
-                        </p>
-                    </div>
-                    <div class="collectionsinglecover">
-                        <div class="collalbumpic sampleblum10">
-                            <div class="collplayer"><a href=""><img src="./img/activity/play-collection.png" alt=""></a></div>
-                        </div>
-                        <div class="collheart"><img src="./img/collection/grayheart.png" alt=""></div>
-                        <p>Hey<br>
-                            <span>Fais ft. Afrojack</span>
-                        </p>
-                    </div>
-                    <div class="collectionsinglecover">
-                        <div class="collalbumpic sampleblum11">
-                            <div class="collplayer"><a href=""><img src="./img/activity/play-collection.png" alt=""></a></div>
-                        </div>
-                        <div class="collheart"><img src="./img/collection/grayheart.png" alt=""></div>
-                        <p>Hey<br>
-                            <span>Fais ft. Afrojack</span>
-                        </p>
-                    </div>
-                    <div class="collectionsinglecover">
-                        <div class="collalbumpic sampleblum12">
-                            <div class="collplayer"><a href=""><img src="./img/activity/play-collection.png" alt=""></a></div>
-                        </div>
-                        <div class="collheart"><img src="./img/collection/grayheart.png" alt=""></div>
-                        <p>Hey<br>
-                            <span>Fais ft. Afrojack</span>
-                        </p>
-                    </div>
-                </div>
-            </section>
-        </div>
+      <ul class="collectiontabtitle">
+        <li><a class="tabtitlechange1" href="#tab01">Favorite</a></li>
+        <li><a class="tabtitlechange2" href="#tab02">Trap</a></li>
+        <li><a class="tabtitlechange3" href="#tab03">All</a></li>
+        <li><a class="tabtitlechange4" href="#tab04">House</a></li>
+      </ul>
+      <div class="playall_btns">
+        <button id="listAllPlay" class="circlebtn"><i class="fas fa-play"></i></button>
+        play all
+      </div>
+      <div id="tab01" class="collectiontabinner">
+        <section class="collectionalbumsection1">
+          <div class="collectionsinglealbum">
+            <div class="collectionsinglecover">
+              <div class="collalbumpic sampleblum1">
+                <div class="collplayer"><a href=""><img src="./img/activity/play-collection.png" alt=""></a></div>
+              </div>
+              <div class="collheart"><img src="./img/collection/grayheart.png" alt=""></div>
+              <p>Hey<br>
+                <span>Fais ft. Afrojack</span>
+              </p>
+            </div>
+            <div class="collectionsinglecover">
+              <div class="collalbumpic sampleblum2">
+                <div class="collplayer"><a href=""><img src="./img/activity/play-collection.png" alt=""></a></div>
+              </div>
+              <div class="collheart"><img src="./img/collection/grayheart.png" alt=""></div>
+              <p>Another Life<br>
+                <span>David Guetta</span>
+              </p>
+            </div>
+            <div class="collectionsinglecover">
+              <div class="collalbumpic sampleblum3">
+                <div class="collplayer"><a href=""><img src="./img/activity/play-collection.png" alt=""></a></div>
+              </div>
+              <div class="collheart"><img src="./img/collection/grayheart.png" alt=""></div>
+              <p>Cutting Shapes<br>
+                <span>Don Diablo</span>
+              </p>
+            </div>
+            <div class="collectionsinglecover">
+              <div class="collalbumpic sampleblum4">
+                <div class="collplayer"><a href=""><img src="./img/activity/play-collection.png" alt=""></a></div>
+              </div>
+              <div class="collheart"><img src="./img/collection/grayheart.png" alt=""></div>
+              <p>What Would You<br>
+                <span>NERVO</span>
+              </p>
+            </div>
+          </div>
+          <div class="collectionsinglealbum">
+            <div class="collectionsinglecover">
+              <div class="collalbumpic sampleblum5">
+                <div class="collplayer"><a href=""><img src="./img/activity/play-collection.png" alt=""></a></div>
+              </div>
+              <div class="collheart"><img src="./img/collection/grayheart.png" alt=""></div>
+              <p>Champagne<br>
+                <span>Chief Keef</span>
+              </p>
+            </div>
+            <div class="collectionsinglecover">
+              <div class="collalbumpic sampleblum6">
+                <div class="collplayer"><a href=""><img src="./img/activity/play-collection.png" alt=""></a></div>
+              </div>
+              <div class="collheart"><img src="./img/collection/grayheart.png" alt=""></div>
+              <p> Dharma<br>
+                <span>Headhunterz</span>
+              </p>
+            </div>
+            <div class="collectionsinglecover">
+              <div class="collalbumpic sampleblum7">
+                <div class="collplayer"><a href=""><img src="./img/activity/play-collection.png" alt=""></a></div>
+              </div>
+              <div class="collheart"><img src="./img/collection/grayheart.png" alt=""></div>
+              <p> Survivors<br>
+                <span>Hardwel</span>
+              </p>
+            </div>
+            <div class="collectionsinglecover">
+              <div class="collalbumpic sampleblum8">
+                <div class="collplayer"><a href=""><img src="./img/activity/play-collection.png" alt=""></a></div>
+              </div>
+              <div class="collheart"><img src="./img/collection/grayheart.png" alt=""></div>
+              <p> Solo Dance<br>
+                <span>Martin Jensen</span>
+              </p>
+            </div>
+          </div>
+          <div class="collectionsinglealbum">
+            <div class="collectionsinglecover">
+              <div class="collalbumpic sampleblum9">
+                <div class="collplayer"><a href=""><img src="./img/activity/play-collection.png" alt=""></a></div>
+              </div>
+              <div class="collheart"><img src="./img/collection/grayheart.png" alt=""></div>
+              <p> 16 Steps<br>
+                <span> Olivia Holt</span>
+              </p>
+            </div>
+            <div class="collectionsinglecover">
+              <div class="collalbumpic sampleblum10">
+                <div class="collplayer"><a href=""><img src="./img/activity/play-collection.png" alt=""></a></div>
+              </div>
+              <div class="collheart"><img src="./img/collection/grayheart.png" alt=""></div>
+              <p>Welcome<br>
+                <span>Julian Jordan</span>
+              </p>
+            </div>
+            <div class="collectionsinglecover">
+              <div class="collalbumpic sampleblum11">
+                <div class="collplayer"><a href=""><img src="./img/activity/play-collection.png" alt=""></a></div>
+              </div>
+              <div class="collheart"><img src="./img/collection/grayheart.png" alt=""></div>
+              <p>BFAM<br>
+                <span>Martin Garrix</span>
+              </p>
+            </div>
+            <div class="collectionsinglecover">
+              <div class="collalbumpic sampleblum12">
+                <div class="collplayer"><a href=""><img src="./img/activity/play-collection.png" alt=""></a></div>
+              </div>
+              <div class="collheart"><img src="./img/collection/grayheart.png" alt=""></div>
+              <p>Phatt Bass<br>
+                <span>Warp Brothersk</span>
+              </p>
+            </div>
+          </div>
+        </section>
+      </div>
+      <div id="tab02" class="collectiontabinner">
+        <section class="collectionalbumsection1">
+          <div class="collectionsinglealbum">
+            <div class="collectionsinglecover">
+              <div class="collalbumpic sampleblum12">
+                <div class="collplayer"><a href=""><img src="./img/activity/play-collection.png" alt=""></a></div>
+              </div>
+              <div class="collheart"><img src="./img/collection/grayheart.png" alt=""></div>
+              <p>Hey<br>
+                <span>Fais ft. Afrojack</span>
+              </p>
+            </div>
+            <div class="collectionsinglecover">
+              <div class="collalbumpic sampleblum11">
+                <div class="collplayer"><a href=""><img src="./img/activity/play-collection.png" alt=""></a></div>
+              </div>
+              <div class="collheart"><img src="./img/collection/grayheart.png" alt=""></div>
+              <p>All Aboard<br>
+                <span>Bassjackers</span>
+              </p>
+            </div>
+            <div class="collectionsinglecover">
+              <div class="collalbumpic sampleblum10">
+                <div class="collplayer"><a href=""><img src="./img/activity/play-collection.png" alt=""></a></div>
+              </div>
+              <div class="collheart"><img src="./img/collection/grayheart.png" alt=""></div>
+              <p>Renegade Master<br>
+                <span>Jamis</span>
+              </p>
+            </div>
+            <div class="collectionsinglecover">
+              <div class="collalbumpic sampleblum9">
+                <div class="collplayer"><a href=""><img src="./img/activity/play-collection.png" alt=""></a></div>
+              </div>
+              <div class="collheart"><img src="./img/collection/grayheart.png" alt=""></div>
+              <p>Renegade Master<br>
+                <span>Playmen</span>
+              </p>
+            </div>
+          </div>
+          <div class="collectionsinglealbum">
+            <div class="collectionsinglecover">
+              <div class="collalbumpic sampleblum8">
+                <div class="collplayer"><a href=""><img src="./img/activity/play-collection.png" alt=""></a></div>
+              </div>
+              <div class="collheart"><img src="./img/collection/grayheart.png" alt=""></div>
+              <p>Hey<br>
+                <span>Fais ft. Afrojack</span>
+              </p>
+            </div>
+            <div class="collectionsinglecover">
+              <div class="collalbumpic sampleblum7">
+                <div class="collplayer"><a href=""><img src="./img/activity/play-collection.png" alt=""></a></div>
+              </div>
+              <div class="collheart"><img src="./img/collection/grayheart.png" alt=""></div>
+              <p>Hey<br>
+                <span>Fais ft. Afrojack</span>
+              </p>
+            </div>
+            <div class="collectionsinglecover">
+              <div class="collalbumpic sampleblum6">
+                <div class="collplayer"><a href=""><img src="./img/activity/play-collection.png" alt=""></a></div>
+              </div>
+              <div class="collheart"><img src="./img/collection/grayheart.png" alt=""></div>
+              <p>Hey<br>
+                <span>Fais ft. Afrojack</span>
+              </p>
+            </div>
+            <div class="collectionsinglecover">
+              <div class="collalbumpic sampleblum5">
+                <div class="collplayer"><a href=""><img src="./img/activity/play-collection.png" alt=""></a></div>
+              </div>
+              <div class="collheart"><img src="./img/collection/grayheart.png" alt=""></div>
+              <p>Hey<br>
+                <span>Fais ft. Afrojack</span>
+              </p>
+            </div>
+          </div>
+          <div class="collectionsinglealbum">
+            <div class="collectionsinglecover">
+              <div class="collalbumpic sampleblum4">
+                <div class="collplayer"><a href=""><img src="./img/activity/play-collection.png" alt=""></a></div>
+              </div>
+              <div class="collheart"><img src="./img/collection/grayheart.png" alt=""></div>
+              <p>Hey<br>
+                <span>Fais ft. Afrojack</span>
+              </p>
+            </div>
+            <div class="collectionsinglecover">
+              <div class="collalbumpic sampleblum3">
+                <div class="collplayer"><a href=""><img src="./img/activity/play-collection.png" alt=""></a></div>
+              </div>
+              <div class="collheart"><img src="./img/collection/grayheart.png" alt=""></div>
+              <p>Hey<br>
+                <span>Fais ft. Afrojack</span>
+              </p>
+            </div>
+            <div class="collectionsinglecover">
+              <div class="collalbumpic sampleblum2">
+                <div class="collplayer"><a href=""><img src="./img/activity/play-collection.png" alt=""></a></div>
+              </div>
+              <div class="collheart"><img src="./img/collection/grayheart.png" alt=""></div>
+              <p>Hey<br>
+                <span>Fais ft. Afrojack</span>
+              </p>
+            </div>
+            <div class="collectionsinglecover">
+              <div class="collalbumpic sampleblum1">
+                <div class="collplayer"><a href=""><img src="./img/activity/play-collection.png" alt=""></a></div>
+              </div>
+              <div class="collheart"><img src="./img/collection/grayheart.png" alt=""></div>
+              <p>Hey<br>
+                <span>Fais ft. Afrojack</span>
+              </p>
+            </div>
+          </div>
+        </section>
+      </div>
+      <div id="tab03" class="collectiontabinner">
+        <section class="collectionalbumsection1">
+          <div class="collectionsinglealbum">
+            <div class="collectionsinglecover">
+              <div class="collalbumpic sampleblum1">
+                <div class="collplayer"><a href=""><img src="./img/activity/play-collection.png" alt=""></a></div>
+              </div>
+              <div class="collheart"><img src="./img/collection/grayheart.png" alt=""></div>
+              <p>Hey<br>
+                <span>Fais ft. Afrojack</span>
+              </p>
+            </div>
+            <div class="collectionsinglecover">
+              <div class="collalbumpic sampleblum2">
+                <div class="collplayer"><a href=""><img src="./img/activity/play-collection.png" alt=""></a></div>
+              </div>
+              <div class="collheart"><img src="./img/collection/grayheart.png" alt=""></div>
+              <p>Hey<br>
+                <span>Fais ft. Afrojack</span>
+              </p>
+            </div>
+            <div class="collectionsinglecover">
+              <div class="collalbumpic sampleblum3">
+                <div class="collplayer"><a href=""><img src="./img/activity/play-collection.png" alt=""></a></div>
+              </div>
+              <div class="collheart"><img src="./img/collection/grayheart.png" alt=""></div>
+              <p>Hey<br>
+                <span>Fais ft. Afrojack</span>
+              </p>
+            </div>
+            <div class="collectionsinglecover">
+              <div class="collalbumpic sampleblum4">
+                <div class="collplayer"><a href=""><img src="./img/activity/play-collection.png" alt=""></a></div>
+              </div>
+              <div class="collheart"><img src="./img/collection/grayheart.png" alt=""></div>
+              <p>Hey<br>
+                <span>Fais ft. Afrojack</span>
+              </p>
+            </div>
+          </div>
+          <div class="collectionsinglealbum">
+            <div class="collectionsinglecover">
+              <div class="collalbumpic sampleblum5">
+                <div class="collplayer"><a href=""><img src="./img/activity/play-collection.png" alt=""></a></div>
+              </div>
+              <div class="collheart"><img src="./img/collection/grayheart.png" alt=""></div>
+              <p>Hey<br>
+                <span>Fais ft. Afrojack</span>
+              </p>
+            </div>
+            <div class="collectionsinglecover">
+              <div class="collalbumpic sampleblum6">
+                <div class="collplayer"><a href=""><img src="./img/activity/play-collection.png" alt=""></a></div>
+              </div>
+              <div class="collheart"><img src="./img/collection/grayheart.png" alt=""></div>
+              <p>Hey<br>
+                <span>Fais ft. Afrojack</span>
+              </p>
+            </div>
+            <div class="collectionsinglecover">
+              <div class="collalbumpic sampleblum7">
+                <div class="collplayer"><a href=""><img src="./img/activity/play-collection.png" alt=""></a></div>
+              </div>
+              <div class="collheart"><img src="./img/collection/grayheart.png" alt=""></div>
+              <p>Hey<br>
+                <span>Fais ft. Afrojack</span>
+              </p>
+            </div>
+            <div class="collectionsinglecover">
+              <div class="collalbumpic sampleblum8">
+                <div class="collplayer"><a href=""><img src="./img/activity/play-collection.png" alt=""></a></div>
+              </div>
+              <div class="collheart"><img src="./img/collection/grayheart.png" alt=""></div>
+              <p>Hey<br>
+                <span>Fais ft. Afrojack</span>
+              </p>
+            </div>
+          </div>
+          <div class="collectionsinglealbum">
+            <div class="collectionsinglecover">
+              <div class="collalbumpic sampleblum9">
+                <div class="collplayer"><a href=""><img src="./img/activity/play-collection.png" alt=""></a></div>
+              </div>
+              <div class="collheart"><img src="./img/collection/grayheart.png" alt=""></div>
+              <p>Hey<br>
+                <span>Fais ft. Afrojack</span>
+              </p>
+            </div>
+            <div class="collectionsinglecover">
+              <div class="collalbumpic sampleblum10">
+                <div class="collplayer"><a href=""><img src="./img/activity/play-collection.png" alt=""></a></div>
+              </div>
+              <div class="collheart"><img src="./img/collection/grayheart.png" alt=""></div>
+              <p>Hey<br>
+                <span>Fais ft. Afrojack</span>
+              </p>
+            </div>
+            <div class="collectionsinglecover">
+              <div class="collalbumpic sampleblum11">
+                <div class="collplayer"><a href=""><img src="./img/activity/play-collection.png" alt=""></a></div>
+              </div>
+              <div class="collheart"><img src="./img/collection/grayheart.png" alt=""></div>
+              <p>Hey<br>
+                <span>Fais ft. Afrojack</span>
+              </p>
+            </div>
+            <div class="collectionsinglecover">
+              <div class="collalbumpic sampleblum12">
+                <div class="collplayer"><a href=""><img src="./img/activity/play-collection.png" alt=""></a></div>
+              </div>
+              <div class="collheart"><img src="./img/collection/grayheart.png" alt=""></div>
+              <p>Hey<br>
+                <span>Fais ft. Afrojack</span>
+              </p>
+            </div>
+          </div>
+        </section>
+      </div>
+      <div id="tab04" class="collectiontabinner">
+        <section class="collectionalbumsection1">
+          <div class="collectionsinglealbum">
+            <div class="collectionsinglecover">
+              <div class="collalbumpic sampleblum2">
+                <div class="collplayer"><a href=""><img src="./img/activity/play-collection.png" alt=""></a></div>
+              </div>
+              <div class="collheart"><img src="./img/collection/grayheart.png" alt=""></div>
+              <p>Hey<br>
+                <span>Fais ft. Afrojack</span>
+              </p>
+            </div>
+            <div class="collectionsinglecover">
+              <div class="collalbumpic sampleblum4">
+                <div class="collplayer"><a href=""><img src="./img/activity/play-collection.png" alt=""></a></div>
+              </div>
+              <div class="collheart"><img src="./img/collection/grayheart.png" alt=""></div>
+              <p>Hey<br>
+                <span>Fais ft. Afrojack</span>
+              </p>
+            </div>
+            <div class="collectionsinglecover">
+              <div class="collalbumpic sampleblum6">
+                <div class="collplayer"><a href=""><img src="./img/activity/play-collection.png" alt=""></a></div>
+              </div>
+              <div class="collheart"><img src="./img/collection/grayheart.png" alt=""></div>
+              <p>Hey<br>
+                <span>Fais ft. Afrojack</span>
+              </p>
+            </div>
+            <div class="collectionsinglecover">
+              <div class="collalbumpic sampleblum8">
+                <div class="collplayer"><a href=""><img src="./img/activity/play-collection.png" alt=""></a></div>
+              </div>
+              <div class="collheart"><img src="./img/collection/grayheart.png" alt=""></div>
+              <p>Hey<br>
+                <span>Fais ft. Afrojack</span>
+              </p>
+            </div>
+            <div class="collectionsinglecover">
+              <div class="collalbumpic sampleblum3">
+                <div class="collplayer"><a href=""><img src="./img/activity/play-collection.png" alt=""></a></div>
+              </div>
+              <div class="collheart"><img src="./img/collection/grayheart.png" alt=""></div>
+              <p>Hey<br>
+                <span>Fais ft. Afrojack</span>
+              </p>
+            </div>
+            <div class="collectionsinglecover">
+              <div class="collalbumpic sampleblum4">
+                <div class="collplayer"><a href=""><img src="./img/activity/play-collection.png" alt=""></a></div>
+              </div>
+              <div class="collheart"><img src="./img/collection/grayheart.png" alt=""></div>
+              <p>Hey<br>
+                <span>Fais ft. Afrojack</span>
+              </p>
+            </div>
+          </div>
+          <div class="collectionsinglealbum">
+            <div class="collectionsinglecover">
+              <div class="collalbumpic sampleblum5">
+                <div class="collplayer"><a href=""><img src="./img/activity/play-collection.png" alt=""></a></div>
+              </div>
+              <div class="collheart"><img src="./img/collection/grayheart.png" alt=""></div>
+              <p>Hey<br>
+                <span>Fais ft. Afrojack</span>
+              </p>
+            </div>
+            <div class="collectionsinglecover">
+              <div class="collalbumpic sampleblum6">
+                <div class="collplayer"><a href=""><img src="./img/activity/play-collection.png" alt=""></a></div>
+              </div>
+              <div class="collheart"><img src="./img/collection/grayheart.png" alt=""></div>
+              <p>Hey<br>
+                <span>Fais ft. Afrojack</span>
+              </p>
+            </div>
+            <div class="collectionsinglecover">
+              <div class="collalbumpic sampleblum1">
+                <div class="collplayer"><a href=""><img src="./img/activity/play-collection.png" alt=""></a></div>
+              </div>
+              <div class="collheart"><img src="./img/collection/grayheart.png" alt=""></div>
+              <p>Hey<br>
+                <span>Fais ft. Afrojack</span>
+              </p>
+            </div>
+            <div class="collectionsinglecover">
+              <div class="collalbumpic sampleblum8">
+                <div class="collplayer"><a href=""><img src="./img/activity/play-collection.png" alt=""></a></div>
+              </div>
+              <div class="collheart"><img src="../img/collection/grayheart.png" alt=""></div>
+              <p>Hey<br>
+                <span>Fais ft. Afrojack</span>
+              </p>
+            </div>
+          </div>
+          <div class="collectionsinglealbum">
+            <div class="collectionsinglecover">
+              <div class="collalbumpic sampleblum9">
+                <div class="collplayer"><a href=""><img src="./img/activity/play-collection.png" alt=""></a></div>
+              </div>
+              <div class="collheart"><img src="./img/collection/grayheart.png" alt=""></div>
+              <p>Hey<br>
+                <span>Fais ft. Afrojack</span>
+              </p>
+            </div>
+            <div class="collectionsinglecover">
+              <div class="collalbumpic sampleblum7">
+                <div class="collplayer"><a href=""><img src="./img/activity/play-collection.png" alt=""></a></div>
+              </div>
+              <div class="collheart"><img src="./img/collection/grayheart.png" alt=""></div>
+              <p>Hey<br>
+                <span>Fais ft. Afrojack</span>
+              </p>
+            </div>
+            <div class="collectionsinglecover">
+              <div class="collalbumpic sampleblum9">
+                <div class="collplayer"><a href=""><img src="./img/activity/play-collection.png" alt=""></a></div>
+              </div>
+              <div class="collheart"><img src="./img/collection/grayheart.png" alt=""></div>
+              <p>Hey<br>
+                <span>Fais ft. Afrojack</span>
+              </p>
+            </div>
+            <div class="collectionsinglecover">
+              <div class="collalbumpic sampleblum11">
+                <div class="collplayer"><a href=""><img src="./img/activity/play-collection.png" alt=""></a></div>
+              </div>
+              <div class="collheart"><img src="./img/collection/grayheart.png" alt=""></div>
+              <p>Hey<br>
+                <span>Fais ft. Afrojack</span>
+              </p>
+            </div>
+          </div>
+        </section>
+      </div>
     </div>
-</section>
+  </section>
+
+</body>
 <script>
-</script>
-<script>           
-            $( ".collheart").click( function () {
-                if($(this).attr('src','./img/collection/grayheart.png')){
-                    $(this).attr('src','./img/collection/redheart.png');  
-                }else{
-                    $(this).attr('src','./img/collection/grayheart.png'); 
-                }            
-            })
-    </script>
-<script>
-    $('.collalbumpic').hover(function(){
-        $(this).find('.collplayer').css("display","block");
-    },function(){
-        $(this).find('.collplayer').css("display","none");
-    });
+  $(".collheart").click(function () {
+    if ($(this).attr('src', './img/collection/grayheart.png')) {
+      $(this).attr('src', './img/collection/redheart.png');
+    } else {
+      $(this).attr('src', './img/collection/grayheart.png');
+    }
+  })
 </script>
 <script>
-    $(function(){
+  $('.collalbumpic').hover(function () {
+    $(this).find('.collplayer').css("display", "block");
+  }, function () {
+    $(this).find('.collplayer').css("display", "none");
+  });
+</script>
+<script>
+  $(function () {
     var $li = $('ul.collectiontabtitle li');
-    $($li. eq(0) .addClass('active').find('a').attr('href')).siblings('.collectiontabinner').hide();
-    $li.click(function(){
-        $($(this).find('a'). attr ('href')).show().siblings ('.collectiontabinner').hide();
-        $(this).addClass('active'). siblings ('.active').removeClass('active');
+    $($li.eq(0).addClass('active').find('a').attr('href')).siblings('.collectiontabinner').hide();
+    $li.click(function () {
+      $($(this).find('a').attr('href')).show().siblings('.collectiontabinner').hide();
+      $(this).addClass('active').siblings('.active').removeClass('active');
     });
-});
+  });
 </script>
 <script>
-    $('.collectiontabtitle li a').click(function(){
-        $(this).css("color","#fff").css("background-color","#7ed5e5");
-        // $(this).css("background-color","#7ed5e5");
-        $('.collectiontabtitle li a').not(this).css("background-color","#f1c40f");
-    });
+  $('.collectiontabtitle li a').click(function () {
+    $(this).css("color", "#fff").css("background-color", "#7ed5e5");
+    // $(this).css("background-color","#7ed5e5");
+    $('.collectiontabtitle li a').not(this).css("background-color", "#f1c40f");
+  });
 </script>
 <script>
-    new Vue({
-        el: "#app",
-        data: {
-            mobile_list: false,
-            search_bar: false,
-            mem_list: false,
-            mem_login: false,
-            
-        },
-        mounted() {
-            // nav_bar start
-            document.querySelector('.mem_list ul').setAttribute('style', `height: ${window.innerHeight}px;`);
-            document.querySelector('.mobile_list ul').setAttribute('style', `height: ${window.innerHeight}px;`);
-            document.querySelectorAll('.paint_border')[0].setAttribute('style', `height: ${window.innerHeight}px;`);
-            document.querySelectorAll('.paint_border')[1].setAttribute('style', `height: ${window.innerHeight}px;`);
+  new Vue({
+    el: "#app",
+    data: {
+      mobile_list: false,
+      search_bar: false,
+      mem_list: false,
+      mem_login: false,
 
-            document.addEventListener('click', () => {
-                this.mem_list = false;
-                this.search_bar = false;
-                this.mobile_list = false;
+    },
+    mounted() {
+      // nav_bar start
+      document.querySelector('.mem_list ul').setAttribute('style', `height: ${window.innerHeight}px;`);
+      document.querySelector('.mobile_list ul').setAttribute('style', `height: ${window.innerHeight}px;`);
+      document.querySelectorAll('.paint_border')[0].setAttribute('style', `height: ${window.innerHeight}px;`);
+      document.querySelectorAll('.paint_border')[1].setAttribute('style', `height: ${window.innerHeight}px;`);
 
-                document
-                    .querySelector(".search_bar")
-                    .setAttribute("style", "height: 0px; filter: opacity(0);");
-                document
-                    .querySelector(".mem_list")
-                    .setAttribute("style", "transform: translateX(270px); filter: opacity(0);");
-                document
-                    .querySelector(".mobile_list")
-                    .setAttribute("style", "transform: translateX(-270px); filter: opacity(0);");
-            });
-            // nav_bar end
+      document.addEventListener('click', () => {
+        this.mem_list = false;
+        this.search_bar = false;
+        this.mobile_list = false;
+
+        document
+          .querySelector(".search_bar")
+          .setAttribute("style", "height: 0px; filter: opacity(0);");
+        document
+          .querySelector(".mem_list")
+          .setAttribute("style", "transform: translateX(270px); filter: opacity(0);");
+        document
+          .querySelector(".mobile_list")
+          .setAttribute("style", "transform: translateX(-270px); filter: opacity(0);");
+      });
+      // nav_bar end
 
 
 
-            // player start
-            $(document).ready(function () {
+      // player start
+      $(document).ready(function () {
   //撥放器縮放
   $('#expand').click(function () {
     $('.player_b').addClass('open');
@@ -1042,7 +1032,7 @@
 
 
 
-  /* -------------- 音樂播放 -------------- */
+  /* -- 音樂播放 -- */
   let storage = localStorage;
   var autoplay = false,
     songTime,
@@ -1121,21 +1111,17 @@
     $("#player .songCover .listPlay").removeClass('nowlistening');
   });
 
-  //循環播放 -- 單首
+  //循環播放 -- 單首??未處理
   $("#player .loop").click(function () {
     if ($(this).hasClass("becomeYel")) {
       $(this).removeClass("becomeYel");
       audio.loop = false;
-      autoChange(true);
     } else {
       $(this).addClass("becomeYel");
       audio.loop = true;
-      autoChange(false);
     }
   });
   //隨機播放 -- 清單隨機--未處理
-
-  //maybe有靜音 volIcon
 
 
 
@@ -1166,6 +1152,7 @@
   //   }else{
   //     console.log(newSongTime);
   //   }
+    
   // }
 
 
@@ -1199,6 +1186,7 @@
   }
 
 
+
   //進度條
   progressingTime = setInterval(progressingShow, 100);
   let newSong = nowPlaying; //測試
@@ -1206,9 +1194,16 @@
     songTime = audio.currentTime;
     let progressColor = (songTime / audio.duration) * 100;
     if (audio.ended) {
-      autoChange(true);
+      autoChange();
     }
-
+    
+    // if(newSong == nowPlaying){
+    //   storage.setItem(newSong, songTime);
+    // }else{
+    //   storage.clear();
+    //   storage.setItem(nowPlaying, songTime);
+    // }
+    
     // console.log(audio.duration); //歌曲總長秒數
     $("#player .progress").css("width", `${progressColor.toFixed(2)}%`);
     $("#player span.start").text(`${parseInt(songTime / 60)}:${parseInt(songTime % 60)}`)
@@ -1216,132 +1211,126 @@
   }
 
   //自動換下一首
-  function autoChange(autoStatus) {
-    if (autoStatus) {
-      if (nowPlaying == myPlaylist.length - 1) {
-        if (audio.ended) {
-          audio.currentTime = 0;
-          isPlaying(true);
-        } else {
-          isPlaying(false);
-        }
+  function autoChange() {
+    if (nowPlaying == myPlaylist.length - 1) {
+      if (audio.ended) {
+        audio.currentTime = 0;
+        isPlaying(true);
       } else {
-        if (audio.ended) {
-          nowPlaying++;
-          $("#player audio").attr("src", myPlaylist[nowPlaying].filein);
-          isPlaying(false);
-        }
+        isPlaying(false);
       }
+    } else {
+      nowPlaying++;
+      $("#player audio").attr("src", myPlaylist[nowPlaying].filein);
+      isPlaying(false);
     }
   }
-
 });
-            // player end
+      // player end
 
 
-        },
-        methods: {
-            // nav_bar
-            hamburger_click(e) {
-                // e.stopPropagation();
-                document
-                    .querySelector(".hamburger").classList.toggle("is-active");
-            },
-            search_bt_click(e) {
-                e.stopPropagation();
-                if (this.search_bar == false) {
-                    this.search_bar = true;
-                    this.mem_list = false;
-                    this.mobile_list = false;
-                    document
-                        .querySelector(".search_bar")
-                        .setAttribute("style", "height: 240px; filter: opacity(1);");
-                    document.querySelector("input.search").focus();
-                    document
-                        .querySelector(".mem_list")
-                        .setAttribute("style", "transform: translateX(270px); filter: opacity(0);");
-                    document
-                        .querySelector(".mobile_list")
-                        .setAttribute("style", "transform: translateX(-270px); filter: opacity(0);");
-                } else {
-                    this.search_bar = false;
-                    document
-                        .querySelector(".search_bar")
-                        .setAttribute("style", "height: 0px; filter: opacity(0);");
-                    document.querySelector("input.search").blur();
-                    document
-                        .querySelector(".mem_list")
-                        .setAttribute("style", "transform: translateX(270px); filter: opacity(0);");
-                    document
-                        .querySelector(".mobile_list")
-                        .setAttribute("style", "transform: translateX(-270px); filter: opacity(0);");
-                }
-            },
-
-            stopPropagation(e) {
-                e.stopPropagation();
-            },
-
-            mem_bt_click(e) {
-                e.stopPropagation();
-                if (this.mem_list == false) {
-                    this.mem_list = true;
-                    this.search_bar = false;
-                    this.mobile_list = false;
-                    document
-                        .querySelector(".mem_list")
-                        .setAttribute("style", "transform: translateX(0); filter: opacity(1);");
-                    document
-                        .querySelector(".search_bar")
-                        .setAttribute("style", "height: 0px; filter: opacity(0);");
-                    document
-                        .querySelector(".mobile_list")
-                        .setAttribute("style", "transform: translateX(-270px); filter: opacity(0);");
-                } else {
-                    this.mem_list = false;
-                    document
-                        .querySelector(".mem_list")
-                        .setAttribute("style", "transform: translateX(270px); filter: opacity(0);");
-                    document
-                        .querySelector(".search_bar")
-                        .setAttribute("style", "height: 0px; filter: opacity(0);");
-                    document
-                        .querySelector(".mobile_list")
-                        .setAttribute("style", "transform: translateX(-270px); filter: opacity(0);");
-                }
-            },
-
-            hamburger_click(e) {
-                e.stopPropagation();
-                if (this.mobile_list == false) {
-                    this.mobile_list = true;
-                    this.mem_list = false;
-                    this.search_bar = false;
-                    document
-                        .querySelector(".mobile_list")
-                        .setAttribute("style", "transform: translateX(0); filter: opacity(1);");
-                    document
-                        .querySelector(".mem_list")
-                        .setAttribute("style", "transform: translateX(270px); filter: opacity(0);");
-                    document
-                        .querySelector(".search_bar")
-                        .setAttribute("style", "height: 0px; filter: opacity(0);");
-                } else {
-                    this.mobile_list = false;
-                    document
-                        .querySelector(".mobile_list")
-                        .setAttribute("style", "transform: translateX(-270px); filter: opacity(0);");
-                    document
-                        .querySelector(".mem_list")
-                        .setAttribute("style", "transform: translateX(270px); filter: opacity(0);");
-                    document
-                        .querySelector(".search_bar")
-                        .setAttribute("style", "height: 0px; filter: opacity(0);");
-                }
-            },
+    },
+    methods: {
+      // nav_bar
+      hamburger_click(e) {
+        // e.stopPropagation();
+        document
+          .querySelector(".hamburger").classList.toggle("is-active");
+      },
+      search_bt_click(e) {
+        e.stopPropagation();
+        if (this.search_bar == false) {
+          this.search_bar = true;
+          this.mem_list = false;
+          this.mobile_list = false;
+          document
+            .querySelector(".search_bar")
+            .setAttribute("style", "height: 240px; filter: opacity(1);");
+          document.querySelector("input.search").focus();
+          document
+            .querySelector(".mem_list")
+            .setAttribute("style", "transform: translateX(270px); filter: opacity(0);");
+          document
+            .querySelector(".mobile_list")
+            .setAttribute("style", "transform: translateX(-270px); filter: opacity(0);");
+        } else {
+          this.search_bar = false;
+          document
+            .querySelector(".search_bar")
+            .setAttribute("style", "height: 0px; filter: opacity(0);");
+          document.querySelector("input.search").blur();
+          document
+            .querySelector(".mem_list")
+            .setAttribute("style", "transform: translateX(270px); filter: opacity(0);");
+          document
+            .querySelector(".mobile_list")
+            .setAttribute("style", "transform: translateX(-270px); filter: opacity(0);");
         }
-    });
+      },
+
+      stopPropagation(e) {
+        e.stopPropagation();
+      },
+
+      mem_bt_click(e) {
+        e.stopPropagation();
+        if (this.mem_list == false) {
+          this.mem_list = true;
+          this.search_bar = false;
+          this.mobile_list = false;
+          document
+            .querySelector(".mem_list")
+            .setAttribute("style", "transform: translateX(0); filter: opacity(1);");
+          document
+            .querySelector(".search_bar")
+            .setAttribute("style", "height: 0px; filter: opacity(0);");
+          document
+            .querySelector(".mobile_list")
+            .setAttribute("style", "transform: translateX(-270px); filter: opacity(0);");
+        } else {
+          this.mem_list = false;
+          document
+            .querySelector(".mem_list")
+            .setAttribute("style", "transform: translateX(270px); filter: opacity(0);");
+          document
+            .querySelector(".search_bar")
+            .setAttribute("style", "height: 0px; filter: opacity(0);");
+          document
+            .querySelector(".mobile_list")
+            .setAttribute("style", "transform: translateX(-270px); filter: opacity(0);");
+        }
+      },
+
+      hamburger_click(e) {
+        e.stopPropagation();
+        if (this.mobile_list == false) {
+          this.mobile_list = true;
+          this.mem_list = false;
+          this.search_bar = false;
+          document
+            .querySelector(".mobile_list")
+            .setAttribute("style", "transform: translateX(0); filter: opacity(1);");
+          document
+            .querySelector(".mem_list")
+            .setAttribute("style", "transform: translateX(270px); filter: opacity(0);");
+          document
+            .querySelector(".search_bar")
+            .setAttribute("style", "height: 0px; filter: opacity(0);");
+        } else {
+          this.mobile_list = false;
+          document
+            .querySelector(".mobile_list")
+            .setAttribute("style", "transform: translateX(-270px); filter: opacity(0);");
+          document
+            .querySelector(".mem_list")
+            .setAttribute("style", "transform: translateX(270px); filter: opacity(0);");
+          document
+            .querySelector(".search_bar")
+            .setAttribute("style", "height: 0px; filter: opacity(0);");
+        }
+      },
+    }
+  });
 </script>
 
-</body>
 </html>
