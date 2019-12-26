@@ -60,16 +60,16 @@ $(document).ready(function () {
     $(this).find('.listPlay').hide();
   });
 
-  $(".listPlay").click(function () {
-    if ($(this).hasClass('nowlistening')) {
-      $(this).html('<i class="fas fa-play"></i>').removeClass("nowlistening");
-      isPlaying(true);
-    } else {
-      $(this).html('<i class="fas fa-pause"></i>').addClass("nowlistening");
-      $("#player .songCover .listPlay").not(this).removeClass('nowlistening');
-      isPlaying(false);
-    }
-  });
+  // $(".listPlay").click(function () {
+  //   if ($(this).hasClass('nowlistening')) {
+  //     $(this).html('<i class="fas fa-play"></i>').removeClass("nowlistening");
+  //     isPlaying(true);
+  //   } else {
+  //     $(this).html('<i class="fas fa-pause"></i>').addClass("nowlistening");
+  //     $("#player .songCover .listPlay").not(this).removeClass('nowlistening');
+  //     isPlaying(false);
+  //   }
+  // });
 
 
 
@@ -127,6 +127,7 @@ $(document).ready(function () {
     } else {
       isPlaying(true);
     }
+    listStatus();
   });
 
   //上一首按鈕 -- 切換上一首
@@ -142,6 +143,7 @@ $(document).ready(function () {
     } else {
       isPlaying(true);
     }
+    listStatus();
   });
 
   //停止按鈕 -- 音樂全數停止
@@ -268,6 +270,7 @@ $(document).ready(function () {
           nowPlaying++;
           $("#player audio").attr("src", myPlaylist[nowPlaying].filein);
           isPlaying(false);
+          listStatus();
         }
       }
     }
@@ -281,29 +284,57 @@ $(document).ready(function () {
     // console.log(listCover);
     // console.log(listCover[0].innerHTML);
 
-    console.log("0");
-      for (let listNum = 0; listNum < myPlaylist.length; listNum++) {
-        if (myPlaylist[listNum].title == NowPlaySong) {
-          listCover[listNum].innerHTML = '<i class="fas fa-pause"></i>';
-          listCover[listNum].classList.add("now");
-        } else {
-          listCover[listNum].innerHTML = '<i class="fas fa-play"></i>';
-          listCover[listNum].classList.remove("now");
-        }
+    for (let listNum = 0; listNum < myPlaylist.length; listNum++) {
+      if (myPlaylist[listNum].title == NowPlaySong) {
+        listCover[listNum].innerHTML = '<i class="fas fa-pause"></i>';
+        listCover[listNum].classList.add("nowlistening");
+      } else {
+        listCover[listNum].innerHTML = '<i class="fas fa-play"></i>';
+        listCover[listNum].classList.remove("nowlistening");
       }
+    }
   }
 
-  // $(".listPlay .now").click (function () {
-  //   console.log("2");
+  //  $(".listPlay").click(function () {
+  //   if ($(this).hasClass('nowlistening')) {
+  //     $(this).html('<i class="fas fa-play"></i>').removeClass("nowlistening");
+  //     isPlaying(true);
+  //   } else {
+  //     $(this).html('<i class="fas fa-pause"></i>').addClass("nowlistening");
+  //     $("#player .songCover .listPlay").not(this).removeClass('nowlistening');
+  //     isPlaying(false);
+
+  //   }
+  // });
+
+  // $(".listPlay .nowlistening").click(function () {
   //   if (playStatus == true) {
+  //     console.log("2");
   //     isPlaying(false);
   //   } else {
+  //     console.log("2-1");
+  //     console.log($(this).text());
+  //     // $(this).text('<i class="fas fa-play"></i>');
   //     isPlaying(true);
   //   }
   // });
-  // $(".listPlay").not(".listPlay .now").click (function () {
-  //   console.log("1");
+
+  // $(".listPlay").not(".listPlay .nowlistening").click(function () {
+  //   isPlaying(true);
+  //   audio.currentTime = 0;
   // });
+  // function listChange(){
+  //   if ($(this).hasClass('nowlistening')) {
+  //     $(this).html('<i class="fas fa-play"></i>').removeClass("nowlistening");
+  //     isPlaying(true);
+  //   } else {
+  //     $(this).html('<i class="fas fa-pause"></i>').addClass("nowlistening");
+  //     $("#player .songCover .listPlay").not(this).removeClass('nowlistening');
+  //     isPlaying(false);
+  //   }
+  // }
+
+
 
 
 });
