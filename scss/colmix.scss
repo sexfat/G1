@@ -1,0 +1,93 @@
+@import './public.scss';
+// 自製斷點
+@mixin grid($grid_number) {
+  @for $i from 1 through $grid_number {
+    .col-#{$i} {
+      width: ($i / $grid_number) * 100%;
+      display: inline-block;
+      // padding: 5px 0;
+      box-sizing: border-box;
+    }
+  }
+}
+
+@mixin sm-grid($grid_number) {
+  @for $i from 1 through $grid_number {
+    .col-sm-#{$i} {
+      width: ($i / $grid_number) * 100%;
+      display: inline-block;
+      // padding: 5px 0;
+      box-sizing: border-box;
+    }
+  }
+}
+
+@mixin md-grid($grid_number) {
+  @for $i from 1 through $grid_number {
+    .col-md-#{$i} {
+      width: ($i / $grid_number) * 100%;
+      display: inline-block;
+      // padding: 5px 0;
+      box-sizing: border-box;
+    }
+  }
+}
+
+@mixin lg-grid($grid_number) {
+  @for $i from 1 through $grid_number {
+    .col-lg-#{$i} {
+      width: ($i / $grid_number) * 100%;
+      display: inline-block;
+      // padding: 5px 0;
+      box-sizing: border-box;
+    }
+  }
+}
+
+@mixin xl-grid($grid_number) {
+  @for $i from 1 through $grid_number {
+    .col-xl-#{$i} {
+      width: ($i / $grid_number) * 100%;
+      display: inline-block;
+      // padding: 5px 0;
+      box-sizing: border-box;
+    }
+  }
+}
+
+@include xl-grid(12);
+
+@include respond(desktop) {
+  // 1200 up
+  @include xl-grid(12)
+}
+@include respond(latop-max) {
+  // 996-1200
+  @include lg-grid(12);
+}
+@include respond(latop-min) {
+  // 996-768
+  @include md-grid(12);
+}
+@include respond(ipadpro) {
+  // 768-576
+  @include sm-grid(12);
+}
+@include respond(ipad) {
+  // 576
+  @include grid(12);
+}
+@include respond(phone) {
+  // 375-0
+}
+
+@mixin poa_center {
+  .poa_center{
+    position: absolute;
+    left: 50%;
+    top: 50%;
+    transform: translate(-50%,-50%);
+  }
+}
+
+@include poa_center;

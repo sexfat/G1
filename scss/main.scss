@@ -6,9 +6,6 @@
 
 // ==================================
 
-@import './home.scss';
-@import './profile.scss';
-
 @import './remix.scss';
 @import './library';
 @import './login';
@@ -17,3 +14,6 @@
 @import './infotop.scss';
 @import './songinfo.scss';
 @import './songupload.scss';
+
+@import './store.scss';
+@import './donated.scss';
