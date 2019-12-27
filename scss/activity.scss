@@ -72,7 +72,7 @@
 
     #act_sectionAnchor {
         display: inline-block;
-        width: 800px;
+        width: 850px;
         height: 75px;
         position: absolute;
         bottom: 4%;
@@ -91,8 +91,13 @@
         }
 
         a {
+
+            &:hover {
+                transform: scale(1.1);
+            }
+
             display: inline-block;
-            width: 200px;
+            width: 220px;
             margin-left: 50px;
             height: 75px;
             text-decoration: none;
@@ -119,8 +124,10 @@
             }
 
             span {
+                white-space: pre;
                 color: #333;
-                font-size: $rem0_7;
+                font-size: $rem1_5;
+                font-weight: bold;
                 position: absolute;
                 top: 50%;
                 left: 50%;
@@ -128,7 +135,7 @@
                 transform: translate(-50%, -50%);
 
                 @include respond(latop-min) {
-                    font-size: $rem0_6;
+                    font-size: $rem1_2;
                 }
             }
         }
@@ -143,14 +150,20 @@
         height: 50px;
 
         a {
+
+            &:hover {
+                transform: scale(1.1);
+            }
+
             img {
                 width: 50px;
                 height: 50px;
             }
 
             span {
-                font-size: $rem0_7;
+                font-size: $rem1_5;
                 margin-right: 10px;
+                font-weight: bold;
             }
         }
 
@@ -203,14 +216,15 @@
 
         span {
             position: absolute;
-            top: 32%;
-            left: 35%;
+            top: 50%;
+            left: 50%;
             z-index: 2;
-            font-size: $rem0_8;
+            font-size: $rem1_5;
             font-weight: bold;
+            transform: translate(-60%, -70%);
 
             @include respond(latop-max) {
-                font-size: $rem0_6;
+                font-size: $rem1_2;
                 left: 36%;
 
             }
@@ -283,24 +297,24 @@
     width: 350px;
     height: 100px;
     position: absolute;
-    top: 25%;
+    bottom: -25%;
     left: 40%;
     text-align: center;
 
-    @include respond(latop-max) {
-        width: 250px;
-        height: 60px;
+    // @include respond(latop-max) {
+    //     width: 250px;
+    //     height: 60px;
 
-    }
+    // }
 
-    @include respond(latop-min) {
-        width: 200px;
-        height: 60px;
-    }
+    // @include respond(latop-min) {
+    //     width: 200px;
+    //     height: 60px;
+    // }
 
     p {
         vertical-align: bottom;
-        font-size: $rem0_6;
+        font-size: $rem1;
         margin: 0;
     }
 
@@ -314,48 +328,48 @@
             height: 70px;
             margin: 5px;
 
-            @include respond(latop-max) {
-                width: 30px;
-                height: 30px;
-                margin: 2px;
+            // @include respond(latop-max) {
+            //     width: 30px;
+            //     height: 30px;
+            //     margin: 2px;
 
-            }
+            // }
 
-            @include respond(latop-min) {
-                width: 15px;
-                height: 15px;
-                margin: 2px;
+            // @include respond(latop-min) {
+            //     width: 15px;
+            //     height: 15px;
+            //     margin: 2px;
 
-            }
+            // }
 
             p {
                 margin: 0;
                 padding: 0;
                 font-size: $rem1_5;
-                color: white;
+                color: #333;
 
-                @include respond(latop-max) {
-                    font-size: $rem1_2;
+                // @include respond(latop-max) {
+                //     font-size: $rem1_2;
 
-                }
+                // }
 
-                @include respond(latop-min) {
-                    font-size: $rem0_8;
+                // @include respond(latop-min) {
+                //     font-size: $rem0_8;
 
-                }
+                // }
 
             }
 
             span {
-                font-size: $rem0_6;
+                font-size: $rem0_8;
                 position: relative;
                 top: -20px;
                 color: #333;
 
-                @include respond(latop-min) {
-                    font-size: 0.4rem;
+                // @include respond(latop-min) {
+                //     font-size: 0.4rem;
 
-                }
+                // }
             }
         }
     }
@@ -403,6 +417,7 @@
             display: inline-block;
             font-size: $rem1_5;
             margin: 0;
+            font-weight: normal;
         }
 
         p {
@@ -417,6 +432,7 @@
                 display: inline-block;
                 font-size: $rem1_5;
                 margin: 0;
+                font-weight: normal;
             }
 
             span {
@@ -463,18 +479,7 @@
             }
         }
 
-        .act_oldposter-linetop {
-            position: absolute;
-            top: 10%;
-        }
 
-
-        .act_oldposter-linebotom {
-            position: absolute;
-            bottom: -15%;
-            right: -15%;
-            z-index: 2;
-        }
     }
 }
 
@@ -494,6 +499,7 @@
         h3 {
             font-size: $rem1_5;
             margin: 0 0px 30px 20px;
+            font-weight: normal;
         }
 
         div {
@@ -507,6 +513,7 @@
                 width: 90%;
                 margin: 0;
                 font-size: $rem1_2;
+                font-weight: normal;
 
                 @include respond(latop-max) {
                     font-size: $rem0_8;
@@ -613,6 +620,7 @@
     h3 {
         font-size: $rem1_5;
         margin: 0 0px 30px 0px;
+        font-weight: normal;
 
     }
 
@@ -633,6 +641,7 @@
                 width: 90%;
                 margin: 0;
                 font-size: $rem1_2;
+                font-weight: normal;
 
                 @include respond(latop-max) {
                     font-size: $rem0_8;
@@ -728,7 +737,7 @@
     height: 700px;
     max-width: 1400px;
     width: 100%;
-    padding: 100px 0 0 150px;
+    padding: 50px 0 0 150px;
     margin: 150px auto 0 auto;
 
     @include respond(latop-max) {
@@ -747,7 +756,7 @@
         width: 50%;
 
         h2 {
-            margin: 0;
+            margin: 0 0 50px 0;
             font-size: $rem2;
 
             @include respond(latop-max) {
@@ -763,6 +772,7 @@
         h3 {
             margin: 0;
             font-size: $rem1_5;
+            font-weight: normal;
 
             @include respond(latop-max) {
                 font-size: $rem1_2;
@@ -799,6 +809,7 @@
                 font-size: $rem0_8;
                 margin: 0 auto 10px 0;
             }
+
             @include respond(latop-min) {
                 font-size: $rem0_8;
                 margin: 0 auto 10px 0;
@@ -815,14 +826,16 @@
     top: 0%;
     right: 0%;
 
+
     .act_nowposter {
-        width: 350px;
-        height: 450px;
+        width: 600px;
+        height: 612px;
         position: absolute;
         top: 10%;
-        right: 20%;
+        right: 8%;
         z-index: 2;
         margin: auto auto;
+
 
         @include respond(latop-max) {
             width: 300px;
@@ -831,13 +844,14 @@
             left: 15%;
 
         }
+
         @include respond(latop-min) {
             width: 200px;
             height: 260px;
             top: 0%;
             left: 5%;
         }
-        
+
 
         img {
             width: 100%;
@@ -860,6 +874,7 @@
             left: -5%;
 
         }
+
         @include respond(latop-min) {
             width: 450px;
             height: 300px;
@@ -873,63 +888,7 @@
         }
     }
 
-    .act_nowposter-linetop {
-        width: 400px;
-        height: 400px;
-        position: absolute;
-        top: -8%;
-        left: 5%;
-        margin: auto auto;
 
-        @include respond(latop-max) {
-            width: 200px;
-            height: 200px;
-            top: 10%;
-            left: 5%;
-
-        }
-        @include respond(latop-min) {
-            width: 100px;
-            height: 100px;
-            top: 18%;
-            left: 8%;
-        }
-
-        img {
-            width: 100%;
-            height: 100%;
-        }
-    }
-
-
-    .act_nowposter-linebotom {
-        position: absolute;
-        bottom: -10%;
-        right: -12%;
-        z-index: 2;
-        margin: auto auto;
-        width: 400px;
-        height: 400px;
-
-        @include respond(latop-max) {
-            width: 200px;
-            height: 200px;
-            bottom: 50px;
-            right: 0px;
-
-        }
-        @include respond(latop-min) {
-            width: 100px;
-            height: 100px;
-            bottom: 30%;
-            left: 40%;
-        }
-
-        img {
-            width: 100%;
-            height: 100%;
-        }
-    }
 
 }
 
@@ -945,6 +904,7 @@
         margin: 0px auto 100px auto;
         min-height: 750px;
     }
+
     @include respond(latop-max) {
         margin: 0px auto 150px auto;
         min-height: 700px;
@@ -958,13 +918,14 @@
         @include respond(latop-max) {
             font-size: $rem1_5;
         }
+
         @include respond(latop-min) {
             font-size: $rem1_2;
         }
     }
 
     div {
-        width: 30%;
+        width: 35%;
         min-width: 300px;
         height: 100%;
         display: inline-block;
@@ -975,10 +936,10 @@
         @include respond(latop-max) {
             min-width: 200px;
         }
-      
+
         .act_now-marry {
             width: 90%;
-            height:90%;
+            height: 90%;
             margin: auto auto;
 
             @include respond(latop-max) {
@@ -994,12 +955,13 @@
         }
 
         .act_now-marry-ink {
-            width: 900px;
-            height: 720px;
+            width: 1200px;
+            height: 1000px;
             position: absolute;
+            transform: rotate(-2deg);
             z-index: -1;
-            left: -45%;
-            top: -10%;
+            left: -20%;
+            top: -20%;
 
             @include respond(latop-max) {
                 width: 850px;
@@ -1007,8 +969,9 @@
                 top: -20%;
                 left: -10%;
             }
+
             @include respond(latop-min) {
-              
+
                 top: -25%;
                 left: -60%;
             }
@@ -1028,7 +991,7 @@
     article {
         font-size: 0;
         width: 60%;
-        min-height: 600px;
+        min-height: 400px;
         display: inline-block;
         margin: 0 0 0 50px;
         background-image:
@@ -1043,14 +1006,15 @@
         padding: 10px 0 0 0;
         position: absolute;
         top: 20%;
-     
+
         @include respond(latop-max) {
             min-height: 500px;
             width: 60%;
         }
+
         @include respond(latop-min) {
             min-height: 550px;
-           
+
         }
 
 
@@ -1064,221 +1028,301 @@
             margin-bottom: 10px;
         }
 
-        div {
-            text-align: left;
-            width: 100%;
-            min-height: 70%;
-            padding: 20px 20px 30px 20px;
+        .act_form-page-box{
+            
+            width: 95%;
+            margin: 10px auto;
             text-align: center;
+            border: solid 1px gold;
+            font-size: 0;
+
             @include respond(latop-min) {
                 width: 90%;
-               
+
             }
 
             h3 {
                 margin: 0;
-                padding: 0 0 10px 0;
+                padding: 0 0 15px 0;
                 font-size: $rem1_5;
+                font-weight: normal;
 
                 @include respond(latop-max) {
                     font-size: $rem1_2;
                 }
+
                 @include respond(latop-min) {
                     font-size: $rem1;
                     margin: 10px 20px auto;
-                   
+
+                }
+            }
+            .act_From-button-box {
+                width: 90%;
+                text-align: center;
+                margin: 30px 10px auto;
+
+
+                input {
+                    @include butttonn02();
+                }
+
+                button {
+                    @include butttonn02();
                 }
             }
 
             p {
-                font-size: $rem1;
-                display: inline-block;
+
                 width: 90%;
-                margin: 0 auto;
-                text-align: center;
-                padding-bottom: 0;
+                margin: 10px auto;
+                height: 100%;
+                border: rebeccapurple 1px solid;
+                font-size: $rem1;
+                vertical-align: bottom;
+            }
 
-                @include respond(latop-max) {
-                    font-size: $rem0_8;
-                }
-                @include respond(latop-min) {
-                    margin: 0px 10px auto;
-                   
-                }
-
-
-                .act_SignUPButton {
-                    margin-bottom: 10px;
-                    @include buttonno04();
-                    
-                }
+            div {
+                border: solid 1px gold;
+                width: 90%;
+                font-size: $rem0_8;
+                padding: 0;
+                text-align: left;
+                margin: 5px auto;
 
                 h4 {
-                    text-align: left;
-
-                    @include respond(latop-max) {
-                        font-size: $rem1;
-                    }
-                    @include respond(latop-min) {
-                        font-size: $rem0_8;
-                       
-                    }
-
-                    span {
-                        font-size: $rem1;
-
-                        @include respond(latop-max) {
-                            font-size: $rem0_8;
-                        }
-                        @include respond(latop-min) {
-                            font-size: $rem0_6;
-                           
-                        }
-                    }
-                }
-
-                select {
-                    @include buttonno04();
-                    border: 1px #d0d6d6 solid;
-                    background-color: #d0d6d6;
-
-                    option {
-                        background-color: #d0d6d6;
-                    }
-                }
-
-                p {
+                    margin: 5px 0 5px 80px;
                     display: inline-block;
+                    font-size: $rem1_2;
+                    text-align: left;
+                    font-weight: normal;
                     margin: 0;
 
                     @include respond(latop-max) {
-                        font-size: $rem0_8;
+                        font-size: $rem1;
                     }
+
+
                 }
 
+                
 
-            }
 
-            .signUpComfirm {
-                margin: 0;
-                @include butttonn02();
-                margin: 20px 20px 20px 0;
-                @include respond(latop-max) {
-                    margin: 15px 10px 10px 10px;
-                }
-               
-            }
 
-            button {
 
-                vertical-align: bottom;
-                @include butttonn02();
-                margin: 20px 20px 20px 0;
-              
-                @include respond(latop-max) {
-                    margin: 15px 10px 10px 10px;
-                }
-               
 
-                &:hover {
-                    transform: scale(1.1);
-                }
+                //         @include respond(latop-max) {
+                //             font-size: $rem0_8;
+                //         }
+
+                //         @include respond(latop-min) {
+                //             margin: 0px 10px auto;
+
+                //         }
+                //         .act_formContent-page2 {
+                //             width: 80%;
+                //             margin: 0 10px auto;
+                //             padding: 10px;
+
+                //             h4 {
+                //                 margin: 5px 0 5px 80px;
+
+                //                 font-size: $rem1_2;
+                //                 text-align: left;
+                //                 font-weight: normal;
+
+                //                 @include respond(latop-max) {
+                //                     font-size: $rem1;
+                //                 }
+                //             }
+
+
+                //         }
+
+
+                //         .act_SignUPButton {
+                //             margin-bottom: 10px;
+                //             @include buttonno04();
+
+                //         }
+
+                //         h4 {
+                //             text-align: left;
+                //             font-weight: normal;
+
+                //             @include respond(latop-max) {
+                //                 font-size: $rem1;
+                //             }
+
+                //             @include respond(latop-min) {
+                //                 font-size: $rem0_8;
+
+                //             }
+
+                //             span {
+                //                 font-size: $rem1;
+
+                //                 @include respond(latop-max) {
+                //                     font-size: $rem0_8;
+                //                 }
+
+                //                 @include respond(latop-min) {
+                //                     font-size: $rem0_6;
+
+                //                 }
+                //             }
+                //         }
+
+                //         select {
+                //             @include buttonno04();
+                //             border: 1px #d0d6d6 solid;
+                //             background-color: #d0d6d6;
+
+                //             option {
+                //                 background-color: #d0d6d6;
+                //             }
+                //         }
+
+                //         p {
+                //             display: inline-block;
+                //             margin: 0;
+
+                //             @include respond(latop-max) {
+                //                 font-size: $rem0_8;
+                //             }
+                //         }
+
+
+                //     }
+
+                //     .signUpComfirm {
+                //         margin: 0;
+                //         @include butttonn02();
+                //         margin: 20px 20px 20px 0;
+
+                //         @include respond(latop-max) {
+                //             margin: 15px 10px 10px 10px;
+                //         }
+
+                //     }
+
+                //     button {
+
+                //         vertical-align: bottom;
+                //         @include butttonn02();
+                //         margin: 20px 20px 20px 0;
+
+                //         @include respond(latop-max) {
+                //             margin: 15px 10px 10px 10px;
+                //         }
+
+
+                //         &:hover {
+                //             transform: scale(1.1);
+                //         }
+                //     }
+
             }
 
         }
     }
 }
 
-#act_Now-Sign-up {
 
-    h4 {
-        margin: 5px  0 5px 50px;
-        font-size: $rem1_2;
-        text-align: left;
 
-        @include respond(latop-max) {
-            font-size: $rem1;
-        }
-        @include respond(latop-min) {
-            font-size: $rem0_8;
-           
-        }
-    }
+// #act_Now-Sign-up {
 
-    .act_SignUPButton2 {
-        margin-bottom: 10px;
-        @include  buttonno04();
-    }
+//     h4 {
+//         margin: 5px 0 5px 80px;
+//         width: 80%;
+//         font-size: $rem1_2;
+//         text-align: left;
+//         font-weight: normal;
 
-    .act_showSignUpImg {
-        width: 70%;
-        height: 150px;
-        border: 1px #d0d6d6 solid;
-        background-color: #d0d6d6;
-        margin: 0;
-        padding: 0;
+//         @include respond(latop-max) {
+//             font-size: $rem1;
+//         }
 
-        @include respond(latop-max) {
-            height: 75px;
-        }
+//         @include respond(latop-min) {
+//             font-size: $rem0_8;
 
-        img {
-            max-width: 100%;
-            max-height: 100%;
-        }
+//         }
+//     }
 
-    }
+//     .act_SignUPButton2 {
+//         margin-bottom: 10px;
+//         @include buttonno04();
+//     }
 
-    .act_showSignUpImgSmall {
-        width: 65%;
-        height: 75px;
-        border: 1px #d0d6d6 solid;
-        margin: 0;
-        padding: 0;
+//     .act_showSignUpImg {
+//         width: 80%;
+//         height: 150px;
+//         border: 1px #d0d6d6 solid;
+//         background-color: #d0d6d6;
+//         margin: 0 0 10px 0;
+//         padding: 0;
 
-        @include respond(latop-max) {
-            height: 50px;
-        }
+//         @include respond(latop-max) {
+//             height: 75px;
+//         }
 
-        img {
-            max-width: 100%;
-            max-height: 100%;
-        }
+//         img {
+//             max-width: 100%;
+//             max-height: 100%;
+//         }
 
-    }
+//     }
 
-    #act_Sign-up-song-name {
-        margin: 0;
-        border: 1px #d0d6d6 solid;
-        background-color: #d0d6d6;
-        width: 65%;
-        height: 30px;
-        overflow: hidden;
-    }
+//     .act_showSignUpImgSmall {
+//         width: 65%;
+//         height: 75px;
+//         border: 1px #d0d6d6 solid;
+//         margin: 0;
+//         padding: 0;
 
-    #act_Sign-up-song-information {
-        margin: 0;
-        border: 1px #d0d6d6 solid;
-        background-color: #d0d6d6;
-        width: 65%;
-        overflow: hidden;
+//         @include respond(latop-max) {
+//             height: 50px;
+//         }
 
-    }
+//         img {
+//             max-width: 100%;
+//             max-height: 100%;
+//         }
 
-    .act_showSong-information {
-        width: 65%;
-        overflow: hidden;
-        max-height: 100px;
-        border: 1px #d0d6d6 solid;
-        word-break: break-all;
-        font-size: $rem0_8;
+//     }
 
-        @include respond(latop-max) {
-            font-size: $rem0_6;
-        }
-    }
+//     #act_Sign-up-song-name {
+//         margin: 0;
+//         border: 1px #d0d6d6 solid;
+//         background-color: #d0d6d6;
+//         width: 80%;
+//         height: 30px;
+//         overflow: hidden;
+//     }
 
-}
+//     #act_Sign-up-song-information {
+//         margin: 0;
+//         border: 1px #d0d6d6 solid;
+//         background-color: #d0d6d6;
+//         width: 80%;
+//         overflow: hidden;
+
+//     }
+
+//     .act_showSong-information {
+//         width: 65%;
+//         overflow: hidden;
+//         max-height: 100px;
+//         border: 1px #d0d6d6 solid;
+//         word-break: break-all;
+//         font-size: $rem0_8;
+
+//         @include respond(latop-max) {
+//             font-size: $rem0_6;
+//         }
+//     }
+
+// }
 
 
 #act_Now-Vote {
@@ -1304,13 +1348,11 @@
         position: relative;
         margin: 0 auto;
         background-image:
-            // url(../img/activity/0.blackline.svg),
+            url(../img/activity/0.blackline.svg),
             url(../img/activity/text-wh.png);
         background-size: 100% 100%;
-        background-repeat:
-            no-repeat;
-        border: 5px black solid;
-        border-radius: 15px;
+        background-repeat: no-repeat;
+        background-position-x: center;
 
         @include respond(latop-max) {
             height: 300px;
@@ -1330,6 +1372,7 @@
         h3 {
             margin: 0;
             font-size: $rem1_5;
+            font-weight: normal;
 
             @include respond(latop-max) {
                 font-size: $rem1_2;
@@ -1355,6 +1398,7 @@
                 display: inline-block;
                 margin: 0;
                 font-size: $rem1_5;
+                font-weight: normal;
 
                 @include respond(latop-max) {
                     font-size: $rem0_8;
@@ -1435,6 +1479,7 @@
                     width: 90%;
                     margin: 0;
                     font-size: $rem1_2;
+                    font-weight: normal;
 
                     @include respond(latop-max) {
                         font-size: $rem0_8;
