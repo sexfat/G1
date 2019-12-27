@@ -1109,7 +1109,7 @@
 
                 .act_SignUPButton {
                     margin-bottom: 10px;
-                    @include buttonno03();
+                    @include buttonno04();
                     
                 }
 
@@ -1138,7 +1138,7 @@
                 }
 
                 select {
-                    @include buttonno03();
+                    @include buttonno04();
                     border: 1px #d0d6d6 solid;
                     background-color: #d0d6d6;
 
@@ -1207,7 +1207,7 @@
 
     .act_SignUPButton2 {
         margin-bottom: 10px;
-        @include buttonno03();
+        @include  buttonno04();
     }
 
     .act_showSignUpImg {
