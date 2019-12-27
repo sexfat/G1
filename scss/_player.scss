@@ -1,4 +1,3 @@
-
 $mainRed : #de267d;
 
 #player {
@@ -7,10 +6,14 @@ $mainRed : #de267d;
   bottom: 0;
   z-index: 1000;
 
-  h2,h3,h4,p{
+  h2,
+  h3,
+  h4,
+  p {
     margin: 0;
     padding: 0;
   }
+
   i {
     display: block;
   }
@@ -38,9 +41,19 @@ $mainRed : #de267d;
       @include respond(latop-max) {
         width: 22%;
       }
+
       @include respond(latop-min) {
         width: 25%;
       }
+
+      @include respond(ipadpro) {
+        min-width: 200px;
+      }
+
+      @include respond(ipad) {
+        width: 25%;
+      }
+
       @include respond(phone) {
         width: 80%;
       }
@@ -58,7 +71,8 @@ $mainRed : #de267d;
         span {
           display: block;
           font-size: 0.8rem;
-          @include respond(ipadpro){
+
+          @include respond(ipadpro) {
             font-size: $rem0_7;
           }
 
@@ -70,8 +84,9 @@ $mainRed : #de267d;
 
       .heart {
         float: left;
-        height: 100%;
-        padding: 5%;
+        width: 25px;
+        height: 25px;
+        // padding: 5%;
         transition: transform 0.5s;
 
         &:hover {
@@ -88,17 +103,21 @@ $mainRed : #de267d;
       @include respond(latop-max) {
         width: 70%;
       }
+
       @include respond(latop-min) {
         width: 65%;
       }
+
       @include respond(ipadpro) {
-        width: 58%;
+        width: 60%;
       }
+
       @include respond(ipad) {
         width: 0;
         height: 0px;
         overflow: hidden;
       }
+
       @include respond(phone) {
         width: 0;
         height: 0px;
@@ -118,13 +137,13 @@ $mainRed : #de267d;
           background-color: $yellow;
         }
 
-        @include respond(phone) {
+        @include respond(ipad) {
           position: absolute;
           top: 0;
           left: 0;
         }
 
-        @include respond(ipad) {
+        @include respond(phone) {
           position: absolute;
           top: 0;
           left: 0;
@@ -135,6 +154,7 @@ $mainRed : #de267d;
         @include respond(ipad) {
           display: none;
         }
+
         span {
           font-size: 11px;
           width: 49.5%;
@@ -143,8 +163,9 @@ $mainRed : #de267d;
           @include respond(latop-min) {
             width: 49%;
           }
+
           @include respond(ipadpro) {
-            width: 49%;
+            width: 48.5%;
           }
 
           &.start {
@@ -162,17 +183,23 @@ $mainRed : #de267d;
         margin: -10px auto 0;
         text-align: center;
         height: 100%;
+        position: relative;
+        z-index: 98;
 
-        @include respond(phone) {
-          display: none;
+        @include respond(latop-min) {
+          width: 80%;
+        }
+
+        @include respond(ipadpro) {
+          width: 100%;
         }
 
         @include respond(ipad) {
           display: none;
         }
 
-        @include respond(ipadpro) {
-          width: 100%;
+        @include respond(phone) {
+          display: none;
         }
 
 
@@ -185,14 +212,18 @@ $mainRed : #de267d;
           @include respond(latop-max) {
             margin-left: 15%;
           }
+
           @include respond(latop-min) {
             width: 60%;
             margin-left: 5%;
           }
+
           @include respond(ipadpro) {
-            width: 70%;
-            margin-left: 15%;
+            float: none;
+            width: 70.5%;
+            margin: 0 auto;
           }
+
           @include respond(ipad) {
             width: 70%;
           }
@@ -272,6 +303,10 @@ $mainRed : #de267d;
             }
           }
 
+          @include respond(latop-min) {
+            margin: -5px 0 0;
+          }
+
           @include respond(ipadpro) {
             display: none;
           }
@@ -294,20 +329,23 @@ $mainRed : #de267d;
       &:hover {
         transform: scale(1.1);
       }
+
       @include respond(ipadpro) {
         width: 3%;
       }
+
       @include respond(ipad) {
         padding-top: 4%;
         width: 5%;
       }
+
       @include respond(phone) {
         width: 18%;
         text-align: right;
         padding-top: 4%;
       }
 
-    
+
     }
   }
 
@@ -368,7 +406,7 @@ $mainRed : #de267d;
         float: none;
       }
 
-      .songCover {
+      .info {
         width: 100%;
         height: 50%;
         min-height: 380px;
@@ -409,11 +447,12 @@ $mainRed : #de267d;
           background-size: 100%;
         }
 
-        .coverImg {
+        .songCover {
           width: 250px;
           min-height: 250px;
           margin: 0 auto;
           position: relative;
+
           @include respond(phone) {
             min-height: 150px;
           }
@@ -457,7 +496,8 @@ $mainRed : #de267d;
           text-overflow: ellipsis;
           font-weight: bold;
           font-size: $rem2;
-          @include respond(latop-max){
+
+          @include respond(latop-max) {
             font-size: $rem1_5;
           }
         }
@@ -466,7 +506,8 @@ $mainRed : #de267d;
           text-overflow: ellipsis;
           font-weight: bold;
           font-size: 1.2rem;
-          @include respond(latop-max){
+
+          @include respond(latop-max) {
             font-size: $rem1;
           }
         }
@@ -478,6 +519,10 @@ $mainRed : #de267d;
 
           &:hover {
             transform: scale(1.1);
+          }
+          img{
+            width: 25px;
+            height: 25px;
           }
         }
       }
@@ -502,8 +547,6 @@ $mainRed : #de267d;
             height: 100%;
             background-color: $yellow;
           }
-
-
         }
 
         .time {
@@ -514,6 +557,10 @@ $mainRed : #de267d;
             font-size: 11px;
             width: 49%;
             display: inline-block;
+
+            @include respond(latop-min) {
+              width: 48%;
+            }
 
             @include respond(ipad) {
               width: 48%;
@@ -534,6 +581,7 @@ $mainRed : #de267d;
           margin: 10px auto 0;
           text-align: center;
           height: 100%;
+
           @include respond(phone) {
             width: 100%;
           }
@@ -541,40 +589,12 @@ $mainRed : #de267d;
           .controls {
             float: left;
             width: 40%;
+            min-width: 220px;
             margin-left: 30%;
 
             @include respond(latop-max) {
               float: none;
-              width: 45%;
-              min-width: 220px;
-              margin: 0 auto;
-            }
-
-            @include respond(latop-min) {
-              float: none;
-              width: 45%;
-              min-width: 220px;
-              margin: 0 auto;
-            }
-
-            @include respond(ipadpro) {
-              float: none;
-              text-align: center;
-              width: 35%;
-              margin: 0 auto;
-            }
-
-            @include respond(ipad) {
-              float: none;
-              width: 45%;
-              min-width: 220px;
-              margin: 0 auto;
-            }
-
-            @include respond(phone) {
-              float: none;
-              width: 66%;
-              min-width: 220px;
+              width: 220px;
               margin: 0 auto;
             }
 
@@ -664,6 +684,7 @@ $mainRed : #de267d;
                 width: 3%;
                 margin-left: 7%;
               }
+
               @include respond(phone) {
                 margin-left: 4%;
               }
@@ -865,7 +886,8 @@ $mainRed : #de267d;
 
           h2 {
             font-size: $rem2;
-            @include respond(latop-max){
+
+            @include respond(latop-max) {
               font-size: $rem1_5;
             }
           }
@@ -943,7 +965,8 @@ $mainRed : #de267d;
                   overflow: hidden;
                   white-space: nowrap;
                   text-overflow: ellipsis;
-                  @include respond(latop-max){
+
+                  @include respond(latop-max) {
                     font-size: $rem1;
                   }
                 }
@@ -954,7 +977,8 @@ $mainRed : #de267d;
                   overflow: hidden;
                   white-space: nowrap;
                   text-overflow: ellipsis;
-                  @include respond(latop-max){
+
+                  @include respond(latop-max) {
                     font-size: $rem0_8;
                   }
                 }
@@ -989,7 +1013,10 @@ $mainRed : #de267d;
               float: right;
               text-align: center;
               transition: transform 0.5s;
-
+              img{
+                width: 25px;
+                height: 25px;
+              }
               &:hover {
                 transform: scale(1.1);
               }
@@ -1080,18 +1107,19 @@ $mainRed : #de267d;
           }
         }
       }
+
       .closeLight {
         position: absolute;
         right: 20px;
         top: 20px;
         cursor: pointer;
         transition: transform 0.5s;
-  
+
         @include respond(phone) {
           right: 10px;
           top: 5px;
         }
-  
+
         &:hover {
           transform: scale(1.1);
         }
