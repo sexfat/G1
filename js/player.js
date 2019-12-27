@@ -60,16 +60,16 @@ $(document).ready(function () {
     $(this).find('.listPlay').hide();
   });
 
-  $(".listPlay").click(function () {
-    if ($(this).hasClass('nowlistening')) {
-      $(this).html('<i class="fas fa-play"></i>').removeClass("nowlistening");
-      isPlaying(true);
-    } else {
-      $(this).html('<i class="fas fa-pause"></i>').addClass("nowlistening");
-      $("#player .songCover .listPlay").not(this).removeClass('nowlistening');
-      isPlaying(false);
-    }
-  });
+  // $(".listPlay").click(function () {
+  //   if ($(this).hasClass('nowlistening')) {
+  //     $(this).html('<i class="fas fa-play"></i>').removeClass("nowlistening");
+  //     isPlaying(true);
+  //   } else {
+  //     $(this).html('<i class="fas fa-pause"></i>').addClass("nowlistening");
+  //     $("#player .songCover .listPlay").not(this).removeClass('nowlistening');
+  //     isPlaying(false);
+  //   }
+  // });
 
 
 
@@ -127,6 +127,7 @@ $(document).ready(function () {
     } else {
       isPlaying(true);
     }
+    listStatus();
   });
 
   //上一首按鈕 -- 切換上一首
@@ -142,6 +143,7 @@ $(document).ready(function () {
     } else {
       isPlaying(true);
     }
+    listStatus();
   });
 
   //停止按鈕 -- 音樂全數停止
@@ -206,6 +208,7 @@ $(document).ready(function () {
         right: "-50%",
         opacity: "1"
       }, "fast", "swing").addClass("recRotate");
+      listStatus();
       playStatus = true;
       // console.log(playStatus);
     } else {
