@@ -19,6 +19,12 @@
         height: 450px;
     }
 
+    @include respond(latop-min) {
+        max-width: 700px;
+        height: 350px;
+    }
+
+
     img {
         width: 100%;
         height: 100%;
@@ -38,6 +44,8 @@
             width: 222px;
             height: 58px;
         }
+
+
     }
 
 
@@ -54,6 +62,11 @@
 
         @include respond(latop-max) {
             font-size: $rem1_5;
+        }
+
+        @include respond(latop-min) {
+            font-size: $rem1_2;
+            max-width: 40%;
         }
     }
 
@@ -72,6 +85,11 @@
             height: 50px;
         }
 
+        @include respond(latop-min) {
+            width: 400px;
+            height: 30px;
+        }
+
         a {
             display: inline-block;
             width: 200px;
@@ -84,6 +102,14 @@
                 width: 150px;
                 height: 50px;
                 margin-left: 30px;
+            }
+
+            @include respond(latop-min) {
+                width: 100px;
+                height: 30px;
+                margin-left: 15px;
+                left: 40px;
+                top: -5px;
             }
 
 
@@ -100,6 +126,10 @@
                 left: 50%;
                 z-index: 1;
                 transform: translate(-50%, -50%);
+
+                @include respond(latop-min) {
+                    font-size: $rem0_6;
+                }
             }
         }
     }
@@ -148,9 +178,17 @@
         cursor: pointer;
         text-align: center;
 
+
         @include respond(latop-max) {
             width: 120px;
             height: 110px;
+        }
+
+        @include respond(latop-min) {
+            width: 80px;
+            height: 70px;
+            top: 15px;
+            padding: 0;
         }
 
         &:hover {
@@ -175,7 +213,11 @@
                 font-size: $rem0_6;
                 left: 36%;
 
+            }
 
+            @include respond(latop-min) {
+                left: 32%;
+                top: 30%;
             }
 
         }
@@ -199,6 +241,10 @@
         height: 100%;
     }
 
+    @include respond(latop-min) {
+        max-height: 200px;
+    }
+
 
 }
 
@@ -218,6 +264,11 @@
         box-shadow: 1px 1px 5px black;
         margin: 5px 5px auto;
         opacity: 0.5;
+
+        @include respond(latop-min) {
+            width: 15px;
+            height: 15px;
+        }
     }
 
     .btncolor {
@@ -240,6 +291,11 @@
         width: 250px;
         height: 60px;
 
+    }
+
+    @include respond(latop-min) {
+        width: 200px;
+        height: 60px;
     }
 
     p {
@@ -265,6 +321,13 @@
 
             }
 
+            @include respond(latop-min) {
+                width: 15px;
+                height: 15px;
+                margin: 2px;
+
+            }
+
             p {
                 margin: 0;
                 padding: 0;
@@ -276,6 +339,11 @@
 
                 }
 
+                @include respond(latop-min) {
+                    font-size: $rem0_8;
+
+                }
+
             }
 
             span {
@@ -283,6 +351,11 @@
                 position: relative;
                 top: -20px;
                 color: #333;
+
+                @include respond(latop-min) {
+                    font-size: 0.4rem;
+
+                }
             }
         }
     }
@@ -439,6 +512,11 @@
                     font-size: $rem0_8;
                 }
 
+                @include respond(latop-min) {
+                    font-size: $rem0_6;
+
+                }
+
             }
 
             p {
@@ -448,6 +526,11 @@
                 @include respond(latop-max) {
                     width: 100%;
                     font-size: $rem0_8;
+                }
+
+                @include respond(latop-min) {
+                    font-size: $rem0_6;
+
                 }
             }
 
@@ -461,18 +544,19 @@
                     height: 100%;
                 }
             }
+
             div {
                 width: 100%;
                 margin: 0;
                 position: relative;
-    
+
                 &:hover .act_old-play {
                     display: block;
                     cursor: pointer;
                     z-index: 2;
-    
+
                 }
-    
+
                 .act_old-play {
                     width: 100px;
                     height: 100px;
@@ -483,16 +567,16 @@
                     display: none;
                     // transform: translate(-50%, -50%);
                     z-index: 2;
-    
+
                     img {
                         width: 100%;
                         height: 100%;
                     }
-    
+
                 }
-    
-    
-    
+
+
+
                 img {
                     width: 250px;
                     height: 250px;
@@ -512,7 +596,7 @@
             margin-bottom: 10px;
         }
 
-        
+
 
 
     }
@@ -652,6 +736,12 @@
         padding: 75px 0 0 150px;
     }
 
+    @include respond(latop-min) {
+        margin: 50px auto 0 auto;
+        padding: 75px 0 0 100px;
+
+    }
+
 
     div {
         width: 50%;
@@ -662,6 +752,10 @@
 
             @include respond(latop-max) {
                 font-size: $rem1_5;
+            }
+
+            @include respond(latop-min) {
+                font-size: $rem1_2;
 
             }
         }
@@ -672,6 +766,10 @@
 
             @include respond(latop-max) {
                 font-size: $rem1_2;
+            }
+
+            @include respond(latop-min) {
+                font-size: $rem1;
 
             }
         }
@@ -684,6 +782,10 @@
 
             @include respond(latop-max) {
                 font-size: 2rem;
+            }
+
+            @include respond(latop-min) {
+                font-size: $rem1_5;
 
             }
         }
@@ -694,6 +796,10 @@
             margin: 0 auto 20px 0;
 
             @include respond(latop-max) {
+                font-size: $rem0_8;
+                margin: 0 auto 10px 0;
+            }
+            @include respond(latop-min) {
                 font-size: $rem0_8;
                 margin: 0 auto 10px 0;
             }
@@ -719,12 +825,19 @@
         margin: auto auto;
 
         @include respond(latop-max) {
-            width: 250px;
-            height: 300px;
+            width: 300px;
+            height: 390px;
             bottom: 15%;
             left: 15%;
 
         }
+        @include respond(latop-min) {
+            width: 200px;
+            height: 260px;
+            top: 0%;
+            left: 5%;
+        }
+        
 
         img {
             width: 100%;
@@ -735,17 +848,23 @@
     .act_nowSplash-ink {
         position: absolute;
         bottom: -10%;
-        left: 0%;
+        left: -5%;
         z-index: 1;
         width: 800px;
         height: 600px;
 
         @include respond(latop-max) {
+            width: 600px;
+            height: 450px;
+            bottom: 0%;
+            left: -5%;
+
+        }
+        @include respond(latop-min) {
             width: 450px;
             height: 300px;
-            bottom: 15%;
-            left: 15%;
-
+            bottom: 20%;
+            left: -7%;
         }
 
         img {
@@ -765,9 +884,15 @@
         @include respond(latop-max) {
             width: 200px;
             height: 200px;
-            top: 12%;
-            left: 10%;
+            top: 10%;
+            left: 5%;
 
+        }
+        @include respond(latop-min) {
+            width: 100px;
+            height: 100px;
+            top: 18%;
+            left: 8%;
         }
 
         img {
@@ -789,9 +914,15 @@
         @include respond(latop-max) {
             width: 200px;
             height: 200px;
-            bottom: 15%;
-            right: 0%;
+            bottom: 50px;
+            right: 0px;
 
+        }
+        @include respond(latop-min) {
+            width: 100px;
+            height: 100px;
+            bottom: 30%;
+            left: 40%;
         }
 
         img {
@@ -807,21 +938,28 @@
     width: 100%;
     min-height: 850px;
     padding: 50px 0 0 30px;
-    margin: 100px auto 100px auto;
+    margin: 100px auto 150px auto;
     position: relative;
 
     @include respond(latop-max) {
         margin: 0px auto 100px auto;
         min-height: 750px;
     }
+    @include respond(latop-max) {
+        margin: 0px auto 150px auto;
+        min-height: 700px;
+    }
 
     h2 {
 
         font-size: $rem2;
-        margin: 0 0 20px 120px;
+        margin: 0 0 40px 120px;
 
         @include respond(latop-max) {
             font-size: $rem1_5;
+        }
+        @include respond(latop-min) {
+            font-size: $rem1_2;
         }
     }
 
@@ -832,19 +970,20 @@
         display: inline-block;
         position: relative;
         text-align: right;
+        top: 20px;
 
         @include respond(latop-max) {
             min-width: 200px;
         }
-
+      
         .act_now-marry {
-            width: 80%;
-            height: 80%;
+            width: 90%;
+            height:90%;
             margin: auto auto;
 
             @include respond(latop-max) {
-                width: 95%;
-                height: 95%;
+                width: 100%;
+                height: 100%;
             }
 
             img {
@@ -868,6 +1007,11 @@
                 top: -20%;
                 left: -10%;
             }
+            @include respond(latop-min) {
+              
+                top: -25%;
+                left: -60%;
+            }
 
             img {
                 width: 100%;
@@ -882,28 +1026,31 @@
 #act_Now-Sign-up {
 
     article {
-
-        position: absolute;
-        top: 5%;
+        font-size: 0;
         width: 60%;
         min-height: 600px;
         display: inline-block;
-        margin: 0 auto;
+        margin: 0 0 0 50px;
         background-image:
-            url(../img/activity/0.text-circle.svg),
-            url(../img/activity/text.circle-wh.png);
+            url(../img/activity/0.blackline.svg),
+            url(../img/activity/text-wh.png);
+        background-size: 100% 100%;
         background-repeat: no-repeat;
-        background-size: contain, 95% 95%;
-        background-position-x: center, right;
+        background-position-x: center;
+        // border: 5px black solid;
+        // border-radius: 15px;
         text-align: center;
-        padding: 50px 0 0 0;
+        padding: 10px 0 0 0;
         position: absolute;
-
+        top: 20%;
+     
         @include respond(latop-max) {
-            min-height: 400px;
-            top: 10%;
-            right: 2%;
-            width: 68%;
+            min-height: 500px;
+            width: 60%;
+        }
+        @include respond(latop-min) {
+            min-height: 550px;
+           
         }
 
 
@@ -914,41 +1061,56 @@
             font-size: 0.6rem;
             word-break: break-all;
             border: 1px #d0d6d6 solid;
+            margin-bottom: 10px;
         }
 
         div {
             text-align: left;
-            width: 70%;
-            margin: auto auto;
-            padding: 20px;
+            width: 100%;
+            min-height: 70%;
+            padding: 20px 20px 30px 20px;
             text-align: center;
+            @include respond(latop-min) {
+                width: 90%;
+               
+            }
 
             h3 {
-                margin: 0 0 20px 0;
-                padding: 0;
+                margin: 0;
+                padding: 0 0 10px 0;
                 font-size: $rem1_5;
 
                 @include respond(latop-max) {
                     font-size: $rem1_2;
+                }
+                @include respond(latop-min) {
+                    font-size: $rem1;
+                    margin: 10px 20px auto;
+                   
                 }
             }
 
             p {
                 font-size: $rem1;
                 display: inline-block;
-                width: 80%;
+                width: 90%;
                 margin: 0 auto;
-                text-align: left;
+                text-align: center;
                 padding-bottom: 0;
 
                 @include respond(latop-max) {
                     font-size: $rem0_8;
                 }
+                @include respond(latop-min) {
+                    margin: 0px 10px auto;
+                   
+                }
 
 
                 .act_SignUPButton {
                     margin-bottom: 10px;
-                    @include buttonno03();
+                    @include buttonno04();
+                    
                 }
 
                 h4 {
@@ -957,6 +1119,10 @@
                     @include respond(latop-max) {
                         font-size: $rem1;
                     }
+                    @include respond(latop-min) {
+                        font-size: $rem0_8;
+                       
+                    }
 
                     span {
                         font-size: $rem1;
@@ -964,11 +1130,15 @@
                         @include respond(latop-max) {
                             font-size: $rem0_8;
                         }
+                        @include respond(latop-min) {
+                            font-size: $rem0_6;
+                           
+                        }
                     }
                 }
 
                 select {
-                    @include buttonno03();
+                    @include buttonno04();
                     border: 1px #d0d6d6 solid;
                     background-color: #d0d6d6;
 
@@ -992,16 +1162,23 @@
             .signUpComfirm {
                 margin: 0;
                 @include butttonn02();
+                margin: 20px 20px 20px 0;
+                @include respond(latop-max) {
+                    margin: 15px 10px 10px 10px;
+                }
+               
             }
 
             button {
 
+                vertical-align: bottom;
                 @include butttonn02();
-                margin: 30px 20px 50px 0;
-
+                margin: 20px 20px 20px 0;
+              
                 @include respond(latop-max) {
-                    margin: 15px 10px 30px 10px;
+                    margin: 15px 10px 10px 10px;
                 }
+               
 
                 &:hover {
                     transform: scale(1.1);
@@ -1015,22 +1192,26 @@
 #act_Now-Sign-up {
 
     h4 {
-        margin: 0 0 10px 0;
+        margin: 5px  0 5px 50px;
         font-size: $rem1_2;
         text-align: left;
 
         @include respond(latop-max) {
             font-size: $rem1;
         }
+        @include respond(latop-min) {
+            font-size: $rem0_8;
+           
+        }
     }
 
     .act_SignUPButton2 {
         margin-bottom: 10px;
-        @include buttonno03();
+        @include  buttonno04();
     }
 
     .act_showSignUpImg {
-        width: 65%;
+        width: 70%;
         height: 150px;
         border: 1px #d0d6d6 solid;
         background-color: #d0d6d6;
@@ -1050,7 +1231,7 @@
 
     .act_showSignUpImgSmall {
         width: 65%;
-        height: 100px;
+        height: 75px;
         border: 1px #d0d6d6 solid;
         margin: 0;
         padding: 0;
@@ -1123,12 +1304,13 @@
         position: relative;
         margin: 0 auto;
         background-image:
-            url(../img/activity/0.blackline.svg),
+            // url(../img/activity/0.blackline.svg),
             url(../img/activity/text-wh.png);
-        background-size: contain, 100% 100%;
+        background-size: 100% 100%;
         background-repeat:
-            no-repeat,
             no-repeat;
+        border: 5px black solid;
+        border-radius: 15px;
 
         @include respond(latop-max) {
             height: 300px;
@@ -1302,12 +1484,13 @@
                 margin: 0;
                 position: relative;
 
-                &:hover .act-old-play {
+                &:hover .act_old-play {
                     display: block;
                     cursor: pointer;
                     z-index: 2;
 
                 }
+
 
                 .act_old-play {
                     width: 100px;
@@ -1318,9 +1501,14 @@
                     left: 20%;
                     display: none;
                     // transform: translate(-50%, -50%);
-                    z-index: 2;
+                    // z-index: -1;
 
                     @include respond(latop-max) {
+                        left: 15%;
+                        top: 15%;
+                    }
+
+                    @include respond(latop-min) {
                         left: 15%;
                         top: 15%;
                     }
