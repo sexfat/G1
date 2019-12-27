@@ -1,24 +1,18 @@
 <!DOCTYPE html>
 <html lang="en">
-
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <meta http-equiv="X-UA-Compatible" content="ie=edge">
-  <title>Document</title>
+  <title>Collection</title>
   <link rel="stylesheet" href="./css/main.css">
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.11.2/css/all.min.css" />
   <script src="https://cdnjs.cloudflare.com/ajax/libs/vue/2.6.10/vue.js"></script>
   <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
-  <!-- <script src="./js/player.js"></script> -->
 </head>
-
 <body class="collectionbody">
+  <!-- nav_bar and player -->
   <div id="app">
-    <!-- 記得包在 Vue 裡-->
-
-
-    <!-- nav_bar start -->
     <div class="nav_bar flexbox">
       <div class="hamburger" @click="hamburger_click">
         <div class="hamburger-box">
@@ -121,10 +115,6 @@
       </div>
     </div>
     <!-- nav_bar end -->
-
-
-
-
     <!-- player start -->
     <div id="player">
       <audio src="" id="audioPlayer"></audio>
@@ -168,11 +158,9 @@
             <div class="clearfix"></div>
           </div>
         </div>
-  
         <div class="expand" id="expand"><i class="fas fa-expand"></i></div>
         <div class="clearfix"></div>
       </div>
-  
       <!-- 詳細版 -->
       <div class="player_b">
         <div class="left">
@@ -219,7 +207,6 @@
           </div>
           <div class="pushBtn"></div>
         </div>
-  
         <div class="right">
           <div class="pushBtn"></div>
           <div class="listTitle">
@@ -344,8 +331,7 @@
           </div>
         </div>
         <div class="close" id="closePlayer"><i class="fas fa-times"></i></div>
-        <div class="clearfix"></div>
-  
+        <div class="clearfix"></div> 
         <!-- 撥放器燈箱 -->
         <div class="lightCover">
           <div class="lightbox_s" id="myAllList">
@@ -364,24 +350,16 @@
       </div>
     </div>
     <!-- player end -->
-
-
-
   </div>
+  <!-- the end of the nav_bar and player  -->
+  <!-- start to the content -->
   <header class="collectionheader">
     <img src="./img/collection/colltitle.png" alt="">
   </header>
   <section class="collectionsection">
     <div class="collectionradio">
       <img src="./img/collection/radio.png" alt="">
-      <!-- <div class="eyes1">
-            <img class="closeeyes1"src="./img/collection/closeeye.png" alt="">
-            <img class="closeeyes2"src="./img/collection/closeeye.png" alt="">
-            <img class="closeeyes3"src="./img/collection/closeeye.png" alt="">
-            <img class="closeeyes4"src="./img/collection/closeeye.png" alt="">
-        </div> -->
     </div>
-
     <div id="collectiontabcontainer">
       <ul class="collectiontabtitle">
         <li><a class="tabtitlechange1" href="#tab01">Favorite</a></li>
@@ -885,25 +863,25 @@
       </div>
     </div>
   </section>
-
+  <!-- the end of the content -->
 </body>
+<!-- the script of myself -->
 <script>
+  // CHANGE HEART
   $(".collheart").click(function () {
     if ($(this).attr('src', './img/collection/grayheart.png')) {
       $(this).attr('src', './img/collection/redheart.png');
     } else {
       $(this).attr('src', './img/collection/grayheart.png');
     }
-  })
-</script>
-<script>
+  });
+  // PLAY BUTTON
   $('.collalbumpic').hover(function () {
     $(this).find('.collplayer').css("display", "block");
   }, function () {
     $(this).find('.collplayer').css("display", "none");
   });
-</script>
-<script>
+  // TAB CONTENT CHANGE
   $(function () {
     var $li = $('ul.collectiontabtitle li');
     $($li.eq(0).addClass('active').find('a').attr('href')).siblings('.collectiontabinner').hide();
@@ -912,14 +890,14 @@
       $(this).addClass('active').siblings('.active').removeClass('active');
     });
   });
-</script>
-<script>
+  //TAB CHNAGE COLOR
   $('.collectiontabtitle li a').click(function () {
     $(this).css("color", "#fff").css("background-color", "#7ed5e5");
-    // $(this).css("background-color","#7ed5e5");
     $('.collectiontabtitle li a').not(this).css("background-color", "#f1c40f");
   });
 </script>
+<!-- the end of my script -->
+<!-- the public version -->
 <script>
   new Vue({
     el: "#app",
@@ -1332,5 +1310,5 @@
     }
   });
 </script>
-
+<!-- the end of the public version -->
 </html>
