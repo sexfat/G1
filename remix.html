@@ -11,7 +11,7 @@
 </head>
 
 <body>
-  <div id="remix_app">
+  <div id="app">
     <div class="nav_bar flexbox">
       <div class="hamburger" @click="hamburger_click">
         <div class="hamburger-box">
@@ -113,9 +113,11 @@
         </ul>
       </div>
     </div>
-    <header>
-      <img src="./img/remix/REMIX.png">
-    </header>
+  </div> +
+  <header>
+    <img src="./img/remix/REMIX.png">
+  </header>
+  <div id="remix_app">
     <div class="wrapper remix_wrapper">
       <div class="remix_head">
         <div class="remix_demo col-xl-6 col-md-8 col-sm-12">
@@ -289,7 +291,6 @@
       <img src="./img/remix/background_color.png" alt="">
     </div>
   </div>
-
   <!-- player start -->
   <div id="player">
     <audio src="" id="audioPlayer"></audio>
@@ -537,8 +538,9 @@
   <script src='https://cdnjs.cloudflare.com/ajax/libs/gsap/2.1.3/TweenMax.min.js'></script>
   <script src='https://cdnjs.cloudflare.com/ajax/libs/jquery/3.4.1/jquery.min.js'></script>
   <script src="./js/vue.js"></script>
+  <script src="js/public.js"></script>
   <script src="./js/player.js"></script>
-  
+
   <script>
     var app = new Vue({
       el: '#remix_app',
@@ -757,98 +759,6 @@
         },
       },
       methods: {
-        hamburger_click(e) {
-          e.stopPropagation();
-          document.querySelector(".hamburger").classList.tmp3le("is-active");
-        },
-        search_bt_click(e) {
-          e.stopPropagation();
-          if (this.search_bar == false) {
-            this.search_bar = true;
-            this.mem_list = false;
-            this.mobile_list = false;
-            document
-              .querySelector(".search_bar")
-              .setAttribute("style", "height: 240px; filter: opacity(1);");
-            document.querySelector("input.search").focus();
-            document
-              .querySelector(".mem_list")
-              .setAttribute("style", "transform: translateX(270px); filter: opacity(0);");
-            document
-              .querySelector(".mobile_list")
-              .setAttribute("style", "transform: translateX(-270px); filter: opacity(0);");
-          } else {
-            this.search_bar = false;
-            document
-              .querySelector(".search_bar")
-              .setAttribute("style", "height: 0px; filter: opacity(0);");
-            document.querySelector("input.search").blur();
-            document
-              .querySelector(".mem_list")
-              .setAttribute("style", "transform: translateX(270px); filter: opacity(0);");
-            document
-              .querySelector(".mobile_list")
-              .setAttribute("style", "transform: translateX(-270px); filter: opacity(0);");
-          }
-        },
-        stopPropagation(e) {
-          e.stopPropagation();
-        },
-        mem_bt_click(e) {
-          e.stopPropagation();
-          if (this.mem_list == false) {
-            this.mem_list = true;
-            this.search_bar = false;
-            this.mobile_list = false;
-            document
-              .querySelector(".mem_list")
-              .setAttribute("style", "transform: translateX(0); filter: opacity(1);");
-            document
-              .querySelector(".search_bar")
-              .setAttribute("style", "height: 0px; filter: opacity(0);");
-            document
-              .querySelector(".mobile_list")
-              .setAttribute("style", "transform: translateX(-270px); filter: opacity(0);");
-          } else {
-            this.mem_list = false;
-            document
-              .querySelector(".mem_list")
-              .setAttribute("style", "transform: translateX(270px); filter: opacity(0);");
-            document
-              .querySelector(".search_bar")
-              .setAttribute("style", "height: 0px; filter: opacity(0);");
-            document
-              .querySelector(".mobile_list")
-              .setAttribute("style", "transform: translateX(-270px); filter: opacity(0);");
-          }
-        },
-        hamburger_click(e) {
-          e.stopPropagation();
-          if (this.mobile_list == false) {
-            this.mobile_list = true;
-            this.mem_list = false;
-            this.search_bar = false;
-            document
-              .querySelector(".mobile_list")
-              .setAttribute("style", "transform: translateX(0); filter: opacity(1);");
-            document
-              .querySelector(".mem_list")
-              .setAttribute("style", "transform: translateX(270px); filter: opacity(0);");
-            document
-              .querySelector(".search_bar")
-              .setAttribute("style", "height: 0px; filter: opacity(0);");
-          } else {
-            this.mobile_list = false;
-            document.querySelector(".mobile_list").setAttribute("style",
-              "transform: translateX(-270px); filter: opacity(0);");
-            document
-              .querySelector(".mem_list")
-              .setAttribute("style", "transform: translateX(270px); filter: opacity(0);");
-            document
-              .querySelector(".search_bar")
-              .setAttribute("style", "height: 0px; filter: opacity(0);");
-          }
-        },
         npm_control() {
           // 顏色控制
           var input_npm = document.getElementById('input_npm');
@@ -1106,31 +1016,6 @@
       computed: {},
       mounted() {
         const vm = this;
-        // 組長的code
-        // nav_bar start
-        document.querySelector('.mem_list ul').setAttribute('style', `height: ${window.innerHeight}px;`);
-        document.querySelector('.mobile_list ul').setAttribute('style', `height: ${window.innerHeight}px;`);
-        document.querySelectorAll('.paint_border')[0].setAttribute('style', `height: ${window.innerHeight}px;`);
-        document.querySelectorAll('.paint_border')[1].setAttribute('style', `height: ${window.innerHeight}px;`);
-
-        document.addEventListener('click', () => {
-          this.mem_list = false;
-          this.search_bar = false;
-          this.mobile_list = false;
-
-          document
-            .querySelector(".search_bar")
-            .setAttribute("style", "height: 0px; filter: opacity(0);");
-          document
-            .querySelector(".mem_list")
-            .setAttribute("style", "transform: translateX(270px); filter: opacity(0);");
-          document
-            .querySelector(".mobile_list")
-            .setAttribute("style", "transform: translateX(-270px); filter: opacity(0);");
-        });
-        // nav_bar end
-
-
         // resize 的部分
         window.onresize = () => {
           return (() => {
@@ -1138,7 +1023,6 @@
             // console.log(vm.screenWidth)
           })()
         }
-
         // 一開始偵測是否為 425
         if (this.screenWidth <= 425) {
           var remix_intro = document.getElementsByClassName('remix_intro')[0];
@@ -1205,8 +1089,7 @@
             repeat: -1,
             // ease: Quad.easeInOut
           })
-        }
-
+        },
       },
     })
   </script>

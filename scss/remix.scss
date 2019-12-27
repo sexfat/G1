@@ -300,6 +300,11 @@ $buttonyellow: #efc318;
         // transform: translateX(-50%);
         position: absolute;
       }
+      &.fa{
+        font-family: "Lucida Sans Unicode", Geneva, Verdana, sans-serif;
+        display: inline-table;
+        line-height: unset;
+      }
       th:first-child{
         border-radius: 10px 0 0 0;
       }
