@@ -2,11 +2,8 @@
 * {
   -webkit-box-sizing: border-box;
           box-sizing: border-box;
-<<<<<<< HEAD
   padding: 0;
   margin: 0;
-=======
->>>>>>> 20bd061cf6c41b3e9185c305db48a18cde906d39
 }
 
 html {
@@ -681,11 +678,7 @@ header {
 
 #act_Now-Sign-up h2 {
   font-size: 2rem;
-<<<<<<< HEAD
   margin: 0 0 20px 50px;
-=======
-  margin: 0 0 100px 50px;
->>>>>>> 20bd061cf6c41b3e9185c305db48a18cde906d39
 }
 
 #act_Now-Sign-up div {
@@ -723,19 +716,12 @@ header {
 }
 
 #act_Now-Sign-up article {
-<<<<<<< HEAD
   position: absolute;
   top: 5%;
   width: 60%;
   min-height: 600px;
   display: inline-block;
   margin: 0 auto;
-=======
-  width: 60%;
-  min-height: 600px;
-  display: inline-block;
-  margin: auto auto;
->>>>>>> 20bd061cf6c41b3e9185c305db48a18cde906d39
   background-image: url(../img/activity/0.text-circle.svg), url(../img/activity/text.circle-wh.png);
   background-repeat: no-repeat;
   background-size: contain, 95% 95%;
@@ -745,7 +731,6 @@ header {
   position: absolute;
 }
 
-<<<<<<< HEAD
 #act_Now-Sign-up article .act_SignSongURL-box {
   width: 80%;
   height: 20px;
@@ -753,8 +738,6 @@ header {
   font-size: 0.6rem;
 }
 
-=======
->>>>>>> 20bd061cf6c41b3e9185c305db48a18cde906d39
 #act_Now-Sign-up article div {
   text-align: left;
   width: 70%;
@@ -811,14 +794,11 @@ header {
   background-color: #d0d6d6;
 }
 
-<<<<<<< HEAD
 #act_Now-Sign-up article div p p {
   display: inline-block;
   margin: 0;
 }
 
-=======
->>>>>>> 20bd061cf6c41b3e9185c305db48a18cde906d39
 #act_Now-Sign-up article div .signUpComfirm {
   margin: 0;
   background-color: #f1c40f;
@@ -868,10 +848,7 @@ header {
   width: 65%;
   height: 150px;
   border: 1px #d0d6d6 solid;
-<<<<<<< HEAD
   background-color: #d0d6d6;
-=======
->>>>>>> 20bd061cf6c41b3e9185c305db48a18cde906d39
   margin: 0;
   padding: 0;
 }
@@ -881,7 +858,6 @@ header {
   max-height: 100%;
 }
 
-<<<<<<< HEAD
 #act_Now-Sign-up .act_showSignUpImgSmall {
   width: 65%;
   height: 100px;
@@ -895,8 +871,6 @@ header {
   max-height: 100%;
 }
 
-=======
->>>>>>> 20bd061cf6c41b3e9185c305db48a18cde906d39
 #act_Now-Sign-up #act_Sign-up-song-name {
   margin: 0;
   border: 1px #d0d6d6 solid;
@@ -917,11 +891,7 @@ header {
   height: 700px;
   max-width: 1300px;
   width: 100%;
-<<<<<<< HEAD
   margin: 150px auto 0px auto;
-=======
-  margin: 150px auto 0 auto;
->>>>>>> 20bd061cf6c41b3e9185c305db48a18cde906d39
   padding-top: 50px;
   position: relative;
 }
@@ -983,11 +953,7 @@ header {
 #act_Now-Vote section {
   max-width: 1400px;
   width: 100%;
-<<<<<<< HEAD
   padding: 0 0 100px 50px;
-=======
-  padding: 0 0 0 50px;
->>>>>>> 20bd061cf6c41b3e9185c305db48a18cde906d39
   margin: 150px auto 0 auto;
 }
 
