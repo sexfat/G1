@@ -127,7 +127,7 @@ $(document).ready(function () {
     } else {
       isPlaying(true);
     }
-    listStatus();
+    // listStatus();
   });
 
   //上一首按鈕 -- 切換上一首
@@ -143,7 +143,7 @@ $(document).ready(function () {
     } else {
       isPlaying(true);
     }
-    listStatus();
+    // listStatus();
   });
 
   //停止按鈕 -- 音樂全數停止
@@ -208,7 +208,7 @@ $(document).ready(function () {
         right: "-50%",
         opacity: "1"
       }, "fast", "swing").addClass("recRotate");
-      listStatus();
+      // listStatus();
       playStatus = true;
       // console.log(playStatus);
     } else {
