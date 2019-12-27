@@ -185,7 +185,7 @@
     height: 250px;
 }
 
-@import './public.scss';
+@import './public';
 
 .songinfo_bb{
     @include buttonno03();
