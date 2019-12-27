@@ -84,8 +84,9 @@ $mainRed : #de267d;
 
       .heart {
         float: left;
-        height: 100%;
-        padding: 5%;
+        width: 25px;
+        height: 25px;
+        // padding: 5%;
         transition: transform 0.5s;
 
         &:hover {
@@ -518,6 +519,10 @@ $mainRed : #de267d;
 
           &:hover {
             transform: scale(1.1);
+          }
+          img{
+            width: 25px;
+            height: 25px;
           }
         }
       }
@@ -1008,7 +1013,10 @@ $mainRed : #de267d;
               float: right;
               text-align: center;
               transition: transform 0.5s;
-
+              img{
+                width: 25px;
+                height: 25px;
+              }
               &:hover {
                 transform: scale(1.1);
               }
