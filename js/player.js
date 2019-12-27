@@ -223,7 +223,7 @@ $(document).ready(function () {
       }
       $("#player .songInfo .name").text(myPlaylist[nowPlaying].title);
       $("#player .songInfo .creator").text(myPlaylist[nowPlaying].creator);
-      $("#player .info img").not(".coverRec img").attr("src", myPlaylist[nowPlaying].cover);
+      $("#player .info img").not(".coverRec img").not(".heart img").attr("src", myPlaylist[nowPlaying].cover);
     }
   
     //播放
