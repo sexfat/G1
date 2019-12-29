@@ -10,17 +10,74 @@ $buttonyellow: #efc318;
 
 .store_big_box {
   width: 100%;
-  overflow-x: hidden;
+  overflow: hidden;
+  position: relative;
+  .bg_down{
+    position: absolute;
+    z-index: -10;
+    bottom: 0;
+    right: 0;
+  }
+  .step1_bg{
+    position: absolute;
+    top: 22%;
+    z-index: -10;
+    width: 35vw;
+  }
+  .bg_down2{
+    position: absolute;
+    z-index: -10;
+    bottom: 0;
+    left: 0;
+    width: 70vw;
+  }
+  .step2_bg{
+    position: absolute;
+    top: 32%;
+    right: 0;
+    z-index: -10;
+    width: 35vw;
+  }
+  .bg_down3{
+    position: absolute;
+    z-index: -10;
+    bottom: 0;
+    left: 0;
+    width: 70vw;
+  }
+  .step3_bg{
+    position: absolute;
+    top: 25%;
+    left: 50%;
+    transform: translateX(-50%);
+    z-index: -10;
+    width: 50vw;
+  }
+  .bg_down4{
+    position: absolute;
+    z-index: -10;
+    bottom: -4%;
+    right: 0;
+    width: 55vw;
+  }
+  .step4_bg{
+    position: absolute;
+    top: 30%;
+    left: 0%;
+    z-index: -10;
+    width: 35vw;
+  }
 }
 
 .store_wrapper {
   margin-top: 0%;
+  margin-bottom: 15%;
   position: relative;
   max-width: 1200px;
   width: 100%;
-  // width: 80%;
-  height: 2000px;
 
+  // width: 80%;
+  // height: 2000px;
   p {
     font-size: $rem1;
   }
@@ -29,8 +86,16 @@ $buttonyellow: #efc318;
     font-size: $rem2;
   }
 
+  h3 {
+    font-size: $rem1_5;
+  }
+
   h4 {
     font-size: $rem1_2;
+  }
+
+  h5 {
+    font-size: $rem1;
   }
 
   .store_color1 {
@@ -72,155 +137,362 @@ $buttonyellow: #efc318;
   .store_flow {
     width: 100%;
     margin: 0 auto;
-    margin-top: 10vw;
+    margin-top: 4rem;
     font-size: 0;
+
     div[class*=col-] {
       // border: solid 1px #333;
       vertical-align: bottom;
       text-align: center;
     }
-    .title{
+
+    .title {
       margin: 2vw auto;
     }
+
     .flow {
       .image {
         position: relative;
         text-align: center;
+
         img {
           position: relative;
           max-width: 60px;
           text-align: center;
-          
+
         }
       }
     }
   }
-  .store_step{
-    width: 80%;
+
+  .store_step {
+    width: 95%;
     margin: 0 auto;
-    margin-top: 10vw;
+    margin-top: 5vw;
     font-size: 0;
+
     div[class*=col-] {
-      border: solid 1px #333;
+      // border: solid 1px #333;
       vertical-align: middle;
       text-align: center;
     }
-    .step{
+
+    .step {
       margin: 0 auto;
       background-color: $green;
       padding-top: 4vw;
+
       // ============= choose_money
-      .choose{
-        cursor: pointer;
+      &.choose_money {
         position: relative;
-        img{
-          width: 100%;
+
+        .ribe {
+          position: absolute;
+          right: -9%;
+          top: -28%;
+          width: 10vw;
+          min-width: 80px;
+        }
+
+        .sm_ribe {
+          position: absolute;
+          left: -8%;
+          bottom: -20%;
         }
       }
-      .store_button{
+
+      .choose {
+        cursor: pointer;
+        position: relative;
+
+        img {
+          width: 100%;
+        }
+
+        p {
+          pointer-events: none;
+        }
+      }
+
+      // ============= enter_card
+      &.enter_card {
+        font-size: 0;
+        background-color: transparent;
+
+        .choosed {
+          background-color: $green;
+          padding: 3vw;
+
+          h4 {
+            padding: 10% 0%;
+          }
+
+          .value {
+            position: relative;
+
+            img {
+              max-width: 150px;
+            }
+          }
+        }
+
+        .cardinfo {
+
+          h4,
+          input {
+            text-align: left;
+          }
+
+          input {
+            width: 100%;
+            padding: 2% 1%;
+            border: none;
+            font-size: 0.8rem;
+            background-color: $green;
+          }
+        }
+
+        .card {
+          margin-bottom: 5vw;
+          position: relative;
+
+          .bone {
+            position: absolute;
+            left: 15%;
+            top: 90%;
+            width: 56%;
+          }
+        }
+      }
+
+      // =============== comfirm_detail
+      &.comfirm_detail {
+        background-color: transparent;
+        position: relative;
+
+        .comfirm {
+          background-color: $green;
+          padding: 3%;
+          position: relative;
+
+          p {
+            text-align: left;
+          }
+
+          .bone_head {
+            position: absolute;
+            width: 35%;
+            top: -32%;
+            left: 0%;
+            -webkit-transform: rotate(-5deg);
+            transform: rotate(-5deg);
+          }
+
+          .bone_hand {
+            position: absolute;
+            width: 10%;
+            left: -6%;
+            top: 0%;
+            z-index: -10;
+          }
+        }
+
+      }
+
+      // =============== done
+      &.done {
+        background-color: transparent;
+        text-align: left;
+        flex-wrap: wrap;
+
+        .success_info {
+          width: 50%;
+          background-color: $green;
+          padding: 8% 0;
+          text-align: center;
+        }
+
+        .dance {
+          width: 50%;
+          position: relative;
+          // border: solid 1px #333;
+          .dance_place{
+            padding-top: 70%;
+          }
+          .head,.body_top,.body_down,.feet{
+            position: absolute;
+            left: 50%;
+            transform: translateX(-50%);
+          }
+          .head{
+            top: 0;
+            width: 40%;
+            transform: translateX(-50%) rotate(45deg);
+          }
+          .body_top{
+            top: 29%;
+            left: 40%;
+            width: 12%;
+            transform: translateX(-50%) rotate(35deg);
+          }
+          .body_down{
+            top: 43%;
+            left: 42%;
+            width: 6%;
+            -webkit-transform: translateX(-50%) rotate(35deg);
+            transform: translateX(-50%) rotate(13deg);
+          }
+          .feet{
+            top: 53%;
+            left: 39%;
+            width: 29%;
+            -webkit-transform: translateX(-50%) rotate(35deg);
+            transform: translateX(-50%) rotate(0deg);
+          }
+        }
+      }
+
+      .store_button {
         padding: 2vw 0 3vw;
-        .btn{
+
+        .btn {
           position: relative;
           @include butttonn02;
+          text-align: center;
+          width: 5rem;
+          padding: 10px 0;
+          margin: 0 auto;
+
+          &:active {
+            transform: scale(1);
+          }
+        }
+
+        .press {
           text-align: center;
         }
       }
     }
 
+  }
+
+  .store_history {
+    text-align: center;
+    margin-top: 6rem;
+    font-size: 0;
+
+    div[class*=col-] {
+      // border: solid 1px #333;
+      vertical-align: middle;
+      text-align: center;
+    }
+
+    .title {
+      margin: 2vw auto;
+    }
+
+    h2 {
+      text-align: left;
+    }
+
+    h4 {
+      padding: 0.5rem 0;
+    }
+
+    .tr {
+      font-size: 0;
+      border-top: 1px solid #ebebeb;
+    }
+
+    .td {
+      font-size: $rem1;
+      padding: 0.5rem 0;
+    }
+
+    .tr:nth-of-type(even) {
+      background-color: #f2f2f2;
+    }
+
+    .thead {
+      background-color: $green;
+      border-radius: 10px 10px 0 0;
+    }
+
+    .tbody {
+      overflow-y: scroll;
+      height: 25rem;
+      background-color: #fafaf1;
+      &::-webkit-scrollbar {
+        width: 10px;
+      }
+
+      &::-webkit-scrollbar-track {
+        -webkit-border-radius: 10px;
+        border-radius: 10px;
+        margin: 0px 0px 0px 0px;
+        background-color: #e4e4e4;
+      }
+      &::-webkit-scrollbar-thumb {
+        -webkit-border-radius: 4px;
+        border-radius: 4px;
+        background: #8d8d8d;
+        }
+    }
   }
 }
 
 @include respond(latop-max) {
 
   // 1200 
-  .store_wrapper {}
+  .store_big_box{
+    .step3_bg{
+      position: absolute;
+      top: 34%;
+      right: 0;
+      transform: none;
+      z-index: -10;
+      width: 27rem;
+    }
+  } 
+  .store_wrapper {
+    .store_step {
+      .step.choose_money {
+        .ribe {
+          position: absolute;
+          right: -4%;
+          top: -10%;
+          width: 10vw;
+          min-width: 80px;
+          transform: rotate(-5deg);
+        }
+
+        .sm_ribe {
+          position: absolute;
+          left: -4%;
+          bottom: -10%;
+          width: 7vw;
+          min-width: 60px;
+          -webkit-transform: rotate(-5deg);
+          transform: rotate(-15deg);
+        }
+      }
+    }
+  }
 }
 
 @include respond(latop-min) {
+
   // 996
   html {
     font-size: 17px;
   }
+  .store_big_box{
+    .step4_bg{
+      top: 37%;
+    }
+  } 
   .store_wrapper {
     width: 100%;
-
-
-    .store_support {
-      .store_h2 {}
-
-      .store_box {
-        margin: 0 auto;
-        text-align: center;
-
-        .phone_member_info {
-          display: block;
-          text-align: center;
-          background: url(../img/member/blackline.svg) no-repeat;
-          padding: 4% 0%;
-
-          .pic {
-            img {
-              width: 100%;
-              max-width: 200px;
-              border-radius: 100%;
-            }
-          }
-
-          .meminfos {
-            vertical-align: top;
-            // border: solid 1px #333;
-            height: 10rem;
-            background-color: $green;
-
-            .flexbox {
-              width: 100%;
-              height: 100%;
-              flex-direction: column;
-              align-content: space-around;
-              display: flex;
-              padding-left: 10%;
-
-              p {
-                width: 100%;
-                height: calc(100% / 3);
-                text-align: left;
-                line-height: 3rem;
-              }
-            }
-          }
-        }
-
-        .member_info {
-          display: none;
-        }
-
-        .support_history {
-          margin-top: 8%;
-
-          .table {
-            .th {
-              .td {
-                &:nth-of-type(1) {}
-
-                &:nth-of-type(3) {}
-              }
-            }
-
-            .tbody {
-              .tr {
-                &:nth-of-type(even) {}
-
-                .td {}
-              }
-
-              &::-webkit-scrollbar {}
-
-              &::-webkit-scrollbar-thumb {}
-            }
-          }
-        }
-      }
-    }
   }
 }
 
@@ -228,28 +500,62 @@ $buttonyellow: #efc318;
 
   // 768 
   .store_wrapper {
+    .store_meminfos{
+      p{
+        font-size: 2.5vw;
+      }
+    } 
     .store_color1 {
       width: 70%;
       top: 2%;
       position: absolute;
       left: -22%;
     }
-    .store_step{
-      width: 100%;
-      div[class*=col-] {
-      }
-      .step{
+
+    .store_step {
+      width: 95%;
+
+      div[class*=col-] {}
+
+      .step {
+
         // ============= choose_money
-        .choose{
+        .choose {
           margin-bottom: 4vw;
-          img{
+
+          img {}
+        }
+
+        // ============= enter_card
+        &.enter_card {
+          .choosed {
+            padding: 4vw;
+
+            h4 {}
+
+            .value {
+              img {
+                max-width: 110px;
+              }
+            }
+          }
+
+          .cardinfo {
+
+            h4,
+            input {}
+
+            h4 {
+              font-size: 2.5vw;
+            }
+
+            input {}
           }
         }
-        .store_button{
-  
-        }
+
+        .store_button {}
       }
-  
+
     }
   }
 }
@@ -257,17 +563,91 @@ $buttonyellow: #efc318;
 @include respond(ipad) {
 
   // 576
+  .store_big_box{
+    .step2_bg{
+      top: 40%;
+      width: 55vw;
+    }
+    .bg_down2{
+      position: absolute;
+      z-index: -10;
+      bottom: 30%;
+      left: 0;
+      width: 100vw;
+    }
+    .bg_down3{
+      position: absolute;
+      z-index: -10;
+      bottom: 30%;
+      right: auto;
+      left: 0;
+      width: 100vw;
+    }
+    .bg_down4{
+      bottom: 37%;
+      width: 80vw;
+    }
+    .step3_bg{
+      top: 30%;
+    }
+    .step4_bg{
+      top: 25%;
+      width: 80vw;
+    }
+  } 
   .store_wrapper {
-    .store_flow {
-  
-      div[class*=col-] {
+    margin-bottom: 30%;
+    .store_meminfos{
+      p{
+        font-size: 3.8vw;
       }
-  
+    } 
+    .store_flow {
+      div[class*=col-] {}
+
       .flow {
         .image {
           img {
             max-width: 40px;
-            
+
+          }
+        }
+      }
+    }
+
+    .store_step {
+      .step {
+        &.enter_card {
+          .card {
+            .bone {
+              display: none;
+            }
+          }
+        }
+
+        &.done {
+          background-color: transparent;
+          text-align: left;
+          flex-wrap: wrap;
+
+          .success_info {
+            width: 100%;
+            background-color: $green;
+            padding: 8% 0;
+            order: 2;
+          }
+
+          .dance {
+            width: 100%;
+            padding: 15%;
+            transform: translate(-10%,29%);
+            -webkit-box-ordinal-group: 2;
+            -ms-flex-order: 1;
+            order: 1;
+            z-index: -6;
+          }
+          .button{
+            order: 3;
           }
         }
       }
@@ -279,10 +659,79 @@ $buttonyellow: #efc318;
   html {
     font-size: 16px;
   }
+  .store_big_box{
+    .bg_down3{
+      position: absolute;
+      z-index: -10;
+      bottom: 37%;
+      left: 0;
+      width: 100vw;
+    }
+    .bg_down4{
+      bottom: 42%;
+    }
+  } 
   //375
   .store_wrapper {
     width: 95%;
+    .store_step {
+      .step {
+        padding-top: 10vw;
 
+        &.enter_card {
+          .choosed {
+            h4 {}
+
+            .value {
+              img {}
+            }
+          }
+
+          .cardinfo {
+
+            h4,
+            input {}
+
+            h4 {
+              font-size: 4vw;
+            }
+
+            input {}
+          }
+
+          .card {
+            .bone {}
+          }
+        }
+
+        &.comfirm_detail {
+          .comfirm {
+            padding: 6%;
+
+            p {
+              text-align: left;
+            }
+
+            .bone_head {
+              position: absolute;
+              width: 50%;
+              top: -35%;
+              left: 0%;
+              -webkit-transform: rotate(-5deg);
+              transform: rotate(-5deg);
+            }
+
+            .bone_hand {
+              position: absolute;
+              width: 15%;
+              left: -9%;
+              top: 0%;
+              z-index: -10;
+            }
+          }
+        }
+      }
+    }
 
   }
 }
