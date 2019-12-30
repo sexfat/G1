@@ -1,4 +1,4 @@
-@import"public";
+@import"_public";
 
 #app {
     position: fixed;
@@ -12,7 +12,7 @@
     position: relative;
     max-width: 1400px;
     height: 650px;
-    margin: 180px auto 50px 0px;
+    margin: 180px auto 50px auto;
 
     @include respond(latop-max) {
         max-width: 1000px;
@@ -31,8 +31,12 @@
 
     @include respond(ipad) {
         min-width: 360px;
-        height: 230px;
+        height: 250px;
     }
+    @include respond(phone) {
+        height: 200px;
+        margin: 120px auto 50px auto;
+     }
 
 
     img {
@@ -58,7 +62,11 @@
         @include respond(ipadpro) {
             width: 155px;
             height: 40px;
+            top: -8%;
         }
+        @include respond(phone) {
+            top: -10%;
+         }
 
 
     }
@@ -93,6 +101,9 @@
             width: 45%;
             top: 10%;
         }
+        @include respond(phone) {
+            display: none;
+         }
     }
 
     #act_sectionAnchor {
@@ -123,6 +134,7 @@
 
         @include respond(ipad) {
             width: 375px;
+            left: 28%;
         }
 
         a {
@@ -159,12 +171,16 @@
                 left: 0%;
                 top: -10px;
             }
+
             @include respond(ipad) {
                 width: 80px;
                 height: 25px;
                 margin-left: 5px;
                 left: 0%;
                 top: -5px;
+            }
+            @include respond(phone) {
+                display: none;
              }
 
 
@@ -196,11 +212,13 @@
                 @include respond(ipadpro) {
                     font-size: $rem0_8;
                 }
+
                 @include respond(ipad) {
-                  font-size: $rem0_6;
-                
+                    font-size: $rem0_6;
+
                 }
-    
+              
+
             }
         }
     }
@@ -245,7 +263,8 @@
 }
 
 #act_HeadBtn {
-font-size: 0;
+    font-size: 0;
+
     div {
         position: relative;
         margin: 0;
@@ -267,11 +286,16 @@ font-size: 0;
             top: -15px;
             padding: 0;
         }
+
         @include respond(ipad) {
             width: 80px;
             height: 70px;
             top: -5px;
             padding: 0;
+        }
+        @include respond(phone) {
+            left: -35%;
+            top: -10px;
          }
 
         &:hover {
@@ -301,9 +325,10 @@ font-size: 0;
                 font-size: $rem1;
 
             }
+
             @include respond(ipad) {
                 font-size: $rem0_8;
-             }
+            }
 
         }
     }
@@ -329,8 +354,7 @@ font-size: 0;
     @include respond(latop-min) {
         max-height: 200px;
     }
-
-
+   
 
 }
 
@@ -355,10 +379,11 @@ font-size: 0;
             width: 15px;
             height: 15px;
         }
+
         @include respond(ipad) {
             width: 10px;
             height: 10px;
-         }
+        }
     }
 
     .btncolor {
@@ -391,15 +416,24 @@ font-size: 0;
         left: 25%;
         bottom: -27%;
     }
+
     @include respond(ipad) {
-        left: 15%;
+        left: 20%;
         bottom: -35%;
+    }
+    @include respond(phone) {
+        left: 10%;
+        bottom: -40%;
      }
 
     p {
         vertical-align: bottom;
         font-size: $rem1;
         margin: 0;
+
+        @include respond(ipad) {
+            font-size: $rem0_8;
+        }
     }
 
     div {
@@ -425,8 +459,6 @@ font-size: 0;
                 padding: 0;
                 font-size: $rem1_5;
                 color: #333;
-
-
 
                 @include respond(latop-min) {
                     font-size: $rem1;
@@ -812,7 +844,7 @@ font-size: 0;
     height: 700px;
     max-width: 1400px;
     width: 100%;
-    padding: 50px 0 0 150px;
+    padding: 75px 0 0 150px;
     margin: 150px auto 0 auto;
 
     @include respond(latop-max) {
@@ -828,7 +860,12 @@ font-size: 0;
 
     @include respond(ipadpro) {
         margin: 0 auto 0 auto;
-        padding: 75px 0 0 50px;
+        padding: 75px 0 0 40px;
+    }
+
+    @include respond(ipad) {
+        padding: 75px 0 0 30px;
+        margin: 0 auto 100px auto;
     }
 
 
@@ -837,7 +874,14 @@ font-size: 0;
 
         @include respond(ipadpro) {
             width: 90%;
+            margin: 0 auto;
         }
+
+        @include respond(ipad) {
+            margin: 0;
+            width: 100%;
+        }
+
 
         h2 {
             margin: 0 0 50px 0;
@@ -852,114 +896,144 @@ font-size: 0;
 
             }
 
-
-
-            h3 {
-                margin: 0;
-                font-size: $rem1_5;
-                font-weight: normal;
-
-                @include respond(latop-max) {
-                    font-size: $rem1_2;
-                }
-
-                @include respond(latop-min) {
-                    font-size: $rem1;
-
-                }
-
+            @include respond(ipad) {
+                margin: 0 0 30px 0;
             }
 
-            div {
-                margin: 20px 0;
-                width: 70%;
-                font-size: 2.5rem;
-                line-height: 1;
-                font-weight: normal;
+        }
 
-                @include respond(latop-max) {
-                    font-size: 2rem;
-                }
+        h3 {
+            margin: 0;
+            font-size: $rem1_5;
+            font-weight: normal;
 
-                @include respond(latop-min) {
-                    font-size: $rem1_5;
-
-                }
-
-                @include respond(ipadpro) {
-                    width: 90%;
-                }
+            @include respond(latop-max) {
+                font-size: $rem1_2;
             }
 
-            p {
-                width: 80%;
+            @include respond(latop-min) {
                 font-size: $rem1;
-                margin: 0 auto 20px 0;
-
-                @include respond(latop-max) {
-                    font-size: $rem0_8;
-                    margin: 0 auto 10px 0;
-                }
-
-                @include respond(latop-min) {
-                    font-size: $rem0_8;
-                    margin: 0 auto 10px 0;
-                }
-
-                @include respond(ipadpro) {
-                    width: 100%;
-                    margin: 0 auto;
-                }
 
             }
+
+
+        }
+
+        div {
+            margin: 20px 0;
+            width: 70%;
+            font-size: 2.5rem;
+            line-height: 1;
+            font-weight: normal;
+
+            @include respond(latop-max) {
+                font-size: 2rem;
+            }
+
+            @include respond(latop-min) {
+                font-size: $rem1_5;
+
+            }
+
+            @include respond(ipadpro) {
+                width: 90%;
+                margin: 0 0 15px 0;
+            }
+
+            @include respond(ipad) {
+                margin: 0 0 15px 0;
+                width: 100%;
+                font-size: $rem1_2;
+            }
+        }
+
+        p {
+            width: 60%;
+            font-size: $rem1;
+            margin: 10px auto 20px 0;
+
+            @include respond(latop-max) {
+                font-size: $rem0_8;
+                margin: 10px auto 10px 0;
+            }
+
+            @include respond(latop-min) {
+                font-size: $rem0_8;
+                margin: 10px auto 10px 0;
+            }
+
+            @include respond(ipadpro) {
+                width: 90%;
+                margin: 10px auto 10px 0;
+            }
+
+            // @include respond(ipad) {
+            //     font-size: $rem0_6;
+            //     margin: 10px auto 10px 0;
+            // }
         }
     }
 }
 
 
 
+
+
 .act_nowposterbox {
     display: inline-block;
     position: absolute;
-    height: 100%;
-    top: 0%;
-    right: 0%;
+    top: 25%;
+    right: 2%;
+
+    @include respond(latop-min) {
+        top: 20%;
+        right: 2%;
+
+    }
 
     @include respond(ipadpro) {
         position: static;
         position: relative;
+
     }
 
     .act_nowposter {
         width: 600px;
         height: 612px;
         position: absolute;
-        top: 10%;
-        right: 8%;
         z-index: 2;
         margin: auto auto;
-
-        @include respond(ipadpro) {
-            // position: static;
-            top: -40%;
-            right: -20%;
-        }
-
+        // top: 30%;
+        // left: 0;
 
         @include respond(latop-max) {
             width: 400px;
             height: 408px;
-            bottom: 15%;
-            left: 15%;
+
 
         }
 
         @include respond(latop-min) {
+            width: 400px;
+            height: 408px;
+
+        }
+
+        @include respond(ipadpro) {
+            // position: static;
             width: 300px;
             height: 306px;
-            bottom: 15%;
-            left: 15%;
+            right: 5%;
+
         }
+
+        @include respond(ipad) {
+            width: 300px;
+            height: 306px;
+            top: -40%;
+            right: 10%;
+        }
+
 
 
         img {
@@ -970,8 +1044,8 @@ font-size: 0;
 
     .act_nowSplash-ink {
         position: absolute;
-        bottom: -10%;
-        left: -5%;
+        top: -10%;
+        left: -13%;
         z-index: 1;
         width: 800px;
         height: 600px;
@@ -980,24 +1054,31 @@ font-size: 0;
             width: 600px;
             height: 450px;
             bottom: 5%;
-            left: -5%;
+            left: -15%;
 
         }
 
         @include respond(latop-min) {
-            width: 450px;
-            height: 300px;
-            bottom: 20%;
-            left: -3%;
+            width: 600px;
+            height: 450px;
+            bottom: 5%;
+            left: -20%;
         }
 
         @include respond(ipadpro) {
             width: 500px;
             height: 350px;
-            bottom: 45%;
-            left: 15%;
+            left: 30%;
             z-index: -1;
         }
+
+        @include respond(ipad) {
+            left: 10%;
+        }
+        @include respond(phone) {
+            left: -30%;
+         }
+        
 
         img {
             width: 100%;
@@ -1013,7 +1094,7 @@ font-size: 0;
     max-width: 1400px;
     width: 100%;
     min-height: 850px;
-    padding: 50px 0 0 30px;
+    padding: 50px 0 0 75px;
     margin: 100px auto 150px auto;
     position: relative;
 
@@ -1022,9 +1103,14 @@ font-size: 0;
         min-height: 750px;
     }
 
-    @include respond(latop-max) {
+    @include respond(latop-min) {
         margin: 0px auto 150px auto;
-        min-height: 700px;
+        min-height: 650px;
+    }
+
+    @include respond(ipad) {
+        margin: 0px auto 75px auto;
+        padding: 100px 0 0 30px;
     }
 
     h2 {
@@ -1038,12 +1124,15 @@ font-size: 0;
 
         @include respond(latop-min) {
             font-size: $rem1_2;
-            margin: 0 0 40px 70px;
+            margin: 0 0 40px 75px;
         }
 
         @include respond(ipadpro) {
-            margin: 0 0 40px 20px;
+            margin: 20px 0 20px 0px;
         }
+        @include respond(phone) {
+            margin: 0 ;
+         }
     }
 
     div {
@@ -1054,13 +1143,16 @@ font-size: 0;
         position: relative;
         text-align: right;
         top: 20px;
+        left: -20px;
 
         @include respond(latop-max) {
             min-width: 200px;
         }
 
         @include respond(ipadpro) {
-            width: 75%;
+            width: 70%;
+            // left: 25px;
+            
 
         }
 
@@ -1068,18 +1160,25 @@ font-size: 0;
             width: 85%;
             height: 85%;
             margin: auto auto;
+            
 
             @include respond(latop-max) {
-                width: 100%;
-                height: 100%;
+                width: 90%;
+                height: 90%;
             }
 
             @include respond(ipadpro) {
                 // position: static;
                 width: 70%;
+                height: 70%;
                 margin: 0 auto;
 
             }
+            @include respond(phone) {
+               position: relative;
+               left: 45px;
+            }
+
 
             img {
                 width: 100%;
@@ -1101,7 +1200,7 @@ font-size: 0;
                 width: 850px;
                 height: 600px;
                 top: -20%;
-                left: -10%;
+                left: -40%;
             }
 
             @include respond(latop-min) {
@@ -1110,13 +1209,24 @@ font-size: 0;
             }
 
             @include respond(ipadpro) {
-                width: 550px;
-                height: 400px;
+                width: 750px;
+                height: 550px;
                 top: 0%;
                 left: -15%;
 
 
             }
+
+            @include respond(ipad) {
+                width: 600px;
+                height: 450px;
+                left: -20%;
+            }
+            @include respond(phone) {
+                width: 600px;
+                height: 450px;
+                left: -40%;
+             }
 
 
             img {
@@ -1171,9 +1281,12 @@ font-size: 0;
         div {
             font-size: 0;
             width: 90%;
-            margin: 0 auto;
+            margin: 0 auto 0 50px;
             text-align: center;
-
+            overflow: hidden;
+            @include respond(phone) {
+                margin: 0 auto 0 25px;
+            }
 
             h3 {
                 font-size: $rem1_5;
@@ -1216,29 +1329,39 @@ font-size: 0;
                 margin: 0 auto 30px auto;
                 padding-top: 20px;
 
+
                 button {
                     margin-top: 20px;
                     @include butttonn02();
+                    margin-left: 10px;
                 }
 
                 input {
                     margin-top: 20px;
                     @include butttonn02();
+                    margin-right: 10px;
                 }
+               
+
             }
 
 
             div {
 
                 font-size: $rem1;
-                margin: 0;
-                padding: 0 0 5px 0;
+                margin: 0 auto;
+                padding: 0 0 10px 0;
                 text-align: left;
-                width: 100%;
-
+                width: 90%;
+              
+               
                 @include respond(ipadpro) {
                     font-size: $rem0_8;
 
+                }
+                @include respond(phone) {
+                    width: 100%;
+                    margin-left: 30px;
                 }
 
                 label {
@@ -1260,7 +1383,7 @@ font-size: 0;
                 }
 
                 #act_Sign-up-song-name {
-                    margin: 0;
+
                     border: 1px #d0d6d6 solid;
                     background-color: #d0d6d6;
                     width: 100%;
@@ -1284,10 +1407,13 @@ font-size: 0;
                     height: 100px;
                     border: 1px #d0d6d6 solid;
                     background-color: #d0d6d6;
-                    padding-bottom: 15px;
                     padding: 0;
                     text-align: center;
                     font-size: $rem1;
+                    margin: 0 0 10px 0;
+                    position: relative;
+                    left: 0px;
+
 
                     @include respond(latop-max) {
                         height: 75px;
@@ -1307,6 +1433,9 @@ font-size: 0;
                     margin: 0;
                     padding: 0;
                     text-align: center;
+                    position: relative;
+                    left: 0px;
+                    top: 0;
 
                     @include respond(latop-max) {
                         height: 50px;
@@ -1375,8 +1504,8 @@ font-size: 0;
         background-image:
             url(../img/activity/0.blackline.svg),
             url(../img/activity/text-wh.png);
-        background-size: contain 90% 90%;
         background-repeat: no-repeat;
+        background-size: cover, 95% 95%;
         background-position-x: center;
 
         @include respond(latop-max) {
@@ -1386,7 +1515,14 @@ font-size: 0;
         }
 
         @include respond(ipadpro) {
-            padding: 50px 0 0 50px;
+            padding: 50px 0 0 75px;
+        }
+        @include respond(ipad) {
+            padding: 50px 0 0 30px;
+        }
+        @include respond(phone) {
+            padding: 50px 0 20px 30px;
+            min-height: 350px;
         }
 
         h2 {
@@ -1506,7 +1642,13 @@ font-size: 0;
         }
 
         @include respond(ipadpro) {
+            padding: 0 0 100px 75px;
+        }
+        @include respond(ipad) {
             padding: 0 0 100px 30px;
+        }
+        @include respond(phone) {
+            margin: 75px auto 0 auto;
         }
 
 
@@ -1649,6 +1791,11 @@ font-size: 0;
                         width: 200px;
                         height: 200px;
                     }
+                    @include respond(phone) {
+                        width: 100px;
+                        height: 100px;
+                    }
+                    
                 }
             }
 
