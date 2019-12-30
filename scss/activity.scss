@@ -20,8 +20,18 @@
     }
 
     @include respond(latop-min) {
-        max-width: 700px;
-        height: 350px;
+        min-width: 750px;
+        height: 370px;
+    }
+
+    @include respond(ipadpro) {
+        min-width: 560px;
+        height: 300px;
+    }
+
+    @include respond(ipad) {
+        min-width: 360px;
+        height: 230px;
     }
 
 
@@ -43,6 +53,11 @@
         @include respond(latop-max) {
             width: 222px;
             height: 58px;
+        }
+
+        @include respond(ipadpro) {
+            width: 155px;
+            height: 40px;
         }
 
 
@@ -68,6 +83,16 @@
             font-size: $rem1_2;
             max-width: 40%;
         }
+
+        @include respond(ipadpro) {
+            font-size: $rem1;
+        }
+
+        @include respond(ipad) {
+            font-size: $rem0_8;
+            width: 45%;
+            top: 10%;
+        }
     }
 
     #act_sectionAnchor {
@@ -81,13 +106,23 @@
         z-index: 1;
 
         @include respond(latop-max) {
-            width: 600px;
+            width: 700px;
             height: 50px;
+            left: 20%;
         }
 
         @include respond(latop-min) {
-            width: 400px;
+            width: 600px;
             height: 30px;
+        }
+
+        @include respond(ipadpro) {
+            width: 500px;
+            height: 25px;
+        }
+
+        @include respond(ipad) {
+            width: 375px;
         }
 
         a {
@@ -104,18 +139,34 @@
             position: relative;
 
             @include respond(latop-max) {
-                width: 150px;
-                height: 50px;
+                width: 180px;
+                height: 60px;
                 margin-left: 30px;
             }
 
             @include respond(latop-min) {
-                width: 100px;
+                width: 150px;
+                height: 45px;
+                margin-left: 15px;
+                left: 10%;
+                top: -15px;
+            }
+
+            @include respond(ipadpro) {
+                width: 115px;
                 height: 30px;
                 margin-left: 15px;
-                left: 40px;
-                top: -5px;
+                left: 0%;
+                top: -10px;
             }
+            @include respond(ipad) {
+                width: 80px;
+                height: 25px;
+                margin-left: 5px;
+                left: 0%;
+                top: -5px;
+             }
+
 
 
             img {
@@ -134,9 +185,22 @@
                 z-index: 1;
                 transform: translate(-50%, -50%);
 
-                @include respond(latop-min) {
+                @include respond(latop-max) {
                     font-size: $rem1_2;
                 }
+
+                @include respond(latop-min) {
+                    font-size: $rem1;
+                }
+
+                @include respond(ipadpro) {
+                    font-size: $rem0_8;
+                }
+                @include respond(ipad) {
+                  font-size: $rem0_6;
+                
+                }
+    
             }
         }
     }
@@ -181,7 +245,7 @@
 }
 
 #act_HeadBtn {
-
+font-size: 0;
     div {
         position: relative;
         margin: 0;
@@ -198,11 +262,17 @@
         }
 
         @include respond(latop-min) {
-            width: 80px;
-            height: 70px;
-            top: 15px;
+            width: 100px;
+            height: 90px;
+            top: -15px;
             padding: 0;
         }
+        @include respond(ipad) {
+            width: 80px;
+            height: 70px;
+            top: -5px;
+            padding: 0;
+         }
 
         &:hover {
             transform: scale(1.1);
@@ -225,14 +295,15 @@
 
             @include respond(latop-max) {
                 font-size: $rem1_2;
-                left: 36%;
-
             }
 
             @include respond(latop-min) {
-                left: 32%;
-                top: 30%;
+                font-size: $rem1;
+
             }
+            @include respond(ipad) {
+                font-size: $rem0_8;
+             }
 
         }
     }
@@ -260,6 +331,7 @@
     }
 
 
+
 }
 
 #act_carouselSelect {
@@ -283,6 +355,10 @@
             width: 15px;
             height: 15px;
         }
+        @include respond(ipad) {
+            width: 10px;
+            height: 10px;
+         }
     }
 
     .btncolor {
@@ -301,16 +377,24 @@
     left: 40%;
     text-align: center;
 
-    // @include respond(latop-max) {
-    //     width: 250px;
-    //     height: 60px;
 
-    // }
 
-    // @include respond(latop-min) {
-    //     width: 200px;
-    //     height: 60px;
-    // }
+    @include respond(latop-min) {
+        width: 300px;
+        height: 75px;
+        left: 35%;
+    }
+
+    @include respond(ipadpro) {
+        width: 300px;
+        height: 75px;
+        left: 25%;
+        bottom: -27%;
+    }
+    @include respond(ipad) {
+        left: 15%;
+        bottom: -35%;
+     }
 
     p {
         vertical-align: bottom;
@@ -328,19 +412,13 @@
             height: 70px;
             margin: 5px;
 
-            // @include respond(latop-max) {
-            //     width: 30px;
-            //     height: 30px;
-            //     margin: 2px;
 
-            // }
+            @include respond(latop-min) {
+                width: 30px;
+                height: 30px;
+                margin: 5px;
 
-            // @include respond(latop-min) {
-            //     width: 15px;
-            //     height: 15px;
-            //     margin: 2px;
-
-            // }
+            }
 
             p {
                 margin: 0;
@@ -348,15 +426,12 @@
                 font-size: $rem1_5;
                 color: #333;
 
-                // @include respond(latop-max) {
-                //     font-size: $rem1_2;
 
-                // }
 
-                // @include respond(latop-min) {
-                //     font-size: $rem0_8;
+                @include respond(latop-min) {
+                    font-size: $rem1;
 
-                // }
+                }
 
             }
 
@@ -366,10 +441,10 @@
                 top: -20px;
                 color: #333;
 
-                // @include respond(latop-min) {
-                //     font-size: 0.4rem;
+                @include respond(latop-min) {
+                    font-size: 0.4rem;
 
-                // }
+                }
             }
         }
     }
@@ -751,9 +826,18 @@
 
     }
 
+    @include respond(ipadpro) {
+        margin: 0 auto 0 auto;
+        padding: 75px 0 0 50px;
+    }
+
 
     div {
         width: 50%;
+
+        @include respond(ipadpro) {
+            width: 90%;
+        }
 
         h2 {
             margin: 0 0 50px 0;
@@ -767,56 +851,71 @@
                 font-size: $rem1_2;
 
             }
-        }
 
-        h3 {
-            margin: 0;
-            font-size: $rem1_5;
-            font-weight: normal;
 
-            @include respond(latop-max) {
-                font-size: $rem1_2;
-            }
 
-            @include respond(latop-min) {
-                font-size: $rem1;
-
-            }
-        }
-
-        div {
-            margin: 20px 0;
-            width: 70%;
-            font-size: 2.5rem;
-            line-height: 1;
-
-            @include respond(latop-max) {
-                font-size: 2rem;
-            }
-
-            @include respond(latop-min) {
+            h3 {
+                margin: 0;
                 font-size: $rem1_5;
+                font-weight: normal;
+
+                @include respond(latop-max) {
+                    font-size: $rem1_2;
+                }
+
+                @include respond(latop-min) {
+                    font-size: $rem1;
+
+                }
 
             }
-        }
 
-        p {
-            width: 80%;
-            font-size: $rem1;
-            margin: 0 auto 20px 0;
+            div {
+                margin: 20px 0;
+                width: 70%;
+                font-size: 2.5rem;
+                line-height: 1;
+                font-weight: normal;
 
-            @include respond(latop-max) {
-                font-size: $rem0_8;
-                margin: 0 auto 10px 0;
+                @include respond(latop-max) {
+                    font-size: 2rem;
+                }
+
+                @include respond(latop-min) {
+                    font-size: $rem1_5;
+
+                }
+
+                @include respond(ipadpro) {
+                    width: 90%;
+                }
             }
 
-            @include respond(latop-min) {
-                font-size: $rem0_8;
-                margin: 0 auto 10px 0;
+            p {
+                width: 80%;
+                font-size: $rem1;
+                margin: 0 auto 20px 0;
+
+                @include respond(latop-max) {
+                    font-size: $rem0_8;
+                    margin: 0 auto 10px 0;
+                }
+
+                @include respond(latop-min) {
+                    font-size: $rem0_8;
+                    margin: 0 auto 10px 0;
+                }
+
+                @include respond(ipadpro) {
+                    width: 100%;
+                    margin: 0 auto;
+                }
+
             }
         }
     }
 }
+
 
 
 .act_nowposterbox {
@@ -826,6 +925,10 @@
     top: 0%;
     right: 0%;
 
+    @include respond(ipadpro) {
+        position: static;
+        position: relative;
+    }
 
     .act_nowposter {
         width: 600px;
@@ -836,20 +939,26 @@
         z-index: 2;
         margin: auto auto;
 
+        @include respond(ipadpro) {
+            // position: static;
+            top: -40%;
+            right: -20%;
+        }
+
 
         @include respond(latop-max) {
-            width: 300px;
-            height: 390px;
+            width: 400px;
+            height: 408px;
             bottom: 15%;
             left: 15%;
 
         }
 
         @include respond(latop-min) {
-            width: 200px;
-            height: 260px;
-            top: 0%;
-            left: 5%;
+            width: 300px;
+            height: 306px;
+            bottom: 15%;
+            left: 15%;
         }
 
 
@@ -870,7 +979,7 @@
         @include respond(latop-max) {
             width: 600px;
             height: 450px;
-            bottom: 0%;
+            bottom: 5%;
             left: -5%;
 
         }
@@ -879,7 +988,15 @@
             width: 450px;
             height: 300px;
             bottom: 20%;
-            left: -7%;
+            left: -3%;
+        }
+
+        @include respond(ipadpro) {
+            width: 500px;
+            height: 350px;
+            bottom: 45%;
+            left: 15%;
+            z-index: -1;
         }
 
         img {
@@ -921,6 +1038,11 @@
 
         @include respond(latop-min) {
             font-size: $rem1_2;
+            margin: 0 0 40px 70px;
+        }
+
+        @include respond(ipadpro) {
+            margin: 0 0 40px 20px;
         }
     }
 
@@ -937,14 +1059,26 @@
             min-width: 200px;
         }
 
+        @include respond(ipadpro) {
+            width: 75%;
+
+        }
+
         .act_now-marry {
-            width: 90%;
-            height: 90%;
+            width: 85%;
+            height: 85%;
             margin: auto auto;
 
             @include respond(latop-max) {
                 width: 100%;
                 height: 100%;
+            }
+
+            @include respond(ipadpro) {
+                // position: static;
+                width: 70%;
+                margin: 0 auto;
+
             }
 
             img {
@@ -971,10 +1105,19 @@
             }
 
             @include respond(latop-min) {
-
                 top: -25%;
                 left: -60%;
             }
+
+            @include respond(ipadpro) {
+                width: 550px;
+                height: 400px;
+                top: 0%;
+                left: -15%;
+
+
+            }
+
 
             img {
                 width: 100%;
@@ -993,26 +1136,34 @@
         width: 60%;
         display: inline-block;
         margin: 0 0 0 50px;
-        min-height: 400px; ;
+        min-height: 400px;
+        ;
         background-image:
             url(../img/activity/0.blackline.svg),
             url(../img/activity/text-wh.png);
         background-repeat: no-repeat;
         background-size: cover, 95% 95%;
-        background-position-x: center, right;
+        background-position-x: center;
         padding: 10px;
         position: absolute;
         top: 20%;
-        right: 0;
+        right: 2%;
         text-align: center;
 
         @include respond(latop-max) {
-            min-height: 500px;
+            // min-height: 450px;
             width: 60%;
         }
 
         @include respond(latop-min) {
-            min-height: 550px;
+            // min-height: 550px;
+
+        }
+
+        @include respond(ipadpro) {
+            position: static;
+            width: 90%;
+            margin: 0 auto;
 
         }
 
@@ -1022,34 +1173,55 @@
             width: 90%;
             margin: 0 auto;
             text-align: center;
-          
+
 
             h3 {
                 font-size: $rem1_5;
                 margin: 0;
                 padding-bottom: 10px;
                 font-weight: normal;
+
+                @include respond(latop-max) {
+                    font-size: $rem1_2;
+                }
+
+                @include respond(latop-min) {
+
+                    font-size: $rem1;
+                }
             }
 
+
+
+
+
             p {
-             
+
                 font-size: $rem1;
                 width: 80%;
                 margin: 5px auto;
                 text-align: left;
 
+                @include respond(latop-min) {
+
+                    font-size: $rem0_8;
+                }
+
+
             }
+
             .act_from-button-box {
-               
+
                 text-align: center;
-                margin:0 auto 30px auto;
+                margin: 0 auto 30px auto;
                 padding-top: 20px;
-    
+
                 button {
                     margin-top: 20px;
                     @include butttonn02();
                 }
-                input{
+
+                input {
                     margin-top: 20px;
                     @include butttonn02();
                 }
@@ -1057,12 +1229,17 @@
 
 
             div {
-              
+
                 font-size: $rem1;
                 margin: 0;
                 padding: 0 0 5px 0;
                 text-align: left;
                 width: 100%;
+
+                @include respond(ipadpro) {
+                    font-size: $rem0_8;
+
+                }
 
                 label {
                     @include buttonno04();
@@ -1075,6 +1252,11 @@
                     margin: 0;
                     padding: 0;
                     display: inline-block;
+
+                    @include respond(latop-min) {
+                        font-size: $rem1;
+                    }
+
                 }
 
                 #act_Sign-up-song-name {
@@ -1147,7 +1329,8 @@
                 overflow: hidden;
 
             }
-            .act_showSong-information{
+
+            .act_showSong-information {
                 font-size: $rem0_6;
                 border: 1px #d0d6d6 solid;
                 margin: 0;
@@ -1155,7 +1338,7 @@
                 padding: 2px 0;
                 width: 100%;
                 overflow: hidden;
-                word-break:break-all;
+                word-break: break-all;
             }
 
         }
@@ -1182,6 +1365,7 @@
     }
 
 
+
     .act_Now-Vote-content {
         height: 400px;
         max-width: 1500px;
@@ -1191,7 +1375,7 @@
         background-image:
             url(../img/activity/0.blackline.svg),
             url(../img/activity/text-wh.png);
-        background-size: contain 100% 100%;
+        background-size: contain 90% 90%;
         background-repeat: no-repeat;
         background-position-x: center;
 
@@ -1201,6 +1385,10 @@
 
         }
 
+        @include respond(ipadpro) {
+            padding: 50px 0 0 50px;
+        }
+
         h2 {
             margin: 0;
             font-size: $rem2;
@@ -1208,6 +1396,11 @@
             @include respond(latop-max) {
                 font-size: $rem1_5;
             }
+
+            @include respond(latop-min) {
+                font-size: $rem1_2;
+            }
+
         }
 
         h3 {
@@ -1217,6 +1410,10 @@
 
             @include respond(latop-max) {
                 font-size: $rem1_2;
+            }
+
+            @include respond(latop-min) {
+                font-size: $rem1;
             }
         }
 
@@ -1228,12 +1425,20 @@
             @include respond(latop-max) {
                 font-size: $rem0_8;
             }
+
+            @include respond(ipadpro) {
+                width: 80%;
+            }
         }
 
         div {
             text-align: right;
             vertical-align: middle;
             padding-right: 100px;
+
+            @include respond(ipadpro) {
+                padding-right: 25px;
+            }
 
             h3 {
                 display: inline-block;
@@ -1254,6 +1459,15 @@
                 @include respond(latop-max) {
                     font-size: 2rem;
                 }
+
+                @include respond(latop-min) {
+                    font-size: $rem1_5;
+                }
+
+                @include respond(ipadpro) {
+                    font-size: $rem1_2;
+                }
+
             }
 
         }
@@ -1277,13 +1491,24 @@
     section {
         max-width: 1400px;
         width: 100%;
-        padding: 0 0 100px 50px;
+        padding: 0 0 100px 60px;
         margin: 150px auto 0 auto;
 
         @include respond(latop-max) {
             max-width: 900px;
             margin: 100px auto 0 auto;
+            padding: 0 0 100px 70px;
         }
+
+        @include respond(latop-min) {
+            padding: 0 0 100px 100px;
+
+        }
+
+        @include respond(ipadpro) {
+            padding: 0 0 100px 30px;
+        }
+
 
         div {
 
@@ -1293,6 +1518,11 @@
             margin-left: 3.5%;
             display: inline-block;
             margin-bottom: 50px;
+
+            @include respond(latop-min) {
+                width: 40%;
+
+            }
 
 
             p {
@@ -1413,6 +1643,11 @@
                     @include respond(latop-max) {
                         width: 150px;
                         height: 150px;
+                    }
+
+                    @include respond(latop-min) {
+                        width: 200px;
+                        height: 200px;
                     }
                 }
             }
