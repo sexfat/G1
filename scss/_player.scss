@@ -1063,6 +1063,10 @@ $mainRed : #de267d;
     z-index: 1001;
     display: none;
 
+    h4 {
+      font-size: $rem1_2;
+    }
+
     #myAllList {
       width: 90%;
       max-width: 500px;
@@ -1075,10 +1079,6 @@ $mainRed : #de267d;
       left: 50%;
       display: none;
       transform: translate(-50%, -50%);
-
-      h3 {
-        font-size: $rem1_5;
-      }
 
       .lightSelectMenu {
         clear: both;

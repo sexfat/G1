@@ -235,7 +235,7 @@ $mainRed : #de267d;
     padding: 5%;
     margin-left: 5%;
     margin-bottom: 10px;
-    min-height: 580px;
+    min-height: 720px;
     background-image: url('../img/library/blackline2.svg');
     background-repeat: no-repeat;
     background-size: cover;
@@ -269,6 +269,8 @@ $mainRed : #de267d;
     }
 
     .listInfo {
+
+
       .listCover {
         width: 200px;
         height: 200px;
@@ -381,6 +383,11 @@ $mainRed : #de267d;
 
     ul.songs {
       padding-top: 20px;
+      display: none;
+
+      &.chooseList {
+        display: block;
+      }
 
       li {
         padding: 10px 0;
@@ -614,6 +621,10 @@ $mainRed : #de267d;
       &:hover {
         transform: scale(1.1);
       }
+    }
+
+    h4 {
+      font-size: $rem1_2;
     }
 
     #myAllList {
