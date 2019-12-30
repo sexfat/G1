@@ -448,7 +448,7 @@
 
 
 
-                <div id="act_countdown">
+                <div id="act_countdown"  v-if=" content=='actNow'">
                     <p>
                         Activity end time countdown
                     </p>
@@ -524,7 +524,8 @@
                          <div>
                              <img src="./img/activity/collction-img/9tRTEPCMeYxqdFHAqf3FfA.jpg" alt="">
                             <div class="act_old-play">
-                                <img  src="./img/activity/play-collection.png">
+                                <!-- <img  src="./img/library/coverPlay-b.png" v-if="ActPlaySong=false" @click="ActPlaySong">
+                                <img  src="./img/library/coverPause-b.png" v-if="ActPlaySong=true" @click="ActPlaySong"> -->
                             </div>
                           
                         </div>
@@ -751,19 +752,19 @@
          
          
                  <div class="act_oldposterbox">
-                     <div class="act_oldposter-linetop">
+                     <!-- <div class="act_oldposter-linetop">
                          <img src="./img/activity/0.textline-top.svg" alt="">
-                     </div>
+                     </div> -->
                      <div class="act_oldposter">
-                         <img src="./img/activity/2017-poster.png" alt="">
+                         <img src="./img/activity/2017-poster02.png" alt="">
                      </div>
          
                      <div class="act_oldSplash-ink">
                          <img src="./img/activity/Splash-ink02.png" alt="">
                      </div>
-                     <div class="act_oldposter-linebotom">
+                     <!-- <div class="act_oldposter-linebotom">
                          <img src="./img/activity/0.textline-bottom.svg ">
-                     </div>
+                     </div> -->
          
                  </div>
          
@@ -1048,24 +1049,26 @@
                          </div>    
                     </div>
                     
-                   <article  v-if="formContent==0">
-                       <div class="act_form-page-box" >
+                <article v-if="formContent==0">
+                       <div>
                           <h3>Qualifications</h3>
                           <p>American Idol is an annual American singing competition 
                              which began its first season in June 11, 2002. 
                              Part of the Idol franchise, it originated from the UK reality program Pop Idol.
                          </p>
-                           <p>
+                           <p class="act_from-button-box">
                             <button type="button" @click="NextFormPage(1)">GO</button>
                           </p>
         
                        </div>
                    </article>
-                  
-                   <article  v-if="formContent==1">
+            
+                 <article  v-if="formContent==1">
                     <div >
                        <h3>Choose your contest song!</h3>
                      
+                         
+                  
                           <div>  
                             Upload from my local song:
                              <label  class="act_SignUPButton"for="act_SignUp-UpLoadSong">Upload</label>
@@ -1086,25 +1089,25 @@
                            </div>
 
                     
-                    <p class="act_From-button-box">
-                       <button type="button"  @click="BackFormPage(0)">Back</button>
-                       <button type="button"  @click="NextFormPage(2)">Next </button>
+                       <p class="act_from-button-box">
+                         <button type="button"  @click="BackFormPage(0)">Back</button>
+                         <button type="button"  @click="NextFormPage(2)">Next </button>
                        </p>
                     </div>
                     
                 </article>
-               
-                 <article v-if="formContent==2">
+
+                 <article  v-if="formContent==2">
                     <div >
                        <h3>Fill in your song information!</h3>
                        
-                            <div class="act_formContent-page2">
+                            <div>
                                 <h4>Song-name:</h4>
                                 <input type="text" id="act_Sign-up-song-name"maxlength="20"
                                         v-model="SongName"    placeholder="Your song name!"       >
                             </div>
 
-                            <div  class="act_formContent-page2">
+                            <div>
                                 <h4>Song-information:</h4>
                                 <textarea id="act_Sign-up-song-information" 
                                           cols="40" rows="5" maxlength="150"
@@ -1113,21 +1116,19 @@
 
                             </div>
 
-                            <div  class="act_formContent-page2">
+                            <div>
                                 <h4>Song-img:</h4>
-                                <div>
+                              
                                     Upload The album cover:
                                    <label class="act_SignUPButton2"  for="act_SignUp-Song-img">Upload</label>
                                    <input type="file" id="act_SignUp-Song-img" style="display:none" @change="changeSignUpImg">
                                    <div class="act_showSignUpImg" v-if="SignUpImg"> <img :src="SignUpImg" alt=""></div>
                                    
-                                </div>
-
+                            
                             </div>
 
-
                     
-                    <p class="act_From-button-box">
+                    <p class="act_from-button-box">
                       <button type="button"  @click="BackFormPage(1)">Back</button>
                       <button type="button" @click="NextFormPage(3)">Next </button>
                       </p>
@@ -1167,24 +1168,27 @@
                                 <p  class="act_SignSongURL-box" v-if="SignSongURL">{{SignSongURL}}</p> 
                            </div>
 
-                         <p class="act_From-button-box">
+                         <p class="act_from-button-box">
                            <button type="button"  @click="BackFormPage(2)">Back</button>
                            <input type="submit" value="Comfirm" @click="NextFormPage(4)" class="signUpComfirm">
                          </p>
                      
                     </div>
                     
-                </article> 
-                <article  v-if="formContent==4">
+                </article>  
+                <article v-if="formContent==4">
                     <div >
                        <h3>Qualifications</h3>
                        <p>American Idol is an annual American singing competition 
                           which began its first season in June 11, 2002. 
                           Part of the Idol franchise, it originated from the UK reality program Pop Idol.
                       </p>
-                       <button type="button" disable style="background-color:gray ">GO</button>
+                      <p class="act_from-button-box">
+                            <button type="button" disable style="background-color:gray ">GO</button>
+                      </p>
+                     
                     </div>
-                </article>
+                </article> 
              
                  </section>
                  <section id="act_Now-Vote"> 
@@ -1386,7 +1390,8 @@
 
             data: function () {
                 return {
-                    formContent: 3,
+
+                    formContent: 0,
                     MemberName: "Bob",
                     MenberEmail: "Bob@gmail.com",
                     SongName: "",
@@ -1394,6 +1399,7 @@
                     SignUpImg: "",
                     SignSongURL: "",
                     SignSongURLSelect: "",
+                    // ActPlaySong=false,
 
 
                 }
@@ -1425,7 +1431,13 @@
                 SignUploadLoader(song) {
                     this.SignSongURL = song.target.result;
                 },
-
+                // ActPlaySong(e){
+                //     if(ActPlaySong==false){
+                //         ActPlaySong==true;
+                //     }else{
+                //         ActPlaySong==false;
+                //     }
+                // }
             },
 
 
@@ -1443,7 +1455,7 @@
             el: '#activity',
 
             data: {
-                content: 'actNow',
+                content: 'actOld',
                 tabImgON: './img/activity/button-on.png',
                 tabImgOFF: './img/activity/button-off.png',
                 sectionAnchor: './img/activity/button2-on.png',
@@ -1470,6 +1482,7 @@
                 SignUpImg: "",
                 SignSongURL: "",
                 SignSongURLSelect: "",
+                // ActPlaySong=false,
 
             },
             computed: {
@@ -1523,10 +1536,14 @@
             },
             mounted() {
                 // nav_bar start
-                document.querySelector('.mem_list ul').setAttribute('style', `height: ${window.innerHeight}px;`);
-                document.querySelector('.mobile_list ul').setAttribute('style', `height: ${window.innerHeight}px;`);
-                document.querySelectorAll('.paint_border')[0].setAttribute('style', `height: ${window.innerHeight}px;`);
-                document.querySelectorAll('.paint_border')[1].setAttribute('style', `height: ${window.innerHeight}px;`);
+                document.querySelector('.mem_list ul').setAttribute('style',
+                `height: ${window.innerHeight}px;`);
+                document.querySelector('.mobile_list ul').setAttribute('style',
+                    `height: ${window.innerHeight}px;`);
+                document.querySelectorAll('.paint_border')[0].setAttribute('style',
+                    `height: ${window.innerHeight}px;`);
+                document.querySelectorAll('.paint_border')[1].setAttribute('style',
+                    `height: ${window.innerHeight}px;`);
 
                 document.addEventListener('click', () => {
                     this.mem_list = false;
@@ -1596,7 +1613,8 @@
                     //點愛心
                     $('.heart').click(function () {
                         if ($(this).hasClass('becomeRed')) {
-                            $(this).html('<i class="far fa-heart"></i>').removeClass('becomeRed');
+                            $(this).html('<i class="far fa-heart"></i>').removeClass(
+                                'becomeRed');
                         } else {
                             $(this).html('<i class="fas fa-heart"></i>').addClass('becomeRed');
                         }
@@ -1612,11 +1630,14 @@
 
                     $(".listPlay").click(function () {
                         if ($(this).hasClass('nowlistening')) {
-                            $(this).html('<i class="fas fa-play"></i>').removeClass("nowlistening");
+                            $(this).html('<i class="fas fa-play"></i>').removeClass(
+                                "nowlistening");
                             isPlaying(true);
                         } else {
-                            $(this).html('<i class="fas fa-pause"></i>').addClass("nowlistening");
-                            $("#player .songCover .listPlay").not(this).removeClass('nowlistening');
+                            $(this).html('<i class="fas fa-pause"></i>').addClass(
+                                "nowlistening");
+                            $("#player .songCover .listPlay").not(this).removeClass(
+                                'nowlistening');
                             isPlaying(false);
                         }
                     });
@@ -1632,26 +1653,26 @@
                         nowPlaying = 0, //現在播放的歌
                         audio = $("audio")[0], //撥放器
                         myPlaylist = [{
-                            title: "Lucid Dreamer",
-                            creator: "Spazz Cardigan",
-                            cover: "../img/library/cover1.jpg",
-                            filein: "../img/library/Lucid_Dreamer.mp3",
-                            totalTime: "3:11",
-                        },
-                        {
-                            title: "Spring In My Step",
-                            creator: "Silent Partner",
-                            cover: "../img/library/cover2.jpg",
-                            filein: "../img/library/Spring_In_My_Step.mp3",
-                            totalTime: "1:59",
-                        },
-                        {
-                            title: "On My Way Home",
-                            creator: "The 126ers",
-                            cover: "../img/library/cover3.jpg",
-                            filein: "../img/library/On_My_Way_Home.mp3",
-                            totalTime: "1:56",
-                        }
+                                title: "Lucid Dreamer",
+                                creator: "Spazz Cardigan",
+                                cover: "../img/library/cover1.jpg",
+                                filein: "../img/library/Lucid_Dreamer.mp3",
+                                totalTime: "3:11",
+                            },
+                            {
+                                title: "Spring In My Step",
+                                creator: "Silent Partner",
+                                cover: "../img/library/cover2.jpg",
+                                filein: "../img/library/Spring_In_My_Step.mp3",
+                                totalTime: "1:59",
+                            },
+                            {
+                                title: "On My Way Home",
+                                creator: "The 126ers",
+                                cover: "../img/library/cover3.jpg",
+                                filein: "../img/library/On_My_Way_Home.mp3",
+                                totalTime: "1:56",
+                            }
                         ];
 
                     $('#player audio').attr("src", myPlaylist[nowPlaying].filein);
@@ -1667,7 +1688,8 @@
                     //下一首按鈕 -- 切換下一首
                     $("#player .next").click(function () {
                         if (nowPlaying == myPlaylist.length - 1) {
-                            $("#player audio").attr("src", myPlaylist[myPlaylist.length - 1].filein);
+                            $("#player audio").attr("src", myPlaylist[myPlaylist.length - 1]
+                                .filein);
                         } else {
                             nowPlaying++;
                             $("#player audio").attr("src", myPlaylist[nowPlaying].filein);
@@ -1718,7 +1740,8 @@
 
                     //clickBar -- 詳細(b)/簡易(s)
                     $(".player_b .progressbar").click(function (e) {
-                        let progressBarSize_b = parseInt($(".player_b .progressbar").css("width"));
+                        let progressBarSize_b = parseInt($(".player_b .progressbar").css(
+                            "width"));
                         let mouseX_b = e.clientX - $(".player_b .progressbar").offset().left;
                         $(".player_b .progressbar .progress").css('width', `${mouseX_b}px`);
 
@@ -1726,7 +1749,8 @@
                         audio.currentTime = newTime_b;
                     });
                     $(".player_s .progressbar").click(function (e) {
-                        let progressBarSize_s = parseInt($(".player_s .progressbar").css("width"));
+                        let progressBarSize_s = parseInt($(".player_s .progressbar").css(
+                            "width"));
                         let mouseX_s = e.clientX - $(".player_s .progressbar").offset().left;
                         $(".player_s .progressbar .progress").css('width', `${mouseX_s}px`);
 
@@ -1797,7 +1821,8 @@
 
                         // console.log(audio.duration); //歌曲總長秒數
                         $("#player .progress").css("width", `${progressColor.toFixed(2)}%`);
-                        $("#player span.start").text(`${parseInt(songTime / 60)}:${parseInt(songTime % 60)}`)
+                        $("#player span.start").text(
+                            `${parseInt(songTime / 60)}:${parseInt(songTime % 60)}`)
                         $("#player span.end").text(myPlaylist[nowPlaying].totalTime);
                     }
 
