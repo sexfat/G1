@@ -4,18 +4,15 @@
 	<meta charset="UTF-8">
 	<meta name="viewport" content="width=device-width, initial-scale=1.0">
 	<meta http-equiv="X-UA-Compatible" content="ie=edge">
-  <title>Document</title>
+  <title>Log in</title>
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.11.2/css/all.min.css" />
   <script src="https://cdnjs.cloudflare.com/ajax/libs/vue/2.6.10/vue.js"></script>
   <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
   <link rel="stylesheet" href="./css/main.css">
-
 </head>
 <body class="loginbody">
+  <!-- nav_bar and player -->
   <div id="app">
-    <!-- 記得包在 Vue 裡-->
-
-
     <!-- nav_bar start -->
     <div class="nav_bar flexbox">
         <div class="hamburger" @click="hamburger_click">
@@ -119,10 +116,6 @@
         </div>
     </div>
     <!-- nav_bar end -->
-
-
-
-
     <!-- player start -->
     <div id="player">
       <audio src="" id="audioPlayer"></audio>
@@ -362,38 +355,36 @@
       </div>
     </div>
     <!-- player end -->
-
-
-
-
-</div>
+  </div>
+  <!-- the end of the nav_bar and player -->
+  <!-- start to the content -->
   <div class="signupcontainer">
     <div class="greenblock">
       <div class="whiteform">
         <div class="signup displaynone">
           <h1>Register</h1>
-            <form autocomplete="off">
-              <label>E-mail:</label>
-              <input type="email"class="emailinput">
-              <label>Password:</label>
-              <input type="password"class="emailinput">
-              <label>Confirm password:</label>
-              <input type="password"class="emailinput">
+          <form autocomplete="off">
+            <label>E-mail:</label>
+            <input type="email"class="emailinput">
+            <label>Password:</label>
+            <input type="password"class="emailinput">
+            <label>Confirm password:</label>
+            <input type="password"class="emailinput">
             <button>Create</button>
-            </form>
-          </div>
-          <div class="signin">
-              <h1>Sign in</h1>
-              <form  autocomplete="off">
-              <label>E-mail:</label>
-              <input type="text" class="emailinput">
-              <label >Password:</label>
-              <input type="password" >
-              <a href="">forget password?</a>
-              <button>Log in</button>
-            </form>
-          </div>
+          </form>
         </div>
+        <div class="signin">
+            <h1>Sign in</h1>
+            <form  autocomplete="off">
+            <label>E-mail:</label>
+            <input type="text" class="emailinput">
+            <label >Password:</label>
+            <input type="password" >
+            <a href="" class="forgetpswlightbox">forget password?</a>
+            <button>Log in</button>
+          </form>
+        </div>
+      </div>
         <div class="leftbox">
           <h2 class="title"><span>EDM</span><br>IN SOUNDWAVE</h2>
           <img class="flower smaller" src="./img/register/flower.png" alt="1357d638624297b" border="0">
@@ -408,59 +399,86 @@
         </div>
       </div>
     </div>
-<div id=mobilelogintab>
-  <ul class="motabtitle">
-    <li><a href="#mobilelogintab1">Sign in</a></li>
-    <li><a href="#mobilelogintab2">Register</a></li>
-  </ul>
-  <div id="mobilelogintab1" class="motabinner">
-    <form>
-      <label>E-mail:</label>
-      <input type="text" class="mobileemailinput">
-      <label >Password:</label>
-      <input type="password" >
-      <a href="">forget password?</a>
-      <button>Log in</button>
-    </form>
+  <div id=mobilelogintab>
+    <ul class="motabtitle">
+      <li><a href="#mobilelogintab1">Sign in</a></li>
+      <li><a href="#mobilelogintab2">Register</a></li>
+    </ul>
+    <div id="mobilelogintab1" class="motabinner">
+      <form>
+        <label>E-mail:</label>
+        <input type="text" class="mobileemailinput">
+        <label >Password:</label>
+        <input type="password" >
+        <a href="">forget password?</a>
+        <button>Log in</button>
+      </form>
+    </div>
+    <div id="mobilelogintab2" class="motabinner">
+      <form autocomplete="off">
+        <label>E-mail:</label>
+        <input type="email" class="mobileemailinput">
+        <label>Password:</label>
+        <input type="password" class="mobileemailinput">
+        <label>Confirm password:</label>
+        <input type="password" class="mobileemailinput">
+        <button>Create</button>
+      </form>
+    </div>
   </div>
-  <div id="mobilelogintab2" class="motabinner">
-    <form autocomplete="off">
-              <label>E-mail:</label>
-              <input type="email" class="mobileemailinput">
-              <label>Password:</label>
-              <input type="password" class="mobileemailinput">
-              <label>Confirm password:</label>
-              <input type="password" class="mobileemailinput">
-            <button>Create</button>
-            </form>
+  <!-- the end of the content -->
+  <!-- lightbox -->
+  <div class="loginforgetpsw1 lightCover">
+    <div class="loginforgetpsw2 lightbox_s">
+      <div class="loginlightboxclose closeLight"><i class="fas fa-times"></i></div>
+      <h4>Return password</h4>
+      <label class="emailchecklabel">Please enter your e-mail:</label> <br>
+      <input class="emailcheckinput" type="text"> <br>
+      <button class="emailcheck">ok</button>
+    </div>
   </div>
-</div>
-
+  <!-- the end of light box -->
 </body>
+<!-- the script of myself -->
 <script>
+  //the lightbox forgetpswlightbox
+  $('.forgetpswlightbox').click(function () {
+    $('.loginforgetpsw1').show();
+    $('.loginforgetpsw2').show();
+  });
+  $('.loginlightboxclose').click(function () {
+    $('.loginforgetpsw1').hide();
+    $('.loginforgetpsw1').children('div').hide();
+  });
+  //email check status
+  $('.emailcheck').click(function(){
+    $('.emailchecklabel').text('Please check the confirmation in your E-mail.');
+    $('.emailcheckinput').hide();
+  });
+  //the change of the div
   $('#signup').click(function() {
-  $('.whiteform').css('transform', 'translateX(80%)');
-  $('.signin').addClass('displaynone');
-  $('.signup').removeClass('displaynone');
-});
-
-$('#signin').click(function() {
-  $('.whiteform').css('transform', 'translateX(0%)');
-  $('.signup').addClass('displaynone');
-  $('.signin').removeClass('displaynone');
-});
-</script>
-<script>
-$(function(){
-  var $li = $('ul.motabtitle li');
-      $($li. eq(0) .addClass('active').find('a').attr('href')).siblings('.motabinner').hide();
-  
-      $li.click(function(){
+    $('.whiteform').css('transform', 'translateX(80%)');
+    $('.signin').addClass('displaynone');
+    $('.signup').removeClass('displaynone');
+    });
+  $('#signin').click(function() {
+      $('.whiteform').css('transform', 'translateX(0%)');
+      $('.signup').addClass('displaynone');
+      $('.signin').removeClass('displaynone');
+    });
+    //loging/out status change
+    // mobile version the tab
+  $(function(){
+    var $li = $('ul.motabtitle li');
+        $($li. eq(0) .addClass('active').find('a').attr('href')).siblings('.motabinner').hide();
+        $li.click(function(){
           $($(this).find('a'). attr ('href')).show().siblings ('.motabinner').hide();
           $(this).addClass('active'). siblings ('.active').removeClass('active');
+        });
       });
-  });
 </script>
+<!-- the end of my script -->
+<!-- the public version -->
 <script>
   new Vue({
       el: "#app",
@@ -469,7 +487,6 @@ $(function(){
           search_bar: false,
           mem_list: false,
           mem_login: false,
-          
       },
       mounted() {
           // nav_bar start
@@ -477,12 +494,10 @@ $(function(){
           document.querySelector('.mobile_list ul').setAttribute('style', `height: ${window.innerHeight}px;`);
           document.querySelectorAll('.paint_border')[0].setAttribute('style', `height: ${window.innerHeight}px;`);
           document.querySelectorAll('.paint_border')[1].setAttribute('style', `height: ${window.innerHeight}px;`);
-
           document.addEventListener('click', () => {
               this.mem_list = false;
               this.search_bar = false;
               this.mobile_list = false;
-
               document
                   .querySelector(".search_bar")
                   .setAttribute("style", "height: 0px; filter: opacity(0);");
@@ -494,213 +509,182 @@ $(function(){
                   .setAttribute("style", "transform: translateX(-270px); filter: opacity(0);");
           });
           // nav_bar end
-
-
-
           // player start
           $(document).ready(function () {
-  //撥放器縮放
-  $('#expand').click(function () {
-    $('.player_b').addClass('open');
-    $('.player_s').animate({
-      bottom: '-70px'
-    });
-  });
-  $('#closePlayer').click(function () {
-    $('.player_b').removeClass('open');
-    $('.player_s').animate({
-      bottom: '0'
-    });
-  });
+          //撥放器縮放
+          $('#expand').click(function () {
+            $('.player_b').addClass('open');
+            $('.player_s').animate({
+              bottom: '-70px'
+            });
+          });
+          $('#closePlayer').click(function () {
+            $('.player_b').removeClass('open');
+            $('.player_s').animate({
+              bottom: '0'
+            });
+          });
+          //手機推移
+          $('.left .pushBtn').click(function () {
+            $('.left').css('height', '10%');
+            $('.right').css('height', '90%');
+            $('.right .pushBtn').show();
+            $('.left .pushBtn').hide();
+          });
+          $('.right .pushBtn').click(function () {
+            $('.left').css('height', '90%');
+            $('.right').css('height', '10%');
+            $('.left .pushBtn').show();
+            $('.right .pushBtn').hide();
+          });
+          //select選歌單
+          $('#player .selectBtn').click(function () {
+            $('#player .lightCover').show();
+            $('#player #myAllList').show();
+          });
+          //歌單清單
+          $('.closeLight').click(function () {
+            $('.lightCover').hide();
+            $('#myAllList').hide();
+          });
+          $('.lightCover').click(function () {
+            $(this).hide();
+            $('#myAllList').hide();
+          });
+          //點愛心
+          $('.heart').click(function () {
+            if ($(this).hasClass('becomeRed')) {
+              $(this).html('<i class="far fa-heart"></i>').removeClass('becomeRed');
+            } else {
+              $(this).html('<i class="fas fa-heart"></i>').addClass('becomeRed');
+            }
+          });
+          //點歌單撥放，左側專輯唱片動畫
+          $('.songCover').mouseover(function () {
+            $(this).find('.listPlay').show();
+          });
+          $('.songCover').mouseout(function () {
+            $(this).find('.listPlay').hide();
+          });
+          $(".listPlay").click(function () {
+            if ($(this).hasClass('nowlistening')) {
+              $(this).html('<i class="fas fa-play"></i>').removeClass("nowlistening");
+              isPlaying(true);
+            } else {
+              $(this).html('<i class="fas fa-pause"></i>').addClass("nowlistening");
+              $("#player .songCover .listPlay").not(this).removeClass('nowlistening');
+              isPlaying(false);
+            }
+          });
+          /* -------------- 音樂播放 -------------- */
+          let storage = localStorage;
+          var autoplay = false,
+            songTime,
+            progressingTime,
+            playStatus = false,
+            nowPlaying = 0, //現在播放的歌
+            audio = $("audio")[0], //撥放器
+            myPlaylist = [{
+                title: "Lucid Dreamer",
+                creator: "Spazz Cardigan",
+                cover: "../img/library/cover1.jpg",
+                filein: "../img/library/Lucid_Dreamer.mp3",
+                totalTime: "3:11",
+              },
+              {
+                title: "Spring In My Step",
+                creator: "Silent Partner",
+                cover: "../img/library/cover2.jpg",
+                filein: "../img/library/Spring_In_My_Step.mp3",
+                totalTime: "1:59",
+              },
+              {
+                title: "On My Way Home",
+                creator: "The 126ers",
+                cover: "../img/library/cover3.jpg",
+                filein: "../img/library/On_My_Way_Home.mp3",
+                totalTime: "1:56",
+              }
+            ];        
+          $('#player audio').attr("src", myPlaylist[nowPlaying].filein);
+          // isStorageHave();
 
-  //手機推移
-  $('.left .pushBtn').click(function () {
-    $('.left').css('height', '10%');
-    $('.right').css('height', '90%');
-    $('.right .pushBtn').show();
-    $('.left .pushBtn').hide();
-  });
-  $('.right .pushBtn').click(function () {
-    $('.left').css('height', '90%');
-    $('.right').css('height', '10%');
-    $('.left .pushBtn').show();
-    $('.right .pushBtn').hide();
-  });
+          //播放暫停按鈕 -- 音樂撥放/暫停
+          $("#player .play").click(function () {
+            // console.log(nowPlaying);
+            // console.log(playStatus);
+            isPlaying(playStatus);
+          });
 
-  //select選歌單
-  $('#player .selectBtn').click(function () {
-    $('#player .lightCover').show();
-    $('#player #myAllList').show();
-  });
+          //下一首按鈕 -- 切換下一首
+          $("#player .next").click(function () {
+            if (nowPlaying == myPlaylist.length - 1) {
+              $("#player audio").attr("src", myPlaylist[myPlaylist.length - 1].filein);
+            } else {
+              nowPlaying++;
+              $("#player audio").attr("src", myPlaylist[nowPlaying].filein);
+            }
+            if (playStatus == true) {
+              isPlaying(false);
+            } else {
+              isPlaying(true);
+            }
+          });
 
-  //歌單清單
-  $('.closeLight').click(function () {
-    $('.lightCover').hide();
-    $('#myAllList').hide();
-  });
-  $('.lightCover').click(function () {
-    $(this).hide();
-    $('#myAllList').hide();
-  });
+          //上一首按鈕 -- 切換上一首
+          $("#player .prev").click(function () {
+            if (nowPlaying == 0) {
+              $("#player audio").attr("src", myPlaylist[0].filein);
+            } else {
+              nowPlaying--;
+              $("#player audio").attr("src", myPlaylist[nowPlaying].filein);
+            }
+            if (playStatus == true) {
+              isPlaying(false);
+            } else {
+              isPlaying(true);
+            }
+          });
 
-  //點愛心
-  $('.heart').click(function () {
-    if ($(this).hasClass('becomeRed')) {
-      $(this).html('<i class="far fa-heart"></i>').removeClass('becomeRed');
-    } else {
-      $(this).html('<i class="fas fa-heart"></i>').addClass('becomeRed');
-    }
-  });
+          //停止按鈕 -- 音樂全數停止
+          $("#player .stop").click(function () {
+            audio.pause();
+            audio.currentTime = 0;
+            isPlaying(true);
+            $("#player .songCover .listPlay").removeClass('nowlistening');
+          });
 
-  //點歌單撥放，左側專輯唱片動畫
-  $('.songCover').mouseover(function () {
-    $(this).find('.listPlay').show();
-  });
-  $('.songCover').mouseout(function () {
-    $(this).find('.listPlay').hide();
-  });
+          //循環播放 -- 單首
+          $("#player .loop").click(function () {
+            if ($(this).hasClass("becomeYel")) {
+              $(this).removeClass("becomeYel");
+              audio.loop = false;
+              autoChange(true);
+            } else {
+              $(this).addClass("becomeYel");
+              audio.loop = true;
+              autoChange(false);
+            }
+          });
+          //隨機播放 -- 清單隨機--未處理
+          //maybe有靜音 volIcon
+          //clickBar -- 詳細(b)/簡易(s)
+          $(".player_b .progressbar").click(function (e) {
+            let progressBarSize_b = parseInt($(".player_b .progressbar").css("width"));
+            let mouseX_b = e.clientX - $(".player_b .progressbar").offset().left;
+            $(".player_b .progressbar .progress").css('width', `${mouseX_b}px`);
 
-  $(".listPlay").click(function () {
-    if ($(this).hasClass('nowlistening')) {
-      $(this).html('<i class="fas fa-play"></i>').removeClass("nowlistening");
-      isPlaying(true);
-    } else {
-      $(this).html('<i class="fas fa-pause"></i>').addClass("nowlistening");
-      $("#player .songCover .listPlay").not(this).removeClass('nowlistening');
-      isPlaying(false);
-    }
-  });
+            let newTime_b = mouseX_b / (progressBarSize_b / audio.duration);
+            audio.currentTime = newTime_b;
+          });
+          $(".player_s .progressbar").click(function (e) {
+            let progressBarSize_s = parseInt($(".player_s .progressbar").css("width"));
+            let mouseX_s = e.clientX - $(".player_s .progressbar").offset().left;
+            $(".player_s .progressbar .progress").css('width', `${mouseX_s}px`);
 
-
-
-  /* -------------- 音樂播放 -------------- */
-  let storage = localStorage;
-  var autoplay = false,
-    songTime,
-    progressingTime,
-    playStatus = false,
-    nowPlaying = 0, //現在播放的歌
-    audio = $("audio")[0], //撥放器
-    myPlaylist = [{
-        title: "Lucid Dreamer",
-        creator: "Spazz Cardigan",
-        cover: "../img/library/cover1.jpg",
-        filein: "../img/library/Lucid_Dreamer.mp3",
-        totalTime: "3:11",
-      },
-      {
-        title: "Spring In My Step",
-        creator: "Silent Partner",
-        cover: "../img/library/cover2.jpg",
-        filein: "../img/library/Spring_In_My_Step.mp3",
-        totalTime: "1:59",
-      },
-      {
-        title: "On My Way Home",
-        creator: "The 126ers",
-        cover: "../img/library/cover3.jpg",
-        filein: "../img/library/On_My_Way_Home.mp3",
-        totalTime: "1:56",
-      }
-    ];
-
-  $('#player audio').attr("src", myPlaylist[nowPlaying].filein);
-  // isStorageHave();
-
-  //播放暫停按鈕 -- 音樂撥放/暫停
-  $("#player .play").click(function () {
-    // console.log(nowPlaying);
-    // console.log(playStatus);
-    isPlaying(playStatus);
-  });
-
-  //下一首按鈕 -- 切換下一首
-  $("#player .next").click(function () {
-    if (nowPlaying == myPlaylist.length - 1) {
-      $("#player audio").attr("src", myPlaylist[myPlaylist.length - 1].filein);
-    } else {
-      nowPlaying++;
-      $("#player audio").attr("src", myPlaylist[nowPlaying].filein);
-    }
-    if (playStatus == true) {
-      isPlaying(false);
-    } else {
-      isPlaying(true);
-    }
-  });
-
-  //上一首按鈕 -- 切換上一首
-  $("#player .prev").click(function () {
-    if (nowPlaying == 0) {
-      $("#player audio").attr("src", myPlaylist[0].filein);
-    } else {
-      nowPlaying--;
-      $("#player audio").attr("src", myPlaylist[nowPlaying].filein);
-    }
-    if (playStatus == true) {
-      isPlaying(false);
-    } else {
-      isPlaying(true);
-    }
-  });
-
-  //停止按鈕 -- 音樂全數停止
-  $("#player .stop").click(function () {
-    audio.pause();
-    audio.currentTime = 0;
-    isPlaying(true);
-    $("#player .songCover .listPlay").removeClass('nowlistening');
-  });
-
-  //循環播放 -- 單首
-  $("#player .loop").click(function () {
-    if ($(this).hasClass("becomeYel")) {
-      $(this).removeClass("becomeYel");
-      audio.loop = false;
-      autoChange(true);
-    } else {
-      $(this).addClass("becomeYel");
-      audio.loop = true;
-      autoChange(false);
-    }
-  });
-  //隨機播放 -- 清單隨機--未處理
-
-  //maybe有靜音 volIcon
-
-
-
-  //clickBar -- 詳細(b)/簡易(s)
-  $(".player_b .progressbar").click(function (e) {
-    let progressBarSize_b = parseInt($(".player_b .progressbar").css("width"));
-    let mouseX_b = e.clientX - $(".player_b .progressbar").offset().left;
-    $(".player_b .progressbar .progress").css('width', `${mouseX_b}px`);
-
-    let newTime_b = mouseX_b / (progressBarSize_b / audio.duration);
-    audio.currentTime = newTime_b;
-  });
-  $(".player_s .progressbar").click(function (e) {
-    let progressBarSize_s = parseInt($(".player_s .progressbar").css("width"));
-    let mouseX_s = e.clientX - $(".player_s .progressbar").offset().left;
-    $(".player_s .progressbar .progress").css('width', `${mouseX_s}px`);
-
-    let newTime_s = mouseX_s / (progressBarSize_s / audio.duration);
-    audio.currentTime = newTime_s;
-  });
-
-  /* -- local -- */
-  // function isStorageHave() {
-  //   let newSongTime;
-  //   if(storage.length != 0){
-  //     newSongTime = storage.getItem(1);
-  //     console.log(newSongTime);
-  //   }else{
-  //     console.log(newSongTime);
-  //   }
-  // }
-
-
-
+            let newTime_s = mouseX_s / (progressBarSize_s / audio.duration);
+            audio.currentTime = newTime_s;
+          });
   function isPlaying(isPlaying) {
     if (!isPlaying) { //如果沒有播放就讓他撥
       playAudio();
@@ -728,8 +712,6 @@ $(function(){
   function playAudio() {
     audio.play();
   }
-
-
   //進度條
   progressingTime = setInterval(progressingShow, 100);
   let newSong = nowPlaying; //測試
@@ -739,19 +721,11 @@ $(function(){
     if (audio.ended) {
       autoChange(true);
     }
-    // if(newSong == nowPlaying){
-    //   storage.setItem(newSong, songTime);
-    // }else{
-    //   storage.clear();
-    //   storage.setItem(nowPlaying, songTime);
-    // }
-
     // console.log(audio.duration); //歌曲總長秒數
     $("#player .progress").css("width", `${progressColor.toFixed(2)}%`);
     $("#player span.start").text(`${parseInt(songTime / 60)}:${parseInt(songTime % 60)}`)
     $("#player span.end").text(myPlaylist[nowPlaying].totalTime);
   }
-
   //自動換下一首
   function autoChange(autoStatus) {
     if (autoStatus) {
@@ -904,4 +878,5 @@ $(function(){
       }
   });
 </script>
+<!-- the end of the public version -->
 </html>
