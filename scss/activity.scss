@@ -15,8 +15,8 @@
     margin: 180px auto 50px auto;
 
     @include respond(latop-max) {
-        max-width: 1000px;
-        height: 450px;
+        max-width: 1100px;
+        height: 500px;
     }
 
     @include respond(latop-min) {
@@ -33,10 +33,11 @@
         min-width: 360px;
         height: 250px;
     }
+
     @include respond(phone) {
-        height: 200px;
+        height: 190px;
         margin: 120px auto 50px auto;
-     }
+    }
 
 
     img {
@@ -64,9 +65,10 @@
             height: 40px;
             top: -8%;
         }
+
         @include respond(phone) {
             top: -10%;
-         }
+        }
 
 
     }
@@ -101,9 +103,10 @@
             width: 45%;
             top: 10%;
         }
+
         @include respond(phone) {
             display: none;
-         }
+        }
     }
 
     #act_sectionAnchor {
@@ -179,9 +182,10 @@
                 left: 0%;
                 top: -5px;
             }
+
             @include respond(phone) {
                 display: none;
-             }
+            }
 
 
 
@@ -217,7 +221,7 @@
                     font-size: $rem0_6;
 
                 }
-              
+
 
             }
         }
@@ -226,10 +230,15 @@
     #act_oldyear_Anchor {
 
         position: absolute;
-        left: 50%;
+        left: 45%;
         bottom: 5%;
         width: 300px;
         height: 50px;
+
+        @include respond(ipadpro) {
+            bottom: 1%;
+
+        }
 
         a {
 
@@ -240,13 +249,27 @@
             img {
                 width: 50px;
                 height: 50px;
+
+                @include respond(ipadpro) {
+                    width: 40px;
+                    height: 40px;
+                }
             }
 
             span {
                 font-size: $rem1_5;
                 margin-right: 10px;
                 font-weight: bold;
+
+                @include respond(latop-max) {
+                    font-size: $rem1_2;
+                }
+
+                @include respond(ipadpro) {
+                    font-size: $rem1;
+                }
             }
+
         }
 
     }
@@ -293,10 +316,11 @@
             top: -5px;
             padding: 0;
         }
+
         @include respond(phone) {
             left: -35%;
             top: -10px;
-         }
+        }
 
         &:hover {
             transform: scale(1.1);
@@ -354,7 +378,7 @@
     @include respond(latop-min) {
         max-height: 200px;
     }
-   
+
 
 }
 
@@ -421,10 +445,11 @@
         left: 20%;
         bottom: -35%;
     }
+
     @include respond(phone) {
         left: 10%;
         bottom: -40%;
-     }
+    }
 
     p {
         vertical-align: bottom;
@@ -484,12 +509,33 @@
 
 .act_old_years {
     position: relative;
+    left: 80px;
     background-image: url(../img/activity/0.blackline.svg);
-    height: 700px;
-    max-width: 1300px;
+    max-height: 700px;
+    max-width: 1400px;
     width: 100%;
-    padding: 100px 0 0 150px;
+    padding: 100px 0 0 180px;
     margin: 150px auto 0 auto;
+
+    @include respond(latop-max) {
+        max-width: 1100px;
+        padding: 100px 0 0 140px;
+        left: 0;
+    }
+
+    @include respond(latop-min) {
+        max-width: 950px;
+        padding: 100px 0 0 100px;
+        max-height: 600px;
+    }
+
+    @include respond(ipadpro) {
+        max-width: 750px;
+        padding: 50px 0 0 75px;
+        max-height: 570px;
+        margin: 100px auto 0 auto;
+
+    }
 
     .act_oldink {
         position: absolute;
@@ -498,6 +544,15 @@
         z-index: -1;
         width: 500px;
         height: 400px;
+
+        @include respond(ipadpro) {
+            width: 350px;
+            height: 250px;
+            top: -15%;
+            left: -5%;
+
+        }
+
 
         img {
             width: 100%;
@@ -508,16 +563,41 @@
     div {
         width: 40%;
 
+        @include respond(latop-min) {
+            width: 50%;
+        }
+
+
         .act_year {
             font-size: 2.5rem;
             font-weight: bold;
             display: inline-block;
+
+            @include respond(latop-max) {
+                font-size: 2rem;
+                padding: 0;
+            }
+
+            @include respond(latop-min) {
+                font-size: $rem1_5;
+
+            }
+
 
         }
 
         h2 {
             font-size: $rem2;
             margin: 0;
+
+            @include respond(latop-max) {
+                font-size: $rem1_5;
+            }
+
+            @include respond(latop-min) {
+                font-size: $rem1_2;
+
+            }
         }
 
         h3 {
@@ -525,27 +605,83 @@
             font-size: $rem1_5;
             margin: 0;
             font-weight: normal;
+
+            @include respond(latop-max) {
+                font-size: $rem1_2;
+                margin: 10px auto 0 auto;
+            }
+
+            @include respond(latop-min) {
+                font-size: $rem1;
+                width: 80%;
+
+            }
         }
 
         p {
             display: inline-block;
             max-width: 600px;
             font-size: $rem1;
+
+            @include respond(latop-max) {
+                margin: 10px auto;
+            }
+
+            @include respond(latop-min) {
+                font-size: $rem0_8;
+                width: 80%;
+
+            }
+
+            @include respond(ipadpro) {
+                width: 80%;
+
+            }
         }
 
         .act_oldVotes {
+            width: 100%;
+            border: solid black 1px;
+
+            @include respond(latop-max) {
+                padding: 0;
+            }
 
             h3 {
                 display: inline-block;
                 font-size: $rem1_5;
-                margin: 0;
+                margin: 20px auto 0 auto;
                 font-weight: normal;
+
+                @include respond(latop-max) {
+                    font-size: $rem1_2;
+                    width: 20%;
+                }
+
+                @include respond(ipadpro) {
+                    font-size: $rem1;
+                    width: 25%;
+                }
             }
 
             span {
                 font-size: 2.5rem;
                 font-weight: bold;
                 color: #333;
+
+                @include respond(latop-max) {
+                    font-size: 2rem;
+                    padding: 0;
+                }
+
+                @include respond(latop-min) {
+                    font-size: $rem1_5;
+
+                }
+
+                @include respond(ipadpro) {
+                    font-size: $rem1_2;
+                }
             }
         }
     }
@@ -562,9 +698,30 @@
             width: 500px;
             height: 590px;
             position: absolute;
-            bottom: 5%;
-            right: 15%;
+            bottom: 2%;
+            right: 10%;
             z-index: 2;
+
+            @include respond(latop-max) {
+                bottom: 2%;
+                right: 5%;
+            }
+
+            @include respond(latop-min) {
+                width: 350px;
+                height: 413px;
+                bottom: 10%;
+                right: 0;
+            }
+
+            @include respond(ipadpro) {
+                width: 300px;
+                height: 354px;
+                bottom: 20%;
+                right: 0%;
+
+            }
+
 
             img {
                 width: 100%;
@@ -575,10 +732,32 @@
         .act_oldSplash-ink {
             position: absolute;
             bottom: -20%;
-            left: -25%;
+            left: -35%;
             z-index: 1;
             width: 800px;
             height: 600px;
+
+            @include respond(latop-max) {
+                bottom: -20%;
+                left: -45%;
+            }
+
+            @include respond(latop-min) {
+                width: 600px;
+                height: 400px;
+                left: -10%;
+                bottom: -5%;
+                z-index: -1;
+            }
+
+            @include respond(ipadpro) {
+                width: 500px;
+                height: 350px;
+                left: -12%;
+                bottom: 10%;
+                z-index: -1;
+
+            }
 
             img {
                 width: 100%;
@@ -591,30 +770,83 @@
 }
 
 .act_oldsongbox {
+    padding: 100px 0 100px 130px;
+    max-width: 1400px;
+    margin: 50px 120px 0px auto;
+    font-size: 0;
+    border: rebeccapurple 1px solid;
 
-    margin-top: 75px;
-    padding: 100px 135px;
-    width: 1500px;
-    margin: 50px auto 0 auto;
+    @include respond(latop-max) {
+        padding: 100px 0 100px 150px;
+    }
+
+    @include respond(latop-min) {
+        padding: 100px 0 100px 100px;
+    }
+
+    @include respond(ipadpro) {
+        padding: 100px 0 100px 80px;
+
+    }
+
+    @include respond(ipadpro) {
+        padding: 100px 0 100px 50px;
+
+    }
 
     .act_oldTop {
         text-align: left;
         width: 100%;
         max-width: 1400px;
-        padding: 100px 0 0 50px;
+
+        // padding: 100px 0 0 50px;
+        @include respond(ipadpro) {
+            max-width: 900px;
+
+        }
 
         h3 {
             font-size: $rem1_5;
             margin: 0 0px 30px 20px;
             font-weight: normal;
+
+            @include respond(latop-max) {
+                font-size: $rem1_2;
+                margin: 0 0px 30px 10px;
+            }
+
+            @include respond(latop-min) {
+                margin: 0 0px 30px 15px;
+            }
+
+
         }
 
         div {
 
             text-align: left;
-            width: 30%;
-            margin-left: 2%;
+            width: 24%;
+            margin-left: 20px;
             display: inline-block;
+
+            @include respond(latop-max) {
+                width: 220px;
+                margin-right: 20px;
+
+            }
+
+            @include respond(latop-min) {
+                width: 180px;
+                margin-right: 15px;
+
+            }
+
+            @include respond(ipadpro) {
+                width: 130px;
+                margin-left: 3%;
+                margin-right: 20px;
+
+            }
 
             h4 {
                 width: 90%;
@@ -623,11 +855,11 @@
                 font-weight: normal;
 
                 @include respond(latop-max) {
-                    font-size: $rem0_8;
+                    font-size: $rem1;
                 }
 
                 @include respond(latop-min) {
-                    font-size: $rem0_6;
+                    font-size: $rem0_8;
 
                 }
 
@@ -694,6 +926,23 @@
                 img {
                     width: 250px;
                     height: 250px;
+
+                    @include respond(latop-max) {
+                        width: 200px;
+                        height: 200px;
+                    }
+
+                    @include respond(latop-min) {
+                        width: 180px;
+                        height: 180px;
+
+                    }
+
+                    @include respond(ipadpro) {
+                        width: 130px;
+                        height: 130px;
+                    }
+
                 }
             }
         }
@@ -719,24 +968,59 @@
 .act_oldAll {
     text-align: left;
     width: 100%;
-    margin-top: 75px;
     max-width: 1400px;
-    padding: 100px 0 0 50px;
+    padding: 100px 0 0 0px;
     margin: 50px auto 0px auto;
+
+    @include respond(latop-max) {
+        max-width: 1100px;
+        margin: 50px auto 0px 0;
+    }
+
+    @include respond(ipadpro) {
+        padding: 50px 0 0 0px;
+
+    }
 
     h3 {
         font-size: $rem1_5;
-        margin: 0 0px 30px 0px;
+        margin: 0 0px 30px 20px;
         font-weight: normal;
+
+        @include respond(latop-max) {
+            font-size: $rem1_2;
+            margin: 0 0px 30px 10px;
+        }
+
+        @include respond(latop-min) {
+            margin: 0 0px 30px 15px;
+        }
 
     }
 
     div {
         text-align: left;
         width: 20%;
-        margin-left: 3.5%;
+        margin-left: 2%;
         margin-bottom: 50px;
         display: inline-block;
+
+        @include respond(latop-max) {
+            width: 20%;
+            margin-left: 4%;
+
+        }
+
+        @include respond(latop-min) {
+            width: 160px;
+            margin-left: 20px;
+        }
+
+        @include respond(ipadpro) {
+            width: 20%;
+            margin-left: 4%;
+
+        }
 
 
         .act_songBox {
@@ -828,6 +1112,18 @@
             img {
                 width: 200px;
                 height: 200px;
+
+                @include respond(latop-max) {
+                    width: 150px;
+                    height: 150px;
+
+                }
+
+                @include respond(ipadpro) {
+                    width: 100px;
+                    height: 100px;
+
+                }
 
 
             }
@@ -1034,6 +1330,11 @@
             right: 10%;
         }
 
+        @include respond(phone) {
+
+            right: 5%;
+
+        }
 
 
         img {
@@ -1075,10 +1376,11 @@
         @include respond(ipad) {
             left: 10%;
         }
+
         @include respond(phone) {
-            left: -30%;
-         }
-        
+            left: -32%;
+        }
+
 
         img {
             width: 100%;
@@ -1130,9 +1432,10 @@
         @include respond(ipadpro) {
             margin: 20px 0 20px 0px;
         }
+
         @include respond(phone) {
-            margin: 0 ;
-         }
+            margin: 0;
+        }
     }
 
     div {
@@ -1152,7 +1455,7 @@
         @include respond(ipadpro) {
             width: 70%;
             // left: 25px;
-            
+
 
         }
 
@@ -1160,7 +1463,7 @@
             width: 85%;
             height: 85%;
             margin: auto auto;
-            
+
 
             @include respond(latop-max) {
                 width: 90%;
@@ -1174,9 +1477,10 @@
                 margin: 0 auto;
 
             }
+
             @include respond(phone) {
-               position: relative;
-               left: 45px;
+                position: relative;
+                left: 45px;
             }
 
 
@@ -1222,11 +1526,12 @@
                 height: 450px;
                 left: -20%;
             }
+
             @include respond(phone) {
                 width: 600px;
                 height: 450px;
                 left: -40%;
-             }
+            }
 
 
             img {
@@ -1284,6 +1589,7 @@
             margin: 0 auto 0 50px;
             text-align: center;
             overflow: hidden;
+
             @include respond(phone) {
                 margin: 0 auto 0 25px;
             }
@@ -1341,7 +1647,7 @@
                     @include butttonn02();
                     margin-right: 10px;
                 }
-               
+
 
             }
 
@@ -1353,12 +1659,13 @@
                 padding: 0 0 10px 0;
                 text-align: left;
                 width: 90%;
-              
-               
+
+
                 @include respond(ipadpro) {
                     font-size: $rem0_8;
 
                 }
+
                 @include respond(phone) {
                     width: 100%;
                     margin-left: 30px;
@@ -1517,9 +1824,11 @@
         @include respond(ipadpro) {
             padding: 50px 0 0 75px;
         }
+
         @include respond(ipad) {
             padding: 50px 0 0 30px;
         }
+
         @include respond(phone) {
             padding: 50px 0 20px 30px;
             min-height: 350px;
@@ -1644,11 +1953,14 @@
         @include respond(ipadpro) {
             padding: 0 0 100px 75px;
         }
+
         @include respond(ipad) {
             padding: 0 0 100px 30px;
         }
+
         @include respond(phone) {
-            margin: 75px auto 0 auto;
+            margin: 75px auto 0px auto;
+            padding: 0 0 100px 40px;
         }
 
 
@@ -1791,11 +2103,12 @@
                         width: 200px;
                         height: 200px;
                     }
+
                     @include respond(phone) {
                         width: 100px;
                         height: 100px;
                     }
-                    
+
                 }
             }
 
