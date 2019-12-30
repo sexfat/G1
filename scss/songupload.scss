@@ -23,9 +23,6 @@
     margin: 0 auto; 
     box-sizing: border-box;
     padding: 0px;
-    // @include respond(latop-max){
-    //     width: 1000px;
-    // }
 }
 
 .songsadded_lif {
@@ -54,6 +51,23 @@
     .songsadded_lif{
         width: 800px;
         margin-left: 60px;
+    }
+}
+@media screen and (max-width:878px){
+    .songsadded_lif{
+        width: 700px;
+        margin-left: 84px;
+    }
+}
+@media screen and (max-width:800px){
+    .songsadded_lif{
+        margin-left: 45px;
+    }
+}
+@media screen and (max-width:768px){
+    .songsadded_lif{
+        width: 550px;
+        margin-left: 105px;
     }
 }
 
@@ -88,10 +102,35 @@
         margin-left: 60px;
     }
 }
+@media screen and (max-width:878px){
+    .songsadded_inside,
+    .songsadded_inside2{
+        width: 700px;
+        margin-left: 84px;
+    }
+}
+@media screen and (max-width:800px){
+    .songsadded_inside,
+    .songsadded_inside2{
+        margin-left: 45px;
+    }
+}
+@media screen and (max-width:768px){
+    .songsadded_inside,
+    .songsadded_inside2{
+        width: 550px;
+        margin-left: 105px;
+    }
+}
 
 .songsadded_inside{
     height: 400px;
     // border: 1px solid red;
+}
+@media screen and (max-width:768px){
+    .songsadded_inside{
+        height: 740px;
+    }
 }
 
 .songsadded_inside div{
@@ -118,6 +157,24 @@
         width: 400px;
     }
 }
+@media screen and (max-width:878px){
+    .songsadded_inside div{
+        font-size: $rem0_8;
+        position: relative;
+        top: 10px;
+        left: 330px;
+    }
+}
+@media screen and (max-width:768px){
+    .songsadded_inside div{
+        position: relative;
+        top: 10px;
+        left: 130px;
+    }
+    #add_pp{
+        width: 215px !important;
+    }
+}
 
 .songsadded_inside article{
     // border: 1px solid firebrick;
@@ -132,6 +189,19 @@
     .songsadded_inside article{
         width: 200px;
         margin-left: -70px;
+    }
+}
+@media screen and (max-width:878px){
+    .songsadded_inside article{
+        width: 100px;
+        margin-left: -100px;
+    }
+}
+@media screen and (max-width:768px){
+    .songsadded_inside article{
+        width: 500px;
+        height: 330px;
+        margin-left: 15px;
     }
 }
 
@@ -183,6 +253,11 @@
         right: 60px;
     }
 }
+@media screen and (max-width:878px){
+    .uploadmic img{
+        right: 70px;
+    }
+}
 
 .songsadded_inside2 {
     padding: 40px 0px;
@@ -197,6 +272,11 @@
 @media screen and (max-width:936px){
     .songsadded_inside2 li{
         width: 650px;
+    }
+}
+@media screen and (max-width:878px){
+    .songsadded_inside2 li{
+        width: 580px;
     }
 }
 
@@ -264,6 +344,11 @@
         margin-left: 73px;
     }
 }
+@media screen and (max-width:878px){
+    .songsadded_inside2 ol{
+        margin-left: 55px;
+    }
+}
 .songsadded_inside2 article{
    float: left;
 }
@@ -277,6 +362,14 @@
         position: relative;
         top: 20px;
         left: 250px;
+        font-size: $rem0_8;
+    }
+}
+@media screen and (max-width:878px){
+    .songsadded_inside2 div{
+        position: relative;
+        top: 20px;
+        left: 210px;
         font-size: $rem0_8;
     }
 }
@@ -318,6 +411,16 @@
         right: -25px;
     }
 }
+@media screen and (max-width:878px){
+    .songinfo_bb{
+        right: 70px;
+    }
+}
+@media screen and (max-width:768px){
+    .songinfo_bb{
+        right: -100px;
+    }
+}
 #infopath{
     // border: 1px solid #d0d6d6;
     width: 400px;
@@ -344,10 +447,41 @@
     }
     #add_tta{
         width: 365px;
-
     }
 }
+@media screen and (max-width:878px){
+    .songsadd_path{
+        left: -330px;
+    }
+}
+@media screen and (max-width:768px){
+    .songsadd_path{
+        left: -130px;
+    }
+}
+
+
 .sd_btn{
     @include buttonno04();
 }
-
+@media screen and (max-width:878px){
+    .sd_btn{
+        position: relative;
+        top: 10px;
+    }
+    #add_tta{
+        width: 340px;
+        height: 110px;
+    }
+}
+@media screen and (max-width:768px){
+    .sd_btn{
+        position: relative;
+        top: 20px;
+        left: 20px;
+    }
+    #add_tta{
+        width: 310px;
+        height: 110px;
+    }
+}
