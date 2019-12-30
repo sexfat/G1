@@ -2,6 +2,7 @@ $mainRed : #de267d;
 
 #player {
   width: 100%;
+  height: auto;
   position: fixed;
   bottom: 0;
   z-index: 1000;
@@ -12,6 +13,7 @@ $mainRed : #de267d;
   p {
     margin: 0;
     padding: 0;
+    font-weight: normal;
   }
 
   i {
@@ -283,23 +285,22 @@ $mainRed : #de267d;
           margin: -5px 0 1%;
 
           .volicon {
+            cursor: pointer;
             float: left;
           }
 
           .volLine {
-            position: relative;
+            cursor: pointer;
             float: left;
             margin: 6px 8px;
-            height: 2px;
+            height: 3px;
             width: 100px;
             background-color: white;
 
             .volControl {
-              position: absolute;
-              width: 5px;
-              height: 10px;
-              background-color: white;
-              margin: -4px;
+              width: 50%;
+              height: 100%;
+              background: $yellow;
             }
           }
 
@@ -520,7 +521,8 @@ $mainRed : #de267d;
           &:hover {
             transform: scale(1.1);
           }
-          img{
+
+          img {
             width: 25px;
             height: 25px;
           }
@@ -668,6 +670,7 @@ $mainRed : #de267d;
 
             .volicon {
               float: left;
+              cursor: pointer;
 
               @include respond(latop-max) {
                 width: 3%;
@@ -691,10 +694,10 @@ $mainRed : #de267d;
             }
 
             .volLine {
-              position: relative;
+              cursor: pointer;
               float: left;
               margin: 6px 8px;
-              height: 2px;
+              height: 3px;
               width: 100px;
               background-color: white;
 
@@ -722,11 +725,9 @@ $mainRed : #de267d;
               }
 
               .volControl {
-                position: absolute;
-                width: 5px;
-                height: 10px;
-                background-color: white;
-                margin: -4px;
+                width: 50%;
+                height: 100%;
+                background: $yellow;
               }
             }
           }
@@ -898,12 +899,9 @@ $mainRed : #de267d;
         }
 
         .selectBtn {
+          @include buttonno04;
           float: right;
-          border: 2px solid $yellow;
-          padding: 5px 8px;
           cursor: pointer;
-          background-color: rgba(255, 255, 255, 0.5);
-          font-size: 0.7rem;
         }
       }
 
@@ -1013,10 +1011,12 @@ $mainRed : #de267d;
               float: right;
               text-align: center;
               transition: transform 0.5s;
-              img{
+
+              img {
                 width: 25px;
                 height: 25px;
               }
+
               &:hover {
                 transform: scale(1.1);
               }
@@ -1129,6 +1129,7 @@ $mainRed : #de267d;
 
     button {
       @include butttonn02;
+      width: 120px;
       transition: transform 0.5s;
 
       @include respond(phone) {
