@@ -29,6 +29,17 @@ $albumbottom: 340px;
             width: 100%;
         }
     }
+    .collectioneyes{
+        border: 1px solid pink;
+        width:100%;
+        display: inline-block;
+        position: relative;
+        bottom:28vh;
+        img{
+            max-width:120px;
+            margin:0px 50px 0px 50px;
+        }
+    }
     .collectionalbumsection1{
         // border: 1px solid pink;
         width:100%;
@@ -82,6 +93,10 @@ $albumbottom: 340px;
                         img{
                             width:80px;
                             height: 80px;
+                            transition: transform .5s;
+                            &:hover{
+                                transform: scale(1.1);
+                            }
                             @include respond(latop-max) {
                                 width: 50px;
                                 height: 50px;
@@ -95,8 +110,12 @@ $albumbottom: 340px;
                     // border: 1px solid pink;
                     text-align: left;
                     img{
-                        width: 40px;
-                        height: 40px;
+                        width: 25px;
+                        height: 25px;
+                        transition: transform .5s;
+                        &:hover {
+                            transform: scale(1.1);
+                          }
                         @include respond(latop-max) {
                             width: 30px;
                             height: 30px;
@@ -157,7 +176,7 @@ $albumbottom: 340px;
         font-weight: bold;
         border: 1px solid $yellow;
         background-color: $yellow;
-        color: white;
+        color: #333;
         outline: none;
         cursor: pointer;
         transition: transform .5s;

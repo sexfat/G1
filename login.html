@@ -428,20 +428,37 @@
   </div>
   <!-- the end of the content -->
   <!-- lightbox -->
-  <!-- <div class="loginforgetpsw1 lightCover">
+  <div class="loginforgetpsw1 lightCover">
     <div class="loginforgetpsw2 lightbox_s">
       <i class="fas fa-times"></i>
       <h4>Return password</h4>
-      <input type="text"> <br>
-      <button class="">ok</button>
+      <label class="emailchecklabel">Please enter your e-mail:</label> <br>
+      <input class="emailcheckinput" type="text"> <br>
+      <button class="emailcheck">ok</button>
     </div>
-  </div> -->
+  </div>
   <!-- the end of light box -->
 </body>
-
-
 <!-- the script of myself -->
 <script>
+     //the lightbox forgetpswlightbox
+     $('.forgetpswlightbox').click(function () {
+      $('.loginforgetpsw1').show();
+      $('.loginforgetpsw2').show();
+    });
+    $('.closeLight').click(function () {
+      $('.loginforgetpsw1').hide();
+      $('.loginforgetpsw1').children('div').hide();
+    });
+    $('.loginforgetpsw1').click(function () {
+      $(this).hide();
+      $(this).children('div').hide();
+    });
+    //email check status
+    $('.emailcheck').click(function(){
+      $('.emailchecklabel').text('Please check the confirmation in your E-mail.');
+      $('.emailcheckinput').hide();
+    });
   //the change of the div
   $('#signup').click(function() {
     $('.whiteform').css('transform', 'translateX(80%)');
@@ -453,13 +470,7 @@
       $('.signup').addClass('displaynone');
       $('.signin').removeClass('displaynone');
     });
-    //the lightbox
-    // $('.forgetpswlightbox').click(function () {
-    //   $('.lightCover').show();
-    // });
-    // $('.closeLight').click(function () {
-    //   $('.lightCover').hide();
-    // });
+    //loging/out status change
     // mobile version the tab
   $(function(){
     var $li = $('ul.motabtitle li');
