@@ -129,7 +129,7 @@
 }
 @media screen and (max-width:768px){
     .songsadded_inside{
-        height: 740px;
+        height: 730px;
     }
 }
 
@@ -258,6 +258,11 @@
         right: 70px;
     }
 }
+@media screen and (max-width:768px){
+    .uploadmic img{
+        right: 85px;
+    }
+}
 
 .songsadded_inside2 {
     padding: 40px 0px;
@@ -277,6 +282,14 @@
 @media screen and (max-width:878px){
     .songsadded_inside2 li{
         width: 580px;
+    }
+}
+@media screen and (max-width:768px){
+    .songsadded_inside2 li{
+        width: 480px;
+    }
+    .songsadded_inside2 {
+        height: 900px;
     }
 }
 
@@ -349,8 +362,22 @@
         margin-left: 55px;
     }
 }
+@media screen and (max-width:768px){
+    .songsadded_inside2 ol{
+        margin-left: 30px;
+        height: 600px;
+    }
+}
 .songsadded_inside2 article{
    float: left;
+}
+@media screen and (max-width:768px){
+    .songsadded_inside2 article{
+        width: 300px;
+        height: 300px;
+        position: relative;
+        left: 95px;
+    }
 }
 .songsadded_inside2 div{
     position: relative;
@@ -371,6 +398,13 @@
         top: 20px;
         left: 210px;
         font-size: $rem0_8;
+    }
+}
+@media screen and (max-width:768px){
+    .songsadded_inside2 div{
+        position: relative;
+        top: 20px;
+        left: 95px;
     }
 }
 // .inside2 div .ins2box{
@@ -477,8 +511,8 @@
 @media screen and (max-width:768px){
     .sd_btn{
         position: relative;
-        top: 20px;
-        left: 20px;
+        top: 10px;
+        left: 30px;
     }
     #add_tta{
         width: 310px;
