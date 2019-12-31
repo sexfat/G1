@@ -247,6 +247,16 @@
     }
 }
 
+@media screen and (max-width:376px){
+    .songsadded_inside div{
+        position: relative;
+        top: 10px;
+        left: 30px;
+    }
+}
+
+
+
 .songsadded_inside article{
     // border: 1px solid firebrick;
     width: 500px;
@@ -283,7 +293,7 @@
 
 @media screen and (max-width:376px){
     .songsadded_inside article{
-        margin-left: -60px;
+        margin-left: -90px;
     }
 }
 
@@ -463,7 +473,7 @@
 
 @media screen and (max-width:376px){
     .songsadded_inside2 ol{
-        margin-left: -30px;
+        margin-left: -65px;
     }
 }
 
@@ -560,6 +570,12 @@
         right: -130px;
     }
 }
+@media screen and (max-width:376px){
+    .songinfo_bb{
+        right: -180px;
+    }
+}
+
 #infopath{
     // border: 1px solid #d0d6d6;
     width: 400px;
@@ -604,6 +620,12 @@
     }
 }
 
+@media screen and (max-width:376px){
+    .songsadd_path{
+        left: -30px;
+    }
+}
+
 
 .sd_btn{
     @include buttonno04();
@@ -637,5 +659,11 @@
     #add_tta{
         width: 290px;
         height: 110px;
+    }
+}
+@media screen and (max-width:376px){
+    .sd_btn{
+        position: relative;
+        left: 20px;
     }
 }
