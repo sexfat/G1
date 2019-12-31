@@ -296,6 +296,7 @@ $(document).ready(function () {
   let newSong = nowPlaying; //測試
   function progressingShow() {
     songTime = audio.currentTime;
+    // localStorage["songTime"] = songTime;
     let progressColor = (songTime / audio.duration) * 100;
     if (audio.ended) {
       autoChange(true);
