@@ -429,7 +429,7 @@
             </div>
             <div class="collectionsinglecover">
               <div class="collalbumpic sampleblum6">
-                <div class="collplayer"><a href=""><img src="./img/library/coverPlay-b.png" alt=""></a></div>
+                63<div class="collplayer"><a href=""><img src="./img/library/coverPlay-b.png" alt=""></a></div>
               </div>
               <div class="collheart"><img src="./img/collection/grayheart.png" alt=""></div>
               <p> Dharma<br>
@@ -857,18 +857,19 @@
 <script>
   // CHANGE HEART
   $('.collheart').click(function () {
-            if ($(this).hasClass('becomeRed')) {
-              $(this).html('<img src="./img/collection/grayheart.png">').removeClass('becomeRed');
-            } else {
-              $(this).html('<img src="./img/collection/redheart.png">').addClass('becomeRed');
-            }
-          });
+    if ($(this).hasClass('becomeRed')) {
+      $(this).html('<img src="./img/collection/grayheart.png">').removeClass('becomeRed');
+    } else {
+      $(this).html('<img src="./img/collection/redheart.png">').addClass('becomeRed');
+    }
+  });
   // PLAY BUTTON
   $('.collalbumpic').hover(function () {
     $(this).find('.collplayer').css("display", "block");
   }, function () {
     $(this).find('.collplayer').css("display", "none");
   });
+  //PLAY AND PAUSE BUTTON
   // TAB CONTENT CHANGE
   $(function () {
     var $li = $('ul.collectiontabtitle li');
