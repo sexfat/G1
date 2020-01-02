@@ -12,19 +12,39 @@ $albumbottom: 340px;
     background-position:bottom;
     background-size: cover;
     background-repeat: no-repeat;
+    .playall_btns{
+        text-align: right;
+        margin: 2vw 20vw; 
+    }
+    .circlebtn {
+        width: 50px;
+        height: 50px;
+        vertical-align: middle;
+        line-height: 50px;
+        border-radius: 25px;
+        font-size: 0.8rem;
+        font-weight: bold;
+        border: 1px solid $yellow;
+        background-color: $yellow;
+        color: #333;
+        outline: none;
+        cursor: pointer;
+        transition: transform .5s;
+      
+        &:hover {
+          transform: scale(1.1);
+        }
+      }
     .collectionsection{
         padding: 0px 0px 70px 0px;
         .collectionradio{
             width:100%;
-            border:1px solid blue;
             font-size:0px;
-
             div{
                 width: 380px;
                 height: 300px;
                 max-width:380px;
                 display: inline-block;
-                border:1px solid green;
                 @include respond(latop-max) {
                     width: 320px;
                     height: 280px;
@@ -69,7 +89,6 @@ $albumbottom: 340px;
             .collgreenradio{
                 background-image: url(../img/collection/greenradio.png);
                 img{
-                    border: 1px solid green;
                     position: relative;
                     left:19%;
                     top:40%;
@@ -81,7 +100,6 @@ $albumbottom: 340px;
                     position: relative;
                     top:40%;
                     margin:0px 29px 0px 30px;
-                    border:1px solid orange;
                     @include respond(latop-max) {
                         margin:0px 22px 0px 17px;
                         right:5%;
@@ -97,7 +115,6 @@ $albumbottom: 340px;
                     position: relative;
                     top:40%;
                     right:23%;
-                    border: 1px solid red;
                 }
             }
         }
@@ -227,29 +244,6 @@ $albumbottom: 340px;
             }
         }
     }
-    .playall_btns{
-        text-align: right;
-        margin: 2vw 20vw; 
-    }
-    .circlebtn {
-        width: 50px;
-        height: 50px;
-        vertical-align: middle;
-        line-height: 50px;
-        border-radius: 25px;
-        font-size: 0.8rem;
-        font-weight: bold;
-        border: 1px solid $yellow;
-        background-color: $yellow;
-        color: #333;
-        outline: none;
-        cursor: pointer;
-        transition: transform .5s;
-      
-        &:hover {
-          transform: scale(1.1);
-        }
-      }
     .collectionsection{
         text-align: center;
         .collectionradio{
@@ -275,66 +269,97 @@ $albumbottom: 340px;
         }
         #collectiontabcontainer{
             .collectiontabtitle{
-                // border: 1px solid red;
                 margin: 2vw 0vw;
+                position: relative;
                 li{
                     list-style: none;
                     vertical-align: middle;
                     display: inline-block;
                     font-size: 2rem;
-                    margin: 20px;
-                    @include respond(ipadpro) {
-                        margin:5px;
-                    }
-                    @include respond(ipad) {
+                    width:230px;
+                    margin:20px;
+                    @include respond(latop-max) {
                         margin:0px;
                     }
-                    &:hover{
-                        transform: scale(1.1);
-                        // background-color: $mainBg;
-                        cursor: pointer;
-                        }
-                        a{
-                            color: #333;
-                            cursor: pointer;
-                            padding: 10px 20px;
-                        }
+                    @include respond(latop-min) {
+                        width:150px;
+                        height:100px;
+                        margin:10px;
+                    }
+                    @include respond(ipadpro){
+                        margin:10px;
+                        height:60px;
+                        width:100px;
+                    }
+                    @include respond(ipad){
+                        margin:5px;
+                        height:60px;
+                        width:80px;
+                    }
+                    @include respond(phone){
+                        margin:5px;
+                        height:50px;
+                        width:70px;
                     }
                     a{
-                        margin: 0px 40px 0px 40px;
-                        background-color: $yellow;
-                        border-radius: 5px;
-                        padding:10px 25px;
-                        @include respond(latop-max) {
-                            margin: 0px 20px 0px 20px;
+                        color: #333;
+                        transition: transform .5s;
+                        cursor: pointer;
+                        &:hover{
+                            transform: scale(1.1);
+                            }
+                        img{
+                            transition: transform .5s;
+                            &:hover{
+                                transform: scale(1.1);
+                                cursor: pointer;
+                                }
+                            @include respond(latop-min) {
+                                width:150px;
+                                margin:10px;
+                            }
+                            @include respond(ipadpro){
+                                width: 100px;
+                            }
+                            @include respond(ipad){
+                                width:80px;
+                            }
+                            @include respond(phone){
+                                width:70px;
+                            }
                         }
-                        @include respond(latop-min) {
-                            margin: 0px 10px 0px 10px;
-                            font-size:$rem1_5;
+                        span{
+                            position: relative;
+                            bottom:90px;
+                            transition: transform .5s;
+                            cursor: pointer;
+                            &:hover{
+                                transform: scale(1.1);
+                                }
+                            @include respond(latop-min) {
+                                font-size: $rem1_5;
+                                bottom:85px;
+                                left:7%;
+                                }
+                            @include respond(ipadpro){
+                                font-size: $rem1;
+                                bottom:79px;
+                                left:10%;
+                                }
+                            @include respond(ipad){
+                                font-size: $rem1;
+                                bottom:73px;
+                                left:13%;
+                                }
+                            @include respond(phone){
+                                font-size: $rem1;
+                                bottom:70px;
+                                left:15%;
+                                }
+                            }
                         }
-                        @include respond(ipadpro) {
-                            font-size:$rem1_5;
-                            margin: 0px;
-                        }
-                        @include respond(ipad) {
-                            font-size:$rem1;
-                            margin: 0px;
-                        }
-                        @include respond(phone) {
-                            font-size:0.9rem;
-                            margin: 0px;
-                        }
-                        
                     }
                 }
             }
-            .collectionflower{
-                text-align: right;
-                position: relative;
-                bottom:100px;
-                right:100px;
-                z-index:-1;
-            }
         }
-
     }
