@@ -61,6 +61,18 @@
   right: 250px;
   z-index: 3;
 }
+@media screen and (max-width:930px){
+  .songinfo_infoplay .music-player{
+      width: 400px;
+  }
+}
+@media screen and (max-width:603px){
+  .songinfo_infoplay .music-player{
+      width: 400px;
+      position: relative;
+      left: 30px;
+  }
+}
 
 .songinfo_infoplay .player-content-container {
   -webkit-transform: translateY(-50%);
@@ -111,6 +123,21 @@
   width: 315px;
   z-index: 10;
 }
+@media screen and (max-width:930px){
+  .songinfo_infoplay .album{
+      width: 280px;
+      height: 280px;
+  }
+}
+@media screen and (max-width:603px){
+  .songinfo_infoplay .album{
+      width: 240px;
+      height: 240px;
+      position: relative;
+      top: -70px;
+      left: -110px;
+  }
+}
 
 .songinfo_infoplay .album-art {
   background: #fff url("../img/songinfo/cover1.jpg") (center / cover) no-repeat;
@@ -120,6 +147,24 @@
   right: 50px;
   width: 400px;
   z-index: 10;
+}
+@media screen and (max-width:930px){
+  .songinfo_infoplay .album-art{
+      width: 300px;
+      height: 300px;
+      position: relative;
+      bottom: 20px;
+      right: 20px;
+  }
+}
+@media screen and (max-width:603px){
+  .songinfo_infoplay .album-art{
+      width: 250px;
+      height: 250px;
+      position: relative;
+      top: -10px;
+      left: -10px;
+  }
 }
 
 .songinfo_infoplay .vinyl {
@@ -143,6 +188,24 @@
   width: 350px;
   z-index: 5;
   will-change: transform, left;
+}
+@media screen and (max-width:930px){
+  .songinfo_infoplay .vinyl{
+      width: 260px;
+      height: 260px;
+      position: absolute;
+      top: 0px;
+  }
+}
+@media screen and (max-width:603px){
+  .songinfo_infoplay .vinyl{
+      // width: 240px;
+      // height: 240px;
+      // position: relative;
+      // top: -250px;
+      // left: -300px;
+      display: none;
+  }
 }
 
 .songinfo_infoplay .is-playing .vinyl {
@@ -178,6 +241,18 @@
   left: -70px;
   top: 20px;
 }
+@media screen and (max-width:930px){
+  .songinfo_infoplay .control-play{
+    position: relative;
+    left: -20px;
+  }
+}
+@media screen and (max-width:603px){
+  .songinfo_infoplay .control-play{
+    position: relative;
+    left: 20px;
+  }
+}
 
 // .songinfo_infoplay .is-playing .control-play {
 //   background: transparent url("https://s3-us-west-2.amazonaws.com/s.cdpn.io/83141/pause.svg") (center / cover) no-repeat;
@@ -209,6 +284,12 @@
   top: -78px;
   left: 210px;
 }
+@media screen and (max-width:930px){
+  .songinfo_infoplay .dona-donate{
+    position: relative;
+    top: -70px;
+  }
+}
 
 
 
@@ -233,6 +314,13 @@
   top: -75px;
   left: 75px;
 }
+@media screen and (max-width:930px){
+  .songinfo_infoplay .heart-like{
+    position: relative;
+    top: -115px;
+    left: 140px;
+  }
+}
 
 
 
@@ -252,6 +340,12 @@
   left: 120px;
   top: -32px;
   font-size: 0.7rem;
+}
+@media screen and (max-width:930px){
+  .song_tllike{
+    position: relative;
+    left: 100px;
+  }
 }
 
 // .songinfo_donate{
