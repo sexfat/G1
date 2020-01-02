@@ -13,8 +13,9 @@ $albumbottom: 340px;
     background-size: cover;
     background-repeat: no-repeat;
     .playall_btns{
+        border: 1px solid red;
         text-align: right;
-        margin: 2vw 20vw; 
+        margin: 2vw 20vw;
     }
     .circlebtn {
         width: 50px;
@@ -58,21 +59,21 @@ $albumbottom: 340px;
                     width:250px;
                     height:210px;
                     img{
-                        width:100px;
+                        width:90px;
                     }      
                 }
                 @include respond(ipadpro) {
-                    width:195px;
+                    width:185px;
                     height:155px;
                     img{
-                        width:60px;
+                        width:55px;
                     }
                 } 
                 @include respond(ipad) {
-                    width:145px;
+                    width:140px;
                     height:100px;
                     img{
-                        width:40px;
+                        width:39px;
                     }
                 } 
                 @include respond(phone) {
@@ -102,10 +103,14 @@ $albumbottom: 340px;
                     margin:0px 29px 0px 30px;
                     @include respond(latop-max) {
                         margin:0px 22px 0px 17px;
-                        right:5%;
+                        right:1%;
                     }
                     @include respond(latop-min) {
-                        margin:0px 12px 0px 1px;
+                        margin:0px 16px 0px 13px;
+                    }
+                    @include respond(phone) {
+                        margin:0px 5px 0px 6px;
+                        left:.5%;
                     }
                 }
             }
@@ -143,6 +148,13 @@ $albumbottom: 340px;
                 width:230px;
                 height: 230px;
                 text-align: left;
+                
+                span{
+                    font-size: $rem1;
+                    @include respond(latop-max) {
+                        font-size: $rem0_8;
+                    }
+                }
                 @include respond(latop-max) {
                     width:200px;
                     height: 200px;
@@ -161,10 +173,8 @@ $albumbottom: 340px;
                    
                     p{
                         position: relative;
-                        top:200px;
-                    }
-                    span{
                         font-size: $rem1;
+                        top:200px;
                     }
                     .collplayer{
                         position: relative;
@@ -203,6 +213,7 @@ $albumbottom: 340px;
                             height: 30px;
                         }
                     }
+
                     
                 }
                 .sampleblum1{
@@ -353,7 +364,7 @@ $albumbottom: 340px;
                                 }
                             @include respond(phone){
                                 font-size: $rem1;
-                                bottom:70px;
+                                bottom:65px;
                                 left:15%;
                                 }
                             }
