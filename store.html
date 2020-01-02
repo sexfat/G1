@@ -6,7 +6,6 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <meta http-equiv="X-UA-Compatible" content="ie=edge">
   <link rel="stylesheet" href="./css/main.css">
-  <link rel="stylesheet" href="./css/store.css">
   <script src='https://cdnjs.cloudflare.com/ajax/libs/jquery/3.4.1/jquery.js'></script>
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.11.2/css/all.min.css" />
   <title>Document</title>
@@ -123,6 +122,15 @@
   </header>
   <div id="store_app">
     <div class="store_big_box">
+      <img src="./img/member/bg_down.png" class="bg_down" v-if="step == 1">
+      <img src="./img/member/step1_bg.png" class="step1_bg" v-if="step == 1">
+      <img src="./img/member/bg_down2.png" class="bg_down2" v-if="step == 2">
+      <img src="./img/member/step2_bg.png" class="step2_bg" v-if="step == 2">
+      <img src="./img/member/bg_down3.png" class="bg_down3" v-if="step == 3">
+      <img src="./img/member/step3_bg.png" class="step3_bg" v-if="step == 3">
+      <img src="./img/member/bg_down4.png" class="bg_down4" v-if="step == 4">
+      <img src="./img/member/step4_bg.png" class="step4_bg" v-if="step == 4">
+
       <div class="wrapper store_wrapper">
         <!-- <img src="./img/member/color1.png" class="store_color1"> -->
         <!-- <img src="./img/member/color2.png" class="color2"> -->
@@ -156,7 +164,7 @@
             <h2 v-if="step == 1">Select Amount</h2>
             <h2 v-if="step == 2">Enter Card</h2>
             <h2 v-if="step == 3">Confirm Detail</h2>
-            <h2 v-if="step == 4">Done</h2>  
+            <h2 v-if="step == 4">Done</h2>
           </div>
           <div class="flow">
             <div class="col-xl-3">
@@ -198,47 +206,161 @@
         </div>
         <div class="store_step">
           <div class="col-xl-12 step choose_money" v-if="step == 1">
+            <!-- <img src="./img/member/step1_bg.png" class="step1_bg"> -->
+            <img src="./img/member/ribe.png" class="ribe">
+            <img src="./img/member/sm_ribe.png" class="sm_ribe">
             <div class="col-xl-3 col-6">
               <div class="col-xl-8 choose">
-                <img src="./img/member/choose_money.png">
-                <!-- <img src="./img/member/choose_money_blue.png"> -->
-                <p class="poa_center">$100</p class="poa_center">
+                <img src="./img/member/choose_money.png" v-if="isActive != 1" @click="isActive = 1;choose_money = 100">
+                <img src="./img/member/choose_money_blue.png" v-if="isActive == 1">
+                <p class="poa_center">$100</p>
               </div>
             </div>
             <div class="col-xl-3 col-6">
               <div class="col-xl-8 choose">
-                <img src="./img/member/choose_money2.png">
-                <!-- <img src="./img/member/choose_money_blue2.png"> -->
+                <img src="./img/member/choose_money2.png" v-if="isActive != 2" @click="isActive = 2;choose_money = 300">
+                <img src="./img/member/choose_money_blue2.png" v-if="isActive == 2">
                 <p class="poa_center">$300</p>
               </div>
             </div>
             <div class="col-xl-3 col-6">
               <div class="col-xl-8 choose">
-                <img src="./img/member/choose_money3.png">
+                <img src="./img/member/choose_money3.png" v-if="isActive != 3" @click="isActive = 3;choose_money = 500">
+                <img src="./img/member/choose_money_blue3.png" v-if="isActive == 3">
                 <p class="poa_center">$500</p>
               </div>
             </div>
             <div class="col-xl-3 col-6">
               <div class="col-xl-8 choose">
-                <img src="./img/member/choose_money4.png">
+                <img src="./img/member/choose_money4.png" v-if="isActive != 4"
+                  @click="isActive = 4;choose_money = 1000">
+                <img src="./img/member/choose_money_blue4.png" v-if="isActive == 4">
                 <p class="poa_center">$1000</p>
               </div>
             </div>
             <div class="col-xl-12 store_button">
               <div class="col-xl-6 btn" @click="step += 1">
-                  <p>Next</p>
+                <p>Next</p>
               </div>
             </div>
           </div>
-          <div class="col-xl-12 step" v-if="step == 2"></div>
-          <div class="col-xl-12 step" v-if="step == 3"></div>
-          <div class="col-xl-12 step" v-if="step == 4"></div>
+          <div class="col-xl-12 step enter_card" v-if="step == 2">
+            <div class="col-xl-4 col-12 card">
+              <img src="./img/member/bone_feet.png" class="bone">
+              <div class="col-xl-8 col-md-10 col-11 choosed">
+                <div class="col-xl-12 ">
+                  <h4>Store Value</h4>
+                </div>
+                <div class="col-xl-12 value">
+                  <img src="./img/member/choose_money.png">
+                  <p class="poa_center">${{choose_money}}</p>
+                </div>
+              </div>
+            </div>
+            <div class="col-xl-8 col-12 card cardinfo">
+              <div class="col-xl-11">
+                <div class="col-xl-12">
+                  <h4>Card Number: </h4>
+                </div>
+                <div class="col-xl-12">
+                  <input type="text" placeholder="4444444444444444" v-model="card_infos.card_number">
+                </div>
+              </div>
+              <div class="col-xl-11">
+                <div class="col-xl-12">
+                  <h4>CVC: </h4>
+                </div>
+                <div class="col-xl-12">
+                  <input type="text" placeholder="444" v-model="card_infos.cvc">
+                </div>
+              </div>
+              <div class="col-xl-11">
+                <div class="col-xl-12">
+                  <h4>Valid Through: </h4>
+                </div>
+                <div class="col-xl-12">
+                  <input type="date" value="2019-12-26" v-model="card_infos.vaild_through">
+                </div>
+              </div>
+            </div>
+            <div class="col-xl-12 store_button">
+              <div class="col-xl-5 press">
+                <div class="btn" @click="step = 1">Back</div>
+              </div>
+              <div class="col-xl-5 press">
+                <div class="btn" @click="step = 3">Next</div>
+              </div>
+            </div>
+          </div>
+          <div class="col-xl-12 step comfirm_detail" v-if="step == 3">
+
+            <div class="col-xl-6 col-md-8  col-12 comfirm">
+              <img src="./img/member/bone_head.png" class="bone_head">
+              <img src="./img/member/bone_hand.png" class="bone_hand">
+              <p><span>Store Value: </span><span>${{choose_money}}</span></p>
+              <p><span>Card Number: </span><span>{{card_infos.card_number}}</span></p>
+              <p><span>CVC: </span><span>{{card_infos.cvc}}</span></p>
+              <p><span>vaild Through: </span><span>{{card_infos.vaild_through}}</span></p>
+            </div>
+            <div class="col-xl-12 store_button">
+              <div class="col-xl-5 press">
+                <div class="btn" @click="step = 2">Back</div>
+              </div>
+              <div class="col-xl-5 press">
+                <div class="btn" @click="step = 4;dance()">Checkout</div>
+              </div>
+            </div>
+          </div>
+          <div class="flexbox step done" v-if="step == 4">
+            <div class="success_info">
+              <h5>Stored value successfully</h5>
+              <h5>Your Point: 1100</h5>
+            </div>
+            <div class="dance">
+              <div class="col-xl-12 poa_center dance_place">
+                <img src="./img/member/step4_head.png" class="head">
+                <img src="./img/member/step4_body_top.png" class="body_top">
+                <img src="./img/member/step4_body_down.png" class="body_down">
+                <img src="./img/member/step4_feet.png" class="feet">
+              </div>
+            </div>
+            <div class="col-xl-12 button">
+              <div class="store_button">
+                <div class="btn">Home</div>
+              </div>
+            </div>
+          </div>
+        </div>
+        <div class="store_history">
+          <div class="col-xl-12 title">
+            <h2>Trade record</h2>
+          </div>
+          <div class="col-xl-10 col-lg-11 col-12 table">
+            <div class="col-xl-12 thead">
+              <div class="col-xl-3">
+                <h4>Trade no</h4>
+              </div>
+              <div class="col-xl-4">
+                <h4>Cost</h4>
+              </div>
+              <div class="col-xl-4">
+                <h4>Date</h4>
+              </div>
+            </div>
+            <div class="col-xl-12 tbody">
+              <div class="col-xl-12 tr" v-for="list in history">
+                <div class="col-xl-3 td">{{ list.no }}</div>
+                <div class="col-xl-4 td">{{ list.cost }}</div>
+                <div class="col-xl-4 date td">{{ list.date }}</div>
+              </div>
+            </div>
+          </div>
         </div>
       </div>
     </div>
     <!--  ↓↓↓↓↓  Code Here  ↓↓↓↓↓  -->
   </div>
-  <div id="player"> class="store_h4"
+  <div id="player">
     <audio src="" id="audioPlayer"></audio>
     <div class="player_s">
       <div class="info">
@@ -358,7 +480,7 @@
               <div class="listSongInfo">
                 <div class="name">
                   <h4>Lucid Dreamer</h4>
-                  <p> Spazz Cardigan</p>
+                  <h4> Spazz Cardigan</>
                 </div>
               </div>
               <div class="totalTime">4:30</div>
@@ -479,7 +601,9 @@
       </div>
     </div>
   </div>
+  <script src='https://cdnjs.cloudflare.com/ajax/libs/jquery/3.4.1/jquery.js'></script>
   <script src='https://cdnjs.cloudflare.com/ajax/libs/vue/2.6.10/vue.js'></script>
+  <script src='https://cdnjs.cloudflare.com/ajax/libs/gsap/2.1.3/TweenMax.min.js'></script>
   <script src="./js/public.js"></script>
   <script src="./js/player.js"></script>
   <script>
@@ -488,10 +612,10 @@
       data: {
         step: 1,
         choose_money: 100,
-        isActive: 0, // 選金錢的是否active
+        isActive: 1, // 選金錢的是否active
         card_infos: {
-          card_number: '',
-          cvc: '',
+          card_number: '444444444444',
+          cvc: '111',
           vaild_through: '2019-12-26',
         },
         history: [{
@@ -609,10 +733,47 @@
               scrollTop: 370
             }, 900);
           }, 300)
-
-
           // return false;
         },
+        dance() {
+          setTimeout(function () {
+            TweenMax.to($('.head'), 1, {
+              x: '-50%',
+              rotation: '20deg',
+              transformOrigin:"50% 50%",
+              repeatDelay: 1,
+              repeat: -1,
+              yoyo: true,
+            })
+            TweenMax.to($('.body_top'), 1, {
+              x: '-33%',
+              y:'31%',
+              rotation: '22deg',
+              transformOrigin:"50% 50%",
+              repeatDelay: 1,
+              repeat: -1,
+              yoyo: true,
+            })
+            TweenMax.to($('.body_down'), 1, {
+              x: '-16%',
+              y:'38%',
+              rotation: '11deg',
+              transformOrigin:"50% 50%",
+              repeatDelay: 1,
+              repeat: -1,
+              yoyo: true,
+            })
+            TweenMax.to($('.feet'), 1, {
+              x: '-43%',
+              y:'8%',
+              rotation: '0deg',
+              transformOrigin:"50% 50%",
+              repeatDelay: 1,
+              repeat: -1,
+              yoyo: true,
+            })
+          }, 500)
+        }
       },
       mounted() {
         // nav_bar end

@@ -1,4 +1,4 @@
-@import"public";
+@import"_public";
 
 #app {
     position: fixed;
@@ -12,16 +12,35 @@
     position: relative;
     max-width: 1400px;
     height: 650px;
-    margin: 180px auto 50px 0px;
+    margin: 180px auto 50px auto;
 
     @include respond(latop-max) {
-        max-width: 1000px;
-        height: 450px;
+        max-width: 1100px;
+        height: 500px;
     }
 
     @include respond(latop-min) {
-        max-width: 700px;
-        height: 350px;
+        min-width: 750px;
+        height: 370px;
+    }
+
+    @include respond(ipadpro) {
+        min-width: 560px;
+        height: 300px;
+    }
+
+    @include respond(ipad) {
+        min-width: 375px;
+        height: 280px;
+        left: -5%;
+    }
+
+    @include respond(phone) {
+        max-width: 374px;
+        min-width:320px;
+        height: 200px;
+        margin: 120px auto 50px auto;
+        left: -5%;
     }
 
 
@@ -43,6 +62,16 @@
         @include respond(latop-max) {
             width: 222px;
             height: 58px;
+        }
+
+        @include respond(ipadpro) {
+            width: 155px;
+            height: 40px;
+            top: -8%;
+        }
+
+        @include respond(phone) {
+            top: -10%;
         }
 
 
@@ -68,11 +97,25 @@
             font-size: $rem1_2;
             max-width: 40%;
         }
+
+        @include respond(ipadpro) {
+            font-size: $rem1;
+        }
+
+        @include respond(ipad) {
+            font-size: $rem0_8;
+            width: 45%;
+            top: 10%;
+        }
+
+        @include respond(phone) {
+            display: none;
+        }
     }
 
     #act_sectionAnchor {
         display: inline-block;
-        width: 800px;
+        width: 850px;
         height: 75px;
         position: absolute;
         bottom: 4%;
@@ -81,36 +124,73 @@
         z-index: 1;
 
         @include respond(latop-max) {
-            width: 600px;
+            width: 700px;
             height: 50px;
+            left: 20%;
         }
 
         @include respond(latop-min) {
-            width: 400px;
+            width: 600px;
             height: 30px;
         }
 
+        @include respond(ipadpro) {
+            width: 500px;
+            height: 25px;
+        }
+
+        @include respond(ipad) {
+            width: 375px;
+            left: 28%;
+        }
+
         a {
+
+            &:hover {
+                transform: scale(1.1);
+            }
+
             display: inline-block;
-            width: 200px;
+            width: 220px;
             margin-left: 50px;
             height: 75px;
             text-decoration: none;
             position: relative;
 
             @include respond(latop-max) {
-                width: 150px;
-                height: 50px;
+                width: 180px;
+                height: 60px;
                 margin-left: 30px;
             }
 
             @include respond(latop-min) {
-                width: 100px;
+                width: 150px;
+                height: 45px;
+                margin-left: 15px;
+                left: 10%;
+                top: -15px;
+            }
+
+            @include respond(ipadpro) {
+                width: 115px;
                 height: 30px;
                 margin-left: 15px;
-                left: 40px;
+                left: 0%;
+                top: -10px;
+            }
+
+            @include respond(ipad) {
+                width: 80px;
+                height: 25px;
+                margin-left: 5px;
+                left: 0%;
                 top: -5px;
             }
+
+            @include respond(phone) {
+                display: none;
+            }
+
 
 
             img {
@@ -119,17 +199,34 @@
             }
 
             span {
+                white-space: pre;
                 color: #333;
-                font-size: $rem0_7;
+                font-size: $rem1_5;
+                font-weight: bold;
                 position: absolute;
                 top: 50%;
                 left: 50%;
                 z-index: 1;
                 transform: translate(-50%, -50%);
 
-                @include respond(latop-min) {
-                    font-size: $rem0_6;
+                @include respond(latop-max) {
+                    font-size: $rem1_2;
                 }
+
+                @include respond(latop-min) {
+                    font-size: $rem1;
+                }
+
+                @include respond(ipadpro) {
+                    font-size: $rem0_8;
+                }
+
+                @include respond(ipad) {
+                    font-size: $rem0_6;
+
+                }
+
+
             }
         }
     }
@@ -137,21 +234,63 @@
     #act_oldyear_Anchor {
 
         position: absolute;
-        left: 50%;
+        left: 45%;
         bottom: 5%;
         width: 300px;
         height: 50px;
 
+        @include respond(ipadpro) {
+            bottom: 1%;
+
+        }
+        @include respond(ipad) {
+            bottom: -2%;
+            left: 35%;
+        }
+
+        @include respond(phone) {
+           display: none;
+
+        }
+        
+
         a {
+
+            &:hover {
+                transform: scale(1.1);
+            }
+
             img {
                 width: 50px;
                 height: 50px;
+
+                @include respond(ipadpro) {
+                    width: 40px;
+                    height: 40px;
+                }
+                @include respond(ipad) {
+                    width: 30px;
+                    height: 30px;
+                }
+        
+               
             }
 
             span {
-                font-size: $rem0_7;
+                font-size: $rem1_5;
                 margin-right: 10px;
+                font-weight: bold;
+
+                @include respond(latop-max) {
+                    font-size: $rem1_2;
+                }
+
+                @include respond(ipadpro) {
+                    font-size: $rem1;
+                }
+
             }
+
         }
 
     }
@@ -168,6 +307,7 @@
 }
 
 #act_HeadBtn {
+    font-size: 0;
 
     div {
         position: relative;
@@ -185,10 +325,22 @@
         }
 
         @include respond(latop-min) {
+            width: 100px;
+            height: 90px;
+            top: -15px;
+            padding: 0;
+        }
+
+        @include respond(ipad) {
             width: 80px;
             height: 70px;
-            top: 15px;
+            top: -5px;
             padding: 0;
+        }
+
+        @include respond(phone) {
+            left: -35%;
+            top: -10px;
         }
 
         &:hover {
@@ -203,21 +355,24 @@
 
         span {
             position: absolute;
-            top: 32%;
-            left: 35%;
+            top: 50%;
+            left: 50%;
             z-index: 2;
-            font-size: $rem0_8;
+            font-size: $rem1_5;
             font-weight: bold;
+            transform: translate(-60%, -70%);
 
             @include respond(latop-max) {
-                font-size: $rem0_6;
-                left: 36%;
-
+                font-size: $rem1_2;
             }
 
             @include respond(latop-min) {
-                left: 32%;
-                top: 30%;
+                font-size: $rem1;
+
+            }
+
+            @include respond(ipad) {
+                font-size: $rem0_8;
             }
 
         }
@@ -269,6 +424,11 @@
             width: 15px;
             height: 15px;
         }
+
+        @include respond(ipad) {
+            width: 10px;
+            height: 10px;
+        }
     }
 
     .btncolor {
@@ -283,25 +443,43 @@
     width: 350px;
     height: 100px;
     position: absolute;
-    top: 25%;
+    bottom: -25%;
     left: 40%;
     text-align: center;
 
-    @include respond(latop-max) {
-        width: 250px;
-        height: 60px;
 
-    }
 
     @include respond(latop-min) {
-        width: 200px;
-        height: 60px;
+        width: 300px;
+        height: 75px;
+        left: 35%;
+    }
+
+    @include respond(ipadpro) {
+        width: 300px;
+        height: 75px;
+        left: 25%;
+        bottom: -27%;
+    }
+
+    @include respond(ipad) {
+        left: 20%;
+        bottom: -35%;
+    }
+
+    @include respond(phone) {
+        left: 10%;
+        bottom: -40%;
     }
 
     p {
         vertical-align: bottom;
-        font-size: $rem0_6;
+        font-size: $rem1;
         margin: 0;
+
+        @include respond(ipad) {
+            font-size: $rem0_8;
+        }
     }
 
     div {
@@ -314,17 +492,11 @@
             height: 70px;
             margin: 5px;
 
-            @include respond(latop-max) {
-                width: 30px;
-                height: 30px;
-                margin: 2px;
-
-            }
 
             @include respond(latop-min) {
-                width: 15px;
-                height: 15px;
-                margin: 2px;
+                width: 30px;
+                height: 30px;
+                margin: 5px;
 
             }
 
@@ -332,22 +504,17 @@
                 margin: 0;
                 padding: 0;
                 font-size: $rem1_5;
-                color: white;
-
-                @include respond(latop-max) {
-                    font-size: $rem1_2;
-
-                }
+                color: #333;
 
                 @include respond(latop-min) {
-                    font-size: $rem0_8;
+                    font-size: $rem1;
 
                 }
 
             }
 
             span {
-                font-size: $rem0_6;
+                font-size: $rem0_8;
                 position: relative;
                 top: -20px;
                 color: #333;
@@ -363,20 +530,69 @@
 
 .act_old_years {
     position: relative;
+    left: 80px;
     background-image: url(../img/activity/0.blackline.svg);
-    height: 700px;
-    max-width: 1300px;
+    max-height: 700px;
+    max-width: 1400px;
     width: 100%;
-    padding: 100px 0 0 150px;
+    padding: 100px 0 0 180px;
     margin: 150px auto 0 auto;
+
+    @include respond(latop-max) {
+        max-width: 1100px;
+        padding: 100px 0 0 140px;
+        left: 0;
+    }
+
+    @include respond(latop-min) {
+        max-width: 950px;
+        padding: 100px 0 0 100px;
+        max-height: 600px;
+    }
+
+    @include respond(ipadpro) {
+        max-width: 750px;
+        padding: 50px 0 0 80px;
+        max-height: 570px;
+        margin: 100px auto 0 auto;
+
+    }
+    @include respond(ipad) {
+        max-width: 550px;
+        padding: 40px 0 0 50px;
+        min-height: 670px;
+        margin: 100px auto 0 auto;
+
+    }
+    @include respond(phone){
+      padding: 40px 0 0 30px;
+      min-height: 700px;
+      margin: 50px auto 0 auto;
+    }
 
     .act_oldink {
         position: absolute;
         top: -30%;
-        left: -15%;
+        left: -20%;
         z-index: -1;
         width: 500px;
         height: 400px;
+
+        @include respond(ipadpro) {
+            width: 350px;
+            height: 250px;
+            top: -20%;
+            left: -10%;
+
+        }
+      
+        @include respond(phone){
+            width: 300px;
+            height: 200px;
+            top: -10%;
+            left: -25%;
+          }
+
 
         img {
             width: 100%;
@@ -387,42 +603,154 @@
     div {
         width: 40%;
 
+        @include respond(latop-min) {
+            width: 50%;
+        }
+        @include respond(ipad) {
+            width: 90%;
+    
+        }
+
+
         .act_year {
             font-size: 2.5rem;
             font-weight: bold;
             display: inline-block;
+
+            @include respond(latop-max) {
+                font-size: 2rem;
+                padding: 0;
+            }
+
+            @include respond(latop-min) {
+                font-size: $rem1_5;
+
+            }
+            @include respond(ipad) {
+                font-size: $rem1_2;
+        
+            }
+
 
         }
 
         h2 {
             font-size: $rem2;
             margin: 0;
+
+            @include respond(latop-max) {
+                font-size: $rem1_5;
+            }
+
+            @include respond(latop-min) {
+                font-size: $rem1_2;
+
+            }
+
         }
 
         h3 {
             display: inline-block;
             font-size: $rem1_5;
             margin: 0;
+            font-weight: normal;
+
+            @include respond(latop-max) {
+                font-size: $rem1_2;
+                margin: 10px auto 0 auto;
+            }
+
+            @include respond(latop-min) {
+                font-size: $rem1;
+                width: 80%;
+
+            }
+            @include respond(ipad) {
+                margin: 5px auto 0 auto;
+        
+            }
         }
 
         p {
             display: inline-block;
             max-width: 600px;
             font-size: $rem1;
+
+            @include respond(latop-max) {
+                margin: 10px auto;
+            }
+
+            @include respond(latop-min) {
+                font-size: $rem0_8;
+                width: 80%;
+
+            }
+
+            @include respond(ipadpro) {
+                width: 80%;
+
+            }
+            @include respond(ipad) {
+                margin: 5px auto ;
+                width: 95%;
+        
+            }
         }
 
         .act_oldVotes {
+            width: 100%;
+
+            @include respond(latop-max) {
+                padding: 0;
+            }
 
             h3 {
                 display: inline-block;
                 font-size: $rem1_5;
-                margin: 0;
+                margin: 20px auto 0 auto;
+                font-weight: normal;
+
+                @include respond(latop-max) {
+                    font-size: $rem1_2;
+                    width: 20%;
+                }
+
+                @include respond(ipadpro) {
+                    font-size: $rem1;
+                    width:60px;
+                    margin:15px auto 20px auto;
+                }
+                @include respond(ipad) {
+                    margin:10px auto 20px auto;
+                    width:60px;
+            
+                }
+                @include respond(phone) {
+                    margin:10px auto 40px auto;
+                  
+            
+                }
+                
             }
 
             span {
                 font-size: 2.5rem;
                 font-weight: bold;
                 color: #333;
+
+                @include respond(latop-max) {
+                    font-size: 2rem;
+                    padding: 0;
+                }
+
+                @include respond(latop-min) {
+                    font-size: $rem1_5;
+
+                }
+
+                @include respond(ipadpro) {
+                    font-size: $rem1_2;
+                }
             }
         }
     }
@@ -434,14 +762,60 @@
         height: 100%;
         top: 0%;
         right: 0%;
+      
+        @include respond(ipad) {
+            position: static;
+            position: relative;
+            width: 100%;
+            margin: 0 0 0 auto;
+            top: -20px;
+            left: -50px;
+    
+        }
 
         .act_oldposter {
-            width: 350px;
-            height: 500px;
+            width: 500px;
+            height: 590px;
             position: absolute;
-            bottom: 5%;
-            right: 15%;
+            bottom: 2%;
+            right: 10%;
             z-index: 2;
+            @include respond(ipad) {
+                position: static;
+                position: relative;
+        
+            }
+
+            @include respond(latop-max) {
+                bottom: 2%;
+                right: 5%;
+            }
+
+            @include respond(latop-min) {
+                width: 350px;
+                height: 413px;
+                bottom: 10%;
+                right: 0;
+            }
+
+            @include respond(ipadpro) {
+                width: 300px;
+                height: 354px;
+                bottom: 15%;
+                right: 0%;
+
+            }
+            @include respond(ipad) {
+                width: 250px;
+                height: 295px;
+                top: -20%;
+                right: -48%;
+            }
+            @include respond(phone){
+                top: 0%;
+                right: -30%;
+              }
+
 
             img {
                 width: 100%;
@@ -452,10 +826,45 @@
         .act_oldSplash-ink {
             position: absolute;
             bottom: -20%;
-            left: -25%;
+            left: -35%;
             z-index: 1;
             width: 800px;
             height: 600px;
+
+            @include respond(latop-max) {
+                bottom: -20%;
+                left: -45%;
+            }
+
+            @include respond(latop-min) {
+                width: 600px;
+                height: 400px;
+                left: -10%;
+                bottom: -5%;
+                z-index: -1;
+            }
+
+            @include respond(ipadpro) {
+                width: 500px;
+                height: 350px;
+                left: -12%;
+                bottom: 10%;
+                z-index: -1;
+
+            }
+            @include respond(ipad) {
+                width:400px;
+                height: 250px;
+                left: 27%;
+                bottom: -10%;
+              
+            }
+            @include respond(phone) {
+                left: 0%;
+                bottom: -10%;
+              
+            }
+
 
             img {
                 width: 100%;
@@ -463,57 +872,116 @@
             }
         }
 
-        .act_oldposter-linetop {
-            position: absolute;
-            top: 10%;
-        }
 
-
-        .act_oldposter-linebotom {
-            position: absolute;
-            bottom: -15%;
-            right: -15%;
-            z-index: 2;
-        }
     }
 }
 
 .act_oldsongbox {
+    padding: 100px 0 100px 130px;
+    max-width: 1400px;
+    margin: 50px 120px 0px auto;
+    font-size: 0;
+    
 
-    margin-top: 75px;
-    padding: 100px 135px;
-    width: 1500px;
-    margin: 50px auto 0 auto;
+    @include respond(latop-max) {
+        padding: 100px 0 100px 150px;
+    }
+
+    @include respond(latop-min) {
+        padding: 100px 0 100px 100px;
+    }
+
+    @include respond(ipadpro) {
+        padding: 100px 0 100px 75px;
+
+    }
+
+    @include respond(ipad) {
+        padding: 75px 0 100px 50px;
+
+    }
+    @include respond(phone) {
+        padding: 50px 0 100px 30px;
+
+    }
 
     .act_oldTop {
         text-align: left;
         width: 100%;
         max-width: 1400px;
-        padding: 100px 0 0 50px;
+
+        // padding: 100px 0 0 50px;
+        @include respond(ipadpro) {
+            max-width: 900px;
+
+        }
 
         h3 {
             font-size: $rem1_5;
             margin: 0 0px 30px 20px;
+            font-weight: normal;
+
+            @include respond(latop-max) {
+                font-size: $rem1_2;
+                margin: 0 0px 30px 10px;
+            }
+
+            @include respond(latop-min) {
+                margin: 0 0px 30px 15px;
+            }
+
+
         }
 
         div {
 
             text-align: left;
-            width: 30%;
-            margin-left: 2%;
+            width: 24%;
+            margin-left: 20px;
             display: inline-block;
+
+            @include respond(latop-max) {
+                width: 220px;
+                margin-right: 20px;
+
+            }
+
+            @include respond(latop-min) {
+                width: 180px;
+                margin-right: 15px;
+
+            }
+
+            @include respond(ipadpro) {
+                width: 130px;
+                margin-left: 3%;
+                margin-right: 20px;
+
+            }
+            @include respond(ipad) {
+                width: 100px;
+                margin-right: 20px;
+              
+            }
+            @include respond(phone) {
+                width: 80px;
+                margin-right: 15px;
+              
+            }
+            
 
             h4 {
                 width: 90%;
                 margin: 0;
                 font-size: $rem1_2;
+                font-weight: normal;
 
                 @include respond(latop-max) {
-                    font-size: $rem0_8;
+                    font-size: $rem1;
                 }
 
                 @include respond(latop-min) {
-                    font-size: $rem0_6;
+                    font-size: $rem0_8;
 
                 }
 
@@ -580,6 +1048,33 @@
                 img {
                     width: 250px;
                     height: 250px;
+
+                    @include respond(latop-max) {
+                        width: 200px;
+                        height: 200px;
+                    }
+
+                    @include respond(latop-min) {
+                        width: 180px;
+                        height: 180px;
+
+                    }
+
+                    @include respond(ipadpro) {
+                        width: 130px;
+                        height: 130px;
+                    }
+                    @include respond(ipad) {
+                        width: 100px;
+                        height: 100px;
+                      
+                    }
+                    @include respond(phone) {
+                        width: 80px;
+                        height: 80px;
+                
+                    }
+
                 }
             }
         }
@@ -605,23 +1100,69 @@
 .act_oldAll {
     text-align: left;
     width: 100%;
-    margin-top: 75px;
     max-width: 1400px;
-    padding: 100px 0 0 50px;
+    padding: 100px 0 0 0px;
     margin: 50px auto 0px auto;
+
+    @include respond(latop-max) {
+        max-width: 1100px;
+        margin: 50px auto 0px 0;
+    }
+
+    @include respond(ipadpro) {
+        padding: 50px 0 0 0px;
+
+    }
+    @include respond(ipad) {
+        padding: 0px 0 0 0px;
+      
+    }
 
     h3 {
         font-size: $rem1_5;
-        margin: 0 0px 30px 0px;
+        margin: 0 0px 30px 20px;
+        font-weight: normal;
+
+        @include respond(latop-max) {
+            font-size: $rem1_2;
+            margin: 0 0px 30px 10px;
+        }
+
+        @include respond(latop-min) {
+            margin: 0 0px 30px 15px;
+        }
 
     }
 
     div {
         text-align: left;
         width: 20%;
-        margin-left: 3.5%;
+        margin-left: 2%;
         margin-bottom: 50px;
         display: inline-block;
+
+        @include respond(latop-max) {
+            width: 20%;
+            margin-left: 4%;
+
+        }
+
+        @include respond(latop-min) {
+            width: 160px;
+            margin-left: 20px;
+        }
+
+        @include respond(ipadpro) {
+            width: 20%;
+            margin-left: 4%;
+
+        }
+        @include respond(ipad) {
+            width: 40%;
+            margin-left: 4%;
+
+        }
+       
 
 
         .act_songBox {
@@ -633,6 +1174,7 @@
                 width: 90%;
                 margin: 0;
                 font-size: $rem1_2;
+                font-weight: normal;
 
                 @include respond(latop-max) {
                     font-size: $rem0_8;
@@ -713,6 +1255,18 @@
                 width: 200px;
                 height: 200px;
 
+                @include respond(latop-max) {
+                    width: 150px;
+                    height: 150px;
+
+                }
+
+                @include respond(ipadpro) {
+                    width: 100px;
+                    height: 100px;
+
+                }
+
 
             }
 
@@ -728,7 +1282,7 @@
     height: 700px;
     max-width: 1400px;
     width: 100%;
-    padding: 100px 0 0 150px;
+    padding: 75px 0 0 150px;
     margin: 150px auto 0 auto;
 
     @include respond(latop-max) {
@@ -742,12 +1296,33 @@
 
     }
 
+    @include respond(ipadpro) {
+        margin: 0 auto 0 auto;
+        padding: 75px 0 0 40px;
+    }
+
+    @include respond(ipad) {
+        padding: 75px 0 0 30px;
+        margin: 0 auto 100px auto;
+    }
+
 
     div {
         width: 50%;
 
-        h2 {
+        @include respond(ipadpro) {
+            width: 90%;
+            margin: 0 auto;
+        }
+
+        @include respond(ipad) {
             margin: 0;
+            width: 100%;
+        }
+
+
+        h2 {
+            margin: 0 0 50px 0;
             font-size: $rem2;
 
             @include respond(latop-max) {
@@ -758,11 +1333,17 @@
                 font-size: $rem1_2;
 
             }
+
+            @include respond(ipad) {
+                margin: 0 0 30px 0;
+            }
+
         }
 
         h3 {
             margin: 0;
             font-size: $rem1_5;
+            font-weight: normal;
 
             @include respond(latop-max) {
                 font-size: $rem1_2;
@@ -772,6 +1353,8 @@
                 font-size: $rem1;
 
             }
+
+
         }
 
         div {
@@ -779,6 +1362,7 @@
             width: 70%;
             font-size: 2.5rem;
             line-height: 1;
+            font-weight: normal;
 
             @include respond(latop-max) {
                 font-size: 2rem;
@@ -788,56 +1372,112 @@
                 font-size: $rem1_5;
 
             }
+
+            @include respond(ipadpro) {
+                width: 90%;
+                margin: 0 0 15px 0;
+            }
+
+            @include respond(ipad) {
+                margin: 0 0 15px 0;
+                width: 100%;
+                font-size: $rem1_2;
+            }
         }
 
         p {
-            width: 80%;
+            width: 60%;
             font-size: $rem1;
-            margin: 0 auto 20px 0;
+            margin: 10px auto 20px 0;
 
             @include respond(latop-max) {
                 font-size: $rem0_8;
-                margin: 0 auto 10px 0;
+                margin: 10px auto 10px 0;
             }
+
             @include respond(latop-min) {
                 font-size: $rem0_8;
-                margin: 0 auto 10px 0;
+                margin: 10px auto 10px 0;
             }
+
+            @include respond(ipadpro) {
+                width: 90%;
+                margin: 10px auto 10px 0;
+            }
+
+            // @include respond(ipad) {
+            //     font-size: $rem0_6;
+            //     margin: 10px auto 10px 0;
+            // }
         }
     }
 }
 
 
+
+
+
 .act_nowposterbox {
     display: inline-block;
     position: absolute;
-    height: 100%;
-    top: 0%;
-    right: 0%;
+    top: 25%;
+    right: 2%;
+
+    @include respond(latop-min) {
+        top: 20%;
+        right: 2%;
+
+    }
+
+    @include respond(ipadpro) {
+        position: static;
+        position: relative;
+
+    }
 
     .act_nowposter {
-        width: 350px;
-        height: 450px;
+        width: 600px;
+        height: 612px;
         position: absolute;
-        top: 10%;
-        right: 20%;
         z-index: 2;
         margin: auto auto;
+        // top: 30%;
+        // left: 0;
 
         @include respond(latop-max) {
-            width: 300px;
-            height: 390px;
-            bottom: 15%;
-            left: 15%;
+            width: 400px;
+            height: 408px;
+
 
         }
+
         @include respond(latop-min) {
-            width: 200px;
-            height: 260px;
-            top: 0%;
-            left: 5%;
+            width: 400px;
+            height: 408px;
+
         }
-        
+
+        @include respond(ipadpro) {
+            // position: static;
+            width: 300px;
+            height: 306px;
+            right: 5%;
+
+        }
+
+        @include respond(ipad) {
+            width: 300px;
+            height: 306px;
+            top: -40%;
+            right: 10%;
+        }
+
+        @include respond(phone) {
+
+            right: 5%;
+
+        }
+
 
         img {
             width: 100%;
@@ -847,8 +1487,8 @@
 
     .act_nowSplash-ink {
         position: absolute;
-        bottom: -10%;
-        left: -5%;
+        top: -10%;
+        left: -13%;
         z-index: 1;
         width: 800px;
         height: 600px;
@@ -856,44 +1496,33 @@
         @include respond(latop-max) {
             width: 600px;
             height: 450px;
-            bottom: 0%;
-            left: -5%;
+            bottom: 5%;
+            left: -15%;
 
         }
+
         @include respond(latop-min) {
-            width: 450px;
-            height: 300px;
-            bottom: 20%;
-            left: -7%;
+            width: 600px;
+            height: 450px;
+            bottom: 5%;
+            left: -20%;
         }
 
-        img {
-            width: 100%;
-            height: 100%;
+        @include respond(ipadpro) {
+            width: 500px;
+            height: 350px;
+            left: 30%;
+            z-index: -1;
         }
-    }
 
-    .act_nowposter-linetop {
-        width: 400px;
-        height: 400px;
-        position: absolute;
-        top: -8%;
-        left: 5%;
-        margin: auto auto;
-
-        @include respond(latop-max) {
-            width: 200px;
-            height: 200px;
-            top: 10%;
-            left: 5%;
-
+        @include respond(ipad) {
+            left: 10%;
         }
-        @include respond(latop-min) {
-            width: 100px;
-            height: 100px;
-            top: 18%;
-            left: 8%;
+
+        @include respond(phone) {
+            left: -32%;
         }
+
 
         img {
             width: 100%;
@@ -902,34 +1531,6 @@
     }
 
 
-    .act_nowposter-linebotom {
-        position: absolute;
-        bottom: -10%;
-        right: -12%;
-        z-index: 2;
-        margin: auto auto;
-        width: 400px;
-        height: 400px;
-
-        @include respond(latop-max) {
-            width: 200px;
-            height: 200px;
-            bottom: 50px;
-            right: 0px;
-
-        }
-        @include respond(latop-min) {
-            width: 100px;
-            height: 100px;
-            bottom: 30%;
-            left: 40%;
-        }
-
-        img {
-            width: 100%;
-            height: 100%;
-        }
-    }
 
 }
 
@@ -937,7 +1538,7 @@
     max-width: 1400px;
     width: 100%;
     min-height: 850px;
-    padding: 50px 0 0 30px;
+    padding: 50px 0 0 75px;
     margin: 100px auto 150px auto;
     position: relative;
 
@@ -945,9 +1546,15 @@
         margin: 0px auto 100px auto;
         min-height: 750px;
     }
-    @include respond(latop-max) {
+
+    @include respond(latop-min) {
         margin: 0px auto 150px auto;
-        min-height: 700px;
+        min-height: 650px;
+    }
+
+    @include respond(ipad) {
+        margin: 0px auto 75px auto;
+        padding: 100px 0 0 30px;
     }
 
     h2 {
@@ -958,33 +1565,66 @@
         @include respond(latop-max) {
             font-size: $rem1_5;
         }
+
         @include respond(latop-min) {
             font-size: $rem1_2;
+            margin: 0 0 40px 75px;
+        }
+
+        @include respond(ipadpro) {
+            margin: 20px 0 20px 0px;
+        }
+
+        @include respond(phone) {
+            margin: 0;
         }
     }
 
     div {
-        width: 30%;
+        width: 35%;
         min-width: 300px;
         height: 100%;
         display: inline-block;
         position: relative;
         text-align: right;
         top: 20px;
+        left: -20px;
 
         @include respond(latop-max) {
             min-width: 200px;
         }
-      
+
+        @include respond(ipadpro) {
+            width: 70%;
+            // left: 25px;
+
+
+        }
+
         .act_now-marry {
-            width: 90%;
-            height:90%;
+            width: 85%;
+            height: 85%;
             margin: auto auto;
 
+
             @include respond(latop-max) {
-                width: 100%;
-                height: 100%;
+                width: 90%;
+                height: 90%;
             }
+
+            @include respond(ipadpro) {
+                // position: static;
+                width: 70%;
+                height: 70%;
+                margin: 0 auto;
+
+            }
+
+            @include respond(phone) {
+                position: relative;
+                left: 45px;
+            }
+
 
             img {
                 width: 100%;
@@ -994,24 +1634,47 @@
         }
 
         .act_now-marry-ink {
-            width: 900px;
-            height: 720px;
+            width: 1200px;
+            height: 1000px;
             position: absolute;
+            transform: rotate(-2deg);
             z-index: -1;
-            left: -45%;
-            top: -10%;
+            left: -20%;
+            top: -20%;
 
             @include respond(latop-max) {
                 width: 850px;
                 height: 600px;
                 top: -20%;
-                left: -10%;
+                left: -40%;
             }
+
             @include respond(latop-min) {
-              
                 top: -25%;
                 left: -60%;
             }
+
+            @include respond(ipadpro) {
+                width: 750px;
+                height: 550px;
+                top: 0%;
+                left: -15%;
+
+
+            }
+
+            @include respond(ipad) {
+                width: 600px;
+                height: 450px;
+                left: -20%;
+            }
+
+            @include respond(phone) {
+                width: 600px;
+                height: 450px;
+                left: -40%;
+            }
+
 
             img {
                 width: 100%;
@@ -1028,257 +1691,241 @@
     article {
         font-size: 0;
         width: 60%;
-        min-height: 600px;
         display: inline-block;
         margin: 0 0 0 50px;
+        min-height: 400px;
+        ;
         background-image:
             url(../img/activity/0.blackline.svg),
             url(../img/activity/text-wh.png);
-        background-size: 100% 100%;
         background-repeat: no-repeat;
+        background-size: cover, 95% 95%;
         background-position-x: center;
-        // border: 5px black solid;
-        // border-radius: 15px;
-        text-align: center;
-        padding: 10px 0 0 0;
+        padding: 10px;
         position: absolute;
         top: 20%;
-     
+        right: 2%;
+        text-align: center;
+
         @include respond(latop-max) {
-            min-height: 500px;
+            // min-height: 450px;
             width: 60%;
         }
+
         @include respond(latop-min) {
-            min-height: 550px;
-           
+            // min-height: 550px;
+
         }
 
+        @include respond(ipadpro) {
+            position: static;
+            width: 90%;
+            margin: 0 auto;
 
-        .act_SignSongURL-box {
-            width: 80%;
-            height: 20px;
-            overflow: hidden;
-            font-size: 0.6rem;
-            word-break: break-all;
-            border: 1px #d0d6d6 solid;
-            margin-bottom: 10px;
         }
+
 
         div {
-            text-align: left;
-            width: 100%;
-            min-height: 70%;
-            padding: 20px 20px 30px 20px;
+            font-size: 0;
+            width: 90%;
+            margin: 0 auto 0 50px;
             text-align: center;
-            @include respond(latop-min) {
-                width: 90%;
-               
+            overflow: hidden;
+
+            @include respond(phone) {
+                margin: 0 auto 0 25px;
             }
 
             h3 {
-                margin: 0;
-                padding: 0 0 10px 0;
                 font-size: $rem1_5;
+                margin: 0;
+                padding-bottom: 10px;
+                font-weight: normal;
 
                 @include respond(latop-max) {
                     font-size: $rem1_2;
                 }
+
                 @include respond(latop-min) {
+
                     font-size: $rem1;
-                    margin: 10px 20px auto;
-                   
                 }
             }
 
-            p {
-                font-size: $rem1;
-                display: inline-block;
-                width: 90%;
-                margin: 0 auto;
-                text-align: center;
-                padding-bottom: 0;
 
-                @include respond(latop-max) {
+
+
+
+            p {
+
+                font-size: $rem1;
+                width: 80%;
+                margin: 5px auto;
+                text-align: left;
+
+                @include respond(latop-min) {
+
                     font-size: $rem0_8;
                 }
-                @include respond(latop-min) {
-                    margin: 0px 10px auto;
-                   
+
+
+            }
+
+            .act_from-button-box {
+
+                text-align: center;
+                margin: 0 auto 30px auto;
+                padding-top: 20px;
+
+
+                button {
+                    margin-top: 20px;
+                    @include butttonn02();
+                    margin-left: 10px;
+                }
+
+                input {
+                    margin-top: 20px;
+                    @include butttonn02();
+                    margin-right: 10px;
                 }
 
 
-                .act_SignUPButton {
-                    margin-bottom: 10px;
+            }
+
+
+            div {
+
+                font-size: $rem1;
+                margin: 0 auto;
+                padding: 0 0 10px 0;
+                text-align: left;
+                width: 90%;
+
+
+                @include respond(ipadpro) {
+                    font-size: $rem0_8;
+
+                }
+
+                @include respond(phone) {
+                    width: 100%;
+                    margin-left: 30px;
+                }
+
+                label {
                     @include buttonno04();
-                    
+                    text-align: center;
                 }
 
                 h4 {
-                    text-align: left;
+                    font-size: $rem1_2;
+                    font-weight: normal;
+                    margin: 0;
+                    padding: 0;
+                    display: inline-block;
 
-                    @include respond(latop-max) {
-                        font-size: $rem1;
-                    }
                     @include respond(latop-min) {
-                        font-size: $rem0_8;
-                       
-                    }
-
-                    span {
                         font-size: $rem1;
-
-                        @include respond(latop-max) {
-                            font-size: $rem0_8;
-                        }
-                        @include respond(latop-min) {
-                            font-size: $rem0_6;
-                           
-                        }
                     }
+
                 }
 
-                select {
-                    @include buttonno04();
+                #act_Sign-up-song-name {
+
                     border: 1px #d0d6d6 solid;
                     background-color: #d0d6d6;
+                    width: 100%;
+                    height: 30px;
+                    overflow: hidden;
 
-                    option {
-                        background-color: #d0d6d6;
-                    }
                 }
 
-                p {
-                    display: inline-block;
+                #act_Sign-up-song-information {
                     margin: 0;
+                    border: 1px #d0d6d6 solid;
+                    background-color: #d0d6d6;
+                    width: 100%;
+                    overflow: hidden;
+
+
+                }
+
+                .act_showSignUpImg {
+                    width: 100%;
+                    height: 100px;
+                    border: 1px #d0d6d6 solid;
+                    background-color: #d0d6d6;
+                    padding: 0;
+                    text-align: center;
+                    font-size: $rem1;
+                    margin: 0 0 10px 0;
+                    position: relative;
+                    left: 0px;
+
 
                     @include respond(latop-max) {
-                        font-size: $rem0_8;
+                        height: 75px;
                     }
+
+                    img {
+                        max-width: 100%;
+                        max-height: 100%;
+                    }
+
                 }
 
+                .act_showSignUpImgSmall {
+                    width: 100%;
+                    height: 75px;
+                    border: 1px #d0d6d6 solid;
+                    margin: 0;
+                    padding: 0;
+                    text-align: center;
+                    position: relative;
+                    left: 0px;
+                    top: 0;
+
+                    @include respond(latop-max) {
+                        height: 50px;
+                    }
+
+                    img {
+                        max-width: 100%;
+                        max-height: 100%;
+                    }
+
+                }
 
             }
 
-            .signUpComfirm {
+            .act_SignSongURL-box {
+                font-size: $rem0_6;
+                margin: 0 0 10px 0;
+                text-align: left;
+                padding: 2px 0;
+                overflow: hidden;
+               
+
+            }
+
+            .act_showSong-information {
+                font-size: $rem0_6;
+                border: 1px #d0d6d6 solid;
                 margin: 0;
-                @include butttonn02();
-                margin: 20px 20px 20px 0;
-                @include respond(latop-max) {
-                    margin: 15px 10px 10px 10px;
-                }
-               
-            }
-
-            button {
-
-                vertical-align: bottom;
-                @include butttonn02();
-                margin: 20px 20px 20px 0;
-              
-                @include respond(latop-max) {
-                    margin: 15px 10px 10px 10px;
-                }
-               
-
-                &:hover {
-                    transform: scale(1.1);
-                }
+                text-align: left;
+                padding: 2px 0;
+                width: 100%;
+                overflow: hidden;
+                word-break: break-all;
             }
 
         }
+
     }
 }
 
-#act_Now-Sign-up {
 
-    h4 {
-        margin: 5px  0 5px 50px;
-        font-size: $rem1_2;
-        text-align: left;
-
-        @include respond(latop-max) {
-            font-size: $rem1;
-        }
-        @include respond(latop-min) {
-            font-size: $rem0_8;
-           
-        }
-    }
-
-    .act_SignUPButton2 {
-        margin-bottom: 10px;
-        @include  buttonno04();
-    }
-
-    .act_showSignUpImg {
-        width: 70%;
-        height: 150px;
-        border: 1px #d0d6d6 solid;
-        background-color: #d0d6d6;
-        margin: 0;
-        padding: 0;
-
-        @include respond(latop-max) {
-            height: 75px;
-        }
-
-        img {
-            max-width: 100%;
-            max-height: 100%;
-        }
-
-    }
-
-    .act_showSignUpImgSmall {
-        width: 65%;
-        height: 75px;
-        border: 1px #d0d6d6 solid;
-        margin: 0;
-        padding: 0;
-
-        @include respond(latop-max) {
-            height: 50px;
-        }
-
-        img {
-            max-width: 100%;
-            max-height: 100%;
-        }
-
-    }
-
-    #act_Sign-up-song-name {
-        margin: 0;
-        border: 1px #d0d6d6 solid;
-        background-color: #d0d6d6;
-        width: 65%;
-        height: 30px;
-        overflow: hidden;
-    }
-
-    #act_Sign-up-song-information {
-        margin: 0;
-        border: 1px #d0d6d6 solid;
-        background-color: #d0d6d6;
-        width: 65%;
-        overflow: hidden;
-
-    }
-
-    .act_showSong-information {
-        width: 65%;
-        overflow: hidden;
-        max-height: 100px;
-        border: 1px #d0d6d6 solid;
-        word-break: break-all;
-        font-size: $rem0_8;
-
-        @include respond(latop-max) {
-            font-size: $rem0_6;
-        }
-    }
-
-}
 
 
 #act_Now-Vote {
@@ -1297,6 +1944,7 @@
     }
 
 
+
     .act_Now-Vote-content {
         height: 400px;
         max-width: 1500px;
@@ -1304,18 +1952,29 @@
         position: relative;
         margin: 0 auto;
         background-image:
-            // url(../img/activity/0.blackline.svg),
+            url(../img/activity/0.blackline.svg),
             url(../img/activity/text-wh.png);
-        background-size: 100% 100%;
-        background-repeat:
-            no-repeat;
-        border: 5px black solid;
-        border-radius: 15px;
+        background-repeat: no-repeat;
+        background-size: cover, 95% 95%;
+        background-position-x: center;
 
         @include respond(latop-max) {
             height: 300px;
             max-width: 900px;
 
+        }
+
+        @include respond(ipadpro) {
+            padding: 50px 0 0 75px;
+        }
+
+        @include respond(ipad) {
+            padding: 50px 0 0 30px;
+        }
+
+        @include respond(phone) {
+            padding: 50px 0 20px 30px;
+            min-height: 350px;
         }
 
         h2 {
@@ -1325,14 +1984,24 @@
             @include respond(latop-max) {
                 font-size: $rem1_5;
             }
+
+            @include respond(latop-min) {
+                font-size: $rem1_2;
+            }
+
         }
 
         h3 {
             margin: 0;
             font-size: $rem1_5;
+            font-weight: normal;
 
             @include respond(latop-max) {
                 font-size: $rem1_2;
+            }
+
+            @include respond(latop-min) {
+                font-size: $rem1;
             }
         }
 
@@ -1344,6 +2013,10 @@
             @include respond(latop-max) {
                 font-size: $rem0_8;
             }
+
+            @include respond(ipadpro) {
+                width: 80%;
+            }
         }
 
         div {
@@ -1351,10 +2024,15 @@
             vertical-align: middle;
             padding-right: 100px;
 
+            @include respond(ipadpro) {
+                padding-right: 25px;
+            }
+
             h3 {
                 display: inline-block;
                 margin: 0;
                 font-size: $rem1_5;
+                font-weight: normal;
 
                 @include respond(latop-max) {
                     font-size: $rem0_8;
@@ -1369,6 +2047,15 @@
                 @include respond(latop-max) {
                     font-size: 2rem;
                 }
+
+                @include respond(latop-min) {
+                    font-size: $rem1_5;
+                }
+
+                @include respond(ipadpro) {
+                    font-size: $rem1_2;
+                }
+
             }
 
         }
@@ -1392,13 +2079,33 @@
     section {
         max-width: 1400px;
         width: 100%;
-        padding: 0 0 100px 50px;
+        padding: 0 0 100px 60px;
         margin: 150px auto 0 auto;
 
         @include respond(latop-max) {
             max-width: 900px;
             margin: 100px auto 0 auto;
+            padding: 0 0 100px 70px;
         }
+
+        @include respond(latop-min) {
+            padding: 0 0 100px 100px;
+
+        }
+
+        @include respond(ipadpro) {
+            padding: 0 0 100px 75px;
+        }
+
+        @include respond(ipad) {
+            padding: 0 0 100px 30px;
+        }
+
+        @include respond(phone) {
+            margin: 75px auto 0px auto;
+            padding: 0 0 100px 40px;
+        }
+
 
         div {
 
@@ -1408,6 +2115,16 @@
             margin-left: 3.5%;
             display: inline-block;
             margin-bottom: 50px;
+
+            @include respond(latop-min) {
+                width: 40%;
+                margin-right: 20px;
+
+            }
+            @include respond(ipad) {
+                width: 35%;
+            }
+
 
 
             p {
@@ -1435,6 +2152,7 @@
                     width: 90%;
                     margin: 0;
                     font-size: $rem1_2;
+                    font-weight: normal;
 
                     @include respond(latop-max) {
                         font-size: $rem0_8;
@@ -1528,6 +2246,21 @@
                         width: 150px;
                         height: 150px;
                     }
+
+                    @include respond(latop-min) {
+                        width: 200px;
+                        height: 200px;
+                    }
+                    @include respond(ipad) {
+                        width: 150px;
+                        height: 150px;
+                     }
+
+                    @include respond(phone) {
+                        width: 100px;
+                        height: 100px;
+                    }
+
                 }
             }
 

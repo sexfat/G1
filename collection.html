@@ -1,24 +1,18 @@
 <!DOCTYPE html>
 <html lang="en">
-
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <meta http-equiv="X-UA-Compatible" content="ie=edge">
-  <title>Document</title>
+  <title>Collection</title>
   <link rel="stylesheet" href="./css/main.css">
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.11.2/css/all.min.css" />
   <script src="https://cdnjs.cloudflare.com/ajax/libs/vue/2.6.10/vue.js"></script>
   <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
-  <!-- <script src="./js/player.js"></script> -->
 </head>
-
 <body class="collectionbody">
+  <!-- nav_bar and player -->
   <div id="app">
-    <!-- 記得包在 Vue 裡-->
-
-
-    <!-- nav_bar start -->
     <div class="nav_bar flexbox">
       <div class="hamburger" @click="hamburger_click">
         <div class="hamburger-box">
@@ -121,10 +115,6 @@
       </div>
     </div>
     <!-- nav_bar end -->
-
-
-
-
     <!-- player start -->
     <div id="player">
       <audio src="" id="audioPlayer"></audio>
@@ -168,11 +158,9 @@
             <div class="clearfix"></div>
           </div>
         </div>
-  
         <div class="expand" id="expand"><i class="fas fa-expand"></i></div>
         <div class="clearfix"></div>
       </div>
-  
       <!-- 詳細版 -->
       <div class="player_b">
         <div class="left">
@@ -219,7 +207,6 @@
           </div>
           <div class="pushBtn"></div>
         </div>
-  
         <div class="right">
           <div class="pushBtn"></div>
           <div class="listTitle">
@@ -344,8 +331,7 @@
           </div>
         </div>
         <div class="close" id="closePlayer"><i class="fas fa-times"></i></div>
-        <div class="clearfix"></div>
-  
+        <div class="clearfix"></div> 
         <!-- 撥放器燈箱 -->
         <div class="lightCover">
           <div class="lightbox_s" id="myAllList">
@@ -364,30 +350,31 @@
       </div>
     </div>
     <!-- player end -->
-
-
-
   </div>
+  <!-- the end of the nav_bar and player  -->
+  <!-- start to the content -->
   <header class="collectionheader">
     <img src="./img/collection/colltitle.png" alt="">
   </header>
   <section class="collectionsection">
     <div class="collectionradio">
-      <img src="./img/collection/radio.png" alt="">
-      <!-- <div class="eyes1">
-            <img class="closeeyes1"src="./img/collection/closeeye.png" alt="">
-            <img class="closeeyes2"src="./img/collection/closeeye.png" alt="">
-            <img class="closeeyes3"src="./img/collection/closeeye.png" alt="">
-            <img class="closeeyes4"src="./img/collection/closeeye.png" alt="">
-        </div> -->
+      <div class="collgreenradio">
+        <img src="./img/collection/closeeye.png" alt="">
+      </div>
+      <div class="collpinkradio">
+        <img src="./img/collection/closeeye.png" alt="">
+        <img src="./img/collection/closeeye.png" alt="">
+      </div>
+      <div class="collblueradio">
+        <img src="./img/collection/closeeye.png" alt="">
+      </div>
     </div>
-
     <div id="collectiontabcontainer">
       <ul class="collectiontabtitle">
-        <li><a class="tabtitlechange1" href="#tab01">Favorite</a></li>
-        <li><a class="tabtitlechange2" href="#tab02">Trap</a></li>
-        <li><a class="tabtitlechange3" href="#tab03">All</a></li>
-        <li><a class="tabtitlechange4" href="#tab04">House</a></li>
+        <li><a class="tabtitlechange1" href="#tab01"><img src="./img/collection/tabyellow.png" alt=""><span> All</span></a></li>
+        <li><a class="tabtitlechange2" href="#tab02"><img src="./img/collection/tabyellow.png" alt=""><span> Trap</span></a></li>
+        <li><a class="tabtitlechange3" href="#tab03"><img src="./img/collection/tabyellow.png" alt=""><span> House</span></a></li>
+        <li><a class="tabtitlechange4" href="#tab04"><img src="./img/collection/tabyellow.png" alt=""><span> Favorite</span></a></li>
       </ul>
       <div class="playall_btns">
         <button id="listAllPlay" class="circlebtn"><i class="fas fa-play"></i></button>
@@ -398,7 +385,7 @@
           <div class="collectionsinglealbum">
             <div class="collectionsinglecover">
               <div class="collalbumpic sampleblum1">
-                <div class="collplayer"><a href=""><img src="./img/activity/play-collection.png" alt=""></a></div>
+                <div class="collplayer"><a href=""><img src="./img/library/coverPlay-b.png" alt=""></a></div>
               </div>
               <div class="collheart"><img src="./img/collection/grayheart.png" alt=""></div>
               <p>Hey<br>
@@ -407,7 +394,7 @@
             </div>
             <div class="collectionsinglecover">
               <div class="collalbumpic sampleblum2">
-                <div class="collplayer"><a href=""><img src="./img/activity/play-collection.png" alt=""></a></div>
+                <div class="collplayer"><a href=""><img src="./img/library/coverPlay-b.png" alt=""></a></div>
               </div>
               <div class="collheart"><img src="./img/collection/grayheart.png" alt=""></div>
               <p>Another Life<br>
@@ -416,7 +403,7 @@
             </div>
             <div class="collectionsinglecover">
               <div class="collalbumpic sampleblum3">
-                <div class="collplayer"><a href=""><img src="./img/activity/play-collection.png" alt=""></a></div>
+                <div class="collplayer"><a href=""><img src="./img/library/coverPlay-b.png" alt=""></a></div>
               </div>
               <div class="collheart"><img src="./img/collection/grayheart.png" alt=""></div>
               <p>Cutting Shapes<br>
@@ -425,7 +412,7 @@
             </div>
             <div class="collectionsinglecover">
               <div class="collalbumpic sampleblum4">
-                <div class="collplayer"><a href=""><img src="./img/activity/play-collection.png" alt=""></a></div>
+                <div class="collplayer"><a href=""><img src="./img/library/coverPlay-b.png" alt=""></a></div>
               </div>
               <div class="collheart"><img src="./img/collection/grayheart.png" alt=""></div>
               <p>What Would You<br>
@@ -436,7 +423,7 @@
           <div class="collectionsinglealbum">
             <div class="collectionsinglecover">
               <div class="collalbumpic sampleblum5">
-                <div class="collplayer"><a href=""><img src="./img/activity/play-collection.png" alt=""></a></div>
+                <div class="collplayer"><a href=""><img src="./img/library/coverPlay-b.png" alt=""></a></div>
               </div>
               <div class="collheart"><img src="./img/collection/grayheart.png" alt=""></div>
               <p>Champagne<br>
@@ -445,7 +432,7 @@
             </div>
             <div class="collectionsinglecover">
               <div class="collalbumpic sampleblum6">
-                <div class="collplayer"><a href=""><img src="./img/activity/play-collection.png" alt=""></a></div>
+                <div class="collplayer"><a href=""><img src="./img/library/coverPlay-b.png" alt=""></a></div>
               </div>
               <div class="collheart"><img src="./img/collection/grayheart.png" alt=""></div>
               <p> Dharma<br>
@@ -454,7 +441,7 @@
             </div>
             <div class="collectionsinglecover">
               <div class="collalbumpic sampleblum7">
-                <div class="collplayer"><a href=""><img src="./img/activity/play-collection.png" alt=""></a></div>
+                <div class="collplayer"><a href=""><img src="./img/library/coverPlay-b.png" alt=""></a></div>
               </div>
               <div class="collheart"><img src="./img/collection/grayheart.png" alt=""></div>
               <p> Survivors<br>
@@ -463,7 +450,7 @@
             </div>
             <div class="collectionsinglecover">
               <div class="collalbumpic sampleblum8">
-                <div class="collplayer"><a href=""><img src="./img/activity/play-collection.png" alt=""></a></div>
+                <div class="collplayer"><a href=""><img src="./img/library/coverPlay-b.png" alt=""></a></div>
               </div>
               <div class="collheart"><img src="./img/collection/grayheart.png" alt=""></div>
               <p> Solo Dance<br>
@@ -474,7 +461,7 @@
           <div class="collectionsinglealbum">
             <div class="collectionsinglecover">
               <div class="collalbumpic sampleblum9">
-                <div class="collplayer"><a href=""><img src="./img/activity/play-collection.png" alt=""></a></div>
+                <div class="collplayer"><a href=""><img src="./img/library/coverPlay-b.png" alt=""></a></div>
               </div>
               <div class="collheart"><img src="./img/collection/grayheart.png" alt=""></div>
               <p> 16 Steps<br>
@@ -483,7 +470,7 @@
             </div>
             <div class="collectionsinglecover">
               <div class="collalbumpic sampleblum10">
-                <div class="collplayer"><a href=""><img src="./img/activity/play-collection.png" alt=""></a></div>
+                <div class="collplayer"><a href=""><img src="./img/library/coverPlay-b.png" alt=""></a></div>
               </div>
               <div class="collheart"><img src="./img/collection/grayheart.png" alt=""></div>
               <p>Welcome<br>
@@ -492,7 +479,7 @@
             </div>
             <div class="collectionsinglecover">
               <div class="collalbumpic sampleblum11">
-                <div class="collplayer"><a href=""><img src="./img/activity/play-collection.png" alt=""></a></div>
+                <div class="collplayer"><a href=""><img src="./img/library/coverPlay-b.png" alt=""></a></div>
               </div>
               <div class="collheart"><img src="./img/collection/grayheart.png" alt=""></div>
               <p>BFAM<br>
@@ -501,7 +488,7 @@
             </div>
             <div class="collectionsinglecover">
               <div class="collalbumpic sampleblum12">
-                <div class="collplayer"><a href=""><img src="./img/activity/play-collection.png" alt=""></a></div>
+                <div class="collplayer"><a href=""><img src="./img/library/coverPlay-b.png" alt=""></a></div>
               </div>
               <div class="collheart"><img src="./img/collection/grayheart.png" alt=""></div>
               <p>Phatt Bass<br>
@@ -516,16 +503,16 @@
           <div class="collectionsinglealbum">
             <div class="collectionsinglecover">
               <div class="collalbumpic sampleblum12">
-                <div class="collplayer"><a href=""><img src="./img/activity/play-collection.png" alt=""></a></div>
+                <div class="collplayer"><a href=""><img src="./img/library/coverPlay-b.png" alt=""></a></div>
               </div>
               <div class="collheart"><img src="./img/collection/grayheart.png" alt=""></div>
-              <p>Hey<br>
-                <span>Fais ft. Afrojack</span>
+              <p> Game Over <br>
+                <span>Loopers</span>
               </p>
             </div>
             <div class="collectionsinglecover">
               <div class="collalbumpic sampleblum11">
-                <div class="collplayer"><a href=""><img src="./img/activity/play-collection.png" alt=""></a></div>
+                <div class="collplayer"><a href=""><img src="./img/library/coverPlay-b.png" alt=""></a></div>
               </div>
               <div class="collheart"><img src="./img/collection/grayheart.png" alt=""></div>
               <p>All Aboard<br>
@@ -534,7 +521,7 @@
             </div>
             <div class="collectionsinglecover">
               <div class="collalbumpic sampleblum10">
-                <div class="collplayer"><a href=""><img src="./img/activity/play-collection.png" alt=""></a></div>
+                <div class="collplayer"><a href=""><img src="./img/library/coverPlay-b.png" alt=""></a></div>
               </div>
               <div class="collheart"><img src="./img/collection/grayheart.png" alt=""></div>
               <p>Renegade Master<br>
@@ -543,7 +530,7 @@
             </div>
             <div class="collectionsinglecover">
               <div class="collalbumpic sampleblum9">
-                <div class="collplayer"><a href=""><img src="./img/activity/play-collection.png" alt=""></a></div>
+                <div class="collplayer"><a href=""><img src="./img/library/coverPlay-b.png" alt=""></a></div>
               </div>
               <div class="collheart"><img src="./img/collection/grayheart.png" alt=""></div>
               <p>Renegade Master<br>
@@ -554,76 +541,76 @@
           <div class="collectionsinglealbum">
             <div class="collectionsinglecover">
               <div class="collalbumpic sampleblum8">
-                <div class="collplayer"><a href=""><img src="./img/activity/play-collection.png" alt=""></a></div>
+                <div class="collplayer"><a href=""><img src="./img/library/coverPlay-b.png" alt=""></a></div>
               </div>
               <div class="collheart"><img src="./img/collection/grayheart.png" alt=""></div>
-              <p>Hey<br>
-                <span>Fais ft. Afrojack</span>
+              <p>One Kiss <br>
+                <span>Dua Lipa</span>
               </p>
             </div>
             <div class="collectionsinglecover">
               <div class="collalbumpic sampleblum7">
-                <div class="collplayer"><a href=""><img src="./img/activity/play-collection.png" alt=""></a></div>
+                <div class="collplayer"><a href=""><img src="./img/library/coverPlay-b.png" alt=""></a></div>
               </div>
               <div class="collheart"><img src="./img/collection/grayheart.png" alt=""></div>
-              <p>Hey<br>
-                <span>Fais ft. Afrojack</span>
+              <p>Magenta Riddim<br>
+                <span>DJ Snake </span>
               </p>
             </div>
             <div class="collectionsinglecover">
               <div class="collalbumpic sampleblum6">
-                <div class="collplayer"><a href=""><img src="./img/activity/play-collection.png" alt=""></a></div>
+                <div class="collplayer"><a href=""><img src="./img/library/coverPlay-b.png" alt=""></a></div>
               </div>
               <div class="collheart"><img src="./img/collection/grayheart.png" alt=""></div>
-              <p>Hey<br>
-                <span>Fais ft. Afrojack</span>
+              <p>Alone<br>
+                <span>Alan Walker</span>
               </p>
             </div>
             <div class="collectionsinglecover">
               <div class="collalbumpic sampleblum5">
-                <div class="collplayer"><a href=""><img src="./img/activity/play-collection.png" alt=""></a></div>
+                <div class="collplayer"><a href=""><img src="./img/library/coverPlay-b.png" alt=""></a></div>
               </div>
               <div class="collheart"><img src="./img/collection/grayheart.png" alt=""></div>
-              <p>Hey<br>
-                <span>Fais ft. Afrojack</span>
+              <p>Faith<br>
+                <span>Galantis</span>
               </p>
             </div>
           </div>
           <div class="collectionsinglealbum">
             <div class="collectionsinglecover">
               <div class="collalbumpic sampleblum4">
-                <div class="collplayer"><a href=""><img src="./img/activity/play-collection.png" alt=""></a></div>
+                <div class="collplayer"><a href=""><img src="./img/library/coverPlay-b.png" alt=""></a></div>
               </div>
               <div class="collheart"><img src="./img/collection/grayheart.png" alt=""></div>
-              <p>Hey<br>
-                <span>Fais ft. Afrojack</span>
+              <p>Analog Signal<br>
+                <span>DJ E-turn</span>
               </p>
             </div>
             <div class="collectionsinglecover">
               <div class="collalbumpic sampleblum3">
-                <div class="collplayer"><a href=""><img src="./img/activity/play-collection.png" alt=""></a></div>
+                <div class="collplayer"><a href=""><img src="./img/library/coverPlay-b.png" alt=""></a></div>
               </div>
               <div class="collheart"><img src="./img/collection/grayheart.png" alt=""></div>
-              <p>Hey<br>
-                <span>Fais ft. Afrojack</span>
+              <p>Sell My Soul<br>
+                <span>Sigma</span>
               </p>
             </div>
             <div class="collectionsinglecover">
               <div class="collalbumpic sampleblum2">
-                <div class="collplayer"><a href=""><img src="./img/activity/play-collection.png" alt=""></a></div>
+                <div class="collplayer"><a href=""><img src="./img/library/coverPlay-b.png" alt=""></a></div>
               </div>
               <div class="collheart"><img src="./img/collection/grayheart.png" alt=""></div>
-              <p>Hey<br>
-                <span>Fais ft. Afrojack</span>
+              <p>Bumpy Teeth<br>
+                <span>Zeds Dead</span>
               </p>
             </div>
             <div class="collectionsinglecover">
               <div class="collalbumpic sampleblum1">
-                <div class="collplayer"><a href=""><img src="./img/activity/play-collection.png" alt=""></a></div>
+                <div class="collplayer"><a href=""><img src="./img/library/coverPlay-b.png" alt=""></a></div>
               </div>
               <div class="collheart"><img src="./img/collection/grayheart.png" alt=""></div>
-              <p>Hey<br>
-                <span>Fais ft. Afrojack</span>
+              <p>Cruel Love<br>
+                <span>Kayzo</span>
               </p>
             </div>
           </div>
@@ -634,7 +621,7 @@
           <div class="collectionsinglealbum">
             <div class="collectionsinglecover">
               <div class="collalbumpic sampleblum1">
-                <div class="collplayer"><a href=""><img src="./img/activity/play-collection.png" alt=""></a></div>
+                <div class="collplayer"><a href=""><img src="./img/library/coverPlay-b.png" alt=""></a></div>
               </div>
               <div class="collheart"><img src="./img/collection/grayheart.png" alt=""></div>
               <p>Hey<br>
@@ -643,105 +630,105 @@
             </div>
             <div class="collectionsinglecover">
               <div class="collalbumpic sampleblum2">
-                <div class="collplayer"><a href=""><img src="./img/activity/play-collection.png" alt=""></a></div>
+                <div class="collplayer"><a href=""><img src="./img/library/coverPlay-b.png" alt=""></a></div>
               </div>
               <div class="collheart"><img src="./img/collection/grayheart.png" alt=""></div>
-              <p>Hey<br>
-                <span>Fais ft. Afrojack</span>
+              <p>Another Life<br>
+                <span>David Guetta</span>
               </p>
             </div>
             <div class="collectionsinglecover">
               <div class="collalbumpic sampleblum3">
-                <div class="collplayer"><a href=""><img src="./img/activity/play-collection.png" alt=""></a></div>
+                <div class="collplayer"><a href=""><img src="./img/library/coverPlay-b.png" alt=""></a></div>
               </div>
               <div class="collheart"><img src="./img/collection/grayheart.png" alt=""></div>
-              <p>Hey<br>
-                <span>Fais ft. Afrojack</span>
+              <p>Cutting Shapes<br>
+                <span>Don Diablo</span>
               </p>
             </div>
             <div class="collectionsinglecover">
               <div class="collalbumpic sampleblum4">
-                <div class="collplayer"><a href=""><img src="./img/activity/play-collection.png" alt=""></a></div>
+                <div class="collplayer"><a href=""><img src="./img/library/coverPlay-b.png" alt=""></a></div>
               </div>
               <div class="collheart"><img src="./img/collection/grayheart.png" alt=""></div>
-              <p>Hey<br>
-                <span>Fais ft. Afrojack</span>
+              <p>What Would You<br>
+                <span>NERVO</span>
               </p>
             </div>
           </div>
           <div class="collectionsinglealbum">
             <div class="collectionsinglecover">
               <div class="collalbumpic sampleblum5">
-                <div class="collplayer"><a href=""><img src="./img/activity/play-collection.png" alt=""></a></div>
+                <div class="collplayer"><a href=""><img src="./img/library/coverPlay-b.png" alt=""></a></div>
               </div>
               <div class="collheart"><img src="./img/collection/grayheart.png" alt=""></div>
-              <p>Hey<br>
-                <span>Fais ft. Afrojack</span>
+              <p>Champagne<br>
+                <span>Chief Keef</span>
               </p>
             </div>
             <div class="collectionsinglecover">
               <div class="collalbumpic sampleblum6">
-                <div class="collplayer"><a href=""><img src="./img/activity/play-collection.png" alt=""></a></div>
+                <div class="collplayer"><a href=""><img src="./img/library/coverPlay-b.png" alt=""></a></div>
               </div>
               <div class="collheart"><img src="./img/collection/grayheart.png" alt=""></div>
-              <p>Hey<br>
-                <span>Fais ft. Afrojack</span>
+              <p> Dharma<br>
+                <span>Headhunterz</span>
               </p>
             </div>
             <div class="collectionsinglecover">
               <div class="collalbumpic sampleblum7">
-                <div class="collplayer"><a href=""><img src="./img/activity/play-collection.png" alt=""></a></div>
+                <div class="collplayer"><a href=""><img src="./img/library/coverPlay-b.png" alt=""></a></div>
               </div>
               <div class="collheart"><img src="./img/collection/grayheart.png" alt=""></div>
-              <p>Hey<br>
-                <span>Fais ft. Afrojack</span>
+              <p> Survivors<br>
+                <span>Hardwel</span>
               </p>
             </div>
             <div class="collectionsinglecover">
               <div class="collalbumpic sampleblum8">
-                <div class="collplayer"><a href=""><img src="./img/activity/play-collection.png" alt=""></a></div>
+                <div class="collplayer"><a href=""><img src="./img/library/coverPlay-b.png" alt=""></a></div>
               </div>
               <div class="collheart"><img src="./img/collection/grayheart.png" alt=""></div>
-              <p>Hey<br>
-                <span>Fais ft. Afrojack</span>
+              <p> Solo Dance<br>
+                <span>Martin Jensen</span>
               </p>
             </div>
           </div>
           <div class="collectionsinglealbum">
             <div class="collectionsinglecover">
               <div class="collalbumpic sampleblum9">
-                <div class="collplayer"><a href=""><img src="./img/activity/play-collection.png" alt=""></a></div>
+                <div class="collplayer"><a href=""><img src="./img/library/coverPlay-b.png" alt=""></a></div>
               </div>
               <div class="collheart"><img src="./img/collection/grayheart.png" alt=""></div>
-              <p>Hey<br>
-                <span>Fais ft. Afrojack</span>
+              <p> 16 Steps<br>
+                <span> Olivia Holt</span>
               </p>
             </div>
             <div class="collectionsinglecover">
               <div class="collalbumpic sampleblum10">
-                <div class="collplayer"><a href=""><img src="./img/activity/play-collection.png" alt=""></a></div>
+                <div class="collplayer"><a href=""><img src="./img/library/coverPlay-b.png" alt=""></a></div>
               </div>
               <div class="collheart"><img src="./img/collection/grayheart.png" alt=""></div>
-              <p>Hey<br>
-                <span>Fais ft. Afrojack</span>
+              <p>Welcome<br>
+                <span>Julian Jordan</span>
               </p>
             </div>
             <div class="collectionsinglecover">
               <div class="collalbumpic sampleblum11">
-                <div class="collplayer"><a href=""><img src="./img/activity/play-collection.png" alt=""></a></div>
+                <div class="collplayer"><a href=""><img src="./img/library/coverPlay-b.png" alt=""></a></div>
               </div>
               <div class="collheart"><img src="./img/collection/grayheart.png" alt=""></div>
-              <p>Hey<br>
-                <span>Fais ft. Afrojack</span>
+              <p>BFAM<br>
+                <span>Martin Garrix</span>
               </p>
             </div>
             <div class="collectionsinglecover">
               <div class="collalbumpic sampleblum12">
-                <div class="collplayer"><a href=""><img src="./img/activity/play-collection.png" alt=""></a></div>
+                <div class="collplayer"><a href=""><img src="./img/library/coverPlay-b.png" alt=""></a></div>
               </div>
               <div class="collheart"><img src="./img/collection/grayheart.png" alt=""></div>
-              <p>Hey<br>
-                <span>Fais ft. Afrojack</span>
+              <p>Phatt Bass<br>
+                <span>Warp Brothersk</span>
               </p>
             </div>
           </div>
@@ -751,133 +738,115 @@
         <section class="collectionalbumsection1">
           <div class="collectionsinglealbum">
             <div class="collectionsinglecover">
-              <div class="collalbumpic sampleblum2">
-                <div class="collplayer"><a href=""><img src="./img/activity/play-collection.png" alt=""></a></div>
+              <div class="collalbumpic sampleblum12">
+                <div class="collplayer"><a href=""><img src="./img/library/coverPlay-b.png" alt=""></a></div>
               </div>
               <div class="collheart"><img src="./img/collection/grayheart.png" alt=""></div>
-              <p>Hey<br>
-                <span>Fais ft. Afrojack</span>
-              </p>
-            </div>
-            <div class="collectionsinglecover">
-              <div class="collalbumpic sampleblum4">
-                <div class="collplayer"><a href=""><img src="./img/activity/play-collection.png" alt=""></a></div>
-              </div>
-              <div class="collheart"><img src="./img/collection/grayheart.png" alt=""></div>
-              <p>Hey<br>
-                <span>Fais ft. Afrojack</span>
-              </p>
-            </div>
-            <div class="collectionsinglecover">
-              <div class="collalbumpic sampleblum6">
-                <div class="collplayer"><a href=""><img src="./img/activity/play-collection.png" alt=""></a></div>
-              </div>
-              <div class="collheart"><img src="./img/collection/grayheart.png" alt=""></div>
-              <p>Hey<br>
-                <span>Fais ft. Afrojack</span>
-              </p>
-            </div>
-            <div class="collectionsinglecover">
-              <div class="collalbumpic sampleblum8">
-                <div class="collplayer"><a href=""><img src="./img/activity/play-collection.png" alt=""></a></div>
-              </div>
-              <div class="collheart"><img src="./img/collection/grayheart.png" alt=""></div>
-              <p>Hey<br>
-                <span>Fais ft. Afrojack</span>
-              </p>
-            </div>
-            <div class="collectionsinglecover">
-              <div class="collalbumpic sampleblum3">
-                <div class="collplayer"><a href=""><img src="./img/activity/play-collection.png" alt=""></a></div>
-              </div>
-              <div class="collheart"><img src="./img/collection/grayheart.png" alt=""></div>
-              <p>Hey<br>
-                <span>Fais ft. Afrojack</span>
-              </p>
-            </div>
-            <div class="collectionsinglecover">
-              <div class="collalbumpic sampleblum4">
-                <div class="collplayer"><a href=""><img src="./img/activity/play-collection.png" alt=""></a></div>
-              </div>
-              <div class="collheart"><img src="./img/collection/grayheart.png" alt=""></div>
-              <p>Hey<br>
-                <span>Fais ft. Afrojack</span>
-              </p>
-            </div>
-          </div>
-          <div class="collectionsinglealbum">
-            <div class="collectionsinglecover">
-              <div class="collalbumpic sampleblum5">
-                <div class="collplayer"><a href=""><img src="./img/activity/play-collection.png" alt=""></a></div>
-              </div>
-              <div class="collheart"><img src="./img/collection/grayheart.png" alt=""></div>
-              <p>Hey<br>
-                <span>Fais ft. Afrojack</span>
-              </p>
-            </div>
-            <div class="collectionsinglecover">
-              <div class="collalbumpic sampleblum6">
-                <div class="collplayer"><a href=""><img src="./img/activity/play-collection.png" alt=""></a></div>
-              </div>
-              <div class="collheart"><img src="./img/collection/grayheart.png" alt=""></div>
-              <p>Hey<br>
-                <span>Fais ft. Afrojack</span>
-              </p>
-            </div>
-            <div class="collectionsinglecover">
-              <div class="collalbumpic sampleblum1">
-                <div class="collplayer"><a href=""><img src="./img/activity/play-collection.png" alt=""></a></div>
-              </div>
-              <div class="collheart"><img src="./img/collection/grayheart.png" alt=""></div>
-              <p>Hey<br>
-                <span>Fais ft. Afrojack</span>
-              </p>
-            </div>
-            <div class="collectionsinglecover">
-              <div class="collalbumpic sampleblum8">
-                <div class="collplayer"><a href=""><img src="./img/activity/play-collection.png" alt=""></a></div>
-              </div>
-              <div class="collheart"><img src="../img/collection/grayheart.png" alt=""></div>
-              <p>Hey<br>
-                <span>Fais ft. Afrojack</span>
-              </p>
-            </div>
-          </div>
-          <div class="collectionsinglealbum">
-            <div class="collectionsinglecover">
-              <div class="collalbumpic sampleblum9">
-                <div class="collplayer"><a href=""><img src="./img/activity/play-collection.png" alt=""></a></div>
-              </div>
-              <div class="collheart"><img src="./img/collection/grayheart.png" alt=""></div>
-              <p>Hey<br>
-                <span>Fais ft. Afrojack</span>
-              </p>
-            </div>
-            <div class="collectionsinglecover">
-              <div class="collalbumpic sampleblum7">
-                <div class="collplayer"><a href=""><img src="./img/activity/play-collection.png" alt=""></a></div>
-              </div>
-              <div class="collheart"><img src="./img/collection/grayheart.png" alt=""></div>
-              <p>Hey<br>
-                <span>Fais ft. Afrojack</span>
-              </p>
-            </div>
-            <div class="collectionsinglecover">
-              <div class="collalbumpic sampleblum9">
-                <div class="collplayer"><a href=""><img src="./img/activity/play-collection.png" alt=""></a></div>
-              </div>
-              <div class="collheart"><img src="./img/collection/grayheart.png" alt=""></div>
-              <p>Hey<br>
-                <span>Fais ft. Afrojack</span>
+              <p> Game Over <br>
+                <span>Loopers</span>
               </p>
             </div>
             <div class="collectionsinglecover">
               <div class="collalbumpic sampleblum11">
-                <div class="collplayer"><a href=""><img src="./img/activity/play-collection.png" alt=""></a></div>
+                <div class="collplayer"><a href=""><img src="./img/library/coverPlay-b.png" alt=""></a></div>
               </div>
               <div class="collheart"><img src="./img/collection/grayheart.png" alt=""></div>
-              <p>Hey<br>
-                <span>Fais ft. Afrojack</span>
+              <p>All Aboard<br>
+                <span>Bassjackers</span>
+              </p>
+            </div>
+            <div class="collectionsinglecover">
+              <div class="collalbumpic sampleblum10">
+                <div class="collplayer"><a href=""><img src="./img/library/coverPlay-b.png" alt=""></a></div>
+              </div>
+              <div class="collheart"><img src="./img/collection/grayheart.png" alt=""></div>
+              <p>Renegade Master<br>
+                <span>Jamis</span>
+              </p>
+            </div>
+            <div class="collectionsinglecover">
+              <div class="collalbumpic sampleblum9">
+                <div class="collplayer"><a href=""><img src="./img/library/coverPlay-b.png" alt=""></a></div>
+              </div>
+              <div class="collheart"><img src="./img/collection/grayheart.png" alt=""></div>
+              <p>Renegade Master<br>
+                <span>Playmen</span>
+              </p>
+            </div>
+          </div>
+          <div class="collectionsinglealbum">
+            <div class="collectionsinglecover">
+              <div class="collalbumpic sampleblum8">
+                <div class="collplayer"><a href=""><img src="./img/library/coverPlay-b.png" alt=""></a></div>
+              </div>
+              <div class="collheart"><img src="./img/collection/grayheart.png" alt=""></div>
+              <p>One Kiss <br>
+                <span>Dua Lipa</span>
+              </p>
+            </div>
+            <div class="collectionsinglecover">
+              <div class="collalbumpic sampleblum7">
+                <div class="collplayer"><a href=""><img src="./img/library/coverPlay-b.png" alt=""></a></div>
+              </div>
+              <div class="collheart"><img src="./img/collection/grayheart.png" alt=""></div>
+              <p>Magenta Riddim<br>
+                <span>DJ Snake </span>
+              </p>
+            </div>
+            <div class="collectionsinglecover">
+              <div class="collalbumpic sampleblum6">
+                <div class="collplayer"><a href=""><img src="./img/library/coverPlay-b.png" alt=""></a></div>
+              </div>
+              <div class="collheart"><img src="./img/collection/grayheart.png" alt=""></div>
+              <p>Alone<br>
+                <span>Alan Walker</span>
+              </p>
+            </div>
+            <div class="collectionsinglecover">
+              <div class="collalbumpic sampleblum5">
+                <div class="collplayer"><a href=""><img src="./img/library/coverPlay-b.png" alt=""></a></div>
+              </div>
+              <div class="collheart"><img src="./img/collection/grayheart.png" alt=""></div>
+              <p>Faith<br>
+                <span>Galantis</span>
+              </p>
+            </div>
+          </div>
+          <div class="collectionsinglealbum">
+            <div class="collectionsinglecover">
+              <div class="collalbumpic sampleblum4">
+                <div class="collplayer"><a href=""><img src="./img/library/coverPlay-b.png" alt=""></a></div>
+              </div>
+              <div class="collheart"><img src="./img/collection/grayheart.png" alt=""></div>
+              <p>Analog Signal<br>
+                <span>DJ E-turn</span>
+              </p>
+            </div>
+            <div class="collectionsinglecover">
+              <div class="collalbumpic sampleblum3">
+                <div class="collplayer"><a href=""><img src="./img/library/coverPlay-b.png" alt=""></a></div>
+              </div>
+              <div class="collheart"><img src="./img/collection/grayheart.png" alt=""></div>
+              <p>Sell My Soul<br>
+                <span>Sigma</span>
+              </p>
+            </div>
+            <div class="collectionsinglecover">
+              <div class="collalbumpic sampleblum2">
+                <div class="collplayer"><a href=""><img src="./img/library/coverPlay-b.png" alt=""></a></div>
+              </div>
+              <div class="collheart"><img src="./img/collection/grayheart.png" alt=""></div>
+              <p>Bumpy Teeth<br>
+                <span>Zeds Dead</span>
+              </p>
+            </div>
+            <div class="collectionsinglecover">
+              <div class="collalbumpic sampleblum1">
+                <div class="collplayer"><a href=""><img src="./img/library/coverPlay-b.png" alt=""></a></div>
+              </div>
+              <div class="collheart"><img src="./img/collection/grayheart.png" alt=""></div>
+              <p>Cruel Love<br>
+                <span>Kayzo</span>
               </p>
             </div>
           </div>
@@ -885,25 +854,34 @@
       </div>
     </div>
   </section>
-
+  <!-- the end of the content -->
 </body>
+<!-- the script of myself -->
 <script>
-  $(".collheart").click(function () {
-    if ($(this).attr('src', './img/collection/grayheart.png')) {
-      $(this).attr('src', './img/collection/redheart.png');
+  // CHANGE HEART
+  $('.collheart').click(function () {
+    if ($(this).hasClass('becomeRed')) {
+      $(this).html('<img src="./img/collection/grayheart.png">').removeClass('becomeRed');
     } else {
-      $(this).attr('src', './img/collection/grayheart.png');
+      $(this).html('<img src="./img/collection/redheart.png">').addClass('becomeRed');
     }
-  })
-</script>
-<script>
+  });
+  // PLAY BUTTON
   $('.collalbumpic').hover(function () {
     $(this).find('.collplayer').css("display", "block");
   }, function () {
     $(this).find('.collplayer').css("display", "none");
   });
-</script>
-<script>
+  //PLAY AND PAUSE BUTTON
+  $('.collplayer').click(function () {
+    if ($(this).hasClass('becomePause')) {
+      e.preventDefault();
+      $(this).html('<img src="./img/library/coverPlay-b.png">').removeClass('becomePause');
+    } else {
+      $(this).html('<img src="./img/library/coverPause-b.png">').addClass('becomePause');
+    }
+  });
+  // TAB CONTENT CHANGE
   $(function () {
     var $li = $('ul.collectiontabtitle li');
     $($li.eq(0).addClass('active').find('a').attr('href')).siblings('.collectiontabinner').hide();
@@ -912,14 +890,36 @@
       $(this).addClass('active').siblings('.active').removeClass('active');
     });
   });
-</script>
-<script>
+  //TAB CHNAGE COLOR
   $('.collectiontabtitle li a').click(function () {
-    $(this).css("color", "#fff").css("background-color", "#7ed5e5");
-    // $(this).css("background-color","#7ed5e5");
-    $('.collectiontabtitle li a').not(this).css("background-color", "#f1c40f");
+    $(this).children('img').attr("src","./img/collection/tabblue.png");
+    $('.collectiontabtitle li a').not(this).children('img').attr("src","./img/collection/tabyellow.png");
+    var lia = $(this).parent().index();
+    if( lia == 0){
+      $('.collgreenradio').find('img').attr("src","./img/collection/openeye.png");
+      $('.collpinkradio').find('img').attr("src","./img/collection/closeeye.png");
+      $('.collblueradio').find('img').attr("src","./img/collection/closeeye.png");
+    }
+    else if(lia == 1){
+      $('.collpinkradio').find('img').eq(0).attr("src","./img/collection/openeye.png");
+      $('.collgreenradio').find('img').attr("src","./img/collection/closeeye.png");
+      $('.collpinkradio').find('img').eq(1).attr("src","./img/collection/closeeye.png");
+      $('.collblueradio').find('img').attr("src","./img/collection/closeeye.png");
+    }
+    else if(lia == 2){
+      $('.collpinkradio').find('img').eq(1).attr("src","./img/collection/openeye.png");
+      $('.collgreenradio').find('img').attr("src","./img/collection/closeeye.png");
+      $('.collpinkradio').find('img').eq(0).attr("src","./img/collection/closeeye.png");
+      $('.collblueradio').find('img').attr("src","./img/collection/closeeye.png");
+    }else if(lia == 3){
+      $('.collblueradio').find('img').attr("src","./img/collection/openeye.png");
+      $('.collgreenradio').find('img').attr("src","./img/collection/closeeye.png");
+      $('.collpinkradio').find('img').attr("src","./img/collection/closeeye.png");
+    }
   });
 </script>
+<!-- the end of my script -->
+<!-- the public version -->
 <script>
   new Vue({
     el: "#app",
@@ -1332,5 +1332,5 @@
     }
   });
 </script>
-
+<!-- the end of the public version -->
 </html>

@@ -1,4 +1,4 @@
-@import './public';
+@import './_public.scss';
 
 $lightblue: #D1F1FA;
 $gray: #d0d6d6;
@@ -109,33 +109,19 @@ $buttonyellow: #efc318;
       padding: 8%;
       position: relative;
       box-sizing: border-box;
-      // overflow: hidden;
-      // height: 0;
-      &::before {
-        content: "";
-        position: absolute;
-        width: 100%;
-        height: 100%;
-        left: 50%;
-        top: 50%;
-        transform: translate(-50%, -50%);
-        // transform-origin: 0 100%;
-        background: url(../img/remix/Demo.svg) no-repeat;
-        background-size: contain;
-        z-index: -10;
-      }
-
-      // border: solid 1px #333;
       .remix_choose_song {
         background-color: $gray;
         margin: 3% auto;
         padding: 5%;
         border-radius: 5px;
-
+        img{
+          vertical-align: middle;
+          width: 8%;
+        }
         h4 {
           z-index: 10;
           cursor: pointer;
-
+          vertical-align: middle;
           &:hover {
             font-weight: bold;
           }
@@ -152,6 +138,11 @@ $buttonyellow: #efc318;
       .remix_rock_move{
         transform-origin: right bottom;
         transform: rotate(90deg);
+        #svgmove{
+          position: relative;
+          left: 50%;
+          transform: translateX(-50%);
+        }
       }
       img {
         width: 100%;
@@ -401,12 +392,6 @@ $buttonyellow: #efc318;
       flex-direction: column;
       margin-bottom: 10%;
       .remix_demo {
-        padding: 12% 12% 12%;
-        &::before {
-          transform: translate(-50%, -50%) rotate(90deg);
-          width: 80%;
-        }
-
         .remix_choose_song {
           margin: 5% auto;
 
@@ -463,14 +448,6 @@ $buttonyellow: #efc318;
       flex-direction: column;
       margin-bottom: 10%;
       .remix_demo {
-        padding: 24% 18%;
-
-        &::before {
-          width: 80vw;
-          height: 80vw;
-          transform: translate(-50%, -50%) rotate(90deg);
-        }
-
         .remix_choose_song {
           h4:hover {}
         }
@@ -533,13 +510,6 @@ $buttonyellow: #efc318;
       flex-direction: column;
       margin-bottom: 20%;
       .remix_demo {
-        padding: 20% 19% 26%;
-        &::before {
-          width: 100vw;
-          height: 100vw;
-          transform: translate(-50%, -50%) rotate(90deg);
-        }
-
         h2 {
           font-size: 1.6rem;
         }
@@ -623,13 +593,6 @@ $buttonyellow: #efc318;
       margin-bottom: 20%;
 
       .remix_demo {
-        padding: 18% 13% 18% 16%;
-
-        &::before {
-          width: 100vw;
-          height: 100vw;
-          transform: translate(-50%, -50%) rotate(90deg);
-        }
 
         h2{
           margin: 0;

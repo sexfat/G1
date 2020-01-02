@@ -1,7 +1,5 @@
 $labelfontsize:1.2rem;
 $forgetfontsize:0.6rem;
-$buttonhover:scale(1.1);
-$latop-maxer: 1920px;
 
 .loginbody{
     height: 100vh;
@@ -9,6 +7,41 @@ $latop-maxer: 1920px;
     background-position:center;
     background-size: cover;
     background-repeat: no-repeat;
+    .lightCover {
+      position: fixed;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 100%;
+      text-align: center;
+      .lightbox_s {
+        position: absolute;
+        top: calc(50% - 215px);
+        left: calc(50% - 250px);
+        height: 300px;
+        margin: 0 auto;
+        background: #ffffff;
+        border-radius: 5%;
+        input{
+          background-color:$green;
+          border: 1px solid $green;
+          padding:10px;
+          margin-bottom:20px;
+          text-align: left;
+          width: 60%;
+        }
+        i {
+          position: absolute;
+          top: 20px;
+          right: 20px;
+          font-size: 1.5rem;
+        }
+        h4 {
+          margin: 60px 0 30px 0;
+          text-align: center;
+        }
+      }
+    }
     .signupcontainer {
           @include respond(ipad) {
             display: none;
@@ -28,7 +61,7 @@ $latop-maxer: 1920px;
         width: 900px;
         height: 600px;
         position: relative;
-        top: 230px;
+        top: 190px;
         .greenblock {
             background-color: $green;
             width: 100%;
@@ -49,7 +82,7 @@ $latop-maxer: 1920px;
         }
         .whiteform {
             position: absolute;
-            top: -10%;
+            top: -9%;
             left: 7%;
             background-color: #fff;
             border: 1px solid #aaa;
@@ -66,7 +99,7 @@ $latop-maxer: 1920px;
             @include respond(ipadpro) {
                 width: 350px;
                 height: 600px;
-                top: -10%;
+                top: -8%;
               }
 
             }

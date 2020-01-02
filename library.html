@@ -10,7 +10,7 @@
   <link rel="stylesheet" href="./css/main.css">
   <script src="https://cdnjs.cloudflare.com/ajax/libs/vue/2.6.10/vue.js"></script>
   <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
-
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.0.4/gsap.min.js"></script>
 </head>
 
 <body class="librarybg">
@@ -147,14 +147,15 @@
             <div class="delete"><i class="fas fa-times"></i></div>
           </li>
         </ul>
-        <select id="">
+        <select id="mobile_listChoose">
+          <option value="peaceful songs" disabled selected>-- choose --</option>
           <option value="peaceful songs">peaceful songs</option>
           <option value="party">party</option>
           <option value="who cares">who cares</option>
         </select>
         <div class="btns">
-          <button class="normalbtn" id="createBtn">create list</button>
-          <button class="normalbtn" id="modifyBtn">modify list</button>
+          <button class="normalbtn" id="createBtn">create</button>
+          <button class="normalbtn" id="modifyBtn">modify</button>
         </div>
       </div>
 
@@ -163,34 +164,101 @@
     <div class="right">
       <div class="listInfo">
         <div class="listCover">
-          <img src="./img/library/list_pic1.jpg" alt="">
-          <button class="editBtn">Edit</button>
+          <img src="./img/library/list_pic0.jpg" alt="">
+          <label for="library_editCover" class="editBtn">edit
+            <input type="file" name="library_edit" id="library_editCover">
+          </label>
         </div>
         <div class="nameAndBtn">
           <div class="listName">
             <div class="name">
-              <h2>Peaceful Songs</h2>
-              <input type="text" name="listTitle" id="inputListTitle" value="Peaceful Songs">
-              <button class="enterBtn">enter</button>
+              <h2>Liked Songs</h2>
+              <form action="">
+                <input type="text" name="listTitle" id="inputListTitle" value="Peaceful Songs">
+                <button class="enterBtn">enter</button>
+              </form>
             </div>
             <div class="totalSong">8 songs</div>
           </div>
           <div class="playall_btn">
-            <button id="listAllPlay" class="circlebtn"><i class="fas fa-play"></i></button>
-            play all
+            <button id="listAllPlay" class="circlebtn"><img src="./img/library/coverPlay-b.png"></button>
+            <p>play all</p>
           </div>
         </div>
         <div class="clearfix"></div>
       </div>
-      <ul class="songs">
+      <ul class="songs chooseList">
         <li>
           <div class="songPlay">
             <div class="songCover">
-              <img src="./img/library/cover1.jpg" alt="">
-              <div class="listPlay"><i class="fas fa-play"></i></div>
+              <img src="./img/collection/album1.jpg" alt="">
+              <div class="listPlay"><img src="./img/library/coverPlay-s.png"></div>
             </div>
           </div>
-          <div class="songInfo">
+          <div class="listSongInfo">
+            <div class="name">
+              <a href="./songinfo.html">Lucid Dreamer</a>
+            </div>
+            <div class="creator">Spazz Cardigan</div>
+          </div>
+          <div class="totalTime">3:11</div>
+          <div class="heart becomeRed"><img src="./img/collection/redheart.png"></div>
+          <div class="more">
+            <i class="fas fa-ellipsis-h"></i>
+            <div class="changeList">change list</div>
+          </div>
+          <div class="clearfix"></div>
+        </li>
+        <li>
+          <div class="songPlay">
+            <div class="songCover">
+              <img src="./img/collection/album2.jpg" alt="">
+              <div class="listPlay"><img src="./img/library/coverPlay-s.png"></div>
+            </div>
+          </div>
+          <div class="listSongInfo">
+            <div class="name">
+              <a href="./songinfo.html">Spring In My Step</a>
+            </div>
+            <div class="creator">Silent Partner</div>
+          </div>
+          <div class="totalTime">1:59</div>
+          <div class="heart becomeRed"><img src="./img/collection/redheart.png"></div>
+          <div class="more">
+            <i class="fas fa-ellipsis-h"></i>
+            <div class="changeList">change list</div>
+          </div>
+          <div class="clearfix"></div>
+        </li>
+        <li>
+          <div class="songPlay">
+            <div class="songCover">
+              <img src="./img/collection/album3.jpg" alt="">
+              <div class="listPlay"><img src="./img/library/coverPlay-s.png"></div>
+            </div>
+          </div>
+          <div class="listSongInfo">
+            <div class="name">
+              <a href="./songinfo.html">On My Way Home</a>
+            </div>
+            <div class="creator">The 126ers</div>
+          </div>
+          <div class="totalTime">1:56</div>
+          <div class="heart becomeRed"><img src="./img/collection/redheart.png"></div>
+          <div class="more">
+            <i class="fas fa-ellipsis-h"></i>
+            <div class="changeList">change list</div>
+          </div>
+          <div class="clearfix"></div>
+        </li>
+        <li>
+          <div class="songPlay">
+            <div class="songCover">
+              <img src="./img/collection/album4.jpg" alt="">
+              <div class="listPlay"><img src="./img/library/coverPlay-s.png"></div>
+            </div>
+          </div>
+          <div class="listSongInfo">
             <div class="name">
               <a href="./songinfo.html">Lucid Dreamer</a>
             </div>
@@ -207,11 +275,11 @@
         <li>
           <div class="songPlay">
             <div class="songCover">
-              <img src="./img/library/cover2.jpg" alt="">
-              <div class="listPlay"><i class="fas fa-play"></i></div>
+              <img src="./img/collection/album5.jpg" alt="">
+              <div class="listPlay"><img src="./img/library/coverPlay-s.png"></div>
             </div>
           </div>
-          <div class="songInfo">
+          <div class="listSongInfo">
             <div class="name">
               <a href="./songinfo.html">Lucid Dreamer</a>
             </div>
@@ -228,74 +296,11 @@
         <li>
           <div class="songPlay">
             <div class="songCover">
-              <img src="./img/library/cover3.jpg" alt="">
-              <div class="listPlay"><i class="fas fa-play"></i></div>
+              <img src="./img/collection/album6.jpg" alt="">
+              <div class="listPlay"><img src="./img/library/coverPlay-s.png"></div>
             </div>
           </div>
-          <div class="songInfo">
-            <div class="name">
-              <a href="./songinfo.html">Lucid Dreamer</a>
-            </div>
-            <div class="creator">Spazz Cardigan</div>
-          </div>
-          <div class="totalTime">4:30</div>
-          <div class="heart becomeRed"><img src="./img/collection/redheart.png"></div>
-          <div class="more">
-            <i class="fas fa-ellipsis-h"></i>
-            <div class="changeList">change list</div>
-          </div>
-          <div class="clearfix"></div>
-        </li>
-        <li>
-          <div class="songPlay">
-            <div class="songCover">
-              <img src="./img/library/cover4.jpg" alt="">
-              <div class="listPlay"><i class="fas fa-play"></i></div>
-            </div>
-          </div>
-          <div class="songInfo">
-            <div class="name">
-              <a href="./songinfo.html">Lucid Dreamer</a>
-            </div>
-            <div class="creator">Spazz Cardigan</div>
-          </div>
-          <div class="totalTime">4:30</div>
-          <div class="heart becomeRed"><img src="./img/collection/redheart.png"></div>
-          <div class="more">
-            <i class="fas fa-ellipsis-h"></i>
-            <div class="changeList">change list</div>
-          </div>
-          <div class="clearfix"></div>
-        </li>
-        <li>
-          <div class="songPlay">
-            <div class="songCover">
-              <img src="./img/library/cover5.jpg" alt="">
-              <div class="listPlay"><i class="fas fa-play"></i></div>
-            </div>
-          </div>
-          <div class="songInfo">
-            <div class="name">
-              <a href="./songinfo.html">Lucid Dreamer</a>
-            </div>
-            <div class="creator">Spazz Cardigan</div>
-          </div>
-          <div class="totalTime">4:30</div>
-          <div class="heart becomeRed"><img src="./img/collection/redheart.png"></div>
-          <div class="more">
-            <i class="fas fa-ellipsis-h"></i>
-            <div class="changeList">change list</div>
-          </div>
-          <div class="clearfix"></div>
-        </li>
-        <li>
-          <div class="songPlay">
-            <div class="songCover">
-              <img src="./img/library/cover6.jpg" alt="">
-              <div class="listPlay"><i class="fas fa-play"></i></div>
-            </div>
-          </div>
-          <div class="songInfo">
+          <div class="listSongInfo">
             <div class="name">
               <a href="./songinfo.html">Lucid Dreamer</a>
             </div>
@@ -310,8 +315,268 @@
           <div class="clearfix"></div>
         </li>
       </ul>
+      <ul class="songs">
+        <li>
+          <div class="songPlay">
+            <div class="songCover">
+              <img src="./img/collection/album5.jpg" alt="">
+              <div class="listPlay"><img src="./img/library/coverPlay-s.png"></div>
+            </div>
+          </div>
+          <div class="listSongInfo">
+            <div class="name">
+              <a href="./songinfo.html">Lucid Dreamer</a>
+            </div>
+            <div class="creator">Spazz Cardigan</div>
+          </div>
+          <div class="totalTime">3:11</div>
+          <div class="heart becomeRed"><img src="./img/collection/redheart.png"></div>
+          <div class="more">
+            <i class="fas fa-ellipsis-h"></i>
+            <div class="changeList">change list</div>
+          </div>
+          <div class="clearfix"></div>
+        </li>
+        <li>
+          <div class="songPlay">
+            <div class="songCover">
+              <img src="./img/collection/album6.jpg" alt="">
+              <div class="listPlay"><img src="./img/library/coverPlay-s.png"></div>
+            </div>
+          </div>
+          <div class="listSongInfo">
+            <div class="name">
+              <a href="./songinfo.html">Spring In My Step</a>
+            </div>
+            <div class="creator">Silent Partner</div>
+          </div>
+          <div class="totalTime">1:59</div>
+          <div class="heart becomeRed"><img src="./img/collection/redheart.png"></div>
+          <div class="more">
+            <i class="fas fa-ellipsis-h"></i>
+            <div class="changeList">change list</div>
+          </div>
+          <div class="clearfix"></div>
+        </li>
+        <li>
+          <div class="songPlay">
+            <div class="songCover">
+              <img src="./img/collection/album7.jpg" alt="">
+              <div class="listPlay"><img src="./img/library/coverPlay-s.png"></div>
+            </div>
+          </div>
+          <div class="listSongInfo">
+            <div class="name">
+              <a href="./songinfo.html">On My Way Home</a>
+            </div>
+            <div class="creator">The 126ers</div>
+          </div>
+          <div class="totalTime">1:56</div>
+          <div class="heart becomeRed"><img src="./img/collection/redheart.png"></div>
+          <div class="more">
+            <i class="fas fa-ellipsis-h"></i>
+            <div class="changeList">change list</div>
+          </div>
+          <div class="clearfix"></div>
+        </li>
+      </ul>
+      <ul class="songs">
+        <li>
+          <div class="songPlay">
+            <div class="songCover">
+              <img src="./img/collection/album1.jpg" alt="">
+              <div class="listPlay"><img src="./img/library/coverPlay-s.png"></div>
+            </div>
+          </div>
+          <div class="listSongInfo">
+            <div class="name">
+              <a href="./songinfo.html">Lucid Dreamer</a>
+            </div>
+            <div class="creator">Spazz Cardigan</div>
+          </div>
+          <div class="totalTime">3:11</div>
+          <div class="heart becomeRed"><img src="./img/collection/redheart.png"></div>
+          <div class="more">
+            <i class="fas fa-ellipsis-h"></i>
+            <div class="changeList">change list</div>
+          </div>
+          <div class="clearfix"></div>
+        </li>
+        <li>
+          <div class="songPlay">
+            <div class="songCover">
+              <img src="./img/collection/album3.jpg" alt="">
+              <div class="listPlay"><img src="./img/library/coverPlay-s.png"></div>
+            </div>
+          </div>
+          <div class="listSongInfo">
+            <div class="name">
+              <a href="./songinfo.html">Spring In My Step</a>
+            </div>
+            <div class="creator">Silent Partner</div>
+          </div>
+          <div class="totalTime">1:59</div>
+          <div class="heart becomeRed"><img src="./img/collection/redheart.png"></div>
+          <div class="more">
+            <i class="fas fa-ellipsis-h"></i>
+            <div class="changeList">change list</div>
+          </div>
+          <div class="clearfix"></div>
+        </li>
+        <li>
+          <div class="songPlay">
+            <div class="songCover">
+              <img src="./img/collection/album5.jpg" alt="">
+              <div class="listPlay"><img src="./img/library/coverPlay-s.png"></div>
+            </div>
+          </div>
+          <div class="listSongInfo">
+            <div class="name">
+              <a href="./songinfo.html">On My Way Home</a>
+            </div>
+            <div class="creator">The 126ers</div>
+          </div>
+          <div class="totalTime">1:56</div>
+          <div class="heart becomeRed"><img src="./img/collection/redheart.png"></div>
+          <div class="more">
+            <i class="fas fa-ellipsis-h"></i>
+            <div class="changeList">change list</div>
+          </div>
+          <div class="clearfix"></div>
+        </li>
+        <li>
+          <div class="songPlay">
+            <div class="songCover">
+              <img src="./img/collection/album7.jpg" alt="">
+              <div class="listPlay"><img src="./img/library/coverPlay-s.png"></div>
+            </div>
+          </div>
+          <div class="listSongInfo">
+            <div class="name">
+              <a href="./songinfo.html">On My Way Home</a>
+            </div>
+            <div class="creator">The 126ers</div>
+          </div>
+          <div class="totalTime">1:56</div>
+          <div class="heart becomeRed"><img src="./img/collection/redheart.png"></div>
+          <div class="more">
+            <i class="fas fa-ellipsis-h"></i>
+            <div class="changeList">change list</div>
+          </div>
+          <div class="clearfix"></div>
+        </li>
+      </ul>
+      <ul class="songs">
+        <li>
+          <div class="songPlay">
+            <div class="songCover">
+              <img src="./img/collection/album2.jpg" alt="">
+              <div class="listPlay"><img src="./img/library/coverPlay-s.png"></div>
+            </div>
+          </div>
+          <div class="listSongInfo">
+            <div class="name">
+              <a href="./songinfo.html">Lucid Dreamer</a>
+            </div>
+            <div class="creator">Spazz Cardigan</div>
+          </div>
+          <div class="totalTime">3:11</div>
+          <div class="heart becomeRed"><img src="./img/collection/redheart.png"></div>
+          <div class="more">
+            <i class="fas fa-ellipsis-h"></i>
+            <div class="changeList">change list</div>
+          </div>
+          <div class="clearfix"></div>
+        </li>
+        <li>
+          <div class="songPlay">
+            <div class="songCover">
+              <img src="./img/collection/album4.jpg" alt="">
+              <div class="listPlay"><img src="./img/library/coverPlay-s.png"></div>
+            </div>
+          </div>
+          <div class="listSongInfo">
+            <div class="name">
+              <a href="./songinfo.html">Spring In My Step</a>
+            </div>
+            <div class="creator">Silent Partner</div>
+          </div>
+          <div class="totalTime">1:59</div>
+          <div class="heart becomeRed"><img src="./img/collection/redheart.png"></div>
+          <div class="more">
+            <i class="fas fa-ellipsis-h"></i>
+            <div class="changeList">change list</div>
+          </div>
+          <div class="clearfix"></div>
+        </li>
+        <li>
+          <div class="songPlay">
+            <div class="songCover">
+              <img src="./img/collection/album6.jpg" alt="">
+              <div class="listPlay"><img src="./img/library/coverPlay-s.png"></div>
+            </div>
+          </div>
+          <div class="listSongInfo">
+            <div class="name">
+              <a href="./songinfo.html">On My Way Home</a>
+            </div>
+            <div class="creator">The 126ers</div>
+          </div>
+          <div class="totalTime">1:56</div>
+          <div class="heart becomeRed"><img src="./img/collection/redheart.png"></div>
+          <div class="more">
+            <i class="fas fa-ellipsis-h"></i>
+            <div class="changeList">change list</div>
+          </div>
+          <div class="clearfix"></div>
+        </li>
+        <li>
+          <div class="songPlay">
+            <div class="songCover">
+              <img src="./img/collection/album8.jpg" alt="">
+              <div class="listPlay"><img src="./img/library/coverPlay-s.png"></div>
+            </div>
+          </div>
+          <div class="listSongInfo">
+            <div class="name">
+              <a href="./songinfo.html">On My Way Home</a>
+            </div>
+            <div class="creator">The 126ers</div>
+          </div>
+          <div class="totalTime">1:56</div>
+          <div class="heart becomeRed"><img src="./img/collection/redheart.png"></div>
+          <div class="more">
+            <i class="fas fa-ellipsis-h"></i>
+            <div class="changeList">change list</div>
+          </div>
+          <div class="clearfix"></div>
+        </li>
+        <li>
+          <div class="songPlay">
+            <div class="songCover">
+              <img src="./img/collection/album10.jpg" alt="">
+              <div class="listPlay"><img src="./img/library/coverPlay-s.png"></div>
+            </div>
+          </div>
+          <div class="listSongInfo">
+            <div class="name">
+              <a href="./songinfo.html">On My Way Home</a>
+            </div>
+            <div class="creator">The 126ers</div>
+          </div>
+          <div class="totalTime">1:56</div>
+          <div class="heart becomeRed"><img src="./img/collection/redheart.png"></div>
+          <div class="more">
+            <i class="fas fa-ellipsis-h"></i>
+            <div class="changeList">change list</div>
+          </div>
+          <div class="clearfix"></div>
+        </li>
+      </ul>
+
     </div>
     <div class="clearfix"></div>
+
     <!-- 燈箱 -->
     <div class="lightCover">
       <div class="lightbox_s" id="myAllList">
@@ -338,25 +603,27 @@
         <div class="closeLight"><i class="fas fa-times"></i></div>
         <h3>Create the new playlist</h3>
         <form action="">
-          <input type="text" name="createListName" id="createList">
+          <input type="text" name="createListName" id="createListName">
           <button type="submit">ok</button>
           <button>cancel</button>
         </form>
       </div>
     </div>
   </main>
+  <div class="before"></div>
+  <div class="after"></div>
 
   <!-- 播放器 -->
   <div id="player">
     <audio src="" id="audioPlayer"></audio>
     <div class="player_s">
       <div class="info">
-        <div class="cover"><img src="./img/library/cover1.jpg"></div>
+        <div class="cover"><img src="./img/collection/album1.jpg"></div>
         <div class="songInfo">
           <span class="name">Lucid Dreamer</span>
           <span class="creator">Spazz Cardigan</span>
         </div>
-        <div class="heart becomeRed"><img src="./img/collection/redheart.png"></div>
+        <div class="heart becomeRed"><img src="./img/collection/redheart.png" alt=""></div>
         <div class="clearfix"></div>
       </div>
 
@@ -397,20 +664,16 @@
     <!-- 詳細版 -->
     <div class="player_b">
       <div class="left">
-        <div class="songCover">
-          <div class="coverImg">
-            <img src="./img/library/cover1.jpg">
+        <div class="info">
+          <div class="songCover">
+            <img src="./img/collection/album1.jpg">
             <div class="coverRec"><img src="./img/library/player_record.png" alt=""></div>
           </div>
         </div>
         <div class="songInfo">
-          <div class="name">
-            Lucid Dreamer
-          </div>
-          <div class="creator">
-            Spazz Cardigan
-          </div>
-          <div class="heart becomeRed"><img src="./img/collection/redheart.png"></div>
+          <div class="name">Lucid Dreamer</div>
+          <div class="creator">Spazz Cardigan</div>
+          <div class="heart becomeRed"><img src="./img/collection/redheart.png" alt=""></div>
           <div class="clearfix"></div>
         </div>
         <div class="controlPanel">
@@ -419,7 +682,7 @@
           </div>
           <div class="time">
             <span class="start">00:00</span>
-            <span class="end">04:30</span>
+            <span class="end">00:00</span>
             <div class="clearfix"></div>
           </div>
           <div class="btns">
@@ -449,20 +712,20 @@
         <div class="pushBtn"></div>
         <div class="listTitle">
           <div class="listCover">
-            <img src="./img/library/list_pic1.jpg"></div>
+            <img src="./img/library/list_pic0.jpg"></div>
           <div class="listName">
-            <h2>peaceful list</h2>
+            <h2>Liked songs</h2>
             <span>8 songs</span>
           </div>
           <button class="selectBtn" id="selectBtn">SELECT</button>
           <div class="clearfix"></div>
         </div>
         <div class="list">
-          <ul>
+          <ul class="chooseList">
             <li>
               <div class="songCover">
-                <img src="./img/library/cover1.jpg" alt="">
-                <div class="listPlay"><i class="fas fa-play"></i></div>
+                <img src="./img/collection/album1.jpg" alt="">
+                <div class="listPlay nowlistening"><img src="./img/library/coverPlay-s.png"></div>
               </div>
               <div class="listSongInfo">
                 <div class="name">
@@ -470,44 +733,44 @@
                   <p> Spazz Cardigan</p>
                 </div>
               </div>
-              <div class="totalTime">4:30</div>
+              <div class="totalTime">3:11</div>
               <div class="heart becomeRed"><img src="./img/collection/redheart.png"></div>
               <div class="clearfix"></div>
             </li>
             <li>
               <div class="songCover">
-                <img src="./img/library/cover2.jpg" alt="">
-                <div class="listPlay"><i class="fas fa-play"></i></div>
+                <img src="./img/collection/album2.jpg" alt="">
+                <div class="listPlay"><img src="./img/library/coverPlay-s.png"></div>
               </div>
               <div class="listSongInfo">
                 <div class="name">
-                  <h4>Lucid Dreamer</h4>
-                  <p> Spazz Cardigan</p>
+                  <h4>Spring In My Step</h4>
+                  <p>Silent Partner</p>
                 </div>
               </div>
-              <div class="totalTime">4:30</div>
-              <div class="heart becomeRed"><img src="./img/collection/redheart.png"></div>
+              <div class="totalTime">1:59</div>
+              <div class="heart becomeRed"><img src="./img/collection/redheart.png" alt=""></div>
               <div class="clearfix"></div>
             </li>
             <li>
               <div class="songCover">
-                <img src="./img/library/cover3.jpg" alt="">
-                <div class="listPlay"><i class="fas fa-play"></i></div>
+                <img src="./img/collection/album3.jpg" alt="">
+                <div class="listPlay"><img src="./img/library/coverPlay-s.png"></div>
               </div>
               <div class="listSongInfo">
                 <div class="name">
-                  <h4>Lucid Dreamer</h4>
-                  <p> Spazz Cardigan</p>
+                  <h4>On My Way Home</h4>
+                  <p>The 126ers</p>
                 </div>
               </div>
-              <div class="totalTime">4:30</div>
-              <div class="heart becomeRed"><img src="./img/collection/redheart.png"></div>
+              <div class="totalTime">1:56</div>
+              <div class="heart becomeRed"><img src="./img/collection/redheart.png" alt=""></div>
               <div class="clearfix"></div>
             </li>
             <li>
               <div class="songCover">
-                <img src="./img/library/cover4.jpg" alt="">
-                <div class="listPlay"><i class="fas fa-play"></i></div>
+                <img src="./img/collection/album4.jpg" alt="">
+                <div class="listPlay"><img src="./img/library/coverPlay-s.png"></div>
               </div>
               <div class="listSongInfo">
                 <div class="name">
@@ -516,13 +779,13 @@
                 </div>
               </div>
               <div class="totalTime">4:30</div>
-              <div class="heart becomeRed"><img src="./img/collection/redheart.png"></div>
+              <div class="heart becomeRed"><img src="./img/collection/redheart.png" alt=""></div>
               <div class="clearfix"></div>
             </li>
             <li>
               <div class="songCover">
-                <img src="./img/library/cover5.jpg" alt="">
-                <div class="listPlay"><i class="fas fa-play"></i></div>
+                <img src="./img/collection/album5.jpg" alt="">
+                <div class="listPlay"><img src="./img/library/coverPlay-s.png"></div>
               </div>
               <div class="listSongInfo">
                 <div class="name">
@@ -531,13 +794,13 @@
                 </div>
               </div>
               <div class="totalTime">4:30</div>
-              <div class="heart becomeRed"><img src="./img/collection/redheart.png"></div>
+              <div class="heart becomeRed"><img src="./img/collection/redheart.png" alt=""></div>
               <div class="clearfix"></div>
             </li>
             <li>
               <div class="songCover">
-                <img src="./img/library/cover6.jpg" alt="">
-                <div class="listPlay"><i class="fas fa-play"></i></div>
+                <img src="./img/collection/album6.jpg" alt="">
+                <div class="listPlay"><img src="./img/library/coverPlay-s.png"></div>
               </div>
               <div class="listSongInfo">
                 <div class="name">
@@ -546,13 +809,13 @@
                 </div>
               </div>
               <div class="totalTime">4:30</div>
-              <div class="heart becomeRed"><img src="./img/collection/redheart.png"></div>
+              <div class="heart becomeRed"><img src="./img/collection/redheart.png" alt=""></div>
               <div class="clearfix"></div>
             </li>
             <li>
               <div class="songCover">
-                <img src="./img/library/cover1.jpg" alt="">
-                <div class="listPlay"><i class="fas fa-play"></i></div>
+                <img src="./img/collection/album7.jpg" alt="">
+                <div class="listPlay"><img src="./img/library/coverPlay-s.png"></div>
               </div>
               <div class="listSongInfo">
                 <div class="name">
@@ -561,7 +824,7 @@
                 </div>
               </div>
               <div class="totalTime">4:30</div>
-              <div class="heart becomeRed"><img src="./img/collection/redheart.png"></div>
+              <div class="heart becomeRed"><img src="./img/collection/redheart.png" alt=""></div>
               <div class="clearfix"></div>
             </li>
 
@@ -575,10 +838,10 @@
       <div class="lightCover">
         <div class="lightbox_s" id="myAllList">
           <div class="closeLight"><i class="fas fa-times"></i></div>
-          <h3>My List</h3>
+          <h4>My List</h4>
           <div class="lightSelectMenu">
             <ul>
-              <li>Liked songs</li>
+              <li class="chooseList">Liked songs</li>
               <li>Peaceful songs</li>
               <li>party</li>
             </ul>
@@ -588,7 +851,6 @@
       </div>
     </div>
   </div>
-
 
   <!-- nav vue -->
   <script>
@@ -628,288 +890,325 @@
 
 
         // player start
-        $(document).ready(function () {
-          //撥放器縮放
-          $('#expand').click(function () {
-            $('.player_b').addClass('open');
-            $('.player_s').animate({
-              bottom: '-70px'
-            });
-          });
-          $('#closePlayer').click(function () {
-            $('.player_b').removeClass('open');
-            $('.player_s').animate({
-              bottom: '0'
-            });
-          });
+        // $(document).ready(function () {
+        //   //撥放器縮放
+        //   $('#expand').click(function () {
+        //     $('.player_b').addClass('open');
+        //     $('.player_s').animate({
+        //       bottom: '-70px'
+        //     });
+        //   });
+        //   $('#closePlayer').click(function () {
+        //     $('.player_b').removeClass('open');
+        //     $('.player_s').animate({
+        //       bottom: '0'
+        //     });
+        //   });
 
-          //手機推移
-          $('.left .pushBtn').click(function () {
-            $('.left').css('height', '10%');
-            $('.right').css('height', '90%');
-            $('.right .pushBtn').show();
-            $('.left .pushBtn').hide();
-          });
-          $('.right .pushBtn').click(function () {
-            $('.left').css('height', '90%');
-            $('.right').css('height', '10%');
-            $('.left .pushBtn').show();
-            $('.right .pushBtn').hide();
-          });
+        // //   //手機推移
+        //   $('.left .pushBtn').click(function () {
+        //     $('.left').css('height', '10%');
+        //     $('.right').css('height', '90%');
+        //     $('.right .pushBtn').show();
+        //     $('.left .pushBtn').hide();
+        //   });
+        //   $('.right .pushBtn').click(function () {
+        //     $('.left').css('height', '90%');
+        //     $('.right').css('height', '10%');
+        //     $('.left .pushBtn').show();
+        //     $('.right .pushBtn').hide();
+        //   });
 
-          //select選歌單
-          $('#player .selectBtn').click(function () {
-            $('#player .lightCover').show();
-            $('#player #myAllList').show();
-          });
+        // //   //select選歌單
+        //   $('#player .selectBtn').click(function () {
+        //     $('#player .lightCover').show();
+        //     $('#player #myAllList').show();
+        //   });
+        //   $('#player #myAllList').click(function (e) {
+        //     e.stopPropagation();
+        //   });
 
-          //歌單清單
-          $('.closeLight').click(function () {
-            $('.lightCover').hide();
-            $('#myAllList').hide();
-          });
-          $('.lightCover').click(function () {
-            $(this).hide();
-            $('#myAllList').hide();
-          });
+        // //   //歌單清單
+        //   $('.closeLight').click(function () {
+        //     $('.lightCover').hide();
+        //     $('#myAllList').hide();
+        //   });
+        //   $('.lightCover').click(function () {
+        //     $(this).hide();
+        //     $('#myAllList').hide();
+        //   });
 
-          //點愛心
-          $('.heart').click(function () {
-            if ($(this).hasClass('becomeRed')) {
-              $(this).html('<img src="./img/collection/grayheart.png">').removeClass('becomeRed');
-            } else {
-              $(this).html('<img src="./img/collection/redheart.png">').addClass('becomeRed');
-            }
-          });
+        // //   //點愛心
+        //   $('.heart').click(function () {
+        //     if ($(this).hasClass('becomeRed')) {
+        //       $(this).html('<img src="./img/collection/grayheart.png">').removeClass('becomeRed');
+        //     } else {
+        //       $(this).html('<img src="./img/collection/redheart.png">').addClass('becomeRed');
+        //     }
+        //   });
 
-          //點歌單撥放，左側專輯唱片動畫
-          $('.songCover').mouseover(function () {
-            $(this).find('.listPlay').show();
-          });
-          $('.songCover').mouseout(function () {
-            $(this).find('.listPlay').hide();
-          });
-
-          $(".listPlay").click(function () {
-            if ($(this).hasClass('nowlistening')) {
-              $(this).html('<i class="fas fa-play"></i>').removeClass("nowlistening");
-              isPlaying(true);
-            } else {
-              $(this).html('<i class="fas fa-pause"></i>').addClass("nowlistening");
-              $("#player .songCover .listPlay").not(this).removeClass('nowlistening');
-              isPlaying(false);
-            }
-          });
+        // //   //點歌單撥放，左側專輯唱片動畫
+        //   $('.songCover').mouseover(function () {
+        //     $(this).find('.listPlay').show();
+        //   });
+        //   $('.songCover').mouseout(function () {
+        //     $(this).find('.listPlay').hide();
+        //   });
 
 
 
-          /* -- 音樂播放 -- */
-          let storage = localStorage;
-          var autoplay = false,
-            songTime,
-            progressingTime,
-            playStatus = false,
-            nowPlaying = 0, //現在播放的歌
-            audio = $("audio")[0], //撥放器
-            myPlaylist = [{
-                title: "Lucid Dreamer",
-                creator: "Spazz Cardigan",
-                cover: "../img/library/cover1.jpg",
-                filein: "../img/library/Lucid_Dreamer.mp3",
-                totalTime: "3:11",
-              },
-              {
-                title: "Spring In My Step",
-                creator: "Silent Partner",
-                cover: "../img/library/cover2.jpg",
-                filein: "../img/library/Spring_In_My_Step.mp3",
-                totalTime: "1:59",
-              },
-              {
-                title: "On My Way Home",
-                creator: "The 126ers",
-                cover: "../img/library/cover3.jpg",
-                filein: "../img/library/On_My_Way_Home.mp3",
-                totalTime: "1:56",
-              }
-            ];
+        // //   /* -- 音樂播放 -- */
+        //   let storage = localStorage;
+        //   let autoplay = false,
+        //     songTime,
+        //     progressingTime,
+        //     playStatus = false,
+        //     nowPlaying = 0, //現在播放的歌
+        //     audio = $("audio")[0], //撥放器
+        //     myPlaylist = [{
+        //         title: "Lucid Dreamer",
+        //         creator: "Spazz Cardigan",
+        //         cover: "./img/collection/album1.jpg",
+        //         filein: "./img/library/Lucid_Dreamer.mp3",
+        //         totalTime: "3:11",
+        //       },
+        //       {
+        //         title: "Spring In My Step",
+        //         creator: "Silent Partner",
+        //         cover: "./img/collection/album2.jpg",
+        //         filein: "./img/library/Spring_In_My_Step.mp3",
+        //         totalTime: "1:59",
+        //       },
+        //       {
+        //         title: "On My Way Home",
+        //         creator: "The 126ers",
+        //         cover: "./img/collection/album3.jpg",
+        //         filein: "./img/library/On_My_Way_Home.mp3",
+        //         totalTime: "1:56",
+        //       }
+        //     ],
+        //     listLen = myPlaylist.length;
 
-          $('#player audio').attr("src", myPlaylist[nowPlaying].filein);
-          // isStorageHave();
+        //   $('#player audio').attr("src", myPlaylist[nowPlaying].filein);
+        //     isStorageHave();
 
-          // isAutoPlay(true);//測試
+        // //   //播放暫停按鈕 -- 音樂撥放/暫停
+        //   $("#player .play").click(function () {
+        //     isPlaying(playStatus);
+        //   });
 
-          //播放暫停按鈕 -- 音樂撥放/暫停
-          $("#player .play").click(function () {
-            // console.log(nowPlaying);
-            // console.log(playStatus);
-            isPlaying(playStatus);
-          });
+        // //   //下一首按鈕 -- 切換下一首
+        //   $("#player .next").click(function () {
+        //     if (nowPlaying == listLen - 1) {
+        //       $("#player audio").attr("src", myPlaylist[listLen - 1].filein);
+        //     } else {
+        //       nowPlaying++;
+        //       $("#player audio").attr("src", myPlaylist[nowPlaying].filein);
+        //     }
+        //     if (playStatus == true) {
+        //       isPlaying(false);
+        //     } else {
+        //       isPlaying(true);
+        //     }
+        //     listStatus();
+        //   });
 
-          //下一首按鈕 -- 切換下一首
-          $("#player .next").click(function () {
-            if (nowPlaying == myPlaylist.length - 1) {
-              $("#player audio").attr("src", myPlaylist[myPlaylist.length - 1].filein);
-            } else {
-              nowPlaying++;
-              $("#player audio").attr("src", myPlaylist[nowPlaying].filein);
-            }
-            if (playStatus == true) {
-              isPlaying(false);
-            } else {
-              isPlaying(true);
-            }
-          });
+        // //   //上一首按鈕 -- 切換上一首
+        //   $("#player .prev").click(function () {
+        //     if (nowPlaying == 0) {
+        //       $("#player audio").attr("src", myPlaylist[0].filein);
+        //     } else {
+        //       nowPlaying--;
+        //       $("#player audio").attr("src", myPlaylist[nowPlaying].filein);
+        //     }
+        //     if (playStatus == true) {
+        //       isPlaying(false);
+        //     } else {
+        //       isPlaying(true);
+        //     }
+        //     listStatus();
+        //   });
 
-          //上一首按鈕 -- 切換上一首
-          $("#player .prev").click(function () {
-            if (nowPlaying == 0) {
-              $("#player audio").attr("src", myPlaylist[0].filein);
-            } else {
-              nowPlaying--;
-              $("#player audio").attr("src", myPlaylist[nowPlaying].filein);
-            }
-            if (playStatus == true) {
-              isPlaying(false);
-            } else {
-              isPlaying(true);
-            }
-          });
+        // //   //停止按鈕 -- 音樂全數停止
+        //   $("#player .stop").click(function () {
+        //     audio.pause();
+        //     audio.currentTime = 0;
+        //     isPlaying(true);
+        //     $("#player .songCover .listPlay").removeClass('nowlistening');
+        //   });
 
-          //停止按鈕 -- 音樂全數停止
-          $("#player .stop").click(function () {
-            audio.pause();
-            audio.currentTime = 0;
-            isPlaying(true);
-            $("#player .songCover .listPlay").removeClass('nowlistening');
-          });
+        // //   //循環播放 -- 單首ok
+        //   $("#player .loop").click(function () {
+        //     if ($(this).hasClass("becomeYel")) {
+        //       $(this).removeClass("becomeYel");
+        //       $("#player .rand").attr("disabled", false);
+        //       audio.loop = false;
+        //       autoChange(true);
+        //     } else {
+        //       $(this).addClass("becomeYel");
+        //       $("#player .rand").attr("disabled", true);
+        //       audio.loop = true;
+        //       autoChange(false);
+        //     }
+        //   });
+        // //   //隨機播放 -- 清單隨機--未處理
+        //   $("#player .rand").click(function () {
+        //     if ($(this).hasClass("becomeYel")) {
+        //       $(this).removeClass("becomeYel");
+        //       $("#player .loop").attr("disabled", false);
+        //       autoChange(true);
+        //     } else {
+        //       $(this).addClass("becomeYel");
+        //       $("#player .loop").attr("disabled", true);
+        //       autoChange(false);
+        //     }
+        //   });
 
-          //循環播放 -- 單首??未處理
-          $("#player .loop").click(function () {
-            if ($(this).hasClass("becomeYel")) {
-              $(this).removeClass("becomeYel");
-              audio.loop = false;
-            } else {
-              $(this).addClass("becomeYel");
-              audio.loop = true;
-            }
-          });
-          //隨機播放 -- 清單隨機--未處理
-
-
-
-          //clickBar -- 詳細(b)/簡易(s)
-          $(".player_b .progressbar").click(function (e) {
-            let progressBarSize_b = parseInt($(".player_b .progressbar").css("width"));
-            let mouseX_b = e.clientX - $(".player_b .progressbar").offset().left;
-            $(".player_b .progressbar .progress").css('width', `${mouseX_b}px`);
-
-            let newTime_b = mouseX_b / (progressBarSize_b / audio.duration);
-            audio.currentTime = newTime_b;
-          });
-          $(".player_s .progressbar").click(function (e) {
-            let progressBarSize_s = parseInt($(".player_s .progressbar").css("width"));
-            let mouseX_s = e.clientX - $(".player_s .progressbar").offset().left;
-            $(".player_s .progressbar .progress").css('width', `${mouseX_s}px`);
-
-            let newTime_s = mouseX_s / (progressBarSize_s / audio.duration);
-            audio.currentTime = newTime_s;
-          });
-
-
-          /* -- 自動撥放 --*/
-          // function isAutoPlay(autoP){//測試
-          //   if(autoP){
-          //     isPlaying(false);
-          //   }else{
-          //     isPlaying(true);
-          //   }
-          // }
-
-
-          /* -- local -- */
-          // function isStorageHave() {
-          //   let newSongTime;
-          //   if(storage.length != 0){
-          //     newSongTime = storage.getItem(1);
-          //     console.log(newSongTime);
-          //   }else{
-          //     console.log(newSongTime);
-          //   }
-
-          // }
+        // //   //maybe有靜音 volIcon
 
 
 
-          function isPlaying(isPlaying) {
-            if (!isPlaying) { //如果沒有播放就讓他撥
-              playAudio();
-              $("#player .play").html('<i class="fas fa-pause"></i>');
-              $("#player .player_b .coverRec").animate({
-                right: "-50%",
-                opacity: "1"
-              }, "fast", "swing").addClass("recRotate");
-              playStatus = true;
-              // console.log(playStatus);
-            } else {
-              audio.pause();
-              $("#player .play").html('<i class="fas fa-play"></i>');
-              playStatus = false;
-              $("#player .player_b .coverRec").animate({
-                right: "0%"
-              }).removeClass("recRotate");
-              // console.log(playStatus);
-            }
-            $("#player .songInfo .name").text(myPlaylist[nowPlaying].title);
-            $("#player .songInfo .creator").text(myPlaylist[nowPlaying].creator);
-          }
+        // //   //clickBar -- 詳細(b)/簡易(s)
+        //   $(".player_b .progressbar").click(function (e) {
+        //     let progressBarSize_b = parseInt($(".player_b .progressbar").css("width"));
+        //     let mouseX_b = e.clientX - $(".player_b .progressbar").offset().left;
+        //     $(".player_b .progressbar .progress").css('width', `${mouseX_b}px`);
 
-          //播放
-          function playAudio() {
-            audio.play();
-          }
+        //     let newTime_b = mouseX_b / (progressBarSize_b / audio.duration);
+        //     audio.currentTime = newTime_b;
+        //   });
+        //   $(".player_s .progressbar").click(function (e) {
+        //     let progressBarSize_s = parseInt($(".player_s .progressbar").css("width"));
+        //     let mouseX_s = e.clientX - $(".player_s .progressbar").offset().left;
+        //     $(".player_s .progressbar .progress").css('width', `${mouseX_s}px`);
 
+        //     let newTime_s = mouseX_s / (progressBarSize_s / audio.duration);
+        //     audio.currentTime = newTime_s;
+        //   });
 
+        //   function isPlaying(isPlaying) {
+        //     if (!isPlaying) { //如果沒有播放就讓他撥
+        //       playAudio();
+        //       $("#player .play").html('<i class="fas fa-pause"></i>');
+        //       $("#player .player_b .coverRec").animate({
+        //         right: "-50%",
+        //         opacity: "1"
+        //       }, "fast", "swing").addClass("recRotate");
+        //       playStatus = true;
+        //       listStatus();
+        //     } else {
+        //       audio.pause();
+        //       $("#player .play").html('<i class="fas fa-play"></i>');
+        //       playStatus = false;
+        //       listStatus();
+        //       $("#player .player_b .coverRec").animate({
+        //         right: "0%"
+        //       }).removeClass("recRotate");
+        //     }
+        //     $("#player .songInfo .name").text(myPlaylist[nowPlaying].title);
+        //     $("#player .songInfo .creator").text(myPlaylist[nowPlaying].creator);
+        //     $("#player .info img").not(".coverRec img").not(".heart img").attr("src", myPlaylist[nowPlaying]
+        //       .cover);
+        //   }
 
-          //進度條
-          progressingTime = setInterval(progressingShow, 100);
-          let newSong = nowPlaying; //測試
-          function progressingShow() {
-            songTime = audio.currentTime;
-            let progressColor = (songTime / audio.duration) * 100;
-            if (audio.ended) {
-              autoChange();
-            }
+        // //   //播放
+        //   function playAudio() {
+        //     audio.play();
+        //   }
 
-            // if(newSong == nowPlaying){
-            //   storage.setItem(newSong, songTime);
-            // }else{
-            //   storage.clear();
-            //   storage.setItem(nowPlaying, songTime);
-            // }
+        // //   //進度條
+        //   progressingTime = setInterval(progressingShow, 100);
+        //   let newSong = nowPlaying; //測試
+        //   function progressingShow() {
+        //     songTime = audio.currentTime;
+        //     let progressColor = (songTime / audio.duration) * 100;
+        //     if (audio.ended) {
+        //       autoChange(true);
+        //     }
 
-            // console.log(audio.duration); //歌曲總長秒數
-            $("#player .progress").css("width", `${progressColor.toFixed(2)}%`);
-            $("#player span.start").text(`${parseInt(songTime / 60)}:${parseInt(songTime % 60)}`)
-            $("#player span.end").text(myPlaylist[nowPlaying].totalTime);
-          }
+        //     // console.log(audio.duration); //歌曲總長秒數
+        //     $("#player .progress").css("width", `${progressColor.toFixed(2)}%`);
+        //     $("#player span.start").text(`${parseInt(songTime / 60)}:${parseInt(songTime % 60)}`)
+        //     $("#player span.end").text(myPlaylist[nowPlaying].totalTime);
+        //   }
 
-          //自動換下一首
-          function autoChange() {
-            if (nowPlaying == myPlaylist.length - 1) {
-              if (audio.ended) {
-                audio.currentTime = 0;
-                isPlaying(true);
-              } else {
-                isPlaying(false);
-              }
-            } else {
-              nowPlaying++;
-              $("#player audio").attr("src", myPlaylist[nowPlaying].filein);
-              isPlaying(false);
-            }
-          }
-        });
+        // //   //自動換下一首
+        //   function autoChange(autoStatus) {
+        //     if (autoStatus) {
+        //       //隨機撥放
+        //       if ($("#player .rand").hasClass("becomeYel")) {
+        //         let randNum = parseInt(Math.random() * (listLen));
+        //         console.log(randNum);
+        //         nowPlaying = randNum;
+        //         $("#player audio").attr("src", myPlaylist[nowPlaying].filein);
+        //         isPlaying(false);
+        //         listStatus();
+        //       } else {
+        //         if (nowPlaying == listLen - 1) {
+        //           if (audio.ended) {
+        //             audio.currentTime = 0;
+        //             isPlaying(true);
+        //           } else {
+        //             isPlaying(false);
+        //           }
+        //         } else {
+        //           if (audio.ended) {
+        //             nowPlaying++;
+        //             $("#player audio").attr("src", myPlaylist[nowPlaying].filein);
+        //             isPlaying(false);
+        //             listStatus();
+        //           }
+        //         }
+        //       }
+        //     }
+        //   }
+
+        // //   //清單播放狀態
+        //   function listStatus() {
+        //     let NowPlaySong = document.querySelector(".player_s .songInfo .name").innerText;
+        //     let listCover = document.querySelectorAll(".player_b .songCover .listPlay");
+        //     // console.log(NowPlaySong);
+        //     for (var listNum = 0; listNum < listLen; listNum++) {
+        //       if (myPlaylist[listNum].title == NowPlaySong) {
+        //         listCover[listNum].classList.add("nowlistening");
+        //         if (playStatus == false) {
+        //           listCover[listNum].innerHTML = '<img src="./img/library/coverPlay-s.png">';
+        //         } else {
+        //           listCover[listNum].innerHTML = '<img src="./img/library/coverPause-s.png">';
+        //         }
+        //       } else {
+        //         listCover[listNum].innerHTML = '<img src="./img/library/coverPlay-s.png">';
+        //         listCover[listNum].classList.remove("nowlistening");
+        //       }
+        //     }
+        //   }
+
+        // //   //清單播放點擊
+        //   $(".listPlay").click(function () {
+        //     let selectSong = $(this).parent().siblings(".listSongInfo").find(".name").find("h4").text();
+        //     let titleName = [];
+
+        //     if ($(this).hasClass('nowlistening')) {
+        //       if (playStatus) {
+        //         $(this).html('<img src="./img/library/coverPlay-s.png">');
+        //         isPlaying(true);
+        //       } else {
+        //         $(this).html('<img src="./img/library/coverPause-s.png">');
+        //         isPlaying(false);
+        //       }
+        //     } else {
+        //       for (let nameNum = 0; nameNum < listLen; nameNum++) {
+        //         titleName.push(myPlaylist[nameNum].title);
+        //       }
+
+        //       let selectNum = titleName.indexOf(selectSong.toString());
+        //       nowPlaying = selectNum;
+        //       $("#player audio").attr("src", myPlaylist[nowPlaying].filein);
+        //       isPlaying(false);
+        //     }
+        //     listStatus();
+        //   });
+        // });
         // player end
 
 
@@ -1016,56 +1315,9 @@
       }
     });
   </script>
-
+  <script src="./js/player.js"></script>
   <!-- 自己的script -->
-  <script>
-    //more -- changeList
-    $('.more').click(function () {
-      $(this).find('.changeList').show();
-      $('.more').not(this).find('.changeList').hide();
-    });
-
-    //changeList跳窗
-    $('.changeList').click(function () {
-      $('.lightCover').show();
-      $('#myAllList').show();
-    });
-    $('.closeLight').click(function () {
-      $('.lightCover').hide();
-      $('.lightCover').children('div').hide();
-    });
-    $('.lightCover').click(function () {
-      $(this).hide();
-      $(this).children('div').hide();
-    });
-
-    //createBtn -- 跳窗
-    $('#createBtn').click(function () {
-      $('.lightCover').show();
-      $('#createListBox').show();
-    });
-
-    //remove favor
-    $('.library_main .heart').click(function () {
-      $('#myAllList').hide()
-      if ($(this).hasClass('becomeRed')) {
-        $(this).html('<img src="./img/collection/grayheart.png">').removeClass('becomeRed');
-        $(this).parent().remove();
-      } else {
-        $(this).html('<img src="./img/collection/redheart.png">').addClass('becomeRed');
-      }
-    });
-
-
-    //修改按鈕
-    $('#modifyBtn').click(function () {
-      $('.delete').show();
-      $('.editBtn').show();
-      $('.enterBtn').show();
-      $('#inputListTitle').show();
-      $('.listName').find('.name').find('h2').hide();
-    });
-  </script>
+  <script src="./js/library.js"></script>
 </body>
 
 </html>
