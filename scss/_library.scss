@@ -419,6 +419,10 @@ $mainRed : #de267d;
               transform: translate(-50%, -50%);
               cursor: pointer;
 
+              &.nowlistening {
+                display: block !important;
+              }
+
               i {
                 color: white;
                 font-size: $rem0_8;
@@ -656,6 +660,11 @@ $mainRed : #de267d;
             margin: 0 auto;
             padding: 16px 0;
             border-bottom: 1px solid $fontColor;
+            cursor: pointer;
+
+            &:hover {
+              background-color: #7ed5e5;
+            }
 
             &.choose {
               background-color: #7ed5e5;
@@ -696,7 +705,7 @@ $mainRed : #de267d;
       transform: translate(-50%, -50%);
       display: none;
 
-      #createList {
+      #createListName {
         width: 80%;
         height: 60px;
         margin: 3% auto;

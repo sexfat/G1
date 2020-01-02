@@ -1096,6 +1096,11 @@ $mainRed : #de267d;
             margin: 0 auto;
             padding: 16px 0;
             border-bottom: 1px solid $fontColor;
+            cursor: pointer;
+
+            &:hover {
+              background-color: #7ed5e5;
+            }
 
             &.choose {
               background-color: #7ed5e5;
