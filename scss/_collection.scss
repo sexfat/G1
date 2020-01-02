@@ -20,6 +20,9 @@ $albumbottom: 340px;
     background-position:bottom;
     background-size: cover;
     background-repeat: no-repeat;
+    .collectionsection{
+        padding: 0px 0px 70px 0px; 
+    }
     .collectionheader{
         text-align: center;
         padding:120px;
@@ -41,7 +44,6 @@ $albumbottom: 340px;
         }
     }
     .collectionalbumsection1{
-        // border: 1px solid pink;
         width:100%;
         display: inline-block;
         .collectionsinglealbum{
