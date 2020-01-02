@@ -358,19 +358,22 @@
   </header>
   <section class="collectionsection">
     <div class="collectionradio">
-      <img src="./img/collection/radio.png" alt="">
-    </div>
-    <div class="collectioneyes">
-      <img src="./img/collection/closeeye.png" alt="">
-      <img src="./img/collection/closeeye.png" alt="">
-      <img src="./img/collection/closeeye.png" alt="">
-      <img src="./img/collection/closeeye.png" alt="">
+      <div class="collgreenradio">
+        <img src="./img/collection/closeeye.png" alt="">
+      </div>
+      <div class="collpinkradio">
+        <img src="./img/collection/closeeye.png" alt="">
+        <img src="./img/collection/closeeye.png" alt="">
+      </div>
+      <div class="collblueradio">
+        <img src="./img/collection/closeeye.png" alt="">
+      </div>
     </div>
     <div id="collectiontabcontainer">
       <ul class="collectiontabtitle">
-        <li><a class="tabtitlechange1" href="#tab01">Favorite</a></li>
-        <li><a class="tabtitlechange2" href="#tab02">Trap</a></li>
-        <li><a class="tabtitlechange3" href="#tab03">All</a></li>
+        <li><a class="tabtitlechange1" href="#tab01">All</a></li>
+        <li><a class="tabtitlechange2" href="#tab02">Favorite</a></li>
+        <li><a class="tabtitlechange3" href="#tab03">Trap</a></li>
         <li><a class="tabtitlechange4" href="#tab04">House</a></li>
       </ul>
       <div class="playall_btns">
@@ -429,7 +432,7 @@
             </div>
             <div class="collectionsinglecover">
               <div class="collalbumpic sampleblum6">
-                63<div class="collplayer"><a href=""><img src="./img/library/coverPlay-b.png" alt=""></a></div>
+                <div class="collplayer"><a href=""><img src="./img/library/coverPlay-b.png" alt=""></a></div>
               </div>
               <div class="collheart"><img src="./img/collection/grayheart.png" alt=""></div>
               <p> Dharma<br>
@@ -883,6 +886,28 @@
   $('.collectiontabtitle li a').click(function () {
     $(this).css("color", "#fff").css("background-color", "#7ed5e5");
     $('.collectiontabtitle li a').not(this).css("background-color", "#f1c40f");
+    var lia = $(this).parent().index();
+    if( lia == 0){
+      $('.collgreenradio').find('img').attr("src","./img/collection/openeye.png");
+      $('.collpinkradio').find('img').attr("src","./img/collection/closeeye.png");
+      $('.collblueradio').find('img').attr("src","./img/collection/closeeye.png");
+    }
+    else if(lia == 1){
+      $('.collpinkradio').find('img').eq(0).attr("src","./img/collection/openeye.png");
+      $('.collgreenradio').find('img').attr("src","./img/collection/closeeye.png");
+      $('.collpinkradio').find('img').eq(1).attr("src","./img/collection/closeeye.png");
+      $('.collblueradio').find('img').attr("src","./img/collection/closeeye.png");
+    }
+    else if(lia == 2){
+      $('.collpinkradio').find('img').eq(1).attr("src","./img/collection/openeye.png");
+      $('.collgreenradio').find('img').attr("src","./img/collection/closeeye.png");
+      $('.collpinkradio').find('img').eq(0).attr("src","./img/collection/closeeye.png");
+      $('.collblueradio').find('img').attr("src","./img/collection/closeeye.png");
+    }else if(lia == 3){
+      $('.collblueradio').find('img').attr("src","./img/collection/openeye.png");
+      $('.collgreenradio').find('img').attr("src","./img/collection/closeeye.png");
+      $('.collpinkradio').find('img').attr("src","./img/collection/closeeye.png");
+    }
   });
 </script>
 <!-- the end of my script -->

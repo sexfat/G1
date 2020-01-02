@@ -7,21 +7,100 @@ $fontColor: #333;
 $albumsize: 200px;
 $albumbottom: 340px;
 
-@mixin collectionalbum {
-    background-size: 100%;
-    width:$albumsize;
-    height:$albumsize;
-    position: relative;
-    bottom:$albumbottom;
-}
-
 .collectionbody{
     background-image: url(../img/collection/collectionnavback.jpg);
     background-position:bottom;
     background-size: cover;
     background-repeat: no-repeat;
     .collectionsection{
-        padding: 0px 0px 70px 0px; 
+        padding: 0px 0px 70px 0px;
+        .collectionradio{
+            width:100%;
+            border:1px solid blue;
+            font-size:0px;
+
+            div{
+                width: 380px;
+                height: 300px;
+                max-width:380px;
+                display: inline-block;
+                border:1px solid green;
+                @include respond(latop-max) {
+                    width: 320px;
+                    height: 280px;
+                    background-size: cover;
+                    background-position: center;
+                    img{
+                        width:120px;
+                    }   
+                }
+                @include respond(latop-min) {
+                    width:250px;
+                    height:210px;
+                    img{
+                        width:100px;
+                    }      
+                }
+                @include respond(ipadpro) {
+                    width:195px;
+                    height:155px;
+                    img{
+                        width:60px;
+                    }
+                } 
+                @include respond(ipad) {
+                    width:145px;
+                    height:100px;
+                    img{
+                        width:40px;
+                    }
+                } 
+                @include respond(phone) {
+                    width:120px;
+                    height:80px;
+                    img{
+                        width:40px;
+                    }
+                } 
+                img{
+                    max-width: 130px;
+                }
+            }
+            .collgreenradio{
+                background-image: url(../img/collection/greenradio.png);
+                img{
+                    border: 1px solid green;
+                    position: relative;
+                    left:19%;
+                    top:40%;
+                }
+            }
+            .collpinkradio{
+                background-image: url(../img/collection/pinkradio.png);
+                img{
+                    position: relative;
+                    top:40%;
+                    margin:0px 29px 0px 30px;
+                    border:1px solid orange;
+                    @include respond(latop-max) {
+                        margin:0px 22px 0px 17px;
+                        right:5%;
+                    }
+                    @include respond(latop-min) {
+                        margin:0px 12px 0px 1px;
+                    }
+                }
+            }
+            .collblueradio{
+                background-image: url(../img/collection/blueradio.png);
+                img{
+                    position: relative;
+                    top:40%;
+                    right:23%;
+                    border: 1px solid red;
+                }
+            }
+        }
     }
     .collectionheader{
         text-align: center;
@@ -32,31 +111,15 @@ $albumbottom: 340px;
             width: 100%;
         }
     }
-    .collectioneyes{
-        border: 1px solid pink;
-        width:100%;
-        display: inline-block;
-        position: relative;
-        bottom:28vh;
-        img{
-            max-width:120px;
-            margin:0px 50px 0px 50px;
-        }
-    }
     .collectionalbumsection1{
         width:100%;
         display: inline-block;
         .collectionsinglealbum{
-            // border: 1px solid green;
             width:100%;
-            // background-image: url(../img/collection/shelf.png);
-            // background-repeat: no-repeat;
-            // background-position: bottom;
             margin-bottom:50px;
             display: inline-block;
             font-size: 0px;
             .collectionsinglecover{
-                // border:1px solid blue;
                 margin:20px;
                 display: inline-block;
                 font-size:$rem1_2;
@@ -70,8 +133,8 @@ $albumbottom: 340px;
                     margin:10px;
                 }
                 @include respond(latop-min) {
-                    width:180px;
-                    height:180px;
+                    width:150px;
+                    height:150px;
                 }
                 .collalbumpic{
                     background-size:cover;
@@ -232,7 +295,7 @@ $albumbottom: 340px;
                         cursor: pointer;
                         }
                         a{
-                            color: #fff;
+                            color: #333;
                             cursor: pointer;
                             padding: 10px 20px;
                         }
@@ -244,10 +307,6 @@ $albumbottom: 340px;
                         padding:10px 25px;
                         @include respond(latop-max) {
                             margin: 0px 20px 0px 20px;
-                        }
-                        @include respond(latop-min) {
-                            margin: 0px 10px 0px 10px;
-                            font-size:$rem1_5;
                         }
                         @include respond(latop-min) {
                             margin: 0px 10px 0px 10px;
