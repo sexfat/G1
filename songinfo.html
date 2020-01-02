@@ -534,6 +534,9 @@
 
     </section>
     <br>
+    <br>
+    <br>
+    <br>
     <section class="songinfo_infos4">
         <div>
             <div class="message">
@@ -545,22 +548,30 @@
                         <li class="infomess_li">
                             <p>ID : Alice</p>
                             WOW ! Awesome !
-                            <div class="re-report"></div>
+                            <!-- <div class="re-report"></div> -->
+                            <input type="button" name="" class="inforeport" style="display: none;">
+                            <label class="songinfo_re" for="inforeport">&ensp;Report</label>
                         </li>
                         <li class="infomess_li">
                             <p>ID : Bella</p>
                             WOW ! Awesome !
-                            <div class="re-report"></div>
+                            <!-- <div class="re-report"></div> -->
+                            <input type="button" name="" class="inforeport" style="display: none;">
+                            <label class="songinfo_re" for="inforeport">&ensp;Report</label>
                         </li>
                         <li class="infomess_li">
                             <p>ID : Tina</p>
                             WOW ! Awesome !
-                            <div class="re-report"></div>
+                            <!-- <div class="re-report"></div> -->
+                            <input type="button" name="" class="inforeport" style="display: none;">
+                            <label class="songinfo_re" for="inforeport">&ensp;Report</label>
                         </li>
                         <li class="infomess_li">
                             <p>ID : Rose</p>
                             WOW ! Awesome !
-                            <div class="re-report"></div>
+                            <!-- <div class="re-report"></div> -->
+                            <input type="button" name="" class="inforeport" style="display: none;">
+                            <label class="songinfo_re" for="inforeport">&ensp;Report</label>
                         </li>
                     </ul>
                 </div>
@@ -600,8 +611,9 @@
                 var item = document.createElement('li');
                 //給新創建的節點創建內容：innerHTML
                 //item.innerHTML = content;
-                // item.innerHTML = content + '<button class="delete">删除</button>'
-                item.innerHTML = content + '<div class="re-report"></div>'
+                item.innerHTML = content + '<button class="songinfo_re">删除</button>'
+                // item.innerHTML = content + '<div class="re-report"></div>'
+                // item.innerHTML = content + '<label class="songinfo_re" for="inforeport">&ensp;Report</label>'
                 //將新節點添加到評論區：添加到頁面父節點.appendChild 
                 //messlist.appendChild(item)
                 //將新節點插入到某個節點之前，父節點.insertBefore(子節點，在那個子節點之前)
