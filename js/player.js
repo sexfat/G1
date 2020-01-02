@@ -81,8 +81,10 @@
 
    //點愛心
    $('#player .heart').click(function () {
+     let songName = $(this).siblings('.listSongInfo').find('.name h4').text();
      if ($(this).hasClass('becomeRed')) {
        $(this).html('<img src="./img/collection/grayheart.png">').removeClass('becomeRed');
+       
      } else {
        $(this).html('<img src="./img/collection/redheart.png">').addClass('becomeRed');
      }

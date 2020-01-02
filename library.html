@@ -603,7 +603,7 @@
         <div class="closeLight"><i class="fas fa-times"></i></div>
         <h3>Create the new playlist</h3>
         <form action="">
-          <input type="text" name="createListName" id="createList">
+          <input type="text" name="createListName" id="createListName">
           <button type="submit">ok</button>
           <button>cancel</button>
         </form>
@@ -612,6 +612,7 @@
   </main>
   <div class="before"></div>
   <div class="after"></div>
+
   <!-- 播放器 -->
   <div id="player">
     <audio src="" id="audioPlayer"></audio>
@@ -711,20 +712,20 @@
         <div class="pushBtn"></div>
         <div class="listTitle">
           <div class="listCover">
-            <img src="./img/library/list_pic1.jpg"></div>
+            <img src="./img/library/list_pic0.jpg"></div>
           <div class="listName">
-            <h2>peaceful list</h2>
+            <h2>Liked songs</h2>
             <span>8 songs</span>
           </div>
           <button class="selectBtn" id="selectBtn">SELECT</button>
           <div class="clearfix"></div>
         </div>
         <div class="list">
-          <ul>
+          <ul class="chooseList">
             <li>
               <div class="songCover">
                 <img src="./img/collection/album1.jpg" alt="">
-                <div class="listPlay"><img src="./img/library/coverPlay-s.png"></div>
+                <div class="listPlay nowlistening"><img src="./img/library/coverPlay-s.png"></div>
               </div>
               <div class="listSongInfo">
                 <div class="name">
@@ -837,10 +838,10 @@
       <div class="lightCover">
         <div class="lightbox_s" id="myAllList">
           <div class="closeLight"><i class="fas fa-times"></i></div>
-          <h3>My List</h3>
+          <h4>My List</h4>
           <div class="lightSelectMenu">
             <ul>
-              <li>Liked songs</li>
+              <li class="chooseList">Liked songs</li>
               <li>Peaceful songs</li>
               <li>party</li>
             </ul>
@@ -850,7 +851,6 @@
       </div>
     </div>
   </div>
-
 
   <!-- nav vue -->
   <script>
