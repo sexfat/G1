@@ -5,6 +5,7 @@
    playStatus,
    nowPlaying, //現在播放的歌
    myPlaylist = [],
+   playerListName,
    listLen = myPlaylist.length;
 
 
@@ -38,7 +39,7 @@
      $('.right .pushBtn').hide();
    });
 
-   //select選歌單
+   //selectbtn -- 跳燈箱
    $('#player .selectBtn').click(function () {
      $('#player .lightCover').show();
      $('#player #myAllList').show();
@@ -56,7 +57,7 @@
 
 
    //點愛心
-   $('#player .heart').click(function () {
+   $('#player').on('click', '.heart', function () {
      let songName = $(this).siblings('.listSongInfo').find('.name h4').text();
      if ($(this).hasClass('becomeRed')) {
        $(this).html('<img src="./img/collection/grayheart.png">').removeClass('becomeRed');
@@ -67,24 +68,29 @@
    });
 
    //點歌單撥放，左側專輯唱片動畫
-   //  $('.songCover').mouseover(function () {
-   //    $(this).find('.listPlay').show();
-   //  });
-   //  $('.songCover').mouseout(function () {
-   //    $(this).find('.listPlay').hide();
-   //  });
-   $(document).on('mouseover','.songCover', function () {
+   $('#player').on('mouseover', '.songCover', function () {
      $(this).find('.listPlay').show();
    });
-   $(document).on('mouseout','.songCover', function () {
+   $('#player').on('mouseout', '.songCover', function () {
      $(this).find('.listPlay').hide();
    });
 
    //選擇播放歌單
-   $('#player #myAllList li').click(function () {
-     $(this).addClass("choose");
-     $('#player #myAllList li').not(this).removeClass("choose");
-     $("#player .list ul").addClass("chooseList");
+   $('#myAllList ul').on('click', 'li', function () {
+     playerListName = $(this).text();
+     $(this).addClass('choose');
+     $('#player #myAllList li').not(this).removeClass('choose');
+     $('#player .list ul').addClass('chooseList');
+     $('#plistName').val(playerListName);
+   });
+   $('#myAllList #mylistOK').click(function () {
+     if (playerListName == 'Liked songs') {
+       getLikedList();
+     } else {
+       getOtherPlayList();
+     }
+     $('.lightCover').hide();
+     $('#player #myAllList').hide();
    });
 
    /* ---------------- 音樂播放器 ---------------- */
@@ -209,7 +215,7 @@
    });
 
    //清單播放點擊
-   $("#player .listPlay").click(function () {
+   $('#player').on('click', ".listPlay", function () {
      nowPlaying = $(this).parent().parent().index();
      $("#player .listPlay").not(this).removeClass("nowlistening").html('<img src="./img/library/coverPlay-s.png">');
      if ($(this).hasClass('nowlistening')) {
@@ -238,7 +244,7 @@
      phpGetListName = JSON.parse(xhr.responseText);
      lightListName(phpGetListName);
    };
-   xhr.open("get", "/g1/php/getListName.php", true);
+   xhr.open("get", "./php/getListName.php", true);
    xhr.send(null)
  }
  //取得Liked Songs
@@ -247,26 +253,27 @@
    xhr.onload = function () {
      myPlaylist = JSON.parse(xhr.responseText);
      createPlayerList(myPlaylist);
-     console.log(myPlaylist);
    };
-   xhr.open("get", "/g1/php/likedSongsList.php", true);
+   xhr.open("get", "./php/likedSongsList.php", true);
    xhr.send(null)
  }
 
- //取得歌單列表 -- 未完成
- function getPlayList() {
+ //取得歌單列表 -- 
+ function getOtherPlayList() {
    let xhr = new XMLHttpRequest();
    xhr.onload = function () {
      myPlaylist = JSON.parse(xhr.responseText);
+     createPlayerList(myPlaylist);
    };
-   xhr.open("get", "/g1/php/showPlayList.php", true);
-   xhr.send(null)
+   let url = `./php/showPlayList.php?plistName=${playerListName}`;
+   xhr.open("GET", url, true);
+   xhr.send(null);
  }
 
  //創建歌單
  function createPlayerList(songlistbuild) {
+  $('#player .list ul').text("");
    let li, div_songCover, listplay, listSongInfo, listSongInfo_n, total, heart, clear, img, h4, p, text;
-
    for (let i = 0; i < songlistbuild.length; i++) {
      li = document.createElement('li');
      div_songCover = document.createElement('div');
@@ -322,6 +329,7 @@
  //build lightbox -- allmylist
  function lightListName(phpGetListName) {
    var ul, li, text;
+   $('#myAllList ul').children().remove();
    ul = $('#myAllList ul');
    li = document.createElement('li');
    text = document.createTextNode('Liked songs');
@@ -351,10 +359,10 @@
      $('#player audio').attr("autoplay", false);
      playStatus = true;
    }
-   //  $('#player audio').attr("src", myPlaylist[nowPlaying].song_addr);
-   //  isPlaying(playStatus);
-   //  setInterval(progressingShow, 100);
-   //  listStatus();
+   // $('#player audio').attr("src", myPlaylist[nowPlaying].song_addr);
+   // isPlaying(playStatus);
+   // setInterval(progressingShow, 100);
+   // listStatus();
    getLikedList();
  }
 
