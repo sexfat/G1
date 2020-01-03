@@ -873,9 +873,8 @@
     $(this).find('.collplayer').css("display", "none");
   });
   //PLAY AND PAUSE BUTTON
-  $('.collplayer').click(function () {
+  $('.collplayer a').click(function () {
     if ($(this).hasClass('becomePause')) {
-      e.preventDefault();
       $(this).html('<img src="./img/library/coverPlay-b.png">').removeClass('becomePause');
     } else {
       $(this).html('<img src="./img/library/coverPause-b.png">').addClass('becomePause');
