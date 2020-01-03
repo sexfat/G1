@@ -5,16 +5,17 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
-    <title>ACTIVITY</title>
+    <title>SOUNDWAVE | activity</title>
     <link rel="stylesheet" href="./css/main.css">
     <!-- <link rel="stylesheet" href="./css/activity.css"> -->
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.11.2/css/all.min.css" />
     <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/vue/2.6.10/vue.js"></script>
-     <script src="./js/player.js"></script>
-     <script src="./js/public.js"></script>
+    <script src="./js/player.js"></script>
+    <script src="./js/public.js"></script>
 
 <body>
+    <div id="activityTop"></div>
     <div id="app">
         <!-- 記得包在 Vue 裡-->
 
@@ -378,7 +379,6 @@
 
 
     </div>
-
     <section id="activity">
         <div id="actHead" class="wrapper">
 
@@ -425,15 +425,24 @@
                     <a href="#act_old_year2018" class="act_Anchor">
                         <img src="./img/activity/yearbutton.png"><span>2018</span>
                     </a>
+
                     <a href="#act_old-year2017" class="act_Anchor">
                         <img src="./img/activity/yearbutton.png"> <span>2017</span>
                     </a>
                 </div>
 
-                <div id="act_TopAnchor"> 
-                 <a href="#activity" class="act_Anchor">
-                     <img src="./img/activity/top-bush.png" alt="">
+                <div id="act_TopAnchor" @click="GoTopAnima">
+
+                    <a href="#activityTop" class="act_Anchor ">
+                        <img src="./img/activity/top-bush.png" alt="" class="act_Bush">
+
+                            <div class="act_ShowTopBush" v-if="GoTopBush==true">
+                                <img src="./img/activity/top-bush02.png" alt="">
+                            </div>
+            
+                        TOP
                     </a>
+
                 </div>
 
                 <div id="act_carouselSelect">
@@ -1458,6 +1467,18 @@
          </script>
 
     </section>
+    <script>
+
+        $(function () {
+            $('.act_Anchor').on('click', function (e) {
+                e.preventDefault();
+                $('html, body').animate({ scrollTop: $($(this).attr('href')).offset().top }, 700, 'swing');
+
+            });
+        });
+
+
+    </script>
 
 
 
@@ -1529,8 +1550,10 @@
                 showChangeVote(e) {
                     let voteButton = e.target;
                     voteButton.classList.toggle('act_vote-button');
+                    clearBush()
 
                 },
+
 
 
             },
@@ -1599,6 +1622,7 @@
                 SignSongURL: "",
                 SignSongURLSelect: "",
                 Votes: 415,
+                GoTopBush: false,
 
 
             },
@@ -1631,6 +1655,28 @@
                     this.minutes = Math.floor((this.distance % (1000 * 60 * 60)) / (1000 * 60));
                     this.seconds = Math.floor((this.distance % (1000 * 60)) / 1000);
                 },
+                GoTopAnima(e) {
+
+
+                    let GoTopButton = e.target;
+                    if (GoTopButton.classList.contains('act_ShowTopAnchor') == true) {
+                        clearBush();
+                    } else {
+                        GoTopButton.classList.toggle('act_ShowTopAnchor');
+                    }
+                    this.GoTopBush=true;
+
+                    // // if(this.GoTopBush==true){
+                    // //     this.GoTopBush=false;
+                    // //     this.GoTopBush=true;
+                    // // }else{
+                    // //     this.GoTopBush=true;
+                    // // }
+                },
+                clearBush() {
+                    this.GoTopBush = false;
+                    GoTopButton.classList.remove('act_ShowTopAnchor');
+                }
 
             },
             mounted() {
@@ -1642,19 +1688,9 @@
 
     </script>
 
-    <script>
-
-        $(function () {
-            $('.act_Anchor').on('click', function (e) {
-                e.preventDefault();
-                $('html, body').animate({ scrollTop: $($(this).attr('href')).offset().top }, 500, 'linear');
-            });
-        });
 
 
-    </script>
 
-    
 </body>
 
 </html>
