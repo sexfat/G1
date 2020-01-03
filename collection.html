@@ -371,10 +371,10 @@
     </div>
     <div id="collectiontabcontainer">
       <ul class="collectiontabtitle">
-        <li><a class="tabtitlechange1" href="#tab01">All</a></li>
-        <li><a class="tabtitlechange2" href="#tab02">Favorite</a></li>
-        <li><a class="tabtitlechange3" href="#tab03">Trap</a></li>
-        <li><a class="tabtitlechange4" href="#tab04">House</a></li>
+        <li><a class="tabtitlechange1" href="#tab01"><img src="./img/collection/tabyellow.png" alt=""><span> All</span></a></li>
+        <li><a class="tabtitlechange2" href="#tab02"><img src="./img/collection/tabyellow.png" alt=""><span> Trap</span></a></li>
+        <li><a class="tabtitlechange3" href="#tab03"><img src="./img/collection/tabyellow.png" alt=""><span> House</span></a></li>
+        <li><a class="tabtitlechange4" href="#tab04"><img src="./img/collection/tabyellow.png" alt=""><span> Favorite</span></a></li>
       </ul>
       <div class="playall_btns">
         <button id="listAllPlay" class="circlebtn"><i class="fas fa-play"></i></button>
@@ -873,6 +873,13 @@
     $(this).find('.collplayer').css("display", "none");
   });
   //PLAY AND PAUSE BUTTON
+  $('.collplayer a').click(function () {
+    if ($(this).hasClass('becomePause')) {
+      $(this).html('<img src="./img/library/coverPlay-b.png">').removeClass('becomePause');
+    } else {
+      $(this).html('<img src="./img/library/coverPause-b.png">').addClass('becomePause');
+    }
+  });
   // TAB CONTENT CHANGE
   $(function () {
     var $li = $('ul.collectiontabtitle li');
@@ -884,8 +891,8 @@
   });
   //TAB CHNAGE COLOR
   $('.collectiontabtitle li a').click(function () {
-    $(this).css("color", "#fff").css("background-color", "#7ed5e5");
-    $('.collectiontabtitle li a').not(this).css("background-color", "#f1c40f");
+    $(this).children('img').attr("src","./img/collection/tabblue.png");
+    $('.collectiontabtitle li a').not(this).children('img').attr("src","./img/collection/tabyellow.png");
     var lia = $(this).parent().index();
     if( lia == 0){
       $('.collgreenradio').find('img').attr("src","./img/collection/openeye.png");

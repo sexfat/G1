@@ -235,7 +235,7 @@ $mainRed : #de267d;
     padding: 5%;
     margin-left: 5%;
     margin-bottom: 10px;
-    min-height: 580px;
+    min-height: 720px;
     background-image: url('../img/library/blackline2.svg');
     background-repeat: no-repeat;
     background-size: cover;
@@ -269,6 +269,8 @@ $mainRed : #de267d;
     }
 
     .listInfo {
+
+
       .listCover {
         width: 200px;
         height: 200px;
@@ -381,6 +383,11 @@ $mainRed : #de267d;
 
     ul.songs {
       padding-top: 20px;
+      display: none;
+
+      &.chooseList {
+        display: block;
+      }
 
       li {
         padding: 10px 0;
@@ -411,6 +418,10 @@ $mainRed : #de267d;
               display: none;
               transform: translate(-50%, -50%);
               cursor: pointer;
+
+              &.nowlistening {
+                display: block !important;
+              }
 
               i {
                 color: white;
@@ -616,6 +627,10 @@ $mainRed : #de267d;
       }
     }
 
+    h4 {
+      font-size: $rem1_2;
+    }
+
     #myAllList {
       width: 90%;
       max-width: 500px;
@@ -645,6 +660,11 @@ $mainRed : #de267d;
             margin: 0 auto;
             padding: 16px 0;
             border-bottom: 1px solid $fontColor;
+            cursor: pointer;
+
+            &:hover {
+              background-color: #7ed5e5;
+            }
 
             &.choose {
               background-color: #7ed5e5;
@@ -685,7 +705,7 @@ $mainRed : #de267d;
       transform: translate(-50%, -50%);
       display: none;
 
-      #createList {
+      #createListName {
         width: 80%;
         height: 60px;
         margin: 3% auto;
