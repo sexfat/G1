@@ -13,9 +13,21 @@ $albumbottom: 340px;
     background-size: cover;
     background-repeat: no-repeat;
     .playall_btns{
-        border: 1px solid red;
         text-align: right;
-        margin: 2vw 20vw;
+        position: relative;
+        right: 23%;
+        @include respond (latop-max){
+            right: 13%;
+        }
+        @include respond (latop-min){
+            right: 6%;
+        }
+        @include respond (ipadpro){
+            right: 6.5%;
+        }
+        @include respond (ipad){
+            right: 2%;
+        }
     }
     .circlebtn {
         width: 50px;
@@ -164,6 +176,21 @@ $albumbottom: 340px;
                 @include respond(latop-min) {
                     width:150px;
                     height:150px;
+                }
+                @include respond(ipadpro) {
+                    width:190px;
+                    height:190px;
+                    margin:50px 30px 0px 30px;
+                }
+                @include respond(ipad) {
+                    width:160px;
+                    height:160px;
+                    margin:30px 15px 0px 15px;
+                }
+                @include respond(phone) {
+                    width:130px;
+                    height:130px;
+                    margin:20px 15px 0px 15px;
                 }
                 .collalbumpic{
                     background-size:cover;

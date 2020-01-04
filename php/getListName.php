@@ -4,7 +4,8 @@ try {
   $sql = "select plist_name,list_pic
   from allplaylist apl join myfavorite mf using (mem_no)
   where apl.mem_no = 1
-  group by plist_name;";
+  group by plist_name
+  order by plist_no asc;";
 
   $allList = $pdo->query($sql);
   $listRow = $allList->fetchAll(PDO::FETCH_ASSOC);
