@@ -27,6 +27,11 @@
     height: 600px;
     margin: 0 auto;
 }
+@media screen and (max-width:376px){
+    .songinfo_infoplay{
+        width: 370px;
+    }
+}
 // .songinfo_info{
 //     border: 1px solid red;
 // }
@@ -47,6 +52,7 @@
     font-size: 2rem;
     font-weight: bold; 
 }
+
 
 .songinfo_titl{
     // border: 1px solid rgb(185, 12, 216);
@@ -70,9 +76,25 @@
         width: 600px;
     }
 }
+@media screen and (max-width:603px){
+    .songinfo_titl p{
+        margin-left: 50px;
+    }
+}
 @media screen and (max-width:576px){
     .songinfo_titl{
         width: 450px;
+    }
+    .songinfo_titl p{
+        margin-left: 10px;
+    }
+}
+@media screen and (max-width:376px){
+    .songinfo_titl{
+        width: 370px;
+    }
+    .songinfo_titl p{
+        margin-left: 20px;
     }
 }
 .songinfo_info{
@@ -93,17 +115,23 @@
 @media screen and (max-width:603px){
     .songinfo_info{
         position: relative;
-        left: 20px;
+        left: 50px;
+        font-size: $rem0_7;
     }
 }
 @media screen and (max-width:576px){
     .songinfo_info{
-        font-size:$rem0_8;
+        font-size:$rem0_7;
+        position: relative;
+        left: 10px;
     }
 }
 @media screen and (max-width:376px){
     .songinfo_info{
         width: 340px;
+        font-size: $rem0_6;
+        position: relative;
+        left: 22px;
     }
 }
 
@@ -132,24 +160,34 @@
         width: 500px;
     }
 }
+@media screen and (max-width:603px){
+    .info_square{
+        width: 480px;
+        height: 300px;
+        position: relative;
+        bottom: 250px;
+        left: 50px;
+    }
+}
 @media screen and (max-width:576px){
     .info_square{
+        width: 450px;
         position: relative;
-        bottom: 350px;
+        left: 5px;
     }
 }
 @media screen and (max-width:376px){
     .info_square{
+        width: 340px;
         position: relative;
-        bottom: 375px;
-        left: 50px;
+        left: 13px;
     }
 }
 
 
 .songinfo_infos4{
     // border: 1px solid blue;
-    height: 90vh;
+    height: 110vh;
 }
 .songinfo_infos4 h3{
     font-weight: bold;
@@ -180,6 +218,12 @@
         width: 450px;
     }
 }
+@media screen and (max-width:376px){
+    .songinfo_infos4 .message{
+        width: 300px;
+        margin-left: 20px;
+    }
+}
 .songinfo_infos4 .mess{
     // border: 1px solid black;
     width: 1000px;
@@ -189,6 +233,7 @@
     border: 1px solid #d0d6d6;
     background-color: #d0d6d6;
     width: 1000px;
+    // height: 250px;
     margin: 0 auto;
     padding: 30px 50px;
 }
@@ -227,8 +272,11 @@
     } 
 }
 @media screen and (max-width:376px){
+    .songinfo_infos4 .mess_write{
+        width: 320px;
+    }
     .songinfo_infos4 .infomess_ta{
-        width: 312px;
+        width: 270px;
     } 
 }
 .songinfo_infos4 .mess li{
@@ -255,6 +303,11 @@
 @media screen and (max-width:603px){
     .songinfo_infos4 .mess li{
         width: 450px;
+    }
+}
+@media screen and (max-width:376px){
+    .songinfo_infos4 .mess li{
+        width: 320px;
     }
 }
 
@@ -293,12 +346,15 @@
     height: 30px;
     width: 70px;
   }
+
   
 
 
 
 .songinfo_infos4 .infose-send{
-    background: transparent url("../img/songinfo/send.png") (center / cover) no-repeat;
+    // background: transparent url("../img/songinfo/send.png") (center / cover) no-repeat;
+    @include butttonn02();
+
     position: relative;
     top: 5px;
     left: 845px;
@@ -327,10 +383,10 @@
         left: 305px;
     }
 }
-@media screen and (max-width:375px){
+@media screen and (max-width:376px){
     .songinfo_infos4 .infose-send{
         position: relative;
-        left: 220px;
+        left: 190px;
     }
 }
 
@@ -347,6 +403,12 @@ $bg: rgba(44,15,15,1);
     // top: -320px;
     // top: -180px;
     z-index: -1;
+}
+@media screen and (max-width:376px){
+    .songinfo_wave{
+        width: 376px !important;
+        overflow: hidden;
+    }
 }
 
 
@@ -404,10 +466,21 @@ $bg: rgba(44,15,15,1);
 @media screen and (max-width:603px){
     .songinfo_ear{
         position: relative;
-        left: 380px;
+        top: -674px;
+        left: 270px;
+    }
+    .songinfo_ear img{
+        width: 350px;
+        height: 600px;
     }
 }
 @media screen and (max-width:576px){
+    .songinfo_ear{
+        position: relative;
+        left: 220px;
+    }
+}
+@media screen and (max-width:376px){
     .songinfo_ear{
         display: none;
     }
@@ -450,11 +523,55 @@ $bg: rgba(44,15,15,1);
         left: 130px;
     }
 }
-@media screen and (max-width:375px){
+@media screen and (max-width:376px){
     .infomess_li .songinfo_re{
         position: relative;
-        left: 60px;
+        left: 20px;
     }
 }
 
+.infocreat_re{
+    @include buttonno04();
+    position: relative;
+    left: 730px;
+}
+@media screen and (max-width:1100px){
+    .infocreat_re{
+        position: relative;
+        left: 640px;
+    }
+}
+@media screen and (max-width:990px){
+    .infocreat_re{
+        position: relative;
+        left: 655px;
+    }
+}
+@media screen and (max-width:930px){
+    .infocreat_re{
+        position: relative;
+        left: 503px;
+    }
+}
+@media screen and (max-width:768px){
+    .infocreat_re{
+        position: relative;
+        left: 355px;
+    }
+}
+@media screen and (max-width:603px){
+    .infocreat_re{
+        position: relative;
+        left: 206px;
+    }
+}
+@media screen and (max-width:376px){
+    .infocreat_re{
+        position: relative;
+        left: 90px;
+    }
+}
 
+.songinfo_all{
+    overflow: hidden;
+}
