@@ -5,16 +5,18 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
-    <title>ACTIVITY</title>
+    <title>SOUNDWAVE | activity</title>
     <link rel="stylesheet" href="./css/main.css">
     <!-- <link rel="stylesheet" href="./css/activity.css"> -->
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.11.2/css/all.min.css" />
     <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/vue/2.6.10/vue.js"></script>
-     <script src="./js/player.js"></script>
-     <script src="./js/public.js"></script>
+    <script src="./js/player.js"></script>
+    <script src="./js/public.js"></script>
+    <link rel="Shortcut Icon" type="image/x-icon" href="./img/collection/smalllogo.ico" />
 
 <body>
+    <div id="activityTop"></div>
     <div id="app">
         <!-- 記得包在 Vue 裡-->
 
@@ -378,12 +380,13 @@
 
 
     </div>
-
+    <header>
+        <div id="act_title"><img src="./img/activity/title.png" alt=""></div>
+    </header>
     <section id="activity">
         <div id="actHead" class="wrapper">
 
             <div id="act_radioBg">
-                <div id="act_title"><img src="./img/activity/title.png" alt=""></div>
                 <img src="./img/activity/radio.png" alt="">
 
 
@@ -425,15 +428,24 @@
                     <a href="#act_old_year2018" class="act_Anchor">
                         <img src="./img/activity/yearbutton.png"><span>2018</span>
                     </a>
+
                     <a href="#act_old-year2017" class="act_Anchor">
                         <img src="./img/activity/yearbutton.png"> <span>2017</span>
                     </a>
                 </div>
 
-                <div id="act_TopAnchor"> 
-                 <a href="#activity" class="act_Anchor">
-                     <img src="./img/activity/top-bush.png" alt="">
+                <div id="act_TopAnchor" @click="GoTopAnima">
+
+                    <a href="#activityTop" class="act_Anchor ">
+                        <img src="./img/activity/top-bush.png" alt="" class="act_Bush">
+
+                            <div class="act_ShowTopBush" v-if="GoTopBush==true">
+                                <img src="./img/activity/top-bush02.png" alt="">
+                            </div>
+            
+                        TOP
                     </a>
+
                 </div>
 
                 <div id="act_carouselSelect">
@@ -456,7 +468,7 @@
 
                 <div id="act_countdown" v-if=" content=='actNow'">
                     <p>
-                        Activity end time countdown
+                        Activity end time countdown...
                     </p>
                     <div v-if="distance>0">
                         <div>
@@ -525,45 +537,22 @@
              <section class="act_oldsongbox wrapper">
                  <div class="act_oldTop">
                      <h3>TOP 3</h3>
-                     <div>
-                         <p >Votes <span>2458</span></p>
-                         <div>
-                            <img src="./img/activity/collction-img/9tRTEPCMeYxqdFHAqf3FfA.jpg" alt="">
-                            <div class="act_old-play" @click="showChangePlay">
-                                
-                            </div>
-                         
-                       </div>
-                       <div class="act_songBox"> 
-                           <div class="act_old-hear1" @click="showChangeHeart">
-                             
-                        </div>
-                            <h4>
-                             'If I Had A Heart'</h4>
-                            
-                                <p>  Bob </p>
-                         
-                        </div>
-                         
-                     </div>
+
                      <div>
                         <p >Votes <span>2458</span></p>
                         <div>
                            <img src="./img/activity/collction-img/9tRTEPCMeYxqdFHAqf3FfA.jpg" alt="">
-                           <div class="act_old-play" @click="showChangePlay">
-                               
-                           </div>
-                        
-                      </div>
-                      <div class="act_songBox"> 
-                          <div class="act_old-hear1" @click="showChangeHeart">
+                           <div class="act_old-play" @click="showChangePlay"> </div>
                             
-                       </div>
-                           <h4>
-                            'If I Had A Heart'</h4>
+                      </div>
+                      
+                      <div class="act_songBox"> 
+                          <div class="act_old-hear1" @click="showChangeHeart"> </div>
+                            
+                          <a href="./songinfo.html"><h4>'If I Had A Heart'</h4></a>  
                            
                                <p>  Bob </p>
-                            
+                        
                        </div>
                         
                     </div>
@@ -571,44 +560,56 @@
                         <p >Votes <span>2458</span></p>
                         <div>
                            <img src="./img/activity/collction-img/9tRTEPCMeYxqdFHAqf3FfA.jpg" alt="">
-                           <div class="act_old-play" @click="showChangePlay">
-                               
-                           </div>
-                        
-                      </div>
-                      <div class="act_songBox"> 
-                          <div class="act_old-hear1" @click="showChangeHeart">
+                           <div class="act_old-play" @click="showChangePlay"> </div>
                             
-                       </div>
-                           <h4>
-                            'If I Had A Heart'</h4>
+                      </div>
+                      
+                      <div class="act_songBox"> 
+                          <div class="act_old-hear1" @click="showChangeHeart"> </div>
+                            
+                          <a href="./songinfo.html"><h4>'If I Had A Heart'</h4></a>  
                            
                                <p>  Bob </p>
                         
                        </div>
                         
                     </div>
-                   
+                    <div>
+                        <p >Votes <span>2458</span></p>
+                        <div>
+                           <img src="./img/activity/collction-img/9tRTEPCMeYxqdFHAqf3FfA.jpg" alt="">
+                           <div class="act_old-play" @click="showChangePlay"> </div>
+                            
+                      </div>
+                      
+                      <div class="act_songBox"> 
+                          <div class="act_old-hear1" @click="showChangeHeart"> </div>
+                            
+                          <a href="./songinfo.html"><h4>'If I Had A Heart'</h4></a>  
+                           
+                               <p>  Bob </p>
+                        
+                       </div>
+                        
+                    </div>
+                    
+                     
                     
                  </div>
                  <div class="act_oldAll">
                      <h3> All contest music </h3>
-             
                      <div>
                         <p >Votes <span>2458</span></p>
                         <div>
                            <img src="./img/activity/collction-img/9tRTEPCMeYxqdFHAqf3FfA.jpg" alt="">
-                           <div class="act_old-play" @click="showChangePlay">
-                               
-                           </div>
-                        
-                      </div>
-                      <div class="act_songBox"> 
-                          <div class="act_old-hear1" @click="showChangeHeart">
+                           <div class="act_old-play" @click="showChangePlay"> </div>
                             
-                       </div>
-                           <h4>
-                            'If I Had A Heart'</h4>
+                      </div>
+                      
+                      <div class="act_songBox"> 
+                          <div class="act_old-hear1" @click="showChangeHeart"> </div>
+                            
+                          <a href="./songinfo.html"><h4>'If I Had A Heart'</h4></a>  
                            
                                <p>  Bob </p>
                         
@@ -619,17 +620,14 @@
                         <p >Votes <span>2458</span></p>
                         <div>
                            <img src="./img/activity/collction-img/9tRTEPCMeYxqdFHAqf3FfA.jpg" alt="">
-                           <div class="act_old-play" @click="showChangePlay">
-                               
-                           </div>
-                        
-                      </div>
-                      <div class="act_songBox"> 
-                          <div class="act_old-hear1" @click="showChangeHeart">
+                           <div class="act_old-play" @click="showChangePlay"> </div>
                             
-                       </div>
-                           <h4>
-                            'If I Had A Heart'</h4>
+                      </div>
+                      
+                      <div class="act_songBox"> 
+                          <div class="act_old-hear1" @click="showChangeHeart"> </div>
+                            
+                          <a href="./songinfo.html"><h4>'If I Had A Heart'</h4></a>  
                            
                                <p>  Bob </p>
                         
@@ -640,17 +638,30 @@
                         <p >Votes <span>2458</span></p>
                         <div>
                            <img src="./img/activity/collction-img/9tRTEPCMeYxqdFHAqf3FfA.jpg" alt="">
-                           <div class="act_old-play" @click="showChangePlay">
-                               
-                           </div>
-                        
-                      </div>
-                      <div class="act_songBox"> 
-                          <div class="act_old-hear1" @click="showChangeHeart">
+                           <div class="act_old-play" @click="showChangePlay"> </div>
                             
+                      </div>
+                      
+                      <div class="act_songBox"> 
+                          <div class="act_old-hear1" @click="showChangeHeart"> </div>
+                          <a href="./songinfo.html"><h4>'If I Had A Heart'</h4></a>    
+                               <p>  Bob </p>
+                        
                        </div>
-                           <h4>
-                            'If I Had A Heart'</h4>
+                        
+                    </div>
+                    <div>
+                        <p >Votes <span>2458</span></p>
+                        <div>
+                           <img src="./img/activity/collction-img/9tRTEPCMeYxqdFHAqf3FfA.jpg" alt="">
+                           <div class="act_old-play" @click="showChangePlay"> </div>
+                            
+                      </div>
+                      
+                      <div class="act_songBox"> 
+                          <div class="act_old-hear1" @click="showChangeHeart"> </div>
+                            
+                          <a href="./songinfo.html"><h4>'If I Had A Heart'</h4></a>  
                            
                                <p>  Bob </p>
                         
@@ -661,17 +672,14 @@
                         <p >Votes <span>2458</span></p>
                         <div>
                            <img src="./img/activity/collction-img/9tRTEPCMeYxqdFHAqf3FfA.jpg" alt="">
-                           <div class="act_old-play" @click="showChangePlay">
-                               
-                           </div>
-                        
-                      </div>
-                      <div class="act_songBox"> 
-                          <div class="act_old-hear1" @click="showChangeHeart">
+                           <div class="act_old-play" @click="showChangePlay"> </div>
                             
-                       </div>
-                           <h4>
-                            'If I Had A Heart'</h4>
+                      </div>
+                      
+                      <div class="act_songBox"> 
+                          <div class="act_old-hear1" @click="showChangeHeart"> </div>
+                            
+                          <a href="./songinfo.html"><h4>'If I Had A Heart'</h4></a>  
                            
                                <p>  Bob </p>
                         
@@ -682,17 +690,14 @@
                         <p >Votes <span>2458</span></p>
                         <div>
                            <img src="./img/activity/collction-img/9tRTEPCMeYxqdFHAqf3FfA.jpg" alt="">
-                           <div class="act_old-play" @click="showChangePlay">
-                               
-                           </div>
-                        
-                      </div>
-                      <div class="act_songBox"> 
-                          <div class="act_old-hear1" @click="showChangeHeart">
+                           <div class="act_old-play" @click="showChangePlay"> </div>
                             
-                       </div>
-                           <h4>
-                            'If I Had A Heart'</h4>
+                      </div>
+                      
+                      <div class="act_songBox"> 
+                          <div class="act_old-hear1" @click="showChangeHeart"> </div>
+                            
+                          <a href="./songinfo.html"><h4>'If I Had A Heart'</h4></a>  
                            
                                <p>  Bob </p>
                         
@@ -703,17 +708,14 @@
                         <p >Votes <span>2458</span></p>
                         <div>
                            <img src="./img/activity/collction-img/9tRTEPCMeYxqdFHAqf3FfA.jpg" alt="">
-                           <div class="act_old-play" @click="showChangePlay">
-                               
-                           </div>
-                        
-                      </div>
-                      <div class="act_songBox"> 
-                          <div class="act_old-hear1" @click="showChangeHeart">
+                           <div class="act_old-play" @click="showChangePlay"> </div>
                             
-                       </div>
-                           <h4>
-                            'If I Had A Heart'</h4>
+                      </div>
+                      
+                      <div class="act_songBox"> 
+                          <div class="act_old-hear1" @click="showChangeHeart"> </div>
+                            
+                          <a href="./songinfo.html"><h4>'If I Had A Heart'</h4></a>  
                            
                                <p>  Bob </p>
                         
@@ -724,44 +726,21 @@
                         <p >Votes <span>2458</span></p>
                         <div>
                            <img src="./img/activity/collction-img/9tRTEPCMeYxqdFHAqf3FfA.jpg" alt="">
-                           <div class="act_old-play" @click="showChangePlay">
-                               
-                           </div>
-                        
-                      </div>
-                      <div class="act_songBox"> 
-                          <div class="act_old-hear1" @click="showChangeHeart">
+                           <div class="act_old-play" @click="showChangePlay"> </div>
                             
-                       </div>
-                           <h4>
-                            'If I Had A Heart'</h4>
+                      </div>
+                      
+                      <div class="act_songBox"> 
+                          <div class="act_old-hear1" @click="showChangeHeart"> </div>
+                          <a href="./songinfo.html"><h4>'If I Had A Heart'</h4></a>  
                            
                                <p>  Bob </p>
                         
                        </div>
                         
                     </div>
-                    <div>
-                        <p >Votes <span>2458</span></p>
-                        <div>
-                           <img src="./img/activity/collction-img/9tRTEPCMeYxqdFHAqf3FfA.jpg" alt="">
-                           <div class="act_old-play" @click="showChangePlay">
-                               
-                           </div>
-                        
-                      </div>
-                      <div class="act_songBox"> 
-                          <div class="act_old-hear1" @click="showChangeHeart">
-                            
-                       </div>
-                           <h4>
-                            'If I Had A Heart'</h4>
-                           
-                               <p>  Bob </p>
-                        
-                       </div>
-                        
-                    </div>
+             
+                    
                 </div> 
              </section>
              <article class="act_old_years " id="act_old-year2017">
@@ -822,8 +801,7 @@
                           <div class="act_old-hear1" @click="showChangeHeart">
                             
                        </div>
-                           <h4>
-                            'If I Had A Heart'</h4>
+                       <a href="./songinfo.html"><h4>'If I Had A Heart'</h4></a>  
                            
                                <p>  Bob </p>
                         
@@ -843,8 +821,7 @@
                           <div class="act_old-hear1" @click="showChangeHeart">
                             
                        </div>
-                           <h4>
-                            'If I Had A Heart'</h4>
+                       <a href="./songinfo.html"><h4>'If I Had A Heart'</h4></a>  
                            
                                <p>  Bob </p>
                         
@@ -864,8 +841,7 @@
                           <div class="act_old-hear1" @click="showChangeHeart">
                             
                        </div>
-                           <h4>
-                            'If I Had A Heart'</h4>
+                       <a href="./songinfo.html"><h4>'If I Had A Heart'</h4></a>  
                            
                                <p>  Bob </p>
                         
@@ -890,8 +866,7 @@
                           <div class="act_old-hear1" @click="showChangeHeart">
                             
                        </div>
-                           <h4>
-                            'If I Had A Heart'</h4>
+                       <a href="./songinfo.html"><h4>'If I Had A Heart'</h4></a>  
                            
                                <p>  Bob </p>
                         
@@ -911,8 +886,26 @@
                           <div class="act_old-hear1" @click="showChangeHeart">
                             
                        </div>
-                           <h4>
-                            'If I Had A Heart'</h4>
+                       <a href="./songinfo.html"><h4>'If I Had A Heart'</h4></a>  
+                               <p>  Bob </p>
+                        
+                       </div>
+                        
+                    </div>
+                    <div>
+                        <p >Votes <span>2458</span></p>
+                        <div>
+                           <img src="./img/activity/collction-img/9tRTEPCMeYxqdFHAqf3FfA.jpg" alt="">
+                           <div class="act_old-play" @click="showChangePlay">
+                               
+                           </div>
+                        
+                      </div>
+                      <div class="act_songBox"> 
+                          <div class="act_old-hear1" @click="showChangeHeart">
+                            
+                       </div>
+                       <a href="./songinfo.html"><h4>'If I Had A Heart'</h4></a>  
                            
                                <p>  Bob </p>
                         
@@ -932,8 +925,7 @@
                           <div class="act_old-hear1" @click="showChangeHeart">
                             
                        </div>
-                           <h4>
-                            'If I Had A Heart'</h4>
+                       <a href="./songinfo.html"><h4>'If I Had A Heart'</h4></a>  
                            
                                <p>  Bob </p>
                         
@@ -953,8 +945,7 @@
                           <div class="act_old-hear1" @click="showChangeHeart">
                             
                        </div>
-                           <h4>
-                            'If I Had A Heart'</h4>
+                       <a href="./songinfo.html"><h4>'If I Had A Heart'</h4></a>  
                            
                                <p>  Bob </p>
                         
@@ -974,8 +965,7 @@
                           <div class="act_old-hear1" @click="showChangeHeart">
                             
                        </div>
-                           <h4>
-                            'If I Had A Heart'</h4>
+                       <a href="./songinfo.html"><h4>'If I Had A Heart'</h4></a>  
                            
                                <p>  Bob </p>
                         
@@ -995,8 +985,7 @@
                           <div class="act_old-hear1" @click="showChangeHeart">
                             
                        </div>
-                           <h4>
-                            'If I Had A Heart'</h4>
+                       <a href="./songinfo.html"><h4>'If I Had A Heart'</h4></a>  
                            
                                <p>  Bob </p>
                         
@@ -1016,29 +1005,7 @@
                           <div class="act_old-hear1" @click="showChangeHeart">
                             
                        </div>
-                           <h4>
-                            'If I Had A Heart'</h4>
-                           
-                               <p>  Bob </p>
-                        
-                       </div>
-                        
-                    </div>
-                    <div>
-                        <p >Votes <span>2458</span></p>
-                        <div>
-                           <img src="./img/activity/collction-img/9tRTEPCMeYxqdFHAqf3FfA.jpg" alt="">
-                           <div class="act_old-play" @click="showChangePlay">
-                               
-                           </div>
-                        
-                      </div>
-                      <div class="act_songBox"> 
-                          <div class="act_old-hear1" @click="showChangeHeart">
-                            
-                       </div>
-                           <h4>
-                            'If I Had A Heart'</h4>
+                       <a href="./songinfo.html"><h4>'If I Had A Heart'</h4></a>  
                            
                                <p>  Bob </p>
                         
@@ -1123,7 +1090,7 @@
                              Part of the Idol franchise, it originated from the UK reality program Pop Idol.
                          </p>
                            <p class="act_from-button-box">
-                            <button type="button" @click="NextFormPage(1)">GO</button>
+                            <button type="button" @click="NextFormPage(1)">Go</button>
                           </p>
         
                        </div>
@@ -1168,13 +1135,13 @@
                        <h3>Fill in your song information!</h3>
                        
                             <div>
-                                <h4>Song-name:</h4>
+                                <h4>Song name:</h4>
                                 <input type="text" id="act_Sign-up-song-name"maxlength="20"
                                         v-model="SongName"    placeholder="Your song name!"       >
                             </div>
 
                             <div>
-                                <h4>Song-information:</h4>
+                                <h4>Song information:</h4>
                                 <textarea id="act_Sign-up-song-information" 
                                           cols="40" rows="5" maxlength="150"
                                           v-model="SongInformation"
@@ -1184,7 +1151,7 @@
                             </div>
 
                             <div>
-                                <h4>Song-img:</h4>
+                                <h4>Song img:</h4>
                               
                                     Upload The album cover:
                                    <label class="act_SignUPButton2"  for="act_SignUp-Song-img">Upload</label>
@@ -1207,31 +1174,31 @@
                        <h3>Check your song information!</h3>   
                       
                            <div>
-                             <h4>Member-name:</h4> 
+                             <h4>Member name:</h4> 
                              {{MemberName}}
                            </div>
 
                            <div>
-                                 <h4>Menber-email:</h4>
+                                 <h4>Menber email:</h4>
                                  {{MenberEmail}}
                             </div>
 
                           <div>
-                             <h4>Song-img:</h4>
+                             <h4>Song img:</h4>
                              <div class="act_showSignUpImgSmall" 
                              v-if="SignUpImg"><img :src="SignUpImg" alt=""></div>
                                
                            </div>
                            <div>
-                                <h4>Song-name:</h4> {{SongName}}
+                                <h4>Song name:</h4> {{SongName}}
                            </div>
                            <div>
-                                  <h4>Song-information:</h4>
+                                  <h4>Song information:</h4>
                                   <p class="act_showSong-information" v-if="SongInformation" >{{SongInformation}}</p> 
                            </div>
 
                            <div> 
-                               <h4>Song-URL:</h4>    
+                               <h4>Song URL:</h4>    
                                 <p  class="act_SignSongURL-box" v-if="SignSongURL">{{SignSongURL}}</p> 
                            </div>
 
@@ -1251,7 +1218,7 @@
                           Part of the Idol franchise, it originated from the UK reality program Pop Idol.
                       </p>
                       <p class="act_from-button-box">
-                            <button type="button" disable style="background-color:gray ">GO</button>
+                            <button type="button" disable style="background-color:gray ">Done</button>
                       </p>
                      
                     </div>
@@ -1259,10 +1226,11 @@
              
                  </section>
                  <section id="act_Now-Vote"> 
-                    
+                      <h2>Vote</h2>
                      <article class="act_Now-Vote-content">
+                       
                        <img src="./img/activity/Splash-ink07.png" alt="">
-                       <h2>Vote</h2>
+                      
                        <h3>Rules</h3>
                        <p>
                          American Idol is an annual American singing competition 
@@ -1292,8 +1260,8 @@
                                   <div class="act_old-hear1" @click="showChangeHeart">
                                     
                                </div>
-                                  <h4>
-                                   'If I Had A Heart'</h4>
+                                
+                               <a href="./songinfo.html"><h4>'If I Had A Heart'</h4></a>  
                                   
                                       <p>  Bob </p>
                               </div>
@@ -1315,8 +1283,7 @@
                                     <div class="act_old-hear1" @click="showChangeHeart">
 
                                     </div>
-                                      <h4>
-                                       'If I Had A Heart'</h4>
+                                    <a href="./songinfo.html"><h4>'If I Had A Heart'</h4></a>  
                                       
                                           <p>  Bob </p>
                                   </div>
@@ -1336,8 +1303,7 @@
                                       <div class="act_old-hear1" @click="showChangeHeart">
                                         
                                    </div>
-                                      <h4>
-                                       'If I Had A Heart'</h4>
+                                   <a href="./songinfo.html"><h4>'If I Had A Heart'</h4></a>  
                                       
                                           <p>  Bob </p>
                                   </div>
@@ -1357,8 +1323,7 @@
                                       <div class="act_old-hear1" @click="showChangeHeart">
                                         
                                    </div>
-                                      <h4>
-                                       'If I Had A Heart'</h4>
+                                   <a href="./songinfo.html"><h4>'If I Had A Heart'</h4></a>  
                                       
                                           <p>  Bob </p>
                                   </div>
@@ -1378,8 +1343,7 @@
                                       <div class="act_old-hear1" @click="showChangeHeart">
                                         
                                    </div>
-                                      <h4>
-                                       'If I Had A Heart'</h4>
+                                   <a href="./songinfo.html"><h4>'If I Had A Heart'</h4></a>  
                                       
                                           <p>  Bob </p>
                                   </div>
@@ -1399,8 +1363,7 @@
                                       <div class="act_old-hear1" @click="showChangeHeart">
                                         
                                    </div>
-                                      <h4>
-                                       'If I Had A Heart'</h4>
+                                   <a href="./songinfo.html"><h4>'If I Had A Heart'</h4></a>  
                                       
                                           <p>  Bob </p>
                                   </div>
@@ -1420,8 +1383,7 @@
                                       <div class="act_old-hear1" @click="showChangeHeart">
                                         
                                    </div>
-                                      <h4>
-                                       'If I Had A Heart'</h4>
+                                   <a href="./songinfo.html"><h4>'If I Had A Heart'</h4></a>  
                                       
                                           <p>  Bob </p>
                                   </div>
@@ -1441,8 +1403,7 @@
                                       <div class="act_old-hear1" @click="showChangeHeart">
                                         
                                    </div>
-                                      <h4>
-                                       'If I Had A Heart'</h4>
+                                   <a href="./songinfo.html"><h4>'If I Had A Heart'</h4></a>  
                                       
                                           <p>  Bob </p>
                                   </div>
@@ -1458,6 +1419,19 @@
          </script>
 
     </section>
+    <script>
+
+        $(function () {
+            $('.act_Anchor').on('click', function (e) {
+                e.preventDefault();
+                $('html, body').animate({ scrollTop: $($(this).attr('href')).offset().top }, 700, 'swing');
+              
+            });
+         
+        });
+
+
+    </script>
 
 
 
@@ -1529,8 +1503,10 @@
                 showChangeVote(e) {
                     let voteButton = e.target;
                     voteButton.classList.toggle('act_vote-button');
+                    clearBush()
 
                 },
+
 
 
             },
@@ -1543,7 +1519,7 @@
             template: '#act-old',
             data: function () {
                 return {
-
+                    Votes:455,
                 }
 
             },
@@ -1599,6 +1575,7 @@
                 SignSongURL: "",
                 SignSongURLSelect: "",
                 Votes: 415,
+                GoTopBush: false,
 
 
             },
@@ -1631,6 +1608,28 @@
                     this.minutes = Math.floor((this.distance % (1000 * 60 * 60)) / (1000 * 60));
                     this.seconds = Math.floor((this.distance % (1000 * 60)) / 1000);
                 },
+                GoTopAnima(e) {
+
+
+                    let GoTopButton = e.target;
+                    if (GoTopButton.classList.contains('act_ShowTopAnchor') == true) {
+                        clearBush();
+                    } else {
+                        GoTopButton.classList.toggle('act_ShowTopAnchor');
+                    }
+                    this.GoTopBush=true;
+
+                    // // if(this.GoTopBush==true){
+                    // //     this.GoTopBush=false;
+                    // //     this.GoTopBush=true;
+                    // // }else{
+                    // //     this.GoTopBush=true;
+                    // // }
+                },
+                clearBush() {
+                    this.GoTopBush = false;
+                    GoTopButton.classList.remove('act_ShowTopAnchor');
+                }
 
             },
             mounted() {
@@ -1642,19 +1641,9 @@
 
     </script>
 
-    <script>
-
-        $(function () {
-            $('.act_Anchor').on('click', function (e) {
-                e.preventDefault();
-                $('html, body').animate({ scrollTop: $($(this).attr('href')).offset().top }, 500, 'linear');
-            });
-        });
 
 
-    </script>
 
-    
 </body>
 
 </html>

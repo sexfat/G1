@@ -1,6 +1,6 @@
  /* ---------------- 全域變數 ---------------- */
  let getSongName, getListName;
- let nowList;
+ let nowList = 'Liked songs';
  let mylistInfo = [{
    listName: "Liked songs",
    listImg: "./img/library/list_pic0.jpg",
@@ -42,17 +42,17 @@
  ];
 
  /* ---------------- library TimelineMax ---------------- */
- var library_tl = new TimelineMax();
+//  var library_tl = new TimelineMax();
 
- library_tl.fromTo('.before', 2, {
-   opacity: 0
- }, {
-   opacity: 1
- }).fromTo('.after', 2, {
-   opacity: 0
- }, {
-   opacity: 1
- });
+//  library_tl.fromTo('.before', 2, {
+//    opacity: 0
+//  }, {
+//    opacity: 1
+//  }).fromTo('.after', 2, {
+//    opacity: 0
+//  }, {
+//    opacity: 1
+//  });
 
  /* ---------------- library load ---------------- */
  window.addEventListener('load', function () {

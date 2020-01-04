@@ -4,11 +4,14 @@
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <meta http-equiv="X-UA-Compatible" content="ie=edge">
-  <title>Collection</title>
+  <title>SOUNDWAVE | collection</title>
+  <link rel="Shortcut Icon" type="image/x-icon" href="./img/collection/smalllogo.ico" />
   <link rel="stylesheet" href="./css/main.css">
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.11.2/css/all.min.css" />
   <script src="https://cdnjs.cloudflare.com/ajax/libs/vue/2.6.10/vue.js"></script>
   <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
+  <script src="./js/player.js"></script>
+  <script src="./js/public.js"></script>
 </head>
 <body class="collectionbody">
   <!-- nav_bar and player -->
@@ -353,7 +356,7 @@
   </div>
   <!-- the end of the nav_bar and player  -->
   <!-- start to the content -->
-  <header class="collectionheader">
+  <header>
     <img src="./img/collection/colltitle.png" alt="">
   </header>
   <section class="collectionsection">
@@ -371,7 +374,7 @@
     </div>
     <div id="collectiontabcontainer">
       <ul class="collectiontabtitle">
-        <li><a class="tabtitlechange1" href="#tab01"><img src="./img/collection/tabyellow.png" alt=""><span> All</span></a></li>
+        <li><a class="tabtitlechange1" href="#tab01"><img src="./img/collection/tabblue.png" alt=""><span> All</span></a></li>
         <li><a class="tabtitlechange2" href="#tab02"><img src="./img/collection/tabyellow.png" alt=""><span> Trap</span></a></li>
         <li><a class="tabtitlechange3" href="#tab03"><img src="./img/collection/tabyellow.png" alt=""><span> House</span></a></li>
         <li><a class="tabtitlechange4" href="#tab04"><img src="./img/collection/tabyellow.png" alt=""><span> Favorite</span></a></li>
@@ -388,7 +391,7 @@
                 <div class="collplayer"><a href=""><img src="./img/library/coverPlay-b.png" alt=""></a></div>
               </div>
               <div class="collheart"><img src="./img/collection/grayheart.png" alt=""></div>
-              <p>Hey<br>
+              <p><a class="collsongnamea" href="./songinfo.html">Hey</a><br>
                 <span>Fais ft. Afrojack</span>
               </p>
             </div>
@@ -397,7 +400,7 @@
                 <div class="collplayer"><a href=""><img src="./img/library/coverPlay-b.png" alt=""></a></div>
               </div>
               <div class="collheart"><img src="./img/collection/grayheart.png" alt=""></div>
-              <p>Another Life<br>
+              <p><a class="collsongnamea" href="./songinfo.html">Another life</a><br>
                 <span>David Guetta</span>
               </p>
             </div>
@@ -406,7 +409,7 @@
                 <div class="collplayer"><a href=""><img src="./img/library/coverPlay-b.png" alt=""></a></div>
               </div>
               <div class="collheart"><img src="./img/collection/grayheart.png" alt=""></div>
-              <p>Cutting Shapes<br>
+              <p><a class="collsongnamea" href="./songinfo.html">Cutting shapes</a><br>
                 <span>Don Diablo</span>
               </p>
             </div>
@@ -415,7 +418,7 @@
                 <div class="collplayer"><a href=""><img src="./img/library/coverPlay-b.png" alt=""></a></div>
               </div>
               <div class="collheart"><img src="./img/collection/grayheart.png" alt=""></div>
-              <p>What Would You<br>
+              <p><a class="collsongnamea" href="./songinfo.html">What would you</a><br>
                 <span>NERVO</span>
               </p>
             </div>
@@ -426,7 +429,7 @@
                 <div class="collplayer"><a href=""><img src="./img/library/coverPlay-b.png" alt=""></a></div>
               </div>
               <div class="collheart"><img src="./img/collection/grayheart.png" alt=""></div>
-              <p>Champagne<br>
+              <p><a class="collsongnamea" href="./songinfo.html">Champagne</a><br>
                 <span>Chief Keef</span>
               </p>
             </div>
@@ -435,7 +438,7 @@
                 <div class="collplayer"><a href=""><img src="./img/library/coverPlay-b.png" alt=""></a></div>
               </div>
               <div class="collheart"><img src="./img/collection/grayheart.png" alt=""></div>
-              <p> Dharma<br>
+              <p><a class="collsongnamea" href="./songinfo.html">Dharma</a><br>
                 <span>Headhunterz</span>
               </p>
             </div>
@@ -444,7 +447,7 @@
                 <div class="collplayer"><a href=""><img src="./img/library/coverPlay-b.png" alt=""></a></div>
               </div>
               <div class="collheart"><img src="./img/collection/grayheart.png" alt=""></div>
-              <p> Survivors<br>
+              <p><a class="collsongnamea" href="./songinfo.html">Survivors</a><br>
                 <span>Hardwel</span>
               </p>
             </div>
@@ -453,7 +456,7 @@
                 <div class="collplayer"><a href=""><img src="./img/library/coverPlay-b.png" alt=""></a></div>
               </div>
               <div class="collheart"><img src="./img/collection/grayheart.png" alt=""></div>
-              <p> Solo Dance<br>
+              <p><a class="collsongnamea" href="./songinfo.html">Solo dance</a><br>
                 <span>Martin Jensen</span>
               </p>
             </div>
@@ -464,8 +467,8 @@
                 <div class="collplayer"><a href=""><img src="./img/library/coverPlay-b.png" alt=""></a></div>
               </div>
               <div class="collheart"><img src="./img/collection/grayheart.png" alt=""></div>
-              <p> 16 Steps<br>
-                <span> Olivia Holt</span>
+              <p><a class="collsongnamea" href="./songinfo.html">16 steps</a><br>
+                <span>Olivia Holt</span>
               </p>
             </div>
             <div class="collectionsinglecover">
@@ -473,7 +476,7 @@
                 <div class="collplayer"><a href=""><img src="./img/library/coverPlay-b.png" alt=""></a></div>
               </div>
               <div class="collheart"><img src="./img/collection/grayheart.png" alt=""></div>
-              <p>Welcome<br>
+              <p><a class="collsongnamea" href="./songinfo.html">Welcome</a><br>
                 <span>Julian Jordan</span>
               </p>
             </div>
@@ -482,7 +485,7 @@
                 <div class="collplayer"><a href=""><img src="./img/library/coverPlay-b.png" alt=""></a></div>
               </div>
               <div class="collheart"><img src="./img/collection/grayheart.png" alt=""></div>
-              <p>BFAM<br>
+              <p><a class="collsongnamea" href="./songinfo.html">Bfam</a><br>
                 <span>Martin Garrix</span>
               </p>
             </div>
@@ -491,7 +494,7 @@
                 <div class="collplayer"><a href=""><img src="./img/library/coverPlay-b.png" alt=""></a></div>
               </div>
               <div class="collheart"><img src="./img/collection/grayheart.png" alt=""></div>
-              <p>Phatt Bass<br>
+              <p><a class="collsongnamea" href="./songinfo.html">Phatt bass</a><br>
                 <span>Warp Brothersk</span>
               </p>
             </div>
@@ -506,7 +509,7 @@
                 <div class="collplayer"><a href=""><img src="./img/library/coverPlay-b.png" alt=""></a></div>
               </div>
               <div class="collheart"><img src="./img/collection/grayheart.png" alt=""></div>
-              <p> Game Over <br>
+              <p><a class="collsongnamea" href="./songinfo.html">Game over</a><br>
                 <span>Loopers</span>
               </p>
             </div>
@@ -515,7 +518,7 @@
                 <div class="collplayer"><a href=""><img src="./img/library/coverPlay-b.png" alt=""></a></div>
               </div>
               <div class="collheart"><img src="./img/collection/grayheart.png" alt=""></div>
-              <p>All Aboard<br>
+              <p><a class="collsongnamea" href="./songinfo.html">All aboard</a><br>
                 <span>Bassjackers</span>
               </p>
             </div>
@@ -524,7 +527,7 @@
                 <div class="collplayer"><a href=""><img src="./img/library/coverPlay-b.png" alt=""></a></div>
               </div>
               <div class="collheart"><img src="./img/collection/grayheart.png" alt=""></div>
-              <p>Renegade Master<br>
+              <p><a class="collsongnamea" href="./songinfo.html">Renegade master</a><br>
                 <span>Jamis</span>
               </p>
             </div>
@@ -533,7 +536,7 @@
                 <div class="collplayer"><a href=""><img src="./img/library/coverPlay-b.png" alt=""></a></div>
               </div>
               <div class="collheart"><img src="./img/collection/grayheart.png" alt=""></div>
-              <p>Renegade Master<br>
+              <p><a class="collsongnamea" href="./songinfo.html">Phatt bass</a><br>
                 <span>Playmen</span>
               </p>
             </div>
@@ -544,7 +547,7 @@
                 <div class="collplayer"><a href=""><img src="./img/library/coverPlay-b.png" alt=""></a></div>
               </div>
               <div class="collheart"><img src="./img/collection/grayheart.png" alt=""></div>
-              <p>One Kiss <br>
+              <p><a class="collsongnamea" href="./songinfo.html">One kiss</a><br>
                 <span>Dua Lipa</span>
               </p>
             </div>
@@ -553,7 +556,7 @@
                 <div class="collplayer"><a href=""><img src="./img/library/coverPlay-b.png" alt=""></a></div>
               </div>
               <div class="collheart"><img src="./img/collection/grayheart.png" alt=""></div>
-              <p>Magenta Riddim<br>
+              <p><a class="collsongnamea" href="./songinfo.html">Magenta riddim</a><br>
                 <span>DJ Snake </span>
               </p>
             </div>
@@ -562,7 +565,7 @@
                 <div class="collplayer"><a href=""><img src="./img/library/coverPlay-b.png" alt=""></a></div>
               </div>
               <div class="collheart"><img src="./img/collection/grayheart.png" alt=""></div>
-              <p>Alone<br>
+              <p><a class="collsongnamea" href="./songinfo.html">Alone</a><br>
                 <span>Alan Walker</span>
               </p>
             </div>
@@ -571,7 +574,7 @@
                 <div class="collplayer"><a href=""><img src="./img/library/coverPlay-b.png" alt=""></a></div>
               </div>
               <div class="collheart"><img src="./img/collection/grayheart.png" alt=""></div>
-              <p>Faith<br>
+              <p><a class="collsongnamea" href="./songinfo.html">Faith</a><br>
                 <span>Galantis</span>
               </p>
             </div>
@@ -582,7 +585,7 @@
                 <div class="collplayer"><a href=""><img src="./img/library/coverPlay-b.png" alt=""></a></div>
               </div>
               <div class="collheart"><img src="./img/collection/grayheart.png" alt=""></div>
-              <p>Analog Signal<br>
+              <p><a class="collsongnamea" href="./songinfo.html">Analog signal</a><br>
                 <span>DJ E-turn</span>
               </p>
             </div>
@@ -591,7 +594,7 @@
                 <div class="collplayer"><a href=""><img src="./img/library/coverPlay-b.png" alt=""></a></div>
               </div>
               <div class="collheart"><img src="./img/collection/grayheart.png" alt=""></div>
-              <p>Sell My Soul<br>
+              <p><a class="collsongnamea" href="./songinfo.html">Sell my soul</a><br>
                 <span>Sigma</span>
               </p>
             </div>
@@ -600,7 +603,7 @@
                 <div class="collplayer"><a href=""><img src="./img/library/coverPlay-b.png" alt=""></a></div>
               </div>
               <div class="collheart"><img src="./img/collection/grayheart.png" alt=""></div>
-              <p>Bumpy Teeth<br>
+              <p><a class="collsongnamea" href="./songinfo.html">Bumpy teeth</a><br>
                 <span>Zeds Dead</span>
               </p>
             </div>
@@ -609,7 +612,7 @@
                 <div class="collplayer"><a href=""><img src="./img/library/coverPlay-b.png" alt=""></a></div>
               </div>
               <div class="collheart"><img src="./img/collection/grayheart.png" alt=""></div>
-              <p>Cruel Love<br>
+              <p><a class="collsongnamea" href="./songinfo.html">Cruel love</a><br>
                 <span>Kayzo</span>
               </p>
             </div>
@@ -624,7 +627,7 @@
                 <div class="collplayer"><a href=""><img src="./img/library/coverPlay-b.png" alt=""></a></div>
               </div>
               <div class="collheart"><img src="./img/collection/grayheart.png" alt=""></div>
-              <p>Hey<br>
+              <p><a class="collsongnamea" href="./songinfo.html">Hey</a><br>
                 <span>Fais ft. Afrojack</span>
               </p>
             </div>
@@ -633,7 +636,7 @@
                 <div class="collplayer"><a href=""><img src="./img/library/coverPlay-b.png" alt=""></a></div>
               </div>
               <div class="collheart"><img src="./img/collection/grayheart.png" alt=""></div>
-              <p>Another Life<br>
+              <p><a class="collsongnamea" href="./songinfo.html">Another life</a><br>
                 <span>David Guetta</span>
               </p>
             </div>
@@ -642,7 +645,7 @@
                 <div class="collplayer"><a href=""><img src="./img/library/coverPlay-b.png" alt=""></a></div>
               </div>
               <div class="collheart"><img src="./img/collection/grayheart.png" alt=""></div>
-              <p>Cutting Shapes<br>
+              <p><a class="collsongnamea" href="./songinfo.html">Cutting shapes</a><br>
                 <span>Don Diablo</span>
               </p>
             </div>
@@ -651,7 +654,7 @@
                 <div class="collplayer"><a href=""><img src="./img/library/coverPlay-b.png" alt=""></a></div>
               </div>
               <div class="collheart"><img src="./img/collection/grayheart.png" alt=""></div>
-              <p>What Would You<br>
+              <p><a class="collsongnamea" href="./songinfo.html">What would you</a><br>
                 <span>NERVO</span>
               </p>
             </div>
@@ -662,7 +665,7 @@
                 <div class="collplayer"><a href=""><img src="./img/library/coverPlay-b.png" alt=""></a></div>
               </div>
               <div class="collheart"><img src="./img/collection/grayheart.png" alt=""></div>
-              <p>Champagne<br>
+              <p><a class="collsongnamea" href="./songinfo.html">Champagne</a><br>
                 <span>Chief Keef</span>
               </p>
             </div>
@@ -671,7 +674,7 @@
                 <div class="collplayer"><a href=""><img src="./img/library/coverPlay-b.png" alt=""></a></div>
               </div>
               <div class="collheart"><img src="./img/collection/grayheart.png" alt=""></div>
-              <p> Dharma<br>
+              <p><a class="collsongnamea" href="./songinfo.html">Dharma</a><br>
                 <span>Headhunterz</span>
               </p>
             </div>
@@ -680,7 +683,7 @@
                 <div class="collplayer"><a href=""><img src="./img/library/coverPlay-b.png" alt=""></a></div>
               </div>
               <div class="collheart"><img src="./img/collection/grayheart.png" alt=""></div>
-              <p> Survivors<br>
+              <p><a class="collsongnamea" href="./songinfo.html">Survivors</a><br>
                 <span>Hardwel</span>
               </p>
             </div>
@@ -689,7 +692,7 @@
                 <div class="collplayer"><a href=""><img src="./img/library/coverPlay-b.png" alt=""></a></div>
               </div>
               <div class="collheart"><img src="./img/collection/grayheart.png" alt=""></div>
-              <p> Solo Dance<br>
+              <p><a class="collsongnamea" href="./songinfo.html">Solo dance</a><br>
                 <span>Martin Jensen</span>
               </p>
             </div>
@@ -700,7 +703,7 @@
                 <div class="collplayer"><a href=""><img src="./img/library/coverPlay-b.png" alt=""></a></div>
               </div>
               <div class="collheart"><img src="./img/collection/grayheart.png" alt=""></div>
-              <p> 16 Steps<br>
+              <p><a class="collsongnamea" href="./songinfo.html">16 steps</a><br>
                 <span> Olivia Holt</span>
               </p>
             </div>
@@ -709,7 +712,7 @@
                 <div class="collplayer"><a href=""><img src="./img/library/coverPlay-b.png" alt=""></a></div>
               </div>
               <div class="collheart"><img src="./img/collection/grayheart.png" alt=""></div>
-              <p>Welcome<br>
+             <p><a class="collsongnamea" href="./songinfo.html">Welcome</a><br>
                 <span>Julian Jordan</span>
               </p>
             </div>
@@ -718,7 +721,7 @@
                 <div class="collplayer"><a href=""><img src="./img/library/coverPlay-b.png" alt=""></a></div>
               </div>
               <div class="collheart"><img src="./img/collection/grayheart.png" alt=""></div>
-              <p>BFAM<br>
+              <p><a class="collsongnamea" href="./songinfo.html">Bfam</a><br>
                 <span>Martin Garrix</span>
               </p>
             </div>
@@ -727,7 +730,7 @@
                 <div class="collplayer"><a href=""><img src="./img/library/coverPlay-b.png" alt=""></a></div>
               </div>
               <div class="collheart"><img src="./img/collection/grayheart.png" alt=""></div>
-              <p>Phatt Bass<br>
+              <p><a class="collsongnamea" href="./songinfo.html">Phatt bass</a><br>
                 <span>Warp Brothersk</span>
               </p>
             </div>
@@ -742,7 +745,7 @@
                 <div class="collplayer"><a href=""><img src="./img/library/coverPlay-b.png" alt=""></a></div>
               </div>
               <div class="collheart"><img src="./img/collection/grayheart.png" alt=""></div>
-              <p> Game Over <br>
+              <p><a class="collsongnamea" href="./songinfo.html">Game over</a><br>
                 <span>Loopers</span>
               </p>
             </div>
@@ -751,7 +754,7 @@
                 <div class="collplayer"><a href=""><img src="./img/library/coverPlay-b.png" alt=""></a></div>
               </div>
               <div class="collheart"><img src="./img/collection/grayheart.png" alt=""></div>
-              <p>All Aboard<br>
+              <p><a class="collsongnamea" href="./songinfo.html">All aboard</a><br>
                 <span>Bassjackers</span>
               </p>
             </div>
@@ -760,7 +763,7 @@
                 <div class="collplayer"><a href=""><img src="./img/library/coverPlay-b.png" alt=""></a></div>
               </div>
               <div class="collheart"><img src="./img/collection/grayheart.png" alt=""></div>
-              <p>Renegade Master<br>
+              <p><a class="collsongnamea" href="./songinfo.html">Renegade master</a><br>
                 <span>Jamis</span>
               </p>
             </div>
@@ -769,7 +772,7 @@
                 <div class="collplayer"><a href=""><img src="./img/library/coverPlay-b.png" alt=""></a></div>
               </div>
               <div class="collheart"><img src="./img/collection/grayheart.png" alt=""></div>
-              <p>Renegade Master<br>
+              <p><a class="collsongnamea" href="./songinfo.html">Phatt bass</a><br>
                 <span>Playmen</span>
               </p>
             </div>
@@ -780,7 +783,7 @@
                 <div class="collplayer"><a href=""><img src="./img/library/coverPlay-b.png" alt=""></a></div>
               </div>
               <div class="collheart"><img src="./img/collection/grayheart.png" alt=""></div>
-              <p>One Kiss <br>
+              <p><a class="collsongnamea" href="./songinfo.html">One kiss</a><br>
                 <span>Dua Lipa</span>
               </p>
             </div>
@@ -789,7 +792,7 @@
                 <div class="collplayer"><a href=""><img src="./img/library/coverPlay-b.png" alt=""></a></div>
               </div>
               <div class="collheart"><img src="./img/collection/grayheart.png" alt=""></div>
-              <p>Magenta Riddim<br>
+              <p><a class="collsongnamea" href="./songinfo.html">Magenta riddim</a><br>
                 <span>DJ Snake </span>
               </p>
             </div>
@@ -798,7 +801,7 @@
                 <div class="collplayer"><a href=""><img src="./img/library/coverPlay-b.png" alt=""></a></div>
               </div>
               <div class="collheart"><img src="./img/collection/grayheart.png" alt=""></div>
-              <p>Alone<br>
+              <p><a class="collsongnamea" href="./songinfo.html">Alonem</a><br>
                 <span>Alan Walker</span>
               </p>
             </div>
@@ -807,7 +810,7 @@
                 <div class="collplayer"><a href=""><img src="./img/library/coverPlay-b.png" alt=""></a></div>
               </div>
               <div class="collheart"><img src="./img/collection/grayheart.png" alt=""></div>
-              <p>Faith<br>
+              <p><a class="collsongnamea" href="./songinfo.html">Faith</a><br>
                 <span>Galantis</span>
               </p>
             </div>
@@ -818,7 +821,7 @@
                 <div class="collplayer"><a href=""><img src="./img/library/coverPlay-b.png" alt=""></a></div>
               </div>
               <div class="collheart"><img src="./img/collection/grayheart.png" alt=""></div>
-              <p>Analog Signal<br>
+              <p><a class="collsongnamea" href="./songinfo.html">Analog signal</a><br>
                 <span>DJ E-turn</span>
               </p>
             </div>
@@ -827,7 +830,7 @@
                 <div class="collplayer"><a href=""><img src="./img/library/coverPlay-b.png" alt=""></a></div>
               </div>
               <div class="collheart"><img src="./img/collection/grayheart.png" alt=""></div>
-              <p>Sell My Soul<br>
+              <p><a class="collsongnamea" href="./songinfo.html">Sell my soul</a><br>
                 <span>Sigma</span>
               </p>
             </div>
@@ -836,7 +839,7 @@
                 <div class="collplayer"><a href=""><img src="./img/library/coverPlay-b.png" alt=""></a></div>
               </div>
               <div class="collheart"><img src="./img/collection/grayheart.png" alt=""></div>
-              <p>Bumpy Teeth<br>
+              <p><a class="collsongnamea" href="./songinfo.html">Bumpy teeth</a><br>
                 <span>Zeds Dead</span>
               </p>
             </div>
@@ -845,7 +848,7 @@
                 <div class="collplayer"><a href=""><img src="./img/library/coverPlay-b.png" alt=""></a></div>
               </div>
               <div class="collheart"><img src="./img/collection/grayheart.png" alt=""></div>
-              <p>Cruel Love<br>
+              <p><a class="collsongnamea" href="./songinfo.html">Cruel love</a><br>
                 <span>Kayzo</span>
               </p>
             </div>
@@ -873,11 +876,12 @@
     $(this).find('.collplayer').css("display", "none");
   });
   //PLAY AND PAUSE BUTTON
-  $('.collplayer a').click(function () {
-    if ($(this).hasClass('becomePause')) {
-      $(this).html('<img src="./img/library/coverPlay-b.png">').removeClass('becomePause');
+  $('.collplayer a').click(function (e) {
+    e.preventDefault();
+    if ($(this).hasClass('Pause')) {
+      $(this).html('<img src="./img/library/coverPlay-b.png">').removeClass('Pause');
     } else {
-      $(this).html('<img src="./img/library/coverPause-b.png">').addClass('becomePause');
+      $(this).html('<img src="./img/library/coverPause-b.png">').addClass('Pause');
     }
   });
   // TAB CONTENT CHANGE
@@ -918,418 +922,4 @@
   });
 </script>
 <!-- the end of my script -->
-<!-- the public version -->
-<script>
-  new Vue({
-    el: "#app",
-    data: {
-      mobile_list: false,
-      search_bar: false,
-      mem_list: false,
-      mem_login: false,
-
-    },
-    mounted() {
-      // nav_bar start
-      document.querySelector('.mem_list ul').setAttribute('style', `height: ${window.innerHeight}px;`);
-      document.querySelector('.mobile_list ul').setAttribute('style', `height: ${window.innerHeight}px;`);
-      document.querySelectorAll('.paint_border')[0].setAttribute('style', `height: ${window.innerHeight}px;`);
-      document.querySelectorAll('.paint_border')[1].setAttribute('style', `height: ${window.innerHeight}px;`);
-
-      document.addEventListener('click', () => {
-        this.mem_list = false;
-        this.search_bar = false;
-        this.mobile_list = false;
-
-        document
-          .querySelector(".search_bar")
-          .setAttribute("style", "height: 0px; filter: opacity(0);");
-        document
-          .querySelector(".mem_list")
-          .setAttribute("style", "transform: translateX(270px); filter: opacity(0);");
-        document
-          .querySelector(".mobile_list")
-          .setAttribute("style", "transform: translateX(-270px); filter: opacity(0);");
-      });
-      // nav_bar end
-
-
-
-      // player start
-      $(document).ready(function () {
-  //撥放器縮放
-  $('#expand').click(function () {
-    $('.player_b').addClass('open');
-    $('.player_s').animate({
-      bottom: '-70px'
-    });
-  });
-  $('#closePlayer').click(function () {
-    $('.player_b').removeClass('open');
-    $('.player_s').animate({
-      bottom: '0'
-    });
-  });
-
-  //手機推移
-  $('.left .pushBtn').click(function () {
-    $('.left').css('height', '10%');
-    $('.right').css('height', '90%');
-    $('.right .pushBtn').show();
-    $('.left .pushBtn').hide();
-  });
-  $('.right .pushBtn').click(function () {
-    $('.left').css('height', '90%');
-    $('.right').css('height', '10%');
-    $('.left .pushBtn').show();
-    $('.right .pushBtn').hide();
-  });
-
-  //select選歌單
-  $('#player .selectBtn').click(function () {
-    $('#player .lightCover').show();
-    $('#player #myAllList').show();
-  });
-
-  //歌單清單
-  $('.closeLight').click(function () {
-    $('.lightCover').hide();
-    $('#myAllList').hide();
-  });
-  $('.lightCover').click(function () {
-    $(this).hide();
-    $('#myAllList').hide();
-  });
-
-  //點愛心
-  $('.heart').click(function () {
-    if ($(this).hasClass('becomeRed')) {
-      $(this).html('<i class="far fa-heart"></i>').removeClass('becomeRed');
-    } else {
-      $(this).html('<i class="fas fa-heart"></i>').addClass('becomeRed');
-    }
-  });
-
-  //點歌單撥放，左側專輯唱片動畫
-  $('.songCover').mouseover(function () {
-    $(this).find('.listPlay').show();
-  });
-  $('.songCover').mouseout(function () {
-    $(this).find('.listPlay').hide();
-  });
-
-  $(".listPlay").click(function () {
-    if ($(this).hasClass('nowlistening')) {
-      $(this).html('<i class="fas fa-play"></i>').removeClass("nowlistening");
-      isPlaying(true);
-    } else {
-      $(this).html('<i class="fas fa-pause"></i>').addClass("nowlistening");
-      $("#player .songCover .listPlay").not(this).removeClass('nowlistening');
-      isPlaying(false);
-    }
-  });
-
-
-
-  /* -- 音樂播放 -- */
-  let storage = localStorage;
-  var autoplay = false,
-    songTime,
-    progressingTime,
-    playStatus = false,
-    nowPlaying = 0, //現在播放的歌
-    audio = $("audio")[0], //撥放器
-    myPlaylist = [{
-        title: "Lucid Dreamer",
-        creator: "Spazz Cardigan",
-        cover: "../img/library/cover1.jpg",
-        filein: "../img/library/Lucid_Dreamer.mp3",
-        totalTime: "3:11",
-      },
-      {
-        title: "Spring In My Step",
-        creator: "Silent Partner",
-        cover: "../img/library/cover2.jpg",
-        filein: "../img/library/Spring_In_My_Step.mp3",
-        totalTime: "1:59",
-      },
-      {
-        title: "On My Way Home",
-        creator: "The 126ers",
-        cover: "../img/library/cover3.jpg",
-        filein: "../img/library/On_My_Way_Home.mp3",
-        totalTime: "1:56",
-      }
-    ];
-
-  $('#player audio').attr("src", myPlaylist[nowPlaying].filein);
-  // isStorageHave();
-
-  //播放暫停按鈕 -- 音樂撥放/暫停
-  $("#player .play").click(function () {
-    // console.log(nowPlaying);
-    // console.log(playStatus);
-    isPlaying(playStatus);
-  });
-
-  //下一首按鈕 -- 切換下一首
-  $("#player .next").click(function () {
-    if (nowPlaying == myPlaylist.length - 1) {
-      $("#player audio").attr("src", myPlaylist[myPlaylist.length - 1].filein);
-    } else {
-      nowPlaying++;
-      $("#player audio").attr("src", myPlaylist[nowPlaying].filein);
-    }
-    if (playStatus == true) {
-      isPlaying(false);
-    } else {
-      isPlaying(true);
-    }
-  });
-
-  //上一首按鈕 -- 切換上一首
-  $("#player .prev").click(function () {
-    if (nowPlaying == 0) {
-      $("#player audio").attr("src", myPlaylist[0].filein);
-    } else {
-      nowPlaying--;
-      $("#player audio").attr("src", myPlaylist[nowPlaying].filein);
-    }
-    if (playStatus == true) {
-      isPlaying(false);
-    } else {
-      isPlaying(true);
-    }
-  });
-
-  //停止按鈕 -- 音樂全數停止
-  $("#player .stop").click(function () {
-    audio.pause();
-    audio.currentTime = 0;
-    isPlaying(true);
-    $("#player .songCover .listPlay").removeClass('nowlistening');
-  });
-
-  //循環播放 -- 單首??未處理
-  $("#player .loop").click(function () {
-    if ($(this).hasClass("becomeYel")) {
-      $(this).removeClass("becomeYel");
-      audio.loop = false;
-    } else {
-      $(this).addClass("becomeYel");
-      audio.loop = true;
-    }
-  });
-  //隨機播放 -- 清單隨機--未處理
-
-
-
-  //clickBar -- 詳細(b)/簡易(s)
-  $(".player_b .progressbar").click(function (e) {
-    let progressBarSize_b = parseInt($(".player_b .progressbar").css("width"));
-    let mouseX_b = e.clientX - $(".player_b .progressbar").offset().left;
-    $(".player_b .progressbar .progress").css('width', `${mouseX_b}px`);
-
-    let newTime_b = mouseX_b / (progressBarSize_b / audio.duration);
-    audio.currentTime = newTime_b;
-  });
-  $(".player_s .progressbar").click(function (e) {
-    let progressBarSize_s = parseInt($(".player_s .progressbar").css("width"));
-    let mouseX_s = e.clientX - $(".player_s .progressbar").offset().left;
-    $(".player_s .progressbar .progress").css('width', `${mouseX_s}px`);
-
-    let newTime_s = mouseX_s / (progressBarSize_s / audio.duration);
-    audio.currentTime = newTime_s;
-  });
-
-  /* -- local -- */
-  // function isStorageHave() {
-  //   let newSongTime;
-  //   if(storage.length != 0){
-  //     newSongTime = storage.getItem(1);
-  //     console.log(newSongTime);
-  //   }else{
-  //     console.log(newSongTime);
-  //   }
-    
-  // }
-
-
-
-  function isPlaying(isPlaying) {
-    if (!isPlaying) { //如果沒有播放就讓他撥
-      playAudio();
-      $("#player .play").html('<i class="fas fa-pause"></i>');
-      $("#player .player_b .coverRec").animate({
-        right: "-50%",
-        opacity: "1"
-      }, "fast", "swing").addClass("recRotate");
-      playStatus = true;
-      // console.log(playStatus);
-    } else {
-      audio.pause();
-      $("#player .play").html('<i class="fas fa-play"></i>');
-      playStatus = false;
-      $("#player .player_b .coverRec").animate({
-        right: "0%"
-      }).removeClass("recRotate");
-      // console.log(playStatus);
-    }
-    $("#player .songInfo .name").text(myPlaylist[nowPlaying].title);
-    $("#player .songInfo .creator").text(myPlaylist[nowPlaying].creator);
-  }
-
-  //播放
-  function playAudio() {
-    audio.play();
-  }
-
-
-
-  //進度條
-  progressingTime = setInterval(progressingShow, 100);
-  let newSong = nowPlaying; //測試
-  function progressingShow() {
-    songTime = audio.currentTime;
-    let progressColor = (songTime / audio.duration) * 100;
-    if (audio.ended) {
-      autoChange();
-    }
-    
-    // if(newSong == nowPlaying){
-    //   storage.setItem(newSong, songTime);
-    // }else{
-    //   storage.clear();
-    //   storage.setItem(nowPlaying, songTime);
-    // }
-    
-    // console.log(audio.duration); //歌曲總長秒數
-    $("#player .progress").css("width", `${progressColor.toFixed(2)}%`);
-    $("#player span.start").text(`${parseInt(songTime / 60)}:${parseInt(songTime % 60)}`)
-    $("#player span.end").text(myPlaylist[nowPlaying].totalTime);
-  }
-
-  //自動換下一首
-  function autoChange() {
-    if (nowPlaying == myPlaylist.length - 1) {
-      if (audio.ended) {
-        audio.currentTime = 0;
-        isPlaying(true);
-      } else {
-        isPlaying(false);
-      }
-    } else {
-      nowPlaying++;
-      $("#player audio").attr("src", myPlaylist[nowPlaying].filein);
-      isPlaying(false);
-    }
-  }
-});
-      // player end
-
-
-    },
-    methods: {
-      // nav_bar
-      hamburger_click(e) {
-        // e.stopPropagation();
-        document
-          .querySelector(".hamburger").classList.toggle("is-active");
-      },
-      search_bt_click(e) {
-        e.stopPropagation();
-        if (this.search_bar == false) {
-          this.search_bar = true;
-          this.mem_list = false;
-          this.mobile_list = false;
-          document
-            .querySelector(".search_bar")
-            .setAttribute("style", "height: 240px; filter: opacity(1);");
-          document.querySelector("input.search").focus();
-          document
-            .querySelector(".mem_list")
-            .setAttribute("style", "transform: translateX(270px); filter: opacity(0);");
-          document
-            .querySelector(".mobile_list")
-            .setAttribute("style", "transform: translateX(-270px); filter: opacity(0);");
-        } else {
-          this.search_bar = false;
-          document
-            .querySelector(".search_bar")
-            .setAttribute("style", "height: 0px; filter: opacity(0);");
-          document.querySelector("input.search").blur();
-          document
-            .querySelector(".mem_list")
-            .setAttribute("style", "transform: translateX(270px); filter: opacity(0);");
-          document
-            .querySelector(".mobile_list")
-            .setAttribute("style", "transform: translateX(-270px); filter: opacity(0);");
-        }
-      },
-
-      stopPropagation(e) {
-        e.stopPropagation();
-      },
-
-      mem_bt_click(e) {
-        e.stopPropagation();
-        if (this.mem_list == false) {
-          this.mem_list = true;
-          this.search_bar = false;
-          this.mobile_list = false;
-          document
-            .querySelector(".mem_list")
-            .setAttribute("style", "transform: translateX(0); filter: opacity(1);");
-          document
-            .querySelector(".search_bar")
-            .setAttribute("style", "height: 0px; filter: opacity(0);");
-          document
-            .querySelector(".mobile_list")
-            .setAttribute("style", "transform: translateX(-270px); filter: opacity(0);");
-        } else {
-          this.mem_list = false;
-          document
-            .querySelector(".mem_list")
-            .setAttribute("style", "transform: translateX(270px); filter: opacity(0);");
-          document
-            .querySelector(".search_bar")
-            .setAttribute("style", "height: 0px; filter: opacity(0);");
-          document
-            .querySelector(".mobile_list")
-            .setAttribute("style", "transform: translateX(-270px); filter: opacity(0);");
-        }
-      },
-
-      hamburger_click(e) {
-        e.stopPropagation();
-        if (this.mobile_list == false) {
-          this.mobile_list = true;
-          this.mem_list = false;
-          this.search_bar = false;
-          document
-            .querySelector(".mobile_list")
-            .setAttribute("style", "transform: translateX(0); filter: opacity(1);");
-          document
-            .querySelector(".mem_list")
-            .setAttribute("style", "transform: translateX(270px); filter: opacity(0);");
-          document
-            .querySelector(".search_bar")
-            .setAttribute("style", "height: 0px; filter: opacity(0);");
-        } else {
-          this.mobile_list = false;
-          document
-            .querySelector(".mobile_list")
-            .setAttribute("style", "transform: translateX(-270px); filter: opacity(0);");
-          document
-            .querySelector(".mem_list")
-            .setAttribute("style", "transform: translateX(270px); filter: opacity(0);");
-          document
-            .querySelector(".search_bar")
-            .setAttribute("style", "height: 0px; filter: opacity(0);");
-        }
-      },
-    }
-  });
-</script>
-<!-- the end of the public version -->
 </html>

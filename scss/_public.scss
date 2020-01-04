@@ -50,9 +50,9 @@ ul {
 }
 
 header {
-  height: 300px;
+  height: 230px;
   text-align: center;
-  padding: 120px 0;
+  padding: 110px 0;
 }
 
 .wrapper {
@@ -86,6 +86,7 @@ header {
   color: #333;
   font-weight: bold;
   cursor: pointer;
+  text-transform: capitalize;
   &:hover {
     transform: scale(1.1);
   }
@@ -109,6 +110,7 @@ header {
   color: #333;
   border: 1.5px solid $yellow;
   cursor: pointer;
+  text-transform: capitalize;
   &:hover {
     transform: scale(1.1);
   }
@@ -159,8 +161,10 @@ $latop-max: 1200px;
 
 @include respond(ipadpro) {
   header {
+    height: 180px;
+    padding: 100px 0;
     img {
-      height: 76px;
+      height: 60px;
     }
   }
 }
