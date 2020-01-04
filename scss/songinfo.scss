@@ -76,9 +76,17 @@
         width: 600px;
     }
 }
+@media screen and (max-width:603px){
+    .songinfo_titl p{
+        margin-left: 50px;
+    }
+}
 @media screen and (max-width:576px){
     .songinfo_titl{
         width: 450px;
+    }
+    .songinfo_titl p{
+        margin-left: 10px;
     }
 }
 @media screen and (max-width:376px){
@@ -107,17 +115,23 @@
 @media screen and (max-width:603px){
     .songinfo_info{
         position: relative;
-        left: 20px;
+        left: 50px;
+        font-size: $rem0_7;
     }
 }
 @media screen and (max-width:576px){
     .songinfo_info{
-        font-size:$rem0_8;
+        font-size:$rem0_7;
+        position: relative;
+        left: 10px;
     }
 }
 @media screen and (max-width:376px){
     .songinfo_info{
         width: 340px;
+        font-size: $rem0_6;
+        position: relative;
+        left: 22px;
     }
 }
 
@@ -146,18 +160,27 @@
         width: 500px;
     }
 }
+@media screen and (max-width:603px){
+    .info_square{
+        width: 480px;
+        height: 300px;
+        position: relative;
+        bottom: 250px;
+        left: 50px;
+    }
+}
 @media screen and (max-width:576px){
     .info_square{
+        width: 450px;
         position: relative;
-        bottom: 350px;
+        left: 5px;
     }
 }
 @media screen and (max-width:376px){
     .info_square{
-        width: 300px;
+        width: 340px;
         position: relative;
-        bottom: 375px;
-        left: 40px;
+        left: 13px;
     }
 }
 
@@ -443,10 +466,21 @@ $bg: rgba(44,15,15,1);
 @media screen and (max-width:603px){
     .songinfo_ear{
         position: relative;
-        left: 380px;
+        top: -674px;
+        left: 270px;
+    }
+    .songinfo_ear img{
+        width: 350px;
+        height: 600px;
     }
 }
 @media screen and (max-width:576px){
+    .songinfo_ear{
+        position: relative;
+        left: 220px;
+    }
+}
+@media screen and (max-width:376px){
     .songinfo_ear{
         display: none;
     }
