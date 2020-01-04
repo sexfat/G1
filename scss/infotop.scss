@@ -51,6 +51,13 @@
   }
 }
 
+@media screen and (max-width:768px) {
+  .songinfo_infoplay .music-player-container {
+    position: absolute;
+    left: 400px;
+  }
+}
+
 .songinfo_infoplay .music-player {
   // background-color: #fff;
   height: 370px;
@@ -72,9 +79,23 @@
   .songinfo_infoplay .music-player {
     width: 400px;
     position: relative;
+    top: 200px;
     left: 30px;
   }
 }
+
+@media screen and (max-width:376px) {
+  .songinfo_infoplay .music-player {
+    width: 373px;
+    position: relative;
+    left: 30px;
+  }
+
+  div.music-player-container.is-playing {
+    width: 373px;
+  }
+}
+
 
 .songinfo_infoplay .player-content-container {
   -webkit-transform: translateY(-50%);
@@ -84,7 +105,10 @@
   transform: translateY(-50%);
   top: 50%;
   position: relative;
+  left: -40px;
+  width: 400px;
 }
+
 
 .songinfo_infoplay .artist-name {
   font-size: 1rem;
@@ -117,7 +141,7 @@
 }
 
 .songinfo_infoplay .album {
-  box-shadow: 3px 3px 15px rgba(0, 0, 0, 0.65);
+  // box-shadow: 3px 3px 15px rgba(0, 0, 0, 0.65);
   height: 315px;
   margin-left: 250px;
   margin-top: 27px;
@@ -138,8 +162,8 @@
     width: 240px;
     height: 240px;
     position: relative;
-    top: -70px;
-    left: -110px;
+    top: -380px;
+    left: -210px;
   }
 }
 
@@ -207,14 +231,14 @@
 
 @media screen and (max-width:603px) {
   .songinfo_infoplay .vinyl {
-    // width: 240px;
-    // height: 240px;
-    // position: relative;
-    // top: -250px;
-    // left: -300px;
-    display: none;
+    width: 240px;
+    height: 240px;
+    position: relative;
+    top: -250px;
+    left: -10px;
   }
 }
+
 
 .songinfo_infoplay .is-playing .vinyl {
   left: 52%;
@@ -248,7 +272,7 @@
 .songinfo_infoplay .control-play {
   background: transparent url("../img/songinfo/coverPlay-b.png") (center / cover) no-repeat;
   position: relative;
-  left: -70px;
+  left: -150px;
   top: 20px;
   @include buttonno05();
 }
@@ -256,14 +280,21 @@
 @media screen and (max-width:930px) {
   .songinfo_infoplay .control-play {
     position: relative;
-    left: -20px;
+    left: -160px;
   }
 }
 
 @media screen and (max-width:603px) {
   .songinfo_infoplay .control-play {
     position: relative;
-    left: 20px;
+    left: -120px;
+  }
+}
+
+@media screen and (max-width:376px) {
+  .songinfo_infoplay .control-play {
+    position: relative;
+    top: 15px;
   }
 }
 
@@ -296,16 +327,25 @@
   // background: transparent url("../img/songinfo/donate.png") (center / cover) no-repeat;
   position: relative;
   top: -90px;
-  left: 210px;
+  left: 130px;
   @include butttonn02();
 }
 
 @media screen and (max-width:930px) {
   .songinfo_infoplay .infodona {
     position: relative;
-    top: -70px;
+    top: -82px;
+    left: 110px;
   }
 }
+
+@media screen and (max-width:376px) {
+  .songinfo_infoplay .infodona {
+    position: relative;
+    top: -60px;
+  }
+}
+
 // .infodona {
 //   @include butttonn02();
 // }
@@ -330,17 +370,26 @@
   background: transparent url("../img/songinfo/grayheart.png") (center / cover) no-repeat;
   position: relative;
   top: -75px;
-  left: 45px;
+  left: -50px;
 }
 
 @media screen and (max-width:930px) {
   .songinfo_infoplay .heart-like {
     position: relative;
-    top: -115px;
-    left: 140px;
+    top: -70px;
+    left: -70px;
   }
 }
-.songinfo_infoplay .is-click .heart-like{
+
+@media screen and (max-width:376px) {
+  .songinfo_infoplay .heart-like {
+    position: relative;
+    top: -95px;
+    left: 135px;
+  }
+}
+
+.songinfo_infoplay .is-click .heart-like {
   background: transparent url("../img/songinfo/redheart.png") (center / cover) no-repeat;
 }
 

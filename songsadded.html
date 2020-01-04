@@ -46,7 +46,7 @@
         }
 
         input[type="checkbox"]:checked {
-            background: #A1CAD7;
+            background: #7ED5E5;
         }
 
         input[type=checkbox]:checked::after {
@@ -435,152 +435,155 @@
         </div>
     </header>
 
-    <section class="songsadded_adds2">
-        <ol class="songsadded_leftli">
-            <li class="songsadded_lif">
-                <h2>&emsp;Upload song</h2>
-            </li>
-            <ol class="songsadded_inside">
-                <form action="" method="POST">
-                    <article>
-                        <br>
-                        <p style="width: 100px;height: 100px;">
-                            <img id="image" style="width: 300px;height: 300px;">
-                        </p>
-                        <!-- <img class="songsadded_ff" style="width: 50px;height: 30px;"
-                            src="./img/songupload/button_edit.png"> -->
-                        <input type="file" name="" id="theFile" style="display: none;">
-                        <label class="songsadded_ff" for="theFile"> &emsp; Edit</label>
-
-                    </article>
-                    <div>
-                        <p>Song Title : <input type="text" id="add_pp"
-                                style="border: 1px solid #d0d6d6;width:350px;height:28px;background-color: #d0d6d6;">
-                        </p>
-                        <div id="infopath">
-                            <span style="position: relative;left: -100px;">Upload path :</span>
-                            <p class="songsadd_path">{{infopathURL}}</p>
-                            <input type="file" name="" id="songinfo_btn" @change="changeSignUpload"
-                                style="display: none;">
-                            <label class="songinfo_bb" for="songinfo_btn"> &ensp;Choose</label>
-                        </div><br>
-                        <div id="infohashtag">
-                            <input type="checkbox" name="" id="">House&ensp;
-                            <input type="checkbox" style="border-radius: 5px;" name="" id="">Trap
+    <div class="songadd_all">
+        <section class="songsadded_adds2">
+            <ol class="songsadded_leftli">
+                <li class="songsadded_lif">
+                    <h2>&emsp;Upload song</h2>
+                </li>
+                <ol class="songsadded_inside">
+                    <form action="" method="POST">
+                        <article>
                             <br>
-                            <input type="checkbox" name="" id="">#Scratch&ensp;
-                            <input type="checkbox" name="" id="">#Stress&ensp;
-                            <input type="checkbox" name="" id="add_Ethereal">#Ethereal&ensp;
-                            <br>
-                            <p>Introduction :</p>
-                            <textarea name="" id="add_tta" cols="65" rows="6"
-                                style="border: 1px solid #d0d6d6;"></textarea>
+                            <p style="width: 100px;height: 100px;">
+                                <img id="image" style="width: 300px;height: 300px;">
+                            </p>
+                            <!-- <img class="songsadded_ff" style="width: 50px;height: 30px;"
+                                src="./img/songupload/button_edit.png"> -->
+                            <input type="file" name="" id="theFile" style="display: none;">
+                            <label class="songsadded_ff" for="theFile"> &emsp; Edit</label>
+    
+                        </article>
+                        <div>
+                            <p>Song Title : <input type="text" id="add_pp"
+                                    style="border: 1px solid #d0d6d6;width:350px;height:28px;background-color: #d0d6d6;">
+                            </p>
+                            <div id="infopath">
+                                <span style="position: relative;left: -100px;">Upload path :</span>
+                                <p class="songsadd_path">{{infopathURL}}</p>
+                                <input type="file" name="" id="songinfo_btn" @change="changeSignUpload"
+                                    style="display: none;">
+                                <label class="songinfo_bb" for="songinfo_btn"> &ensp;Choose</label>
+                            </div><br>
+                            <div id="infohashtag">
+                                <input type="checkbox" name="" id=""> House&ensp;
+                                <input type="checkbox" style="border-radius: 5px;" name="" id="">Trap
+                                <br>
+                                <input type="checkbox" name="" id=""> #Scratch&ensp;
+                                <input type="checkbox" name="" id=""> #Stress&ensp;
+                                <input type="checkbox" name="" id="add_Ethereal"> #Ethereal&ensp;
+                                <br>
+                                <p>Introduction :</p>
+                                <textarea name="" id="add_tta" cols="65" rows="6"
+                                    style="border: 1px solid #d0d6d6;"></textarea>
+                            </div>
                         </div>
-                    </div>
-
-                    <section><input type="button" id="sd" name="submit" onClick="document.form.submit()">
-                        <label class="sd_btn" for="sd">Send</label>
-                    </section>
-                </form>
-
+    
+                        <section><input type="button" id="sd" name="submit" onClick="document.form.submit()">
+                            <label class="sd_btn" for="sd">Send</label>
+                        </section>
+                    </form>
+    
+                </ol>
+    
+                <li class="songsadded_lif">
+                    <h2>&emsp;Uploaded</h2>
+                </li>
+                <ol class="songsadded_inside2">
+                    <li>Andy Warhol - Because of you</li>
+                    <ol>
+                        <article>
+                            <p style="width: 100px;height: 100px;">
+                                <img src="./img/songinfo/cover1.jpg" style="width: 300px;height: 300px;">
+                            </p>
+                            <!-- <img class="songsadded_ff" style="width: 50px;height: 30px;"
+                                src="./img/songupload/button_edit.png"> -->
+                            <input type="file" name="" id="theFile" style="display: none;">
+                            <label class="songsadded_ff" for="theFile"> &emsp; Edit</label>
+                        </article>
+                        <div>
+                            <span><span style="font-weight: bold;">Song Title :</span><span style="font-size:16px"> Because
+                                    of you</span></span><br>
+                            <span><span style="font-weight: bold;">Author :</span><span style="font-size:16px"> Andy
+                                    Warhol</span></span><br>
+                            <span><span style="font-weight: bold;">Song Type :</span><span style="font-size:16px">
+                                    House</span></span><br>
+                            <span><span style="font-weight: bold;">HashTag :</span><span style="font-size:16px">
+                                    #Scratch</span></span><br>
+                            <span><span style="font-weight: bold;">Introduction :</span></span><br>
+                            <span style="font-size:16px">"Hold It Against Me" is three <br>
+                                minutes and forty-nine seconds <br>
+                                long.It is a dance-pop song that <br>
+                                blends pulsating industrial and trance <br>
+                                beats with elements of grime.</span>
+                        </div>
+                    </ol>
+                    <li>Andy Warhol - Because of you</li>
+                    <ol>
+                        <article>
+                            <p style="width: 100px;height: 100px;">
+                                <img src="./img/songinfo/cover1.jpg" style="width: 300px;height: 300px;">
+                            </p>
+                            <!-- <img class="songsadded_ff" style="width: 50px;height: 30px;"
+                                src="./img/songupload/button_edit.png"> -->
+                            <input type="file" name="" id="theFile" style="display: none;">
+                            <label class="songsadded_ff" for="theFile"> &emsp; Edit</label>
+                        </article>
+                        <div>
+                            <span><span style="font-weight: bold;">Song Title :</span><span style="font-size:16px"> Because
+                                    of you</span></span><br>
+                            <span><span style="font-weight: bold;">Author :</span><span style="font-size:16px"> Andy
+                                    Warhol</span></span><br>
+                            <span><span style="font-weight: bold;">Song Type :</span><span style="font-size:16px">
+                                    House</span></span><br>
+                            <span><span style="font-weight: bold;">HashTag :</span><span style="font-size:16px">
+                                    #Scratch</span></span><br>
+                            <span><span style="font-weight: bold;">Introduction :</span></span><br>
+                            <span style="font-size:16px">"Hold It Against Me" is three <br>
+                                minutes and forty-nine seconds <br>
+                                long.It is a dance-pop song that <br>
+                                blends pulsating industrial and trance <br>
+                                beats with elements of grime.</span>
+                        </div>
+                    </ol>
+                    <li>Andy Warhol - Because of you</li>
+                    <ol>
+                        <article>
+                            <p style="width: 100px;height: 100px;">
+                                <img src="./img/songinfo/cover1.jpg" style="width: 300px;height: 300px;">
+                            </p>
+                            <!-- <img class="songsadded_ff" style="width: 50px;height: 30px;"
+                                src="./img/songupload/button_edit.png"> -->
+                            <input type="file" name="" id="theFile" style="display: none;">
+                            <label class="songsadded_ff" for="theFile"> &emsp; Edit</label>
+                        </article>
+                        <div>
+                            <span><span style="font-weight: bold;">Song Title :</span><span style="font-size:16px"> Because
+                                    of you</span></span><br>
+                            <span><span style="font-weight: bold;">Author :</span><span style="font-size:16px"> Andy
+                                    Warhol</span></span><br>
+                            <span><span style="font-weight: bold;">Song Type :</span><span style="font-size:16px">
+                                    House</span></span><br>
+                            <span><span style="font-weight: bold;">HashTag :</span><span style="font-size:16px">
+                                    #Scratch</span></span><br>
+                            <span><span style="font-weight: bold;">Introduction :</span></span><br>
+                            <span style="font-size:16px">"Hold It Against Me" is three <br>
+                                minutes and forty-nine seconds <br>
+                                long.It is a dance-pop song that <br>
+                                blends pulsating industrial and trance <br>
+                                beats with elements of grime.</span>
+                        </div>
+                    </ol>
+                </ol>
             </ol>
-
-            <li class="songsadded_lif">
-                <h2>&emsp;Uploaded</h2>
-            </li>
-            <ol class="songsadded_inside2">
-                <li>Andy Warhol - Because of you</li>
-                <ol>
-                    <article>
-                        <p style="width: 100px;height: 100px;">
-                            <img src="./img/songinfo/cover1.jpg" style="width: 300px;height: 300px;">
-                        </p>
-                        <!-- <img class="songsadded_ff" style="width: 50px;height: 30px;"
-                            src="./img/songupload/button_edit.png"> -->
-                        <input type="file" name="" id="theFile" style="display: none;">
-                        <label class="songsadded_ff" for="theFile"> &emsp; Edit</label>
-                    </article>
-                    <div>
-                        <span><span style="font-weight: bold;">Song Title :</span><span style="font-size:16px"> Because
-                                of you</span></span><br>
-                        <span><span style="font-weight: bold;">Author :</span><span style="font-size:16px"> Andy
-                                Warhol</span></span><br>
-                        <span><span style="font-weight: bold;">Song Type :</span><span style="font-size:16px">
-                                House</span></span><br>
-                        <span><span style="font-weight: bold;">HashTag :</span><span style="font-size:16px">
-                                #Scratch</span></span><br>
-                        <span><span style="font-weight: bold;">Introduction :</span></span><br>
-                        <span style="font-size:16px">"Hold It Against Me" is three <br>
-                            minutes and forty-nine seconds <br>
-                            long.It is a dance-pop song that <br>
-                            blends pulsating industrial and trance <br>
-                            beats with elements of grime.</span>
-                    </div>
-                </ol>
-                <li>Andy Warhol - Because of you</li>
-                <ol>
-                    <article>
-                        <p style="width: 100px;height: 100px;">
-                            <img src="./img/songinfo/cover1.jpg" style="width: 300px;height: 300px;">
-                        </p>
-                        <!-- <img class="songsadded_ff" style="width: 50px;height: 30px;"
-                            src="./img/songupload/button_edit.png"> -->
-                        <input type="file" name="" id="theFile" style="display: none;">
-                        <label class="songsadded_ff" for="theFile"> &emsp; Edit</label>
-                    </article>
-                    <div>
-                        <span><span style="font-weight: bold;">Song Title :</span><span style="font-size:16px"> Because
-                                of you</span></span><br>
-                        <span><span style="font-weight: bold;">Author :</span><span style="font-size:16px"> Andy
-                                Warhol</span></span><br>
-                        <span><span style="font-weight: bold;">Song Type :</span><span style="font-size:16px">
-                                House</span></span><br>
-                        <span><span style="font-weight: bold;">HashTag :</span><span style="font-size:16px">
-                                #Scratch</span></span><br>
-                        <span><span style="font-weight: bold;">Introduction :</span></span><br>
-                        <span style="font-size:16px">"Hold It Against Me" is three <br>
-                            minutes and forty-nine seconds <br>
-                            long.It is a dance-pop song that <br>
-                            blends pulsating industrial and trance <br>
-                            beats with elements of grime.</span>
-                    </div>
-                </ol>
-                <li>Andy Warhol - Because of you</li>
-                <ol>
-                    <article>
-                        <p style="width: 100px;height: 100px;">
-                            <img src="./img/songinfo/cover1.jpg" style="width: 300px;height: 300px;">
-                        </p>
-                        <!-- <img class="songsadded_ff" style="width: 50px;height: 30px;"
-                            src="./img/songupload/button_edit.png"> -->
-                        <input type="file" name="" id="theFile" style="display: none;">
-                        <label class="songsadded_ff" for="theFile"> &emsp; Edit</label>
-                    </article>
-                    <div>
-                        <span><span style="font-weight: bold;">Song Title :</span><span style="font-size:16px"> Because
-                                of you</span></span><br>
-                        <span><span style="font-weight: bold;">Author :</span><span style="font-size:16px"> Andy
-                                Warhol</span></span><br>
-                        <span><span style="font-weight: bold;">Song Type :</span><span style="font-size:16px">
-                                House</span></span><br>
-                        <span><span style="font-weight: bold;">HashTag :</span><span style="font-size:16px">
-                                #Scratch</span></span><br>
-                        <span><span style="font-weight: bold;">Introduction :</span></span><br>
-                        <span style="font-size:16px">"Hold It Against Me" is three <br>
-                            minutes and forty-nine seconds <br>
-                            long.It is a dance-pop song that <br>
-                            blends pulsating industrial and trance <br>
-                            beats with elements of grime.</span>
-                    </div>
-                </ol>
-            </ol>
-        </ol>
-        <div class="uploadmic">
-            <img src="./img/songupload/mic.png" alt="">
-        </div>
-        <!-- <div class="songsadded_adds3"></div> -->
-    </section>
-    <!-- <section class="songsadded_adds3"></section> -->
+            <div class="uploadmic">
+                <img src="./img/songupload/mic.png" alt="">
+            </div>
+            <!-- <div class="songsadded_adds3"></div> -->
+        </section>
+        <!-- <section class="songsadded_adds3"></section> -->
+    </div>
+    
 
     <script>
         function doFirst() {

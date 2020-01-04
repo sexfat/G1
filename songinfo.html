@@ -14,6 +14,39 @@
     <!-- <script src="https://cdnjs.cloudflare.com/ajax/libs/pagePiling.js/1.5.6/jquery.pagepiling.min.js"></script> -->
     <script src="./js/player.js"></script>
     <script src="./js/public.js"></script>
+    <style>
+        input[type="checkbox"] {
+            -webkit-appearance: none;
+            vertical-align: middle;
+            margin-top: 0;
+            background: #fff;
+            border: #d0d6d6 solid 1px;
+            border-radius: 3px;
+            min-height: 20px;
+            min-width: 20px;
+        }
+
+        input[type="checkbox"]:checked {
+            background: #7ED5E5;
+        }
+
+        input[type=checkbox]:checked::after {
+            content: '';
+            top: 3px;
+            left: 3px;
+            position: absolute;
+            background: transparent;
+            border: #fff solid 2px;
+            border-top: none;
+            border-right: none;
+            height: 6px;
+            width: 10px;
+            -moz-transform: rotate(-45deg);
+            -ms-transform: rotate(-45deg);
+            -webkit-transform: rotate(-45deg);
+            transform: rotate(-45deg);
+        }
+    </style>
 </head>
 
 <body class="songinfo_back">
@@ -380,231 +413,237 @@
             <img src="./img/songinfo/songinfotitle.png" alt="">
         </div>
     </header>
-    <section class="songinfo_infos2">
-        <div class="songinfo_infoplay">
-            <div class="music-player-container is-playing">
-                <div class="music-player">
-                    <div class="player-content-container">
-                        <h2 class="song-title">Lucid Dreamer</h2><!--  /.song-title -->
-                        <h1 class="artist-name">Spazz Cardigan</h1><!--  /.track-title -->
-                        <!-- <h1 class="album-title">Lucid Dreamer</h1> /.album-title -->
-                        <div class="music-player-controls">
-                            <!-- <div class="control-back"></div> /.control-back -->
-                            <br>
-                            <div class="control-play"></div><!--  /.control-play -->
-                            <div class="song_tllike"><span>total like<br>
-                                       89757
-                            </span></div>
-                            <!-- <div class="dona-donate"> -->
-                                <input type="button" name="" class="infotopdona" style="display: none;">
-                                <label class="infodona" for="infotopdona">Donate</label>
-                            <!-- </div> -->
-                            <div class="heart-like-container is-click">
-                                <div class="heart-like"></div>
-                            </div>
-                            <!-- <div class="control-forwards"></div> /.control-forwards -->
-                        </div><!--  /.music-player-controls -->
-                    </div><!--  /.player-content-container -->
+    <div class="songinfo_all">
+        <section class="songinfo_infos2">
+            <div class="songinfo_infoplay">
+                <div class="music-player-container is-playing">
+                    <div class="music-player">
+                        <div class="player-content-container">
+                            <h2 class="song-title">Lucid dreamer</h2><!--  /.song-title -->
+                            <h1 class="artist-name">Spazz Cardigan</h1><!--  /.track-title -->
+                            <!-- <h1 class="album-title">Lucid Dreamer</h1> /.album-title -->
+                            <div class="music-player-controls">
+                                <!-- <div class="control-back"></div> /.control-back -->
+                                <br>
+                                <div class="control-play"></div><!--  /.control-play -->
+                                <div class="song_tllike"><span>total like<br>
+                                           89757
+                                </span></div>
+                                <!-- <div class="dona-donate"> -->
+                                    <input type="button" name="" class="infotopdona" style="display: none;">
+                                    <label class="infodona" for="infotopdona">Donate</label>
+                                <!-- </div> -->
+                                <div class="heart-like-container is-click">
+                                    <div class="heart-like"></div>
+                                </div>
+                                <!-- <div class="control-forwards"></div> /.control-forwards -->
+                            </div><!--  /.music-player-controls -->
+                        </div><!--  /.player-content-container -->
+                    </div><!--  /.music-player -->
+                    <div class="album">
+                        <div class="album-art"></div><!--  /.album-art -->
+                        <div class="vinyl"></div><!--  /.vinyl -->
+                    </div><!--  /.album-art -->
                 </div><!--  /.music-player -->
-                <div class="album">
-                    <div class="album-art"></div><!--  /.album-art -->
-                    <div class="vinyl"></div><!--  /.vinyl -->
-                </div><!--  /.album-art -->
-            </div><!--  /.music-player -->
+                <div>
+                    <audio id="music" src="./music/Paul_Flint.mp3"></audio>
+                </div>
+            </div>
+            <div class="songinfo_wave">
+                <iframe width="420" height="315" src="./music/Paul_Flint.mp3" frameborder="0"
+                    allowfullscreen></iframe>
+                <div class="jumping-things-wrap">
+                    <span></span>
+                    <span></span>
+                    <span></span>
+                    <span></span>
+                    <span></span>
+                    <span></span>
+                    <span></span>
+                    <span></span>
+                    <span></span>
+                    <span></span>
+                    <span></span>
+                    <span></span>
+                    <span></span>
+                    <span></span>
+                    <span></span>
+                    <span></span>
+                    <span></span>
+                    <span></span>
+                    <span></span>
+                    <span></span>
+                    <span></span>
+                    <span></span>
+                    <span></span>
+                    <span></span>
+                    <span></span>
+                    <span></span>
+                    <span></span>
+                    <span></span>
+                    <span></span>
+                    <span></span>
+                    <span></span>
+                    <span></span>
+                    <span></span>
+                    <span></span>
+                    <span></span>
+                    <span></span>
+                    <span></span>
+                    <span></span>
+                    <span></span>
+                    <span></span>
+                    <span></span>
+                    <span></span>
+                    <span></span>
+                    <span></span>
+                    <span></span>
+                    <span></span>
+                    <span></span>
+                    <span></span>
+                    <span></span>
+                    <span></span>
+                    <span></span>
+                    <span></span>
+                    <span></span>
+                    <span></span>
+                    <span></span>
+                    <span></span>
+                    <span></span>
+                    <span></span>
+                    <span></span>
+                    <span></span>
+                    <span></span>
+                    <span></span>
+                    <span></span>
+                    <span></span>
+                    <span></span>
+                    <span></span>
+                    <span></span>
+                    <span></span>
+                    <span></span>
+                    <span></span>
+                    <span></span>
+                    <span></span>
+                    <span></span>
+                    <span></span>
+                    <span></span>
+                    <span></span>
+                    <span></span>
+                    <span></span>
+                    <span></span>
+                    <span></span>
+                    <span></span>
+                    <span></span>
+                    <span></span>
+                    <span></span>
+                    <span></span>
+                    <span></span>
+                    <span></span>
+                    <span></span>
+                    <span></span>
+                    <span></span>
+                    <span></span>
+                    <span></span>
+                    <span></span>
+                    <span></span>
+                    <span></span>
+                    <span></span>
+                    <span></span>
+                </div>
+                <!-- <h4 class="title">Darko's &amp; Timo's Randomly jumping music player</h4> -->
+            </div> 
+        </section>
+        <section class="songinfo_infos3">
+            <div class="songinfo_titl">
+                <p>Introduction</p>
+                <br>
+                <div class="songinfo_info">
+                    "Hold It Against Me" is three minutes and forty-nine seconds long.<br>
+                    It is a dance-pop song that blends pulsating industrial and trance <br>
+                    beats with elements of grime.Musically, "Hold It Against Me" features <br>
+                    industrial beats, a dubstep-influenced breakdown and a final chorus <br>
+                    with elements of rave.Initially, the single was going to be released in<br>
+                    the United Kingdom on February 20, 2011, but the date was moved <br>
+                    up to January 17, 2011, due to overwhelming demand.
+                </div>
+                <div class="info_square"></div>
+                <div class="songinfo_ear">
+                    <img src="./img/songinfo/ear2.png" alt="">
+                </div>
+            </div>
+    
+        </section>
+        <br>
+        <br>
+        <br>
+        <br>
+        <section class="songinfo_infos4">
             <div>
-                <audio id="music" src="./music/Paul_Flint.mp3"></audio>
-            </div>
-        </div>
-        <div class="songinfo_wave">
-            <iframe width="420" height="315" src="./music/Paul_Flint.mp3" frameborder="0"
-                allowfullscreen></iframe>
-            <div class="jumping-things-wrap">
-                <span></span>
-                <span></span>
-                <span></span>
-                <span></span>
-                <span></span>
-                <span></span>
-                <span></span>
-                <span></span>
-                <span></span>
-                <span></span>
-                <span></span>
-                <span></span>
-                <span></span>
-                <span></span>
-                <span></span>
-                <span></span>
-                <span></span>
-                <span></span>
-                <span></span>
-                <span></span>
-                <span></span>
-                <span></span>
-                <span></span>
-                <span></span>
-                <span></span>
-                <span></span>
-                <span></span>
-                <span></span>
-                <span></span>
-                <span></span>
-                <span></span>
-                <span></span>
-                <span></span>
-                <span></span>
-                <span></span>
-                <span></span>
-                <span></span>
-                <span></span>
-                <span></span>
-                <span></span>
-                <span></span>
-                <span></span>
-                <span></span>
-                <span></span>
-                <span></span>
-                <span></span>
-                <span></span>
-                <span></span>
-                <span></span>
-                <span></span>
-                <span></span>
-                <span></span>
-                <span></span>
-                <span></span>
-                <span></span>
-                <span></span>
-                <span></span>
-                <span></span>
-                <span></span>
-                <span></span>
-                <span></span>
-                <span></span>
-                <span></span>
-                <span></span>
-                <span></span>
-                <span></span>
-                <span></span>
-                <span></span>
-                <span></span>
-                <span></span>
-                <span></span>
-                <span></span>
-                <span></span>
-                <span></span>
-                <span></span>
-                <span></span>
-                <span></span>
-                <span></span>
-                <span></span>
-                <span></span>
-                <span></span>
-                <span></span>
-                <span></span>
-                <span></span>
-                <span></span>
-                <span></span>
-                <span></span>
-                <span></span>
-                <span></span>
-                <span></span>
-                <span></span>
-                <span></span>
-                <span></span>
-                <span></span>
-                <span></span>
-                <span></span>
-                <span></span>
-            </div>
-            <!-- <h4 class="title">Darko's &amp; Timo's Randomly jumping music player</h4> -->
-        </div> 
-    </section>
-    <section class="songinfo_infos3">
-        <div class="songinfo_titl">
-            <p>Introduction</p>
-            <br>
-            <div class="songinfo_info">
-                "Hold It Against Me" is three minutes and forty-nine seconds long.<br>
-                It is a dance-pop song that blends pulsating industrial and trance <br>
-                beats with elements of grime.Musically, "Hold It Against Me" features <br>
-                industrial beats, a dubstep-influenced breakdown and a final chorus <br>
-                with elements of rave.Initially, the single was going to be released in<br>
-                the United Kingdom on February 20, 2011, but the date was moved <br>
-                up to January 17, 2011, due to overwhelming demand.
-            </div>
-            <div class="info_square"></div>
-            <div class="songinfo_ear">
-                <img src="./img/songinfo/ear2.png" alt="">
-            </div>
-        </div>
-
-    </section>
-    <br>
-    <br>
-    <br>
-    <br>
-    <section class="songinfo_infos4">
-        <div>
-            <div class="message">
-                <br>
-                <h3>Message</h3>
-                <br>
-                <div class="mess">
-                    <ul class="infomess_ul">
-                        <li class="infomess_li">
-                            <img class="infomessimg" src="./img/songinfo/people.png" style="width: 50px;height: 50px;float: left;margin-left: -10px;margin-top: 5px;">
-                            <div class="clearfix"></div>
-                            <p>&ensp;ID : Alice</p>
-                            &ensp;WOW ! Awesome !
-                            <!-- <div class="clearfix"></div> -->
-                            <!-- <div class="re-report"></div> -->
-                            <input type="button" name="" class="inforeport" style="display: none;">
-                            <label class="songinfo_re" for="inforeport">&ensp;Report</label>  
-                        </li>
-                        <li class="infomess_li">
-                            <img class="infomessimg" src="./img/songinfo/people.png" style="width: 50px;height: 50px;float: left;margin-left: -10px;margin-top: 5px;">
-                            <div class="clearfix"></div>
-                            <p>&ensp;ID : Bella</p>
-                            &ensp;WOW ! Awesome !
-                            <!-- <div class="clearfix"></div> -->
-                            <!-- <div class="re-report"></div> -->
-                            <input type="button" name="" class="inforeport" style="display: none;">
-                            <label class="songinfo_re" for="inforeport">&ensp;Report</label>
-                        </li>
-                        <li class="infomess_li">
-                            <img class="infomessimg" src="./img/songinfo/people.png" style="width: 50px;height: 50px;float: left;margin-left: -10px;margin-top: 5px;">
-                            <div class="clearfix"></div>
-                            <p>&ensp;ID : Tina</p>
-                            &ensp;WOW ! Awesome !
-                            <!-- <div class="clearfix"></div> -->
-                            <!-- <div class="re-report"></div> -->
-                            <input type="button" name="" class="inforeport" style="display: none;">
-                            <label class="songinfo_re" for="inforeport">&ensp;Report</label>
-                        </li>
-                        <li class="infomess_li">
-                            <img class="infomessimg" src="./img/songinfo/people.png" style="width: 50px;height: 50px;float: left;margin-left: -10px;margin-top: 5px;">
-                            <div class="clearfix"></div>
-                            <p>&ensp;ID : Rose</p>
-                            &ensp;WOW ! Awesome !
-                            <!-- <div class="clearfix"></div> -->
-                            <!-- <div class="re-report"></div> -->
-                            <input type="button" name="" class="inforeport" style="display: none;">
-                            <label class="songinfo_re" for="inforeport">&ensp;Report</label>
-                        </li>
-                    </ul>
-                </div>
-                <div class="mess_write">
-                    <textarea class="infomess_ta" name="" rows="8" cols="125"></textarea>
+                <div class="message">
                     <br>
-                    <div class="infose-send"><button class="infomess_btn" style="width: 70px;height: 30px; background-color: rgba(0, 0, 0, 0);color: rgba(0, 0, 0, 0);border-radius: 5px;"></button></div>
-                    <!-- <button class="infomess_btn">清空</button> -->
+                    <h3>Message</h3>
+                    <br>
+                    <div class="mess">
+                        <ul class="infomess_ul">
+                            <li class="infomess_li">
+                                <img class="infomessimg" src="./img/songinfo/people.png" style="width: 50px;height: 50px;float: left;margin-left: -10px;margin-top: 5px;">
+                                <div class="clearfix"></div>
+                                <p>&ensp;ID : Alice</p>
+                                &ensp;WOW ! Awesome !
+                                <!-- <div class="clearfix"></div> -->
+                                <!-- <div class="re-report"></div> -->
+                                <input type="button" name="" class="inforeport" style="display: none;">
+                                <label class="songinfo_re" for="inforeport">&ensp; Report</label>  
+                            </li>
+                            <li class="infomess_li">
+                                <img class="infomessimg" src="./img/songinfo/people.png" style="width: 50px;height: 50px;float: left;margin-left: -10px;margin-top: 5px;">
+                                <div class="clearfix"></div>
+                                <p>&ensp;ID : Bella</p>
+                                &ensp;WOW ! Awesome !
+                                <!-- <div class="clearfix"></div> -->
+                                <!-- <div class="re-report"></div> -->
+                                <input type="button" name="" class="inforeport" style="display: none;">
+                                <label class="songinfo_re" for="inforeport">&ensp; Report</label>
+                            </li>
+                            <li class="infomess_li">
+                                <img class="infomessimg" src="./img/songinfo/people.png" style="width: 50px;height: 50px;float: left;margin-left: -10px;margin-top: 5px;">
+                                <div class="clearfix"></div>
+                                <p>&ensp;ID : Tina</p>
+                                &ensp;WOW ! Awesome !
+                                <!-- <div class="clearfix"></div> -->
+                                <!-- <div class="re-report"></div> -->
+                                <input type="button" name="" class="inforeport" style="display: none;">
+                                <label class="songinfo_re" for="inforeport">&ensp; Report</label>
+                            </li>
+                            <li class="infomess_li">
+                                <img class="infomessimg" src="./img/songinfo/people.png" style="width: 50px;height: 50px;float: left;margin-left: -10px;margin-top: 5px;">
+                                <div class="clearfix"></div>
+                                <p>&ensp;ID : Rose</p>
+                                &ensp;WOW ! Awesome !
+                                <!-- <div class="clearfix"></div> -->
+                                <!-- <div class="re-report"></div> -->
+                                <input type="button" name="" class="inforeport" style="display: none;">
+                                <label class="songinfo_re" for="inforeport">&ensp; Report</label>
+                            </li>
+                        </ul>
+                    </div>
+                    <div class="mess_write">
+                        <textarea class="infomess_ta" name="" placeholder="Please leave a message." rows="8" cols="125"></textarea>
+                        <br>
+                        <input type="checkbox" name="" id=""> $ 100 dollars
+                        <input type="checkbox" name="" id=""> $ 300 dollars
+                        <input type="checkbox" name="" id=""> $ 500 dollars
+                        <input type="checkbox" name="" id=""> $ 1000 dollars
+                        <br>
+                        <div class="infose-send"><button class="infose-send" style="display: none;"></button><span style="position: relative;left: -13px;top: -5px;">Send</span></div>
+                        <!-- <button class="infomess_btn">清空</button> -->
+                    </div>
                 </div>
             </div>
-        </div>
-    </section>
-
-
+        </section>
+    </div>
+    
 
     <script>
         //元素節點<h3>，屬性節點class
@@ -615,9 +654,9 @@
             //獲取留言區的內容
             var text = document.getElementsByClassName('infomess_ta')[0]; //返回一個Nodelist節點列表
             //獲取提交按鈕
-            var submit = document.getElementsByClassName('infomess_btn')[0];
+            var submit = document.getElementsByClassName('infose-send')[0];
             //獲取清空按鈕
-            var empty = document.getElementsByClassName('infomess_btn')[1];
+            var empty = document.getElementsByClassName('infose-send')[1];
             //獲取評論區
             var mess = document.getElementsByClassName('mess')[0]
             //獲取評論區的列表
