@@ -1,3 +1,6 @@
+@import './public';
+
+
 //songadd
 // .bnr img {
 //     border: 1px solid rgb(24, 27, 199);
@@ -27,6 +30,84 @@
     width: 1200px;
     padding: 30px 0px;
     background-color: #d0d6d6;
+    @include respond(latop-max){
+        max-width: 1100px;
+        // margin-left: 50px;
+        margin: 0 auto;
+    }
+}
+@media screen and (max-width:1165px){
+    .songsadded_lif{
+        margin-left: 20px;
+        max-width: 1100px;
+    }
+}
+@media screen and (max-width:1140px){
+    .songsadded_lif{
+        width: 900px;
+        margin-left: 115px;
+    }
+}
+@media screen and (max-width:1030px){
+    .songsadded_lif{
+        margin-left: 60px;
+    }
+}
+@media screen and (max-width:1030px){
+    .songsadded_lif{
+        margin-left: 30px;
+    }
+}
+@media screen and (max-width:936px){
+    .songsadded_lif{
+        width: 800px;
+        margin-left: 60px;
+    }
+}
+@media screen and (max-width:878px){
+    .songsadded_lif{
+        width: 700px;
+        margin-left: 84px;
+    }
+}
+@media screen and (max-width:800px){
+    .songsadded_lif{
+        margin-left: 45px;
+    }
+}
+@media screen and (max-width:768px){
+    .songsadded_lif{
+        width: 550px;
+        margin-left: 105px;
+    }
+}
+@media screen and (max-width:670px){
+    .songsadded_lif{
+        margin-left: 55px;
+    }
+}
+@media screen and (max-width:620px){
+    .songsadded_lif{
+        margin-left: 30px;
+    }
+}
+@media screen and (max-width:595px){
+    .songsadded_lif{
+        margin-left: 15px;
+    }
+}
+@media screen and (max-width:576px){
+    .songsadded_lif{
+        width: 450px;
+        margin-left: 60px;
+    }
+}
+
+@media screen and (max-width:376px){
+    .songsadded_lif{
+        width: 330px;
+        margin-left: 15px;
+    }
 }
 
 .songsadded_inside,
@@ -35,18 +116,175 @@
     width: 1200px;
     margin: 0 auto;
     background-color: rgb(255, 255, 255);
+    @include respond(latop-max){
+        max-width: 1100px;
+        margin: 0 auto;
+    }
+}
+@media screen and (max-width:1165px){
+    .songsadded_inside,
+    .songsadded_inside2{
+        margin-right: 80px;
+    }
+}
+@media screen and (max-width:1140px){
+    .songsadded_inside,
+    .songsadded_inside2{
+        width: 900px;
+        margin-left: 115px;
+    }
+}
+@media screen and (max-width:1030px){
+    .songsadded_inside,
+    .songsadded_inside2{
+        margin-left: 60px;
+    }
+}
+@media screen and (max-width:976px){
+    .songsadded_inside,
+    .songsadded_inside2{
+        margin-left: 30px;
+    }
+}
+@media screen and (max-width:936px){
+    .songsadded_inside,
+    .songsadded_inside2{
+        width: 800px;
+        margin-left: 60px;
+    }
+}
+@media screen and (max-width:878px){
+    .songsadded_inside,
+    .songsadded_inside2{
+        width: 700px;
+        margin-left: 84px;
+    }
+}
+@media screen and (max-width:800px){
+    .songsadded_inside,
+    .songsadded_inside2{
+        margin-left: 45px;
+    }
+}
+@media screen and (max-width:768px){
+    .songsadded_inside,
+    .songsadded_inside2{
+        width: 550px;
+        margin-left: 105px;
+    }
+}
+@media screen and (max-width:670px){
+    .songsadded_inside,
+    .songsadded_inside2{
+        margin-left: 55px;
+    }
+}
+@media screen and (max-width:620px){
+    .songsadded_inside,
+    .songsadded_inside2{
+        margin-left: 30px;
+    }
+}
+@media screen and (max-width:595px){
+    .songsadded_inside,
+    .songsadded_inside2{
+        margin-left: 15px;
+    }
+}
+@media screen and (max-width:576px){
+    .songsadded_inside,
+    .songsadded_inside2{
+        width: 450px;
+        margin-left: 60px;
+    }
+}
+
+@media screen and (max-width:376px){
+    .songsadded_inside,
+    .songsadded_inside2{
+        width: 330px;
+        margin-left: 15px;
+    }
+}
+
+.songsadded_inside{
+    height: 400px;
+    // border: 1px solid red;
+}
+@media screen and (max-width:768px){
+    .songsadded_inside{
+        height: 730px;
+    }
 }
 
 .songsadded_inside div{
     // border: 1px solid orange;
     width: 500px;
-    height: 300px;
+    height: 100px;
     position: relative;
     right: -100px;
     top: 0px;
     padding: 30px 0px;
     display: inline-block;
 }
+@media screen and (max-width:1140px){
+    .songsadded_inside div{
+        position: relative;
+        left: 260px;
+    }
+}
+@media screen and (max-width:936px){
+    #add_pp{
+        width: 250px !important;
+    }
+    .songsadded_inside div{
+        width: 400px;
+    }
+}
+@media screen and (max-width:878px){
+    .songsadded_inside div{
+        font-size: $rem0_8;
+        position: relative;
+        top: 10px;
+        left: 330px;
+    }
+}
+@media screen and (max-width:768px){
+    .songsadded_inside div{
+        position: relative;
+        top: 10px;
+        left: 130px;
+    }
+    #add_pp{
+        width: 215px !important;
+    }
+}
+@media screen and (max-width:576px){
+    .songsadded_inside div{
+        position: relative;
+        top: 10px;
+        left: 80px;
+    }
+    #add_pp{
+        width: 200px !important;
+    }
+}
+
+@media screen and (max-width:376px){
+    .songsadded_inside div{
+        position: relative;
+        top: 10px;
+        left: 30px;
+    }
+}
+
+#infohashtag{
+    // border: 1px solid red;
+    position: relative;
+    top: -60px;
+    left: 0px;
+}
+
 
 .songsadded_inside article{
     // border: 1px solid firebrick;
@@ -54,8 +292,38 @@
     height: 300px;
     position: relative;
     left: 120px;
-    top: 20px;
+    top: 10px;
     float: left;
+}
+@media screen and (max-width:1140px){
+    .songsadded_inside article{
+        width: 200px;
+        margin-left: -70px;
+    }
+}
+@media screen and (max-width:878px){
+    .songsadded_inside article{
+        width: 100px;
+        margin-left: -100px;
+    }
+}
+@media screen and (max-width:768px){
+    .songsadded_inside article{
+        width: 500px;
+        height: 330px;
+        margin-left: 15px;
+    }
+}
+@media screen and (max-width:576px){
+    .songsadded_inside article{
+        margin-left: -45px;
+    }
+}
+
+@media screen and (max-width:376px){
+    .songsadded_inside article{
+        margin-left: -105px;
+    }
 }
 
 .songsadded_inside article #theFile{
@@ -68,7 +336,8 @@
     // border: 1px solid mediumaquamarine;
     position: relative;
     top: 150px;
-    left: 130px;
+    left: 120px;
+    @include buttonno04();
 }
 
 .songsadded_inside section{
@@ -76,6 +345,9 @@
     text-align: center;
     margin-left: -70px;
 }
+// @media screen and (max-width:1140px){
+    
+// }
 
 #sd {
     z-index: 10;
@@ -88,8 +360,29 @@
     position: absolute;
     right: 50px;
     bottom: 70px;
-    width: 200px;
-    height: 420px;
+    width: 155px;
+    height: 330px;
+    z-index: -1;
+}
+@media screen and (max-width:1140px){
+    .uploadmic img{
+        right: 90px;
+    }
+}
+@media screen and (max-width:936px){
+    .uploadmic img{
+        right: 60px;
+    }
+}
+@media screen and (max-width:878px){
+    .uploadmic img{
+        right: 70px;
+    }
+}
+@media screen and (max-width:768px){
+    .uploadmic img{
+        right: 85px;
+    }
 }
 
 .songsadded_inside2 {
@@ -101,6 +394,34 @@
     padding: 15px;
     width: 800px;
     margin: 0 auto;
+}
+@media screen and (max-width:936px){
+    .songsadded_inside2 li{
+        width: 650px;
+    }
+}
+@media screen and (max-width:878px){
+    .songsadded_inside2 li{
+        width: 580px;
+    }
+}
+@media screen and (max-width:768px){
+    .songsadded_inside2 li{
+        width: 480px;
+    }
+    .songsadded_inside2 {
+        height: 900px;
+    }
+}
+@media screen and (max-width:576px){
+    .songsadded_inside2 li{
+        width: 360px;
+    }
+}
+@media screen and (max-width:376px){
+    .songsadded_inside2 li{
+        width: 329px;
+    }
 }
 
 // .inside2 input {
@@ -157,13 +478,84 @@
     padding: 20px 0px;
     margin-left: 200px;
 }
+@media screen and (max-width:1140px){
+    .songsadded_inside2 ol{
+        margin-left: 60px;
+    }
+}
+@media screen and (max-width:936px){
+    .songsadded_inside2 ol{
+        margin-left: 73px;
+    }
+}
+@media screen and (max-width:878px){
+    .songsadded_inside2 ol{
+        margin-left: 55px;
+    }
+}
+@media screen and (max-width:768px){
+    .songsadded_inside2 ol{
+        margin-left: 30px;
+        height: 600px;
+    }
+}
+@media screen and (max-width:576px){
+    .songsadded_inside2 ol{
+        margin-left: -18px;
+    }
+}
+
+@media screen and (max-width:376px){
+    .songsadded_inside2 ol{
+        margin-left: -65px;
+    }
+}
+
+
 .songsadded_inside2 article{
    float: left;
 }
+@media screen and (max-width:768px){
+    .songsadded_inside2 article{
+        width: 300px;
+        height: 300px;
+        position: relative;
+        left: 95px;
+    }
+}
+@media screen and (max-width:376px){
+    .songsadded_inside2 article{
+        position: relative;
+        left: 80px;
+    }
+}
 .songsadded_inside2 div{
     position: relative;
-    left: 100px;
+    left: 300px;
     float: left;
+}
+@media screen and (max-width:936px){
+    .songsadded_inside2 div{
+        position: relative;
+        top: 20px;
+        left: 250px;
+        font-size: $rem0_8;
+    }
+}
+@media screen and (max-width:878px){
+    .songsadded_inside2 div{
+        position: relative;
+        top: 20px;
+        left: 210px;
+        font-size: $rem0_8;
+    }
+}
+@media screen and (max-width:768px){
+    .songsadded_inside2 div{
+        position: relative;
+        top: 20px;
+        left: 95px;
+    }
 }
 // .inside2 div .ins2box{
 //     position: relative;
@@ -188,22 +580,176 @@
 @import './_public.scss';
 
 .songinfo_bb{
-    @include buttonno03();
+    @include buttonno04();
     position: relative;
-    top: -32px;
-    right: -300px;
+    top: -62px;
+    right: -285px;
 }
+@media screen and (max-width:1140px){
+    .songinfo_bb{
+        right: -130px;
+    }
+}
+@media screen and (max-width:936px){
+    .songinfo_bb{
+        right: -25px;
+    }
+}
+@media screen and (max-width:878px){
+    .songinfo_bb{
+        right: 70px;
+    }
+}
+@media screen and (max-width:768px){
+    .songinfo_bb{
+        right: -100px;
+    }
+}
+@media screen and (max-width:576px){
+    .songinfo_bb{
+        right: -130px;
+    }
+}
+@media screen and (max-width:376px){
+    .songinfo_bb{
+        right: -165px;
+        top: -55px;
+    }
+}
+
 #infopath{
     // border: 1px solid #d0d6d6;
     width: 400px;
     height: 5px;
 }
+@media screen and (max-width:1140px){
+    #infopath span{
+       position: relative;
+       left: -260px !important;
+    }
+}
+@media screen and (max-width:878px){
+    #infopath span{
+       position: relative;
+       left: -330px !important;
+    }
+}
+@media screen and (max-width:768px){
+    #infopath span{
+       position: relative;
+       left: -130px !important;
+    }
+}
+@media screen and (max-width:576px){
+    #infopath span{
+       position: relative;
+       left: -80px !important;
+    }
+}
+@media screen and (max-width:376px){
+    #infopath span{
+       position: relative;
+       left: -30px !important;
+    }
+}
+
+
 .songsadd_path{
-    border: 1px solid #d0d6d6;
-    background-color: #d0d6d6;
-    width: 390px !important;
+    // border: 1px solid #d0d6d6;
+    // background-color: #d0d6d6;
+    width: 240px !important;
     height: 30px !important;
     position: relative;
-    left: -100px;
+    left: 40px;
+    top: -30px;
     overflow: hidden;
+}
+@media screen and (max-width:1140px){
+    .songsadd_path{
+        left: -110px;
+    }
+}
+@media screen and (max-width:936px){
+    .songsadd_path{
+        width: 260px !important;
+    }
+    #add_tta{
+        width: 365px;
+    }
+}
+@media screen and (max-width:878px){
+    .songsadd_path{
+        width: 230px !important;
+        left: -230px;
+    }
+}
+@media screen and (max-width:768px){
+    .songsadd_path{
+        left: -130px;
+    }
+}
+@media screen and (max-width:576px){
+    .songsadd_path{
+        left: -80px;
+    }
+}
+
+@media screen and (max-width:376px){
+    .songsadd_path{
+        left: -30px;
+    }
+}
+
+#sd{
+    width: 70px;
+    height: 30px;
+    position: relative;
+    top: -60px;
+    display: none;
+}
+.sd_btn{
+    @include buttonno04();
+    position: relative;
+    top: -60px;
+}
+@media screen and (max-width:878px){
+    .sd_btn{
+        position: relative;
+        top: 10px;
+    }
+    #add_tta{
+        width: 340px;
+        height: 110px;
+    }
+}
+@media screen and (max-width:768px){
+    .sd_btn{
+        position: relative;
+        top: 10px;
+        left: 30px;
+    }
+    #add_tta{
+        width: 310px;
+        height: 110px;
+    }
+}
+@media screen and (max-width:576px){
+    .sd_btn{
+        position: relative;
+        left: 35px;
+        top: -30px;
+    }
+    #add_tta{
+        width: 290px;
+        height: 110px;
+    }
+}
+@media screen and (max-width:376px){
+    .sd_btn{
+        position: relative;
+        left: 30px;
+    }
+    #add_tta{
+        width: 270px;
+    }
 }

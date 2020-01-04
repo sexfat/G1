@@ -38,7 +38,7 @@
   &:after {
     -webkit-filter: blur(8px);
     filter: blur(8px);
-    background-color: rgba(0, 0, 0, 0.8);
+    // background-color: rgba(0, 0, 0, 0.8);
     bottom: -2px;
     content: ' ';
     display: block;
@@ -52,7 +52,7 @@
 }
 
 .songinfo_infoplay .music-player {
-  background-color: #fff;
+  // background-color: #fff;
   height: 370px;
   padding: 60px 250px 40px 40px;
   position: absolute;
@@ -60,6 +60,20 @@
   width: 500px;
   right: 250px;
   z-index: 3;
+}
+
+@media screen and (max-width:930px) {
+  .songinfo_infoplay .music-player {
+    width: 400px;
+  }
+}
+
+@media screen and (max-width:603px) {
+  .songinfo_infoplay .music-player {
+    width: 400px;
+    position: relative;
+    left: 30px;
+  }
 }
 
 .songinfo_infoplay .player-content-container {
@@ -112,6 +126,23 @@
   z-index: 10;
 }
 
+@media screen and (max-width:930px) {
+  .songinfo_infoplay .album {
+    width: 280px;
+    height: 280px;
+  }
+}
+
+@media screen and (max-width:603px) {
+  .songinfo_infoplay .album {
+    width: 240px;
+    height: 240px;
+    position: relative;
+    top: -70px;
+    left: -110px;
+  }
+}
+
 .songinfo_infoplay .album-art {
   background: #fff url("../img/songinfo/cover1.jpg") (center / cover) no-repeat;
   height: 400px;
@@ -120,6 +151,26 @@
   right: 50px;
   width: 400px;
   z-index: 10;
+}
+
+@media screen and (max-width:930px) {
+  .songinfo_infoplay .album-art {
+    width: 300px;
+    height: 300px;
+    position: relative;
+    bottom: 20px;
+    right: 20px;
+  }
+}
+
+@media screen and (max-width:603px) {
+  .songinfo_infoplay .album-art {
+    width: 250px;
+    height: 250px;
+    position: relative;
+    top: -10px;
+    left: -10px;
+  }
 }
 
 .songinfo_infoplay .vinyl {
@@ -145,6 +196,26 @@
   will-change: transform, left;
 }
 
+@media screen and (max-width:930px) {
+  .songinfo_infoplay .vinyl {
+    width: 260px;
+    height: 260px;
+    position: absolute;
+    top: 0px;
+  }
+}
+
+@media screen and (max-width:603px) {
+  .songinfo_infoplay .vinyl {
+    // width: 240px;
+    // height: 240px;
+    // position: relative;
+    // top: -250px;
+    // left: -300px;
+    display: none;
+  }
+}
+
 .songinfo_infoplay .is-playing .vinyl {
   left: 52%;
 }
@@ -162,54 +233,82 @@
   margin: 0 3px;
   width: 44px;
 
-  &:hover {
-    -webkit-filter: brightness(85%);
-    filter: brightness(85%);
-    cursor: pointer;
-  }
+  // &:hover {
+  //   -webkit-filter: brightness(85%);
+  //   filter: brightness(85%);
+  //   cursor: pointer;
+  // }
 }
+
+@import './public';
 
 // .songinfo_infoplay .control-play {
 //   background: transparent url("https://s3-us-west-2.amazonaws.com/s.cdpn.io/83141/play.svg") (center / cover) no-repeat;
 // }
 .songinfo_infoplay .control-play {
-  background: transparent url("../img/songinfo/do6bFSIxcx.png") (center / cover) no-repeat;
+  background: transparent url("../img/songinfo/coverPlay-b.png") (center / cover) no-repeat;
   position: relative;
   left: -70px;
   top: 20px;
+  @include buttonno05();
+}
+
+@media screen and (max-width:930px) {
+  .songinfo_infoplay .control-play {
+    position: relative;
+    left: -20px;
+  }
+}
+
+@media screen and (max-width:603px) {
+  .songinfo_infoplay .control-play {
+    position: relative;
+    left: 20px;
+  }
 }
 
 // .songinfo_infoplay .is-playing .control-play {
 //   background: transparent url("https://s3-us-west-2.amazonaws.com/s.cdpn.io/83141/pause.svg") (center / cover) no-repeat;
 // }
 .songinfo_infoplay .is-playing .control-play {
-  background: transparent url("../img/songinfo/XThO6FR4Yt.png") (center / cover) no-repeat;
+  background: transparent url("../img/songinfo/coverPause-b.png") (center / cover) no-repeat;
+  @include buttonno05();
 }
 
 
 
-[class^="dona-"] {
-  // -webkit-filter: brightness(95%);
-  // filter: brightness(95%);
-  border-radius: 5px;
-  display: inline-block;
-  height: 30px;
-  width: 70px;
+// [class^="dona-"] {
+//   // -webkit-filter: brightness(95%);
+//   // filter: brightness(95%);
+//   border-radius: 5px;
+//   display: inline-block;
+//   height: 30px;
+//   width: 70px;
 
-  &:hover {
-    -webkit-filter: brightness(85%);
-    filter: brightness(85%);
-    cursor: pointer;
+//   &:hover {
+//     -webkit-filter: brightness(85%);
+//     filter: brightness(85%);
+//     cursor: pointer;
+//   }
+// }
+
+.songinfo_infoplay .infodona {
+  // background: transparent url("../img/songinfo/donate.png") (center / cover) no-repeat;
+  position: relative;
+  top: -90px;
+  left: 210px;
+  @include butttonn02();
+}
+
+@media screen and (max-width:930px) {
+  .songinfo_infoplay .infodona {
+    position: relative;
+    top: -70px;
   }
 }
-
-.songinfo_infoplay .dona-donate{
-  background: transparent url("../img/songinfo/donate.png") (center / cover) no-repeat;
-  position: relative;
-  top: -78px;
-  left: 210px;
-}
-
+// .infodona {
+//   @include butttonn02();
+// }
 
 
 [class^="heart-"] {
@@ -220,18 +319,29 @@
   height: 40px;
   width: 40px;
 
-  &:hover {
-    -webkit-filter: brightness(85%);
-    filter: brightness(85%);
-    cursor: pointer;
-  }
+  // &:hover {
+  //   -webkit-filter: brightness(85%);
+  //   filter: brightness(85%);
+  //   cursor: pointer;
+  // }
 }
 
-.songinfo_infoplay .heart-like{
-  background: transparent url("../img/songinfo/songlike.png") (center / cover) no-repeat;
+.songinfo_infoplay .heart-like {
+  background: transparent url("../img/songinfo/grayheart.png") (center / cover) no-repeat;
   position: relative;
   top: -75px;
-  left: 75px;
+  left: 45px;
+}
+
+@media screen and (max-width:930px) {
+  .songinfo_infoplay .heart-like {
+    position: relative;
+    top: -115px;
+    left: 140px;
+  }
+}
+.songinfo_infoplay .is-click .heart-like{
+  background: transparent url("../img/songinfo/redheart.png") (center / cover) no-repeat;
 }
 
 
@@ -245,13 +355,20 @@
 //   background: transparent url("https://s3-us-west-2.amazonaws.com/s.cdpn.io/83141/backwards.svg") (center / cover) no-repeat;
 // }
 
-.song_tllike{
+.song_tllike {
   // border: 1px solid orange;
   width: 80px;
   position: relative;
   left: 120px;
   top: -32px;
   font-size: 0.7rem;
+}
+
+@media screen and (max-width:930px) {
+  .song_tllike {
+    position: relative;
+    left: 100px;
+  }
 }
 
 // .songinfo_donate{
@@ -299,4 +416,4 @@
     -o-transform: rotate(360deg);
     transform: rotate(360deg);
   }
-} 
+}

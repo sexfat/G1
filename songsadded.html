@@ -5,14 +5,16 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
-    <title>SongsAdded</title>
+    <title>SOUNDWAVE | songsadded</title>
+    <link rel="Shortcut Icon" type="image/x-icon" href="./img/collection/smalllogo.ico" />
     <link rel="stylesheet" href="./css/main.css">
     <!-- <link rel="stylesheet" href="./css/songupload.css"> -->
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.11.2/css/all.min.css" />
     <script src="https://cdnjs.cloudflare.com/ajax/libs/vue/2.6.10/vue.js"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
     <!-- <script src="https://cdnjs.cloudflare.com/ajax/libs/pagePiling.js/1.5.6/jquery.pagepiling.min.js"></script> -->
-    <!-- <script src="./js/player.js"></script> -->
+    <script src="./js/player.js"></script>
+    <script src="./js/public.js"></script>
     <style>
         .songsadded_leftli {
             list-style-type: none;
@@ -21,6 +23,10 @@
         .songsadded_leftli ul {
             list-style-type: none;
             padding: 0px;
+        }
+
+        .songsadded_inside2 li {
+            list-style-type: none;
         }
 
         .songsadded_body {
@@ -40,7 +46,7 @@
         }
 
         input[type="checkbox"]:checked {
-            background: #f1c40f;
+            background: #A1CAD7;
         }
 
         input[type=checkbox]:checked::after {
@@ -59,7 +65,6 @@
             -webkit-transform: rotate(-45deg);
             transform: rotate(-45deg);
         }
-
     </style>
 </head>
 
@@ -432,7 +437,9 @@
 
     <section class="songsadded_adds2">
         <ol class="songsadded_leftli">
-            <li class="songsadded_lif">&emsp;UPLOAD SONG</li>
+            <li class="songsadded_lif">
+                <h2>&emsp;Upload song</h2>
+            </li>
             <ol class="songsadded_inside">
                 <form action="" method="POST">
                     <article>
@@ -440,38 +447,47 @@
                         <p style="width: 100px;height: 100px;">
                             <img id="image" style="width: 300px;height: 300px;">
                         </p>
-                        <img class="songsadded_ff" style="width: 50px;height: 30px;"
-                            src="./img/songupload/button_edit.png">
-                        <input style="opacity:0;" type="file" name="" id="theFile" style="color: rgba(0, 0, 0, 0);">
+                        <!-- <img class="songsadded_ff" style="width: 50px;height: 30px;"
+                            src="./img/songupload/button_edit.png"> -->
+                        <input type="file" name="" id="theFile" style="display: none;">
+                        <label class="songsadded_ff" for="theFile"> &emsp; Edit</label>
 
                     </article>
                     <div>
-                        <p>Song Title : <input type="text"
+                        <p>Song Title : <input type="text" id="add_pp"
                                 style="border: 1px solid #d0d6d6;width:350px;height:28px;background-color: #d0d6d6;">
                         </p>
                         <div id="infopath">
-                            <p  class="songsadd_path" >{{infopathURL}}</p>
-                            <input type="file" name="" id="songinfo_btn" @change="changeSignUpload" style="display: none;">
-                                <label class="songinfo_bb" for="songinfo_btn">choose</label>
+                            <span style="position: relative;left: -100px;">Upload path :</span>
+                            <p class="songsadd_path">{{infopathURL}}</p>
+                            <input type="file" name="" id="songinfo_btn" @change="changeSignUpload"
+                                style="display: none;">
+                            <label class="songinfo_bb" for="songinfo_btn"> &ensp;Choose</label>
+                        </div><br>
+                        <div id="infohashtag">
+                            <input type="checkbox" name="" id="">House&ensp;
+                            <input type="checkbox" style="border-radius: 5px;" name="" id="">Trap
+                            <br>
+                            <input type="checkbox" name="" id="">#Scratch&ensp;
+                            <input type="checkbox" name="" id="">#Stress&ensp;
+                            <input type="checkbox" name="" id="add_Ethereal">#Ethereal&ensp;
+                            <br>
+                            <p>Introduction :</p>
+                            <textarea name="" id="add_tta" cols="65" rows="6"
+                                style="border: 1px solid #d0d6d6;"></textarea>
                         </div>
-                        <br>
-                        <input type="checkbox" name="" id="">House&emsp;&emsp;&emsp;&ensp;&ensp;&ensp;
-                        <input type="checkbox" style="border-radius: 5px;" name="" id="">Trap
-                        <br>
-                        <input type="checkbox" name="" id="">#Scratch &emsp;&emsp;&emsp;
-                        <input type="checkbox" name="" id="">#Stress &emsp;&emsp;&emsp;
-                        <input type="checkbox" name="" id="">#Ethereal
-                        <br>
-                        <p>Introduction :</p>
-                        <textarea name="" id="" cols="65" rows="6" style="border: 1px solid #d0d6d6;"></textarea>
                     </div>
-                    <section><input type="image" id="sd" name="submit" src="./img/songupload/button_send.png"
-                            onClick="document.form.submit()" style="width:80px;height:50px;margin-left:50px;"></section>
+
+                    <section><input type="button" id="sd" name="submit" onClick="document.form.submit()">
+                        <label class="sd_btn" for="sd">Send</label>
+                    </section>
                 </form>
 
             </ol>
 
-            <li class="songsadded_lif">&emsp;UPLOADED</li>
+            <li class="songsadded_lif">
+                <h2>&emsp;Uploaded</h2>
+            </li>
             <ol class="songsadded_inside2">
                 <li>Andy Warhol - Because of you</li>
                 <ol>
@@ -479,17 +495,22 @@
                         <p style="width: 100px;height: 100px;">
                             <img src="./img/songinfo/cover1.jpg" style="width: 300px;height: 300px;">
                         </p>
-                        <img class="songsadded_ff" style="width: 50px;height: 30px;"
-                            src="./img/songupload/button_edit.png">
-                        <input style="opacity:0;" type="file" name="" class="theFile" style="color: rgba(0, 0, 0, 0);">
+                        <!-- <img class="songsadded_ff" style="width: 50px;height: 30px;"
+                            src="./img/songupload/button_edit.png"> -->
+                        <input type="file" name="" id="theFile" style="display: none;">
+                        <label class="songsadded_ff" for="theFile"> &emsp; Edit</label>
                     </article>
                     <div>
-                        <span>Song Title : Because of you</span><br>
-                        <span>Author : Andy Warhol</span><br>
-                        <span>Song Type : House</span><br>
-                        <span>HashTag : #Scratch</span><br>
-                        <span>Introduction :</span><br>
-                        <span>"Hold It Against Me" is three <br>
+                        <span><span style="font-weight: bold;">Song Title :</span><span style="font-size:16px"> Because
+                                of you</span></span><br>
+                        <span><span style="font-weight: bold;">Author :</span><span style="font-size:16px"> Andy
+                                Warhol</span></span><br>
+                        <span><span style="font-weight: bold;">Song Type :</span><span style="font-size:16px">
+                                House</span></span><br>
+                        <span><span style="font-weight: bold;">HashTag :</span><span style="font-size:16px">
+                                #Scratch</span></span><br>
+                        <span><span style="font-weight: bold;">Introduction :</span></span><br>
+                        <span style="font-size:16px">"Hold It Against Me" is three <br>
                             minutes and forty-nine seconds <br>
                             long.It is a dance-pop song that <br>
                             blends pulsating industrial and trance <br>
@@ -502,17 +523,22 @@
                         <p style="width: 100px;height: 100px;">
                             <img src="./img/songinfo/cover1.jpg" style="width: 300px;height: 300px;">
                         </p>
-                        <img class="songsadded_ff" style="width: 50px;height: 30px;"
-                            src="./img/songupload/button_edit.png">
-                        <input style="opacity:0;" type="file" name="" class="theFile" style="color: rgba(0, 0, 0, 0);">
+                        <!-- <img class="songsadded_ff" style="width: 50px;height: 30px;"
+                            src="./img/songupload/button_edit.png"> -->
+                        <input type="file" name="" id="theFile" style="display: none;">
+                        <label class="songsadded_ff" for="theFile"> &emsp; Edit</label>
                     </article>
                     <div>
-                        <span>Song Title : Because of you</span><br>
-                        <span>Author : Andy Warhol</span><br>
-                        <span>Song Type : House</span><br>
-                        <span>HashTag : #Scratch</span><br>
-                        <span>Introduction :</span><br>
-                        <span>"Hold It Against Me" is three <br>
+                        <span><span style="font-weight: bold;">Song Title :</span><span style="font-size:16px"> Because
+                                of you</span></span><br>
+                        <span><span style="font-weight: bold;">Author :</span><span style="font-size:16px"> Andy
+                                Warhol</span></span><br>
+                        <span><span style="font-weight: bold;">Song Type :</span><span style="font-size:16px">
+                                House</span></span><br>
+                        <span><span style="font-weight: bold;">HashTag :</span><span style="font-size:16px">
+                                #Scratch</span></span><br>
+                        <span><span style="font-weight: bold;">Introduction :</span></span><br>
+                        <span style="font-size:16px">"Hold It Against Me" is three <br>
                             minutes and forty-nine seconds <br>
                             long.It is a dance-pop song that <br>
                             blends pulsating industrial and trance <br>
@@ -525,17 +551,22 @@
                         <p style="width: 100px;height: 100px;">
                             <img src="./img/songinfo/cover1.jpg" style="width: 300px;height: 300px;">
                         </p>
-                        <img class="songsadded_ff" style="width: 50px;height: 30px;"
-                            src="./img/songupload/button_edit.png">
-                        <input style="opacity:0;" type="file" name="" class="theFile" style="color: rgba(0, 0, 0, 0);">
+                        <!-- <img class="songsadded_ff" style="width: 50px;height: 30px;"
+                            src="./img/songupload/button_edit.png"> -->
+                        <input type="file" name="" id="theFile" style="display: none;">
+                        <label class="songsadded_ff" for="theFile"> &emsp; Edit</label>
                     </article>
                     <div>
-                        <span>Song Title : Because of you</span><br>
-                        <span>Author : Andy Warhol</span><br>
-                        <span>Song Type : House</span><br>
-                        <span>HashTag : #Scratch</span><br>
-                        <span>Introduction :</span><br>
-                        <span>"Hold It Against Me" is three <br>
+                        <span><span style="font-weight: bold;">Song Title :</span><span style="font-size:16px"> Because
+                                of you</span></span><br>
+                        <span><span style="font-weight: bold;">Author :</span><span style="font-size:16px"> Andy
+                                Warhol</span></span><br>
+                        <span><span style="font-weight: bold;">Song Type :</span><span style="font-size:16px">
+                                House</span></span><br>
+                        <span><span style="font-weight: bold;">HashTag :</span><span style="font-size:16px">
+                                #Scratch</span></span><br>
+                        <span><span style="font-weight: bold;">Introduction :</span></span><br>
+                        <span style="font-size:16px">"Hold It Against Me" is three <br>
                             minutes and forty-nine seconds <br>
                             long.It is a dance-pop song that <br>
                             blends pulsating industrial and trance <br>
@@ -576,460 +607,23 @@
         new Vue({
             el: "#infopath",
             data: {
-                infopathURL:"",
+                infopathURL: "",
             },
             methods: {
-                changeSignUpload(song){
+                changeSignUpload(song) {
                     const songFile = song.target.files.item(0);
                     const readers = new FileReader();
                     readers.addEventListener('load', this.SignUploadLoader);
                     readers.readAsDataURL(songFile);
                 },
-                SignUploadLoader(song){
-                    this. infopathURL = song.target.result;
+                SignUploadLoader(song) {
+                    this.infopathURL = song.target.result;
                 }
             },
         });
     </script>
-    
-
-    <script>
-        new Vue({
-            el: "#app",
-            data: {
-                mobile_list: false,
-                search_bar: false,
-                mem_list: false,
-                mem_login: false,
-
-            },
-            mounted() {
-                // nav_bar start
-                document.querySelector('.mem_list ul').setAttribute('style',
-                    `height: ${window.innerHeight}px;`);
-                document.querySelector('.mobile_list ul').setAttribute('style',
-                    `height: ${window.innerHeight}px;`);
-                document.querySelectorAll('.paint_border')[0].setAttribute('style',
-                    `height: ${window.innerHeight}px;`);
-                document.querySelectorAll('.paint_border')[1].setAttribute('style',
-                    `height: ${window.innerHeight}px;`);
-
-                document.addEventListener('click', () => {
-                    this.mem_list = false;
-                    this.search_bar = false;
-                    this.mobile_list = false;
-
-                    document
-                        .querySelector(".search_bar")
-                        .setAttribute("style", "height: 0px; filter: opacity(0);");
-                    document
-                        .querySelector(".mem_list")
-                        .setAttribute("style", "transform: translateX(270px); filter: opacity(0);");
-                    document
-                        .querySelector(".mobile_list")
-                        .setAttribute("style", "transform: translateX(-270px); filter: opacity(0);");
-                });
-                // nav_bar end
 
 
-
-                // player start
-                $(document).ready(function () {
-                    //撥放器縮放
-                    $('#expand').click(function () {
-                        $('.player_b').addClass('open');
-                        $('.player_s').animate({
-                            bottom: '-70px'
-                        });
-                    });
-                    $('#closePlayer').click(function () {
-                        $('.player_b').removeClass('open');
-                        $('.player_s').animate({
-                            bottom: '0'
-                        });
-                    });
-
-                    //手機推移
-                    $('.left .pushBtn').click(function () {
-                        $('.left').css('height', '10%');
-                        $('.right').css('height', '90%');
-                        $('.right .pushBtn').show();
-                        $('.left .pushBtn').hide();
-                    });
-                    $('.right .pushBtn').click(function () {
-                        $('.left').css('height', '90%');
-                        $('.right').css('height', '10%');
-                        $('.left .pushBtn').show();
-                        $('.right .pushBtn').hide();
-                    });
-
-                    //select選歌單
-                    $('#player .selectBtn').click(function () {
-                        $('#player .lightCover').show();
-                        $('#player #myAllList').show();
-                    });
-
-                    //歌單清單
-                    $('.closeLight').click(function () {
-                        $('.lightCover').hide();
-                        $('#myAllList').hide();
-                    });
-                    $('.lightCover').click(function () {
-                        $(this).hide();
-                        $('#myAllList').hide();
-                    });
-
-                    //點愛心
-                    $('.heart').click(function () {
-                        if ($(this).hasClass('becomeRed')) {
-                            $(this).html('<i class="far fa-heart"></i>').removeClass(
-                                'becomeRed');
-                        } else {
-                            $(this).html('<i class="fas fa-heart"></i>').addClass('becomeRed');
-                        }
-                    });
-
-                    //點歌單撥放，左側專輯唱片動畫
-                    $('.songCover').mouseover(function () {
-                        $(this).find('.listPlay').show();
-                    });
-                    $('.songCover').mouseout(function () {
-                        $(this).find('.listPlay').hide();
-                    });
-
-                    $(".listPlay").click(function () {
-                        if ($(this).hasClass('nowlistening')) {
-                            $(this).html('<i class="fas fa-play"></i>').removeClass(
-                                "nowlistening");
-                            isPlaying(true);
-                        } else {
-                            $(this).html('<i class="fas fa-pause"></i>').addClass(
-                                "nowlistening");
-                            $("#player .songCover .listPlay").not(this).removeClass(
-                                'nowlistening');
-                            isPlaying(false);
-                        }
-                    });
-
-
-
-                    /* -- 音樂播放 -- */
-                    let storage = localStorage;
-                    var autoplay = false,
-                        songTime,
-                        progressingTime,
-                        playStatus = false,
-                        nowPlaying = 0, //現在播放的歌
-                        audio = $("audio")[0], //撥放器
-                        myPlaylist = [{
-                                title: "Lucid Dreamer",
-                                creator: "Spazz Cardigan",
-                                cover: "../img/library/cover1.jpg",
-                                filein: "../img/library/Lucid_Dreamer.mp3",
-                                totalTime: "3:11",
-                            },
-                            {
-                                title: "Spring In My Step",
-                                creator: "Silent Partner",
-                                cover: "../img/library/cover2.jpg",
-                                filein: "../img/library/Spring_In_My_Step.mp3",
-                                totalTime: "1:59",
-                            },
-                            {
-                                title: "On My Way Home",
-                                creator: "The 126ers",
-                                cover: "../img/library/cover3.jpg",
-                                filein: "../img/library/On_My_Way_Home.mp3",
-                                totalTime: "1:56",
-                            }
-                        ];
-
-                    $('#player audio').attr("src", myPlaylist[nowPlaying].filein);
-                    // isStorageHave();
-
-                    // isAutoPlay(true);//測試
-
-                    //播放暫停按鈕 -- 音樂撥放/暫停
-                    $("#player .play").click(function () {
-                        // console.log(nowPlaying);
-                        // console.log(playStatus);
-                        isPlaying(playStatus);
-                    });
-
-                    //下一首按鈕 -- 切換下一首
-                    $("#player .next").click(function () {
-                        if (nowPlaying == myPlaylist.length - 1) {
-                            $("#player audio").attr("src", myPlaylist[myPlaylist.length - 1]
-                                .filein);
-                        } else {
-                            nowPlaying++;
-                            $("#player audio").attr("src", myPlaylist[nowPlaying].filein);
-                        }
-                        if (playStatus == true) {
-                            isPlaying(false);
-                        } else {
-                            isPlaying(true);
-                        }
-                    });
-
-                    //上一首按鈕 -- 切換上一首
-                    $("#player .prev").click(function () {
-                        if (nowPlaying == 0) {
-                            $("#player audio").attr("src", myPlaylist[0].filein);
-                        } else {
-                            nowPlaying--;
-                            $("#player audio").attr("src", myPlaylist[nowPlaying].filein);
-                        }
-                        if (playStatus == true) {
-                            isPlaying(false);
-                        } else {
-                            isPlaying(true);
-                        }
-                    });
-
-                    //停止按鈕 -- 音樂全數停止
-                    $("#player .stop").click(function () {
-                        audio.pause();
-                        audio.currentTime = 0;
-                        isPlaying(true);
-                        $("#player .songCover .listPlay").removeClass('nowlistening');
-                    });
-
-                    //循環播放 -- 單首??未處理
-                    $("#player .loop").click(function () {
-                        if ($(this).hasClass("becomeYel")) {
-                            $(this).removeClass("becomeYel");
-                            audio.loop = false;
-                        } else {
-                            $(this).addClass("becomeYel");
-                            audio.loop = true;
-                        }
-                    });
-                    //隨機播放 -- 清單隨機--未處理
-
-
-
-                    //clickBar -- 詳細(b)/簡易(s)
-                    $(".player_b .progressbar").click(function (e) {
-                        let progressBarSize_b = parseInt($(".player_b .progressbar").css(
-                            "width"));
-                        let mouseX_b = e.clientX - $(".player_b .progressbar").offset().left;
-                        $(".player_b .progressbar .progress").css('width', `${mouseX_b}px`);
-
-                        let newTime_b = mouseX_b / (progressBarSize_b / audio.duration);
-                        audio.currentTime = newTime_b;
-                    });
-                    $(".player_s .progressbar").click(function (e) {
-                        let progressBarSize_s = parseInt($(".player_s .progressbar").css(
-                            "width"));
-                        let mouseX_s = e.clientX - $(".player_s .progressbar").offset().left;
-                        $(".player_s .progressbar .progress").css('width', `${mouseX_s}px`);
-
-                        let newTime_s = mouseX_s / (progressBarSize_s / audio.duration);
-                        audio.currentTime = newTime_s;
-                    });
-
-
-                    /* -- 自動撥放 --*/
-                    // function isAutoPlay(autoP){//測試
-                    //   if(autoP){
-                    //     isPlaying(false);
-                    //   }else{
-                    //     isPlaying(true);
-                    //   }
-                    // }
-
-
-                    /* -- local -- */
-                    // function isStorageHave() {
-                    //   let newSongTime;
-                    //   if(storage.length != 0){
-                    //     newSongTime = storage.getItem(1);
-                    //     console.log(newSongTime);
-                    //   }else{
-                    //     console.log(newSongTime);
-                    //   }
-
-                    // }
-
-
-
-                    function isPlaying(isPlaying) {
-                        if (!isPlaying) { //如果沒有播放就讓他撥
-                            playAudio();
-                            $("#player .play").html('<i class="fas fa-pause"></i>');
-                            $("#player .player_b .coverRec").animate({
-                                right: "-50%",
-                                opacity: "1"
-                            }, "fast", "swing").addClass("recRotate");
-                            playStatus = true;
-                            // console.log(playStatus);
-                        } else {
-                            audio.pause();
-                            $("#player .play").html('<i class="fas fa-play"></i>');
-                            playStatus = false;
-                            $("#player .player_b .coverRec").animate({
-                                right: "0%"
-                            }).removeClass("recRotate");
-                            // console.log(playStatus);
-                        }
-                        $("#player .songInfo .name").text(myPlaylist[nowPlaying].title);
-                        $("#player .songInfo .creator").text(myPlaylist[nowPlaying].creator);
-                    }
-
-                    //播放
-                    function playAudio() {
-                        audio.play();
-                    }
-
-
-
-                    //進度條
-                    progressingTime = setInterval(progressingShow, 100);
-                    let newSong = nowPlaying; //測試
-                    function progressingShow() {
-                        songTime = audio.currentTime;
-                        let progressColor = (songTime / audio.duration) * 100;
-                        if (audio.ended) {
-                            autoChange();
-                        }
-
-                        // if(newSong == nowPlaying){
-                        //   storage.setItem(newSong, songTime);
-                        // }else{
-                        //   storage.clear();
-                        //   storage.setItem(nowPlaying, songTime);
-                        // }
-
-                        // console.log(audio.duration); //歌曲總長秒數
-                        $("#player .progress").css("width", `${progressColor.toFixed(2)}%`);
-                        $("#player span.start").text(
-                            `${parseInt(songTime / 60)}:${parseInt(songTime % 60)}`)
-                        $("#player span.end").text(myPlaylist[nowPlaying].totalTime);
-                    }
-
-                    //自動換下一首
-                    function autoChange() {
-                        if (nowPlaying == myPlaylist.length - 1) {
-                            if (audio.ended) {
-                                audio.currentTime = 0;
-                                isPlaying(true);
-                            } else {
-                                isPlaying(false);
-                            }
-                        } else {
-                            nowPlaying++;
-                            $("#player audio").attr("src", myPlaylist[nowPlaying].filein);
-                            isPlaying(false);
-                        }
-                    }
-                });
-                // player end
-
-
-            },
-            methods: {
-                // nav_bar
-                hamburger_click(e) {
-                    // e.stopPropagation();
-                    document
-                        .querySelector(".hamburger").classList.toggle("is-active");
-                },
-                search_bt_click(e) {
-                    e.stopPropagation();
-                    if (this.search_bar == false) {
-                        this.search_bar = true;
-                        this.mem_list = false;
-                        this.mobile_list = false;
-                        document
-                            .querySelector(".search_bar")
-                            .setAttribute("style", "height: 240px; filter: opacity(1);");
-                        document.querySelector("input.search").focus();
-                        document
-                            .querySelector(".mem_list")
-                            .setAttribute("style", "transform: translateX(270px); filter: opacity(0);");
-                        document
-                            .querySelector(".mobile_list")
-                            .setAttribute("style", "transform: translateX(-270px); filter: opacity(0);");
-                    } else {
-                        this.search_bar = false;
-                        document
-                            .querySelector(".search_bar")
-                            .setAttribute("style", "height: 0px; filter: opacity(0);");
-                        document.querySelector("input.search").blur();
-                        document
-                            .querySelector(".mem_list")
-                            .setAttribute("style", "transform: translateX(270px); filter: opacity(0);");
-                        document
-                            .querySelector(".mobile_list")
-                            .setAttribute("style", "transform: translateX(-270px); filter: opacity(0);");
-                    }
-                },
-
-                stopPropagation(e) {
-                    e.stopPropagation();
-                },
-
-                mem_bt_click(e) {
-                    e.stopPropagation();
-                    if (this.mem_list == false) {
-                        this.mem_list = true;
-                        this.search_bar = false;
-                        this.mobile_list = false;
-                        document
-                            .querySelector(".mem_list")
-                            .setAttribute("style", "transform: translateX(0); filter: opacity(1);");
-                        document
-                            .querySelector(".search_bar")
-                            .setAttribute("style", "height: 0px; filter: opacity(0);");
-                        document
-                            .querySelector(".mobile_list")
-                            .setAttribute("style", "transform: translateX(-270px); filter: opacity(0);");
-                    } else {
-                        this.mem_list = false;
-                        document
-                            .querySelector(".mem_list")
-                            .setAttribute("style", "transform: translateX(270px); filter: opacity(0);");
-                        document
-                            .querySelector(".search_bar")
-                            .setAttribute("style", "height: 0px; filter: opacity(0);");
-                        document
-                            .querySelector(".mobile_list")
-                            .setAttribute("style", "transform: translateX(-270px); filter: opacity(0);");
-                    }
-                },
-
-                hamburger_click(e) {
-                    e.stopPropagation();
-                    if (this.mobile_list == false) {
-                        this.mobile_list = true;
-                        this.mem_list = false;
-                        this.search_bar = false;
-                        document
-                            .querySelector(".mobile_list")
-                            .setAttribute("style", "transform: translateX(0); filter: opacity(1);");
-                        document
-                            .querySelector(".mem_list")
-                            .setAttribute("style", "transform: translateX(270px); filter: opacity(0);");
-                        document
-                            .querySelector(".search_bar")
-                            .setAttribute("style", "height: 0px; filter: opacity(0);");
-                    } else {
-                        this.mobile_list = false;
-                        document
-                            .querySelector(".mobile_list")
-                            .setAttribute("style", "transform: translateX(-270px); filter: opacity(0);");
-                        document
-                            .querySelector(".mem_list")
-                            .setAttribute("style", "transform: translateX(270px); filter: opacity(0);");
-                        document
-                            .querySelector(".search_bar")
-                            .setAttribute("style", "height: 0px; filter: opacity(0);");
-                    }
-                },
-            }
-        });
-    </script>
     <script>
         $(function () {
             $(".songsadded_leftli").height(document.body.scrollHeight);

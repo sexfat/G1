@@ -12,10 +12,28 @@ $albumbottom: 340px;
     background-position:bottom;
     background-size: cover;
     background-repeat: no-repeat;
+    .collsongnamea{
+        &:hover {
+            font-weight: bold;
+            transform: scale(1.1);
+          }
+    }
     .playall_btns{
         text-align: right;
         position: relative;
-        right: 23%;
+        right: 22.5%;
+        @media screen and (max-width:1400px) and (min-width:1350px){
+            right: 13%;
+        }
+        @media screen and (max-width:1349px) and (min-width:1301px){
+            right: 11.5%;
+        }
+        @media screen and (max-width:1300px) and (min-width:1250px){
+            right: 10%;
+        }
+        @media screen and (max-width:1249px) and (min-width:1200px){
+            right: 8%;
+        }
         @include respond (latop-max){
             right: 13%;
         }
@@ -45,13 +63,21 @@ $albumbottom: 340px;
         color: #333;
         outline: none;
         cursor: pointer;
-        transition: transform .5s;
         &:hover {
           transform: scale(1.1);
         }
       }
     .collectionsection{
-        padding: 0px 0px 70px 0px;
+        padding: 50px 0px 70px 0px;
+        @include respond (ipadpro){
+            padding: 0px 0px 50px 0px;
+        }
+        @include respond (ipad){
+            padding: 0px 0px 50px 0px;
+        }
+        @include respond (phone){
+            padding: 0px 0px 50px 0px;
+        }
         .collectionradio{
             width:100%;
             font-size:0px;
@@ -214,9 +240,9 @@ $albumbottom: 340px;
                         img{
                             width:80px;
                             height: 80px;
-                            transition: transform .5s;
                             &:hover{
                                 transform: scale(1.1);
+                                cursor: pointer;
                             }
                             @include respond(latop-max) {
                                 width: 50px;
@@ -228,19 +254,14 @@ $albumbottom: 340px;
 
                 }
                 .collheart{
-                    // border: 1px solid pink;
                     text-align: left;
                     img{
                         width: 25px;
                         height: 25px;
-                        transition: transform .5s;
                         &:hover {
                             transform: scale(1.1);
+                            cursor: pointer;
                           }
-                        @include respond(latop-max) {
-                            width: 30px;
-                            height: 30px;
-                        }
                     }
 
                     
@@ -343,13 +364,11 @@ $albumbottom: 340px;
                     }
                     a{
                         color: #333;
-                        transition: transform .5s;
                         cursor: pointer;
                         &:hover{
                             transform: scale(1.1);
                             }
                         img{
-                            transition: transform .5s;
                             &:hover{
                                 transform: scale(1.1);
                                 cursor: pointer;
@@ -371,7 +390,6 @@ $albumbottom: 340px;
                         span{
                             position: relative;
                             bottom:90px;
-                            transition: transform .5s;
                             cursor: pointer;
                             &:hover{
                                 transform: scale(1.1);
