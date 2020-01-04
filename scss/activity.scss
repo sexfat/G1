@@ -272,13 +272,13 @@
 
         a {
 
-            &:hover {
-                transform: scale(1.1);
-            }
-
             img {
                 width: 50px;
                 height: 50px;
+
+                &:hover {
+                    transform: scale(1.1);
+                }
 
                 @include respond(ipadpro) {
                     width: 40px;
@@ -323,9 +323,10 @@
     bottom: 150px;
     font-size: 0;
 
-    @include respond(phone){
+    @include respond(phone) {
         right: 20px;
     }
+
     a {
         font-size: $rem0_8;
 
@@ -336,12 +337,13 @@
         .act_Bush {
             width: 30px;
             height: 100px;
+
             @include respond(latop-max) {
                 width: 20px;
                 height: 61px;
             }
 
-           
+
         }
     }
 }
@@ -379,6 +381,7 @@
     animation-delay: 0.1s;
     animation: GoTopBush 1.9s;
     animation-duration: 1;
+
     @include respond(latop-max) {
         top: 55px;
         width: 30px;
@@ -652,46 +655,38 @@
 }
 
 .act_old_years {
+    border: 1px red solid;
     position: relative;
-    left: 80px;
     background-image: url(../img/activity/0.blackline.svg);
-    max-width: 1400px;
+    max-width: 1200px;
     min-height: 700px;
-    padding: 100px 0 0 180px;
-    margin: 50px auto 0 auto;
+    padding:50px;
+    margin: 150px auto 0 auto;
 
     @include respond(latop-max) {
-        max-width: 1100px;
-        padding: 100px 0 0 140px;
-        left: 0;
+        max-width: 940px;
+      
     }
 
     @include respond(latop-min) {
-        max-width: 950px;
-        padding: 75px 0 0 100px;
-        min-height: 600px;
+        max-width: 752px;
+       
     }
 
     @include respond(ipadpro) {
-        max-width: 750px;
-        padding: 50px 0 0 80px;
-        min-height: 570px;
-        margin: 50px auto 0 auto;
+        max-width: 564px;
+     
 
     }
 
     @include respond(ipad) {
-        max-width: 550px;
-        padding: 40px 0 0 50px;
-        min-height: 670px;
-        margin: 100px auto 0 auto;
-
+        max-width: 410px;
+      
     }
 
     @include respond(phone) {
-        padding: 40px 0 0 30px;
-        min-height: 700px;
-        margin: 50px auto 0 auto;
+        max-width: 320px;
+      
     }
 
     .act_oldink {
@@ -887,6 +882,7 @@
 
 
     .act_oldposterbox {
+        border: 1px red solid;
         display: inline-block;
         position: absolute;
         height: 100%;
@@ -1012,6 +1008,7 @@
 }
 
 .act_oldsongbox {
+    border: 1px red solid;
     padding: 100px 0 100px 200px;
     max-width: 1400px;
     margin: 50px auto 0px auto;
@@ -1241,6 +1238,7 @@
 }
 
 .act_oldAll {
+    border: 1px red solid;
     text-align: left;
     width: 100%;
     max-width: 1400px;
@@ -1472,7 +1470,7 @@
     min-height: 700px;
     padding: 50px;
     margin: 150px auto 0 auto;
-   
+
     @include respond(latop-max) {
         max-width: 940px;
         margin: 100px auto 0 auto;
@@ -1498,7 +1496,7 @@
     }
 
     @include respond(phone) {
-        max-width:320px;
+        max-width: 320px;
         padding: 50px 10px;
         min-height: 800px;
     }
@@ -1710,7 +1708,7 @@
         @include respond(ipadpro) {
             width: 500px;
             height: 350px;
-            left: -5%;
+            left: 0%;
             z-index: -1;
         }
 
@@ -1725,7 +1723,7 @@
             width: 500px;
             height: 350px;
             left: -30%;
-            bottom:0%;
+            bottom: 0%;
         }
 
 
@@ -1747,7 +1745,7 @@
     padding: 50px;
     margin: 100px auto 150px auto;
     position: relative;
-  
+
 
     @include respond(latop-max) {
         margin: 0px auto;
@@ -1771,6 +1769,7 @@
     @include respond(ipad) {
         max-width: 400px;
     }
+
     @include respond(phone) {
         max-width: 320px;
     }
@@ -1821,6 +1820,7 @@
             z-index: 1;
 
         }
+
         @include respond(phone) {
             width: 100%;
         }
@@ -1953,6 +1953,7 @@
             overflow: hidden;
             padding: 10px;
             text-align: left;
+
             @include respond(phone) {
                 width: 95%;
                 position: relative;
@@ -2217,7 +2218,7 @@
         }
 
         @include respond(phone) {
-            max-width:320px;
+            max-width: 320px;
             padding: 50px 20px;
             min-height: 400px;
         }
@@ -2371,7 +2372,7 @@
             margin: 0 20px;
             display: inline-block;
             font-size: 0;
-        
+
 
             @include respond(latop-max) {
                 width: 160px;
