@@ -45,6 +45,17 @@
 @media screen and (max-width:1140px){
     .songsadded_lif{
         width: 900px;
+        margin-left: 115px;
+    }
+}
+@media screen and (max-width:1030px){
+    .songsadded_lif{
+        margin-left: 60px;
+    }
+}
+@media screen and (max-width:1030px){
+    .songsadded_lif{
+        margin-left: 30px;
     }
 }
 @media screen and (max-width:936px){
@@ -120,7 +131,19 @@
     .songsadded_inside,
     .songsadded_inside2{
         width: 900px;
-        margin-left: 20px;
+        margin-left: 115px;
+    }
+}
+@media screen and (max-width:1030px){
+    .songsadded_inside,
+    .songsadded_inside2{
+        margin-left: 60px;
+    }
+}
+@media screen and (max-width:976px){
+    .songsadded_inside,
+    .songsadded_inside2{
+        margin-left: 30px;
     }
 }
 @media screen and (max-width:936px){
@@ -343,7 +366,7 @@
 }
 @media screen and (max-width:1140px){
     .uploadmic img{
-        right: 20px;
+        right: 90px;
     }
 }
 @media screen and (max-width:936px){
@@ -590,7 +613,7 @@
 @media screen and (max-width:376px){
     .songinfo_bb{
         right: -165px;
-        top: -30px;
+        top: -55px;
     }
 }
 
@@ -599,6 +622,37 @@
     width: 400px;
     height: 5px;
 }
+@media screen and (max-width:1140px){
+    #infopath span{
+       position: relative;
+       left: -260px !important;
+    }
+}
+@media screen and (max-width:878px){
+    #infopath span{
+       position: relative;
+       left: -330px !important;
+    }
+}
+@media screen and (max-width:768px){
+    #infopath span{
+       position: relative;
+       left: -130px !important;
+    }
+}
+@media screen and (max-width:576px){
+    #infopath span{
+       position: relative;
+       left: -80px !important;
+    }
+}
+@media screen and (max-width:376px){
+    #infopath span{
+       position: relative;
+       left: -30px !important;
+    }
+}
+
 
 .songsadd_path{
     // border: 1px solid #d0d6d6;
@@ -612,7 +666,7 @@
 }
 @media screen and (max-width:1140px){
     .songsadd_path{
-        left: -250px;
+        left: -110px;
     }
 }
 @media screen and (max-width:936px){
@@ -625,7 +679,8 @@
 }
 @media screen and (max-width:878px){
     .songsadd_path{
-        left: -330px;
+        width: 230px !important;
+        left: -230px;
     }
 }
 @media screen and (max-width:768px){
@@ -682,6 +737,7 @@
     .sd_btn{
         position: relative;
         left: 35px;
+        top: -30px;
     }
     #add_tta{
         width: 290px;
@@ -692,5 +748,8 @@
     .sd_btn{
         position: relative;
         left: 30px;
+    }
+    #add_tta{
+        width: 270px;
     }
 }
