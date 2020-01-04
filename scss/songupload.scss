@@ -424,6 +424,31 @@
     }
 }
 
+
+
+@media screen and (max-width:936px){
+    .songsadded_inside2 li .more i{
+        position: relative;
+        top: -15px;
+        left: 30px;
+    }
+}
+@media screen and (max-width:878px){
+    .songsadded_inside2 li .more i{
+        position: relative;
+        top: -40px;
+        left: 80px;
+    }
+}
+@media screen and (max-width:768px){
+    .songsadded_inside2 li .more i{
+        position: relative;
+        left: 200px;
+    }
+}
+
+
+
 // .inside2 input {
 //     // border: 1px solid chocolate;
 //     position: relative;
@@ -708,14 +733,15 @@
     display: none;
 }
 .sd_btn{
-    @include buttonno04();
+    @include butttonn02();
     position: relative;
     top: -60px;
+    margin: 0 auto;
 }
 @media screen and (max-width:878px){
     .sd_btn{
         position: relative;
-        top: 10px;
+        top: -20px;
     }
     #add_tta{
         width: 340px;
@@ -725,7 +751,7 @@
 @media screen and (max-width:768px){
     .sd_btn{
         position: relative;
-        top: 10px;
+        top: -40px;
         left: 30px;
     }
     #add_tta{
@@ -753,6 +779,7 @@
         width: 270px;
     }
 }
+
 
 .songadd_all{
     overflow: hidden;
