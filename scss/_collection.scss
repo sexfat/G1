@@ -13,9 +13,24 @@ $albumbottom: 340px;
     background-size: cover;
     background-repeat: no-repeat;
     .playall_btns{
-        border: 1px solid red;
         text-align: right;
-        margin: 2vw 20vw;
+        position: relative;
+        right: 23%;
+        @include respond (latop-max){
+            right: 13%;
+        }
+        @include respond (latop-min){
+            right: 6%;
+        }
+        @include respond (ipadpro){
+            right: 19.5%;
+        }
+        @include respond (ipad){
+            right: 2%;
+        }
+        @include respond (phone){
+            right: 10%;
+        }
     }
     .circlebtn {
         width: 50px;
@@ -31,7 +46,6 @@ $albumbottom: 340px;
         outline: none;
         cursor: pointer;
         transition: transform .5s;
-      
         &:hover {
           transform: scale(1.1);
         }
@@ -138,7 +152,7 @@ $albumbottom: 340px;
         display: inline-block;
         .collectionsinglealbum{
             width:100%;
-            margin-bottom:50px;
+            margin:0px 0px 50px 0px;
             display: inline-block;
             font-size: 0px;
             .collectionsinglecover{
@@ -164,6 +178,21 @@ $albumbottom: 340px;
                 @include respond(latop-min) {
                     width:150px;
                     height:150px;
+                }
+                @include respond(ipadpro) {
+                    width:200px;
+                    height:200px;
+                    margin:50px 30px 0px 30px;
+                }
+                @include respond(ipad) {
+                    width:160px;
+                    height:160px;
+                    margin:30px 15px 0px 15px;
+                }
+                @include respond(phone) {
+                    width:130px;
+                    height:130px;
+                    margin:20px 15px 0px 15px;
                 }
                 .collalbumpic{
                     background-size:cover;
@@ -217,10 +246,10 @@ $albumbottom: 340px;
                     
                 }
                 .sampleblum1{
-                    background-image: url(../img/collection/album1.jpg);
+                    background-image: url(../img/collection/album2.jpg);
                 }
                 .sampleblum2{
-                    background-image: url(../img/collection/album2.jpg);
+                    background-image: url(../img/collection/album1.jpg);
                 }
                 .sampleblum3{
                     background-image: url(../img/collection/album3.jpg);
