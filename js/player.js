@@ -262,9 +262,11 @@
    let xhr = new XMLHttpRequest();
    xhr.onload = function () {
      phpGetListName = JSON.parse(xhr.responseText);
+     mylistInfo = phpGetListName;
      lightListName(phpGetListName);
+     showAllMyList(mylistInfo);
    };
-   xhr.open("get", "./php/getListName.php", false);
+   xhr.open("get", "./php/getListName.php", true);
    xhr.send(null);
  }
  //取得Liked Songs

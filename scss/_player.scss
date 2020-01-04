@@ -73,6 +73,11 @@ $mainRed : #de267d;
         span {
           display: block;
           font-size: 0.8rem;
+          text-transform: lowercase;
+
+          &:first-letter {
+            text-transform: capitalize;
+          }
 
           @include respond(ipadpro) {
             font-size: $rem0_7;
@@ -497,6 +502,11 @@ $mainRed : #de267d;
           text-overflow: ellipsis;
           font-weight: bold;
           font-size: $rem2;
+          text-transform: lowercase;
+
+          &:first-letter {
+            text-transform: capitalize;
+          }
 
           @include respond(latop-max) {
             font-size: $rem1_5;
@@ -963,6 +973,11 @@ $mainRed : #de267d;
                   overflow: hidden;
                   white-space: nowrap;
                   text-overflow: ellipsis;
+                  text-transform: lowercase;
+
+                  &:first-letter {
+                    text-transform: capitalize;
+                  }
 
                   @include respond(latop-max) {
                     font-size: $rem1;
