@@ -297,7 +297,9 @@
   position: relative;
   top: -90px;
   left: 210px;
-  @include buttonno04();
+  width: 70px !important;
+  height: 40px !important;
+  @include butttonn02();
 }
 
 @media screen and (max-width:930px) {
