@@ -399,7 +399,9 @@
                                 <input type="button" name="" class="infotopdona" style="display: none;">
                                 <label class="infodona" for="infotopdona">Donate</label>
                             <!-- </div> -->
-                            <div class="heart-like"></div>
+                            <div class="heart-like-container is-click">
+                                <div class="heart-like"></div>
+                            </div>
                             <!-- <div class="control-forwards"></div> /.control-forwards -->
                         </div><!--  /.music-player-controls -->
                     </div><!--  /.player-content-container -->
@@ -664,6 +666,17 @@
 
                 playButton.on('click', function () {
                     $('.music-player-container').toggleClass('is-playing');
+                });
+            });
+        })(jQuery);
+    </script>
+    <script>
+        (function ($) {
+            $(document).ready(function () {
+                var heartButton = $('.heart-like'),
+                    album = $('.album');
+                    heartButton.on('click', function () {
+                    $('.heart-like-container').toggleClass('is-click');
                 });
             });
         })(jQuery);
