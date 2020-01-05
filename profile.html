@@ -2,356 +2,332 @@
 <html lang="en">
 
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <meta http-equiv="X-UA-Compatible" content="ie=edge">
-    <title>Document</title>
-    <link rel="stylesheet" href="./css/main.css">
-    <link rel="stylesheet" href="./css/profile.css">
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.11.2/css/all.min.css" />
-
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/vue/2.6.10/vue.js"></script>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta http-equiv="X-UA-Compatible" content="ie=edge">
+  <title>Document</title>
+  <link rel="stylesheet" href="./css/main.css">
+  <link rel="stylesheet" href="./css/profile.css">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.11.2/css/all.min.css" />
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/vue/2.6.10/vue.js"></script>
 
 </head>
 
 <body>
-    <div id="app">
-        <div class="nav_bar flexbox">
-            <div class="hamburger" @click="hamburger_click">
-                <div class="hamburger-box">
-                    <div class="hamburger-inner"></div>
-                </div>
-            </div>
-            <div class="mobile_list" @click="stopPropagation">
-                <div class="paint_border"></div>
-                <ul>
-                    <li class="REMIX flexbox">
-                        <a href="">
-                        </a>
-                    </li>
-                    <li class="COLLECTION flexbox">
-                        <a href="">
-                        </a>
-                    </li>
-                    <li class="ACTIVITY flexbox">
-                        <a href="">
-                        </a>
-                    </li>
-                    <li class="LIBRARY flexbox">
-                        <a href="">
-                        </a>
-                    </li>
-                </ul>
-            </div>
-
-            <div class="logo_container">
-                <a href="">
-                    <div class="logo"></div>
-                </a>
-            </div>
-            <ul class="main_list flexbox">
-                <li class="REMIX flexbox">
-                    <a href="">
-                    </a>
-                </li>
-                <li class="COLLECTION flexbox">
-                    <a href="">
-                    </a>
-                </li>
-                <li class="ACTIVITY flexbox">
-                    <a href="">
-                    </a>
-                </li>
-                <li class="LIBRARY flexbox">
-                    <a href="">
-                    </a>
-                </li>
-            </ul>
-            <div class="search_bt" @click="search_bt_click">
-                <a href="#"></a>
-            </div>
-            <div class="search_bar">
-                <input class="search" type="text" />
-                <div class="tag_container">
-                </div>
-            </div>
-            <div class="mem_bt" @click="mem_bt_click">
-                <a href="#"></a>
-            </div>
-            <div class="mem_list" @click="stopPropagation">
-                <div class="paint_border"></div>
-                <ul>
-                    <li>
-                        <a href="">
-                            <h4>Profile</h4>
-                        </a>
-                    </li>
-                    <li>
-                        <a href="">
-                            <h4>Favorite</h4>
-                        </a>
-                    </li>
-                    <li>
-                        <a href="">
-                            <h4>
-                                Song Upload
-                                <br />&amp; Remove
-                            </h4>
-                        </a>
-                    </li>
-                    <li>
-                        <a href="">
-                            <h4>
-                                Store Value
-                                <br />&amp;Store Record
-                            </h4>
-                        </a>
-                    </li>
-                    <li>
-                        <a href="">
-                            <h4>Donate Record</h4>
-                        </a>
-                    </li>
-                </ul>
-            </div>
+  <div id="profile_app">
+    <div class="nav_bar flexbox">
+      <div class="hamburger" @click="hamburger_click">
+        <div class="hamburger-box">
+          <div class="hamburger-inner"></div>
         </div>
-        <!-- nav_bar end -->
-        <header>
-            <img src="./img/member/title_profile.png" alt="">
-        </header>
-        <div class="profile_content">
-            <div class="profile_modify doubleSmall flexbox" v-if="profile_modify == false"
-                @click="profile_modify_click">Profile Modify</div>
-            <div class="profile_complete doubleSmall flexbox" v-if="profile_modify == true"
-                @click="profile_modify_click">Complete</div>
-            <div class="profile_password_modify doubleSmall flexbox" v-if="password_modify == false"
-                @click="password_modify_click">Password Modify</div>
-
-            <div class="profile_container flexbox" v-if="profile_modify == false">
-                <div class="profile_leftbox">
-                    <div class="profile_mem_img"></div>
-                </div>
-                <div class="profile_rightbox">
-                    <table>
-                        <tr>
-                            <th>Account</th>
-                            <td>{{account}}</td>
-                        </tr>
-                        <tr>
-                            <th>Name</th>
-                            <td>{{mem_name}}</td>
-                        </tr>
-                        <tr>
-                            <th>Email</th>
-                            <td>{{email}}</td>
-                        </tr>
-                        <tr>
-                            <th>Point</th>
-                            <td>{{point}}</td>
-                        </tr>
-                    </table>
-                </div>
-            </div>
-            <div class="profile_container flexbox" v-if="profile_modify == true">
-                <div class="profile_leftbox">
-                    <div class="profile_mem_img">
-                        <i class="fas fa-pen-square"></i>
-                    </div>
-                </div>
-                <div class="profile_rightbox">
-                    <table>
-                        <tr>
-                            <th>Account</th>
-                            <td>
-                                <input type="text" :value="account" name="account">
-                            </td>
-                        </tr>
-                        <tr>
-                            <th>Name</th>
-                            <td><input type="text" :value="mem_name" name="mem_name"></td>
-                        </tr>
-                        <tr>
-                            <th>Email</th>
-                            <td><input type="text" :value="email" name="email"></td>
-                        </tr>
-                        <tr>
-                            <th>Point</th>
-                            <td><input type="text" :value="point" name="point"></td>
-                        </tr>
-                    </table>
-                </div>
-            </div>
-
+      </div>
+      <div class="mobile_list" @click="stopPropagation">
+        <div class="paint_border"></div>
+        <ul>
+          <li class="REMIX flexbox">
+            <a href="./remix.html">
+            </a>
+          </li>
+          <li class="COLLECTION flexbox">
+            <a href="./collection.html">
+            </a>
+          </li>
+          <li class="ACTIVITY flexbox">
+            <a href="./activity.html">
+            </a>
+          </li>
+          <li class="LIBRARY flexbox">
+            <a href="./library.html">
+            </a>
+          </li>
+        </ul>
+      </div>
+      <div class="logo_container">
+        <a href="./index.html">
+          <div class="logo"></div>
+        </a>
+      </div>
+      <ul class="main_list flexbox">
+        <li class="REMIX flexbox">
+          <a href="./remix.html">
+          </a>
+        </li>
+        <li class="COLLECTION flexbox">
+          <a href="./collection.html">
+          </a>
+        </li>
+        <li class="ACTIVITY flexbox">
+          <a href="./activity.html">
+          </a>
+        </li>
+        <li class="LIBRARY flexbox">
+          <a href="./library.html">
+          </a>
+        </li>
+      </ul>
+      <div class="search_bt" @click="search_bt_click">
+        <a href="#"></a>
+      </div>
+      <div class="search_bar" @click="stopPropagation">
+        <input class="search" type="text" />
+        <div class="tag_container">
         </div>
-        <div class="profile_lightCover lightCover" v-if="password_modify == true">
-            <div class="profile_lightbox_s lightbox_s">
-                <i class="far fa-times-circle" @click="password_modify_click"></i>
-                <h4>Password Modify</h4>
-                <div>
-                    Password：<br>
-                    <input type="password" name="">
-                </div>
-                <div>
-                    Password Confirm：<br>
-                    <input type="password" name="">
-                </div>
-                <div class="profile_modify_confirm doubleSmall flexbox">Modify Confirm</div>
-            </div>
+      </div>
+
+      <div class="mem_bt" @click="mem_bt_click" v-if="mem_login == true">
+        <a href="#"></a>
+      </div>
+      <div class="login_bt" @click="" v-if="mem_login == true">
+        <a class="flexbox" href="./login.html">Login</a>
+      </div>
+      <div class="mem_list" @click="stopPropagation">
+        <div class="paint_border"></div>
+        <ul>
+          <li>
+            <a href="./profile.html">
+              <h4>Profile</h4>
+            </a>
+          </li>
+          <li>
+            <a href="./library.html">
+              <h4>Library</h4>
+            </a>
+          </li>
+          <li>
+            <a href="./songsadded.html">
+              <h4>
+                Song Upload
+                <br />&amp; Remove
+              </h4>
+            </a>
+          </li>
+          <li>
+            <a href="./store.html">
+              <h4>
+                Store Value
+                <br />&amp;Store Record
+              </h4>
+            </a>
+          </li>
+          <li>
+            <a href="./donate.html">
+              <h4>Donate Record</h4>
+            </a>
+          </li>
+        </ul>
+      </div>
+    </div>
+    <!-- nav_bar end -->
+    <header>
+      <img src="./img/member/title_profile.png" alt="">
+    </header>
+    <div class="profile_content">
+      <div class="profile_container flexbox">
+        <div class="profile_leftbox" v-if="window768 == false">
+          <div class="profile_mem_img">
+            <div class="edit">Edit</div>
+          </div>
         </div>
+        <div class="profile_rightbox">
+          <div class="row row1 flexbox" v-if="window768 == true">
+            <div class="th">Photo</div>
+            <div class="td">
+              <div class="profile_mem_img"></div>
+            </div>
+            <i class="fas fa-chevron-right"></i>
+          </div>
+          <div class="row row2 flexbox">
+            <div class="th">Account</div>
+            <div class="td">{{account}}</div>
+            <i class="fas fa-chevron-right"></i>
+          </div>
+          <div class="row row3 flexbox">
+            <div class="th">Name</div>
+            <div class="td">{{mem_name}}</div>
+            <i class="fas fa-chevron-right"></i>
+          </div>
+          <div class="row row4 flexbox">
+            <div class="th">Password</div>
+            <div class="td">{{password}}</div>
+            <i class="fas fa-chevron-right"></i>
+          </div>
+          <div class="row row5 flexbox">
+            <div class="th">Point</div>
+            <div class="td">{{point}}</div>
+          </div>
+        </div>
+      </div>
     </div>
 
-    <script>
-        let vm = new Vue({
-            el: "#app",
-            data: {
-                // nav_bar
-                search_bar: false,
-                mem_list: false,
-                mobile_list: false,
+  </div>
 
-                // profile
-                profile_modify: false,
-                password_modify: false,
-                account: 'abc123',
-                mem_name: 'QQ',
-                email: 'abc123@gmail.com',
-                point: 500,
-            },
-            mounted() {
-                document.querySelector('.mem_list ul').setAttribute('style', `height: ${window.innerHeight}px;`);
-                document.querySelector('.mobile_list ul').setAttribute('style', `height: ${window.innerHeight}px;`);
-                document.querySelectorAll('.paint_border')[0].setAttribute('style', `height: ${window.innerHeight}px;`);
-                document.querySelectorAll('.paint_border')[1].setAttribute('style', `height: ${window.innerHeight}px;`);
+  <script>
+    let vm = new Vue({
+      el: "#profile_app",
+      data: {
+        // nav_bar
+        search_bar: false,
+        mem_list: false,
+        mobile_list: false,
+        mem_login: true,
 
+        // profile
+        profile_modify: false,
+        password_modify: false,
+        window768: true,
+        account: 'abc123afdasfdasfdasfdasfdsafds@gmail.com',
+        mem_name: 'QQ',
+        password: '●●●●●●●●',
+        point: 500,
+      },
+      mounted() {
+        document.querySelector('.mem_list ul').setAttribute('style', `height: ${window.innerHeight}px;`);
+        document.querySelector('.mobile_list ul').setAttribute('style', `height: ${window.innerHeight}px;`);
+        document.querySelectorAll('.paint_border')[0].setAttribute('style', `height: ${window.innerHeight}px;`);
+        document.querySelectorAll('.paint_border')[1].setAttribute('style', `height: ${window.innerHeight}px;`);
 
-            },
-            methods: {
-                // nav_bar
-                hamburger_click(e) {
-                    // e.stopPropagation();
-                    document
-                        .querySelector(".hamburger").classList.toggle("is-active");
-                },
-                search_bt_click(e) {
-                    e.stopPropagation();
-                    if (this.search_bar == false) {
-                        this.search_bar = true;
-                        this.mem_list = false;
-                        this.mobile_list = false;
-                        document
-                            .querySelector(".search_bar")
-                            .setAttribute("style", "height: 240px; filter: opacity(1);");
-                        document.querySelector("input.search").focus();
-                        document
-                            .querySelector(".mem_list")
-                            .setAttribute("style", "transform: translateX(270px); filter: opacity(0);");
-                        document
-                            .querySelector(".mobile_list")
-                            .setAttribute("style", "transform: translateX(-270px); filter: opacity(0);");
-                    } else {
-                        this.search_bar = false;
-                        document
-                            .querySelector(".search_bar")
-                            .setAttribute("style", "height: 0px; filter: opacity(0);");
-                        document.querySelector("input.search").blur();
-                        document
-                            .querySelector(".mem_list")
-                            .setAttribute("style", "transform: translateX(270px); filter: opacity(0);");
-                        document
-                            .querySelector(".mobile_list")
-                            .setAttribute("style", "transform: translateX(-270px); filter: opacity(0);");
-                    }
-                },
-
-                stopPropagation(e) {
-                    e.stopPropagation();
-                },
-
-                mem_bt_click(e) {
-                    e.stopPropagation();
-                    if (this.mem_list == false) {
-                        this.mem_list = true;
-                        this.search_bar = false;
-                        this.mobile_list = false;
-                        document
-                            .querySelector(".mem_list")
-                            .setAttribute("style", "transform: translateX(0); filter: opacity(1);");
-                        document
-                            .querySelector(".search_bar")
-                            .setAttribute("style", "height: 0px; filter: opacity(0);");
-                        document
-                            .querySelector(".mobile_list")
-                            .setAttribute("style", "transform: translateX(-270px); filter: opacity(0);");
-                    } else {
-                        this.mem_list = false;
-                        document
-                            .querySelector(".mem_list")
-                            .setAttribute("style", "transform: translateX(270px); filter: opacity(0);");
-                        document
-                            .querySelector(".search_bar")
-                            .setAttribute("style", "height: 0px; filter: opacity(0);");
-                        document
-                            .querySelector(".mobile_list")
-                            .setAttribute("style", "transform: translateX(-270px); filter: opacity(0);");
-                    }
-                },
-
-                hamburger_click(e) {
-                    e.stopPropagation();
-                    if (this.mobile_list == false) {
-                        this.mobile_list = true;
-                        this.mem_list = false;
-                        this.search_bar = false;
-                        document
-                            .querySelector(".mobile_list")
-                            .setAttribute("style", "transform: translateX(0); filter: opacity(1);");
-                        document
-                            .querySelector(".mem_list")
-                            .setAttribute("style", "transform: translateX(270px); filter: opacity(0);");
-                        document
-                            .querySelector(".search_bar")
-                            .setAttribute("style", "height: 0px; filter: opacity(0);");
-                    } else {
-                        this.mobile_list = false;
-                        document
-                            .querySelector(".mobile_list")
-                            .setAttribute("style", "transform: translateX(-270px); filter: opacity(0);");
-                        document
-                            .querySelector(".mem_list")
-                            .setAttribute("style", "transform: translateX(270px); filter: opacity(0);");
-                        document
-                            .querySelector(".search_bar")
-                            .setAttribute("style", "height: 0px; filter: opacity(0);");
-                    }
-                },
-                // nav_bar end
-
-
-                profile_modify_click() {
-                    if (this.profile_modify) {
-                        this.profile_modify = false;
-                    } else {
-                        this.profile_modify = true;
-                    }
-                },
-
-                password_modify_click() {
-                    if (this.password_modify) {
-                        this.password_modify = false;
-                    } else {
-                        this.password_modify = true;
-                        this.$nextTick(() => {
-                            // DOM 更新
-                            document.querySelector('.profile_lightCover').setAttribute('style', `height: ${window.innerHeight}px`)
-                        });
-                    }
-                },
-
-
-
-            }
+        if (window.innerWidth <= 768) {
+          this.window768 = true;
+        } else {
+          this.window768 = false;
+        }
+        $(window).resize(() => {
+          if (window.innerWidth <= 768) {
+            this.window768 = true;
+          } else {
+            this.window768 = false;
+          }
         });
-    </script>
+
+      },
+      methods: {
+        // nav_bar
+        hamburger_click(e) {
+          // e.stopPropagation();
+          document
+            .querySelector(".hamburger").classList.toggle("is-active");
+        },
+        search_bt_click(e) {
+          e.stopPropagation();
+          if (this.search_bar == false) {
+            this.search_bar = true;
+            this.mem_list = false;
+            this.mobile_list = false;
+            document
+              .querySelector(".search_bar")
+              .setAttribute("style", "height: 240px; filter: opacity(1);");
+            document.querySelector("input.search").focus();
+            document
+              .querySelector(".mem_list")
+              .setAttribute("style", "transform: translateX(270px); filter: opacity(0);");
+            document
+              .querySelector(".mobile_list")
+              .setAttribute("style", "transform: translateX(-270px); filter: opacity(0);");
+          } else {
+            this.search_bar = false;
+            document
+              .querySelector(".search_bar")
+              .setAttribute("style", "height: 0px; filter: opacity(0);");
+            document.querySelector("input.search").blur();
+            document
+              .querySelector(".mem_list")
+              .setAttribute("style", "transform: translateX(270px); filter: opacity(0);");
+            document
+              .querySelector(".mobile_list")
+              .setAttribute("style", "transform: translateX(-270px); filter: opacity(0);");
+          }
+        },
+
+        stopPropagation(e) {
+          e.stopPropagation();
+        },
+
+        mem_bt_click(e) {
+          e.stopPropagation();
+          if (this.mem_list == false) {
+            this.mem_list = true;
+            this.search_bar = false;
+            this.mobile_list = false;
+            document
+              .querySelector(".mem_list")
+              .setAttribute("style", "transform: translateX(0); filter: opacity(1);");
+            document
+              .querySelector(".search_bar")
+              .setAttribute("style", "height: 0px; filter: opacity(0);");
+            document
+              .querySelector(".mobile_list")
+              .setAttribute("style", "transform: translateX(-270px); filter: opacity(0);");
+          } else {
+            this.mem_list = false;
+            document
+              .querySelector(".mem_list")
+              .setAttribute("style", "transform: translateX(270px); filter: opacity(0);");
+            document
+              .querySelector(".search_bar")
+              .setAttribute("style", "height: 0px; filter: opacity(0);");
+            document
+              .querySelector(".mobile_list")
+              .setAttribute("style", "transform: translateX(-270px); filter: opacity(0);");
+          }
+        },
+
+        hamburger_click(e) {
+          e.stopPropagation();
+          if (this.mobile_list == false) {
+            this.mobile_list = true;
+            this.mem_list = false;
+            this.search_bar = false;
+            document
+              .querySelector(".mobile_list")
+              .setAttribute("style", "transform: translateX(0); filter: opacity(1);");
+            document
+              .querySelector(".mem_list")
+              .setAttribute("style", "transform: translateX(270px); filter: opacity(0);");
+            document
+              .querySelector(".search_bar")
+              .setAttribute("style", "height: 0px; filter: opacity(0);");
+          } else {
+            this.mobile_list = false;
+            document
+              .querySelector(".mobile_list")
+              .setAttribute("style", "transform: translateX(-270px); filter: opacity(0);");
+            document
+              .querySelector(".mem_list")
+              .setAttribute("style", "transform: translateX(270px); filter: opacity(0);");
+            document
+              .querySelector(".search_bar")
+              .setAttribute("style", "height: 0px; filter: opacity(0);");
+          }
+        },
+        // nav_bar end
+
+
+        profile_modify_click() {
+          if (this.profile_modify) {
+            this.profile_modify = false;
+          } else {
+            this.profile_modify = true;
+          }
+        },
+
+        password_modify_click() {
+          if (this.password_modify) {
+            this.password_modify = false;
+          } else {
+            this.password_modify = true;
+            this.$nextTick(() => {
+              // DOM 更新
+              document.querySelector('.profile_lightCover').setAttribute('style', `height: ${window.innerHeight}px`)
+            });
+          }
+        },
+
+
+
+      }
+    });
+  </script>
 </body>
 
 </html>
