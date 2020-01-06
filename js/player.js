@@ -57,7 +57,7 @@
 
 
    //點愛心
-   $('#player').on('click', '.heart', function () {
+   $(document).on('click', '.heart', function () {
      let songName = $(this).siblings('.listSongInfo').find('.name h4').text();
      if ($(this).hasClass('becomeRed')) {
        $(this).html('<img src="./img/collection/grayheart.png">').removeClass('becomeRed');
@@ -68,10 +68,10 @@
    });
 
    //點歌單撥放，左側專輯唱片動畫
-   $('#player').on('mouseover', '.songCover', function () {
+   $(document).on('mouseover', '.songCover', function () {
      $(this).find('.listPlay').show();
    });
-   $('#player').on('mouseout', '.songCover', function () {
+   $(document).on('mouseout', '.songCover', function () {
      $(this).find('.listPlay').hide();
    });
 
@@ -372,7 +372,7 @@
      }
    } else {
      li = document.createElement('li');
-     li.setAttribute('style','text-align:center');
+     li.setAttribute('style', 'text-align:center');
      text = document.createTextNode('No songs');
      li.append(text);
      $('#player .list ul').append(li);

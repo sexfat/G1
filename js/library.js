@@ -21,14 +21,15 @@
  window.addEventListener('load', function () {
    //library 初始
    getLibraryList(); //抓左側列表
-
+   getLibrarySongs(nowList);
+   myListInfoCha(-1, libraryList.length);
 
    //more -- changeList
-   $('.songs li').on('click', '.more', function () {
+   $('.songs').on('click', '.more', function () {
      $(this).find('.changeList').show();
      $('.more').not(this).find('.changeList').hide();
    });
-   $('.songs li').on('mouseleave', '.more', function () {
+   $('.songs').on('mouseleave', '.more', function () {
      $(this).find('.changeList').hide();
    });
 
@@ -65,14 +66,21 @@
      e.stopPropagation();
    });
    $('#createSubmit').click(function () {
-     let newListName = $("#createListName").val();
+     let createNewLi = $("#createListName").val();
      let xhr = new XMLHttpRequest();
      xhr.onload = function () {
-       showAllMyList();
+       if (xhr.responseText == 'success') {
+         buildNewLi(createNewLi);
+       } else {
+         alert('failure');
+       }
      };
-     xhr.open("post", "", true);
-     xhr.setRequestHeader("content-type", "application/x-www-form-urlencoded");
-     xhr.send(newListName);
+     let url = `./php/createNewList.php?createListName=${createNewLi}`;
+     xhr.open("get", url, true);
+     xhr.send(null);
+
+     $('.lightCover').hide();
+     $('#createListBox').hide();
    });
    $('#createCancel').click(function (e) {
      e.preventDefault();
@@ -104,41 +112,74 @@
        $('#inputListTitle').show();
        $('#inputListTitle').val(nowList);
        $('.listName').find('.name').find('h2').hide();
+       if (nowList == 'Liked songs') {
+         $('#library_editCover').attr('disabled', true);
+         $('.enterBtn').attr('disabled', true);
+         $('#inputListTitle').attr('disabled', true);
+       } else {
+         $('#library_editCover').attr('disabled', false);
+         $('.enterBtn').attr('disabled', false);
+         $('#inputListTitle').attr('disabled', false);
+       }
      }
+   });
+
+   //修改清單姓名
+   $('#modifyName').click(function () {
+     let modifyName = $("#inputListTitle").val();
+     let listName = [];
+     for (let i = 0; i < mylistInfo.length; i++) {
+       listName.push(mylistInfo[i].plist_name);
+     }
+     let listind = listName.indexOf(nowList);
+     console.log(listind);
+     let xhr = new XMLHttpRequest();
+     //  xhr.onload = function () {
+     //    if (xhr.responseText == 'success') {
+     //      console.log('complete');
+     //    } else {
+     //      alert('failure');
+     //    }
+     //  };
+     //  let url = `./php/modifyList.php?plistName=${modifyName}`;
+     //  xhr.open("get", url, true);
+     //  xhr.send(null);
    });
 
    //收藏清單控制
    $(".my_list").on('click', '.favor', function () {
-     $(".library_main .right ul").removeClass("chooseList");
-     $(".library_main .right ul:nth-of-type(1)").addClass("chooseList");
-     myListInfoCha(-1);
      nowList = "Liked songs";
+     $(this).addClass('choose');
+     $(".lists li").removeClass('choose');
      $('#inputListTitle').val(nowList);
+     getLibrarySongs(nowList);
+     myListInfoCha(-1, libraryList.length);
+     $('#library_editCover').attr('disabled', true);
+     $('.enterBtn').attr('disabled', true);
+     $('#inputListTitle').attr('disabled', true);
    });
 
    //點歌單換內容
    $(".lists").on('click', 'li', function () {
      let myListIndex = $(this).index();
-     let myListLen = $(this).length;
      nowList = $(this).find('h4').text();
+     $('.lists li').removeClass('choose');
+     $(this).addClass('choose');
+     $(".favor").removeClass('choose');
      $('#inputListTitle').val(nowList);
-     $(`.library_main .right ul:nth-of-type(${myListIndex+2})`).addClass("chooseList");
-     $(".library_main .right ul:nth-of-type(1)").removeClass("chooseList");
-     $(".library_main .right ul").not(`.library_main .right ul:nth-of-type(${myListIndex+2})`).removeClass(
-       "chooseList");
-     myListInfoCha(myListIndex);
+     getLibrarySongs(nowList);
+     myListInfoCha(myListIndex, libraryList.length);
+     $('#library_editCover').attr('disabled', false);
+     $('.enterBtn').attr('disabled', false);
+     $('#inputListTitle').attr('disabled', false);
    });
 
    //手機select選歌單
    $("#mobile_listChoose").change(function () {
-     var myListIndex = $(this)[0].selectedIndex;
-     if (myListIndex != 0) {
-       $(`.library_main .right ul:nth-of-type(${myListIndex+1})`).addClass("chooseList");
-       $(".library_main .right ul:nth-of-type(1)").removeClass("chooseList");
-       $(".library_main .right ul").not(`.library_main .right ul:nth-of-type(${myListIndex+1})`).removeClass(
-         "chooseList");
-       myListInfoCha(myListIndex);
-     };
+     let myListIndex = $(this)[0].selectedIndex;
+     nowList = $(this).val();
+     getLibrarySongs(nowList);
+     myListInfoCha(myListIndex, libraryList.length);
    });
 
    //刪除清單 -- 未完成
@@ -173,11 +214,11 @@
      isPlaying(false);
      audio.currentTime = 0;
    });
- });
 
- //修改清單名 -- submitBtn -- 未完成
- $('.enterBtn').click(function () {
-   var listTitleBox = $('#inputListTitle').val();
+   //修改清單名 -- submitBtn -- 未完成
+   $('.enterBtn').click(function () {
+     let listTitleBox = $('#inputListTitle').val();
+   });
  });
 
  /* ---------------- load end ---------------- */
@@ -189,22 +230,39 @@
      mylistInfo = JSON.parse(xhr.responseText);
      showAllMyList(mylistInfo);
    };
-   xhr.open("get", "./php/getListName.php", true);
+   xhr.open("get", "./php/getListName.php", false);
+   xhr.send(null);
+ }
+
+ //抓資料庫單一歌單
+ function getLibrarySongs(listname) {
+   let url;
+   let xhr = new XMLHttpRequest();
+   xhr.onload = function () {
+     libraryList = JSON.parse(xhr.responseText);
+     showLibrarySongs(libraryList);
+   };
+   if (listname == 'Liked songs') {
+     url = `./php/likedSongsList.php`;
+   } else {
+     url = `./php/showPlayList.php?plistName=${listname}`;
+   }
+   xhr.open("get", url, false);
    xhr.send(null);
  }
 
  //換清單內容
- function myListInfoCha(num) {
+ function myListInfoCha(num, listlen) {
    if (num == -1) {
      $(".listInfo .listCover img").attr("src", './img/library/list_pic0.jpg');
      $(".listInfo .name h2").text('Liked songs');
      $(".listInfo #inputListTitle").text('Liked songs');
-     $(".listInfo .totalSong").text(`${libraryList.length} songs`);
+     $(".listInfo .totalSong").text(`${listlen} songs`);
    } else {
      $(".listInfo .listCover img").attr("src", mylistInfo[num].list_pic);
      $(".listInfo .name h2").text(mylistInfo[num].plist_name);
      $(".listInfo #inputListTitle").text(mylistInfo[num].plist_name);
-     $(".listInfo .totalSong").text(`${libraryList.length} songs`);
+     $(".listInfo .totalSong").text(`${listlen} songs`);
    }
  };
 
@@ -236,65 +294,95 @@
    for (let j = 0; j < mylist.length; j++) {
      optionn = document.createElement('option');
      optionn.setAttribute('value', mylist[j].plist_name);
+     text = document.createTextNode(mylist[j].plist_name);
      optionn.append(text);
      $('#mobile_listChoose').append(optionn);
    }
-
-
-   //顯示清單歌曲列表
-   function showLibrarySongs(songList) {
-     let li, divSongPlay, divsongCover, divListPlay, divlistSongInfo, divName, divCreator, divtotal, divheart, divmore, divchangeList, divclear, img, alink, icon, text;
-     for (let i = 0; i < songList.length; i++) {
-       li = document.createElement('li');
-       divSongPlay = document.createElement('div');
-       divSongPlay.setAttribute('class', 'songPlay');
-       divsongCover = document.createElement('div');
-       divsongCover.setAttribute('class', 'songCover');
-       img = document.createElement('img');
-       img.setAttribute('src', songList[i].song_pic);
-       divsongCover.append(img);
-       divListPlay = document.createElement('div');
-       divListPlay.setAttribute('class', 'listPlay');
-       img = document.createElement('img');
-       img.setAttribute('src', './img/library/coverPlay-s.png');
-       divListPlay.append(img);
-       divsongCover.append(divListPlay);
-       divSongPlay.append(divsongCover); //
-       divlistSongInfo = document.createElement('div');
-       divlistSongInfo.setAttribute('src', 'listSongInfo');
-       divName = document.createElement('div');
-       divName.setAttribute('class', 'name');
-       alink = document.createElement('a');
-       alink.setAttribute('href', './songinfo.html');
-       text = document.createTextNode(songList[i].song_name);
-       alink.append(text);
-       divName.append(alink);
-       divCreator = document.createElement('div');
-       divCreator.setAttribute('class', 'creator');
-       text = document.createTextNode(songList[i].mem_name);
-       divCreator.append(text);
-       divlistSongInfo.append(divName).append(divCreator);
-       divtotal = document.createElement('div');
-       divtotal.setAttribute('class', 'totalTime');
-       text = document.createTextNode(songList[i].totaltime);
-       divtotal.append(text);
-       divheart = document.createElement('div');
-       divheart.setAttribute('class', 'heart becomeRed');
-       img = document.createElement('img');
-       img.setAttribute('src', './img/collection/redheart.png');
-       divheart.append(img);
-       divmore = document.createElement('div');
-       icon = document.createElement('i');
-       icon.setAttribute('class', 'fas fa-ellipsis-h');
-       divchangeList = document.createElement('div');
-       divchangeList.setAttribute('class', 'changeList');
-       text = document.createTextNode('change list');
-       divchangeList.append(text);
-       divmore.append(icon).append(divchangeList);
-       divclear = document.createElement('div');
-       divclear.setAttribute('class', 'clearfix');
-       li.append(divSongPlay).append(divlistSongInfo), append(divtotal).append(divheart).append(divmore).append(divclear);
-       $('.songs').append(li);
-     }
-   }
  };
+
+ //顯示清單歌曲列表
+ function showLibrarySongs(songList) {
+   let li, divSongPlay, divsongCover, divListPlay, divlistSongInfo, divName, divCreator, divtotal, divheart, divmore, divchangeList, divclear, img, alink, icon, text;
+   $('.songs').children().remove();
+   for (let i = 0; i < songList.length; i++) {
+     li = document.createElement('li');
+     divSongPlay = document.createElement('div');
+     divSongPlay.setAttribute('class', 'songPlay');
+     divsongCover = document.createElement('div');
+     divsongCover.setAttribute('class', 'songCover');
+     img = document.createElement('img');
+     img.setAttribute('src', songList[i].song_pic);
+     divsongCover.append(img);
+     divListPlay = document.createElement('div');
+     divListPlay.setAttribute('class', 'listPlay');
+     img = document.createElement('img');
+     img.setAttribute('src', './img/library/coverPlay-s.png');
+     divListPlay.append(img);
+     divsongCover.append(divListPlay);
+     divSongPlay.append(divsongCover); //
+     divlistSongInfo = document.createElement('div');
+     divlistSongInfo.setAttribute('class', 'listSongInfo');
+     divName = document.createElement('div');
+     divName.setAttribute('class', 'name');
+     alink = document.createElement('a');
+     alink.setAttribute('href', './songinfo.html');
+     text = document.createTextNode(songList[i].song_name);
+     alink.append(text);
+     divName.append(alink);
+     divCreator = document.createElement('div');
+     divCreator.setAttribute('class', 'creator');
+     text = document.createTextNode(songList[i].mem_name);
+     divCreator.append(text);
+     divlistSongInfo.append(divName);
+     divlistSongInfo.append(divCreator);
+     divtotal = document.createElement('div');
+     divtotal.setAttribute('class', 'totalTime');
+     text = document.createTextNode(songList[i].totaltime);
+     divtotal.append(text);
+     divheart = document.createElement('div');
+     divheart.setAttribute('class', 'heart becomeRed');
+     img = document.createElement('img');
+     img.setAttribute('src', './img/collection/redheart.png');
+     divheart.append(img);
+     divmore = document.createElement('div');
+     divmore.setAttribute('class', 'more');
+     icon = document.createElement('i');
+     icon.setAttribute('class', 'fas fa-ellipsis-h');
+     divchangeList = document.createElement('div');
+     divchangeList.setAttribute('class', 'changeList');
+     text = document.createTextNode('change list');
+     divchangeList.append(text);
+     divmore.append(icon);
+     divmore.append(divchangeList);
+     divclear = document.createElement('div');
+     divclear.setAttribute('class', 'clearfix');
+     li.append(divSongPlay);
+     li.append(divlistSongInfo);
+     li.append(divtotal);
+     li.append(divheart);
+     li.append(divmore);
+     li.append(divclear);
+     $('.songs').append(li);
+   }
+ }
+
+ function buildNewLi(newli) {
+   let li, h4, div, icon, optionn, text;
+   li = document.createElement('li');
+   h4 = document.createElement('h4');
+   text = document.createTextNode(newli);
+   h4.append(text);
+   li.append(h4);
+   div = document.createElement('div');
+   div.setAttribute('class', 'delete');
+   icon = document.createElement('i');
+   icon.setAttribute('class', 'fas fa-times');
+   div.append(icon);
+   li.append(div);
+   $('.my_list .lists').append(li);
+   optionn = document.createElement('option');
+   optionn.setAttribute('value', newli);
+   text = document.createTextNode(newli);
+   optionn.append(text);
+   $('#mobile_listChoose').append(optionn);
+ }

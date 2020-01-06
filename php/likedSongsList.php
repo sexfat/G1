@@ -8,9 +8,12 @@ try {
   order by tsml.song_no asc;";
 
   $allList = $pdo->query($sql);
-  $listRow = $allList->fetchAll(PDO::FETCH_ASSOC);
-
-  echo json_encode($listRow);
+  if ($allList->rowCount() == 0) {
+    echo '{}';
+  } else {
+    $listRow = $allList->fetchAll(PDO::FETCH_ASSOC);
+    echo json_encode($listRow);
+  }
 } catch (PDOException $e) {
   echo "例外行號:", $e->getLine(), "<br>";
   echo "錯誤訊息:", $e->getMessage(), "<br>";

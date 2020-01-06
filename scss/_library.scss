@@ -77,6 +77,9 @@ $mainRed : #de267d;
       .favor {
         cursor: pointer;
 
+        &.choose h4 {
+          font-weight: bold;
+        }
 
         img {
           width: 25px;
@@ -160,6 +163,10 @@ $mainRed : #de267d;
 
           &:first-letter {
             text-transform: capitalize;
+          }
+
+          &.choose h4 {
+            font-weight: bold;
           }
 
           h4 {
@@ -284,7 +291,7 @@ $mainRed : #de267d;
       max-width: 350px;
       height: 520px;
       background-size: contain;
-      bottom: -10px;
+      bottom: -30px;
       left: -350px;
 
       @include respond(ipadpro) {
@@ -301,8 +308,6 @@ $mainRed : #de267d;
     }
 
     .listInfo {
-
-
       .listCover {
         width: 200px;
         height: 200px;
@@ -616,6 +621,10 @@ $mainRed : #de267d;
             display: none;
           }
 
+        }
+
+        .clearfix {
+          clear: both;
         }
       }
     }
