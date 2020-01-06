@@ -796,6 +796,34 @@
         width: 270px;
     }
 }
+
+[class^="songsadded-"] {
+    // -webkit-filter: brightness(95%);
+    // filter: brightness(95%);
+    // border-radius: 5px;
+    display: inline-block;
+    height: 30px;
+    width: 30px;
+  }
+  .songsadded_leftli .songsadded-lif {
+    background: transparent url("../img/songupload/pus.png") (center / cover) no-repeat;
+    background-size: contain;
+  }
+  .songsadded_leftli .is-click .songsadded-lif{
+    background: transparent url("../img/songupload/dash.png") (center / cover) no-repeat;
+  }
+
+  
+  .songsadded_leftli .songsadded-lif2{
+    background: transparent url("../img/songupload/dash.png") (center / cover) no-repeat;
+  }
+  .songsadded_leftli .is-click .songsadded-lif2{
+    background: transparent url("../img/songupload/pus.png") (center / cover) no-repeat;
+    background-size: contain;
+  }
+
+
+
 .songaddfoot{
     height: 100px;
 }
