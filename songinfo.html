@@ -15,7 +15,7 @@
     <script src="./js/player.js"></script>
     <script src="./js/public.js"></script>
     <style>
-        input[type="checkbox"] {
+        input[type="radio"] {
             -webkit-appearance: none;
             vertical-align: middle;
             margin-top: 0;
@@ -26,11 +26,11 @@
             min-width: 20px;
         }
 
-        input[type="checkbox"]:checked {
+        input[type="radio"]:checked {
             background: #7ED5E5;
         }
 
-        input[type=checkbox]:checked::after {
+        input[type=radio]:checked::after {
             content: '';
             top: 3px;
             left: 3px;
@@ -598,7 +598,7 @@
                                     <!-- <div class="clearfix"></div> -->
                                     <!-- <div class="re-report"></div> -->
                                     <input type="button" name="" class="inforeport" style="display: none;">
-                                    <label class="songinfo_re" for="inforeport">&ensp; Report</label>
+                                    <label class="songinfo_re" for="inforeport" style="text-align: center;">Report</label>
                                 </li>
                                 <li class="infomess_li">
                                     <img class="infomessimg" src="./img/songinfo/people.png"
@@ -609,7 +609,7 @@
                                     <!-- <div class="clearfix"></div> -->
                                     <!-- <div class="re-report"></div> -->
                                     <input type="button" name="" class="inforeport" style="display: none;">
-                                    <label class="songinfo_re" for="inforeport">&ensp; Report</label>
+                                    <label class="songinfo_re" for="inforeport" style="text-align: center;">Report</label>
                                 </li>
                                 <li class="infomess_li">
                                     <img class="infomessimg" src="./img/songinfo/people.png"
@@ -620,7 +620,7 @@
                                     <!-- <div class="clearfix"></div> -->
                                     <!-- <div class="re-report"></div> -->
                                     <input type="button" name="" class="inforeport" style="display: none;">
-                                    <label class="songinfo_re" for="inforeport">&ensp; Report</label>
+                                    <label class="songinfo_re" for="inforeport" style="text-align: center;">Report</label>
                                 </li>
                                 <li class="infomess_li">
                                     <img class="infomessimg" src="./img/songinfo/people.png"
@@ -631,7 +631,7 @@
                                     <!-- <div class="clearfix"></div> -->
                                     <!-- <div class="re-report"></div> -->
                                     <input type="button" name="" class="inforeport" style="display: none;">
-                                    <label class="songinfo_re" for="inforeport">&ensp; Report</label>
+                                    <label class="songinfo_re" for="inforeport" style="text-align: center;">Report</label>
                                 </li>
                             </ul>
                         </div>
@@ -639,13 +639,13 @@
                             <textarea class="infomess_ta" name="" placeholder="Please leave a message." rows="8"
                                 cols="125"></textarea>
                             <br>
-                            <input type="checkbox" name="" id=""> $ 100 dollars
-                            <input type="checkbox" name="" id=""> $ 300 dollars
-                            <input type="checkbox" name="" id=""> $ 500 dollars
-                            <input type="checkbox" name="" id=""> $ 1000 dollars
+                            <input type="radio" name="dollar" id=""> $ 100 dollars
+                            <input type="radio" name="dollar" id=""> $ 300 dollars
+                            <input type="radio" name="dollar" id=""> $ 500 dollars
+                            <input type="radio" name="dollar" id=""> $ 1000 dollars
                             <br>
                             <div class="infose-send"><button class="infose-send" style="display: none;"></button><span
-                                    style="position: relative;left: -13px;top: -5px;">Send</span></div>
+                                    style="position: relative;left: -15px;top: -8px;">Send</span></div>
                             <!-- <button class="infomess_btn">清空</button> -->
                         </div>
                     </div>
