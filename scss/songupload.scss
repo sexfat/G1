@@ -758,7 +758,8 @@
 @media screen and (max-width:878px){
     .sd_btn{
         position: relative;
-        top: -20px;
+        top: 20px;
+        left: 40px;
     }
     #add_tta{
         width: 340px;
@@ -768,7 +769,7 @@
 @media screen and (max-width:768px){
     .sd_btn{
         position: relative;
-        top: -40px;
+        top: -20px;
         left: 30px;
     }
     #add_tta{
@@ -840,8 +841,8 @@
 
     .addedit {
       text-align: center;
-      position: absolute;
-      left: 20px;
+      position: relative;
+      left: 130px;
       top: 0px;
     //   white-space: nowrap;
       padding: 6px;
@@ -861,12 +862,60 @@
     li:hover{
         transform: scale(1.1);
     }
+    @media screen and (max-width:936px){
+        .addedit{
+            position: relative;
+            left: 80px;
+        }
+    }
+    @media screen and (max-width:878px){
+        .addedit{
+            position: relative;
+            left: 200px;
+            top: -35px;
+        }
+    }
+    @media screen and (max-width:768px){
+        .addedit{
+            position: relative;
+            left: 310px;
+            top: -35px;
+        }
+    }
+    @media screen and (max-width:576px){
+        .addedit{
+            position: relative;
+            left: 310px;
+            top: -65px;
+        }
+    }
+    @media screen and (max-width:376px){
+        .addedit{
+            position: relative;
+            left: 260px;
+            top: -65px;
+        }
+    }
   }
 
   .adddeletecheck{
-      width: 150px;
-      height: 150px;
+      width: 400px;
+      height: 260px;
+      background-color: white;
+      border-radius: 10px;
+      .checkbtn{
+          @include butttonn02;
+      }
   }
+  .checkline{
+      border: 2.5px solid black;
+      text-align: center;
+  }
+  .adddeletecheck .fancybox-content{
+    position: absolute;
+    top: 500px ;
+  }
+  
 
 
 .songaddfoot{

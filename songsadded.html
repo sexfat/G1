@@ -9,6 +9,7 @@
     <link rel="Shortcut Icon" type="image/x-icon" href="./img/collection/smalllogo.ico" />
     <link rel="stylesheet" href="./css/main.css">
     <!-- <link rel="stylesheet" href="./css/songupload.css"> -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/fancybox/3.5.7/jquery.fancybox.min.css">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.11.2/css/all.min.css" />
     <script src="https://cdnjs.cloudflare.com/ajax/libs/vue/2.6.10/vue.js"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
@@ -627,7 +628,7 @@
                                     <div class="addedit">
                                         <ul>
                                             <li><span>Edit</span></li>
-                                            <a id="test-c" href="javascript:;" class="btn btn-primary"><li><span>Delete</span></li></a>
+                                            <a id="test-c" href="javascript:;"><li><span>Delete</span></li></a>
                                         </ul>
                                     </div>
                                 </div>
@@ -683,7 +684,7 @@
     <script src="https://cdn.jsdelivr.net/gh/fancyapps/fancybox@3.5.7/dist/jquery.fancybox.min.js"></script>
     <script>
         $("#test-c").on('click', function() {
-           $.fancybox.open('<div class="adddeletecheck"alt=""><span>123</span></div>');
+           $.fancybox.open('<div class="adddeletecheck"alt=""><div class="checkline"><br><p>Are you sure to delete?</p><br><br><button class="checkbtn">Yes</button> <button class="checkbtn">No</button></div></div>');
         });
     </script>
     <script>
