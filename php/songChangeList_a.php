@@ -1,13 +1,15 @@
 <?php
 try {
   require_once("./connectBooks.php");
-  $sql = "update allplaylist
-  set plist_name = :plistName
-  where plist_no = :plistNo;";
+  $sql = "insert into singleplaylist
+  values (:plistNo,:songNo);";
   $modifyData = $pdo->prepare($sql);
   $modifyData->bindValue(':plistNo',  $_GET['plistNo']);
   $modifyData->bindValue(':plistName', $_GET['plistName']);
   $modifyData->execute();
+
+
+  
   if ($modifyData->rowCount() > 0) {
     echo 'success';
   }
