@@ -106,7 +106,7 @@
 @media screen and (max-width:376px){
     .songsadded_lif{
         width: 330px;
-        margin-left: 15px;
+        margin-left: 20px;
     }
 }
 
@@ -203,7 +203,7 @@
     .songsadded_inside,
     .songsadded_inside2{
         width: 330px;
-        margin-left: 15px;
+        margin-left: 20px;
     }
 }
 
@@ -281,8 +281,10 @@
 #infohashtag{
     // border: 1px solid red;
     position: relative;
-    top: -60px;
+    top: -50px;
     left: 0px;
+    padding: 0px;
+    width: 400px;
 }
 
 
@@ -420,7 +422,7 @@
 }
 @media screen and (max-width:376px){
     .songsadded_inside2 li{
-        width: 329px;
+        width: 300px;
     }
 }
 
@@ -444,6 +446,12 @@
     .songsadded_inside2 li .more i{
         position: relative;
         left: 200px;
+    }
+}
+@media screen and (max-width:376px){
+    .songsadded_inside2 li .more i{
+        position: relative;
+        left: 215px;
     }
 }
 
@@ -582,6 +590,13 @@
         left: 95px;
     }
 }
+@media screen and (max-width:376px){
+    .songsadded_inside2 div{
+        position: relative;
+        top: 20px;
+        left: 85px;
+    }
+}
 // .inside2 div .ins2box{
 //     position: relative;
 //     top: 50px;
@@ -607,7 +622,7 @@
 .songinfo_bb{
     @include buttonno04();
     position: relative;
-    top: -62px;
+    top: -58px;
     right: -285px;
 }
 @media screen and (max-width:1140px){
@@ -682,11 +697,11 @@
 .songsadd_path{
     // border: 1px solid #d0d6d6;
     // background-color: #d0d6d6;
-    width: 240px !important;
+    width: 360px !important;
     height: 30px !important;
     position: relative;
-    left: 40px;
-    top: -30px;
+    left: -100px;
+    top: -20px;
     overflow: hidden;
 }
 @media screen and (max-width:1140px){
@@ -782,5 +797,8 @@
 
 
 .songadd_all{
+    overflow: hidden;
+}
+.addallall{
     overflow: hidden;
 }
