@@ -34,8 +34,9 @@
     }
 
     @include respond(latop-min) {
-        width: 752px;
+        width: 789px;
         height: 400px;
+        left: -6%;
     }
 
     @include respond(ipadpro) {
@@ -236,16 +237,17 @@
 
 
         @include respond(latop-min) {
-            transform: translate(-50%, 0%); 
+            transform: translate(-50%, 0%);
         }
+
         @include respond(ipadpro) {
-            transform: translate(-40%, 0%); 
+            transform: translate(-40%, 0%);
             bottom: 1%;
         }
-        
+
         @include respond(ipad) {
             bottom: -6%;
-            transform: translate(-40%, 0%); 
+            transform: translate(-40%, 0%);
         }
 
         @include respond(phone) {
@@ -642,7 +644,7 @@
 }
 
 .act_old_years {
- 
+
     position: relative;
     background-image: url(../img/activity/0.blackline.svg);
     max-width: 1200px;
@@ -685,6 +687,7 @@
         z-index: -1;
         width: 500px;
         height: 400px;
+
         @include respond(latop-max) {
             top: -30%;
             left: -10%;
@@ -704,6 +707,7 @@
             left: -10%;
 
         }
+
         @include respond(ipad) {
             top: -15%;
             left: -20%;
@@ -730,11 +734,12 @@
         @include respond(latop-min) {
             width: 50%;
         }
+
         @include respond(ipadpro) {
             width: 100%;
         }
 
-      .act_year {
+        .act_year {
             font-size: 2.5rem;
             font-weight: bold;
             display: inline-block;
@@ -884,12 +889,13 @@
 
 
     .act_oldposterbox {
-     
+
         display: inline-block;
         position: absolute;
         height: 100%;
         top: 0%;
         right: 0%;
+
         @include respond(ipadpro) {
             position: static;
             position: relative;
@@ -897,12 +903,13 @@
             margin: 0 20px 0 auto;
 
         }
-       
+
         @include respond(ipad) {
             margin: 0 20px 0 auto;
             left: 50px;
             width: 100%;
         }
+
         .act_oldposter {
             width: 500px;
             height: 590px;
@@ -924,16 +931,17 @@
                 right: 10%;
 
             }
+
             @include respond(ipadpro) {
                 position: static;
                 position: relative;
                 width: 300px;
                 height: 342px;
                 margin: 0 20px 0 auto;
-    
+
             }
 
-          
+
             @include respond(phone) {
                 left: -50px;
             }
@@ -1001,7 +1009,7 @@
 }
 
 .act_oldsongbox {
-   
+
     max-width: 1200px;
     font-size: 0;
     padding-bottom: 100px;
@@ -1084,9 +1092,10 @@
             margin: 0 0px 30px 50px;
             text-align: left;
         }
+
         @include respond(phone) {
             margin: 0 0px 30px 20px;
-    
+
         }
 
     }
@@ -1134,6 +1143,7 @@
             @include respond(latop-max) {
                 margin: 0 auto
             }
+
             span {
                 font-size: $rem0_8;
 
@@ -1156,10 +1166,12 @@
                 font-size: $rem1_2;
                 font-weight: normal;
                 cursor: pointer;
+
                 &:hover {
-                  transform: scale(1.1);
-                  font-weight: bold;
+                    transform: scale(1.1);
+                    font-weight: bold;
                 }
+
                 @include respond(latop-max) {
                     font-size: $rem0_8;
                 }
@@ -1331,10 +1343,11 @@
             margin: 0 0px 30px 50px;
 
         }
+
         @include respond(phone) {
             margin: 0 0px 30px 20px;
 
-         }
+        }
     }
 
     div {
@@ -1378,6 +1391,7 @@
             font-size: $rem0_6;
             margin: 0 auto 0 20px;
             vertical-align: bottom;
+
             @include respond(latop-max) {
                 margin: 0 auto 0 5px;
             }
@@ -1403,9 +1417,10 @@
                 font-size: $rem1_2;
                 font-weight: normal;
                 cursor: pointer;
+
                 &:hover {
-                  transform: scale(1.1);
-                  font-weight: bold;
+                    transform: scale(1.1);
+                    font-weight: bold;
                 }
 
                 @include respond(latop-max) {
@@ -1433,7 +1448,7 @@
 
                 &:hover {
                     transform: scale(1.1);
-                   
+
                 }
 
 
@@ -1464,7 +1479,8 @@
                 width: 100px;
                 height: 100px;
             }
-            @include respond(phone){
+
+            @include respond(phone) {
                 width: 120px;
                 height: 120px;
             }
@@ -1546,7 +1562,7 @@
     }
 
     @include respond(ipadpro) {
-        margin: 50px auto 0 auto;  
+        margin: 50px auto 0 auto;
         padding: 100px 40px 40px;
         max-width: 650px;
         min-height: 750px;
@@ -1701,19 +1717,21 @@
     @include respond(ipadpro) {
         position: static;
         position: relative;
-        top:50px;
-        
+        top: 50px;
+
 
     }
+
     @include respond(ipad) {
-       left: 10px;
+        left: 10px;
 
     }
+
     @include respond(phone) {
-       left: -20px;
+        left: -20px;
 
     }
-   
+
 
     .act_nowposter {
         width: 600px;
@@ -1736,11 +1754,12 @@
             height: 408px;
 
         }
+
         @include respond(ipadpro) {
             position: static;
             width: 400px;
             height: 408px;
-           
+
             margin: 0 20px 0 auto;
 
         }
@@ -1803,7 +1822,7 @@
             width: 500px;
             height: 370px;
             left: -30%;
-            top:50px;
+            top: 50px;
         }
 
 
@@ -2274,21 +2293,21 @@
         @include respond(latop-min) {
             font-size: $rem1_2;
         }
+
         @include respond(ipadpro) {
             margin: 0 0 40px 30px;
-    
+
         }
-    
+
         @include respond(ipad) {
             margin: 0 0 40px 30px;
-    
+
         }
 
     }
 
     .act_Now-Vote-content {
-
-        height: 350px;
+        min-height: 400px;
         max-width: 1200px;
         padding: 50px;
         position: relative;
@@ -2308,12 +2327,11 @@
         }
 
         @include respond(latop-min) {
-            max-width: 700px;
+            max-width: 680px;
         }
 
         @include respond(ipadpro) {
             max-width: 600px;
-            min-height: 350px;
         }
 
         @include respond(ipad) {
@@ -2322,9 +2340,9 @@
         }
 
         @include respond(phone) {
-            max-width: 320px;
+            max-width: 290px;
             padding: 50px 20px;
-            min-height: 400px;
+            min-height: 450px;
         }
 
 
@@ -2343,7 +2361,7 @@
         }
 
         p {
-            width: 60%;
+            width: 90%;
             font-size: $rem1;
             margin: 0;
 
@@ -2352,16 +2370,20 @@
             }
 
             @include respond(ipadpro) {
-                width: 80%;
+                width:100%;
             }
         }
 
         div {
             text-align: right;
             vertical-align: middle;
+            position: relative;
+            top: -50px;
 
             @include respond(ipadpro) {
-                padding-right: 25px;
+                left: 25px;
+                top:0;
+
             }
 
             h3 {
@@ -2471,7 +2493,7 @@
             }
 
             @include respond(latop-min) {
-                width: 160px;
+                width: 150px;
                 margin: 0 10px;
             }
 
@@ -2522,9 +2544,10 @@
                     font-size: $rem1_2;
                     font-weight: normal;
                     cursor: pointer;
+
                     &:hover {
-                      transform: scale(1.1);
-                      font-weight: bold;
+                        transform: scale(1.1);
+                        font-weight: bold;
                     }
 
                     @include respond(latop-max) {
@@ -2595,17 +2618,24 @@
                     height: 150px;
                 }
 
+
+                @include respond(latop-min) {
+                    width: 140px;
+                    height: 140px;
+                }
+
                 @include respond(ipadpro) {
                     width: 100px;
                     height: 100px;
                 }
+
                 @include respond(ipad) {
                     width: 130px;
                     height: 130px;
                 }
 
-               
-                @include respond(phone){
+
+                @include respond(phone) {
                     width: 120px;
                     height: 120px;
                 }

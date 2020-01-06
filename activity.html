@@ -11,9 +11,12 @@
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.11.2/css/all.min.css" />
     <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/vue/2.6.10/vue.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/axios/0.19.0/axios.min.js"></script>
+
     <script src="./js/player.js"></script>
     <script src="./js/public.js"></script>
     <link rel="Shortcut Icon" type="image/x-icon" href="./img/collection/smalllogo.ico" />
+</head>
 
 <body>
     <div id="activityTop"></div>
@@ -439,10 +442,10 @@
                     <a href="#activityTop" class="act_Anchor ">
                         <img src="./img/activity/top-bush.png" alt="" class="act_Bush">
 
-                            <div class="act_ShowTopBush" v-if="GoTopBush==true">
-                                <img src="./img/activity/top-bush02.png" alt="">
-                            </div>
-            
+                        <div class="act_ShowTopBush" v-if="GoTopBush==true">
+                            <img src="./img/activity/top-bush02.png" alt="">
+                        </div>
+
                         TOP
                     </a>
 
@@ -507,12 +510,10 @@
          
                      <p>
          
-                         American Idol is an annual American singing competition
-                         which began its first season in June 11, 2002.
-                         Part of the Idol franchise, it originated from the UK
-                         reality program Pop Idol.
-         
-         
+                        SoundWave aims to provide an amateur music creation platform for more people to discover more and better mixed music.
+                        <br>
+                        The theme of this event is pop style!
+                       
                      </p>
                      <div class="act_oldVotes">
                          <h3>Votes</h3>
@@ -752,10 +753,9 @@
          
                      <p>
          
-                         American Idol is an annual American singing competition
-                         which began its first season in June 11, 2002.
-                         Part of the Idol franchise, it originated from the UK
-                         reality program Pop Idol.
+                        SoundWave aims to provide an amateur music creation platform for more people to discover more and better mixed music.
+                        <br>
+                        The theme of this event is hit-hop style!
          
          
                      </p>
@@ -1032,11 +1032,12 @@
                          <div>Electronic dance music contest 2019</div>
                          <h3>Information</h3>
                          <p>
-             
-                             American Idol is an annual American singing competition
-                             which began its first season in June 11, 2002.
-                             Part of the Idol franchise, it originated from the UK
-                             reality program Pop Idol.
+                            SoundWave aims to provide an amateur music creation platform for more people to discover more and better mixed music.
+                            <br>
+                            The theme of this event is rock style,let's rock it!<br>
+                            Come and sign up for our competition so that more people can hear your music.
+                          
+                             
              
              
                          </p>
@@ -1085,9 +1086,10 @@
                 <article v-if="formContent==0">
                        <div>
                           <h3>Qualifications</h3>
-                          <p>American Idol is an annual American singing competition 
-                             which began its first season in June 11, 2002. 
-                             Part of the Idol franchise, it originated from the UK reality program Pop Idol.
+                          <p>
+                              1.Must be a website member,please login or register
+                              2.Cannot register with songs that have already participated in previous events
+                            
                          </p>
                            <p class="act_from-button-box">
                             <button type="button" @click="NextFormPage(1)">Go</button>
@@ -1213,9 +1215,9 @@
                 <article v-if="formContent==4">
                     <div >
                        <h3>Qualifications</h3>
-                       <p>American Idol is an annual American singing competition 
-                          which began its first season in June 11, 2002. 
-                          Part of the Idol franchise, it originated from the UK reality program Pop Idol.
+                       <p>  
+                           1.Must be a website member,please login or register
+                           2.Cannot register with songs that have already participated in previous events
                       </p>
                       <p class="act_from-button-box">
                             <button type="button" disable style="background-color:gray ">Done</button>
@@ -1233,10 +1235,14 @@
                       
                        <h3>Rules</h3>
                        <p>
-                         American Idol is an annual American singing competition 
-                         which began its first season in June 11, 2002. 
-                         Part of the Idol franchise, it originated from the UK 
-                         reality program Pop Idol.
+                        Depending on the category, submissions are judged on the following criteria:<br>
+                        <br>
+                        1.Creativity<br>
+                        2.Originality<br>
+                        3.Lyrics (excludes songs that do not have lyrics)<br>
+                        4.Melody<br>
+                        5.Arrangement<br>
+                        6.Overall likeability<br>
                        </p>
                        <div>
                          <h3>Votes</h3>
@@ -1425,9 +1431,9 @@
             $('.act_Anchor').on('click', function (e) {
                 e.preventDefault();
                 $('html, body').animate({ scrollTop: $($(this).attr('href')).offset().top }, 700, 'swing');
-              
+
             });
-         
+
         });
 
 
@@ -1519,7 +1525,7 @@
             template: '#act-old',
             data: function () {
                 return {
-                    Votes:455,
+                    Votes: 455,
                 }
 
             },
@@ -1617,7 +1623,7 @@
                     } else {
                         GoTopButton.classList.toggle('act_ShowTopAnchor');
                     }
-                    this.GoTopBush=true;
+                    this.GoTopBush = true;
 
                     // // if(this.GoTopBush==true){
                     // //     this.GoTopBush=false;
