@@ -5,7 +5,7 @@ div.nav_bar {
   height: 60px;
   padding: 0px 10px;
   align-items: center;
-  background: #ffffff;
+  background: #FAFAF1;
 
   ul {
     list-style: none;
@@ -145,13 +145,26 @@ div.nav_bar {
   }
 
   .logo_container {
+    position: relative;
+    width: 100px;
     height: 55px;
 
     .logo {
+      position: absolute;
+      z-index: 2;
+      left: 0px;
       width: 100px;
       height: 55px;
       background: url("../img/public/logo_s.svg") center center no-repeat;
-      transition: all 0.5s;
+    }
+    .finger {
+      position: absolute;
+      z-index: 1;
+      top: -18px;
+      left: 10px;
+      width: 138px;
+      height: 100px;
+      background: url("../img/public/finger.png") center center no-repeat;
     }
   }
 
@@ -192,8 +205,8 @@ div.nav_bar {
   .search_bt {
     width: 50px;
     height: 50px;
-    background: url("../img/public/search_icon.png");
-    background-size: cover;
+    background: url("../img/public/search_icon.png") center center no-repeat;
+    background-size: 30px 30px;
     transition: all 0.5s;
 
     a {
@@ -230,24 +243,24 @@ div.nav_bar {
   }
 
   .login_bt {
-    width: 70px;
-    height: 40px;
-    border: 1px solid $yellow;
-    border-radius: 5px;
+    width: 80px;
+    height: 45px;
+    background: url("../img/public/login_bt.png") center center no-repeat;
+    background-size: 65px 35px;
+
 
     a {
+      display: block;
       width: 68px;
       height: 38px;
-      justify-content: center;
-      align-items: center;
     }
   }
 
   .mem_bt {
     width: 50px;
     height: 50px;
-    background: url("../img/public/user_icon.png");
-    background-size: cover;
+    background: url("../img/public/user_icon.png") center center no-repeat;
+    background-size: 25px 30px;
     transition: all 0.5s;
 
     a {
