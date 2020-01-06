@@ -1,3 +1,4 @@
+//get member login  information
 function getLoginInfo(){
     let xhr = new XMLHttpRequest();
     xhr.onload = function(){
