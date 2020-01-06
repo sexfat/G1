@@ -65,6 +65,7 @@
             -webkit-transform: rotate(-45deg);
             transform: rotate(-45deg);
         }
+
         input[type="checkbox"] {
             -webkit-appearance: none;
             vertical-align: middle;
@@ -103,8 +104,8 @@
     <div class="addallall">
         <div id="app">
             <!-- 記得包在 Vue 裡-->
-    
-    
+
+
             <!-- nav_bar start -->
             <div class="nav_bar flexbox">
                 <div class="hamburger" @click="hamburger_click">
@@ -208,10 +209,10 @@
                 </div>
             </div>
             <!-- nav_bar end -->
-    
-    
-    
-    
+
+
+
+
             <!-- player start -->
             <div id="player">
                 <audio src="" id="audioPlayer"></audio>
@@ -225,7 +226,7 @@
                         <div class="heart becomeRed"><i class="fas fa-heart"></i></div>
                         <div class="clearfix"></div>
                     </div>
-    
+
                     <div class="controlPanel">
                         <div class="progressbar">
                             <div class="progress"></div>
@@ -255,11 +256,11 @@
                             <div class="clearfix"></div>
                         </div>
                     </div>
-    
+
                     <div class="expand" id="expand"><i class="fas fa-expand"></i></div>
                     <div class="clearfix"></div>
                 </div>
-    
+
                 <!-- 詳細版 -->
                 <div class="player_b">
                     <div class="left">
@@ -310,7 +311,7 @@
                         </div>
                         <div class="pushBtn"></div>
                     </div>
-    
+
                     <div class="right">
                         <div class="pushBtn"></div>
                         <div class="listTitle">
@@ -430,13 +431,13 @@
                                     <div class="heart becomeRed"><i class="fas fa-heart"></i></div>
                                     <div class="clearfix"></div>
                                 </li>
-    
+
                             </ul>
                         </div>
                     </div>
                     <div class="close" id="closePlayer"><i class="fas fa-times"></i></div>
                     <div class="clearfix"></div>
-    
+
                     <!-- 撥放器燈箱 -->
                     <div class="lightCover">
                         <div class="lightbox_s" id="myAllList">
@@ -455,24 +456,28 @@
                 </div>
             </div>
             <!-- player end -->
-    
-    
-    
-    
-    
+
+
+
+
+
         </div>
         <header>
             <div>
                 <img src="./img/songupload/addtitle.png" alt="">
             </div>
         </header>
-    
+
         <div class="songadd_all">
             <section class="songsadded_adds2">
                 <ol class="songsadded_leftli">
                     <div class="songsadded-lif-container is-click">
                         <li class="songsadded_lif">
-                         <h2>&emsp;Upload song <div class="songsadded-lif" style="float: right;margin-right: 30px;"></div></h2>
+                            <a href="#">
+                                <h2>&emsp;Upload song <div class="songsadded-lif"
+                                        style="float: right;margin-right: 30px;"></div>
+                                </h2>
+                            </a>
                         </li>
                         <ol class="songsadded_inside">
                             <form action="" method="POST">
@@ -484,22 +489,27 @@
                                     <!-- <img class="songsadded_ff" style="width: 50px;height: 30px;"
                                         src="./img/songupload/button_edit.png"> -->
                                     <input type="file" name="" id="theFile" style="display: none;">
-                                    <label class="songsadded_ff" for="theFile" style="text-align: center;margin-left: -5px;">Edit</label>
-            
+                                    <label class="songsadded_ff" for="theFile"
+                                        style="text-align: center;margin-left: -5px;">Edit</label>
+
                                 </article>
                                 <div>
                                     <p style="font-weight: bold;">Song Title : <input type="text" id="add_pp"
                                             style="border: 1px solid #d0d6d6;width:350px;height:28px;background-color: #d0d6d6;">
                                     </p>
                                     <div id="infopath">
-                                        <span style="position: relative;left: -100px;top: -20px;font-weight: bold;">Upload path :</span>
+                                        <span
+                                            style="position: relative;left: -100px;top: -20px;font-weight: bold;">Upload
+                                            path :</span>
                                         <p class="songsadd_path">{{infopathURL}}</p>
                                         <input type="file" name="" id="songinfo_btn" @change="changeSignUpload"
                                             style="display: none;">
-                                        <label class="songinfo_bb" for="songinfo_btn" style="text-align: center;">Choose</label>
+                                        <label class="songinfo_bb" for="songinfo_btn"
+                                            style="text-align: center;">Choose</label>
                                     </div><br>
                                     <div id="infohashtag">
-                                        <span style="font-weight: bold;">Song type : </span><input type="radio" name="type" id=""> House&ensp;
+                                        <span style="font-weight: bold;">Song type : </span><input type="radio"
+                                            name="type" id=""> House&ensp;
                                         <input type="radio" style="border-radius: 5px;" name="type" id="">Trap
                                         <br>
                                         <span style="font-weight: bold;">Hashtag : </span><br>
@@ -512,22 +522,33 @@
                                             style="border: 1px solid #d0d6d6;background-color: #D0D6D6;"></textarea>
                                     </div>
                                 </div>
-            
+
                                 <section><input type="submit" id="sd" name="submit" onClick="document.form.submit()">
                                     <label class="sd_btn" for="sd">Send</label>
                                 </section>
                             </form>
-            
+
                         </ol>
                         <li class="songsadded_lif">
-                            <h2>&emsp;Uploaded<div class="songsadded-lif2" style="float: right;margin-right: 30px;"></div></h2>
+                            <a href="#">
+                                <h2>&emsp;Uploaded<div class="songsadded-lif2" style="float: right;margin-right: 30px;">
+                                    </div>
+                                </h2>
+                            </a>
                         </li>
                         <ol class="songsadded_inside2">
                             <li>Andy Warhol - Because of you <span style="float: right;margin-right: 20px;"></span>
                                 <div class="more" style="float: right;margin-right: 310px;">
                                     <i class="fas fa-ellipsis-h"></i>
+                                    <div class="addedit">
+                                        <ul>
+                                            <li>Edit</li>
+                                            <li>Delete</li>
+                                        </ul>
+                                    </div>
                                 </div>
-                            </span></li>
+                                <div class="clearfix"></div>
+                            </li>
                             <ol>
                                 <article>
                                     <p style="width: 100px;height: 100px;">
@@ -539,11 +560,14 @@
                                     <label class="songsadded_ff" for="theFile"> &emsp; Edit</label>
                                 </article>
                                 <div>
-                                    <span><span style="font-weight: bold;">Song Title :</span><span style="font-size:16px"> Because
+                                    <span><span style="font-weight: bold;">Song Title :</span><span
+                                            style="font-size:16px"> Because
                                             of you</span></span><br>
-                                    <span><span style="font-weight: bold;">Author :</span><span style="font-size:16px"> Andy
+                                    <span><span style="font-weight: bold;">Author :</span><span style="font-size:16px">
+                                            Andy
                                             Warhol</span></span><br>
-                                    <span><span style="font-weight: bold;">Song Type :</span><span style="font-size:16px">
+                                    <span><span style="font-weight: bold;">Song Type :</span><span
+                                            style="font-size:16px">
                                             House</span></span><br>
                                     <span><span style="font-weight: bold;">HashTag :</span><span style="font-size:16px">
                                             #Scratch</span></span><br>
@@ -558,8 +582,15 @@
                             <li>Andy Warhol - Because of you <span style="float: right;margin-right: 20px;"></span>
                                 <div class="more" style="float: right;margin-right: 310px;">
                                     <i class="fas fa-ellipsis-h"></i>
+                                    <div class="addedit">
+                                        <ul>
+                                            <li>Edit</li>
+                                            <li>Delete</li>
+                                        </ul>
+                                    </div>
                                 </div>
-                            </span></li>
+                                <div class="clearfix"></div>
+                            </li>
                             <ol>
                                 <article>
                                     <p style="width: 100px;height: 100px;">
@@ -571,11 +602,14 @@
                                     <label class="songsadded_ff" for="theFile"> &emsp; Edit</label>
                                 </article>
                                 <div>
-                                    <span><span style="font-weight: bold;">Song Title :</span><span style="font-size:16px"> Because
+                                    <span><span style="font-weight: bold;">Song Title :</span><span
+                                            style="font-size:16px"> Because
                                             of you</span></span><br>
-                                    <span><span style="font-weight: bold;">Author :</span><span style="font-size:16px"> Andy
+                                    <span><span style="font-weight: bold;">Author :</span><span style="font-size:16px">
+                                            Andy
                                             Warhol</span></span><br>
-                                    <span><span style="font-weight: bold;">Song Type :</span><span style="font-size:16px">
+                                    <span><span style="font-weight: bold;">Song Type :</span><span
+                                            style="font-size:16px">
                                             House</span></span><br>
                                     <span><span style="font-weight: bold;">HashTag :</span><span style="font-size:16px">
                                             #Scratch</span></span><br>
@@ -590,8 +624,15 @@
                             <li>Andy Warhol - Because of you <span style="float: right;margin-right: 20px;"></span>
                                 <div class="more" style="float: right;margin-right: 310px;">
                                     <i class="fas fa-ellipsis-h"></i>
+                                    <div class="addedit">
+                                        <ul>
+                                            <li><span>Edit</span></li>
+                                            <a id="test-c" href="javascript:;" class="btn btn-primary"><li><span>Delete</span></li></a>
+                                        </ul>
+                                    </div>
                                 </div>
-                            </span></li>
+                                <div class="clearfix"></div>
+                            </li>
                             <ol>
                                 <article>
                                     <p style="width: 100px;height: 100px;">
@@ -603,11 +644,14 @@
                                     <label class="songsadded_ff" for="theFile"> &emsp; Edit</label>
                                 </article>
                                 <div>
-                                    <span><span style="font-weight: bold;">Song Title :</span><span style="font-size:16px"> Because
+                                    <span><span style="font-weight: bold;">Song Title :</span><span
+                                            style="font-size:16px"> Because
                                             of you</span></span><br>
-                                    <span><span style="font-weight: bold;">Author :</span><span style="font-size:16px"> Andy
+                                    <span><span style="font-weight: bold;">Author :</span><span style="font-size:16px">
+                                            Andy
                                             Warhol</span></span><br>
-                                    <span><span style="font-weight: bold;">Song Type :</span><span style="font-size:16px">
+                                    <span><span style="font-weight: bold;">Song Type :</span><span
+                                            style="font-size:16px">
                                             House</span></span><br>
                                     <span><span style="font-weight: bold;">HashTag :</span><span style="font-size:16px">
                                             #Scratch</span></span><br>
@@ -620,22 +664,28 @@
                                 </div>
                             </ol>
                         </ol>
-                    </ol>
-                    </div>
-                    
-                <div class="uploadmic">
-                    <img src="./img/songupload/mic.png" alt="">
-                </div>
-                <!-- <div class="songsadded_adds3"></div> -->
-            </section>
-            <!-- <section class="songsadded_adds3"></section> -->
+                </ol>
         </div>
+
+        <div class="uploadmic">
+            <img src="./img/songupload/mic.png" alt="">
+        </div>
+        <!-- <div class="songsadded_adds3"></div> -->
+        </section>
+        <!-- <section class="songsadded_adds3"></section> -->
+    </div>
     </div>
     <footer class="songaddfoot">
     </footer>
-    
-    
 
+
+
+    <script src="https://cdn.jsdelivr.net/gh/fancyapps/fancybox@3.5.7/dist/jquery.fancybox.min.js"></script>
+    <script>
+        $("#test-c").on('click', function() {
+           $.fancybox.open('<div class="adddeletecheck"alt=""><span>123</span></div>');
+        });
+    </script>
     <script>
         (function ($) {
             $(document).ready(function () {
@@ -647,7 +697,6 @@
             });
         })(jQuery);
     </script>
-
     <script>
         function doFirst() {
             document.getElementById('theFile').onchange = fileChange;
@@ -669,6 +718,21 @@
         }
         window.addEventListener('load', doFirst);
     </script>
+
+    <script>
+        window.addEventListener('load', function () {
+            //more -- changeList
+            $('.more').click(function () {
+                $(this).find('.addedit').show();
+                $('.more').not(this).find('.addedit').hide();
+            });
+            $('.more').mouseleave(function () {
+                $(this).find('.addedit').hide();
+            });
+        });
+    </script>
+    
+
     <script>
         new Vue({
             el: "#infopath",

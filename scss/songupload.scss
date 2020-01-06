@@ -824,6 +824,51 @@
 
 
 
+  .songsadded_inside2 .more {
+    float: right;
+    text-align: right;
+    position: relative;
+    cursor: pointer;
+
+    i {
+      transition: transform .5s;
+
+      &:hover {
+        transform: scale(1.1);
+      }
+    }
+
+    .addedit {
+      text-align: center;
+      position: absolute;
+      left: 20px;
+      top: 0px;
+    //   white-space: nowrap;
+      padding: 6px;
+      margin-top: 8px;
+      font-size: $rem0_8;
+      border: 2px $fontColor solid;
+      background-color: white;
+      display: none;
+    }
+    ul,
+    li{
+        width: 100px;
+        background-color: white;
+        padding: 0px 0px;
+        border: 1.2px solid rgba(0, 0, 0, 0);
+    }
+    li:hover{
+        transform: scale(1.1);
+    }
+  }
+
+  .adddeletecheck{
+      width: 150px;
+      height: 150px;
+  }
+
+
 .songaddfoot{
     height: 100px;
 }
