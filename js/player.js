@@ -261,10 +261,15 @@
  function getLightName() {
    let xhr = new XMLHttpRequest();
    xhr.onload = function () {
-     phpGetListName = JSON.parse(xhr.responseText);
-     mylistInfo = phpGetListName;
-     lightListName(phpGetListName);
-     showAllMyList(mylistInfo);
+     if(xhr.status==200){
+      phpGetListName = JSON.parse(xhr.responseText);
+      mylistInfo = phpGetListName;
+      lightListName(phpGetListName);
+      showAllMyList(mylistInfo);
+      libraryLightListName(phpGetListName);
+     }else{
+       alert(xhr.statusText);
+     }
    };
    xhr.open("get", "./php/getListName.php", true);
    xhr.send(null);
@@ -273,9 +278,13 @@
  function getLikedList() {
    let xhr = new XMLHttpRequest();
    xhr.onload = function () {
-     myPlaylist = JSON.parse(xhr.responseText);
-     listLen = myPlaylist.length;
-     createPlayerList(myPlaylist);
+     if(xhr.status==200){
+      myPlaylist = JSON.parse(xhr.responseText);
+      listLen = myPlaylist.length;
+      createPlayerList(myPlaylist);
+     }else{
+       alert(xhr.statusText);
+     }
    };
    xhr.open("get", "./php/likedSongsList.php", false);
    xhr.send(null);
@@ -291,7 +300,7 @@
        createPlayerList(myPlaylist);
        console.log(myPlaylist);
      } else {
-       alert(xhr.status);
+       alert(xhr.statusText);
      }
    };
    let url = `./php/showPlayList.php?plistName=${playerListName}`;
@@ -300,11 +309,7 @@
  }
  //歌單資訊
  function ListTopInfo() {
-   let allListName = [];
-   for (let i = 0; i < phpGetListName.length; i++) {
-     allListName.push(phpGetListName[i].plist_name);
-   }
-   let listIndex = allListName.indexOf(playerListName);
+   let listIndex = getListIndex(playerListName);
    if (listIndex == -1) {
      $('.player_b .listCover img').attr('src', './img/library/list_pic0.jpg');
      $('.player_b .listName h2').text('Liked songs');
@@ -382,8 +387,8 @@
  //build lightbox -- allmylist
  function lightListName(ListInfo) {
    let ul, li, text;
-   $('.allmylist ul').children().remove();
-   ul = $('.allmylist ul');
+   $('#myAllList ul').children().remove();
+   ul = $('#myAllList ul');
    li = document.createElement('li');
    text = document.createTextNode('Liked songs');
    li.setAttribute('class', 'chooseList');

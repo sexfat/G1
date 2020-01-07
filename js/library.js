@@ -1,5 +1,5 @@
  /* ---------------- 全域變數 ---------------- */
- let getSongName, getListName;
+ let getSongName, getNewListName;
  let nowList = 'Liked songs';
  let mylistInfo = []; //清單資訊
  let libraryList = []; //歌曲資訊
@@ -33,7 +33,7 @@
      $(this).find('.changeList').hide();
    });
 
-   //changeList -- 跳窗 -- 未完成
+   //changeList -- 跳窗
    $('.songs').on('click', '.changeList', function () {
      getSongName = $(this).parent().siblings('.listSongInfo').find('.name a').text();
      $('.lightCover').show();
@@ -52,15 +52,27 @@
      e.stopPropagation();
    });
    $('#libraryMyAllList ul').on('click', 'li', function () {
-     getListName = $(this).text(); //抓清單名字 -- 要把歌新增過去
+     getNewListName = $(this).text(); //抓清單名字 -- 要把歌新增過去
      $(this).addClass('choose');
      $('#libraryMyAllList li').not(this).removeClass('choose');
    });
 
-   $('#libraryMyAllList button').click(function () {
-     songChangeListD();
-     $('#libraryMyAllList').hide();
+   $('#libraryMyAllList>button').click(function () {
+     let songind = getSongIndex(getSongName);
+     let songNo = libraryList[songind].song_no;
      $('.lightCover').hide();
+     $('#libraryMyAllList').hide();
+     if (nowList == 'Liked songs') {
+       songChangeListA(songNo);
+     } else {
+       if (nowList == getNewListName) {
+         $('.lightCover').show();
+         $('#listAlert').show();
+         $('#listAlert h4').text('Fail to change!');
+       } else {
+         songChangeListD(songNo);
+       }
+     }
    });
 
    //createBtn -- 跳窗
@@ -76,10 +88,14 @@
      let createNewLi = $("#createListName").val();
      let xhr = new XMLHttpRequest();
      xhr.onload = function () {
-       if (xhr.responseText == 'success') {
-         buildNewLi(createNewLi);
+       if (xhr.status == 200) {
+         if (xhr.responseText == 'success') {
+           buildNewLi(createNewLi);
+         } else {
+           alert('failure');
+         }
        } else {
-         alert('failure');
+         alert(xhr.statusText);
        }
      };
      let url = `./php/createNewList.php?createListName=${createNewLi}`;
@@ -138,23 +154,27 @@
      let plistno = mylistInfo[listind].plist_no;
      let xhr = new XMLHttpRequest();
      xhr.onload = function () {
-       if (xhr.responseText == 'success') {
-         getLibraryList();
-         $('#listAlert h4').text('Successfully modified');
+       if (xhr.status == 200) {
+         if (xhr.responseText == 'success') {
+           getLibraryList();
+           $('#listAlert h4').text('Successfully modified');
+         } else {
+           $('#listAlert h4').text('Fail to modify');
+         }
+         $('.lightCover').show();
+         $('#listAlert').show();
        } else {
-         $('#listAlert h4').text('fail to modify');
+         alert(xhr.statusText);
        }
-       $('.lightCover').show();
-       $('#listAlert').show();
      };
-     let url = `./php/modifyList.php?plistName=${modifyName}&&plistNo=${plistno}`;
+     let url = `./php/modifyList.php?plistName=${modifyName}&plistNo=${plistno}`;
      xhr.open("get", url, true);
      xhr.send(null);
    });
    $('#listAlert').click(function (e) {
      e.stopPropagation();
    });
-   $('#listAlert button').click(function () {
+   $('#listAlert>button').click(function () {
      $('.lightCover').hide();
      $('#listAlert').hide();
    });
@@ -170,12 +190,12 @@
      //      getLibraryList();
      //      $('#listAlert h4').text('Successfully modified');
      //    } else {
-     //      $('#listAlert h4').text('fail to modify');
+     //      $('#listAlert h4').text('Fail to modify');
      //    }
      //    $('.lightCover').show();
      //    $('#listAlert').show();
      //  };
-     //  let url = `./php/modifyListImg.php?listPic=${modifyImg}&&plistNo=${plistno}`;
+     //  let url = `./php/modifyListImg.php?listPic=${modifyImg}&plistNo=${plistno}`;
      //  xhr.open("get", url, true);
      //  xhr.send(null);
    });
@@ -245,12 +265,18 @@
 
    //ALL PLAY BTN
    $("#listAllPlay").click(function () {
-     var listIndex = $('.songs.chooseList').index();
-     $(`#player #myAllList li:nth-of-type(${listIndex})`).addClass("choose");
-     $(`#player .right ul:nth-of-type(${listIndex})`).addClass("chooseList");
+     playerListName = nowList;
+     phpGetListName = mylistInfo;
+     myPlaylist = libraryList;
+     console.log(libraryList);
      nowPlaying = 0;
-     isPlaying(false);
+     $('#player audio').attr('src', myPlaylist[nowPlaying].song_addr);
+     listLen = myPlaylist.length;
+     console.log(listLen);
      audio.currentTime = 0;
+     isPlaying(false);
+     createPlayerList(libraryList);
+     ListTopInfo();
    });
  });
 
@@ -260,8 +286,12 @@
  function getLibraryList() {
    let xhr = new XMLHttpRequest();
    xhr.onload = function () {
-     mylistInfo = JSON.parse(xhr.responseText);
-     showAllMyList(mylistInfo);
+     if (xhr.status == 200) {
+       mylistInfo = JSON.parse(xhr.responseText);
+       showAllMyList(mylistInfo);
+     } else {
+       alert(xhr.statusText);
+     }
    };
    xhr.open("get", "./php/getListName.php", false);
    xhr.send(null);
@@ -272,8 +302,12 @@
    let url;
    let xhr = new XMLHttpRequest();
    xhr.onload = function () {
-     libraryList = JSON.parse(xhr.responseText);
-     showLibrarySongs(libraryList);
+     if (xhr.status == 200) {
+       libraryList = JSON.parse(xhr.responseText);
+       showLibrarySongs(libraryList);
+     } else {
+       alert(xhr.statusText);
+     }
    };
    if (listname == 'Liked songs') {
      url = `./php/likedSongsList.php`;
@@ -318,6 +352,18 @@
      $(".listInfo .totalSong").text(`${listlen} songs`);
    }
  };
+
+ function libraryLightListName(ListInfo) {
+   let ul, li, text;
+   $('#libraryMyAllList ul').children().remove();
+   ul = $('#libraryMyAllList ul');
+   for (let i = 0; i < ListInfo.length; i++) {
+     li = document.createElement('li');
+     text = document.createTextNode(ListInfo[i].plist_name);
+     li.append(text);
+     ul.append(li);
+   }
+ }
 
  //顯示所有清單列表
  function showAllMyList(mylist) {
@@ -440,43 +486,57 @@
    $('#mobile_listChoose').append(optionn);
  }
 
- //歌改變歌單-刪除
- function songChangeListD() {
-   let listind = getListIndex(getListName);
-   let songind = getSongIndex(getSongName);
-   let plistNo = mylistInfo[listind].plist_no;
-   let songNo = libraryList[songind].song_no;
+ //歌改變歌單-舊的刪除
+ function songChangeListD(songNo) {
+   let listOldind = getListIndex(nowList);
+   let plistNo = mylistInfo[listOldind].plist_no; //舊的清單
    $('#lightPlistNo').val(plistNo);
    $('#lightSongNo').val(songNo);
-   console.log( $('#lightPlistNo').val());
-   console.log( $('#lightSongNo').val());
+
    let xhr = new XMLHttpRequest();
    xhr.onload = function () {
-     if(xhr.status==200){
-      if (xhr.responseText == 'success') {
-        songChangeListA(plistNo,songNo);
-      }else{
-       $('.lightCover').show();
-       $('#listAlert h4').text('Fail to change!');
-      }
+     if (xhr.status == 200) {
+       if (xhr.responseText == 'success') {
+         getLibrarySongs(nowList);
+         songChangeListA(songNo);
+       } else {
+         $('.lightCover').show();
+         $('#listAlert').show();
+         $('#listAlert h4').text('Fail to change!');
+       }
+     } else {
+       alert(xhr.statusText);
      }
    };
-   xhr.open("post", "./php/songChangeList_d.php", true);
+   xhr.open("POST", "./php/songChangeList_d.php", true);
    xhr.setRequestHeader('content-type', 'application/x-www-form-urlencoded');
-   let data_info = `lightPlistNo=${plistNo}&&lightSongNo=${songNo}`;
+   let data_info = `lightPlistNo=${plistNo}&lightSongNo=${songNo}`;
    xhr.send(data_info);
  }
 
- //歌改變歌單-新增
- function songChangeListA(plistNo,songNo) {
+ //歌改變歌單-新的新增
+ function songChangeListA(songNo) {
+   let listNewind = getListIndex(getNewListName);
+   let plistNo = mylistInfo[listNewind].plist_no;
+   $('#lightPlistNo').val(plistNo);
+   $('#lightSongNo').val(songNo);
    let xhr = new XMLHttpRequest();
    xhr.onload = function () {
-     if (xhr.responseText == 'success') {
-      getLibrarySongs(nowList);
+     if (xhr.status == 200) {
+       if (xhr.responseText == 'success') {
+         getLibrarySongs(nowList);
+         $('#listAlert h4').text('Added successfully');
+       } else {
+         $('#listAlert h4').text('Fail to change!');
+       }
+       $('.lightCover').show();
+       $('#listAlert').show();
+     } else {
+       alert(xhr.statusText);
      }
    };
    xhr.open("post", "./php/songChangeList_a.php", true);
    xhr.setRequestHeader('content-type', 'application/x-www-form-urlencoded');
-   let data_info = `lightPlistNo=${plistNo}&&lightSongNo=${songNo}`;
+   let data_info = `lightPlistNo=${plistNo}&lightSongNo=${songNo}`;
    xhr.send(data_info);
  }

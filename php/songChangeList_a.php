@@ -8,10 +8,10 @@ try {
   $addData->bindValue(':songNo', $_POST['lightSongNo']);
   $addData->execute();
 
-
-  
   if ($addData->rowCount() > 0) {
     echo 'success';
+  } else {
+    echo 'fail';
   }
 } catch (PDOException $e) {
   echo '例外行號：', $e->getLine(), '<br>';
