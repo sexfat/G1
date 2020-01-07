@@ -3,14 +3,14 @@ try {
   require_once("./connectBooks.php");
   $sql = "insert into singleplaylist
   values (:plistNo,:songNo);";
-  $modifyData = $pdo->prepare($sql);
-  $modifyData->bindValue(':plistNo',  $_GET['plistNo']);
-  $modifyData->bindValue(':plistName', $_GET['plistName']);
-  $modifyData->execute();
+  $addData = $pdo->prepare($sql);
+  $addData->bindValue(':plistNo',  $_POST['lightPlistNo']);
+  $addData->bindValue(':songNo', $_POST['lightSongNo']);
+  $addData->execute();
 
 
   
-  if ($modifyData->rowCount() > 0) {
+  if ($addData->rowCount() > 0) {
     echo 'success';
   }
 } catch (PDOException $e) {

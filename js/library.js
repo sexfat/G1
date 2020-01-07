@@ -36,7 +36,6 @@
    //changeList -- 跳窗 -- 未完成
    $('.songs').on('click', '.changeList', function () {
      getSongName = $(this).parent().siblings('.listSongInfo').find('.name a').text();
-     console.log(getSongName);
      $('.lightCover').show();
      getLightName();
      $('#libraryMyAllList').show();
@@ -54,15 +53,14 @@
    });
    $('#libraryMyAllList ul').on('click', 'li', function () {
      getListName = $(this).text(); //抓清單名字 -- 要把歌新增過去
-     console.log(getListName);
      $(this).addClass('choose');
      $('#libraryMyAllList li').not(this).removeClass('choose');
    });
 
    $('#libraryMyAllList button').click(function () {
      songChangeListD();
-     $('.lightCover').hide();
      $('#libraryMyAllList').hide();
+     $('.lightCover').hide();
    });
 
    //createBtn -- 跳窗
@@ -448,28 +446,37 @@
    let songind = getSongIndex(getSongName);
    let plistNo = mylistInfo[listind].plist_no;
    let songNo = libraryList[songind].song_no;
+   $('#lightPlistNo').val(plistNo);
+   $('#lightSongNo').val(songNo);
+   console.log( $('#lightPlistNo').val());
+   console.log( $('#lightSongNo').val());
    let xhr = new XMLHttpRequest();
    xhr.onload = function () {
-     if (xhr.responseText == 'success') {
-       songChangeListA();
+     if(xhr.status==200){
+      if (xhr.responseText == 'success') {
+        songChangeListA(plistNo,songNo);
+      }else{
+       $('.lightCover').show();
+       $('#listAlert h4').text('Fail to change!');
+      }
      }
    };
    xhr.open("post", "./php/songChangeList_d.php", true);
    xhr.setRequestHeader('content-type', 'application/x-www-form-urlencoded');
-   let data_info = `plistNo=${plistNo}&&songNo=${songNo}`;
+   let data_info = `lightPlistNo=${plistNo}&&lightSongNo=${songNo}`;
    xhr.send(data_info);
  }
 
  //歌改變歌單-新增
- function songChangeListA() {
+ function songChangeListA(plistNo,songNo) {
    let xhr = new XMLHttpRequest();
    xhr.onload = function () {
      if (xhr.responseText == 'success') {
-       songChangeListA();
+      getLibrarySongs(nowList);
      }
    };
-   xhr.open("post", "./php/songChangeList_d.php", true);
+   xhr.open("post", "./php/songChangeList_a.php", true);
    xhr.setRequestHeader('content-type', 'application/x-www-form-urlencoded');
-   let data_info = `plistNo=${plistNo}&&songNo=${songNo}`;
+   let data_info = `lightPlistNo=${plistNo}&&lightSongNo=${songNo}`;
    xhr.send(data_info);
  }

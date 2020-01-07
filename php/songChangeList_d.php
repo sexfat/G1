@@ -3,14 +3,14 @@ try {
   require_once("./connectBooks.php");
   $sql = "delete from singleplaylist
   where plist_no=:plistNo and song_no=:songNo;";
-  $modifyData = $pdo->prepare($sql);
-  $modifyData->bindValue(':plistNo',  $_GET['plistNo']);
-  $modifyData->bindValue(':songNo', $_GET['plistName']);
-  $modifyData->execute();
+  $delData = $pdo->prepare($sql);
+  $delData->bindValue(':plistNo',  $_POST['lightPlistNo']);
+  $delData->bindValue(':songNo', $_POST['lightSongNo']);
+  $delData->execute();
 
 
   
-  if ($modifyData->rowCount() > 0) {
+  if ($delData->rowCount() > 0) {
     echo 'success';
   }
 } catch (PDOException $e) {

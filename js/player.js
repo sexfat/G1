@@ -382,8 +382,8 @@
  //build lightbox -- allmylist
  function lightListName(ListInfo) {
    let ul, li, text;
-   $('#myAllList ul').children().remove();
-   ul = $('#myAllList ul');
+   $('.allmylist ul').children().remove();
+   ul = $('.allmylist ul');
    li = document.createElement('li');
    text = document.createTextNode('Liked songs');
    li.setAttribute('class', 'chooseList');
