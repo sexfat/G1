@@ -373,18 +373,18 @@
             <input type="password"class="emailinput firsttimepsw" pattern="\w{5,17}$" name="mem_psw" title="字母開頭，長度在6~18間，只能包含字母、數字、下底線" >
             <label>Confirm password*:</label>
             <input type="password"class="emailinput confirmpsw" pattern="\w{5,17}$" name="mem_psw" title="字母開頭，長度在6~18間，只能包含字母、數字、下底線">
-            <button type="submit" class="loginregisterbtn">Create</button>
+            <button type="button" class="loginregisterbtn">Create</button>
           </form>
         </div>
         <div class="signin">
             <h1>Sign in</h1>
-            <form  autocomplete="off" action="./php/login.php" method="post">
+            <form  autocomplete="off">
             <label>E-mail*:</label>
-            <input type="email" value="soundwave@gmail.com" class="emailinput" title="ENTER RIGHT" name="mem_acct" required>
+            <input type="email" class="emailinput" title="ENTER RIGHT" id="mem_acct" name="mem_acct" required>
             <label >Password*:</label>
-            <input type="password" value="dd104g1dd104g1" pattern="\w{5,17}$" name="mem_psw" title="字母開頭，長度在6~18間，只能包含字母、數字、下底線">
+            <input type="password" id="mem_psw" pattern="\w{5,17}$" name="mem_psw" title="字母開頭，長度在6~18間，只能包含字母、數字、下底線">
             <a href="" class="forgetpswlightbox">forget password?</a>
-            <button type="submit" class="buttonsubmitlogin">Log in</button>
+            <button type="button" class="buttonsubmitlogin" id="loginbutton" >Log in</button>
           </form>
         </div>
       </div>
@@ -444,6 +444,29 @@
 </body>
 <!-- the script of myself -->
 <script>
+  //click login XML function
+  function loginfun(){  
+  let xhr = new XMLHttpRequest();
+  console.log(xhr.readyState);
+  xhr.onreadystatechange = function(){
+    if(xhr.readyState == 4){
+      if( xhr.status == 200){ //success
+        //go the index.html
+        alert(xhr.responseText);
+      }else{ 
+        alert('fail');
+        alert(xhr.responseText);
+        //lightbox
+      }
+    }
+  }
+  let url = "./php/login.php";
+  xhr.open("post", url, true);
+  xhr.setRequestHeader("content-type","application/x-www-form-urlencoded");
+  let member_data = "mem_acct=" + document.getElementById('mem_acct').value+"&&mem_psw=" + document.getElementById('mem_psw').value ;
+  xhr.send(member_data);
+  console.log(member_data);
+}
   //the lightbox forgetpswlightbox
   $('.forgetpswlightbox').click(function (e) {
     e.preventDefault();
@@ -483,7 +506,8 @@
           $($(this).find('a'). attr ('href')).show().siblings ('.motabinner').hide();
           $(this).addClass('active'). siblings ('.active').removeClass('active');
         });
-      });
+   $('#loginbutton').click(loginfun);
+   });
 </script>
 <!-- the end of my script -->
 </html>
