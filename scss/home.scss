@@ -660,10 +660,6 @@
             transition: all 0.3s;
             overflow: hidden;
 
-            @media screen and (max-width: 567px) {
-              width: 200%;
-            }
-
             .home_icon_container {
               margin: 10px 0 0 0;
               .home_play {
