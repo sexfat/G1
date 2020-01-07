@@ -374,7 +374,7 @@
             <input type="password"class="emailinput firsttimepsw" pattern="\w{5,17}$" name="mem_psw" title="字母開頭，長度在6~18間，只能包含字母、數字、下底線" >
             <label>Confirm password*:</label>
             <input type="password"class="emailinput confirmpsw" pattern="\w{5,17}$" name="mem_psw" title="字母開頭，長度在6~18間，只能包含字母、數字、下底線">
-            <button type="button" class="loginregisterbtn">Create</button>
+            <button type="button" class="loginregisterbtn registerbutton">Create</button>
           </form>
         </div>
         <div class="signin">
@@ -426,7 +426,7 @@
         <input type="password"class="emailinput firsttimepsw" pattern="\w{5,17}$" title="字母開頭，長度在6~18間，只能包含字母、數字、下底線" >
         <label>Confirm password:</label>
         <input type="password"class="emailinput confirmpsw" pattern="\w{5,17}$" title="字母開頭，長度在6~18間，只能包含字母、數字、下底線">
-        <button>Create</button>
+        <button type="button" class="loginregisterbtn registerbutton">Create</button>
       </form>
     </div>
   </div>
@@ -506,6 +506,7 @@
           $(this).addClass('active'). siblings ('.active').removeClass('active');
         });
    $('.loginbutton').click(loginfun);
+   $('.registerbutton').click(register);
    });
 </script>
 <!-- the end of my script -->
