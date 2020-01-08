@@ -47,7 +47,7 @@ $mainRed : #de267d;
 .library_main {
   width: 100%;
   max-width: 1200px;
-  margin: 0 auto;
+  margin: 50px auto 0;
   padding-bottom: 70px;
 
   img {
@@ -76,7 +76,7 @@ $mainRed : #de267d;
 
       .favor {
         cursor: pointer;
-        transition: transform .5s;
+
 
         img {
           width: 25px;
@@ -94,7 +94,34 @@ $mainRed : #de267d;
       }
 
       .listSubtitle {
-        &:nth-child(2) {
+        &:nth-child(1) {
+          text-align: center;
+          padding: 20px 0;
+          color: #b3b3b3;
+          position: relative;
+
+          &::before {
+            content: '';
+            width: 20%;
+            height: 2px;
+            top: 50%;
+            left: 0;
+            position: absolute;
+            background-color: #cacaca;
+          }
+
+          &::after {
+            content: '';
+            width: 20%;
+            height: 2px;
+            top: 50%;
+            right: 0;
+            position: absolute;
+            background-color: #cacaca;
+          }
+        }
+
+        &:nth-child(3) {
           text-align: center;
           padding: 20px 0;
           color: #b3b3b3;
@@ -130,11 +157,16 @@ $mainRed : #de267d;
           border-bottom: 1px solid #b3b3b3;
           position: relative;
           cursor: pointer;
-          transition: transform .5s;
 
-          &:hover {
-            font-weight: bold;
-            transform: scale(1.1);
+          &:first-letter {
+            text-transform: capitalize;
+          }
+
+          h4 {
+            &:hover {
+              font-weight: bold;
+              transform: scale(1.1);
+            }
           }
 
           .delete {
@@ -143,7 +175,7 @@ $mainRed : #de267d;
             right: 0;
             top: 50%;
             transform: translateY(-50%);
-            transition: transform .5s;
+
             display: none;
             cursor: pointer;
 
@@ -292,10 +324,15 @@ $mainRed : #de267d;
           position: absolute;
           bottom: 10px;
           left: 50%;
-          transform: translateX(-50%);
+          transform: translateX(-50%) scale(1);
+
+          &:hover {
+            transform: translateX(-50%) scale(1.1);
+          }
 
           input[type="file"] {
             display: none;
+
           }
         }
 
@@ -459,6 +496,10 @@ $mainRed : #de267d;
             display: inline-block;
             vertical-align: top;
 
+            &:first-letter {
+              text-transform: capitalize;
+            }
+
             @include respond(latop-max) {
               padding: 0;
             }
@@ -475,7 +516,7 @@ $mainRed : #de267d;
               display: block;
               color: $fontColor;
               text-decoration: none;
-              transition: transform .5s;
+
 
               @include respond(latop-max) {
                 overflow: hidden;
@@ -532,7 +573,7 @@ $mainRed : #de267d;
           width: 25px;
           height: 25px;
           cursor: pointer;
-          transition: transform .5s;
+
 
           @include respond(phone) {
             text-align: left;
@@ -557,8 +598,6 @@ $mainRed : #de267d;
           }
 
           i {
-            transition: transform .5s;
-
             &:hover {
               transform: scale(1.1);
             }
@@ -728,7 +767,7 @@ $mainRed : #de267d;
     color: $fontColor;
     outline: none;
     cursor: pointer;
-    transition: transform .5s;
+
 
     &:hover {
       transform: scale(1.1);
@@ -741,7 +780,7 @@ $mainRed : #de267d;
     width: 120px;
     display: block;
     margin: 20px auto 0;
-    transition: transform .5s;
+
 
     &:hover {
       transform: scale(1.1);
@@ -766,6 +805,10 @@ $mainRed : #de267d;
   .enterBtn {
     @include buttonno04;
     display: none;
+
+    &:hover {
+      transform: scale(1.1);
+    }
   }
 
   .becomeRed {

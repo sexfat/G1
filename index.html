@@ -14,8 +14,10 @@
     <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/pagePiling.js/1.5.6/jquery.pagepiling.min.js"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/pixi.js/5.2.0/pixi.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/pixi-filters@3.0.3/dist/pixi-filters.js"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/three.js/110/three.min.js"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/2.1.3/TweenMax.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/granim/2.0.0/granim.min.js"></script>
 
 
     <style>
@@ -23,8 +25,274 @@
 
     </style>
     <script>
-
         $(document).ready(() => {
+            //撥放器縮放
+            $('#expand').click(function () {
+                $('.player_b').addClass('open');
+                $('.player_s').animate({
+                    bottom: '-70px'
+                });
+            });
+            $('#closePlayer').click(function () {
+                $('.player_b').removeClass('open');
+                $('.player_s').animate({
+                    bottom: '0'
+                });
+            });
+
+            //手機推移
+            $('.left .pushBtn').click(function () {
+                $('.left').css('height', '10%');
+                $('.right').css('height', '90%');
+                $('.right .pushBtn').show();
+                $('.left .pushBtn').hide();
+            });
+            $('.right .pushBtn').click(function () {
+                $('.left').css('height', '90%');
+                $('.right').css('height', '10%');
+                $('.left .pushBtn').show();
+                $('.right .pushBtn').hide();
+            });
+
+            //select選歌單
+            $('#player .selectBtn').click(function () {
+                $('#player .lightCover').show();
+                $('#player #myAllList').show();
+            });
+
+            //歌單清單
+            $('.closeLight').click(function () {
+                $('.lightCover').hide();
+                $('#myAllList').hide();
+            });
+            $('.lightCover').click(function () {
+                $(this).hide();
+                $('#myAllList').hide();
+            });
+
+            //點愛心
+            $('.heart').click(function () {
+                if ($(this).hasClass('becomeRed')) {
+                    $(this).html('<i class="far fa-heart"></i>').removeClass('becomeRed');
+                } else {
+                    $(this).html('<i class="fas fa-heart"></i>').addClass('becomeRed');
+                }
+            });
+
+            //點歌單撥放，左側專輯唱片動畫
+            $('.songCover').mouseover(function () {
+                $(this).find('.listPlay').show();
+            });
+            $('.songCover').mouseout(function () {
+                $(this).find('.listPlay').hide();
+            });
+
+            $(".listPlay").click(function () {
+                if ($(this).hasClass('nowlistening')) {
+                    $(this).html('<i class="fas fa-play"></i>').removeClass("nowlistening");
+                    isPlaying(true);
+                } else {
+                    $(this).html('<i class="fas fa-pause"></i>').addClass("nowlistening");
+                    $("#player .songCover .listPlay").not(this).removeClass('nowlistening');
+                    isPlaying(false);
+                }
+            });
+
+
+
+            /* -- 音樂播放 -- */
+            let storage = localStorage;
+            var autoplay = false,
+                songTime,
+                progressingTime,
+                playStatus = false,
+                nowPlaying = 0, //現在播放的歌
+                audio = $("audio")[0], //撥放器
+                myPlaylist = [{
+                    title: "Lucid Dreamer",
+                    creator: "Spazz Cardigan",
+                    cover: "../img/library/cover1.jpg",
+                    filein: "../img/library/Lucid_Dreamer.mp3",
+                    totalTime: "3:11",
+                },
+                {
+                    title: "Spring In My Step",
+                    creator: "Silent Partner",
+                    cover: "../img/library/cover2.jpg",
+                    filein: "../img/library/Spring_In_My_Step.mp3",
+                    totalTime: "1:59",
+                },
+                {
+                    title: "On My Way Home",
+                    creator: "The 126ers",
+                    cover: "../img/library/cover3.jpg",
+                    filein: "../img/library/On_My_Way_Home.mp3",
+                    totalTime: "1:56",
+                }
+                ];
+
+            $('#player audio').attr("src", myPlaylist[nowPlaying].filein);
+            // isStorageHave();
+
+            //播放暫停按鈕 -- 音樂撥放/暫停
+            $("#player .play").click(function () {
+                // console.log(nowPlaying);
+                // console.log(playStatus);
+                isPlaying(playStatus);
+            });
+
+            //下一首按鈕 -- 切換下一首
+            $("#player .next").click(function () {
+                if (nowPlaying == myPlaylist.length - 1) {
+                    $("#player audio").attr("src", myPlaylist[myPlaylist.length - 1].filein);
+                } else {
+                    nowPlaying++;
+                    $("#player audio").attr("src", myPlaylist[nowPlaying].filein);
+                }
+                if (playStatus == true) {
+                    isPlaying(false);
+                } else {
+                    isPlaying(true);
+                }
+            });
+
+            //上一首按鈕 -- 切換上一首
+            $("#player .prev").click(function () {
+                if (nowPlaying == 0) {
+                    $("#player audio").attr("src", myPlaylist[0].filein);
+                } else {
+                    nowPlaying--;
+                    $("#player audio").attr("src", myPlaylist[nowPlaying].filein);
+                }
+                if (playStatus == true) {
+                    isPlaying(false);
+                } else {
+                    isPlaying(true);
+                }
+            });
+
+            //停止按鈕 -- 音樂全數停止
+            $("#player .stop").click(function () {
+                audio.pause();
+                audio.currentTime = 0;
+                isPlaying(true);
+                $("#player .songCover .listPlay").removeClass('nowlistening');
+            });
+
+            //循環播放 -- 單首??未處理
+            $("#player .loop").click(function () {
+                if ($(this).hasClass("becomeYel")) {
+                    $(this).removeClass("becomeYel");
+                    audio.loop = false;
+                } else {
+                    $(this).addClass("becomeYel");
+                    audio.loop = true;
+                }
+            });
+            //隨機播放 -- 清單隨機--未處理
+
+
+
+            //clickBar -- 詳細(b)/簡易(s)
+            $(".player_b .progressbar").click(function (e) {
+                let progressBarSize_b = parseInt($(".player_b .progressbar").css("width"));
+                let mouseX_b = e.clientX - $(".player_b .progressbar").offset().left;
+                $(".player_b .progressbar .progress").css('width', `${mouseX_b}px`);
+
+                let newTime_b = mouseX_b / (progressBarSize_b / audio.duration);
+                audio.currentTime = newTime_b;
+            });
+            $(".player_s .progressbar").click(function (e) {
+                let progressBarSize_s = parseInt($(".player_s .progressbar").css("width"));
+                let mouseX_s = e.clientX - $(".player_s .progressbar").offset().left;
+                $(".player_s .progressbar .progress").css('width', `${mouseX_s}px`);
+
+                let newTime_s = mouseX_s / (progressBarSize_s / audio.duration);
+                audio.currentTime = newTime_s;
+            });
+
+            /* -- local -- */
+            // function isStorageHave() {
+            //   let newSongTime;
+            //   if(storage.length != 0){
+            //     newSongTime = storage.getItem(1);
+            //     console.log(newSongTime);
+            //   }else{
+            //     console.log(newSongTime);
+            //   }
+
+            // }
+
+
+
+            function isPlaying(isPlaying) {
+                context.resume().then(() => {
+                    if (!isPlaying) { //如果沒有播放就讓他撥
+                        audio.play();
+                        video.play();
+                        $("#player .play").html('<i class="fas fa-pause"></i>');
+                        $("#player .player_b .coverRec").animate({
+                            right: "-50%",
+                            opacity: "1"
+                        }, "fast", "swing").addClass("recRotate");
+                        playStatus = true;
+                        waveLooper();
+
+                        // console.log(playStatus);
+                    } else {
+                        audio.pause();
+                        $("#player .play").html('<i class="fas fa-play"></i>');
+                        playStatus = false;
+                        $("#player .player_b .coverRec").animate({
+                            right: "0%"
+                        }).removeClass("recRotate");
+                        // console.log(playStatus);
+                    }
+                });
+                $("#player .songInfo .name").text(myPlaylist[nowPlaying].title);
+                $("#player .songInfo .creator").text(myPlaylist[nowPlaying].creator);
+            }
+
+
+            //進度條
+            progressingTime = setInterval(progressingShow, 100);
+            let newSong = nowPlaying; //測試
+            function progressingShow() {
+                songTime = audio.currentTime;
+                let progressColor = (songTime / audio.duration) * 100;
+                if (audio.ended) {
+                    autoChange();
+                }
+
+                // if(newSong == nowPlaying){
+                //   storage.setItem(newSong, songTime);
+                // }else{
+                //   storage.clear();
+                //   storage.setItem(nowPlaying, songTime);
+                // }
+
+                // console.log(audio.duration); //歌曲總長秒數
+                $("#player .progress").css("width", `${progressColor.toFixed(2)}%`);
+                $("#player span.start").text(`${parseInt(songTime / 60)}:${parseInt(songTime % 60)}`)
+                $("#player span.end").text(myPlaylist[nowPlaying].totalTime);
+            }
+
+            //自動換下一首
+            function autoChange() {
+                if (nowPlaying == myPlaylist.length - 1) {
+                    if (audio.ended) {
+                        audio.currentTime = 0;
+                        isPlaying(true);
+                    } else {
+                        isPlaying(false);
+                    }
+                } else {
+                    nowPlaying++;
+                    $("#player audio").attr("src", myPlaylist[nowPlaying].filein);
+                    isPlaying(false);
+                }
+            }
+
             $('#pagepiling').pagepiling(
                 {
                     verticalCentered: false, //section 內物件置中對齊
@@ -36,16 +304,68 @@
                 }
             );
 
+
+
+            // PIXI =======================================================================================================================================
+
+
+            let app = new PIXI.Application({
+                width: 1320,
+                height: window.innerHeight,
+                transparent: true,
+                antialias: true,
+            });
+
+            let sprites = new PIXI.ParticleContainer(10000, {
+                scale: true,
+                position: true,
+                rotation: true,
+                uvs: true,
+                alpha: true,
+            });
+
+            let GodrayFilter = new PIXI.filters.GodrayFilter({
+                angle: 0,
+                gain: 0.6,
+                lacunrity: 2.8,
+                parallel: true,
+            });
+
+            let video = document.createElement("video");
+            video.preload = "auto";
+            video.loop = true;              // enable looping
+            video.src = './img/home/bg.mp4';
+            let videoSprite = PIXI.Sprite.from(video);
+
+            let tt = PIXI.Sprite.from('./img/home/bg.png')
+            let graphics = new PIXI.Graphics();
+            let graphics02 = new PIXI.Graphics();
+            videoSprite.alpha = 0.5;
+
+            graphics.position = { x: 0, y: window.innerHeight }
+            graphics02.position = { x: 0, y: window.innerHeight }
+            sprites.position = { x: 0, y: window.innerHeight }
+            graphics.scale.y = -1;
+            graphics02.scale.y = -1;
+            sprites.scale.y = -1;
+            app.stage.filters = [GodrayFilter];
+
+            app.stage.addChild(tt, videoSprite, sprites, graphics, graphics02);
+
+            let points = [];
+            let totalSprites = app.renderer instanceof PIXI.Renderer ? 10000 : 100;
+            document.body.appendChild(app.view);
+
+
+
+
+
             // audio
             audio = document.getElementById('audioPlayer');
-            context = new (window.AudioContext || window.webkitAudioContext)();
+            context = new (window.AudioContext || window.webkitAudioContext);
             analyser = context.createAnalyser();
-            analyser.fftSize = 16384;
-
-            analyser.minDecibels = -70;
-            analyser.maxDecibels = 100;
-            analyser.smoothingTimeConstant = 0.85;
-            audio.src = "./Azusa-master/src/static/test.mp3"; // the source path
+            analyser.fftSize = 4096;
+            audio.src = "./img/home/Heroes Tonight.m4a"
             source = context.createMediaElementSource(audio);
             source.connect(analyser);
             analyser.connect(context.destination);
@@ -53,51 +373,62 @@
 
             document.querySelector('.home_wave_container').appendChild(app.view);
 
-            context.resume().then(() => { });
-            audio.play();
 
-            waveLooper();
+            let waveLooper = () => {
+                if (playStatus) {
+                    sprites.removeChildren()
+                    analyser.getFloatFrequencyData(frequency_array);
 
-            function waveLooper() {
-                analyser.getFloatFrequencyData(frequency_array);
+                    if (GodrayFilter.time >= 100) {
+                        GodrayFilter.time = 0;
+                    } else {
+                        GodrayFilter.time += 0.01;
+                    }
+                    for (let i = 0; i <= 100; i++) {
+                        let aa = frequency_array[i] <= -100 ? 0 : parseInt((window.innerHeight + frequency_array[i] * 10) / 10)
+                        for (let j = 0; j <= aa; j++) {
+                            let point = PIXI.Sprite.from('./img/home/items/star.png');
 
-                x = new Array();
-                y = new Array();
+                            point.tint = Math.random() * 0xE8D4CD;
+                            point.x = 20 * i;
+                            point.y = (10 * j + j * 2);
+                            sprites.addChild(point)
+                        }
+                    }
 
-                // shuffle(frequency_array, 101);
-
-                // frequency_array
-
-                for (let i = 20; i <= 120; i++) {
-                    x.push((window.innerWidth / 100) * (i - 19));
-                    y.push(Math.sqrt(-frequency_array[i] * 5) * 30 - 210 >= 450 ? 450 : Math.sqrt(-frequency_array[i] * 5) * 30 - 210);
-                    // console.log(y)
-                    draw(x, y);
+                    draw(frequency_array);
+                    window.requestAnimationFrame(waveLooper);
+                } else {
+                    sprites.removeChildren()
+                    graphics.clear(0, 0, window.innerWidth, window.innerHeight);
+                    graphics02.clear(0, 0, window.innerWidth, window.innerHeight);
+                    return;
                 }
-                window.requestAnimationFrame(waveLooper);
             }
+            let draw = (frequency_array) => {
 
-            function draw(x, y) {
                 graphics.clear(0, 0, window.innerWidth, window.innerHeight);
+                graphics02.clear(0, 0, window.innerWidth, window.innerHeight);
+                graphics.lineStyle(2, 0x5BCCFD);
+                graphics02.lineStyle(1, 0xE3F7Fb)
 
-                // set a line style
-                graphics.lineStyle(10, 0xffd900, 10);
-                // draw a shape
-
-                graphics.moveTo(0, 450);
-
-                for (var i = 0; i < 100; i++) {
-                    graphics.lineTo(x[i], y[i]);
-                    // console.log(-y[i]);
+                for (let i = 0; i <= 100; i++) {
+                    frequency_array[i] = frequency_array[i] <= -100 ? -window.innerHeight : frequency_array[i]
+                    if (i == 0) {
+                        graphics.moveTo((20 * i) + 10, window.innerHeight + frequency_array[i] * 10);
+                        graphics02.moveTo((20 * i) + 10, window.innerHeight + frequency_array[i] * 10 + 3);
+                    } else {
+                        graphics.lineTo((20 * i) + 10, window.innerHeight + frequency_array[i] * 10);
+                        graphics02.lineTo((20 * i) + 10, window.innerHeight + frequency_array[i] * 10 + 3);
+                    }
                 }
-
             }
 
 
 
-            // window.addEventListener('resize', function () {
-            //     app.renderer.resize(window.innerWidth, window.innerHeight);
-            // });
+            window.addEventListener('resize', function () {
+                app.renderer.resize(window.innerWidth <= 1320 ? window.innerWidth : 1320, window.innerHeight);
+            });
 
             // Fisher-Yates shuffle
             function shuffle(array, size) {
@@ -119,25 +450,25 @@
                 return array;
             }
 
-            granimInstance = new Granim({
-                element: '.home_line',
-                direction: 'left-right',
-                isPausedWhenNotInView: true,
-                states: {
-                    "default-state": {
-                        gradients: [
-                            ['#EB3349', '#F45C43'],
-                            ['#FF8008', '#FFC837'],
-                            ['#4CB8C4', '#3CD3AD'],
-                            ['#24C6DC', '#514A9D'],
-                            ['#FF512F', '#DD2476'],
-                            ['#DA22FF', '#9733EE']
-                        ],
-                        transitionSpeed: 1000
+            // granimInstance = new Granim({
+            //     element: '.home_line',
+            //     direction: 'left-right',
+            //     isPausedWhenNotInView: true,
+            //     states: {
+            //         "default-state": {
+            //             gradients: [
+            //                 ['#EB3349', '#F45C43'],
+            //                 ['#FF8008', '#FFC837'],
+            //                 ['#4CB8C4', '#3CD3AD'],
+            //                 ['#24C6DC', '#514A9D'],
+            //                 ['#FF512F', '#DD2476'],
+            //                 ['#DA22FF', '#9733EE']
+            //             ],
+            //             transitionSpeed: 1000
 
-                    }
-                }
-            });
+            //         }
+            //     }
+            // });
 
 
 
@@ -147,12 +478,14 @@
 
 
             // RANK
-            song_transform = new Array();
+            transform_rotate = new Array();
             rankOrder = 1;
-            set_value = [
-                parseInt(180 - (((1920 - window.innerWidth) / 16) * 0.01 * 80)),
-                parseInt(360 - (((1920 - window.innerWidth) / 16) * 0.01 * 130)),
-            ]
+            set_value = {
+                size: parseInt(160 - (((1920 - window.innerWidth) / 16) * 0.01 * 60)),
+                translateZ: parseInt(360 - (((1920 - window.innerWidth) / 16) * 0.01 * 130)),
+            }
+
+            // 小於 768px 時 .home_song_info translate 往下
             if (window.innerWidth <= 768) {
                 windowLess768 = true;
             } else {
@@ -163,125 +496,133 @@
                 if (i == 0) {
                     document.querySelector(`.home_song${i + 1}`).setAttribute(
                         'style',
-                        `width: ${set_value[0]}px;
-                        height: ${set_value[0]}px;
-                        transform: rotateY(${i * 36}deg) translateZ(${set_value[1]}px) scale(1.18);`
+                        `width: ${set_value.size}px;
+                        height: ${set_value.size}px;
+                        transform: rotateY(${i * 36}deg) translateZ(${set_value.translateZ}px) scale(1.18);`
                     );
-                    song_transform.push(`${parseInt(document.querySelector(`.home_song${i + 1}`).style.transform.substr(8, 3))}`);
-                    document.querySelector(`.home_song${rankOrder} .home_shadow`).setAttribute('style', 'box-shadow: 5px 5px 5px 1px rgba(0, 0, 0, 0.2);');
-                    if (windowLess768) {
-                        document.querySelector(`.home_song${rankOrder} .home_song_info`).setAttribute('style', `transform: translateY(${set_value[0]}px);`);
+                    transform_rotate.push(`${parseInt(document.querySelector(`.home_song${i + 1}`).style.transform.substr(8, 3))}`);
+                    document.querySelector(`.home_song${rankOrder} .home_shadow`).style.boxShadow = '5px 5px 5px 1px rgba(0, 0, 0, 0.2)';
+                    if (window.innerWidth <= 576) {
+                        document.querySelector(`.home_song${rankOrder} .home_song_info`).style.transform = `translateX(${set_value.size}px)`;
                     } else {
-                        document.querySelector(`.home_song${rankOrder} .home_song_info`).setAttribute('style', `transform: translateX(${-set_value[0]}px);`);
+                        document.querySelector(`.home_song${rankOrder} .home_song_info`).style.transform = `translateX(${-set_value.size}px)`;
                     }
+                    if (window.innerWidth <= 576) {
+                        document.querySelector(`.home_song${rankOrder} .home_vinyl_records_s`).style.transform = `translateX(${-set_value.size / 2}px)`;
+                    } else {
+                        document.querySelector(`.home_song${rankOrder} .home_vinyl_records_s`).style.transform = `translateX(${set_value.size / 2}px)`;
+                    }
+                    document.querySelector(`.home_song${rankOrder} .home_vinyl_records_s`).style.transform = `translateX(${set_value.size / 2}px)`;
 
                 } else {
                     document.querySelector(`.home_song${i + 1}`).setAttribute(
                         'style',
-                        `width: ${set_value[0]}px;
-                        height: ${set_value[0]}px;
-                        transform: rotateY(${i * 36}deg) translateZ(${set_value[1]}px`
+                        `width: ${set_value.size}px;
+                        height: ${set_value.size}px;
+                        transform: rotateY(${i * 36}deg) translateZ(${set_value.translateZ}px`
                     );
-                    song_transform.push(`${parseInt(document.querySelector(`.home_song${i + 1}`).style.transform.substr(8, 3))}`);
+                    transform_rotate.push(`${parseInt(document.querySelector(`.home_song${i + 1}`).style.transform.substr(8, 3))}`);
                 }
             }
             document.querySelector('.home_perspective').setAttribute(
                 'style',
-                `left: ${540 - (((1920 - window.innerWidth) / 16) * 0.01 * 1060)}px`
+                `left: ${540 - (((1920 - window.innerWidth) / 16) * 0.01 * 1020)}px`
             );
 
-            $(window).resize(() => {
-                set_value = [
-                    (200 - (((1920 - window.innerWidth) / 16) * 0.01 * 80)),
-                    parseInt(360 - (((1920 - window.innerWidth) / 16) * 0.01 * 130)),
-                ]
-                if (window.innerWidth <= 768) {
-                    windowLess768 = true;
-                } else {
-                    windowLess768 = false;
-                }
-
-                for (let i = 0; i < 10; i++) {
-                    if ((i + 1) == rankOrder) {
-                        document.querySelector(`.home_song${i + 1}`).setAttribute(
-                            'style',
-                            `width: ${set_value[0]}px;
-                            height:${set_value[0]}px;
-                            transform: rotateY(${+ song_transform[i]}deg) translateZ(${set_value[1]}px) scale(1.18);`
-                        );
-                        if (windowLess768) {
-                            document.querySelector(`.home_song${rankOrder} .home_song_info`).setAttribute('style', `transform: translateY(${set_value[0]}px);`);
-                        } else {
-                            document.querySelector(`.home_song${rankOrder} .home_song_info`).setAttribute('style', `transform: translateX(${-set_value[0]}px);`);
-                        }
-                    } else {
-                        document.querySelector(`.home_song${i + 1}`).setAttribute(
-                            'style',
-                            `width: ${set_value[0]}px;
-                            height: ${set_value[0]}px;
-                            transform: rotateY(${+ song_transform[i]}deg) translateZ(${set_value[1]}px);`
-                        );
-                    }
-                }
-
-                document.querySelector('.home_perspective').setAttribute(
-                    'style',
-                    `left: ${540 - (((1920 - window.innerWidth) / 16) * 0.01 * 1060)}px`
-                );
-
-            });
-
-
-            document.querySelector('.home_left_arrow').addEventListener('click', () => {
+            let left_arrow_click = () => {
+                document.querySelector('.home_left_arrow').removeEventListener('click', left_arrow_click);
                 rankOrder--;
                 if (rankOrder == 0) {
                     rankOrder = 10;
-                    document.querySelector(`.home_song${rankOrder} .home_shadow`).setAttribute('style', 'box-shadow: 5px 5px 5px 1px rgba(0, 0, 0, 0.2);');
-                    if (windowLess768) {
-                        document.querySelector(`.home_song${rankOrder} .home_song_info`).setAttribute('style', `transform: translateY(${set_value[0]}px);`);
+                    document.querySelector(`.home_song${rankOrder} .home_shadow`).style.boxShadow = '5px 5px 5px 1px rgba(0, 0, 0, 0.2)';
+                    if (window.innerWidth <= 576) {
+                        document.querySelector(`.home_song${rankOrder} .home_song_info`).setAttribute('style', `width:200%; transform:translateX(${set_value.size}px);`);
                     } else {
-                        document.querySelector(`.home_song${rankOrder} .home_song_info`).setAttribute('style', `transform: translateX(${-set_value[0]}px);`);
+                        document.querySelector(`.home_song${rankOrder} .home_song_info`).setAttribute('style', `width:100%; transform:translateX(${-set_value.size}px);`);
                     }
-                    document.querySelector(`.home_song1 .home_shadow`).setAttribute('style', 'box-shadow: none;');
-                    document.querySelector(`.home_song1 .home_song_info`).setAttribute('style', 'transform: translateX(0px);');
-
+                    if (window.innerWidth <= 576) {
+                        document.querySelector(`.home_song${rankOrder} .home_vinyl_records_s`).style.transform = `translateX(${-set_value.size / 2}px)`;
+                    } else {
+                        document.querySelector(`.home_song${rankOrder} .home_vinyl_records_s`).style.transform = `translateX(${set_value.size / 2}px)`;
+                    }
+                    document.querySelector(`.home_song1 .home_shadow`).style.boxShadow = 'none';
+                    if (window.innerWidth <= 576) {
+                        document.querySelector(`.home_song1 .home_song_info`).setAttribute('style', `width:100%; transform:translateX(0px);`);
+                    } else {
+                        document.querySelector(`.home_song1 .home_song_info`).style.transform = 'translateX(0px)';
+                    }
+                    document.querySelector(`.home_song1 .home_vinyl_records_s`).style.transform = 'translateX(0px)';
                 } else {
-                    document.querySelector(`.home_song${rankOrder} .home_shadow`).setAttribute('style', 'box-shadow: 5px 5px 5px 1px rgba(0, 0, 0, 0.2);');
-                    if (windowLess768) {
-                        document.querySelector(`.home_song${rankOrder} .home_song_info`).setAttribute('style', `transform: translateY(${set_value[0]}px);`);
+                    document.querySelector(`.home_song${rankOrder} .home_shadow`).style.boxShadow = '5px 5px 5px 1px rgba(0, 0, 0, 0.2)';
+                    if (window.innerWidth <= 576) {
+                        document.querySelector(`.home_song${rankOrder} .home_song_info`).setAttribute('style', `width:200%; transform:translateX(${set_value.size}px);`);
                     } else {
-                        document.querySelector(`.home_song${rankOrder} .home_song_info`).setAttribute('style', `transform: translateX(${-set_value[0]}px);`);
+                        document.querySelector(`.home_song${rankOrder} .home_song_info`).setAttribute('style', `width:100%; transform:translateX(${-set_value.size}px);`);
                     }
-                    document.querySelector(`.home_song${rankOrder + 1} .home_shadow`).setAttribute('style', 'box-shadow: none;');
-                    document.querySelector(`.home_song${rankOrder + 1} .home_song_info`).setAttribute('style', 'transform: translateX(0px);');
+                    if (window.innerWidth <= 576) {
+                        document.querySelector(`.home_song${rankOrder} .home_vinyl_records_s`).style.transform = `translateX(${-set_value.size / 2}px)`;
+                    } else {
+                        document.querySelector(`.home_song${rankOrder} .home_vinyl_records_s`).style.transform = `translateX(${set_value.size / 2}px)`;
+                    }
+                    document.querySelector(`.home_song${rankOrder + 1} .home_shadow`).style.boxShadow = 'none';
+                    if (window.innerWidth <= 576) {
+                        document.querySelector(`.home_song${rankOrder + 1} .home_song_info`).setAttribute('style', `width:100%; transform:translateX(0px);`);
+                    } else {
+                        document.querySelector(`.home_song${rankOrder + 1} .home_song_info`).style.transform = 'translateX(0px)';
+                    }
+                    document.querySelector(`.home_song${rankOrder + 1} .home_vinyl_records_s`).style.transform = 'translateX(0px)';
                 }
                 left_spin();
-            });
-            document.querySelector('.home_right_arrow').addEventListener('click', () => {
+            };
+            document.querySelector('.home_left_arrow').addEventListener('click', left_arrow_click);
+
+            let right_arrow_click = () => {
+                document.querySelector('.home_right_arrow').removeEventListener('click', right_arrow_click);
                 rankOrder++;
                 if (rankOrder == 11) {
                     rankOrder = 1;
-                    document.querySelector(`.home_song${rankOrder} .home_shadow`).setAttribute('style', 'box-shadow: 5px 5px 5px 1px rgba(0, 0, 0, 0.2);');
-                    if (windowLess768) {
-                        document.querySelector(`.home_song${rankOrder} .home_song_info`).setAttribute('style', `transform: translateY(${set_value[0]}px);`);
+                    document.querySelector(`.home_song${rankOrder} .home_shadow`).style.boxShadow = '5px 5px 5px 1px rgba(0, 0, 0, 0.2)';
+                    if (window.innerWidth <= 576) {
+                        document.querySelector(`.home_song${rankOrder} .home_song_info`).setAttribute('style', `width:200%; transform:translateX(${set_value.size}px);`);
                     } else {
-                        document.querySelector(`.home_song${rankOrder} .home_song_info`).setAttribute('style', `transform: translateX(${-set_value[0]}px);`);
+                        document.querySelector(`.home_song${rankOrder} .home_song_info`).setAttribute('style', `width:100%; transform:translateX(${-set_value.size}px);`);
                     }
-                    document.querySelector(`.home_song10 .home_shadow`).setAttribute('style', 'box-shadow: none;');
-                    document.querySelector(`.home_song10 .home_song_info`).setAttribute('style', 'transform: translateX(0px);');
-
+                    if (window.innerWidth <= 576) {
+                        document.querySelector(`.home_song${rankOrder} .home_vinyl_records_s`).style.transform = `translateX(${-set_value.size / 2}px)`;
+                    } else {
+                        document.querySelector(`.home_song${rankOrder} .home_vinyl_records_s`).style.transform = `translateX(${set_value.size / 2}px)`;
+                    }
+                    document.querySelector(`.home_song10 .home_shadow`).style.boxShadow = 'none';
+                    if (window.innerWidth <= 576) {
+                        document.querySelector(`.home_song10 .home_song_info`).setAttribute('style', `width:100%; transform:translateX(0px);`);
+                    } else {
+                        document.querySelector(`.home_song10 .home_song_info`).style.transform = 'translateX(0px)';
+                    }
+                    document.querySelector(`.home_song10 .home_vinyl_records_s`).style.transform = 'translateX(0px)';
                 } else {
-                    document.querySelector(`.home_song${rankOrder} .home_shadow`).setAttribute('style', 'box-shadow: 5px 5px 5px 1px rgba(0, 0, 0, 0.2);');
-                    if (windowLess768) {
-                        document.querySelector(`.home_song${rankOrder} .home_song_info`).setAttribute('style', `transform: translateY(${set_value[0]}px);`);
+                    document.querySelector(`.home_song${rankOrder} .home_shadow`).style.boxShadow = '5px 5px 5px 1px rgba(0, 0, 0, 0.2)';
+                    if (window.innerWidth <= 576) {
+                        document.querySelector(`.home_song${rankOrder} .home_song_info`).setAttribute('style', `width:200%; transform:translateX(${set_value.size}px);`);
                     } else {
-                        document.querySelector(`.home_song${rankOrder} .home_song_info`).setAttribute('style', `transform: translateX(${-set_value[0]}px);`);
+                        document.querySelector(`.home_song${rankOrder} .home_song_info`).setAttribute('style', `width:100%; transform:translateX(${-set_value.size}px);`);
                     }
-                    document.querySelector(`.home_song${rankOrder - 1} .home_shadow`).setAttribute('style', 'box-shadow: none;');
-                    document.querySelector(`.home_song${rankOrder - 1} .home_song_info`).setAttribute('style', 'transform: translateX(0px);');
+                    if (window.innerWidth <= 576) {
+                        document.querySelector(`.home_song${rankOrder} .home_vinyl_records_s`).style.transform = `translateX(${-set_value.size / 2}px)`;
+                    } else {
+                        document.querySelector(`.home_song${rankOrder} .home_vinyl_records_s`).style.transform = `translateX(${set_value.size / 2}px)`;
+                    }
+                    document.querySelector(`.home_song${rankOrder - 1} .home_shadow`).style.boxShadow = 'none';
+                    if (window.innerWidth <= 576) {
+                        document.querySelector(`.home_song${rankOrder - 1} .home_song_info`).setAttribute('style', `width:100%; transform:translateX(0px);`);
+                    } else {
+                        document.querySelector(`.home_song${rankOrder - 1} .home_song_info`).style.transform = 'translateX(0px)';
+                    }
+                    document.querySelector(`.home_song${rankOrder - 1} .home_vinyl_records_s`).style.transform = 'translateX(0px)';
                 }
                 right_spin();
-            });
+            };
+            document.querySelector('.home_right_arrow').addEventListener('click', right_arrow_click);
+
 
             document.querySelector('.home_slider').addEventListener('mousedown', (holdDown));
             document.querySelector('.home_slider').addEventListener('mouseup', (holdUp));
@@ -290,56 +631,293 @@
             function left_spin() {
                 if (spin <= 36) {
                     for (let i = 0; i < 10; i++) {
-                        if (+song_transform[i] == 360 || +song_transform[i] == 0) {
+                        if (+transform_rotate[i] == 360 || +transform_rotate[i] == 0) {
                             document
-                                .querySelector(`.home_song${i + 1}`).setAttribute('style', `width: ${set_value[0]}px; height: ${set_value[0]}px; transform: rotateY(${0 + spin}deg) translateZ(${set_value[1]}px) scale(${1.18 - 0.005 * spin})`
-                                );
-                        } else if (+song_transform[i] == 324) {
+                                .querySelector(`.home_song${i + 1}`).style.transform = `rotateY(${0 + spin}deg) translateZ(${set_value.translateZ}px) scale(${1.18 - 0.005 * spin})`;
+                        } else if (+transform_rotate[i] == 324) {
                             document
-                                .querySelector(`.home_song${i + 1} `).setAttribute('style', `width: ${set_value[0]}px; height: ${set_value[0]}px; transform: rotateY(${+ song_transform[i] + spin}deg) translateZ(${set_value[1]}px) scale(${1 + 0.005 * spin})`
-                                );
+                                .querySelector(`.home_song${i + 1} `).style.transform = `rotateY(${+ transform_rotate[i] + spin}deg) translateZ(${set_value.translateZ}px) scale(${1 + 0.005 * spin})`;
                         } else {
                             document
-                                .querySelector(`.home_song${i + 1} `).setAttribute('style', `width: ${set_value[0]}px; height: ${set_value[0]}px; transform: rotateY(${+ song_transform[i] + spin}deg) translateZ(${set_value[1]}px) scale(1)`);
+                                .querySelector(`.home_song${i + 1} `).style.transform = `rotateY(${+ transform_rotate[i] + spin}deg) translateZ(${set_value.translateZ}px) scale(1)`;
                         }
                     }
                     spin++;
                     window.requestAnimationFrame(left_spin);
                 } else {
-                    song_transform = [];
+                    transform_rotate = [];
                     for (let i = 0; i < 10; i++) {
-                        song_transform.push(`${parseInt(document.querySelector(`.home_song${i + 1}`).style.transform.substr(8, 3))} `)
+                        transform_rotate.push(`${parseInt(document.querySelector(`.home_song${i + 1}`).style.transform.substr(8, 3))} `)
                     }
                     spin = 0;
+                    document.querySelector('.home_left_arrow').addEventListener('click', left_arrow_click);
                 }
             }
             function right_spin() {
                 if (spin <= 36) {
                     for (let i = 0; i < 10; i++) {
-                        if (+song_transform[i] == 0 || +song_transform[i] == 360) {
+                        if (+transform_rotate[i] == 0 || +transform_rotate[i] == 360) {
                             document
-                                .querySelector(`.home_song${i + 1} `).setAttribute('style', `width: ${set_value[0]}px; height: ${set_value[0]}px; transform: rotateY(${360 - spin}deg) translateZ(${set_value[1]}px) scale(${1.18 - 0.005 * spin});`);
+                                .querySelector(`.home_song${i + 1} `).style.transform = `rotateY(${360 - spin}deg) translateZ(${set_value.translateZ}px) scale(${1.18 - 0.005 * spin})`;
 
-                        } else if (+song_transform[i] == 36) {
+                        } else if (+transform_rotate[i] == 36) {
                             document
-                                .querySelector(`.home_song${i + 1} `).setAttribute('style', `width: ${set_value[0]}px; height: ${set_value[0]}px; transform: rotateY(${+ song_transform[i] - spin}deg) translateZ(${set_value[1]}px) scale(${1 + 0.005 * spin})`);
+                                .querySelector(`.home_song${i + 1} `).style.transform = `rotateY(${+ transform_rotate[i] - spin}deg) translateZ(${set_value.translateZ}px) scale(${1 + 0.005 * spin})`;
 
                         } else {
                             document
-                                .querySelector(`.home_song${i + 1} `).setAttribute('style', `width: ${set_value[0]}px; height: ${set_value[0]}px; transform: rotateY(${+ song_transform[i] - spin}deg) translateZ(${set_value[1]}px)`);
+                                .querySelector(`.home_song${i + 1} `).style.transform = `rotateY(${+ transform_rotate[i] - spin}deg) translateZ(${set_value.translateZ}px)`;
                         }
                     }
                     spin++;
                     window.requestAnimationFrame(right_spin);
                 } else {
-                    song_transform = [];
+                    transform_rotate = [];
                     for (let i = 0; i < 10; i++) {
-                        song_transform.push(`${parseInt(document.querySelector(`.home_song${i + 1}`).style.transform.substr(8, 3))}`)
+                        transform_rotate.push(`${parseInt(document.querySelector(`.home_song${i + 1}`).style.transform.substr(8, 3))}`)
                     }
                     spin = 0;
+                    document.querySelector('.home_right_arrow').addEventListener('click', right_arrow_click);
+                }
+            }
+
+
+            // RWD and size set =======================================================================================
+
+
+            // HOME
+            document.querySelector('.home_vinyl_records').setAttribute('style', `top: ${-100 - ((1920 - window.innerWidth) / 16) * 0.01 * 20}px; left: ${-250 + ((1920 - window.innerWidth) / 16) * 0.01 * 70}px; width: ${1100 - ((1920 - window.innerWidth) / 16) * 0.01 * 700}px; height: ${1100 - ((1920 - window.innerWidth) / 16) * 0.01 * 700}px`);
+            document.querySelector('.home_stylus').setAttribute('style', `top: ${-30 + ((1920 - window.innerWidth) / 16) * 0.01 * 55}px; left: ${480 - ((1920 - window.innerWidth) / 16) * 0.01 * 360}px; width: ${618 - ((1920 - window.innerWidth) / 16) * 0.01 * 393}px; height: ${180 - ((1920 - window.innerWidth) / 16) * 0.01 * 114.5}px`);
+            document.querySelector('.home_cover_img').setAttribute('style', `top: calc((100% - ${370 - ((1920 - window.innerWidth) / 16) * 0.01 * 230}px) / 2); left: calc((100% - ${370 - ((1920 - window.innerWidth) / 16) * 0.01 * 230}px) / 2); width: ${370 - ((1920 - window.innerWidth) / 16) * 0.01 * 230}px; height: ${370 - ((1920 - window.innerWidth) / 16) * 0.01 * 230}px`);
+            document.querySelector('.home_ctrl_container').setAttribute('style', `top:${260 - ((1920 - window.innerWidth) / 16) * 0.01 * 200}px; left: ${610 - ((1920 - window.innerWidth) / 16) * 0.01 * 600}px; height:${400 - ((1080 - window.innerHeight) / 6) * 0.01 * 100}px;`);
+            document.querySelector('.home_top_arrow').setAttribute('style', `width: ${100 - ((1080 - window.innerHeight) / 6) * 0.01 * 40}px; height: ${100 - ((1080 - window.innerHeight) / 6) * 0.01 * 40}px;`);
+            document.querySelector('.home_bot_arrow').setAttribute('style', `width: ${100 - ((1080 - window.innerHeight) / 6) * 0.01 * 40}px; height: ${100 - ((1080 - window.innerHeight) / 6) * 0.01 * 40}px;`);
+
+            // RANK
+            if (window.innerWidth <= 576) {
+                set_value = {
+                    size: parseInt(160 - (((1920 - window.innerWidth) / 16) * 0.01 * 120)),
+                    translateZ: parseInt(360 - (((1920 - window.innerWidth) / 16) * 0.01 * 130)),
+                }
+            } else {
+                set_value = {
+                    size: parseInt(160 - (((1920 - window.innerWidth) / 16) * 0.01 * 60)),
+                    translateZ: parseInt(360 - (((1920 - window.innerWidth) / 16) * 0.01 * 130)),
+                }
+            }
+            if (window.innerWidth <= 768) {
+                document.querySelector('.home_rank').setAttribute('style', `width: ${257.5 - (((1080 - window.innerHeight) / 6) * 0.01 * 128.75)}px; height: ${115 - (((1080 - window.innerHeight) / 6) * 0.01 * 57.5)}px;`);
+                document.querySelector('.home_slider .home_title').style.margin = `${180 - (((1080 - window.innerHeight) / 6) * 0.01 * 40)}px auto 0 auto`;
+                document.querySelector('.home_rank').style.left = `calc((100% - ${document.querySelector('.home_rank').style.width}) / 2)`; //不可合併
+            } else {
+                document.querySelector('.home_rank').setAttribute('style', `left: 100px; width: 165px; height: 730px;`);
+                document.querySelector('.home_slider .home_title').style.margin = `100px auto 0 auto`;
+            }
+
+            for (let i = 0; i < 10; i++) {
+                if (i == 0) {
+                    document.querySelector(`.home_song${i + 1}`).setAttribute(
+                        'style',
+                        `width: ${set_value.size}px;
+                        height: ${set_value.size}px;
+                        transform: rotateY(${i * 36}deg) translateZ(${set_value.translateZ}px) scale(1.18);`
+                    );
+                    if (window.innerWidth <= 576) {
+                        document.querySelector(`.home_song${rankOrder} .home_song_info`).style.transform = `translateX(${set_value.size}px)`;
+                    } else {
+                        document.querySelector(`.home_song${rankOrder} .home_song_info`).style.transform = `translateX(${-set_value.size}px)`;
+                    }
+                    if (window.innerWidth <= 576) {
+                        document.querySelector(`.home_song${rankOrder} .home_vinyl_records_s`).style.transform = `translateX(${-set_value.size / 2}px)`;
+                    } else {
+                        document.querySelector(`.home_song${rankOrder} .home_vinyl_records_s`).style.transform = `translateX(${set_value.size / 2}px)`;
+                    }
+                } else {
+                    document.querySelector(`.home_song${i + 1}`).setAttribute(
+                        'style',
+                        `width: ${set_value.size}px;
+                        height: ${set_value.size}px;
+                        transform: rotateY(${i * 36}deg) translateZ(${set_value.translateZ}px`
+                    );
+                }
+            }
+
+            document.querySelector('.home_perspective').setAttribute(
+                'style',
+                `top: ${100 - (((1080 - window.innerHeight) / 6) * 0.01 * 40)}px; left: ${540 - (((1920 - window.innerWidth) / 16) * 0.01 * 1020)}px`
+            );
+            if (window.innerWidth <= 480) {
+                document.querySelector('.home_arrow_container').style.margin = `${300 - (((1920 - window.innerWidth) / 16) * 0.01 * 160)}px auto 0 30px`;
+            } else if (window.innerWidth <= 576) {
+                document.querySelector('.home_arrow_container').style.margin = `${300 - (((1920 - window.innerWidth) / 16) * 0.01 * 160)}px auto 0 60px`;
+            } else if (window.innerWidth > 576 && window.innerWidth <= 768) {
+                document.querySelector('.home_arrow_container').style.margin = `260px auto 0 auto`;
+            } else if (window.innerWidth > 768) {
+                document.querySelector('.home_arrow_container').style.margin = `${440 - (((1920 - window.innerWidth) / 11.52) * 0.01 * 140)}px auto 0 auto`;
+            }
+
+// ACTIVITY
+if (window.innerWidth <= 440) {
+                    document.querySelector('.home_activity_info').style.left = `0px`;
+                }
+                if (window.innerWidth <= 768 && window.innerWidth > 440) {
+                    document.querySelector('.home_activity_info').style.left = `${(window.innerWidth - 400) / 2}px`;
+                }
+                if (window.innerWidth <= 768) {
+                    document.querySelector('.home_activity_img').setAttribute('style', `position:initial;float:left; width: ${150 - (((768 - window.innerWidth) / 4.48) * 0.01 * 70)}px; height: ${195 - (((768 - window.innerWidth) / 4.48) * 0.01 * 91)}px;margin: 0 20px 0 0;`);
+                    document.querySelector('.home_activity').setAttribute('style', `width:${375 - (((768 - window.innerWidth) / 4.48) * 0.01 * 187.5)}px;; height: ${129 - (((768 - window.innerWidth) / 4.48) * 0.01 * 64.5)}px;`);
+                    document.querySelector('.home_activity_info').style.top = `${240 - (((768 - window.innerWidth) / 4.48) * 0.01 * 140)}px`
+
+                }
+                if (window.innerWidth <= 992 && window.innerWidth > 768) {
+                    document.querySelector('.home_activity').setAttribute('style', `width:${675 - (((992 - window.innerWidth) / 2.24) * 0.01 * 300)}px;; height: ${232.2 - (((992 - window.innerWidth) / 2.24) * 0.01 * 103.2)}px;`);
+                    document.querySelector('.home_activity_info').style.left = `${(window.innerWidth - 720) / 2}px`;
+                }
+                if (window.innerWidth <= 992) {
+                    document.querySelector('.home_activity').style.left = `calc((100% - ${document.querySelector('.home_activity').style.width}) / 2)`
+                    document.querySelector('.home_activity_info').style.height = '390px';
+                    document.querySelector('.home_DJ').style.display = 'none';
+                }
+                if (window.innerWidth <= 1600 && window.innerWidth > 992) {
+                    document.querySelector('.home_activity').setAttribute('style', `width:675px;; height: 232.2px;`);
+                    document.querySelector('.home_activity_info').setAttribute('style', `left: ${720 - (((1600 - window.innerWidth) / 6.08) * 0.01 * (720 - ((window.innerWidth - 720) / 2)))}px; height: 390px`);
+                    document.querySelector('.home_DJ').setAttribute('style', `left: ${0 - (((1600 - window.innerWidth) / 6.08) * 0.01 * 613)}px`);
+                }
+                if (window.innerWidth <= 1600 && window.innerWidth > 768) {
+                    document.querySelector('.home_activity_img').setAttribute('style', `width:300px; height: 390px;`);
+                    document.querySelector('.home_activity_info').style.top = `${340 - (((1600 - window.innerWidth) / 8.32) * 0.01 * 100)}px`
+                }
+                if (window.innerWidth <= 1600) {
+                    document.querySelector('.enter_bt').setAttribute('style', `bottom:-90px; width:120px; height: 80px;`);
+                }
+                if (window.innerWidth > 1600) {
+                    document.querySelector('.home_activity').setAttribute('style', `width:${750 - (((1920 - window.innerWidth) / 3.2) * 0.01 * 75)}px;; height: ${258 - (((1920 - window.innerWidth) / 3.2) * 0.01 * 25.8)}px;`);
+                    document.querySelector('.home_activity_info').setAttribute('style', `top:${100 + (((1920 - window.innerWidth) / 3.2) * 0.01 * 240)}px; right: ${660 - (((1920 - window.innerWidth) / 3.2) * 0.01 * 160)}px; height: ${650 - (((1920 - window.innerWidth) / 3.2) * 0.01 * 260)}px`);
+                    document.querySelector('.home_activity_img').setAttribute('style', `width:${500 - (((1920 - window.innerWidth) / 3.2) * 0.01 * 200)}px; height: ${650 - (((1920 - window.innerWidth) / 3.2) * 0.01 * 260)}px;`);
+                    document.querySelector('.enter_bt').setAttribute('style', `bottom:${80 - (((1920 - window.innerWidth) / 3.2) * 0.01 * 170)}px; width:${180 - (((1920 - window.innerWidth) / 3.2) * 0.01 * 60)}px; height: ${120 - (((1920 - window.innerWidth) / 3.2) * 0.01 * 40)}px;`);
+                    document.querySelector('.home_DJ').setAttribute('style', `left:0px`);
+
                 }
 
-            }
+
+            $(window).resize(() => {
+                // HOME
+                //                                                                 元素最大寬度 - ((螢幕最大寬度 - 當前螢幕寬度) / 16) => 最小螢幕寬度 320，1920-320=1600，除以16=100 => * 0.01 分成100% => 每一% * 元素最大寬與最小寬之差
+                document.querySelector('.home_vinyl_records').setAttribute('style', `top: ${-100 - ((1920 - window.innerWidth) / 16) * 0.01 * 20}px; left: ${-250 + ((1920 - window.innerWidth) / 16) * 0.01 * 70}px; width: ${1100 - ((1920 - window.innerWidth) / 16) * 0.01 * 700}px; height: ${1100 - ((1920 - window.innerWidth) / 16) * 0.01 * 700}px`);
+                document.querySelector('.home_stylus').setAttribute('style', `top: ${-30 + ((1920 - window.innerWidth) / 16) * 0.01 * 55}px; left: ${480 - ((1920 - window.innerWidth) / 16) * 0.01 * 360}px; width: ${618 - ((1920 - window.innerWidth) / 16) * 0.01 * 393}px; height: ${180 - ((1920 - window.innerWidth) / 16) * 0.01 * 114.5}px`);
+                document.querySelector('.home_cover_img').setAttribute('style', `top: calc((100% - ${370 - ((1920 - window.innerWidth) / 16) * 0.01 * 230}px) / 2); left: calc((100% - ${370 - ((1920 - window.innerWidth) / 16) * 0.01 * 230}px) / 2); width: ${370 - ((1920 - window.innerWidth) / 16) * 0.01 * 230}px; height: ${370 - ((1920 - window.innerWidth) / 16) * 0.01 * 230}px`);
+                document.querySelector('.home_ctrl_container').setAttribute('style', `top:${260 - ((1920 - window.innerWidth) / 16) * 0.01 * 200}px; left: ${610 - ((1920 - window.innerWidth) / 16) * 0.01 * 600}px; height:${400 - ((1080 - window.innerHeight) / 6) * 0.01 * 100}px;`);
+                document.querySelector('.home_top_arrow').setAttribute('style', `width: ${100 - ((1080 - window.innerHeight) / 6) * 0.01 * 40}px; height: ${100 - ((1080 - window.innerHeight) / 6) * 0.01 * 40}px;`);
+                document.querySelector('.home_bot_arrow').setAttribute('style', `width: ${100 - ((1080 - window.innerHeight) / 6) * 0.01 * 40}px; height: ${100 - ((1080 - window.innerHeight) / 6) * 0.01 * 40}px;`);
+
+                // RANK
+                if (window.innerWidth <= 576) {
+                    set_value = {
+                        size: parseInt(160 - (((1920 - window.innerWidth) / 16) * 0.01 * 120)),
+                        translateZ: parseInt(360 - (((1920 - window.innerWidth) / 16) * 0.01 * 130)),
+                    }
+                } else {
+                    set_value = {
+                        size: parseInt(160 - (((1920 - window.innerWidth) / 16) * 0.01 * 60)),
+                        translateZ: parseInt(360 - (((1920 - window.innerWidth) / 16) * 0.01 * 130)),
+                    }
+                }
+                if (window.innerWidth <= 768) {
+                    document.querySelector('.home_rank').setAttribute('style', `width: ${257.5 - (((1080 - window.innerHeight) / 6) * 0.01 * 128.75)}px; height: ${115 - (((1080 - window.innerHeight) / 6) * 0.01 * 57.5)}px;`);
+                    document.querySelector('.home_slider .home_title').style.margin = `${180 - (((1080 - window.innerHeight) / 6) * 0.01 * 40)}px auto 0 auto`;
+                    document.querySelector('.home_rank').style.left = `calc((100% - ${document.querySelector('.home_rank').style.width}) / 2)`; //不可合併
+                } else {
+                    document.querySelector('.home_rank').setAttribute('style', `left: 100px; width: 165px; height: 730px;`);
+                    document.querySelector('.home_slider .home_title').style.margin = `100px auto 0 auto`;
+                }
+
+                for (let i = 0; i < 10; i++) {
+                    if (i == 0) {
+                        document.querySelector(`.home_song${i + 1}`).setAttribute(
+                            'style',
+                            `width: ${set_value.size}px;
+                        height: ${set_value.size}px;
+                        transform: rotateY(${i * 36}deg) translateZ(${set_value.translateZ}px) scale(1.18);`
+                        );
+                        if (window.innerWidth <= 576) {
+                            document.querySelector(`.home_song${rankOrder} .home_song_info`).style.transform = `translateX(${set_value.size}px)`;
+                        } else {
+                            document.querySelector(`.home_song${rankOrder} .home_song_info`).style.transform = `translateX(${-set_value.size}px)`;
+                        }
+                        if (window.innerWidth <= 576) {
+                            document.querySelector(`.home_song${rankOrder} .home_vinyl_records_s`).style.transform = `translateX(${-set_value.size / 2}px)`;
+                        } else {
+                            document.querySelector(`.home_song${rankOrder} .home_vinyl_records_s`).style.transform = `translateX(${set_value.size / 2}px)`;
+                        }
+                    } else {
+                        document.querySelector(`.home_song${i + 1}`).setAttribute(
+                            'style',
+                            `width: ${set_value.size}px;
+                        height: ${set_value.size}px;
+                        transform: rotateY(${i * 36}deg) translateZ(${set_value.translateZ}px`
+                        );
+                    }
+                }
+
+                document.querySelector('.home_perspective').setAttribute(
+                    'style',
+                    `top: ${100 - (((1080 - window.innerHeight) / 6) * 0.01 * 40)}px; left: ${540 - (((1920 - window.innerWidth) / 16) * 0.01 * 1020)}px`
+                );
+                if (window.innerWidth <= 480) {
+                    document.querySelector('.home_arrow_container').style.margin = `${300 - (((1920 - window.innerWidth) / 16) * 0.01 * 160)}px auto 0 30px`;
+                } else if (window.innerWidth <= 576) {
+                    document.querySelector('.home_arrow_container').style.margin = `${300 - (((1920 - window.innerWidth) / 16) * 0.01 * 160)}px auto 0 60px`;
+                } else if (window.innerWidth > 576 && window.innerWidth <= 768) {
+                    document.querySelector('.home_arrow_container').style.margin = `260px auto 0 auto`;
+                } else if (window.innerWidth > 768) {
+                    document.querySelector('.home_arrow_container').style.margin = `${440 - (((1920 - window.innerWidth) / 11.52) * 0.01 * 140)}px auto 0 auto`;
+                }
+
+                // ACTIVITY
+                if (window.innerWidth <= 440) {
+                    document.querySelector('.home_activity_info').style.left = `0px`;
+                }
+                if (window.innerWidth <= 768 && window.innerWidth > 440) {
+                    document.querySelector('.home_activity_info').style.left = `${(window.innerWidth - 400) / 2}px`;
+                }
+                if (window.innerWidth <= 768) {
+                    document.querySelector('.home_activity_img').setAttribute('style', `position:initial;float:left; width: ${150 - (((768 - window.innerWidth) / 4.48) * 0.01 * 70)}px; height: ${195 - (((768 - window.innerWidth) / 4.48) * 0.01 * 91)}px;margin: 0 20px 0 0;`);
+                    document.querySelector('.home_activity').setAttribute('style', `width:${375 - (((768 - window.innerWidth) / 4.48) * 0.01 * 187.5)}px;; height: ${129 - (((768 - window.innerWidth) / 4.48) * 0.01 * 64.5)}px;`);
+                    document.querySelector('.home_activity_info').style.top = `${240 - (((768 - window.innerWidth) / 4.48) * 0.01 * 140)}px`
+
+                }
+                if (window.innerWidth <= 992 && window.innerWidth > 768) {
+                    document.querySelector('.home_activity').setAttribute('style', `width:${675 - (((992 - window.innerWidth) / 2.24) * 0.01 * 300)}px;; height: ${232.2 - (((992 - window.innerWidth) / 2.24) * 0.01 * 103.2)}px;`);
+                    document.querySelector('.home_activity_info').style.left = `${(window.innerWidth - 720) / 2}px`;
+                }
+                if (window.innerWidth <= 992) {
+                    document.querySelector('.home_activity').style.left = `calc((100% - ${document.querySelector('.home_activity').style.width}) / 2)`
+                    document.querySelector('.home_activity_info').style.height = '390px';
+                    document.querySelector('.home_DJ').style.display = 'none';
+                }
+                if (window.innerWidth <= 1600 && window.innerWidth > 992) {
+                    document.querySelector('.home_activity').setAttribute('style', `width:675px;; height: 232.2px;`);
+                    document.querySelector('.home_activity_info').setAttribute('style', `left: ${720 - (((1600 - window.innerWidth) / 6.08) * 0.01 * (720 - ((window.innerWidth - 720) / 2)))}px; height: 390px`);
+                    document.querySelector('.home_DJ').setAttribute('style', `left: ${0 - (((1600 - window.innerWidth) / 6.08) * 0.01 * 613)}px`);
+                }
+                if (window.innerWidth <= 1600 && window.innerWidth > 768) {
+                    document.querySelector('.home_activity_img').setAttribute('style', `width:300px; height: 390px;`);
+                    document.querySelector('.home_activity_info').style.top = `${340 - (((1600 - window.innerWidth) / 8.32) * 0.01 * 100)}px`
+                }
+                if (window.innerWidth <= 1600) {
+                    document.querySelector('.enter_bt').setAttribute('style', `bottom:-90px; width:120px; height: 80px;`);
+                }
+                if (window.innerWidth > 1600) {
+                    document.querySelector('.home_activity').setAttribute('style', `width:${750 - (((1920 - window.innerWidth) / 3.2) * 0.01 * 75)}px;; height: ${258 - (((1920 - window.innerWidth) / 3.2) * 0.01 * 25.8)}px;`);
+                    document.querySelector('.home_activity_info').setAttribute('style', `top:${100 + (((1920 - window.innerWidth) / 3.2) * 0.01 * 240)}px; right: ${660 - (((1920 - window.innerWidth) / 3.2) * 0.01 * 160)}px; height: ${650 - (((1920 - window.innerWidth) / 3.2) * 0.01 * 260)}px`);
+                    document.querySelector('.home_activity_img').setAttribute('style', `width:${500 - (((1920 - window.innerWidth) / 3.2) * 0.01 * 200)}px; height: ${650 - (((1920 - window.innerWidth) / 3.2) * 0.01 * 260)}px;`);
+                    document.querySelector('.enter_bt').setAttribute('style', `bottom:${80 - (((1920 - window.innerWidth) / 3.2) * 0.01 * 170)}px; width:${180 - (((1920 - window.innerWidth) / 3.2) * 0.01 * 60)}px; height: ${120 - (((1920 - window.innerWidth) / 3.2) * 0.01 * 40)}px;`);
+                    document.querySelector('.home_DJ').setAttribute('style', `left:0px`);
+                }
+
+            });
+
+
 
             var timeStart, timeEnd, time;//申明全局變數
 
@@ -504,7 +1082,7 @@
 </head>
 
 <body>
-    <div id="app">
+    <div id="home_app">
         <div class="nav_bar flexbox">
             <div class="hamburger" @click="hamburger_click">
                 <div class="hamburger-box">
@@ -515,76 +1093,77 @@
                 <div class="paint_border"></div>
                 <ul>
                     <li class="REMIX flexbox">
-                        <a href="">
+                        <a href="./remix.html">
                         </a>
                     </li>
                     <li class="COLLECTION flexbox">
-                        <a href="">
+                        <a href="./collection.html">
                         </a>
                     </li>
                     <li class="ACTIVITY flexbox">
-                        <a href="">
+                        <a href="./activity.html">
                         </a>
                     </li>
                     <li class="LIBRARY flexbox">
-                        <a href="">
+                        <a href="./library.html">
                         </a>
                     </li>
                 </ul>
             </div>
-
             <div class="logo_container">
-                <a href="">
+                <a href="./index.html">
                     <div class="logo"></div>
+                    <div class="finger"></div>
                 </a>
             </div>
             <ul class="main_list flexbox">
                 <li class="REMIX flexbox">
-                    <a href="">
+                    <a href="./remix.html">
                     </a>
                 </li>
                 <li class="COLLECTION flexbox">
-                    <a href="">
+                    <a href="./collection.html">
                     </a>
                 </li>
                 <li class="ACTIVITY flexbox">
-                    <a href="">
+                    <a href="./activity.html">
                     </a>
                 </li>
                 <li class="LIBRARY flexbox">
-                    <a href="">
+                    <a href="./library.html">
                     </a>
                 </li>
             </ul>
             <div class="search_bt" @click="search_bt_click">
                 <a href="#"></a>
             </div>
-            <div class="search_bar">
+            <div class="search_bar" @click="stopPropagation">
                 <input class="search" type="text" />
                 <div class="tag_container">
                 </div>
             </div>
-            <div class="login_bt" @click="" v-if="mem_login == false">
-                <a class="flexbox" href="#">Login</a>
-            </div>
+
             <div class="mem_bt" @click="mem_bt_click" v-if="mem_login == true">
                 <a href="#"></a>
+            </div>
+            <div class="login_bt" @click="" v-if="mem_login == true">
+                <a href="./login.html"></a>
             </div>
             <div class="mem_list" @click="stopPropagation">
                 <div class="paint_border"></div>
                 <ul>
                     <li>
-                        <a href="">
+                        <a href="./profile.html">
                             <h4>Profile</h4>
                         </a>
                     </li>
                     <li>
-                        <a href="">
-                            <h4>Favorite</h4>
+                        <a href="./library.html">
+                            <h4>Library</h4>
                         </a>
                     </li>
                     <li>
-                        <a href="">
+                        <a href="./songsadded.html">
                             <h4>
                                 Song Upload
                                 <br />&amp; Remove
@@ -592,7 +1171,7 @@
                         </a>
                     </li>
                     <li>
-                        <a href="">
+                        <a href="./store.html">
                             <h4>
                                 Store Value
                                 <br />&amp;Store Record
@@ -600,7 +1179,7 @@
                         </a>
                     </li>
                     <li>
-                        <a href="">
+                        <a href="./donate.html">
                             <h4>Donate Record</h4>
                         </a>
                     </li>
@@ -610,6 +1189,8 @@
 
         <div id="pagepiling">
             <div class="home_sec home_sec01 section">
+                <div class="home_paint01"></div>
+                <div class="home_paint02"></div>
                 <div class="home_img_container">
                     <div class="home_stylus"></div>
                     <div class="home_vinyl_records">
@@ -617,25 +1198,33 @@
                         </div>
                     </div>
                 </div>
-                <div class="home_ctrl_container">
+                <div class="home_ctrl_container flexbox">
                     <div class="home_top_arrow"></div>
-                    <div songInfo_container>
-
+                    <div class="home_songInfo_container">
+                        <div class="home_song_cover"></div>
+                        <div class="contain flexbox">
+                            <span class="home_song_name">Lucid Dreamer</span>
+                            <span class="home_song_author">Spazz Cardigan</span>
+                        </div>
+                        <div class="home_control_container">
+                            <button class="home_prev"><i class="fas fa-step-backward"></i></button>
+                            <button class="home_play"><i class="fas fa-play"></i></button>
+                            <button class="home_next"><i class="fas fa-step-forward"></i></button>
+                        </div>
                     </div>
                     <div class="home_bot_arrow"></div>
                 </div>
                 <div class="home_wave_container">
-
+                    <canvas class="home_line"></canvas>
+                    <!-- <div class="home_line"></div> -->
                 </div>
             </div>
             <div class="home_sec home_sec02 section">
-                <header>
-                    <h1>
-                        REMIX
-                    </h1>
-                </header>
+                <div class="home_paint01"></div>
+                <div class="home_paint02"></div>
+                <div class="home_remix">
+                </div>
                 <div class="home_mixer">
-
                 </div>
                 <p>
                     You can mix andmaster EDM in here.It’s easy for everyonewho want create music on their own.
@@ -647,7 +1236,12 @@
             <div class="home_sec home_sec03 section">
                 <div class="home_pot">
                 </div>
+                <div class="home_rank">
+                </div>
                 <div class="home_slider">
+                    <div class="home_title">
+                        <h1>Favorite TOP 10</h1>
+                    </div>
                     <div class="home_perspective">
                         <div class="home_song_container">
                             <div class="home_song home_song1">
@@ -669,8 +1263,8 @@
                                             <i class="fas fa-coins"></i>
                                         </div>
                                     </div>
-
                                 </div>
+                                <div class="home_vinyl_records_s"></div>
                             </div>
                             <div class="home_song home_song2">
                                 <div class="home_cover_img"><a href="" draggable="home_false"></a></div>
@@ -691,8 +1285,8 @@
                                             <i class="fas fa-coins"></i>
                                         </div>
                                     </div>
-
                                 </div>
+                                <div class="home_vinyl_records_s"></div>
                             </div>
                             <div class="home_song home_song3">
                                 <div class="home_cover_img"><a href="" draggable="home_false"></a></div>
@@ -713,8 +1307,8 @@
                                             <i class="fas fa-coins"></i>
                                         </div>
                                     </div>
-
                                 </div>
+                                <div class="home_vinyl_records_s"></div>
                             </div>
                             <div class="home_song home_song4">
                                 <div class="home_cover_img"><a href="" draggable="home_false"></a></div>
@@ -735,8 +1329,8 @@
                                             <i class="fas fa-coins"></i>
                                         </div>
                                     </div>
-
                                 </div>
+                                <div class="home_vinyl_records_s"></div>
                             </div>
                             <div class="home_song home_song5">
                                 <div class="home_cover_img"><a href="" draggable="home_false"></a></div>
@@ -757,8 +1351,8 @@
                                             <i class="fas fa-coins"></i>
                                         </div>
                                     </div>
-
                                 </div>
+                                <div class="home_vinyl_records_s"></div>
                             </div>
                             <div class="home_song home_song6">
                                 <div class="home_cover_img"><a href="" draggable="home_false"></a></div>
@@ -779,8 +1373,8 @@
                                             <i class="fas fa-coins"></i>
                                         </div>
                                     </div>
-
                                 </div>
+                                <div class="home_vinyl_records_s"></div>
                             </div>
                             <div class="home_song home_song7">
                                 <div class="home_cover_img"><a href="" draggable="home_false"></a></div>
@@ -801,8 +1395,8 @@
                                             <i class="fas fa-coins"></i>
                                         </div>
                                     </div>
-
                                 </div>
+                                <div class="home_vinyl_records_s"></div>
                             </div>
                             <div class="home_song home_song8">
                                 <div class="home_cover_img"><a href="" draggable="home_false"></a></div>
@@ -823,8 +1417,8 @@
                                             <i class="fas fa-coins"></i>
                                         </div>
                                     </div>
-
                                 </div>
+                                <div class="home_vinyl_records_s"></div>
                             </div>
                             <div class="home_song home_song9">
                                 <div class="home_cover_img"><a href="" draggable="home_false"></a></div>
@@ -845,8 +1439,8 @@
                                             <i class="fas fa-coins"></i>
                                         </div>
                                     </div>
-
                                 </div>
+                                <div class="home_vinyl_records_s"></div>
                             </div>
                             <div class="home_song home_song10">
                                 <div class="home_cover_img"><a href="" draggable="home_false"></a></div>
@@ -867,8 +1461,8 @@
                                             <i class="fas fa-coins"></i>
                                         </div>
                                     </div>
-
                                 </div>
+                                <div class="home_vinyl_records_s"></div>
                             </div>
 
                         </div>
@@ -881,11 +1475,14 @@
 
             </div>
             <div class="home_sec home_sec04 section">
+                <div class="home_paint01"></div>
+                <div class="home_paint02"></div>
+                <div class="home_activity"></div>
                 <div class="home_DJ">
                 </div>
-                <div class="home_activity_img">
-                </div>
                 <div class="home_activity_info">
+                    <div class="home_activity_img">
+                    </div>
                     <h2>
                         Electronic dance music contest 2019
                     </h2>
@@ -906,27 +1503,96 @@
                         <a href="./activity.html"></a>
                     </div>
                 </div>
+
             </div>
             <div class="home_sec home_sec05 section">
+                <div class="home_paint01"></div>
                 <div class="home_collection">
                 </div>
                 <p>
                     We have more than 10,000,00 songs in here. enjoy together!
                 </p>
-                <div class="home_shelf_container">
-                    <div class="home_shelf home_shelf01">
-                        <div class="home_collection home_collection01 flexbox"><a class="flexbox" href="./collection.html">Rock</a></div>
-                        <div class="home_collection home_collection02 flexbox"><a class="flexbox" href="./collection.html">Matel</a></div>
-                        <div class="home_collection home_collection03 flexbox"><a class="flexbox" href="./collection.html">R & B</a></div>
+                <div class="home_sort_container">
+                    <div class="home_sort home_sort01 flexbox">
+                        <div class="selector">
+                            <svg width="250" height="250" viewbox="0,0,200,200">
+                                <path class="st0" stroke="#26F5F7" stroke-width="10" stroke-linecap="round" fill="none"
+                                    d="M49.2,32.9c-3.5-5.5-11-7.3-17-5.2S21.7,35.2,19,41.2S15.2,54,14.4,60.6c-3,24.9-3,50.2-2.7,75.3
+                                c0.1,8.7,0.3,17.7,4.1,25.4c5.3,10.7,16.5,16.6,27.5,19.7c17.9,5,36.8,4.4,55.3,2.8c17-1.4,50.9-5,67.4-9.4
+                                c6.3-1.7,15.8-11.7,17.4-18.3c2.1-9.1,5-37.4,5.3-46.7c0.8-21.9-1.4-44.1-8.6-64.6c-0.9-2.6-2-5.3-3.7-7.5
+                                c-1.9-2.4-4.5-4.1-7.1-5.6c-16-9.6-33.7-16.4-52-18.7s-33.4-1.1-50,7.2" />
+                            </svg>
+                        </div>
+                        <a class="flexbox" href="./collection.html">Rock</a>
                     </div>
-                    <div class="home_shelf home_shelf02">
-                        <div class="home_collection home_collection04 flexbox"><a class="flexbox" href="./collection.html">Hip-hop</a></div>
-                        <div class="home_collection home_collection05 flexbox"><a class="flexbox" href="./collection.html">Classical</a></div>
-                        <div class="home_collection home_collection06 flexbox"><a class="flexbox" href="./collection.html">Country</a></div>
+                    <div class="home_sort home_sort02 flexbox">
+                        <div class="selector">
+                            <svg width="250" height="250" viewbox="0,0,200,200">
+                                <path class="st0" stroke="#26F5F7" stroke-width="10" stroke-linecap="round" fill="none"
+                                    d="M49.2,32.9c-3.5-5.5-11-7.3-17-5.2S21.7,35.2,19,41.2S15.2,54,14.4,60.6c-3,24.9-3,50.2-2.7,75.3
+                                c0.1,8.7,0.3,17.7,4.1,25.4c5.3,10.7,16.5,16.6,27.5,19.7c17.9,5,36.8,4.4,55.3,2.8c17-1.4,50.9-5,67.4-9.4
+                                c6.3-1.7,15.8-11.7,17.4-18.3c2.1-9.1,5-37.4,5.3-46.7c0.8-21.9-1.4-44.1-8.6-64.6c-0.9-2.6-2-5.3-3.7-7.5
+                                c-1.9-2.4-4.5-4.1-7.1-5.6c-16-9.6-33.7-16.4-52-18.7s-33.4-1.1-50,7.2" />
+                            </svg>
+                        </div>
+                        <a class="flexbox" href="./collection.html">Matel</a>
+                    </div>
+                    <div class="home_sort home_sort03 flexbox">
+                        <div class="selector">
+                            <svg width="250" height="250" viewbox="0,0,200,200">
+                                <path class="st0" stroke="#26F5F7" stroke-width="10" stroke-linecap="round" fill="none"
+                                    d="M49.2,32.9c-3.5-5.5-11-7.3-17-5.2S21.7,35.2,19,41.2S15.2,54,14.4,60.6c-3,24.9-3,50.2-2.7,75.3
+                                c0.1,8.7,0.3,17.7,4.1,25.4c5.3,10.7,16.5,16.6,27.5,19.7c17.9,5,36.8,4.4,55.3,2.8c17-1.4,50.9-5,67.4-9.4
+                                c6.3-1.7,15.8-11.7,17.4-18.3c2.1-9.1,5-37.4,5.3-46.7c0.8-21.9-1.4-44.1-8.6-64.6c-0.9-2.6-2-5.3-3.7-7.5
+                                c-1.9-2.4-4.5-4.1-7.1-5.6c-16-9.6-33.7-16.4-52-18.7s-33.4-1.1-50,7.2" />
+                            </svg>
+                        </div>
+                        <a class="flexbox" href="./collection.html">R & B</a>
+                    </div>
+                    <div class="home_sort home_sort04 flexbox">
+                        <div class="selector">
+                            <svg width="250" height="250" viewbox="0,0,200,200">
+                                <path class="st0" stroke="#26F5F7" stroke-width="10" stroke-linecap="round" fill="none"
+                                    d="M49.2,32.9c-3.5-5.5-11-7.3-17-5.2S21.7,35.2,19,41.2S15.2,54,14.4,60.6c-3,24.9-3,50.2-2.7,75.3
+                                c0.1,8.7,0.3,17.7,4.1,25.4c5.3,10.7,16.5,16.6,27.5,19.7c17.9,5,36.8,4.4,55.3,2.8c17-1.4,50.9-5,67.4-9.4
+                                c6.3-1.7,15.8-11.7,17.4-18.3c2.1-9.1,5-37.4,5.3-46.7c0.8-21.9-1.4-44.1-8.6-64.6c-0.9-2.6-2-5.3-3.7-7.5
+                                c-1.9-2.4-4.5-4.1-7.1-5.6c-16-9.6-33.7-16.4-52-18.7s-33.4-1.1-50,7.2" />
+                            </svg>
+                        </div>
+                        <a class="flexbox" href="./collection.html">Hip-hop</a>
+                    </div>
+                    <div class="home_sort home_sort05 flexbox">
+                        <div class="selector">
+                            <svg width="250" height="250" viewbox="0,0,200,200">
+                                <path class="st0" stroke="#26F5F7" stroke-width="10" stroke-linecap="round" fill="none"
+                                    d="M49.2,32.9c-3.5-5.5-11-7.3-17-5.2S21.7,35.2,19,41.2S15.2,54,14.4,60.6c-3,24.9-3,50.2-2.7,75.3
+                                c0.1,8.7,0.3,17.7,4.1,25.4c5.3,10.7,16.5,16.6,27.5,19.7c17.9,5,36.8,4.4,55.3,2.8c17-1.4,50.9-5,67.4-9.4
+                                c6.3-1.7,15.8-11.7,17.4-18.3c2.1-9.1,5-37.4,5.3-46.7c0.8-21.9-1.4-44.1-8.6-64.6c-0.9-2.6-2-5.3-3.7-7.5
+                                c-1.9-2.4-4.5-4.1-7.1-5.6c-16-9.6-33.7-16.4-52-18.7s-33.4-1.1-50,7.2" />
+                            </svg>
+                        </div>
+                        <a class="flexbox" href="./collection.html">Classical</a>
+                    </div>
+                    <div class="home_sort home_sort06 flexbox">
+                        <div class="selector">
+                            <svg width="250" height="250" viewbox="0,0,200,200">
+                                <path class="st0" stroke="#26F5F7" stroke-width="10" stroke-linecap="round" fill="none"
+                                    d="M49.2,32.9c-3.5-5.5-11-7.3-17-5.2S21.7,35.2,19,41.2S15.2,54,14.4,60.6c-3,24.9-3,50.2-2.7,75.3
+                                c0.1,8.7,0.3,17.7,4.1,25.4c5.3,10.7,16.5,16.6,27.5,19.7c17.9,5,36.8,4.4,55.3,2.8c17-1.4,50.9-5,67.4-9.4
+                                c6.3-1.7,15.8-11.7,17.4-18.3c2.1-9.1,5-37.4,5.3-46.7c0.8-21.9-1.4-44.1-8.6-64.6c-0.9-2.6-2-5.3-3.7-7.5
+                                c-1.9-2.4-4.5-4.1-7.1-5.6c-16-9.6-33.7-16.4-52-18.7s-33.4-1.1-50,7.2" />
+                            </svg>
+                        </div>
+                        <a class="flexbox" href="./collection.html">Country</a>
                     </div>
                 </div>
             </div>
             <div class="home_sec home_sec06 section">
+                <div class="home_about">
+                </div>
+                <p>
+                    We love EDM, so we get togehterto share morew music for you.
+                </p>
                 <canvas class="home_map"></canvas>
             </div>
         </div>
@@ -1055,7 +1721,7 @@
                                         <p> Spazz Cardigan</p>
                                     </div>
                                 </div>
-                                <div class="totalTime">4:30</div>
+                                <div class="totalTime">3:11</div>
                                 <div class="heart becomeRed"><i class="fas fa-heart"></i></div>
                                 <div class="clearfix"></div>
                             </li>
@@ -1066,11 +1732,11 @@
                                 </div>
                                 <div class="listSongInfo">
                                     <div class="name">
-                                        <h4>Lucid Dreamer</h4>
-                                        <p> Spazz Cardigan</p>
+                                        <h4>Spring In My Step</h4>
+                                        <p>Silent Partner</p>
                                     </div>
                                 </div>
-                                <div class="totalTime">4:30</div>
+                                <div class="totalTime">1:59</div>
                                 <div class="heart becomeRed"><i class="fas fa-heart"></i></div>
                                 <div class="clearfix"></div>
                             </li>
@@ -1081,11 +1747,11 @@
                                 </div>
                                 <div class="listSongInfo">
                                     <div class="name">
-                                        <h4>Lucid Dreamer</h4>
-                                        <p> Spazz Cardigan</p>
+                                        <h4>On My Way Home</h4>
+                                        <p>The 126ers</p>
                                     </div>
                                 </div>
-                                <div class="totalTime">4:30</div>
+                                <div class="totalTime">1:56</div>
                                 <div class="heart becomeRed"><i class="fas fa-heart"></i></div>
                                 <div class="clearfix"></div>
                             </li>
@@ -1149,11 +1815,28 @@
                                 <div class="heart becomeRed"><i class="fas fa-heart"></i></div>
                                 <div class="clearfix"></div>
                             </li>
+
                         </ul>
                     </div>
                 </div>
                 <div class="close" id="closePlayer"><i class="fas fa-times"></i></div>
                 <div class="clearfix"></div>
+
+                <!-- 撥放器燈箱 -->
+                <div class="lightCover">
+                    <div class="lightbox_s" id="myAllList">
+                        <div class="closeLight"><i class="fas fa-times"></i></div>
+                        <h3>My List</h3>
+                        <div class="lightSelectMenu">
+                            <ul>
+                                <li>Liked songs</li>
+                                <li>Peaceful songs</li>
+                                <li>party</li>
+                            </ul>
+                        </div>
+                        <button class="">ok</button>
+                    </div>
+                </div>
             </div>
         </div>
         <!-- player end -->
@@ -1183,12 +1866,12 @@
 
     <script>
         new Vue({
-            el: "#app",
+            el: "#home_app",
             data: {
                 mobile_list: false,
                 search_bar: false,
                 mem_list: false,
-                mem_login: false,
+                mem_login: true,
 
             },
             mounted() {
@@ -1216,274 +1899,6 @@
                 // nav_bar end
 
 
-
-                // player start
-                $(document).ready(function () {
-                    //撥放器縮放
-                    $('#expand').click(function () {
-                        $('.player_b').addClass('open');
-                        $('.player_s').animate({
-                            bottom: '-70px'
-                        });
-                    });
-                    $('#closePlayer').click(function () {
-                        $('.player_b').removeClass('open');
-                        $('.player_s').animate({
-                            bottom: '0'
-                        });
-                    });
-
-                    //手機推移
-                    $('.left .pushBtn').click(function () {
-                        $('.left').css('height', '10%');
-                        $('.right').css('height', '90%');
-                        $('.right .pushBtn').show();
-                        $('.left .pushBtn').hide();
-                    });
-                    $('.right .pushBtn').click(function () {
-                        $('.left').css('height', '90%');
-                        $('.right').css('height', '10%');
-                        $('.left .pushBtn').show();
-                        $('.right .pushBtn').hide();
-                    });
-
-                    //select選歌單
-                    $('#selectBtn').click(function () {
-                        $('#lightCover').show();
-                        $('#myAllList').show();
-                    });
-
-                    //歌單清單
-                    $('#closePlayer').click(function () {
-                        $('#lightCover').hide();
-                        $('#myAllList').hide();
-                    });
-                    $('#lightCover').click(function () {
-                        $(this).hide();
-                        $('#myAllList').hide();
-                    });
-
-                    //點愛心
-                    $('.heart').click(function () {
-                        if ($(this).hasClass('becomeRed')) {
-                            $(this).html('<i class="far fa-heart"></i>').removeClass('becomeRed');
-                        } else {
-                            $(this).html('<i class="fas fa-heart"></i>').addClass('becomeRed');
-                        }
-                    });
-
-                    //點歌單撥放，左側專輯唱片動畫
-                    $('.songCover').mouseover(function () {
-                        $(this).find('.listPlay').show();
-                    });
-                    $('.songCover').mouseout(function () {
-                        $(this).find('.listPlay').hide();
-                    });
-
-                    $(".listPlay").click(function () {
-                        if ($(this).hasClass('nowlistening')) {
-                            $(this).html('<i class="fas fa-play"></i>').removeClass("nowlistening");
-                            isPlaying(true);
-                        } else {
-                            $(this).html('<i class="fas fa-pause"></i>').addClass("nowlistening");
-                            $("#player .songCover .listPlay").not(this).removeClass('nowlistening');
-                            isPlaying(false);
-                        }
-                    });
-
-
-
-                    /* -- 音樂播放 -- */
-                    let storage = localStorage;
-                    var autoplay = true,
-                        songTime,
-                        playStatus = false,
-                        nowPlaying = 0, //現在播放的歌
-                        audio = $("audio")[0], //撥放器
-                        myPlaylist = [{
-                            title: "Lucid Dreamer",
-                            creator: "Spazz Cardigan",
-                            cover: "../img/library/cover1.jpg",
-                            filein: "../img/library/Lucid_Dreamer.mp3",
-                            totalTime: "3:11",
-                        },
-                        {
-                            title: "Spring In My Step",
-                            creator: "Silent Partner",
-                            cover: "../img/library/cover2.jpg",
-                            filein: "../img/library/Spring_In_My_Step.mp3",
-                            totalTime: "1:59",
-                        },
-                        {
-                            title: "On My Way Home",
-                            creator: "The 126ers",
-                            cover: "../img/library/cover3.jpg",
-                            filein: "../img/library/On_My_Way_Home.mp3",
-                            totalTime: "1:56",
-                        }
-                        ];
-
-
-                    audio.setAttribute("src", myPlaylist[nowPlaying].filein);
-                    isAutoPlay(true);//測試
-
-                    //播放暫停按鈕 -- 音樂撥放/暫停
-                    $("#player .play").click(function () {
-                        // console.log(nowPlaying);
-                        // console.log(playStatus);
-                        isPlaying(playStatus);
-                    });
-
-                    //下一首按鈕 -- 切換下一首
-                    $("#player .next").click(function () {
-                        if (nowPlaying == myPlaylist.length - 1) {
-                            audio.setAttribute("src", myPlaylist[myPlaylist.length - 1].filein);
-                        } else {
-                            nowPlaying++;
-                            audio.setAttribute("src", myPlaylist[nowPlaying].filein);
-                        }
-                        if (playStatus == true) {
-                            isPlaying(false);
-                        } else {
-                            isPlaying(true);
-                        }
-                    });
-
-                    //上一首按鈕 -- 切換上一首
-                    $("#player .prev").click(function () {
-                        if (nowPlaying == 0) {
-                            audio.setAttribute("src", myPlaylist[0].filein);
-                        } else {
-                            nowPlaying--;
-                            audio.setAttribute("src", myPlaylist[nowPlaying].filein);
-                        }
-                        if (playStatus == true) {
-                            isPlaying(false);
-                        } else {
-                            isPlaying(true);
-                        }
-                    });
-
-                    //停止按鈕 -- 音樂全數停止
-                    $("#player .stop").click(function () {
-                        audio.pause();
-                        audio.currentTime = 0;
-                        isPlaying(true);
-                        $("#player .songCover .listPlay").removeClass('nowlistening');
-                    });
-
-                    //循環播放 -- 單首??未處理
-                    $("#player .loop").click(function () {
-                        if ($(this).hasClass("becomeYel")) {
-                            $(this).removeClass("becomeYel");
-                            audio.loop = false;
-                        } else {
-                            $(this).addClass("becomeYel");
-                            audio.loop = true;
-                        }
-                    });
-                    //隨機播放 -- 清單隨機--未處理
-
-
-
-                    //clickBar -- 詳細(b)/簡易(s)
-                    $(".player_b .progressbar").click(function (e) {
-                        let progressBarSize_b = parseInt($(".player_b .progressbar").css("width"));
-                        let mouseX_b = e.clientX - $(".player_b .progressbar").offset().left;
-                        $(".player_b .progressbar .progress").css('width', `${mouseX_b}px`);
-
-                        let newTime_b = mouseX_b / (progressBarSize_b / audio.duration);
-                        audio.currentTime = newTime_b;
-                    });
-                    $(".player_s .progressbar").click(function (e) {
-                        let progressBarSize_s = parseInt($(".player_s .progressbar").css("width"));
-                        let mouseX_s = e.clientX - $(".player_s .progressbar").offset().left;
-                        $(".player_s .progressbar .progress").css('width', `${mouseX_s}px`);
-
-                        let newTime_s = mouseX_s / (progressBarSize_s / audio.duration);
-                        audio.currentTime = newTime_s;
-                    });
-
-
-                    /* -- 自動撥放 --*/
-                    function isAutoPlay(autoP) {//測試
-                        if (autoP) {
-                            isPlaying(false);
-                        } else {
-                            isPlaying(true);
-                        }
-                    }
-
-                    function isPlaying(isPlaying) {
-                        if (!isPlaying) { //如果沒有播放就讓他撥
-                            playAudio();
-                            $("#player .play").html('<i class="fas fa-pause"></i>');
-                            $("#player .player_b .coverRec").animate({
-                                right: "-50%",
-                                opacity: "1"
-                            }, "fast", "swing").addClass("recRotate");
-                            playStatus = true;
-                            // console.log(playStatus);
-                        } else {
-                            audio.pause();
-                            $("#player .play").html('<i class="fas fa-play"></i>');
-                            playStatus = false;
-                            $("#player .player_b .coverRec").animate({
-                                right: "0%"
-                            }).removeClass("recRotate");
-                            // console.log(playStatus);
-                        }
-                        $("#player .songInfo .name").text(myPlaylist[nowPlaying].title);
-                        $("#player .songInfo .creator").text(myPlaylist[nowPlaying].creator);
-                    }
-
-                    //播放
-                    function playAudio() {
-                        audio.play();
-                    }
-
-
-
-                    //進度條
-                    var progressingTime = setInterval(progressingShow, 100);
-                    let newSong = nowPlaying;//測試
-                    function progressingShow() {
-                        songTime = audio.currentTime;
-                        let progressColor = (songTime / audio.duration) * 100;
-                        if (audio.ended) {
-                            autoChange();
-                        }
-                        /*測試
-                        if(newSong == nowPlaying){
-                          storage.setItem(newSong, songTime);
-                        }else{
-                          storage.clear();
-                          storage.setItem(nowPlaying, songTime);
-                        }
-                        */
-                        // console.log(audio.duration); //歌曲總長秒數
-                        $("#player .progress").css("width", `${progressColor.toFixed(2)}%`);
-                        $("#player span.start").text(`${parseInt(songTime / 60)}:${parseInt(songTime % 60)}`)
-                        $("#player span.end").text(myPlaylist[nowPlaying].totalTime);
-                    }
-
-                    //自動換下一首
-                    function autoChange() {
-                        if (nowPlaying == myPlaylist.length - 1) {
-                            if (audio.ended) {
-                                audio.currentTime = 0;
-                                isPlaying(true);
-                            } else {
-                                isPlaying(false);
-                            }
-                        } else {
-                            nowPlaying++;
-                            audio.setAttribute("src", myPlaylist[nowPlaying].filein);
-                            isPlaying(false);
-                        }
-                    }
-                });
-                // player end
 
 
             },

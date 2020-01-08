@@ -1,4 +1,4 @@
-@import '_public';
+@import "public";
 .profile_content {
   position: relative;
   background: url(../img/member/border.png) top center no-repeat;
@@ -52,28 +52,60 @@
 
     .profile_leftbox {
       flex: 0 1 25%;
+      padding: 30px;
       .profile_mem_img {
+        position: relative;
         width: 300px;
         height: 300px;
         background: url(../img/home/test.jpg);
         background-size: cover;
 
-        i {
-          position: relative;
-          top: 5px;
-          left: 267px;
-          font-size: 1.5rem;
+        .edit {
+          position: absolute;
+          bottom: 15px;
+          left: calc(50% - 40px);
+          display: inline-block;
+          width: 80px;
+          padding: 5px 8px;
+          font-size: 0.7rem;
+          text-align: center;
+          background-color: #ffffff;
+          color: #333;
+          border: 1.5px solid $yellow;
+          cursor: pointer;
+          transition: all 0.3s;
+          &:hover {
+            transform: scale(1.1);
+          }
         }
       }
     }
     .profile_rightbox {
       flex: 0 1 40%;
       margin: 0 0 0 60px;
-      table {
-        text-align: left;
-        th,
-        td {
+      .row:not(:last-child) {
+        transition: all 0.3s;
+        cursor: pointer;
+
+        &:hover {
+          background: rgba(200, 200, 200, 0.3);
+        }
+      }
+      .row {
+        .th,
+        .td,
+        i {
           padding: 15px;
+          line-height: 20px;
+          margin: 15px;
+          // align-items: center;
+        }
+        .th {
+          width: 150px;
+        }
+        .td {
+          width: 250px;
+          word-wrap: break-word;
         }
       }
     }
@@ -86,6 +118,8 @@
   left: 0;
   width: 100%;
   height: 500px;
+  background-color: #414141e6;
+
   .profile_lightbox_s {
     position: absolute;
     top: calc(50% - 215px);
@@ -112,6 +146,13 @@
 
       input[type="password"] {
         width: 300px;
+        border-radius: 5px;
+        border: 1px solid darkgray;
+        height: 25px;
+        padding-left: 10px;
+        font-family: 微軟正黑體;
+        font-size: 16px;
+        outline: none;
       }
     }
     .profile_modify_confirm {
@@ -125,6 +166,104 @@
       align-items: center;
       text-align: center;
       line-height: 1rem;
+    }
+  }
+}
+
+@media screen and (max-width: 1280px) {
+  .profile_content {
+    background-size: 100% 640px;
+  }
+}
+
+@media screen and (max-width: 992px) {
+  .profile_content {
+    background-size: 100% 480px;
+
+    .profile_container {
+      .profile_leftbox {
+        padding: 15px;
+        .profile_mem_img {
+          width: 200px;
+          height: 200px;
+        }
+      }
+      .profile_rightbox {
+        margin: 0 0 0 30px;
+        .row {
+          .th,
+          .td,
+          i {
+            margin: 0px;
+            font-size: 16px;
+          }
+          .th {
+            width: 100px;
+          }
+          .td {
+            width: 200px;
+          }
+        }
+      }
+    }
+  }
+}
+@media screen and (max-width: 768px) {
+  .profile_content {
+    .profile_container {
+      margin: 90px auto 0 auto;
+      .profile_rightbox {
+        .row {
+          display: block;
+          overflow: hidden;
+          padding: 0 15px;
+          .th,
+          .td,
+          i {
+            float: left;
+            margin: 0px;
+            font-size: 16px;
+            padding: 15px 0;
+          }
+          .th {
+            width: 80px;
+          }
+          .td {
+            width: 60%;
+          }
+        }
+        .row1 {
+          .th,
+          i {
+            line-height: 50px;
+          }
+          .td {
+            .profile_mem_img {
+              width: 50px;
+              height: 50px;
+              background: url(../img/home/test.jpg);
+              background-size: cover;
+            }
+          }
+        }
+      }
+    }
+  }
+}
+@media screen and (max-width: 576px) {
+  .profile_content {
+    .profile_container {
+      display: block;
+      .profile_rightbox {
+        margin: 0 15px;
+        .row {
+          display: block;
+          overflow: hidden;
+          i {
+            float: right;
+          }
+        }
+      }
     }
   }
 }
