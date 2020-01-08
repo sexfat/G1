@@ -1084,7 +1084,7 @@
                 }
             }
             .add_btom{
-                width: 240px !important;
+                width: 240px;
                 position: relative;
                 top: -5px;
                 left: 20px;
@@ -1159,6 +1159,22 @@
         height: 70px !important;
     }
 }
+@media screen and (max-width:376px){
+    .inside2count{
+        position: relative;
+        left: 300px !important;
+    }
+    .inside2count #add_tta{
+        width: 300px !important;
+    }
+    .inside2count .add_btom{
+        width: 225px !important;
+    }
+    .inside2count .songinfo_bb{
+        position: relative;
+        left: 120px !important;
+    }
+}
 
 .btomsen{
     .sd_btn{
@@ -1182,6 +1198,18 @@
         position: relative;
         top: 500px;
         left: 100px;
+    }
+}
+@media screen and (max-width:376px) {
+    .btomsen .sd_btn{
+        position: relative;
+        top: 500px;
+        left: 70px;
+    }
+    .btomsen .sd{
+        position: relative;
+        top: 500px;
+        left: 120px;
     }
 }
 
