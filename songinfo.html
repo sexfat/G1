@@ -452,8 +452,17 @@
                         <audio id="music" src="./music/Paul_Flint.mp3"></audio>
                     </div>
                 </div>
-                <div class="songinfo_wave">
-                    <iframe width="420" height="315" src="./music/Paul_Flint.mp3" frameborder="0"
+                <label class="label" for="audioFile" id="audioLabel"></label>
+                    <input type="file" name="audioFile" id="audioFile"
+                        onchange="vudio.readAudioSrc(this,vudio,document.querySelector('#audioLabel'))"
+                        accept="audio/*">
+                <div class="songinfo_wave" style="z-index: -1;">
+                    <div class="infoinfocontainer">
+                        <img id="bg" />
+                        <canvas id="infoinfocanvas"></canvas>
+                        <audio id="infoaudio" src="./music/Paul_Flint.mp3" preload="auto"></audio>
+                    </div>
+                    <!-- <iframe width="420" height="315" src="./music/Paul_Flint.mp3" frameborder="0"
                         allowfullscreen></iframe>
                     <div class="jumping-things-wrap">
                         <span></span>
@@ -554,7 +563,7 @@
                         <span></span>
                         <span></span>
                     </div>
-                    <!-- <h4 class="title">Darko's &amp; Timo's Randomly jumping music player</h4> -->
+                    <h4 class="title">Darko's &amp; Timo's Randomly jumping music player</h4> -->
                 </div>
             </section>
             <section class="songinfo_infos3">
@@ -598,7 +607,8 @@
                                     <!-- <div class="clearfix"></div> -->
                                     <!-- <div class="re-report"></div> -->
                                     <input type="button" name="" class="inforeport" style="display: none;">
-                                    <label class="songinfo_re" for="inforeport" style="text-align: center;">Report</label>
+                                    <label class="songinfo_re" for="inforeport"
+                                        style="text-align: center;">Report</label>
                                 </li>
                                 <li class="infomess_li">
                                     <img class="infomessimg" src="./img/songinfo/people.png"
@@ -609,7 +619,8 @@
                                     <!-- <div class="clearfix"></div> -->
                                     <!-- <div class="re-report"></div> -->
                                     <input type="button" name="" class="inforeport" style="display: none;">
-                                    <label class="songinfo_re" for="inforeport" style="text-align: center;">Report</label>
+                                    <label class="songinfo_re" for="inforeport"
+                                        style="text-align: center;">Report</label>
                                 </li>
                                 <li class="infomess_li">
                                     <img class="infomessimg" src="./img/songinfo/people.png"
@@ -620,7 +631,8 @@
                                     <!-- <div class="clearfix"></div> -->
                                     <!-- <div class="re-report"></div> -->
                                     <input type="button" name="" class="inforeport" style="display: none;">
-                                    <label class="songinfo_re" for="inforeport" style="text-align: center;">Report</label>
+                                    <label class="songinfo_re" for="inforeport"
+                                        style="text-align: center;">Report</label>
                                 </li>
                                 <li class="infomess_li">
                                     <img class="infomessimg" src="./img/songinfo/people.png"
@@ -631,7 +643,8 @@
                                     <!-- <div class="clearfix"></div> -->
                                     <!-- <div class="re-report"></div> -->
                                     <input type="button" name="" class="inforeport" style="display: none;">
-                                    <label class="songinfo_re" for="inforeport" style="text-align: center;">Report</label>
+                                    <label class="songinfo_re" for="inforeport"
+                                        style="text-align: center;">Report</label>
                                 </li>
                             </ul>
                         </div>
@@ -657,6 +670,75 @@
     </footer>
 
 
+
+    <script src="./js/songinfo.js"></script>
+    <script src="./js/vudio.js"></script>
+    <script>
+        var colors = [
+            [
+                [0, '#f00'],
+                [0.3, '#f00'],
+                [0.3, '#f90'],
+                [0.7, '#f90'],
+                [0.7, '#ff0'],
+                [1, '#ff0']
+            ],
+            '#ff0',
+            ['#06f', '#09f', ' #0Cf', '#0ff'],
+            ['#fb6d6b', '#c10056', ' #a50053', '#51074b'],
+            [
+                [0, '#ff422d'],
+                [0.5, '#ff422d'],
+                [0.5, '#6072ff'],
+                [1, '#6072ff']
+            ]
+        ];
+        var types = ['waveform', 'circlebar', 'lighting', 'circlewave'];
+        var prettify = false;
+        var canvas = $('#infoinfocanvas');
+        var audio = $('#infoaudio');
+        var vudio = new Vudio(audio, canvas, {
+            effect: 'waveform',
+            accuracy: 128,
+            waveform: {
+                maxHeight: 160,
+                spacing: 1,
+                shadowBlur: 6,
+                shadowColor: 'rgba(208,214,214,0.5)',
+                prettify: true,
+                fadeSide: true,
+                color: [
+                    [0, '#d0d6d6'],
+                    [0.3, '#afc0c0'],
+                    [0.3, '#afc0c0'],
+                    [0.7, '#afc0c0'],
+                    [0.7, '#afc0c0'],
+                    [1, '#d0d6d6'],
+                    
+                ]
+            },
+        });
+        vudio.dance();
+
+        function $(selector) {
+            return document.querySelector(selector);
+        }
+
+        function prettifyWaveform() {
+            vudio.setOption({
+                waveform: {
+                    prettify: prettify
+                },
+                circlewave: {
+                    prettify: prettify
+                },
+                circlebar: {
+                    prettify: prettify
+                },
+            });
+            prettify = !prettify;
+        }
+    </script>
 
     <script>
         $(".infomess_ul").on("mouseenter mouseleave", function (event) { //挷定滑鼠進入及離開事件
