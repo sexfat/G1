@@ -868,6 +868,11 @@
 </body>
 <!-- the script of myself -->
 <script>
+    function collectionbuild(){
+        $('.sectionOver').append(`
+                        <div class='sectionMark1'><img src='./img/chatroom/mark.png'><p>${mark[i].memName}</p></div>,
+                        <div class='pageContent'></div>`);
+    }
   // CHANGE HEART
   $('.collheart').click(function () {
     if ($(this).hasClass('becomeRed')) {
