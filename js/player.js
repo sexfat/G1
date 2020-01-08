@@ -117,7 +117,6 @@
 
    //下一首按鈕 -- 切換下一首
    $("#player .next").click(function () {
-     console.log(listLen);
      if (nowPlaying == listLen - 1) {
        nowPlaying = listLen - 1;
      } else {
@@ -261,13 +260,13 @@
  function getLightName() {
    let xhr = new XMLHttpRequest();
    xhr.onload = function () {
-     if(xhr.status==200){
-      phpGetListName = JSON.parse(xhr.responseText);
-      mylistInfo = phpGetListName;
-      lightListName(phpGetListName);
-      showAllMyList(mylistInfo);
-      libraryLightListName(phpGetListName);
-     }else{
+     if (xhr.status == 200) {
+       phpGetListName = JSON.parse(xhr.responseText);
+       mylistInfo = phpGetListName;
+       lightListName(phpGetListName);
+       showAllMyList(mylistInfo);
+       libraryLightListName(phpGetListName);
+     } else {
        alert(xhr.statusText);
      }
    };
@@ -278,11 +277,12 @@
  function getLikedList() {
    let xhr = new XMLHttpRequest();
    xhr.onload = function () {
-     if(xhr.status==200){
-      myPlaylist = JSON.parse(xhr.responseText);
-      listLen = myPlaylist.length;
-      createPlayerList(myPlaylist);
-     }else{
+     if (xhr.status == 200) {
+       console.log(xhr.responseText);
+       myPlaylist = JSON.parse(xhr.responseText);
+       listLen = myPlaylist.length;
+       createPlayerList(myPlaylist);
+     } else {
        alert(xhr.statusText);
      }
    };
@@ -483,7 +483,6 @@
      //隨機撥放
      if ($("#player .rand").hasClass("becomeYel")) {
        let randNum = parseInt(Math.random() * (listLen));
-       console.log(randNum);
        nowPlaying = randNum;
        $("#player audio").attr("src", myPlaylist[nowPlaying].song_addr);
        audio.load();

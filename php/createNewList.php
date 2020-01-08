@@ -5,7 +5,7 @@ try {
   values (null,1,:plistName,'./img/library/list_pic_no.jpg');";
   $createData = $pdo->prepare($sql);
   // $createData->bindValue(':mem_no', '1');
-  $createData->bindValue(':plistName', $_GET['createListName']);
+  $createData->bindValue(':plistName', $_POST['createListName']);
   $createData->execute();
   if ($createData->rowCount() > 0) {
     echo 'success';

@@ -5,8 +5,8 @@ try {
   set plist_name = :plistName
   where plist_no = :plistNo;";
   $modifyData = $pdo->prepare($sql);
-  $modifyData->bindValue(':plistNo',  $_GET['plistNo']);
-  $modifyData->bindValue(':plistName', $_GET['plistName']);
+  $modifyData->bindValue(':plistNo',  $_POST['plistNo']);
+  $modifyData->bindValue(':plistName', $_POST['plistName']);
   $modifyData->execute();
   if ($modifyData->rowCount() > 0) {
     echo 'success';

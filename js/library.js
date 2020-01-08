@@ -98,9 +98,11 @@
          alert(xhr.statusText);
        }
      };
-     let url = `./php/createNewList.php?createListName=${createNewLi}`;
-     xhr.open("get", url, true);
-     xhr.send(null);
+     let url = `./php/createNewList.php`;
+     xhr.setRequestHeader('content-type', 'application/x-www-form-urlencoded');
+     xhr.open("POST", url, true);
+     let data_info = `createListName=${createNewLi}`;
+     xhr.send(data_info);
 
      $('.lightCover').hide();
      $('#createListBox').hide();
@@ -167,9 +169,11 @@
          alert(xhr.statusText);
        }
      };
-     let url = `./php/modifyList.php?plistName=${modifyName}&plistNo=${plistno}`;
-     xhr.open("get", url, true);
-     xhr.send(null);
+     let url = `./php/modifyList.php`;
+     xhr.setRequestHeader('content-type', 'application/x-www-form-urlencoded');
+     xhr.open("POST", url, true);
+     let data_info = `plistName=${modifyName}&plistNo=${plistno}`;
+     xhr.send(data_info);
    });
    $('#listAlert').click(function (e) {
      e.stopPropagation();

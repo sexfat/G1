@@ -17,3 +17,6 @@ try {
   echo '例外行號：', $e->getLine(), '<br>';
   echo '錯誤訊息：', $e->getMessage(), '<br>';
 }
+?>
+
+<!-- ?> -->
