@@ -15,9 +15,9 @@ try {
         $_SESSION["mem_no"] = $memRow["mem_no"];
         $_SESSION["mem_acct"] = $memRow["mem_acct"];
         $_SESSION["mem_psw"] = $memRow["mem_psw"];
-        echo "Log in successly!";
+        echo "Register successly!";
     }else{
-        echo "Acount or password is wrong,please enter the right one";
+        echo "Account already be used,please enter other one!";
     }
 } catch (PDOException $e) {
     echo "例外行號:", $e->getLine(), "<br>";

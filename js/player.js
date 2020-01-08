@@ -1,11 +1,12 @@
  /* ---------------- 全域變數 ---------------- */
  var audio = $("#player audio")[0]; //撥放器
  let vol_s, vol_b, vol_drag = false,
-   songTime,
-   playStatus = true,
-   nowPlaying = 0, //現在播放的歌
-   myPlaylist = phpGetListName = [],
-   playerListName,
+   songTime,//目前播放歌曲時間
+   playStatus = true, //撥放狀態-true:播放中
+   playerAuto=true,//---- 是否要自動撥放
+   nowPlaying = 0, //現在播放的歌索引值
+   myPlaylist = phpGetListName = [], // 目前播放清單 | php抓來的清單
+   playerListName, //player清單名
    listLen = myPlaylist.length;
 
 
@@ -278,7 +279,6 @@
    let xhr = new XMLHttpRequest();
    xhr.onload = function () {
      if (xhr.status == 200) {
-       console.log(xhr.responseText);
        myPlaylist = JSON.parse(xhr.responseText);
        listLen = myPlaylist.length;
        createPlayerList(myPlaylist);
@@ -426,6 +426,7 @@
 
  //播放狀態控制 -- 如果沒有播放就讓他撥
  function isPlaying(isPlaying) {
+   playerAuto=true;
    if (!isPlaying) {
      playAudio();
      $("#player .play").html('<i class="fas fa-pause"></i>');
@@ -466,7 +467,13 @@
 
    let progressColor = (songTime / audio.duration) * 100;
    if (audio.ended) {
-     autoChange(true);
+     if(!playerAuto){
+      autoChange(false);
+      audio.currentTime=0;
+      isPlaying(true);
+     }else{
+      autoChange(true);
+     }
    }
    // console.log(audio.duration); //歌曲總長秒數
    $("#player .progress").css("width", `${progressColor.toFixed(2)}%`);

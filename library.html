@@ -15,8 +15,8 @@
 </head>
 
 <body class="librarybg">
-
-  <div id="app">
+  <!-- nav_bar start -->
+  <div id="nav_app">
     <div class="nav_bar flexbox">
       <div class="hamburger" @click="hamburger_click">
         <div class="hamburger-box">
@@ -47,6 +47,7 @@
       <div class="logo_container">
         <a href="./index.html">
           <div class="logo"></div>
+          <div class="finger"></div>
         </a>
       </div>
       <ul class="main_list flexbox">
@@ -75,11 +76,12 @@
         <div class="tag_container">
         </div>
       </div>
-      <div class="login_bt" @click="" v-if="mem_login == false">
-        <a class="flexbox" href="#">Login</a>
-      </div>
+
       <div class="mem_bt" @click="mem_bt_click" v-if="mem_login == true">
         <a href="#"></a>
+      </div>
+      <div class="login_bt" v-if="mem_login == false">
+        <a href="./login.html"></a>
       </div>
       <div class="mem_list" @click="stopPropagation">
         <div class="paint_border"></div>
@@ -87,11 +89,6 @@
           <li>
             <a href="./profile.html">
               <h4>Profile</h4>
-            </a>
-          </li>
-          <li>
-            <a href="./library.html">
-              <h4>Library</h4>
             </a>
           </li>
           <li>
@@ -111,21 +108,25 @@
             </a>
           </li>
           <li>
-            <a href="">
+            <a href="./donate.html">
               <h4>Donate Record</h4>
+            </a>
+          </li>
+          <li @click="logout">
+            <a href="#">
+              <h4>Log Out</h4>
             </a>
           </li>
         </ul>
       </div>
     </div>
+    <!-- nav_bar end -->
   </div>
-
   <!-- header -->
   <header>
     <img src="./img/library/title_library.png" alt="">
     <div class="header_bg"></div>
   </header>
-
   <!-- main -->
   <main class="library_main">
     <aside>
@@ -165,10 +166,12 @@
 
     <div class="right">
       <div class="listInfo">
+        <form action="./php/copyCoverImg.php" method="POST" enctype="multipart/form-data" target="id_iframe">
         <div class="listCover">
           <img src="./img/library/list_pic0.jpg" alt="">
-          <label for="library_editCover" class="editBtn">edit
-            <input type="file" name="listPic" id="library_editCover">
+          <label for="library_editCover" class="editBtn">choose
+            <input type="file" name="listPicFake" id="library_editCover">
+            <input type="hidden" name="listPic" id="listPic">
           </label>
         </div>
         <div class="nameAndBtn">
@@ -177,7 +180,6 @@
               <h2>Liked Songs</h2>
               <input type="text" name="plistName" id="inputListTitle" value="">
               <input type="hidden" name="plistNo" id="inputListNo">
-              <button class="enterBtn" id="modifyName">submit</button>
             </div>
             <div class="totalSong">8 songs</div>
           </div>
@@ -187,6 +189,9 @@
           </div>
         </div>
         <div class="clearfix"></div>
+        <div class="listInfoSubmit"><button type="submit" class="enterBtn" id="modifyName">submit</button></div>
+        </form>
+        <iframe id="id_iframe" name="id_iframe" style="display:none;"></iframe>
       </div>
       <ul class="songs chooseList">
         <!-- <li>
@@ -354,7 +359,7 @@
       <div class="lightbox_s" id="listAlert">
         <div class="closeLight"><i class="fas fa-times"></i></div>
         <h4></h4>
-        <button >ok</button>
+        <button>ok</button>
       </div>
     </div>
   </main>
@@ -493,7 +498,8 @@
   </div>
 
   <!-- nav vue -->
-  <script src="./js/public.js"></script>
+  <script src="./js/nav_bar.js"></script>
+  <!-- <script src="./js/public.js"></script> -->
   <script src="./js/player.js"></script>
   <!-- 自己的script -->
   <script src="./js/library.js"></script>
