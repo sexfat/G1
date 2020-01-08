@@ -13,7 +13,7 @@
     // border: 1px solid black;
     box-sizing: border-box;
     // width: 100vw;
-    height: 900px;
+    height: 1100px;
 }
 
 .songsadded_leftli {
@@ -142,7 +142,7 @@
 
     .songsadded_inside,
     .songsadded_inside2 {
-        margin-right: 80px;
+        margin-left: 22px;
     }
 }
 
@@ -448,6 +448,7 @@
 
 .songsadded_inside2 {
     padding: 40px 0px;
+    height: 100vh !important;
 }
 
 .songsadded_inside2 li {
@@ -474,9 +475,9 @@
         width: 480px;
     }
 
-    .songsadded_inside2 {
-        height: 900px;
-    }
+    // .songsadded_inside2 {
+    //     height: 900px;
+    // }
 }
 
 @media screen and (max-width:576px) {
@@ -1056,7 +1057,9 @@
         position: relative;
         left: 270px;
         height: 200px;
-            .infopathbtom {
+            .infopathbtom,
+            .infopathbtom2,
+            .infopathbtom3{
                 position: relative;
                 top: 10px;
                 left: 100px;
@@ -1065,7 +1068,6 @@
                     top: -25px;
                 }
             }
-
             .songinfo_bb {
                 position: relative;
                 left: 200px;
@@ -1086,7 +1088,121 @@
                 position: relative;
                 top: -5px;
                 left: 20px;
+                @media screen and (max-width:992px) {
+                    .add_btom {
+                        width: 260px !important;
+                    }
+                }
             }
+    }
+}
+@media screen and (max-width:1165px) {
+    .inside2form{
+        position: relative;
+        left: -370px;
+    }
+}
+@media screen and (max-width:1030px) {
+    .inside2form{
+        position: relative;
+        left: -310px;
+    }
+}
+@media screen and (max-width:936px) {
+    .inside2count .add_btom {
+        position: relative;
+        left: 0px !important;
+    }
+    .inside2count .songinfo_bb {
+        position: relative;
+        left: 140px !important;
+    }
+    .inside2count #add_tta {
+        width: 320px !important;
+    }
+    .inside2count .songsadd_path{
+        position: relative;
+        left: -100px !important;
+    }
+}
+@media screen and (max-width:878px) {
+    .inside2count {
+        position: relative;
+        left: 240px !important;
+        top: -20px !important;
+    }
+    .inside2form article{
+        position: relative;
+        left: 50px !important;
+    }
+    .inside2count .songsadd_path{
+        position: relative;
+        left: -100px !important;
+    }
+}
+@media screen and (max-width:768px) {
+    .inside2count {
+        position: relative;
+        left: 280px !important;
+        top: -40px !important;
+    }
+    .inside2form article{
+        position: relative;
+        left: 290px !important;
+        top: -50px !important;
+    }
+    .inside2count .songsadd_path{
+        position: relative;
+        left: -100px !important;
+    }
+    .inside2count #add_tta {
+        height: 70px !important;
+    }
+}
+
+.btomsen{
+    .sd_btn{
+        position: relative;
+        top: 70px;
+        left: 300px;
+    }
+    .sd{
+        position: relative;
+        top: 70px;
+        left: 350px;
+    }
+}
+@media screen and (max-width:768px) {
+    .btomsen .sd_btn{
+        position: relative;
+        top: 500px;
+        left: 50px;
+    }
+    .btomsen .sd{
+        position: relative;
+        top: 500px;
+        left: 100px;
+    }
+}
+
+.inside2form .songsadded_ff{
+    margin-left: 5px !important;
+}
+@media screen and (max-width:768px){
+    .inside2form .songsadded_ff{
+        margin-top: -20px !important;
+    }
+}
+
+
+@media screen and (max-width:878px){
+    .songsadded_inside2_ol{
+        width: 630px;
+    }
+}
+@media screen and (max-width:768px){
+    .songsadded_inside2_ol{
+        width: 450px;
     }
 }
 
