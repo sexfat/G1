@@ -498,941 +498,454 @@
 
 
         </div>
-        <component :is="content" :now-Vote-Song="nowVoteSong"></component>
-        <script type="text/x-template" id="act-old">
-            <div>
-             <article class="act_old_years " id="act_old_year2018">
-                 <div class="act_oldink"><img src="./img/activity/Splash-ink05.png" alt=""></div>
-                 <div>
-                     <div class="act_year">2018</div>
-                     <h2>Information</h2>
-                     <h3>Electronic dance music contest 2018</h3>
-         
-                     <p>
-         
-                        SoundWave aims to provide an amateur music creation platform for more people to discover more and better mixed music.
-                        <br>
-                        The theme of this event is pop style!
-                       
-                     </p>
-                     <div class="act_oldVotes">
-                         <h3>Votes</h3>
-                         <span>45415</span>
-                     </div>
-                 </div>
-         
-         
-                 <div class="act_oldposterbox">
-                     <div class="act_oldposter">
-                         <img src="./img/activity/2018-poster02.png" alt="">
-                     </div>
-         
-                     <div class="act_oldSplash-ink">
-                         <img src="./img/activity/Splash-ink02.png" alt="">
-                     </div>
-         
-                 </div>
-         
-         
-             </article>
-             <section class="act_oldsongbox wrapper">
-                 <div class="act_oldTop">
-                     <h3>TOP 3</h3>
+        <component :is="content" 
+        :now-Vote-Song="nowVoteSong" 
+        :old-Vote-Song2018="oldVoteSong2018" 
+        :old-Vote-Song2017="oldVoteSong2017" ></component>
+      
 
-                     <div>
-                        <p >Votes <span>2458</span></p>
-                        <div>
-                           <img src="./img/activity/collction-img/9tRTEPCMeYxqdFHAqf3FfA.jpg" alt="">
-                           <div class="act_old-play" @click="showChangePlay"> </div>
-                            
-                      </div>
-                      
-                      <div class="act_songBox"> 
-                          <div class="act_old-hear1" @click="showChangeHeart"> </div>
-                            
-                          <a href="./songinfo.html"><h4>'If I Had A Heart'</h4></a>  
-                           
-                               <p>  Bob </p>
-                        
-                       </div>
-                        
-                    </div>
-                    <div>
-                        <p >Votes <span>2458</span></p>
-                        <div>
-                           <img src="./img/activity/collction-img/9tRTEPCMeYxqdFHAqf3FfA.jpg" alt="">
-                           <div class="act_old-play" @click="showChangePlay"> </div>
-                            
-                      </div>
-                      
-                      <div class="act_songBox"> 
-                          <div class="act_old-hear1" @click="showChangeHeart"> </div>
-                            
-                          <a href="./songinfo.html"><h4>'If I Had A Heart'</h4></a>  
-                           
-                               <p>  Bob </p>
-                        
-                       </div>
-                        
-                    </div>
-                    <div>
-                        <p >Votes <span>2458</span></p>
-                        <div>
-                           <img src="./img/activity/collction-img/9tRTEPCMeYxqdFHAqf3FfA.jpg" alt="">
-                           <div class="act_old-play" @click="showChangePlay"> </div>
-                            
-                      </div>
-                      
-                      <div class="act_songBox"> 
-                          <div class="act_old-hear1" @click="showChangeHeart"> </div>
-                            
-                          <a href="./songinfo.html"><h4>'If I Had A Heart'</h4></a>  
-                           
-                               <p>  Bob </p>
-                        
-                       </div>
-                        
-                    </div>
-                    
-                     
-                    
+    </section>
+    <script type="text/x-template" id="act-old">
+        <div>
+         <article class="act_old_years " id="act_old_year2018">
+             <div class="act_oldink"><img src="./img/activity/Splash-ink05.png" alt=""></div>
+             <div>
+                 <div class="act_year">2018</div>
+                 <h2>Information</h2>
+                 <h3>Electronic dance music contest 2018</h3>
+     
+                 <p>
+     
+                    SoundWave aims to provide an amateur music creation platform for more people to discover more and better mixed music.
+                    <br>
+                    The theme of this event is pop style!
+                   
+                 </p>
+                 <div class="act_oldVotes">
+                     <h3>Votes</h3>
+                     <span>45415</span>
                  </div>
-                 <div class="act_oldAll">
-                     <h3> All contest music </h3>
-                     <div>
-                        <p >Votes <span>2458</span></p>
-                        <div>
-                           <img src="./img/activity/collction-img/9tRTEPCMeYxqdFHAqf3FfA.jpg" alt="">
-                           <div class="act_old-play" @click="showChangePlay"> </div>
-                            
-                      </div>
-                      
-                      <div class="act_songBox"> 
-                          <div class="act_old-hear1" @click="showChangeHeart"> </div>
-                            
-                          <a href="./songinfo.html"><h4>'If I Had A Heart'</h4></a>  
-                           
-                               <p>  Bob </p>
-                        
-                       </div>
-                        
-                    </div>
+             </div>
+     
+     
+             <div class="act_oldposterbox">
+                 <div class="act_oldposter">
+                     <img src="./img/activity/2018-poster02.png" alt="">
+                 </div>
+     
+                 <div class="act_oldSplash-ink">
+                     <img src="./img/activity/Splash-ink02.png" alt="">
+                 </div>
+     
+             </div>
+     
+     
+         </article>
+         <section class="act_oldsongbox wrapper">
+             <div class="act_oldTop">
+                 <h3>TOP 3</h3>
+
+                 <div v-for="(oldSong,index) in oldVoteSong2018.slice(0, 3)">
+                    <p >Votes <span>{{oldSong.vote_per}}</span></p>
                     <div>
-                        <p >Votes <span>2458</span></p>
-                        <div>
-                           <img src="./img/activity/collction-img/9tRTEPCMeYxqdFHAqf3FfA.jpg" alt="">
-                           <div class="act_old-play" @click="showChangePlay"> </div>
-                            
-                      </div>
-                      
-                      <div class="act_songBox"> 
-                          <div class="act_old-hear1" @click="showChangeHeart"> </div>
-                            
-                          <a href="./songinfo.html"><h4>'If I Had A Heart'</h4></a>  
-                           
-                               <p>  Bob </p>
+                       <img :src="oldSong.entries_img" alt="">
+                       <div class="act_old-play" @click="showChangePlay"> </div>
                         
-                       </div>
+                     </div>
+                  
+                     <div class="act_songBox"> 
+                      <div class="act_old-hear1" @click="showChangeHeart"> </div>
                         
-                    </div>
-                    <div>
-                        <p >Votes <span>2458</span></p>
-                        <div>
-                           <img src="./img/activity/collction-img/9tRTEPCMeYxqdFHAqf3FfA.jpg" alt="">
-                           <div class="act_old-play" @click="showChangePlay"> </div>
-                            
-                      </div>
-                      
-                      <div class="act_songBox"> 
-                          <div class="act_old-hear1" @click="showChangeHeart"> </div>
-                          <a href="./songinfo.html"><h4>'If I Had A Heart'</h4></a>    
-                               <p>  Bob </p>
-                        
-                       </div>
-                        
-                    </div>
-                    <div>
-                        <p >Votes <span>2458</span></p>
-                        <div>
-                           <img src="./img/activity/collction-img/9tRTEPCMeYxqdFHAqf3FfA.jpg" alt="">
-                           <div class="act_old-play" @click="showChangePlay"> </div>
-                            
-                      </div>
-                      
-                      <div class="act_songBox"> 
-                          <div class="act_old-hear1" @click="showChangeHeart"> </div>
-                            
-                          <a href="./songinfo.html"><h4>'If I Had A Heart'</h4></a>  
-                           
-                               <p>  Bob </p>
-                        
-                       </div>
-                        
-                    </div>
-                    <div>
-                        <p >Votes <span>2458</span></p>
-                        <div>
-                           <img src="./img/activity/collction-img/9tRTEPCMeYxqdFHAqf3FfA.jpg" alt="">
-                           <div class="act_old-play" @click="showChangePlay"> </div>
-                            
-                      </div>
-                      
-                      <div class="act_songBox"> 
-                          <div class="act_old-hear1" @click="showChangeHeart"> </div>
-                            
-                          <a href="./songinfo.html"><h4>'If I Had A Heart'</h4></a>  
-                           
-                               <p>  Bob </p>
-                        
-                       </div>
-                        
-                    </div>
-                    <div>
-                        <p >Votes <span>2458</span></p>
-                        <div>
-                           <img src="./img/activity/collction-img/9tRTEPCMeYxqdFHAqf3FfA.jpg" alt="">
-                           <div class="act_old-play" @click="showChangePlay"> </div>
-                            
-                      </div>
-                      
-                      <div class="act_songBox"> 
-                          <div class="act_old-hear1" @click="showChangeHeart"> </div>
-                            
-                          <a href="./songinfo.html"><h4>'If I Had A Heart'</h4></a>  
-                           
-                               <p>  Bob </p>
-                        
-                       </div>
-                        
-                    </div>
-                    <div>
-                        <p >Votes <span>2458</span></p>
-                        <div>
-                           <img src="./img/activity/collction-img/9tRTEPCMeYxqdFHAqf3FfA.jpg" alt="">
-                           <div class="act_old-play" @click="showChangePlay"> </div>
-                            
-                      </div>
-                      
-                      <div class="act_songBox"> 
-                          <div class="act_old-hear1" @click="showChangeHeart"> </div>
-                            
-                          <a href="./songinfo.html"><h4>'If I Had A Heart'</h4></a>  
-                           
-                               <p>  Bob </p>
-                        
-                       </div>
-                        
-                    </div>
-                    <div>
-                        <p >Votes <span>2458</span></p>
-                        <div>
-                           <img src="./img/activity/collction-img/9tRTEPCMeYxqdFHAqf3FfA.jpg" alt="">
-                           <div class="act_old-play" @click="showChangePlay"> </div>
-                            
-                      </div>
-                      
-                      <div class="act_songBox"> 
-                          <div class="act_old-hear1" @click="showChangeHeart"> </div>
-                          <a href="./songinfo.html"><h4>'If I Had A Heart'</h4></a>  
-                           
-                               <p>  Bob </p>
-                        
-                       </div>
-                        
-                    </div>
-             
+                      <a href="./songinfo.html"><h4>'{{oldSong.entries_name}}'</h4></a>  
+                       
+                           <p>  {{oldSong.mem_name}} </p>
                     
-                </div> 
-             </section>
-             <article class="act_old_years " id="act_old-year2017">
-                 <div class="act_oldink"><img src="./img/activity/Splash-ink06.png" alt=""></div>
+                     </div>
+                    
+                  </div>
+              
+                
+             </div>
+             <div class="act_oldAll">
+                 <h3> All contest music </h3>
+                 <div v-for="oldSong in oldVoteSong2018">
+                    <p >Votes <span>{{oldSong.vote_per}}</span></p>
+                    <div>
+                       <img :src="oldSong.entries_img" alt="">
+                       <div class="act_old-play" @click="showChangePlay"> </div>
+                        
+                     </div>
+                  
+                     <div class="act_songBox"> 
+                      <div class="act_old-hear1" @click="showChangeHeart"> </div>
+                        
+                      <a href="./songinfo.html"><h4>'{{oldSong.entries_name}}'</h4></a>  
+                       
+                           <p>  {{oldSong.mem_name}} </p>
+                    
+                     </div>
+                    
+                  </div>
+                      
+                
+            </div> 
+         </section>
+         <article class="act_old_years " id="act_old-year2017">
+             <div class="act_oldink"><img src="./img/activity/Splash-ink06.png" alt=""></div>
+             <div>
+                 <div class="act_year">2017</div>
+                 <h2>Information</h2>
+                 <h3>Electronic dance music contest 2017</h3>
+     
+                 <p>
+     
+                    SoundWave aims to provide an amateur music creation platform for more people to discover more and better mixed music.
+                    <br>
+                    The theme of this event is hit-hop style!
+     
+     
+                 </p>
+                 <div class="act_oldVotes">
+                     <h3>Votes</h3>
+                     <span>45415</span>
+                 </div>
+             </div>
+     
+     
+             <div class="act_oldposterbox">
+                 <!-- <div class="act_oldposter-linetop">
+                     <img src="./img/activity/0.textline-top.svg" alt="">
+                 </div> -->
+                 <div class="act_oldposter">
+                     <img src="./img/activity/2017-poster02.png" alt="">
+                 </div>
+     
+                 <div class="act_oldSplash-ink">
+                     <img src="./img/activity/Splash-ink02.png" alt="">
+                 </div>
+                 <!-- <div class="act_oldposter-linebotom">
+                     <img src="./img/activity/0.textline-bottom.svg ">
+                 </div> -->
+     
+             </div>
+     
+     
+         </article>
+         <section class="act_oldsongbox wrapper">
+            <div class="act_oldTop">
+                <h3>TOP 3</h3>
+                <div v-for="(oldSong,index) in oldVoteSong2017.slice(0, 3)">
+                    <p >Votes <span>{{oldSong.vote_per}}</span></p>
+                    <div>
+                       <img :src="oldSong.entries_img" alt="">
+                       <div class="act_old-play" @click="showChangePlay"> </div>
+                        
+                     </div>
+                  
+                     <div class="act_songBox"> 
+                      <div class="act_old-hear1" @click="showChangeHeart"> </div>
+                        
+                      <a href="./songinfo.html"><h4>'{{oldSong.entries_name}}'</h4></a>  
+                       
+                           <p>  {{oldSong.mem_name}} </p>
+                    
+                     </div>
+                    
+                  </div>
+               
+               
+            </div>
+            <div class="act_oldAll">
+                <h3> All contest music </h3>
+
+                <div v-for="oldSong in oldVoteSong2017">
+                    <p >Votes <span>{{oldSong.vote_per}}</span></p>
+                    <div>
+                       <img :src="oldSong.entries_img" alt="">
+                       <div class="act_old-play" @click="showChangePlay"> </div>
+                        
+                     </div>
+                  
+                     <div class="act_songBox"> 
+                      <div class="act_old-hear1" @click="showChangeHeart"> </div>
+                        
+                      <a href="./songinfo.html"><h4>'{{oldSong.entries_name}}'</h4></a>  
+                       
+                           <p>  {{oldSong.mem_name}} </p>
+                    
+                     </div>
+                    
+                  </div>
+               
+           </div> 
+         </section>
+     
+ 
+        </div>
+         
+     </script>
+
+    <script type="text/x-template" id="act-now">
+        <div>
+             <article class="act_now-year" id="act_Now-Introduction">
+ 
                  <div>
-                     <div class="act_year">2017</div>
-                     <h2>Information</h2>
-                     <h3>Electronic dance music contest 2017</h3>
-         
+
+                     <h2>Introduction</h2>
+                     <div>Electronic dance music contest 2019</div>
+                     <h3>Information</h3>
                      <p>
-         
                         SoundWave aims to provide an amateur music creation platform for more people to discover more and better mixed music.
                         <br>
-                        The theme of this event is hit-hop style!
+                        The theme of this event is rock style,let's rock it!<br>
+                        Come and sign up for our competition so that more people can hear your music.
+                      
+                         
          
          
                      </p>
-                     <div class="act_oldVotes">
-                         <h3>Votes</h3>
-                         <span>45415</span>
-                     </div>
+                     <h3>Time</h3>
+                     <p>2019 Dec 31 to 2022 Dec 31 </p>
+                     
+         
                  </div>
          
          
-                 <div class="act_oldposterbox">
-                     <!-- <div class="act_oldposter-linetop">
+                 <div class="act_nowposterbox">
+                     <!-- <div class="act_nowposter-linetop">
                          <img src="./img/activity/0.textline-top.svg" alt="">
                      </div> -->
-                     <div class="act_oldposter">
-                         <img src="./img/activity/2017-poster02.png" alt="">
+                     <div class="act_nowposter">
+                         <img src="./img/activity/2019-rock-poster-2.png" alt="">
                      </div>
          
-                     <div class="act_oldSplash-ink">
+                     <div class="act_nowSplash-ink">
                          <img src="./img/activity/Splash-ink02.png" alt="">
                      </div>
-                     <!-- <div class="act_oldposter-linebotom">
+                     <!-- <div class="act_nowposter-linebotom">
                          <img src="./img/activity/0.textline-bottom.svg ">
                      </div> -->
          
                  </div>
          
          
-             </article>
-             <section class="act_oldsongbox wrapper">
-                <div class="act_oldTop">
-                    <h3>TOP 3</h3>
-                    <div>
-                        <p >Votes <span>2458</span></p>
-                        <div>
-                           <img src="./img/activity/collction-img/9tRTEPCMeYxqdFHAqf3FfA.jpg" alt="">
-                           <div class="act_old-play" @click="showChangePlay">
-                               
-                           </div>
-                        
-                      </div>
-                      <div class="act_songBox"> 
-                          <div class="act_old-hear1" @click="showChangeHeart">
-                            
-                       </div>
-                       <a href="./songinfo.html"><h4>'If I Had A Heart'</h4></a>  
-                           
-                               <p>  Bob </p>
-                        
-                       </div>
-                        
-                    </div>
-                    <div>
-                        <p >Votes <span>2458</span></p>
-                        <div>
-                           <img src="./img/activity/collction-img/9tRTEPCMeYxqdFHAqf3FfA.jpg" alt="">
-                           <div class="act_old-play" @click="showChangePlay">
-                               
-                           </div>
-                        
-                      </div>
-                      <div class="act_songBox"> 
-                          <div class="act_old-hear1" @click="showChangeHeart">
-                            
-                       </div>
-                       <a href="./songinfo.html"><h4>'If I Had A Heart'</h4></a>  
-                           
-                               <p>  Bob </p>
-                        
-                       </div>
-                        
-                    </div>
-                    <div>
-                        <p >Votes <span>2458</span></p>
-                        <div>
-                           <img src="./img/activity/collction-img/9tRTEPCMeYxqdFHAqf3FfA.jpg" alt="">
-                           <div class="act_old-play" @click="showChangePlay">
-                               
-                           </div>
-                        
-                      </div>
-                      <div class="act_songBox"> 
-                          <div class="act_old-hear1" @click="showChangeHeart">
-                            
-                       </div>
-                       <a href="./songinfo.html"><h4>'If I Had A Heart'</h4></a>  
-                           
-                               <p>  Bob </p>
-                        
-                       </div>
-                        
-                    </div>
-                   
-                </div>
-                <div class="act_oldAll">
-                    <h3> All contest music </h3>
-            
-                    <div>
-                        <p >Votes <span>2458</span></p>
-                        <div>
-                           <img src="./img/activity/collction-img/9tRTEPCMeYxqdFHAqf3FfA.jpg" alt="">
-                           <div class="act_old-play" @click="showChangePlay">
-                               
-                           </div>
-                        
-                      </div>
-                      <div class="act_songBox"> 
-                          <div class="act_old-hear1" @click="showChangeHeart">
-                            
-                       </div>
-                       <a href="./songinfo.html"><h4>'If I Had A Heart'</h4></a>  
-                           
-                               <p>  Bob </p>
-                        
-                       </div>
-                        
-                    </div>
-                    <div>
-                        <p >Votes <span>2458</span></p>
-                        <div>
-                           <img src="./img/activity/collction-img/9tRTEPCMeYxqdFHAqf3FfA.jpg" alt="">
-                           <div class="act_old-play" @click="showChangePlay">
-                               
-                           </div>
-                        
-                      </div>
-                      <div class="act_songBox"> 
-                          <div class="act_old-hear1" @click="showChangeHeart">
-                            
-                       </div>
-                       <a href="./songinfo.html"><h4>'If I Had A Heart'</h4></a>  
-                               <p>  Bob </p>
-                        
-                       </div>
-                        
-                    </div>
-                    <div>
-                        <p >Votes <span>2458</span></p>
-                        <div>
-                           <img src="./img/activity/collction-img/9tRTEPCMeYxqdFHAqf3FfA.jpg" alt="">
-                           <div class="act_old-play" @click="showChangePlay">
-                               
-                           </div>
-                        
-                      </div>
-                      <div class="act_songBox"> 
-                          <div class="act_old-hear1" @click="showChangeHeart">
-                            
-                       </div>
-                       <a href="./songinfo.html"><h4>'If I Had A Heart'</h4></a>  
-                           
-                               <p>  Bob </p>
-                        
-                       </div>
-                        
-                    </div>
-                    <div>
-                        <p >Votes <span>2458</span></p>
-                        <div>
-                           <img src="./img/activity/collction-img/9tRTEPCMeYxqdFHAqf3FfA.jpg" alt="">
-                           <div class="act_old-play" @click="showChangePlay">
-                               
-                           </div>
-                        
-                      </div>
-                      <div class="act_songBox"> 
-                          <div class="act_old-hear1" @click="showChangeHeart">
-                            
-                       </div>
-                       <a href="./songinfo.html"><h4>'If I Had A Heart'</h4></a>  
-                           
-                               <p>  Bob </p>
-                        
-                       </div>
-                        
-                    </div>
-                    <div>
-                        <p >Votes <span>2458</span></p>
-                        <div>
-                           <img src="./img/activity/collction-img/9tRTEPCMeYxqdFHAqf3FfA.jpg" alt="">
-                           <div class="act_old-play" @click="showChangePlay">
-                               
-                           </div>
-                        
-                      </div>
-                      <div class="act_songBox"> 
-                          <div class="act_old-hear1" @click="showChangeHeart">
-                            
-                       </div>
-                       <a href="./songinfo.html"><h4>'If I Had A Heart'</h4></a>  
-                           
-                               <p>  Bob </p>
-                        
-                       </div>
-                        
-                    </div>
-                    <div>
-                        <p >Votes <span>2458</span></p>
-                        <div>
-                           <img src="./img/activity/collction-img/9tRTEPCMeYxqdFHAqf3FfA.jpg" alt="">
-                           <div class="act_old-play" @click="showChangePlay">
-                               
-                           </div>
-                        
-                      </div>
-                      <div class="act_songBox"> 
-                          <div class="act_old-hear1" @click="showChangeHeart">
-                            
-                       </div>
-                       <a href="./songinfo.html"><h4>'If I Had A Heart'</h4></a>  
-                           
-                               <p>  Bob </p>
-                        
-                       </div>
-                        
-                    </div>
-                    <div>
-                        <p >Votes <span>2458</span></p>
-                        <div>
-                           <img src="./img/activity/collction-img/9tRTEPCMeYxqdFHAqf3FfA.jpg" alt="">
-                           <div class="act_old-play" @click="showChangePlay">
-                               
-                           </div>
-                        
-                      </div>
-                      <div class="act_songBox"> 
-                          <div class="act_old-hear1" @click="showChangeHeart">
-                            
-                       </div>
-                       <a href="./songinfo.html"><h4>'If I Had A Heart'</h4></a>  
-                           
-                               <p>  Bob </p>
-                        
-                       </div>
-                        
-                    </div>
-                    <div>
-                        <p >Votes <span>2458</span></p>
-                        <div>
-                           <img src="./img/activity/collction-img/9tRTEPCMeYxqdFHAqf3FfA.jpg" alt="">
-                           <div class="act_old-play" @click="showChangePlay">
-                               
-                           </div>
-                        
-                      </div>
-                      <div class="act_songBox"> 
-                          <div class="act_old-hear1" @click="showChangeHeart">
-                            
-                       </div>
-                       <a href="./songinfo.html"><h4>'If I Had A Heart'</h4></a>  
-                           
-                               <p>  Bob </p>
-                        
-                       </div>
-                        
-                    </div>
-               </div> 
-             </section>
          
-     
-     
-     
-            </div>
-             
-     
-         </script>
-
-        <script type="text/x-template" id="act-now">
-            <div>
-                 <article class="act_now-year" id="act_Now-Introduction">
-     
-                     <div>
-
-                         <h2>Introduction</h2>
-                         <div>Electronic dance music contest 2019</div>
-                         <h3>Information</h3>
-                         <p>
-                            SoundWave aims to provide an amateur music creation platform for more people to discover more and better mixed music.
-                            <br>
-                            The theme of this event is rock style,let's rock it!<br>
-                            Come and sign up for our competition so that more people can hear your music.
-                          
-                             
-             
-             
-                         </p>
-                         <h3>Time</h3>
-                         <p>2019 Dec 31 to 2022 Dec 31 </p>
-                         
-             
+             </article>
+         
+             <section  id="act_Now-Sign-up">
+               <h2>Sign up</h2>
+               
+               
+                
+                <div>
+                    <div class="act_now-marry">
+                    <img src="./img/activity/mary.png" alt=""> 
                      </div>
-             
-             
-                     <div class="act_nowposterbox">
-                         <!-- <div class="act_nowposter-linetop">
-                             <img src="./img/activity/0.textline-top.svg" alt="">
-                         </div> -->
-                         <div class="act_nowposter">
-                             <img src="./img/activity/2019-rock-poster-2.png" alt="">
-                         </div>
-             
-                         <div class="act_nowSplash-ink">
-                             <img src="./img/activity/Splash-ink02.png" alt="">
-                         </div>
-                         <!-- <div class="act_nowposter-linebotom">
-                             <img src="./img/activity/0.textline-bottom.svg ">
-                         </div> -->
-             
-                     </div>
-             
-             
-             
-                 </article>
-             
-                 <section  id="act_Now-Sign-up">
-                   <h2>Sign up</h2>
-                   
-                   
-                    
-                    <div>
-                        <div class="act_now-marry">
-                        <img src="./img/activity/mary.png" alt=""> 
-                         </div>
-                        <div class="act_now-marry-ink">
-                        <img src="./img/activity/Splash-ink01.png" alt="">
-                         </div>    
-                    </div>
-                    
-                <article v-if="formContent==0">
-                       <div>
-                          <h3>Qualifications</h3>
-                          <p>
-                              1.Must be a website member,please login or register
-                              2.Cannot register with songs that have already participated in previous events
-                            
-                         </p>
-                           <p class="act_from-button-box">
-                            <button type="button" @click="NextFormPage(1)">Go</button>
-                          </p>
-        
-                       </div>
-                   </article>
-                <form> 
-                 <article  v-if="formContent==1">
-                    <div >
-                       <h3>Choose your contest song!</h3>
-                     
-                  
-                  
-                          <div>  
-                            Upload from my local song:
-                             <label  class="act_SignUPButton"for="act_SignUp-UpLoadSong">Upload</label>
-                            <input type="file" id="act_SignUp-UpLoadSong" style="display:none"
-                             @change="changeSignUpload"> 
-                             </div>
-
-                         <div  class="act_SignSongURL-box" v-if="SignSongURL">{{SignSongURL}}</div>
-                         
-                         <div>
-                            Select from my music list:
-                              <label class="act_SignUPButton" for="act_SignUp-selectSong">  Select</label>
-                              <br>   
-                              <select id="act_SignUp-selectSong"  v-model="selected">
-                               <option  value="cat">1.cat</option>
-                               <option  value="hello">2.hello</option>
-                              </select>
-                           </div>
-
-                    
-                       <p class="act_from-button-box">
-                         <button type="button"  @click="BackFormPage(0)">Back</button>
-                         <button type="button"  @click="NextFormPage(2)">Next </button>
-                       </p>
-                    </div>
-                    
-                </article>
-
-                 <article  v-if="formContent==2">
-                    <div >
-                       <h3>Fill in your song information!</h3>
-                       
-                            <div>
-                                <h4>Song name:</h4>
-                                <input type="text" id="act_Sign-up-song-name"maxlength="20"
-                                        v-model="SongName"    placeholder="Your song name!"       >
-                            </div>
-
-                            <div>
-                                <h4>Song information:</h4>
-                                <textarea id="act_Sign-up-song-information" 
-                                          cols="40" rows="5" maxlength="150"
-                                          v-model="SongInformation"
-                                          placeholder="Introduce your song!"
-                                         ></textarea>
-
-                            </div>
-
-                            <div>
-                                <h4>Song img:</h4>
-                              
-                                    Upload The album cover:
-                                   <label class="act_SignUPButton2"  for="act_SignUp-Song-img">Upload</label>
-                                   <input type="file" id="act_SignUp-Song-img" style="display:none" @change="changeSignUpImg">
-                                   <div class="act_showSignUpImg" v-if="SignUpImg"> <img :src="SignUpImg" alt=""></div>
-                                   
-                            
-                            </div>
-
-                    
-                    <p class="act_from-button-box">
-                      <button type="button"  @click="BackFormPage(1)">Back</button>
-                      <button type="button" @click="NextFormPage(3)">Next </button>
-                      </p>
-                    </div>
-                    
-                </article> 
-                <article  v-if="formContent==3">
-                    <div >
-                       <h3>Check your song information!</h3>   
-                      
-                           <div>
-                             <h4>Member name:</h4> 
-                             {{MemberName}}
-                           </div>
-
-                           <div>
-                                 <h4>Menber email:</h4>
-                                 {{MenberEmail}}
-                            </div>
-
-                          <div>
-                             <h4>Song img:</h4>
-                             <div class="act_showSignUpImgSmall" 
-                             v-if="SignUpImg"><img :src="SignUpImg" alt=""></div>
-                               
-                           </div>
-                           <div>
-                                <h4>Song name:</h4> {{SongName}}
-                           </div>
-                           <div>
-                                  <h4>Song information:</h4>
-                                  <p class="act_showSong-information" v-if="SongInformation" >{{SongInformation}}</p> 
-                           </div>
-
-                           <div> 
-                               <h4>Song URL:</h4>    
-                                <p  class="act_SignSongURL-box" v-if="SignSongURL">{{SignSongURL}}</p> 
-                           </div>
-
-                         <p class="act_from-button-box">
-                           <button type="button"  @click="BackFormPage(2)">Back</button>
-                           <input type="submit" value="Comfirm" @click="NextFormPage(4)" class="signUpComfirm">
-                         </p>
-                     
-                    </div>
-                    
-                </article>  
-            </form>   
-                <article v-if="formContent==4">
-                    <div >
-                       <h3>Qualifications</h3>
-                       <p>  
-                           1.Must be a website member,please login or register
-                           2.Cannot register with songs that have already participated in previous events
-                      </p>
-                      <p class="act_from-button-box">
-                            <button type="button" disable style="background-color:gray ">Done</button>
-                      </p>
-                     
-                    </div>
-                </article> 
-             
-                 </section>
-                 <section id="act_Now-Vote"> 
-                      <h2>Vote</h2>
-                     <article class="act_Now-Vote-content">
-                       
-                       <img src="./img/activity/Splash-ink07.png" alt="">
-                      
-                       <h3>Rules</h3>
-                       <p>
-                        Depending on the category, submissions are judged on the following criteria:<br>
-                        <br>
-                        1.Creativity<br>
-                        2.Originality<br>
-                        3.Lyrics (excludes songs that do not have lyrics)<br>
-                        4.Melody<br>
-                        5.Arrangement<br>
-                        6.Overall likeability<br>
-                       </p>
-                       <div>
-                         <h3>Votes</h3>
-                         <span>41815</span>
-                     </div>
-                     </article>
-             
-                     <section>
-                      <!-- <template v-for="item in nowVoteSong" :key="index">   -->
-                        <div v-for="item in nowVoteSong">   
+                    <div class="act_now-marry-ink">
+                    <img src="./img/activity/Splash-ink01.png" alt="">
+                     </div>    
+                </div>
+                
+            <article v-if="formContent==0">
+                   <div>
+                      <h3>Qualifications</h3>
+                      <p>
+                          1.Must be a website member,please login or register
+                          2.Cannot register with songs that have already participated in previous events
                         
-                            <button type="button" @click.once="showChangeVote" >Vote</button>
-                             <p >Votes <span >{{item.vote_per}}</span></p>
-                               <!-- <act-Now> </act-Now> -->
-                               <!-- <p >Votes <span >{{item}}</span></p> -->
-
-                               <div>
-                                   <img src="./img/activity/collction-img/9tRTEPCMeYxqdFHAqf3FfA.jpg" alt="">
-                                   <div class="act_old-play" @click="showChangePlay">
-                                       
-                                   </div>
-                                
-                              </div>
-                              <div class="act_songBox"> 
-                                  <div class="act_old-hear1" @click="showChangeHeart">
-                                    
-                               </div>
-                                
-                               <a href="./songinfo.html"><h4>''</h4></a>  
-                                  
-                                      <p>  Bob </p>
-                              </div>
+                     </p>
+                       <p class="act_from-button-box">
+                        <button type="button" @click="NextFormPage(1)">Go</button>
+                      </p>
+    
+                   </div>
+               </article>
+            <form> 
+             <article  v-if="formContent==1">
+                <div >
+                   <h3>Choose your contest song!</h3>
+                 
+              
+              
+                      <div>  
+                        Upload from my local song:
+                         <label  class="act_SignUPButton"for="act_SignUp-UpLoadSong">Upload</label>
+                        <input type="file" id="act_SignUp-UpLoadSong" style="display:none"
+                         @change="changeSignUpload"> 
                          </div>
-                        <!-- </template> -->
-                       
-                            <!-- <div>  
-                                <button type="button" @click.once="showChangeVote" >Vote</button>
-                               
-                                   <p >Votes <span>{{Votes}}</span></p>
-                                   <div>
-                                       <img src="./img/activity/collction-img/9tRTEPCMeYxqdFHAqf3FfA.jpg" alt="">
-                                       <div class="act_old-play" @click="showChangePlay">
-                                          
-                                       </div>
-                                    
-                                  </div>
-                                  <div class="act_songBox"> 
-                                    <div class="act_old-hear1" @click="showChangeHeart">
 
-                                    </div>
-                                    <a href="./songinfo.html"><h4>'If I Had A Heart'</h4></a>  
-                                      
-                                          <p>  Bob </p>
-                                  </div>
-                               </div>
-                               <div>  
-                                <button type="button" @click.once="showChangeVote"  >Vote</button>
-                               
-                                   <p >Votes <span>{{Votes}}</span></p>
-                                   <div>
-                                       <img src="./img/activity/collction-img/9tRTEPCMeYxqdFHAqf3FfA.jpg" alt="">
-                                       <div class="act_old-play" @click="showChangePlay">
-                                           
-                                       </div>
-                                    
-                                  </div>
-                                  <div class="act_songBox"> 
-                                      <div class="act_old-hear1" @click="showChangeHeart">
-                                        
-                                   </div>
-                                   <a href="./songinfo.html"><h4>'If I Had A Heart'</h4></a>  
-                                      
-                                          <p>  Bob </p>
-                                  </div>
-                               </div>
-                               <div>  
-                                <button type="button" @click.once="showChangeVote"  >Vote</button>
-                               
-                                   <p >Votes <span>{{Votes}}</span></p>
-                                   <div>
-                                       <img src="./img/activity/collction-img/9tRTEPCMeYxqdFHAqf3FfA.jpg" alt="">
-                                       <div class="act_old-play" @click="showChangePlay">
-                                           
-                                       </div>
-                                    
-                                  </div>
-                                  <div class="act_songBox"> 
-                                      <div class="act_old-hear1" @click="showChangeHeart">
-                                        
-                                   </div>
-                                   <a href="./songinfo.html"><h4>'If I Had A Heart'</h4></a>  
-                                      
-                                          <p>  Bob </p>
-                                  </div>
-                               </div>
-                               <div>  
-                                <button type="button" @click.once="showChangeVote"  >Vote</button>
-                               
-                                   <p >Votes <span>{{Votes}}</span></p>
-                                   <div>
-                                       <img src="./img/activity/collction-img/9tRTEPCMeYxqdFHAqf3FfA.jpg" alt="">
-                                       <div class="act_old-play" @click="showChangePlay">
-                                           
-                                       </div>
-                                    
-                                  </div>
-                                  <div class="act_songBox"> 
-                                      <div class="act_old-hear1" @click="showChangeHeart">
-                                        
-                                   </div>
-                                   <a href="./songinfo.html"><h4>'If I Had A Heart'</h4></a>  
-                                      
-                                          <p>  Bob </p>
-                                  </div>
-                               </div>
-                               <div>  
-                                <button type="button" @click.once="showChangeVote"  >Vote</button>
-                               
-                                   <p >Votes <span>{{Votes}}</span></p>
-                                   <div>
-                                       <img src="./img/activity/collction-img/9tRTEPCMeYxqdFHAqf3FfA.jpg" alt="">
-                                       <div class="act_old-play" @click="showChangePlay">
-                                           
-                                       </div>
-                                    
-                                  </div>
-                                  <div class="act_songBox"> 
-                                      <div class="act_old-hear1" @click="showChangeHeart">
-                                        
-                                   </div>
-                                   <a href="./songinfo.html"><h4>'If I Had A Heart'</h4></a>  
-                                      
-                                          <p>  Bob </p>
-                                  </div>
-                               </div>
-                               <div>  
-                                <button type="button" @click.once="showChangeVote"  >Vote</button>
-                               
-                                   <p >Votes <span>{{Votes}}</span></p>
-                                   <div>
-                                       <img src="./img/activity/collction-img/9tRTEPCMeYxqdFHAqf3FfA.jpg" alt="">
-                                       <div class="act_old-play" @click="showChangePlay">
-                                           
-                                       </div>
-                                    
-                                  </div>
-                                  <div class="act_songBox"> 
-                                      <div class="act_old-hear1" @click="showChangeHeart">
-                                        
-                                   </div>
-                                   <a href="./songinfo.html"><h4>'If I Had A Heart'</h4></a>  
-                                      
-                                          <p>  Bob </p>
-                                  </div>
-                               </div>
-                               <div>  
-                                <button type="button" @click.once="showChangeVote"  >Vote</button>
-                               
-                                   <p >Votes <span>{{Votes}}</span></p>
-                                   <div>
-                                       <img src="./img/activity/collction-img/9tRTEPCMeYxqdFHAqf3FfA.jpg" alt="">
-                                       <div class="act_old-play" @click="showChangePlay">
-                                           
-                                       </div>
-                                    
-                                  </div>
-                                  <div class="act_songBox"> 
-                                      <div class="act_old-hear1" @click="showChangeHeart">
-                                        
-                                   </div>
-                                   <a href="./songinfo.html"><h4>'If I Had A Heart'</h4></a>  
-                                      
-                                          <p>  Bob </p>
-                                  </div>
-                               </div> -->
+                     <div  class="act_SignSongURL-box" v-if="SignSongURL">{{SignSongURL}}</div>
+                     
+                     <div>
+                        Select from my music list:
+                          <label class="act_SignUPButton" for="act_SignUp-selectSong">  Select</label>
+                          <br>   
+                          <select id="act_SignUp-selectSong"  v-model="selected">
+                           <option  value="cat">1.cat</option>
+                           <option  value="hello">2.hello</option>
+                          </select>
+                       </div>
 
+                
+                   <p class="act_from-button-box">
+                     <button type="button"  @click="BackFormPage(0)">Back</button>
+                     <button type="button"  @click="NextFormPage(2)">Next </button>
+                   </p>
+                </div>
+                
+            </article>
+
+             <article  v-if="formContent==2">
+                <div >
+                   <h3>Fill in your song information!</h3>
+                   
+                        <div>
+                            <h4>Song name:</h4>
+                            <input type="text" id="act_Sign-up-song-name"maxlength="20"
+                                    v-model="SongName"    placeholder="Your song name!"       >
+                        </div>
+
+                        <div>
+                            <h4>Song information:</h4>
+                            <textarea id="act_Sign-up-song-information" 
+                                      cols="40" rows="5" maxlength="150"
+                                      v-model="SongInformation"
+                                      placeholder="Introduce your song!"
+                                     ></textarea>
+
+                        </div>
+
+                        <div>
+                            <h4>Song img:</h4>
+                          
+                                Upload The album cover:
+                               <label class="act_SignUPButton2"  for="act_SignUp-Song-img">Upload</label>
+                               <input type="file" id="act_SignUp-Song-img" style="display:none" @change="changeSignUpImg">
+                               <div class="act_showSignUpImg" v-if="SignUpImg"> <img :src="SignUpImg" alt=""></div>
+                               
+                        
+                        </div>
+
+                
+                <p class="act_from-button-box">
+                  <button type="button"  @click="BackFormPage(1)">Back</button>
+                  <button type="button" @click="NextFormPage(3)">Next </button>
+                  </p>
+                </div>
+                
+            </article> 
+            <article  v-if="formContent==3">
+                <div >
+                   <h3>Check your song information!</h3>   
+                  
+                       <div>
+                         <h4>Member name:</h4> 
+                         {{MemberName}}
+                       </div>
+
+                       <div>
+                             <h4>Menber email:</h4>
+                             {{MenberEmail}}
+                        </div>
+
+                      <div>
+                         <h4>Song img:</h4>
+                         <div class="act_showSignUpImgSmall" 
+                         v-if="SignUpImg"><img :src="SignUpImg" alt=""></div>
+                           
+                       </div>
+                       <div>
+                            <h4>Song name:</h4> {{SongName}}
+                       </div>
+                       <div>
+                              <h4>Song information:</h4>
+                              <p class="act_showSong-information" v-if="SongInformation" >{{SongInformation}}</p> 
+                       </div>
+
+                       <div> 
+                           <h4>Song URL:</h4>    
+                            <p  class="act_SignSongURL-box" v-if="SignSongURL">{{SignSongURL}}</p> 
+                       </div>
+
+                     <p class="act_from-button-box">
+                       <button type="button"  @click="BackFormPage(2)">Back</button>
+                       <input type="submit" value="Comfirm" @click="NextFormPage(4)" class="signUpComfirm">
+                     </p>
+                 
+                </div>
+                
+            </article>  
+        </form>   
+            <article v-if="formContent==4">
+                <div >
+                   <h3>Qualifications</h3>
+                   <p>  
+                       1.Must be a website member,please login or register
+                       2.Cannot register with songs that have already participated in previous events
+                  </p>
+                  <p class="act_from-button-box">
+                        <button type="button" disable style="background-color:gray ">Done</button>
+                  </p>
+                 
+                </div>
+            </article> 
+         
+             </section>
+             <section id="act_Now-Vote"> 
+                  <h2>Vote</h2>
+                 <article class="act_Now-Vote-content">
+                   
+                   <img src="./img/activity/Splash-ink07.png" alt="">
+                  
+                   <h3>Rules</h3>
+                   <p>
+                    Depending on the category, submissions are judged on the following criteria:<br>
+                    <br>
+                    1.Creativity<br>
+                    2.Originality<br>
+                    3.Lyrics (excludes songs that do not have lyrics)<br>
+                    4.Melody<br>
+                    5.Arrangement<br>
+                    6.Overall likeability<br>
+                   </p>
+                   <div>
+                     <h3>Votes</h3>
+                     <span>41815</span>
+                 </div>
+                 </article>
+         
+                 <section>
+                    <div v-for="item in nowVoteSong">   
+                    
+                        <button type="button" @click.once="showChangeVote" >Vote</button>
+                         <p >Votes <span >{{item.vote_per}}</span></p>
+
+                           <div>
+                               <img :src="item.entries_img" alt="">
+                               <div class="act_old-play" @click="showChangePlay">
+                                   
+                               </div>
                             
-                         
+                          </div>
+                          <div class="act_songBox"> 
+                              <div class="act_old-hear1" @click="showChangeHeart">
+                                
+                           </div>
+                            
+                           <a href="./songinfo.html"><h4>' {{item.entries_name}}'</h4></a>  
+                              
+                                  <p> {{item.mem_name}} </p>
+                          </div>
+                     </div>
                       
-                     </section>
-             
-             
+                  
                  </section>
-               </div>
-     
-         </script>
-
-    </section>
+         
+         
+             </section>
+           </div>
+ 
+     </script>
     <script>
 
         $(function () {
@@ -1533,6 +1046,10 @@
 
         Vue.component('actOld', {
             template: '#act-old',
+            props: {
+                oldVoteSong2018: [Array],
+                oldVoteSong2017: [Array],
+            },
             data: function () {
                 return {
                     Votes: 455,
@@ -1595,18 +1112,13 @@
                 Votes: 415,
                 GoTopBush: false,
                 nowVoteSong: [],
+                oldVoteSong2018: [],
+                oldVoteSong2017: [],
                
-                // nowVoteSong : {
-                //     vote_per
-                // },
 
 
             },
-            // created() {
-            //     // 在 created 的時候才建立 penguine 順便設值為 0
-            //     // 使用 $set 動態新增響應式組件
-            //     this.$set(this.nowVoteSong, 'vote_per', 40)
-            // },
+           
             computed: {
 
 
@@ -1670,6 +1182,22 @@
             xhr.onload = function () {
                 vml.nowVoteSong = JSON.parse(xhr.responseText);
             }
+            let xhrL = new XMLHttpRequest();
+            xhrL.open("get", "./php/getContestOldsong2018.php", true);
+            xhrL.send(null);
+            xhrL.onload = function () {
+                vml.oldVoteSong2018 = JSON.parse(xhrL.responseText);
+            }
+            let xhrA = new XMLHttpRequest();
+            xhrA.open("get", "./php/getContestOldsong2017.php", true);
+            xhrA.send(null);
+            xhrA.onload = function () {
+                vml.oldVoteSong2017 = JSON.parse(xhrA.responseText);
+            }
+
+
+
+
         }
 
     </script>
