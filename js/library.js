@@ -266,7 +266,7 @@
            $('#inputListTitle').hide();
            $('.listName').find('.name').find('h2').show();
            $('#listAlert h4').text('Successfully modified');
-         }else{
+         } else {
            alert(xhr.responseText);
          }
        } else {
@@ -313,6 +313,7 @@
      isPlaying(false);
      createPlayerList(libraryList);
      ListTopInfo();
+     listStatus();
    });
  });
 
@@ -403,132 +404,51 @@
 
  //顯示所有清單列表
  function showAllMyList(mylist) {
-   let li, h4, div, icon, optionn, text;
    $('.my_list .lists').children().remove();
    $('#mobile_listChoose').children().remove();
    for (let i = 0; i < mylist.length; i++) {
-     li = document.createElement('li');
-     h4 = document.createElement('h4');
-     text = document.createTextNode(mylist[i].plist_name);
-     h4.append(text);
-     li.append(h4);
-     div = document.createElement('div');
-     div.setAttribute('class', 'delete');
-     icon = document.createElement('i');
-     icon.setAttribute('class', 'fas fa-times');
-     div.append(icon);
-     li.append(div);
-     $('.my_list .lists').append(li);
+     $('.my_list .lists').append(`<li>
+     <h4>${mylist[i].plist_name}</h4>
+     <div class="delete"><i class="fas fa-times"></i></div>
+   </li>`);
    }
-   optionn = document.createElement('option');
-   optionn.setAttribute('disabled', 'disabled');
-   optionn.setAttribute('selected', 'selected');
-   text = document.createTextNode('-- choose --');
-   optionn.append(text);
-   $('#mobile_listChoose').append(optionn);
+   $('#mobile_listChoose').append(`<option disabled='disabled' selected='selected' >-- choose --</option>`);
    for (let j = 0; j < mylist.length; j++) {
-     optionn = document.createElement('option');
-     optionn.setAttribute('value', mylist[j].plist_name);
-     text = document.createTextNode(mylist[j].plist_name);
-     optionn.append(text);
-     $('#mobile_listChoose').append(optionn);
+     $('#mobile_listChoose').append(`<option value="${mylist[j].plist_name}">${mylist[j].plist_name}</option>`);
    }
  };
 
  //顯示清單歌曲列表
  function showLibrarySongs(songList = libraryList) {
-   let li, divSongPlay, divsongCover, divListPlay, divlistSongInfo, divName, divCreator, divtotal, divheart, divmore, divchangeList, divclear, img, alink, icon, text;
    $('.songs').children().remove();
    if (songList.length == undefined) {
-     li = document.createElement('li');
-     li.setAttribute('style', 'color:#aaa;text-align:center')
-     text = document.createTextNode('No songs');
-     li.append(text);
-     $('.songs').append(li);
+     $('.songs').append(`<li style="color:#aaa;text-align:center">No songs</li>`);
    } else {
      for (let i = 0; i < songList.length; i++) {
-       li = document.createElement('li');
-       divSongPlay = document.createElement('div');
-       divSongPlay.setAttribute('class', 'songPlay');
-       divsongCover = document.createElement('div');
-       divsongCover.setAttribute('class', 'songCover');
-       img = document.createElement('img');
-       img.setAttribute('src', songList[i].song_pic);
-       divsongCover.append(img);
-       divListPlay = document.createElement('div');
-       divListPlay.setAttribute('class', 'listPlay');
-       img = document.createElement('img');
-       img.setAttribute('src', './img/library/coverPlay-s.png');
-       divListPlay.append(img);
-       divsongCover.append(divListPlay);
-       divSongPlay.append(divsongCover);
-       divlistSongInfo = document.createElement('div');
-       divlistSongInfo.setAttribute('class', 'listSongInfo');
-       divName = document.createElement('div');
-       divName.setAttribute('class', 'name');
-       alink = document.createElement('a');
-       alink.setAttribute('href', './songinfo.html');
-       text = document.createTextNode(songList[i].song_name);
-       alink.append(text);
-       divName.append(alink);
-       divCreator = document.createElement('div');
-       divCreator.setAttribute('class', 'creator');
-       text = document.createTextNode(songList[i].mem_name);
-       divCreator.append(text);
-       divlistSongInfo.append(divName);
-       divlistSongInfo.append(divCreator);
-       divtotal = document.createElement('div');
-       divtotal.setAttribute('class', 'totalTime');
-       text = document.createTextNode(songList[i].totaltime);
-       divtotal.append(text);
-       divheart = document.createElement('div');
-       divheart.setAttribute('class', 'heart becomeRed');
-       img = document.createElement('img');
-       img.setAttribute('src', './img/collection/redheart.png');
-       divheart.append(img);
-       divmore = document.createElement('div');
-       divmore.setAttribute('class', 'more');
-       icon = document.createElement('i');
-       icon.setAttribute('class', 'fas fa-ellipsis-h');
-       divchangeList = document.createElement('div');
-       divchangeList.setAttribute('class', 'changeList');
-       text = document.createTextNode('change list');
-       divchangeList.append(text);
-       divmore.append(icon);
-       divmore.append(divchangeList);
-       divclear = document.createElement('div');
-       divclear.setAttribute('class', 'clearfix');
-       li.append(divSongPlay);
-       li.append(divlistSongInfo);
-       li.append(divtotal);
-       li.append(divheart);
-       li.append(divmore);
-       li.append(divclear);
-       $('.songs').append(li);
+       $('.songs').append(`<li>
+       <div class="songPlay">
+         <div class="songCover">
+           <img src="${songList[i].song_pic}" alt="">
+           <div class="listPlay"><img src="./img/library/coverPlay-s.png"></div>
+         </div>
+       </div>
+       <div class="listSongInfo">
+         <div class="name">
+           <a href="./songinfo.html">${songList[i].song_name}</a>
+         </div>
+         <div class="creator">${songList[i].mem_name}</div>
+       </div>
+       <div class="totalTime">${songList[i].totaltime}</div>
+       <div class="heart becomeRed"><img src="./img/collection/redheart.png"></div>
+       <div class="more">
+         <i class="fas fa-ellipsis-h"></i>
+         <div class="changeList">change list</div>
+       </div>
+       <div class="clearfix"></div>
+     </li>`);
      }
    }
  }
-
- //  function buildNewLi(newli) {
- //    let li, h4, div, icon, optionn, text;
- //    li = document.createElement('li');
- //    h4 = document.createElement('h4');
- //    text = document.createTextNode(newli);
- //    h4.append(text);
- //    li.append(h4);
- //    div = document.createElement('div');
- //    div.setAttribute('class', 'delete');
- //    icon = document.createElement('i');
- //    icon.setAttribute('class', 'fas fa-times');
- //    div.append(icon);
- //    li.append(div);
- //    $('.my_list .lists').append(li);
- //    optionn = document.createElement('option');
- //    optionn.setAttribute('value', newli);
- //    text = document.createTextNode(newli);
- //    optionn.append(text);
- //    $('#mobile_listChoose').append(optionn);
- //  }
 
  //歌改變歌單-舊的刪除
  function songChangeListD(songNo) {
@@ -567,7 +487,6 @@
    let xhr = new XMLHttpRequest();
    xhr.onload = function () {
      if (xhr.status == 200) {
-       console.log(xhr.responseText);
        if (xhr.responseText == 'success') {
          getLibrarySongs(nowList);
          $('#listAlert h4').text('Added successfully');

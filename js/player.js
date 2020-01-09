@@ -298,7 +298,6 @@
        myPlaylist = JSON.parse(xhr.responseText);
        listLen = myPlaylist.length;
        createPlayerList(myPlaylist);
-       console.log(myPlaylist);
      } else {
        alert(xhr.statusText);
      }
@@ -324,81 +323,36 @@
  function createPlayerList(songlistbuild) {
    $('#player .list ul').text("");
    if (songlistbuild != "{}") {
-     let li, div_songCover, listplay, listSongInfo, listSongInfo_n, total, heart, clear, img, h4, p, text;
      for (let i = 0; i < songlistbuild.length; i++) {
-       li = document.createElement('li');
-       div_songCover = document.createElement('div');
-       div_songCover.setAttribute('class', 'songCover');
-
-       img = document.createElement('img');
-       img.setAttribute("src", songlistbuild[i].song_pic);
-       div_songCover.append(img);
-       listplay = document.createElement('div');
-       listplay.setAttribute('class', 'listPlay');
-       div_songCover.append(listplay);
-       img = document.createElement('img');
-       img.setAttribute("src", './img/library/coverPlay-s.png');
-       listplay.append(img);
-
-       listSongInfo = document.createElement('div');
-       listSongInfo.setAttribute('class', 'listSongInfo');
-       listSongInfo_n = document.createElement('div');
-       listSongInfo_n.setAttribute('class', 'name');
-       listSongInfo.append(listSongInfo_n);
-       h4 = document.createElement('h4');
-       listSongInfo_n.append(h4);
-       text = document.createTextNode(songlistbuild[i].song_name);
-       h4.append(text);
-       p = document.createElement('p');
-       listSongInfo_n.append(p);
-       text = document.createTextNode(songlistbuild[i].mem_name);
-       p.append(text);
-
-       total = document.createElement('div')
-       total.setAttribute('class', 'totalTime');
-       text = document.createTextNode(songlistbuild[i].totaltime);
-       total.append(text);
-
-       heart = document.createElement('div');
-       heart.setAttribute('class', 'heart becomeRed');
-       img = document.createElement('img');
-       img.setAttribute('src', './img/collection/redheart.png');
-       heart.append(img);
-
-       clear = document.createElement('div');
-       clear.setAttribute('class', 'clearfix');
-
-       li.append(div_songCover);
-       li.append(listSongInfo);
-       li.append(total);
-       li.append(heart);
-       li.append(clear);
-       $('#player .list ul').append(li);
+       $('#player .list ul').append(`<li>
+       <div class="songCover">
+         <img src="${songlistbuild[i].song_pic}" alt="">
+         <div class="listPlay"><img src="./img/library/coverPlay-s.png"></div>
+       </div>
+       <div class="listSongInfo">
+         <div class="name">
+           <h4>${songlistbuild[i].song_name}</h4>
+           <p>${songlistbuild[i].mem_name}</p>
+         </div>
+       </div>
+       <div class="totalTime">${songlistbuild[i].totaltime}</div>
+       <div class="heart becomeRed"><img src="./img/collection/redheart.png"></div>
+       <div class="clearfix"></div>
+     </li>`);
      }
    } else {
-     li = document.createElement('li');
-     li.setAttribute('style', 'text-align:center');
-     text = document.createTextNode('No songs');
-     li.append(text);
-     $('#player .list ul').append(li);
+     $('#player .list ul').append(`<li style="text-align:center">No songs</li>`);
    }
  }
 
  //build lightbox -- allmylist
  function lightListName(ListInfo) {
-   let ul, li, text;
+   let ul;
    $('#myAllList ul').children().remove();
    ul = $('#myAllList ul');
-   li = document.createElement('li');
-   text = document.createTextNode('Liked songs');
-   li.setAttribute('class', 'chooseList');
-   li.append(text);
-   ul.append(li);
+   ul.append(`<li class="chooseList">Liked songs</li>`);
    for (let i = 0; i < ListInfo.length; i++) {
-     li = document.createElement('li');
-     text = document.createTextNode(ListInfo[i].plist_name);
-     li.append(text);
-     ul.append(li);
+     ul.append(`<li>${ListInfo[i].plist_name}</li>`);
    }
  }
 
@@ -519,12 +473,16 @@
  //清單播放狀態
  function listStatus() {
    $(`.player_b .listPlay`).removeClass("nowlistening");
+   $(`.songCover .listPlay`).removeClass("nowlistening");
    $(`.player_b li:nth-of-type(${nowPlaying+1}) .listPlay`).addClass("nowlistening");
+   $(`.songs li:nth-of-type(${nowPlaying+1}) .listPlay`).addClass("nowlistening");
    if (playStatus) {
      $(`.player_b li:nth-of-type(${nowPlaying+1}) .listPlay`).html('<img src="./img/library/coverPause-s.png">');
+     $(`.songs li:nth-of-type(${nowPlaying+1}) .listPlay`).html('<img src="./img/library/coverPause-s.png">');
    } else {
      $(`.player_b li:nth-of-type(${nowPlaying+1}) .listPlay`).html('<img src="./img/library/coverPlay-s.png">');
-   }
+     $(`.songs li:nth-of-type(${nowPlaying+1}) .listPlay`).html('<img src="./img/library/coverPlay-s.png">');
+    }
  }
 
  //音量控制
