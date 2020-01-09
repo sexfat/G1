@@ -1,310 +1,131 @@
 @import './colmix.scss';
 
 #donate_app{
-  position: relative;
   width: 100%;
   overflow: hidden;
-  .color2{
-    width: 100vw;
+  position: relative;
+  .bg_down{
     position: absolute;
-    bottom: -30%;
-    right: -32%;
-    min-width: 1500px;
+    right: 0;
+    bottom: 0;
   }
 }
 
 .donate_wrapper {
-  padding: 0% 0 10%;
+  margin-top: 0%;
+  margin-bottom: 15%;
   position: relative;
   max-width: 1200px;
-  .donate_support {
-    .donate_h2 {
-      padding: 3vw 8% 2vw;
-      font-size: 2rem;
+  width: 100%;
+  p {
+    font-size: $rem1;
+  }
+
+  h2 {
+    font-size: $rem2;
+  }
+
+  h3 {
+    font-size: $rem1_5;
+  }
+
+  h4 {
+    font-size: $rem1_2;
+  }
+
+  h5 {
+    font-size: $rem1;
+  }
+
+  .donate_history {
+    text-align: center;
+    margin-top: 0rem;
+    font-size: 0;
+
+    div[class*=col-] {
+      // border: solid 1px #333;
+      vertical-align: middle;
+      text-align: center;
     }
 
-    .donate_box {
-      width: 100%;
-      text-align: center;
+    .title {
+      margin: 2vw auto;
+    }
 
-      .phone_member_info {
-        display: none;
+    h2 {
+      text-align: left;
+    }
+
+    h4 {
+      padding: 0.5rem 0;
+    }
+
+    .tr {
+      font-size: 0;
+      border-top: 1px solid #ebebeb;
+    }
+
+    .td {
+      font-size: $rem1;
+      padding: 0.5rem 0;
+    }
+
+    .tr:nth-of-type(even) {
+      background-color: #f2f2f2;
+    }
+
+    .thead {
+      background-color: $green;
+      border-radius: 10px 10px 0 0;
+    }
+
+    .tbody {
+      overflow-y: scroll;
+      height: 25rem;
+      background-color: #fafaf1;
+      &::-webkit-scrollbar {
+        width: 10px;
       }
 
-      .member_info {
-        vertical-align: top;
-        // border: solid 1px #333;
-        background: url(../img/member/mp3.png) no-repeat;
-        background-size: contain;
-        padding: 23% 0% 13% 0%;
-        position: relative;
-
-        .gem {
-          width: 68%;
-          left: 52%;
-          top: 6%;
-          transform: translateX(-50%);
-          position: absolute;
-        }
-
-        .member {
-          width: 100%;
-
-          .member_detail {
-            padding: 2%;
-
-            // border: solid 1px #333;
-            p {
-              text-align: left;
-              padding-left: 15%;
-              font-size: $rem0_8;
-              margin-bottom: 2%;
-            }
-          }
-        }
+      &::-webkit-scrollbar-track {
+        -webkit-border-radius: 10px;
+        border-radius: 10px;
+        margin: 0px 0px 0px 0px;
+        background-color: #e4e4e4;
       }
-
-      .support_history {
-
-        // border: solid 1px #333;
-        .table {
-          .th {
-            font-size: 0;
-
-            // background-color: $green;
-            .td {
-              padding: 2% 0%;
-              font-size: $rem1;
-              font-weight: bold;
-              background-color: $green;
-
-              &:nth-of-type(1) {
-                border-radius: 5px 0 0 0;
-              }
-
-              &:nth-of-type(3) {
-                border-radius: 0 5px 0 0;
-              }
-            }
-          }
-
-          .tbody {
-            max-height: 20rem;
-            overflow-y: scroll;
-            background-color: $mainBg;
-            .tr {
-              font-size: 0;
-              padding: 3% 0% 2%;
-
-              &:nth-of-type(odd) {
-                background-color: rgba($green, 0.3);
-              }
-
-              .td {
-                font-size: $rem1;
-              }
-            }
-
-            &::-webkit-scrollbar {
-              width: 16px;
-              height: 16px;
-              background-color: #dadada;
-            }
-
-            &::-webkit-scrollbar-thumb {
-              border-radius: 10px;
-              -webkit-box-shadow: inset 0 0 3px rgba(0, 0, 0, .3);
-              background-color: #555;
-            }
-          }
+      &::-webkit-scrollbar-thumb {
+        -webkit-border-radius: 4px;
+        border-radius: 4px;
+        background: #8d8d8d;
         }
-      }
     }
   }
-}
-
-
-@include respond(latop-max) {
-
-  // 1200
-  .donate_wrapper {}
 }
 
 @include respond(latop-min) {
 
   // 996
-  #donate_app{
-    .color2{
-      bottom: -20%;
-
-    }
-  } 
+  html {
+    font-size: 17px;
+  }
   .donate_wrapper {
-    width: 80%;
-    margin: 0% auto 15%;
-    .donate_support {
-      .donate_h2 {}
-
-      .donate_box {
-        margin: 0 auto;
-        text-align: center;
-
-        .phone_member_info {
-          display: block;
-          text-align: center;
-          background: url(../img/member/blackline.svg) no-repeat;
-          padding: 4% 0%;
-
-          .pic {
-            img {
-              width: 100%;
-              max-width: 200px;
-              border-radius: 100%;
-            }
-          }
-
-          .meminfos {
-            vertical-align: top;
-            // border: solid 1px #333;
-            height: 10rem;
-            background-color: $green;
-
-            .flexbox {
-              width: 100%;
-              height: 100%;
-              flex-direction: column;
-              align-content: space-around;
-              display: flex;
-              padding-left: 10%;
-
-              p {
-                width: 100%;
-                height: calc(100% / 3);
-                text-align: left;
-                line-height: 3rem;
-              }
-            }
-          }
-        }
-
-        .member_info {
-          display: none;
-        }
-
-        .support_history {
-          margin-top: 8%;
-
-          .table {
-            .th {
-              .td {
-                &:nth-of-type(1) {}
-
-                &:nth-of-type(3) {}
-              }
-            }
-
-            .tbody {
-
-              .tr {
-                &:nth-of-type(even) {}
-
-                .td {}
-              }
-
-              &::-webkit-scrollbar {}
-
-              &::-webkit-scrollbar-thumb {}
-            }
-          }
-        }
-      }
-    }
+    width: 100%;
   }
 }
-
 @include respond(ipadpro) {
-
-  // 768
-  .donate_wrapper {}
+  // 768 
 }
-
 @include respond(ipad) {
 
   // 576
   .donate_wrapper {
-    width: 95%;
-    padding: 0% 0% 30%;
-    .donate_support {
-      .donate_h2 {
-        padding: 8%;
-        font-size: 1.5rem;
-      }
-  
-      .donate_box {
-        margin: 0 auto;
-        text-align: center;
-  
-        .phone_member_info {
-          display: block;
-          text-align: center;
-          background: url(../img/member/blackline.svg) no-repeat;
-          padding: 8% 8%;
-  
-          .pic {
-            img {
-              width: 100%;
-              max-width: 200px;
-              border-radius: 100%;
-            }
-          }
-  
-          .meminfos {
-            vertical-align: top;
-            // border: solid 1px #333;
-            height: 10rem;
-            background-color: $green;
-  
-            .flexbox {
-              width: 100%;
-              height: 100%;
-              flex-direction: column;
-              align-content: space-around;
-              display: flex;
-              padding-left: 10%;
-  
-              p {
-                width: 100%;
-                height: calc(100% / 3);
-                text-align: left;
-                line-height: 3rem;
-              }
-            }
-          }
-        }
-  
-        .member_info {
-          display: none;
-        }
-  
-        .support_history {
-          margin: 10% 0%;
-  
-          .table {
-            .date {
-              display: none;
-            }
-          }
-        }
-      }
-    }
+    margin-bottom: 30%;
   }
-
-
 }
-
 @include respond(phone) {
-
-  //375
+  html {
+    font-size: 16px;
+  }
   .donate_wrapper {
     width: 95%;
   }

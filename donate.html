@@ -8,6 +8,7 @@
   <title>Document</title>
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.11.2/css/all.min.css" />
   <link rel="stylesheet" href="./css/main.css">
+  <link rel="stylesheet" href="./css/donated.css">
 </head>
 
 <body>
@@ -120,54 +121,39 @@
 
   <!-- ======================= my code =========================== -->
   <div id="donate_app">
-    <img src="./img/member/color2.png" class="color2">
+    <div class="donate_bg">
+      <img src="./img/member/bg_down.png" class="bg_down">
+    </div>
     <div class="wrapper donate_wrapper">
-      <div class="donate_support">
-        <h2 class="donate_h2">Trade Record</h2>
-        <div class="donate_box">
-          <div class="phone_member_info col-md-12 col-sm-12">
-            <div class="pic col-md-4 col-sm-10"><img src="./img/member/gem.jpg"></div>
-            <div class="meminfos col-md-6 col-sm-6 col-10">
-              <div class="flexbox">
-                <p>MemberID: 21468</p>
-                <p>MemberName: G.E.M</p>
-                <p>Points: 1021</p>
-              </div>
+      <div class="donate_history">
+        <div class="col-xl-12 title">
+          <h2>Donate record</h2>
+        </div>
+        <div class="col-xl-10 col-lg-11 col-12 table">
+          <div class="col-xl-12 thead">
+            <div class="col-xl-3">
+              <h4>Donate no</h4>
+            </div>
+            <div class="col-xl-4">
+              <h4>Cost</h4>
+            </div>
+            <div class="col-xl-4">
+              <h4>Date</h4>
             </div>
           </div>
-          <div class="member_info col-xl-3">
-            <!-- <img class="mp3" src="./img/member/mp3.png"> -->
-            <img class="gem" src="./img/member/gem.jpg">
-            <div class="member">
-              <div class="member_detail">
-                <p>MemberID: 21468</p>
-                <p>MemberName: G.E.M</p>
-                <p>Points: 1021</p>
-              </div>
-            </div>
-          </div>
-          <div class="support_history col-xl-8 col-md-12">
-            <div class="table">
-              <div class="th">
-                <div class="col-xl-3 col-sm-3 col-6 td" style="border-radius: 5px 0 0 0;">Trade no</div>
-                <div class="col-xl-4 col-sm-4 col-6 td" style="">Cost</div>
-                <div class="col-xl-5 col-sm-5 date td" style="border-radius: 0 5px 0 0;">Date</div>
-              </div>
-              <div class="tbody">
-                <div v-for="item in history" class="tr">
-                  <div class="col-xl-3 col-sm-3 col-6 td">{{item.no}}</div>
-                  <div class="col-xl-4 col-sm-4 col-6 td">${{item.cost}}</div>
-                  <div class="col-xl-5 col-sm-5 date td">{{item.date}}</div>
-                </div>
-              </div>
-
+          <div class="col-xl-12 tbody">
+            <div class="col-xl-12 tr" v-for="list in history">
+              <div class="col-xl-3 td">{{ list.no }}</div>
+              <div class="col-xl-4 td">{{ list.cost }}</div>
+              <div class="col-xl-4 date td">{{ list.date }}</div>
             </div>
           </div>
         </div>
-
       </div>
     </div>
   </div>
+
+
   <!-- ======================= my code =========================== -->
   <div id="player">
     <audio src="" id="audioPlayer"></audio>
@@ -412,6 +398,7 @@
   </div>
 
   <script src='https://cdnjs.cloudflare.com/ajax/libs/jquery/3.4.1/jquery.js'></script>
+  <script src='https://cdnjs.cloudflare.com/ajax/libs/axios/0.19.0/axios.js'></script>
   <script src="./js/vue.js"></script>
   <script src="./js/public.js"></script>
   <script src="./js/player.js"></script>
@@ -420,116 +407,25 @@
     new Vue({
       el: '#donate_app',
       data: {
-        history: [{
-            no: 1,
-            cost: 500,
-            date: '2019-1-12',
-          },
-          {
-            no: 2,
-            cost: 300,
-            date: '2019-2-12',
-          },
-          {
-            no: 3,
-            cost: 500,
-            date: '2019-3-12',
-          },
-          {
-            no: 4,
-            cost: 500,
-            date: '2019-4-12',
-          },
-          {
-            no: 5,
-            cost: 500,
-            date: '2019-5-12',
-          },
-          {
-            no: 6,
-            cost: 500,
-            date: '2019-5-22',
-          },
-          {
-            no: 7,
-            cost: 500,
-            date: '2019-1-12',
-          },
-          {
-            no: 1,
-            cost: 500,
-            date: '2019-1-12',
-          },
-          {
-            no: 1,
-            cost: 500,
-            date: '2019-1-12',
-          },
-          {
-            no: 1,
-            cost: 500,
-            date: '2019-1-12',
-          },
-          {
-            no: 1,
-            cost: 500,
-            date: '2019-1-12',
-          },
-          {
-            no: 1,
-            cost: 500,
-            date: '2019-1-12',
-          },
-          {
-            no: 1,
-            cost: 500,
-            date: '2019-1-12',
-          },
-          {
-            no: 1,
-            cost: 500,
-            date: '2019-1-12',
-          },
-          {
-            no: 1,
-            cost: 500,
-            date: '2019-1-12',
-          },
-          {
-            no: 1,
-            cost: 500,
-            date: '2019-1-12',
-          },
-          {
-            no: 1,
-            cost: 500,
-            date: '2019-1-12',
-          },
-          {
-            no: 1,
-            cost: 500,
-            date: '2019-1-12',
-          },
-          {
-            no: 1,
-            cost: 500,
-            date: '2019-1-12',
-          },
-          {
-            no: 1,
-            cost: 500,
-            date: '2019-1-12',
-          },
-          {
-            no: 1,
-            cost: 500,
-            date: '2019-1-12',
-          },
-
-        ]
+        history: []
       },
       methods: {
-
+        history_load(){
+          const vm = this;
+          axios.get('./phps/donate_record.php').then((res)=>{
+            console.log(res)
+            res.data.forEach(donate => {
+              vm.history.push({
+                no: donate.donate_no,
+                cost: donate.donate_acount,
+                date: donate.donate_day
+              })
+            });
+          }) .catch((err) =>console.error(err))
+        }
+      },
+      mounted() {
+        this.history_load();
       },
     })
   </script>
