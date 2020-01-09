@@ -588,6 +588,25 @@ $bg: rgba(44,15,15,1);
     width: 100%;
     height: 60%;
 }
+@media screen and (max-width:376px){
+    #infoinfocanvas{
+        position: relative;
+        top: 22%;
+    }
+}
+
+.infore {
+    width: 400px;
+    height: 260px;
+    background-color: white;
+    border-radius: 10px;
+
+    .reportbtn {
+        @include butttonn02;
+    }
+}
+
+
 
 
 .songinfofoot{
