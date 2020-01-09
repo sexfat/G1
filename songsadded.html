@@ -8,11 +8,10 @@
     <title>SOUNDWAVE | songsadded</title>
     <link rel="Shortcut Icon" type="image/x-icon" href="./img/collection/smalllogo.ico" />
     <link rel="stylesheet" href="./css/main.css">
-    <!-- <link rel="stylesheet" href="./css/songupload.css"> -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/fancybox/3.5.7/jquery.fancybox.min.css">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.11.2/css/all.min.css" />
     <script src="https://cdnjs.cloudflare.com/ajax/libs/vue/2.6.10/vue.js"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
-    <!-- <script src="https://cdnjs.cloudflare.com/ajax/libs/pagePiling.js/1.5.6/jquery.pagepiling.min.js"></script> -->
     <script src="./js/player.js"></script>
     <script src="./js/public.js"></script>
     <style>
@@ -32,6 +31,38 @@
         .songsadded_body {
             background: url(./img/songupload/addimg0.jpg);
             background-repeat: no-repeat;
+        }
+
+        input[type="radio"] {
+            -webkit-appearance: none;
+            vertical-align: middle;
+            margin-top: 0;
+            background: #fff;
+            border: #d0d6d6 solid 1px;
+            border-radius: 3px;
+            min-height: 20px;
+            min-width: 20px;
+        }
+
+        input[type="radio"]:checked {
+            background: #7ED5E5;
+        }
+
+        input[type=radio]:checked::after {
+            content: '';
+            top: 3px;
+            left: 3px;
+            position: absolute;
+            background: transparent;
+            border: #fff solid 2px;
+            border-top: none;
+            border-right: none;
+            height: 6px;
+            width: 10px;
+            -moz-transform: rotate(-45deg);
+            -ms-transform: rotate(-45deg);
+            -webkit-transform: rotate(-45deg);
+            transform: rotate(-45deg);
         }
 
         input[type="checkbox"] {
@@ -69,20 +100,45 @@
 </head>
 
 <body class="songsadded_body">
-    <div id="app">
-        <!-- 記得包在 Vue 裡-->
+    <div class="addallall">
+        <div id="app">
+            <!-- 記得包在 Vue 裡-->
 
 
-        <!-- nav_bar start -->
-        <div class="nav_bar flexbox">
-            <div class="hamburger" @click="hamburger_click">
-                <div class="hamburger-box">
-                    <div class="hamburger-inner"></div>
+            <!-- nav_bar start -->
+            <div class="nav_bar flexbox">
+                <div class="hamburger" @click="hamburger_click">
+                    <div class="hamburger-box">
+                        <div class="hamburger-inner"></div>
+                    </div>
                 </div>
-            </div>
-            <div class="mobile_list" @click="stopPropagation">
-                <div class="paint_border"></div>
-                <ul>
+                <div class="mobile_list" @click="stopPropagation">
+                    <div class="paint_border"></div>
+                    <ul>
+                        <li class="REMIX flexbox">
+                            <a href="./remix.html">
+                            </a>
+                        </li>
+                        <li class="COLLECTION flexbox">
+                            <a href="./collection.html">
+                            </a>
+                        </li>
+                        <li class="ACTIVITY flexbox">
+                            <a href="./activity.html">
+                            </a>
+                        </li>
+                        <li class="LIBRARY flexbox">
+                            <a href="./library.html">
+                            </a>
+                        </li>
+                    </ul>
+                </div>
+                <div class="logo_container">
+                    <a href="./index.html">
+                        <div class="logo"></div>
+                    </a>
+                </div>
+                <ul class="main_list flexbox">
                     <li class="REMIX flexbox">
                         <a href="./remix.html">
                         </a>
@@ -100,153 +156,76 @@
                         </a>
                     </li>
                 </ul>
-            </div>
-            <div class="logo_container">
-                <a href="./index.html">
-                    <div class="logo"></div>
-                </a>
-            </div>
-            <ul class="main_list flexbox">
-                <li class="REMIX flexbox">
-                    <a href="./remix.html">
-                    </a>
-                </li>
-                <li class="COLLECTION flexbox">
-                    <a href="./collection.html">
-                    </a>
-                </li>
-                <li class="ACTIVITY flexbox">
-                    <a href="./activity.html">
-                    </a>
-                </li>
-                <li class="LIBRARY flexbox">
-                    <a href="./library.html">
-                    </a>
-                </li>
-            </ul>
-            <div class="search_bt" @click="search_bt_click">
-                <a href="#"></a>
-            </div>
-            <div class="search_bar" @click="stopPropagation">
-                <input class="search" type="text" />
-                <div class="tag_container">
+                <div class="search_bt" @click="search_bt_click">
+                    <a href="#"></a>
                 </div>
-            </div>
-            <div class="login_bt" @click="" v-if="mem_login == false">
-                <a class="flexbox" href="#">Login</a>
-            </div>
-            <div class="mem_bt" @click="mem_bt_click" v-if="mem_login == true">
-                <a href="#"></a>
-            </div>
-            <div class="mem_list" @click="stopPropagation">
-                <div class="paint_border"></div>
-                <ul>
-                    <li>
-                        <a href="./profile.html">
-                            <h4>Profile</h4>
-                        </a>
-                    </li>
-                    <li>
-                        <a href="./library.html">
-                            <h4>Library</h4>
-                        </a>
-                    </li>
-                    <li>
-                        <a href="./songsadded.html">
-                            <h4>
-                                Song Upload
-                                <br />&amp; Remove
-                            </h4>
-                        </a>
-                    </li>
-                    <li>
-                        <a href="./store.html">
-                            <h4>
-                                Store Value
-                                <br />&amp;Store Record
-                            </h4>
-                        </a>
-                    </li>
-                    <li>
-                        <a href="">
-                            <h4>Donate Record</h4>
-                        </a>
-                    </li>
-                </ul>
-            </div>
-        </div>
-        <!-- nav_bar end -->
-
-
-
-
-        <!-- player start -->
-        <div id="player">
-            <audio src="" id="audioPlayer"></audio>
-            <div class="player_s">
-                <div class="info">
-                    <div class="cover"><img src="./img/library/cover1.jpg"></div>
-                    <div class="songInfo">
-                        <span class="name">Lucid Dreamer</span>
-                        <span class="creator">Spazz Cardigan</span>
-                    </div>
-                    <div class="heart becomeRed"><i class="fas fa-heart"></i></div>
-                    <div class="clearfix"></div>
-                </div>
-
-                <div class="controlPanel">
-                    <div class="progressbar">
-                        <div class="progress"></div>
-                    </div>
-                    <div class="time">
-                        <span class="start">00:00</span>
-                        <span class="end">04:30</span>
-                        <div class="clearfix"></div>
-                    </div>
-                    <div class="btns">
-                        <div class="controls">
-                            <button class="prev"><i class="fas fa-step-backward"></i></button>
-                            <button class="play"><i class="fas fa-play"></i></button>
-                            <button class="next"><i class="fas fa-step-forward"></i></button>
-                            <button class="stop"><i class="fas fa-stop"></i></button>
-                            <button class="rand"><i class="fas fa-random"></i></button>
-                            <button class="loop"><i class="fas fa-undo-alt"></i></button>
-                            <div class="clearfix"></div>
-                        </div>
-                        <div class="vol">
-                            <div class="volicon"><i class="fas fa-volume-down"></i></div>
-                            <div class="volLine">
-                                <div class="volControl"></div>
-                            </div>
-                            <div class="clearfix"></div>
-                        </div>
-                        <div class="clearfix"></div>
+                <div class="search_bar" @click="stopPropagation">
+                    <input class="search" type="text" />
+                    <div class="tag_container">
                     </div>
                 </div>
-
-                <div class="expand" id="expand"><i class="fas fa-expand"></i></div>
-                <div class="clearfix"></div>
+                <div class="login_bt" @click="" v-if="mem_login == false">
+                    <a class="flexbox" href="#">Login</a>
+                </div>
+                <div class="mem_bt" @click="mem_bt_click" v-if="mem_login == true">
+                    <a href="#"></a>
+                </div>
+                <div class="mem_list" @click="stopPropagation">
+                    <div class="paint_border"></div>
+                    <ul>
+                        <li>
+                            <a href="./profile.html">
+                                <h4>Profile</h4>
+                            </a>
+                        </li>
+                        <li>
+                            <a href="./library.html">
+                                <h4>Library</h4>
+                            </a>
+                        </li>
+                        <li>
+                            <a href="./songsadded.html">
+                                <h4>
+                                    Song Upload
+                                    <br />&amp; Remove
+                                </h4>
+                            </a>
+                        </li>
+                        <li>
+                            <a href="./store.html">
+                                <h4>
+                                    Store Value
+                                    <br />&amp;Store Record
+                                </h4>
+                            </a>
+                        </li>
+                        <li>
+                            <a href="">
+                                <h4>Donate Record</h4>
+                            </a>
+                        </li>
+                    </ul>
+                </div>
             </div>
+            <!-- nav_bar end -->
 
-            <!-- 詳細版 -->
-            <div class="player_b">
-                <div class="left">
-                    <div class="songCover">
-                        <div class="coverImg">
-                            <img src="./img/library/cover1.jpg">
-                            <div class="coverRec"><img src="./img/library/player_record.png" alt=""></div>
-                        </div>
-                    </div>
-                    <div class="songInfo">
-                        <div class="name">
-                            Lucid Dreamer
-                        </div>
-                        <div class="creator">
-                            Spazz Cardigan
+
+
+
+            <!-- player start -->
+            <div id="player">
+                <audio src="" id="audioPlayer"></audio>
+                <div class="player_s">
+                    <div class="info">
+                        <div class="cover"><img src="./img/library/cover1.jpg"></div>
+                        <div class="songInfo">
+                            <span class="name">Lucid Dreamer</span>
+                            <span class="creator">Spazz Cardigan</span>
                         </div>
                         <div class="heart becomeRed"><i class="fas fa-heart"></i></div>
                         <div class="clearfix"></div>
                     </div>
+
                     <div class="controlPanel">
                         <div class="progressbar">
                             <div class="progress"></div>
@@ -258,11 +237,11 @@
                         </div>
                         <div class="btns">
                             <div class="controls">
-                                <button class="rand"><i class="fas fa-random"></i></button>
                                 <button class="prev"><i class="fas fa-step-backward"></i></button>
                                 <button class="play"><i class="fas fa-play"></i></button>
                                 <button class="next"><i class="fas fa-step-forward"></i></button>
                                 <button class="stop"><i class="fas fa-stop"></i></button>
+                                <button class="rand"><i class="fas fa-random"></i></button>
                                 <button class="loop"><i class="fas fa-undo-alt"></i></button>
                                 <div class="clearfix"></div>
                             </div>
@@ -276,327 +255,697 @@
                             <div class="clearfix"></div>
                         </div>
                     </div>
-                    <div class="pushBtn"></div>
+
+                    <div class="expand" id="expand"><i class="fas fa-expand"></i></div>
+                    <div class="clearfix"></div>
                 </div>
 
-                <div class="right">
-                    <div class="pushBtn"></div>
-                    <div class="listTitle">
-                        <div class="listCover">
-                            <img src="./img/library/list_pic1.jpg"></div>
-                        <div class="listName">
-                            <h2>peaceful list</h2>
-                            <span>8 songs</span>
-                        </div>
-                        <button class="selectBtn" id="selectBtn">SELECT</button>
-                        <div class="clearfix"></div>
-                    </div>
-                    <div class="list">
-                        <ul>
-                            <li>
-                                <div class="songCover">
-                                    <img src="./img/library/cover1.jpg" alt="">
-                                    <div class="listPlay"><i class="fas fa-play"></i></div>
-                                </div>
-                                <div class="listSongInfo">
-                                    <div class="name">
-                                        <h4>Lucid Dreamer</h4>
-                                        <p> Spazz Cardigan</p>
-                                    </div>
-                                </div>
-                                <div class="totalTime">4:30</div>
-                                <div class="heart becomeRed"><i class="fas fa-heart"></i></div>
-                                <div class="clearfix"></div>
-                            </li>
-                            <li>
-                                <div class="songCover">
-                                    <img src="./img/library/cover2.jpg" alt="">
-                                    <div class="listPlay"><i class="fas fa-play"></i></div>
-                                </div>
-                                <div class="listSongInfo">
-                                    <div class="name">
-                                        <h4>Lucid Dreamer</h4>
-                                        <p> Spazz Cardigan</p>
-                                    </div>
-                                </div>
-                                <div class="totalTime">4:30</div>
-                                <div class="heart becomeRed"><i class="fas fa-heart"></i></div>
-                                <div class="clearfix"></div>
-                            </li>
-                            <li>
-                                <div class="songCover">
-                                    <img src="./img/library/cover3.jpg" alt="">
-                                    <div class="listPlay"><i class="fas fa-play"></i></div>
-                                </div>
-                                <div class="listSongInfo">
-                                    <div class="name">
-                                        <h4>Lucid Dreamer</h4>
-                                        <p> Spazz Cardigan</p>
-                                    </div>
-                                </div>
-                                <div class="totalTime">4:30</div>
-                                <div class="heart becomeRed"><i class="fas fa-heart"></i></div>
-                                <div class="clearfix"></div>
-                            </li>
-                            <li>
-                                <div class="songCover">
-                                    <img src="./img/library/cover4.jpg" alt="">
-                                    <div class="listPlay"><i class="fas fa-play"></i></div>
-                                </div>
-                                <div class="listSongInfo">
-                                    <div class="name">
-                                        <h4>Lucid Dreamer</h4>
-                                        <p> Spazz Cardigan</p>
-                                    </div>
-                                </div>
-                                <div class="totalTime">4:30</div>
-                                <div class="heart becomeRed"><i class="fas fa-heart"></i></div>
-                                <div class="clearfix"></div>
-                            </li>
-                            <li>
-                                <div class="songCover">
-                                    <img src="./img/library/cover5.jpg" alt="">
-                                    <div class="listPlay"><i class="fas fa-play"></i></div>
-                                </div>
-                                <div class="listSongInfo">
-                                    <div class="name">
-                                        <h4>Lucid Dreamer</h4>
-                                        <p> Spazz Cardigan</p>
-                                    </div>
-                                </div>
-                                <div class="totalTime">4:30</div>
-                                <div class="heart becomeRed"><i class="fas fa-heart"></i></div>
-                                <div class="clearfix"></div>
-                            </li>
-                            <li>
-                                <div class="songCover">
-                                    <img src="./img/library/cover6.jpg" alt="">
-                                    <div class="listPlay"><i class="fas fa-play"></i></div>
-                                </div>
-                                <div class="listSongInfo">
-                                    <div class="name">
-                                        <h4>Lucid Dreamer</h4>
-                                        <p> Spazz Cardigan</p>
-                                    </div>
-                                </div>
-                                <div class="totalTime">4:30</div>
-                                <div class="heart becomeRed"><i class="fas fa-heart"></i></div>
-                                <div class="clearfix"></div>
-                            </li>
-                            <li>
-                                <div class="songCover">
-                                    <img src="./img/library/cover1.jpg" alt="">
-                                    <div class="listPlay"><i class="fas fa-play"></i></div>
-                                </div>
-                                <div class="listSongInfo">
-                                    <div class="name">
-                                        <h4>Lucid Dreamer</h4>
-                                        <p> Spazz Cardigan</p>
-                                    </div>
-                                </div>
-                                <div class="totalTime">4:30</div>
-                                <div class="heart becomeRed"><i class="fas fa-heart"></i></div>
-                                <div class="clearfix"></div>
-                            </li>
-
-                        </ul>
-                    </div>
-                </div>
-                <div class="close" id="closePlayer"><i class="fas fa-times"></i></div>
-                <div class="clearfix"></div>
-
-                <!-- 撥放器燈箱 -->
-                <div class="lightCover">
-                    <div class="lightbox_s" id="myAllList">
-                        <div class="closeLight"><i class="fas fa-times"></i></div>
-                        <h3>My List</h3>
-                        <div class="lightSelectMenu">
-                            <ul>
-                                <li>Liked songs</li>
-                                <li>Peaceful songs</li>
-                                <li>party</li>
-                            </ul>
-                        </div>
-                        <button class="">ok</button>
-                    </div>
-                </div>
-            </div>
-        </div>
-        <!-- player end -->
-
-
-
-
-
-    </div>
-    <header>
-        <div>
-            <img src="./img/songupload/addtitle.png" alt="">
-        </div>
-    </header>
-
-    <div class="songadd_all">
-        <section class="songsadded_adds2">
-            <ol class="songsadded_leftli">
-                <li class="songsadded_lif">
-                    <h2>&emsp;Upload song <div style="float: right;margin-right: 30px;">-</div></h2>
-                </li>
-                <ol class="songsadded_inside">
-                    <form action="" method="POST">
-                        <article>
-                            <br>
-                            <p style="width: 100px;height: 100px;">
-                                <img id="image" style="width: 300px;height: 300px;background-color: #D0D6D6;">
-                            </p>
-                            <!-- <img class="songsadded_ff" style="width: 50px;height: 30px;"
-                                src="./img/songupload/button_edit.png"> -->
-                            <input type="file" name="" id="theFile" style="display: none;">
-                            <label class="songsadded_ff" for="theFile"> &emsp; Edit</label>
-    
-                        </article>
-                        <div>
-                            <p>Song Title : <input type="text" id="add_pp"
-                                    style="border: 1px solid #d0d6d6;width:350px;height:28px;background-color: #d0d6d6;">
-                            </p>
-                            <div id="infopath">
-                                <span style="position: relative;left: -100px;">Upload path :</span>
-                                <p class="songsadd_path">{{infopathURL}}</p>
-                                <input type="file" name="" id="songinfo_btn" @change="changeSignUpload"
-                                    style="display: none;">
-                                <label class="songinfo_bb" for="songinfo_btn"> &ensp;Choose</label>
-                            </div><br>
-                            <div id="infohashtag">
-                                Song type : <input type="checkbox" name="" id=""> House&ensp;
-                                <input type="checkbox" style="border-radius: 5px;" name="" id="">Trap
-                                <br>
-                                Hashtag : <input type="checkbox" name="" id=""> #Scratch&ensp;
-                                <input type="checkbox" name="" id=""> #Stress&ensp;
-                                <input type="checkbox" name="" id="add_Ethereal"> #Ethereal&ensp;
-                                <br>
-                                <p>Introduction :</p>
-                                <textarea name="" id="add_tta" cols="65" rows="6"
-                                    style="border: 1px solid #d0d6d6;background-color: #D0D6D6;"></textarea>
+                <!-- 詳細版 -->
+                <div class="player_b">
+                    <div class="left">
+                        <div class="songCover">
+                            <div class="coverImg">
+                                <img src="./img/library/cover1.jpg">
+                                <div class="coverRec"><img src="./img/library/player_record.png" alt=""></div>
                             </div>
                         </div>
-    
-                        <section><input type="button" id="sd" name="submit" onClick="document.form.submit()">
-                            <label class="sd_btn" for="sd">Send</label>
-                        </section>
-                    </form>
-    
-                </ol>
-    
-                <li class="songsadded_lif">
-                    <h2>&emsp;Uploaded<div style="float: right;margin-right: 30px;">+</div></h2>
-                </li>
-                <ol class="songsadded_inside2">
-                    <li>Andy Warhol - Because of you <span style="float: right;margin-right: 20px;"></span>
-                        <div class="more" style="float: right;margin-right: 310px;">
-                            <i class="fas fa-ellipsis-h"></i>
+                        <div class="songInfo">
+                            <div class="name">
+                                Lucid Dreamer
+                            </div>
+                            <div class="creator">
+                                Spazz Cardigan
+                            </div>
+                            <div class="heart becomeRed"><i class="fas fa-heart"></i></div>
+                            <div class="clearfix"></div>
                         </div>
-                    </span></li>
-                    <ol>
-                        <article>
-                            <p style="width: 100px;height: 100px;">
-                                <img src="./img/songinfo/cover1.jpg" style="width: 300px;height: 300px;">
-                            </p>
-                            <!-- <img class="songsadded_ff" style="width: 50px;height: 30px;"
-                                src="./img/songupload/button_edit.png"> -->
-                            <input type="file" name="" id="theFile" style="display: none;">
-                            <label class="songsadded_ff" for="theFile"> &emsp; Edit</label>
-                        </article>
-                        <div>
-                            <span><span style="font-weight: bold;">Song Title :</span><span style="font-size:16px"> Because
-                                    of you</span></span><br>
-                            <span><span style="font-weight: bold;">Author :</span><span style="font-size:16px"> Andy
-                                    Warhol</span></span><br>
-                            <span><span style="font-weight: bold;">Song Type :</span><span style="font-size:16px">
-                                    House</span></span><br>
-                            <span><span style="font-weight: bold;">HashTag :</span><span style="font-size:16px">
-                                    #Scratch</span></span><br>
-                            <span><span style="font-weight: bold;">Introduction :</span></span><br>
-                            <span style="font-size:16px">"Hold It Against Me" is three <br>
-                                minutes and forty-nine seconds <br>
-                                long.It is a dance-pop song that <br>
-                                blends pulsating industrial and trance <br>
-                                beats with elements of grime.</span>
+                        <div class="controlPanel">
+                            <div class="progressbar">
+                                <div class="progress"></div>
+                            </div>
+                            <div class="time">
+                                <span class="start">00:00</span>
+                                <span class="end">04:30</span>
+                                <div class="clearfix"></div>
+                            </div>
+                            <div class="btns">
+                                <div class="controls">
+                                    <button class="rand"><i class="fas fa-random"></i></button>
+                                    <button class="prev"><i class="fas fa-step-backward"></i></button>
+                                    <button class="play"><i class="fas fa-play"></i></button>
+                                    <button class="next"><i class="fas fa-step-forward"></i></button>
+                                    <button class="stop"><i class="fas fa-stop"></i></button>
+                                    <button class="loop"><i class="fas fa-undo-alt"></i></button>
+                                    <div class="clearfix"></div>
+                                </div>
+                                <div class="vol">
+                                    <div class="volicon"><i class="fas fa-volume-down"></i></div>
+                                    <div class="volLine">
+                                        <div class="volControl"></div>
+                                    </div>
+                                    <div class="clearfix"></div>
+                                </div>
+                                <div class="clearfix"></div>
+                            </div>
                         </div>
-                    </ol>
-                    <li>Andy Warhol - Because of you <span style="float: right;margin-right: 20px;"></span>
-                        <div class="more" style="float: right;margin-right: 310px;">
-                            <i class="fas fa-ellipsis-h"></i>
+                        <div class="pushBtn"></div>
+                    </div>
+
+                    <div class="right">
+                        <div class="pushBtn"></div>
+                        <div class="listTitle">
+                            <div class="listCover">
+                                <img src="./img/library/list_pic1.jpg"></div>
+                            <div class="listName">
+                                <h2>peaceful list</h2>
+                                <span>8 songs</span>
+                            </div>
+                            <button class="selectBtn" id="selectBtn">SELECT</button>
+                            <div class="clearfix"></div>
                         </div>
-                    </span></li>
-                    <ol>
-                        <article>
-                            <p style="width: 100px;height: 100px;">
-                                <img src="./img/songinfo/cover1.jpg" style="width: 300px;height: 300px;">
-                            </p>
-                            <!-- <img class="songsadded_ff" style="width: 50px;height: 30px;"
-                                src="./img/songupload/button_edit.png"> -->
-                            <input type="file" name="" id="theFile" style="display: none;">
-                            <label class="songsadded_ff" for="theFile"> &emsp; Edit</label>
-                        </article>
-                        <div>
-                            <span><span style="font-weight: bold;">Song Title :</span><span style="font-size:16px"> Because
-                                    of you</span></span><br>
-                            <span><span style="font-weight: bold;">Author :</span><span style="font-size:16px"> Andy
-                                    Warhol</span></span><br>
-                            <span><span style="font-weight: bold;">Song Type :</span><span style="font-size:16px">
-                                    House</span></span><br>
-                            <span><span style="font-weight: bold;">HashTag :</span><span style="font-size:16px">
-                                    #Scratch</span></span><br>
-                            <span><span style="font-weight: bold;">Introduction :</span></span><br>
-                            <span style="font-size:16px">"Hold It Against Me" is three <br>
-                                minutes and forty-nine seconds <br>
-                                long.It is a dance-pop song that <br>
-                                blends pulsating industrial and trance <br>
-                                beats with elements of grime.</span>
+                        <div class="list">
+                            <ul>
+                                <li>
+                                    <div class="songCover">
+                                        <img src="./img/library/cover1.jpg" alt="">
+                                        <div class="listPlay"><i class="fas fa-play"></i></div>
+                                    </div>
+                                    <div class="listSongInfo">
+                                        <div class="name">
+                                            <h4>Lucid Dreamer</h4>
+                                            <p> Spazz Cardigan</p>
+                                        </div>
+                                    </div>
+                                    <div class="totalTime">4:30</div>
+                                    <div class="heart becomeRed"><i class="fas fa-heart"></i></div>
+                                    <div class="clearfix"></div>
+                                </li>
+                                <li>
+                                    <div class="songCover">
+                                        <img src="./img/library/cover2.jpg" alt="">
+                                        <div class="listPlay"><i class="fas fa-play"></i></div>
+                                    </div>
+                                    <div class="listSongInfo">
+                                        <div class="name">
+                                            <h4>Lucid Dreamer</h4>
+                                            <p> Spazz Cardigan</p>
+                                        </div>
+                                    </div>
+                                    <div class="totalTime">4:30</div>
+                                    <div class="heart becomeRed"><i class="fas fa-heart"></i></div>
+                                    <div class="clearfix"></div>
+                                </li>
+                                <li>
+                                    <div class="songCover">
+                                        <img src="./img/library/cover3.jpg" alt="">
+                                        <div class="listPlay"><i class="fas fa-play"></i></div>
+                                    </div>
+                                    <div class="listSongInfo">
+                                        <div class="name">
+                                            <h4>Lucid Dreamer</h4>
+                                            <p> Spazz Cardigan</p>
+                                        </div>
+                                    </div>
+                                    <div class="totalTime">4:30</div>
+                                    <div class="heart becomeRed"><i class="fas fa-heart"></i></div>
+                                    <div class="clearfix"></div>
+                                </li>
+                                <li>
+                                    <div class="songCover">
+                                        <img src="./img/library/cover4.jpg" alt="">
+                                        <div class="listPlay"><i class="fas fa-play"></i></div>
+                                    </div>
+                                    <div class="listSongInfo">
+                                        <div class="name">
+                                            <h4>Lucid Dreamer</h4>
+                                            <p> Spazz Cardigan</p>
+                                        </div>
+                                    </div>
+                                    <div class="totalTime">4:30</div>
+                                    <div class="heart becomeRed"><i class="fas fa-heart"></i></div>
+                                    <div class="clearfix"></div>
+                                </li>
+                                <li>
+                                    <div class="songCover">
+                                        <img src="./img/library/cover5.jpg" alt="">
+                                        <div class="listPlay"><i class="fas fa-play"></i></div>
+                                    </div>
+                                    <div class="listSongInfo">
+                                        <div class="name">
+                                            <h4>Lucid Dreamer</h4>
+                                            <p> Spazz Cardigan</p>
+                                        </div>
+                                    </div>
+                                    <div class="totalTime">4:30</div>
+                                    <div class="heart becomeRed"><i class="fas fa-heart"></i></div>
+                                    <div class="clearfix"></div>
+                                </li>
+                                <li>
+                                    <div class="songCover">
+                                        <img src="./img/library/cover6.jpg" alt="">
+                                        <div class="listPlay"><i class="fas fa-play"></i></div>
+                                    </div>
+                                    <div class="listSongInfo">
+                                        <div class="name">
+                                            <h4>Lucid Dreamer</h4>
+                                            <p> Spazz Cardigan</p>
+                                        </div>
+                                    </div>
+                                    <div class="totalTime">4:30</div>
+                                    <div class="heart becomeRed"><i class="fas fa-heart"></i></div>
+                                    <div class="clearfix"></div>
+                                </li>
+                                <li>
+                                    <div class="songCover">
+                                        <img src="./img/library/cover1.jpg" alt="">
+                                        <div class="listPlay"><i class="fas fa-play"></i></div>
+                                    </div>
+                                    <div class="listSongInfo">
+                                        <div class="name">
+                                            <h4>Lucid Dreamer</h4>
+                                            <p> Spazz Cardigan</p>
+                                        </div>
+                                    </div>
+                                    <div class="totalTime">4:30</div>
+                                    <div class="heart becomeRed"><i class="fas fa-heart"></i></div>
+                                    <div class="clearfix"></div>
+                                </li>
+
+                            </ul>
                         </div>
-                    </ol>
-                    <li>Andy Warhol - Because of you <span style="float: right;margin-right: 20px;"></span>
-                        <div class="more" style="float: right;margin-right: 310px;">
-                            <i class="fas fa-ellipsis-h"></i>
+                    </div>
+                    <div class="close" id="closePlayer"><i class="fas fa-times"></i></div>
+                    <div class="clearfix"></div>
+
+                    <!-- 撥放器燈箱 -->
+                    <div class="lightCover">
+                        <div class="lightbox_s" id="myAllList">
+                            <div class="closeLight"><i class="fas fa-times"></i></div>
+                            <h3>My List</h3>
+                            <div class="lightSelectMenu">
+                                <ul>
+                                    <li>Liked songs</li>
+                                    <li>Peaceful songs</li>
+                                    <li>party</li>
+                                </ul>
+                            </div>
+                            <button class="">ok</button>
                         </div>
-                    </span></li>
-                    <ol>
-                        <article>
-                            <p style="width: 100px;height: 100px;">
-                                <img src="./img/songinfo/cover1.jpg" style="width: 300px;height: 300px;">
-                            </p>
-                            <!-- <img class="songsadded_ff" style="width: 50px;height: 30px;"
-                                src="./img/songupload/button_edit.png"> -->
-                            <input type="file" name="" id="theFile" style="display: none;">
-                            <label class="songsadded_ff" for="theFile"> &emsp; Edit</label>
-                        </article>
-                        <div>
-                            <span><span style="font-weight: bold;">Song Title :</span><span style="font-size:16px"> Because
-                                    of you</span></span><br>
-                            <span><span style="font-weight: bold;">Author :</span><span style="font-size:16px"> Andy
-                                    Warhol</span></span><br>
-                            <span><span style="font-weight: bold;">Song Type :</span><span style="font-size:16px">
-                                    House</span></span><br>
-                            <span><span style="font-weight: bold;">HashTag :</span><span style="font-size:16px">
-                                    #Scratch</span></span><br>
-                            <span><span style="font-weight: bold;">Introduction :</span></span><br>
-                            <span style="font-size:16px">"Hold It Against Me" is three <br>
-                                minutes and forty-nine seconds <br>
-                                long.It is a dance-pop song that <br>
-                                blends pulsating industrial and trance <br>
-                                beats with elements of grime.</span>
-                        </div>
-                    </ol>
-                </ol>
-            </ol>
-            <div class="uploadmic">
-                <img src="./img/songupload/mic.png" alt="">
+                    </div>
+                </div>
             </div>
-            <!-- <div class="songsadded_adds3"></div> -->
+            <!-- player end -->
+
+
+
+
+
+        </div>
+        <header>
+            <div>
+                <img src="./img/songupload/addtitle.png" alt="">
+            </div>
+        </header>
+
+        <div class="songadd_all">
+            <section class="songsadded_adds2">
+                <ol class="songsadded_leftli">
+                    <div class="songsadded-lif-container is-click">
+                        <li class="songsadded_lif">
+                            <a href="#">
+                                <h2>&emsp;Upload song <div class="songsadded-lif"
+                                        style="float: right;margin-right: 30px;"></div>
+                                </h2>
+                            </a>
+                        </li>
+                        <ol class="songsadded_inside">
+                            <form action="" method="POST">
+                                <article>
+                                    <br>
+                                    <p style="width: 100px;height: 100px;">
+                                        <img id="image" style="width: 300px;height: 300px;background-color: #D0D6D6;">
+                                    </p>
+                                    <!-- <img class="songsadded_ff" style="width: 50px;height: 30px;"
+                                        src="./img/songupload/button_edit.png"> -->
+                                    <input type="file" name="" id="theFile" style="display: none;">
+                                    <label class="songsadded_ff" for="theFile"
+                                        style="text-align: center;margin-left: -5px;">Edit</label>
+
+                                </article>
+                                <div>
+                                    <p style="font-weight: bold;">Song Title : <input type="text" id="add_pp"
+                                            style="border: 1px solid #d0d6d6;width:350px;height:28px;background-color: #d0d6d6;">
+                                    </p>
+                                    <div id="infopath">
+                                        <span
+                                            style="position: relative;left: -100px;top: -20px;font-weight: bold;">Upload
+                                            path :</span>
+                                        <p class="songsadd_path">{{infopathURL}}</p>
+                                        <input type="file" name="" id="songinfo_btn" @change="changeSignUpload"
+                                            style="display: none;">
+                                        <label class="songinfo_bb" for="songinfo_btn"
+                                            style="text-align: center;">Choose</label>
+                                    </div><br>
+                                    <div id="infohashtag">
+                                        <span style="font-weight: bold;">Song type : </span><input type="radio"
+                                            name="type" id=""> House&ensp;
+                                        <input type="radio" style="border-radius: 5px;" name="type" id="">Trap
+                                        <br>
+                                        <span style="font-weight: bold;">Hashtag : </span><br>
+                                        <input type="checkbox" name="" id=""> #Scratch&ensp;
+                                        <input type="checkbox" name="" id=""> #Stress&ensp;
+                                        <input type="checkbox" name="" id="add_Ethereal"> #Ethereal&ensp;
+                                        <br>
+                                        <p style="font-weight: bold;">Introduction :</p>
+                                        <textarea name="" id="add_tta" cols="65" rows="6"
+                                            style="border: 1px solid #d0d6d6;background-color: #D0D6D6;"></textarea>
+                                    </div>
+                                </div>
+
+                                <section><input type="submit" id="sd" name="submit" onClick="document.form.submit()">
+                                    <label class="sd_btn" for="sd">Send</label>
+                                </section>
+                            </form>
+
+                        </ol>
+                        <li class="songsadded_lif">
+                            <a href="#">
+                                <h2>&emsp;Uploaded<div class="songsadded-lif2" style="float: right;margin-right: 30px;">
+                                    </div>
+                                </h2>
+                            </a>
+                        </li>
+                        <ol class="songsadded_inside2" style="overflow:scroll;overflow-X:hidden;">
+                            <a href="#">
+                                <li>Andy Warhol - Because of you <span style="float: right;margin-right: 20px;"></span>
+                                    <div class="more" style="float: right;margin-right: 310px;z-index: 1000;">
+                                        <i class="fas fa-ellipsis-h"></i>
+                                        <div class="addedit">
+                                            <ul>
+                                                <a id="a1" href="javascript:;" onclick="change()">
+                                                    <li><span>Edit</span></li>
+                                                </a>
+                                                <a class="test-b" href="javascript:;">
+                                                    <li><span>Delete</span></li>
+                                                </a>
+                                            </ul>
+                                        </div>
+                                    </div>
+                                    <div class="clearfix"></div>
+                                </li>
+                            </a>
+                            <ol class="songsadded_inside2_ol" style="overflow:scroll;overflow-X:hidden;">
+                                <div id="d1" style="display: none">
+                                    <form class="inside2form" action="" method="POST">
+                                        <article>
+                                            <br>
+                                            <p style="width: 100px;height: 100px;">
+                                                <img id="image"
+                                                    style="width: 230px;height: 230px;background-color: #D0D6D6;">
+                                            </p>
+                                            <!-- <img class="songsadded_ff" style="width: 50px;height: 30px;"
+                                                src="./img/songupload/button_edit.png"> -->
+                                            <input type="file" name="" id="theFile" style="display: none;">
+                                            <label class="songsadded_ff" for="theFile"
+                                                style="text-align: center;margin-left: -5px;">Edit</label>
+
+                                        </article>
+                                        <div class="inside2count">
+                                            <p style="font-weight: bold;">Song Title : <input type="text"
+                                                    class="add_btom"
+                                                    style="border: 1px solid #d0d6d6;height:28px;background-color: #d0d6d6;">
+                                            </p>
+                                            <div class="infopathbtom">
+                                                <span
+                                                    style="position: relative;left: -100px;top: -20px;font-weight: bold;">Upload
+                                                    path :</span>
+                                                <p class="songsadd_path">{{infopathURL2}}</p>
+                                                <input type="file" name="" id="songinfo_btnbtom"
+                                                    @change="changeSignUpload" style="display: none;">
+                                                <label class="songinfo_bb" for="songinfo_btnbtom"
+                                                    style="text-align: center;">Choose</label>
+                                            </div><br>
+                                            <div class="infohashtagbtom">
+                                                <span style="font-weight: bold;">Song type :
+                                                </span><input type="radio" name="type" class="btominpt">
+                                                House&ensp;
+                                                <input type="radio" style="border-radius: 5px;" name="type"
+                                                    class="btominpt">Trap
+                                                <br>
+                                                <span style="font-weight: bold;">Hashtag : </span><br>
+                                                <input type="checkbox" name="" class="btominpt"> #Scratch&ensp;
+                                                <input type="checkbox" name="" class="btominpt"> #Stress&ensp;
+                                                <input type="checkbox" name="" class="btominpt">
+                                                #Ethereal&ensp;
+                                                <br>
+                                                <p style="font-weight: bold;">Introduction :</p>
+                                                <textarea name="" id="add_tta" cols="52" rows="3"
+                                                    style="border: 1px solid #d0d6d6;background-color: #D0D6D6;"></textarea>
+                                            </div>
+                                        </div>
+
+                                        <section class="btomsen"><input type="submit" class="sd" name="submit"
+                                                onClick="document.form.submit()">
+                                            <label class="sd_btn" for="sd">Send</label>
+                                        </section>
+                                    </form>
+                                </div>
+                                <div id="c1" style="position: relative;left: 0px;">
+                                    <article>
+                                        <p style="width: 100px;height: 100px;">
+                                            <img src="./img/songinfo/cover1.jpg" style="width: 300px;height: 300px;">
+                                        </p>
+                                        <!-- <img class="songsadded_ff" style="width: 50px;height: 30px;"
+                                        src="./img/songupload/button_edit.png"> -->
+                                        <!-- <input type="file" name="" id="theFile" style="display: none;">
+                                        <label class="songsadded_ff" for="theFile"> &emsp; Edit</label> -->
+                                    </article>
+                                    <div>
+                                        <span><span style="font-weight: bold;">Song Title :</span><span
+                                                style="font-size:16px"> Because
+                                                of you</span></span><br>
+                                        <span><span style="font-weight: bold;">Author :</span><span
+                                                style="font-size:16px">
+                                                Andy
+                                                Warhol</span></span><br>
+                                        <span><span style="font-weight: bold;">Song Type :</span><span
+                                                style="font-size:16px">
+                                                House</span></span><br>
+                                        <span><span style="font-weight: bold;">HashTag :</span><span
+                                                style="font-size:16px">
+                                                #Scratch</span></span><br>
+                                        <span><span style="font-weight: bold;">Introduction :</span></span><br>
+                                        <span style="font-size:16px">"Hold It Against Me" is three <br>
+                                            minutes and forty-nine seconds <br>
+                                            long.It is a dance-pop song that <br>
+                                            blends pulsating industrial and trance <br>
+                                            beats with elements of grime.</span>
+                                    </div>
+                                </div>
+                            </ol>
+                            <a href="#">
+                                <li>Andy Warhol - Because of you <span style="float: right;margin-right: 20px;"></span>
+                                    <div class="more" style="float: right;margin-right: 310px;">
+                                        <i class="fas fa-ellipsis-h"></i>
+                                        <div class="addedit">
+                                            <ul>
+                                                <a id="a2" href="javascript:;" onclick="change2()">
+                                                    <li><span>Edit</span></li>
+                                                </a>
+                                                <a class="test-b" href="javascript:;">
+                                                    <li><span>Delete</span></li>
+                                                </a>
+                                            </ul>
+                                        </div>
+                                    </div>
+                                    <div class="clearfix"></div>
+                                </li>
+                            </a>
+                            <ol class="songsadded_inside2_ol" style="overflow:scroll;overflow-X:hidden;">
+                                <div id="d2" style="display: none">
+                                    <form class="inside2form" action="" method="POST">
+                                        <article>
+                                            <br>
+                                            <p style="width: 100px;height: 100px;">
+                                                <img id="image"
+                                                    style="width: 230px;height: 230px;background-color: #D0D6D6;">
+                                            </p>
+                                            <!-- <img class="songsadded_ff" style="width: 50px;height: 30px;"
+                                                src="./img/songupload/button_edit.png"> -->
+                                            <input type="file" name="" id="theFile" style="display: none;">
+                                            <label class="songsadded_ff" for="theFile"
+                                                style="text-align: center;margin-left: -5px;">Edit</label>
+
+                                        </article>
+                                        <div class="inside2count">
+                                            <p style="font-weight: bold;">Song Title : <input type="text"
+                                                    class="add_btom"
+                                                    style="border: 1px solid #d0d6d6;width:350px;height:28px;background-color: #d0d6d6;">
+                                            </p>
+                                            <div class="infopathbtom2">
+                                                <span
+                                                    style="position: relative;left: -100px;top: -20px;font-weight: bold;">Upload
+                                                    path :</span>
+                                                <p class="songsadd_path">{{infopathURL3}}</p>
+                                                <input type="file" name="" id="songinfo_btnbtom"
+                                                    @change="changeSignUpload" style="display: none;">
+                                                <label class="songinfo_bb" for="songinfo_btnbtom"
+                                                    style="text-align: center;">Choose</label>
+                                            </div><br>
+                                            <div class="infohashtagbtom">
+                                                <span style="font-weight: bold;">Song type :
+                                                </span><input type="radio" name="type" class="btominpt">
+                                                House&ensp;
+                                                <input type="radio" style="border-radius: 5px;" name="type"
+                                                    class="btominpt">Trap
+                                                <br>
+                                                <span style="font-weight: bold;">Hashtag : </span><br>
+                                                <input type="checkbox" name="" class="btominpt"> #Scratch&ensp;
+                                                <input type="checkbox" name="" class="btominpt"> #Stress&ensp;
+                                                <input type="checkbox" name="" class="btominpt">
+                                                #Ethereal&ensp;
+                                                <br>
+                                                <p style="font-weight: bold;">Introduction :</p>
+                                                <textarea name="" id="add_tta" cols="52" rows="3"
+                                                    style="border: 1px solid #d0d6d6;background-color: #D0D6D6;"></textarea>
+                                            </div>
+                                        </div>
+
+                                        <section class="btomsen"><input type="submit" class="sd" name="submit"
+                                                onClick="document.form.submit()">
+                                            <label class="sd_btn" for="sd">Send</label>
+                                        </section>
+                                    </form>
+                                </div>
+                                <div id="c2" style="position: relative;left: 0px;">
+                                    <article>
+                                        <p style="width: 100px;height: 100px;">
+                                            <img src="./img/songinfo/cover1.jpg" style="width: 300px;height: 300px;">
+                                        </p>
+                                        <!-- <img class="songsadded_ff" style="width: 50px;height: 30px;"
+                                        src="./img/songupload/button_edit.png"> -->
+                                        <!-- <input type="file" name="" id="theFile" style="display: none;">
+                                    <label class="songsadded_ff" for="theFile"> &emsp; Edit</label> -->
+                                    </article>
+                                    <div>
+                                        <span><span style="font-weight: bold;">Song Title :</span><span
+                                                style="font-size:16px"> Because
+                                                of you</span></span><br>
+                                        <span><span style="font-weight: bold;">Author :</span><span
+                                                style="font-size:16px">
+                                                Andy
+                                                Warhol</span></span><br>
+                                        <span><span style="font-weight: bold;">Song Type :</span><span
+                                                style="font-size:16px">
+                                                House</span></span><br>
+                                        <span><span style="font-weight: bold;">HashTag :</span><span
+                                                style="font-size:16px">
+                                                #Scratch</span></span><br>
+                                        <span><span style="font-weight: bold;">Introduction :</span></span><br>
+                                        <span style="font-size:16px">"Hold It Against Me" is three <br>
+                                            minutes and forty-nine seconds <br>
+                                            long.It is a dance-pop song that <br>
+                                            blends pulsating industrial and trance <br>
+                                            beats with elements of grime.</span>
+                                    </div>
+                                </div>
+                            </ol>
+                            <a href="#">
+                                <li>Andy Warhol - Because of you <span style="float: right;margin-right: 20px;"></span>
+                                    <div class="more" style="float: right;margin-right: 310px;">
+                                        <i class="fas fa-ellipsis-h"></i>
+                                        <div class="addedit">
+                                            <ul>
+                                                <a id="a3" href="javascript:;" onclick="change3()">
+                                                    <li><span>Edit</span></li>
+                                                </a>
+                                                <a class="test-b" href="javascript:;">
+                                                    <li><span>Delete</span></li>
+                                                </a>
+                                            </ul>
+                                        </div>
+                                    </div>
+                                    <div class="clearfix"></div>
+                                </li>
+                            </a>
+                            <ol class="songsadded_inside2_ol" style="overflow:scroll;overflow-X:hidden;">
+                                <div id="d3" style="display: none">
+                                    <form class="inside2form" action="" method="POST">
+                                        <article>
+                                            <br>
+                                            <p style="width: 100px;height: 100px;">
+                                                <img id="image"
+                                                    style="width: 230px;height: 230px;background-color: #D0D6D6;">
+                                            </p>
+                                            <!-- <img class="songsadded_ff" style="width: 50px;height: 30px;"
+                                                src="./img/songupload/button_edit.png"> -->
+                                            <input type="file" name="" id="theFile" style="display: none;">
+                                            <label class="songsadded_ff" for="theFile"
+                                                style="text-align: center;margin-left: -5px;">Edit</label>
+
+                                        </article>
+                                        <div class="inside2count">
+                                            <p style="font-weight: bold;">Song Title : <input type="text"
+                                                    class="add_btom"
+                                                    style="border: 1px solid #d0d6d6;width:350px;height:28px;background-color: #d0d6d6;">
+                                            </p>
+                                            <div class="infopathbtom3">
+                                                <span
+                                                    style="position: relative;left: -100px;top: -20px;font-weight: bold;">Upload
+                                                    path :</span>
+                                                <p class="songsadd_path">{{infopathURL4}}</p>
+                                                <input type="file" name="" id="songinfo_btnbtom"
+                                                    @change="changeSignUpload" style="display: none;">
+                                                <label class="songinfo_bb" for="songinfo_btnbtom"
+                                                    style="text-align: center;">Choose</label>
+                                            </div><br>
+                                            <div class="infohashtagbtom">
+                                                <span style="font-weight: bold;">Song type :
+                                                </span><input type="radio" name="type" class="btominpt">
+                                                House&ensp;
+                                                <input type="radio" style="border-radius: 5px;" name="type"
+                                                    class="btominpt">Trap
+                                                <br>
+                                                <span style="font-weight: bold;">Hashtag : </span><br>
+                                                <input type="checkbox" name="" class="btominpt"> #Scratch&ensp;
+                                                <input type="checkbox" name="" class="btominpt"> #Stress&ensp;
+                                                <input type="checkbox" name="" class="btominpt">
+                                                #Ethereal&ensp;
+                                                <br>
+                                                <p style="font-weight: bold;">Introduction :</p>
+                                                <textarea name="" id="add_tta" cols="52" rows="3"
+                                                    style="border: 1px solid #d0d6d6;background-color: #D0D6D6;"></textarea>
+                                            </div>
+                                        </div>
+
+                                        <section class="btomsen"><input type="submit" class="sd" name="submit"
+                                                onClick="document.form.submit()">
+                                            <label class="sd_btn" for="sd">Send</label>
+                                        </section>
+                                    </form>
+                                </div>
+                                <div id="c3" style="position: relative;left: 0px;">
+                                    <article>
+                                        <p style="width: 100px;height: 100px;">
+                                            <img src="./img/songinfo/cover1.jpg" style="width: 300px;height: 300px;">
+                                        </p>
+                                        <!-- <img class="songsadded_ff" style="width: 50px;height: 30px;"
+                                        src="./img/songupload/button_edit.png"> -->
+                                        <!-- <input type="file" name="" id="theFile" style="display: none;">
+                                    <label class="songsadded_ff" for="theFile"> &emsp; Edit</label> -->
+                                    </article>
+                                    <div>
+                                        <span><span style="font-weight: bold;">Song Title :</span><span
+                                                style="font-size:16px"> Because
+                                                of you</span></span><br>
+                                        <span><span style="font-weight: bold;">Author :</span><span
+                                                style="font-size:16px">
+                                                Andy
+                                                Warhol</span></span><br>
+                                        <span><span style="font-weight: bold;">Song Type :</span><span
+                                                style="font-size:16px">
+                                                House</span></span><br>
+                                        <span><span style="font-weight: bold;">HashTag :</span><span
+                                                style="font-size:16px">
+                                                #Scratch</span></span><br>
+                                        <span><span style="font-weight: bold;">Introduction :</span></span><br>
+                                        <span style="font-size:16px">"Hold It Against Me" is three <br>
+                                            minutes and forty-nine seconds <br>
+                                            long.It is a dance-pop song that <br>
+                                            blends pulsating industrial and trance <br>
+                                            beats with elements of grime.</span>
+                                    </div>
+                                </div>
+                            </ol>
+                        </ol>
+                </ol>
+        </div>
+
+        <div class="uploadmic">
+            <img src="./img/songupload/mic.png" alt="">
+        </div>
+        <!-- <div class="songsadded_adds3"></div> -->
         </section>
         <!-- <section class="songsadded_adds3"></section> -->
     </div>
-    
+    </div>
+    <footer class="songaddfoot">
+    </footer>
 
+
+
+    <script src="https://cdn.jsdelivr.net/gh/fancyapps/fancybox@3.5.7/dist/jquery.fancybox.min.js"></script>
+    <script>
+        $(".test-b").on('click', function () {
+            $.fancybox.open(
+                '<div class="adddeletecheck"alt=""><div class="checkline"><br><p>Are you sure to delete?</p><br><br><button class="checkbtn">Yes</button> <button class="checkbtn">No</button></div></div>'
+            );
+        });
+    </script>
+
+    <script>
+        var isShow = false;
+
+        function change() {
+            if (!isShow) {
+                isShow = true;
+                document.getElementById('d1').style.display = '';
+                document.getElementById('a1').innerText = "Edit";
+                document.getElementById('c1').style.display = 'none';
+            } else {
+                isShow = false;
+                document.getElementById('d1').style.display = 'none';
+                document.getElementById('a1').innerText = "Edit";
+                document.getElementById('c1').style.display = '';
+            }
+        }
+    </script>
+    <script>
+        var isShow2 = false;
+
+        function change2() {
+            if (!isShow2) {
+                isShow = true;
+                document.getElementById('d2').style.display = '';
+                document.getElementById('a2').innerText = "Edit";
+                document.getElementById('c2').style.display = 'none';
+            } else {
+                isShow2 = false;
+                document.getElementById('d2').style.display = 'none';
+                document.getElementById('a2').innerText = "Edit";
+                document.getElementById('c2').style.display = '';
+            }
+        }
+    </script>
+    <script>
+        var isShow3 = false;
+
+        function change3() {
+            if (!isShow3) {
+                isShow = true;
+                document.getElementById('d3').style.display = '';
+                document.getElementById('a3').innerText = "Edit";
+                document.getElementById('c3').style.display = 'none';
+            } else {
+                isShow3 = false;
+                document.getElementById('d3').style.display = 'none';
+                document.getElementById('a3').innerText = "Edit";
+                document.getElementById('c3').style.display = '';
+            }
+        }
+    </script>
+
+    <script>
+        (function ($) {
+            $(document).ready(function () {
+                var dashButton = $('.songsadded_lif'),
+                    album = $('.album');
+                dashButton.on('click', function () {
+                    $('.songsadded-lif-container').toggleClass('is-click');
+                });
+            });
+        })(jQuery);
+    </script>
     <script>
         function doFirst() {
             document.getElementById('theFile').onchange = fileChange;
@@ -618,8 +967,23 @@
         }
         window.addEventListener('load', doFirst);
     </script>
+
     <script>
-        new Vue({
+        window.addEventListener('load', function () {
+            //more -- changeList
+            $('.more').click(function () {
+                $(this).find('.addedit').show();
+                $('.more').not(this).find('.addedit').hide();
+            });
+            $('.more').mouseleave(function () {
+                $(this).find('.addedit').hide();
+            });
+        });
+    </script>
+
+
+    <script>
+        const v1 = new Vue({
             el: "#infopath",
             data: {
                 infopathURL: "",
@@ -636,9 +1000,105 @@
                 }
             },
         });
+        const v2 = new Vue({
+            el: ".infopathbtom",
+            data: {
+                infopathURL2: "",
+            },
+            methods: {
+                changeSignUpload(song) {
+                    const songFile = song.target.files.item(0);
+                    const readers = new FileReader();
+                    readers.addEventListener('load', this.SignUploadLoader);
+                    readers.readAsDataURL(songFile);
+                },
+                SignUploadLoader(song) {
+                    this.infopathURL2 = song.target.result;
+                }
+            },
+        });
+        const v3 = new Vue({
+            el: ".infopathbtom2",
+            data: {
+                infopathURL3: "",
+            },
+            methods: {
+                changeSignUpload(song) {
+                    const songFile = song.target.files.item(0);
+                    const readers = new FileReader();
+                    readers.addEventListener('load', this.SignUploadLoader);
+                    readers.readAsDataURL(songFile);
+                },
+                SignUploadLoader(song) {
+                    this.infopathURL3 = song.target.result;
+                }
+            },
+        });
+        const v4 = new Vue({
+            el: ".infopathbtom3",
+            data: {
+                infopathURL4: "",
+            },
+            methods: {
+                changeSignUpload(song) {
+                    const songFile = song.target.files.item(0);
+                    const readers = new FileReader();
+                    readers.addEventListener('load', this.SignUploadLoader);
+                    readers.readAsDataURL(songFile);
+                },
+                SignUploadLoader(song) {
+                    this.infopathURL4 = song.target.result;
+                }
+            },
+        });
     </script>
+    <!-- <script>
+        new Vue({
+            el: "#a1",
+            data: {
+                infopathURL2: "",
+            },
+            methods: {
+                changeSignUpload(song) {
+                    const songFile = song.target.files.item(0);
+                    const readers = new FileReader();
+                    readers.addEventListener('load', this.SignUploadLoader);
+                    readers.readAsDataURL(songFile);
+                },
+                SignUploadLoader(song) {
+                    this.infopathURL2 = song.target.result;
+                }
+            },
+        });
+    </script> -->
 
 
+    <script>
+        $(".songsadded_inside2").on("mouseenter mouseleave", function (event) { //挷定滑鼠進入及離開事件
+            if (event.type == "mouseenter") {
+                $(this).css({
+                    "overflow-y": "scroll"
+                }); //滑鼠進入
+            } else {
+                $(this).scrollTop(0).css({
+                    "overflow-y": "hidden"
+                }); //滑鼠離開
+            }
+        });
+    </script>
+    <script>
+        $(".songsadded_inside2_ol").on("mouseenter mouseleave", function (event) { //挷定滑鼠進入及離開事件
+            if (event.type == "mouseenter") {
+                $(this).css({
+                    "overflow-y": "scroll"
+                }); //滑鼠進入
+            } else {
+                $(this).scrollTop(0).css({
+                    "overflow-y": "hidden"
+                }); //滑鼠離開
+            }
+        });
+    </script>
     <script>
         $(function () {
             $(".songsadded_leftli").height(document.body.scrollHeight);

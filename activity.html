@@ -11,9 +11,12 @@
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.11.2/css/all.min.css" />
     <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/vue/2.6.10/vue.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/axios/0.19.0/axios.min.js"></script>
+
     <script src="./js/player.js"></script>
     <script src="./js/public.js"></script>
     <link rel="Shortcut Icon" type="image/x-icon" href="./img/collection/smalllogo.ico" />
+</head>
 
 <body>
     <div id="activityTop"></div>
@@ -439,10 +442,10 @@
                     <a href="#activityTop" class="act_Anchor ">
                         <img src="./img/activity/top-bush.png" alt="" class="act_Bush">
 
-                            <div class="act_ShowTopBush" v-if="GoTopBush==true">
-                                <img src="./img/activity/top-bush02.png" alt="">
-                            </div>
-            
+                        <div class="act_ShowTopBush" v-if="GoTopBush==true">
+                            <img src="./img/activity/top-bush02.png" alt="">
+                        </div>
+
                         TOP
                     </a>
 
@@ -495,7 +498,7 @@
 
 
         </div>
-        <component :is="content"></component>
+        <component :is="content" :now-Vote-Song="nowVoteSong"></component>
         <script type="text/x-template" id="act-old">
             <div>
              <article class="act_old_years " id="act_old_year2018">
@@ -507,12 +510,10 @@
          
                      <p>
          
-                         American Idol is an annual American singing competition
-                         which began its first season in June 11, 2002.
-                         Part of the Idol franchise, it originated from the UK
-                         reality program Pop Idol.
-         
-         
+                        SoundWave aims to provide an amateur music creation platform for more people to discover more and better mixed music.
+                        <br>
+                        The theme of this event is pop style!
+                       
                      </p>
                      <div class="act_oldVotes">
                          <h3>Votes</h3>
@@ -752,10 +753,9 @@
          
                      <p>
          
-                         American Idol is an annual American singing competition
-                         which began its first season in June 11, 2002.
-                         Part of the Idol franchise, it originated from the UK
-                         reality program Pop Idol.
+                        SoundWave aims to provide an amateur music creation platform for more people to discover more and better mixed music.
+                        <br>
+                        The theme of this event is hit-hop style!
          
          
                      </p>
@@ -1028,15 +1028,17 @@
                  <article class="act_now-year" id="act_Now-Introduction">
      
                      <div>
+
                          <h2>Introduction</h2>
                          <div>Electronic dance music contest 2019</div>
                          <h3>Information</h3>
                          <p>
-             
-                             American Idol is an annual American singing competition
-                             which began its first season in June 11, 2002.
-                             Part of the Idol franchise, it originated from the UK
-                             reality program Pop Idol.
+                            SoundWave aims to provide an amateur music creation platform for more people to discover more and better mixed music.
+                            <br>
+                            The theme of this event is rock style,let's rock it!<br>
+                            Come and sign up for our competition so that more people can hear your music.
+                          
+                             
              
              
                          </p>
@@ -1085,9 +1087,10 @@
                 <article v-if="formContent==0">
                        <div>
                           <h3>Qualifications</h3>
-                          <p>American Idol is an annual American singing competition 
-                             which began its first season in June 11, 2002. 
-                             Part of the Idol franchise, it originated from the UK reality program Pop Idol.
+                          <p>
+                              1.Must be a website member,please login or register
+                              2.Cannot register with songs that have already participated in previous events
+                            
                          </p>
                            <p class="act_from-button-box">
                             <button type="button" @click="NextFormPage(1)">Go</button>
@@ -1095,12 +1098,12 @@
         
                        </div>
                    </article>
-            
+                <form> 
                  <article  v-if="formContent==1">
                     <div >
                        <h3>Choose your contest song!</h3>
                      
-                         
+                  
                   
                           <div>  
                             Upload from my local song:
@@ -1115,7 +1118,7 @@
                             Select from my music list:
                               <label class="act_SignUPButton" for="act_SignUp-selectSong">  Select</label>
                               <br>   
-                              <select id="act_SignUp-selectSong"  v-if="SignSongURLSelect">
+                              <select id="act_SignUp-selectSong"  v-model="selected">
                                <option  value="cat">1.cat</option>
                                <option  value="hello">2.hello</option>
                               </select>
@@ -1210,12 +1213,13 @@
                     </div>
                     
                 </article>  
+            </form>   
                 <article v-if="formContent==4">
                     <div >
                        <h3>Qualifications</h3>
-                       <p>American Idol is an annual American singing competition 
-                          which began its first season in June 11, 2002. 
-                          Part of the Idol franchise, it originated from the UK reality program Pop Idol.
+                       <p>  
+                           1.Must be a website member,please login or register
+                           2.Cannot register with songs that have already participated in previous events
                       </p>
                       <p class="act_from-button-box">
                             <button type="button" disable style="background-color:gray ">Done</button>
@@ -1233,10 +1237,14 @@
                       
                        <h3>Rules</h3>
                        <p>
-                         American Idol is an annual American singing competition 
-                         which began its first season in June 11, 2002. 
-                         Part of the Idol franchise, it originated from the UK 
-                         reality program Pop Idol.
+                        Depending on the category, submissions are judged on the following criteria:<br>
+                        <br>
+                        1.Creativity<br>
+                        2.Originality<br>
+                        3.Lyrics (excludes songs that do not have lyrics)<br>
+                        4.Melody<br>
+                        5.Arrangement<br>
+                        6.Overall likeability<br>
                        </p>
                        <div>
                          <h3>Votes</h3>
@@ -1245,10 +1253,14 @@
                      </article>
              
                      <section>
-                        <div>  
-                            <button type="button" @click.once="showChangeVote"  >Vote</button>
-                           
-                               <p >Votes <span>{{Votes}}</span></p>
+                      <!-- <template v-for="item in nowVoteSong" :key="index">   -->
+                        <div v-for="item in nowVoteSong">   
+                        
+                            <button type="button" @click.once="showChangeVote" >Vote</button>
+                             <p >Votes <span >{{item.vote_per}}</span></p>
+                               <!-- <act-Now> </act-Now> -->
+                               <!-- <p >Votes <span >{{item}}</span></p> -->
+
                                <div>
                                    <img src="./img/activity/collction-img/9tRTEPCMeYxqdFHAqf3FfA.jpg" alt="">
                                    <div class="act_old-play" @click="showChangePlay">
@@ -1261,14 +1273,14 @@
                                     
                                </div>
                                 
-                               <a href="./songinfo.html"><h4>'If I Had A Heart'</h4></a>  
+                               <a href="./songinfo.html"><h4>''</h4></a>  
                                   
                                       <p>  Bob </p>
                               </div>
-                           </div>
+                         </div>
+                        <!-- </template> -->
                        
-                       
-                            <div>  
+                            <!-- <div>  
                                 <button type="button" @click.once="showChangeVote" >Vote</button>
                                
                                    <p >Votes <span>{{Votes}}</span></p>
@@ -1407,7 +1419,9 @@
                                       
                                           <p>  Bob </p>
                                   </div>
-                               </div>
+                               </div> -->
+
+                            
                          
                       
                      </section>
@@ -1425,9 +1439,9 @@
             $('.act_Anchor').on('click', function (e) {
                 e.preventDefault();
                 $('html, body').animate({ scrollTop: $($(this).attr('href')).offset().top }, 700, 'swing');
-              
+
             });
-         
+
         });
 
 
@@ -1444,23 +1458,25 @@
 
     <script>
         Vue.component('actNow', {
-
             template: '#act-now',
-
+            props: {
+                nowVoteSong: [Array],
+            },
             data: function () {
                 return {
 
                     formContent: 0,
                     MemberName: "Bob",
                     MenberEmail: "Bob@gmail.com",
+                   
                     SongName: "",
                     SongInformation: "",
                     SignUpImg: "",
                     SignSongURL: "",
-                    SignSongURLSelect: "",
+                    SignSongURLSelect: [],
                     Votes: 415,
-
-                }
+                   
+              }
 
             },
             methods: {
@@ -1519,7 +1535,7 @@
             template: '#act-old',
             data: function () {
                 return {
-                    Votes:455,
+                    Votes: 455,
                 }
 
             },
@@ -1540,6 +1556,8 @@
             },
 
         });
+
+
 
 
         let vml = new Vue({
@@ -1576,9 +1594,19 @@
                 SignSongURLSelect: "",
                 Votes: 415,
                 GoTopBush: false,
+                nowVoteSong: [],
+               
+                // nowVoteSong : {
+                //     vote_per
+                // },
 
 
             },
+            // created() {
+            //     // 在 created 的時候才建立 penguine 順便設值為 0
+            //     // 使用 $set 動態新增響應式組件
+            //     this.$set(this.nowVoteSong, 'vote_per', 40)
+            // },
             computed: {
 
 
@@ -1617,14 +1645,7 @@
                     } else {
                         GoTopButton.classList.toggle('act_ShowTopAnchor');
                     }
-                    this.GoTopBush=true;
-
-                    // // if(this.GoTopBush==true){
-                    // //     this.GoTopBush=false;
-                    // //     this.GoTopBush=true;
-                    // // }else{
-                    // //     this.GoTopBush=true;
-                    // // }
+                    this.GoTopBush = true;
                 },
                 clearBush() {
                     this.GoTopBush = false;
@@ -1638,6 +1659,18 @@
 
             }
         });
+
+
+
+        window.onload = function () {
+            let xhr = new XMLHttpRequest();
+
+            xhr.open("get", "./php/getContestNowSong.php", true);
+            xhr.send(null);
+            xhr.onload = function () {
+                vml.nowVoteSong = JSON.parse(xhr.responseText);
+            }
+        }
 
     </script>
 
