@@ -13,14 +13,14 @@
     // border: 1px solid black;
     box-sizing: border-box;
     // width: 100vw;
-    height: 900px;
+    height: 1100px;
 }
 
 .songsadded_leftli {
     // border: 1px solid greenyellow;
     width: 1200px;
     height: 650px !important;
-    margin: 0 auto; 
+    margin: 0 auto;
     box-sizing: border-box;
     padding: 0px;
 }
@@ -30,194 +30,236 @@
     width: 1200px;
     padding: 30px 0px;
     background-color: #d0d6d6;
-    @include respond(latop-max){
+
+    @include respond(latop-max) {
         max-width: 1100px;
         // margin-left: 50px;
         margin: 0 auto;
     }
 }
-@media screen and (max-width:1165px){
-    .songsadded_lif{
+
+@media screen and (max-width:1165px) {
+    .songsadded_lif {
         margin-left: 20px;
         max-width: 1100px;
     }
 }
-@media screen and (max-width:1140px){
-    .songsadded_lif{
+
+@media screen and (max-width:1140px) {
+    .songsadded_lif {
         width: 900px;
         margin-left: 115px;
     }
 }
-@media screen and (max-width:1030px){
-    .songsadded_lif{
+
+@media screen and (max-width:1030px) {
+    .songsadded_lif {
         margin-left: 60px;
     }
 }
-@media screen and (max-width:1030px){
-    .songsadded_lif{
+
+@media screen and (max-width:1030px) {
+    .songsadded_lif {
         margin-left: 30px;
     }
 }
-@media screen and (max-width:936px){
-    .songsadded_lif{
+
+@media screen and (max-width:936px) {
+    .songsadded_lif {
         width: 800px;
         margin-left: 60px;
     }
 }
-@media screen and (max-width:878px){
-    .songsadded_lif{
+
+@media screen and (max-width:878px) {
+    .songsadded_lif {
         width: 700px;
         margin-left: 84px;
     }
 }
-@media screen and (max-width:800px){
-    .songsadded_lif{
+
+@media screen and (max-width:800px) {
+    .songsadded_lif {
         margin-left: 45px;
     }
 }
-@media screen and (max-width:768px){
-    .songsadded_lif{
+
+@media screen and (max-width:768px) {
+    .songsadded_lif {
         width: 550px;
         margin-left: 105px;
     }
 }
-@media screen and (max-width:670px){
-    .songsadded_lif{
+
+@media screen and (max-width:670px) {
+    .songsadded_lif {
         margin-left: 55px;
     }
 }
-@media screen and (max-width:620px){
-    .songsadded_lif{
+
+@media screen and (max-width:620px) {
+    .songsadded_lif {
         margin-left: 30px;
     }
 }
-@media screen and (max-width:595px){
-    .songsadded_lif{
+
+@media screen and (max-width:595px) {
+    .songsadded_lif {
         margin-left: 15px;
     }
 }
-@media screen and (max-width:576px){
-    .songsadded_lif{
+
+@media screen and (max-width:576px) {
+    .songsadded_lif {
         width: 450px;
         margin-left: 60px;
     }
 }
 
-@media screen and (max-width:376px){
-    .songsadded_lif{
+@media screen and (max-width:376px) {
+    .songsadded_lif {
         width: 330px;
-        margin-left: 15px;
+        margin-left: 20px;
     }
 }
 
+
+
 .songsadded_inside,
 .songsadded_inside2 {
-    border: 1px solid rgba(128, 128, 128, 0.5);
+    // border: 1px solid rgba(128, 128, 128, 0.5);
     width: 1200px;
     margin: 0 auto;
     background-color: rgb(255, 255, 255);
-    @include respond(latop-max){
+
+    @include respond(latop-max) {
         max-width: 1100px;
         margin: 0 auto;
     }
 }
-@media screen and (max-width:1165px){
+
+@media screen and (max-width:1165px) {
+
     .songsadded_inside,
-    .songsadded_inside2{
-        margin-right: 80px;
+    .songsadded_inside2 {
+        margin-left: 22px;
     }
 }
-@media screen and (max-width:1140px){
+
+@media screen and (max-width:1140px) {
+
     .songsadded_inside,
-    .songsadded_inside2{
+    .songsadded_inside2 {
         width: 900px;
         margin-left: 115px;
     }
 }
-@media screen and (max-width:1030px){
+
+@media screen and (max-width:1030px) {
+
     .songsadded_inside,
-    .songsadded_inside2{
-        margin-left: 60px;
-    }
-}
-@media screen and (max-width:976px){
-    .songsadded_inside,
-    .songsadded_inside2{
+    .songsadded_inside2 {
         margin-left: 30px;
     }
 }
-@media screen and (max-width:936px){
+
+@media screen and (max-width:976px) {
+
     .songsadded_inside,
-    .songsadded_inside2{
+    .songsadded_inside2 {
+        margin-left: 30px;
+    }
+}
+
+@media screen and (max-width:936px) {
+
+    .songsadded_inside,
+    .songsadded_inside2 {
         width: 800px;
         margin-left: 60px;
     }
 }
-@media screen and (max-width:878px){
+
+@media screen and (max-width:878px) {
+
     .songsadded_inside,
-    .songsadded_inside2{
+    .songsadded_inside2 {
         width: 700px;
         margin-left: 84px;
     }
 }
-@media screen and (max-width:800px){
+
+@media screen and (max-width:800px) {
+
     .songsadded_inside,
-    .songsadded_inside2{
+    .songsadded_inside2 {
         margin-left: 45px;
     }
 }
-@media screen and (max-width:768px){
+
+@media screen and (max-width:768px) {
+
     .songsadded_inside,
-    .songsadded_inside2{
+    .songsadded_inside2 {
         width: 550px;
         margin-left: 105px;
     }
 }
-@media screen and (max-width:670px){
+
+@media screen and (max-width:670px) {
+
     .songsadded_inside,
-    .songsadded_inside2{
+    .songsadded_inside2 {
         margin-left: 55px;
     }
 }
-@media screen and (max-width:620px){
+
+@media screen and (max-width:620px) {
+
     .songsadded_inside,
-    .songsadded_inside2{
+    .songsadded_inside2 {
         margin-left: 30px;
     }
 }
-@media screen and (max-width:595px){
+
+@media screen and (max-width:595px) {
+
     .songsadded_inside,
-    .songsadded_inside2{
+    .songsadded_inside2 {
         margin-left: 15px;
     }
 }
-@media screen and (max-width:576px){
+
+@media screen and (max-width:576px) {
+
     .songsadded_inside,
-    .songsadded_inside2{
+    .songsadded_inside2 {
         width: 450px;
         margin-left: 60px;
     }
 }
 
-@media screen and (max-width:376px){
+@media screen and (max-width:376px) {
+
     .songsadded_inside,
-    .songsadded_inside2{
+    .songsadded_inside2 {
         width: 330px;
-        margin-left: 15px;
+        margin-left: 20px;
     }
 }
 
-.songsadded_inside{
-    height: 400px;
+.songsadded_inside {
+    height: 460px;
     // border: 1px solid red;
 }
-@media screen and (max-width:768px){
-    .songsadded_inside{
+
+@media screen and (max-width:768px) {
+    .songsadded_inside {
         height: 730px;
     }
 }
 
-.songsadded_inside div{
+.songsadded_inside div {
     // border: 1px solid orange;
     width: 500px;
     height: 100px;
@@ -227,66 +269,76 @@
     padding: 30px 0px;
     display: inline-block;
 }
-@media screen and (max-width:1140px){
-    .songsadded_inside div{
+
+@media screen and (max-width:1140px) {
+    .songsadded_inside div {
         position: relative;
         left: 260px;
     }
 }
-@media screen and (max-width:936px){
-    #add_pp{
+
+@media screen and (max-width:936px) {
+    #add_pp {
         width: 250px !important;
     }
-    .songsadded_inside div{
+
+    .songsadded_inside div {
         width: 400px;
     }
 }
-@media screen and (max-width:878px){
-    .songsadded_inside div{
+
+@media screen and (max-width:878px) {
+    .songsadded_inside div {
         font-size: $rem0_8;
         position: relative;
         top: 10px;
         left: 330px;
     }
 }
-@media screen and (max-width:768px){
-    .songsadded_inside div{
+
+@media screen and (max-width:768px) {
+    .songsadded_inside div {
         position: relative;
         top: 10px;
         left: 130px;
     }
-    #add_pp{
+
+    #add_pp {
         width: 215px !important;
     }
 }
-@media screen and (max-width:576px){
-    .songsadded_inside div{
+
+@media screen and (max-width:576px) {
+    .songsadded_inside div {
         position: relative;
         top: 10px;
         left: 80px;
     }
-    #add_pp{
+
+    #add_pp {
         width: 200px !important;
     }
 }
 
-@media screen and (max-width:376px){
-    .songsadded_inside div{
+@media screen and (max-width:376px) {
+    .songsadded_inside div {
         position: relative;
         top: 10px;
         left: 30px;
     }
 }
 
-#infohashtag{
+#infohashtag {
     // border: 1px solid red;
     position: relative;
-    top: -60px;
+    top: -50px;
     left: 0px;
+    padding: 0px;
+    width: 400px;
 }
 
 
-.songsadded_inside article{
+.songsadded_inside article {
     // border: 1px solid firebrick;
     width: 500px;
     height: 300px;
@@ -295,44 +347,48 @@
     top: 10px;
     float: left;
 }
-@media screen and (max-width:1140px){
-    .songsadded_inside article{
+
+@media screen and (max-width:1140px) {
+    .songsadded_inside article {
         width: 200px;
         margin-left: -70px;
     }
 }
-@media screen and (max-width:878px){
-    .songsadded_inside article{
+
+@media screen and (max-width:878px) {
+    .songsadded_inside article {
         width: 100px;
         margin-left: -100px;
     }
 }
-@media screen and (max-width:768px){
-    .songsadded_inside article{
+
+@media screen and (max-width:768px) {
+    .songsadded_inside article {
         width: 500px;
         height: 330px;
         margin-left: 15px;
     }
 }
-@media screen and (max-width:576px){
-    .songsadded_inside article{
+
+@media screen and (max-width:576px) {
+    .songsadded_inside article {
         margin-left: -45px;
     }
 }
 
-@media screen and (max-width:376px){
-    .songsadded_inside article{
+@media screen and (max-width:376px) {
+    .songsadded_inside article {
         margin-left: -105px;
     }
 }
 
-.songsadded_inside article #theFile{
+.songsadded_inside article #theFile {
     position: relative;
     top: 140px;
     left: 65px;
 }
 
-.songsadded_ff{
+.songsadded_ff {
     // border: 1px solid mediumaquamarine;
     position: relative;
     top: 150px;
@@ -340,13 +396,14 @@
     @include buttonno04();
 }
 
-.songsadded_inside section{
+.songsadded_inside section {
     // border: 1px solid yellow;
     text-align: center;
     margin-left: -70px;
 }
+
 // @media screen and (max-width:1140px){
-    
+
 // }
 
 #sd {
@@ -364,29 +421,34 @@
     height: 330px;
     z-index: -1;
 }
-@media screen and (max-width:1140px){
-    .uploadmic img{
+
+@media screen and (max-width:1140px) {
+    .uploadmic img {
         right: 90px;
     }
 }
-@media screen and (max-width:936px){
-    .uploadmic img{
+
+@media screen and (max-width:936px) {
+    .uploadmic img {
         right: 60px;
     }
 }
-@media screen and (max-width:878px){
-    .uploadmic img{
+
+@media screen and (max-width:878px) {
+    .uploadmic img {
         right: 70px;
     }
 }
-@media screen and (max-width:768px){
-    .uploadmic img{
+
+@media screen and (max-width:768px) {
+    .uploadmic img {
         right: 85px;
     }
 }
 
 .songsadded_inside2 {
     padding: 40px 0px;
+    height: 100vh !important;
 }
 
 .songsadded_inside2 li {
@@ -395,55 +457,70 @@
     width: 800px;
     margin: 0 auto;
 }
-@media screen and (max-width:936px){
-    .songsadded_inside2 li{
+
+@media screen and (max-width:936px) {
+    .songsadded_inside2 li {
         width: 650px;
     }
 }
-@media screen and (max-width:878px){
-    .songsadded_inside2 li{
+
+@media screen and (max-width:878px) {
+    .songsadded_inside2 li {
         width: 580px;
     }
 }
-@media screen and (max-width:768px){
-    .songsadded_inside2 li{
+
+@media screen and (max-width:768px) {
+    .songsadded_inside2 li {
         width: 480px;
     }
-    .songsadded_inside2 {
-        height: 900px;
-    }
+
+    // .songsadded_inside2 {
+    //     height: 900px;
+    // }
 }
-@media screen and (max-width:576px){
-    .songsadded_inside2 li{
+
+@media screen and (max-width:576px) {
+    .songsadded_inside2 li {
         width: 360px;
     }
 }
-@media screen and (max-width:376px){
-    .songsadded_inside2 li{
-        width: 329px;
+
+@media screen and (max-width:376px) {
+    .songsadded_inside2 li {
+        width: 300px;
     }
 }
 
 
 
-@media screen and (max-width:936px){
-    .songsadded_inside2 li .more i{
+@media screen and (max-width:936px) {
+    .songsadded_inside2 li .more i {
         position: relative;
         top: -15px;
         left: 30px;
     }
 }
-@media screen and (max-width:878px){
-    .songsadded_inside2 li .more i{
+
+@media screen and (max-width:878px) {
+    .songsadded_inside2 li .more i {
         position: relative;
         top: -40px;
         left: 80px;
     }
 }
-@media screen and (max-width:768px){
-    .songsadded_inside2 li .more i{
+
+@media screen and (max-width:768px) {
+    .songsadded_inside2 li .more i {
         position: relative;
         left: 200px;
+    }
+}
+
+@media screen and (max-width:376px) {
+    .songsadded_inside2 li .more i {
+        position: relative;
+        left: 215px;
     }
 }
 
@@ -465,6 +542,7 @@
     left: 60px;
     top: 140px;
 }
+
 // #ff2{
 //     position: relative;
 //     left: 125px;
@@ -497,91 +575,111 @@
 //     display: block;
 // }
 
-.songsadded_inside2 ol{
+.songsadded_inside2 ol {
     // border: 1px solid mediumaquamarine;
     height: 350px;
     padding: 20px 0px;
     margin-left: 200px;
 }
-@media screen and (max-width:1140px){
-    .songsadded_inside2 ol{
+
+@media screen and (max-width:1140px) {
+    .songsadded_inside2 ol {
         margin-left: 60px;
     }
 }
-@media screen and (max-width:936px){
-    .songsadded_inside2 ol{
+
+@media screen and (max-width:936px) {
+    .songsadded_inside2 ol {
         margin-left: 73px;
     }
 }
-@media screen and (max-width:878px){
-    .songsadded_inside2 ol{
+
+@media screen and (max-width:878px) {
+    .songsadded_inside2 ol {
         margin-left: 55px;
     }
 }
-@media screen and (max-width:768px){
-    .songsadded_inside2 ol{
+
+@media screen and (max-width:768px) {
+    .songsadded_inside2 ol {
         margin-left: 30px;
         height: 600px;
     }
 }
-@media screen and (max-width:576px){
-    .songsadded_inside2 ol{
+
+@media screen and (max-width:576px) {
+    .songsadded_inside2 ol {
         margin-left: -18px;
     }
 }
 
-@media screen and (max-width:376px){
-    .songsadded_inside2 ol{
+@media screen and (max-width:376px) {
+    .songsadded_inside2 ol {
         margin-left: -65px;
     }
 }
 
 
-.songsadded_inside2 article{
-   float: left;
+.songsadded_inside2 article {
+    float: left;
 }
-@media screen and (max-width:768px){
-    .songsadded_inside2 article{
+
+@media screen and (max-width:768px) {
+    .songsadded_inside2 article {
         width: 300px;
         height: 300px;
         position: relative;
         left: 95px;
     }
 }
-@media screen and (max-width:376px){
-    .songsadded_inside2 article{
+
+@media screen and (max-width:376px) {
+    .songsadded_inside2 article {
         position: relative;
         left: 80px;
     }
 }
-.songsadded_inside2 div{
+
+.songsadded_inside2 div {
     position: relative;
     left: 300px;
     float: left;
 }
-@media screen and (max-width:936px){
-    .songsadded_inside2 div{
+
+@media screen and (max-width:936px) {
+    .songsadded_inside2 div {
         position: relative;
         top: 20px;
         left: 250px;
         font-size: $rem0_8;
     }
 }
-@media screen and (max-width:878px){
-    .songsadded_inside2 div{
+
+@media screen and (max-width:878px) {
+    .songsadded_inside2 div {
         position: relative;
         top: 20px;
         left: 210px;
         font-size: $rem0_8;
     }
 }
-@media screen and (max-width:768px){
-    .songsadded_inside2 div{
+
+@media screen and (max-width:768px) {
+    .songsadded_inside2 div {
         position: relative;
         top: 20px;
         left: 95px;
     }
 }
+
+@media screen and (max-width:376px) {
+    .songsadded_inside2 div {
+        position: relative;
+        top: 20px;
+        left: 85px;
+    }
+}
+
 // .inside2 div .ins2box{
 //     position: relative;
 //     top: 50px;
@@ -597,190 +695,556 @@
 //         max-width: 900px;
 //     }
 // }
-.songsadded_adds3{
+.songsadded_adds3 {
     border: 1px solid rgba(0, 128, 0, 0);
     height: 250px;
 }
 
 @import './_public.scss';
 
-.songinfo_bb{
+.songinfo_bb {
     @include buttonno04();
     position: relative;
-    top: -62px;
+    top: -58px;
     right: -285px;
 }
-@media screen and (max-width:1140px){
-    .songinfo_bb{
+
+@media screen and (max-width:1140px) {
+    .songinfo_bb {
         right: -130px;
     }
 }
-@media screen and (max-width:936px){
-    .songinfo_bb{
+
+@media screen and (max-width:936px) {
+    .songinfo_bb {
         right: -25px;
     }
 }
-@media screen and (max-width:878px){
-    .songinfo_bb{
+
+@media screen and (max-width:878px) {
+    .songinfo_bb {
         right: 70px;
     }
 }
-@media screen and (max-width:768px){
-    .songinfo_bb{
+
+@media screen and (max-width:768px) {
+    .songinfo_bb {
         right: -100px;
     }
 }
-@media screen and (max-width:576px){
-    .songinfo_bb{
+
+@media screen and (max-width:576px) {
+    .songinfo_bb {
         right: -130px;
     }
 }
-@media screen and (max-width:376px){
-    .songinfo_bb{
+
+@media screen and (max-width:376px) {
+    .songinfo_bb {
         right: -165px;
         top: -55px;
     }
 }
 
-#infopath{
+#infopath {
     // border: 1px solid #d0d6d6;
     width: 400px;
     height: 5px;
 }
-@media screen and (max-width:1140px){
-    #infopath span{
-       position: relative;
-       left: -260px !important;
+
+@media screen and (max-width:1140px) {
+    #infopath span {
+        position: relative;
+        left: -260px !important;
     }
 }
-@media screen and (max-width:878px){
-    #infopath span{
-       position: relative;
-       left: -330px !important;
+
+@media screen and (max-width:878px) {
+    #infopath span {
+        position: relative;
+        left: -330px !important;
     }
 }
-@media screen and (max-width:768px){
-    #infopath span{
-       position: relative;
-       left: -130px !important;
+
+@media screen and (max-width:768px) {
+    #infopath span {
+        position: relative;
+        left: -130px !important;
     }
 }
-@media screen and (max-width:576px){
-    #infopath span{
-       position: relative;
-       left: -80px !important;
+
+@media screen and (max-width:576px) {
+    #infopath span {
+        position: relative;
+        left: -80px !important;
     }
 }
-@media screen and (max-width:376px){
-    #infopath span{
-       position: relative;
-       left: -30px !important;
+
+@media screen and (max-width:376px) {
+    #infopath span {
+        position: relative;
+        left: -30px !important;
     }
 }
 
 
-.songsadd_path{
+.songsadd_path {
     // border: 1px solid #d0d6d6;
     // background-color: #d0d6d6;
-    width: 240px !important;
+    width: 360px !important;
     height: 30px !important;
     position: relative;
-    left: 40px;
-    top: -30px;
+    left: -100px;
+    top: -20px;
     overflow: hidden;
 }
-@media screen and (max-width:1140px){
-    .songsadd_path{
+
+@media screen and (max-width:1140px) {
+    .songsadd_path {
         left: -110px;
     }
 }
-@media screen and (max-width:936px){
-    .songsadd_path{
+
+@media screen and (max-width:936px) {
+    .songsadd_path {
         width: 260px !important;
     }
-    #add_tta{
+
+    #add_tta {
         width: 365px;
     }
 }
-@media screen and (max-width:878px){
-    .songsadd_path{
+
+@media screen and (max-width:878px) {
+    .songsadd_path {
         width: 230px !important;
         left: -230px;
     }
 }
-@media screen and (max-width:768px){
-    .songsadd_path{
+
+@media screen and (max-width:768px) {
+    .songsadd_path {
         left: -130px;
     }
 }
-@media screen and (max-width:576px){
-    .songsadd_path{
+
+@media screen and (max-width:576px) {
+    .songsadd_path {
         left: -80px;
     }
 }
 
-@media screen and (max-width:376px){
-    .songsadd_path{
+@media screen and (max-width:376px) {
+    .songsadd_path {
         left: -30px;
     }
 }
 
-#sd{
+#sd {
     width: 70px;
     height: 30px;
     position: relative;
     top: -60px;
     display: none;
 }
-.sd_btn{
+
+.sd_btn {
     @include butttonn02();
     position: relative;
-    top: -60px;
+    top: -20px;
     margin: 0 auto;
 }
-@media screen and (max-width:878px){
-    .sd_btn{
+
+@media screen and (max-width:878px) {
+    .sd_btn {
         position: relative;
-        top: -20px;
+        top: 20px;
+        left: 40px;
     }
-    #add_tta{
+
+    #add_tta {
         width: 340px;
         height: 110px;
     }
 }
-@media screen and (max-width:768px){
-    .sd_btn{
+
+@media screen and (max-width:768px) {
+    .sd_btn {
         position: relative;
-        top: -40px;
+        top: -20px;
         left: 30px;
     }
-    #add_tta{
+
+    #add_tta {
         width: 310px;
         height: 110px;
     }
 }
-@media screen and (max-width:576px){
-    .sd_btn{
+
+@media screen and (max-width:576px) {
+    .sd_btn {
         position: relative;
         left: 35px;
         top: -30px;
     }
-    #add_tta{
+
+    #add_tta {
         width: 290px;
         height: 110px;
     }
 }
-@media screen and (max-width:376px){
-    .sd_btn{
+
+@media screen and (max-width:376px) {
+    .sd_btn {
         position: relative;
         left: 30px;
     }
-    #add_tta{
+
+    #add_tta {
         width: 270px;
     }
 }
 
+[class^="songsadded-"] {
+    // -webkit-filter: brightness(95%);
+    // filter: brightness(95%);
+    // border-radius: 5px;
+    display: inline-block;
+    height: 30px;
+    width: 30px;
+}
 
-.songadd_all{
+.songsadded_leftli .songsadded-lif {
+    background: transparent url("../img/songupload/pus.png") (center / cover) no-repeat;
+    background-size: contain;
+}
+
+.songsadded_leftli .is-click .songsadded-lif {
+    background: transparent url("../img/songupload/dash.png") (center / cover) no-repeat;
+}
+
+
+.songsadded_leftli .songsadded-lif2 {
+    background: transparent url("../img/songupload/dash.png") (center / cover) no-repeat;
+}
+
+.songsadded_leftli .is-click .songsadded-lif2 {
+    background: transparent url("../img/songupload/pus.png") (center / cover) no-repeat;
+    background-size: contain;
+}
+
+
+
+.songsadded_inside2 .more {
+    float: right;
+    text-align: right;
+    position: relative;
+    cursor: pointer;
+
+    i {
+        transition: transform .5s;
+
+        &:hover {
+            transform: scale(1.1);
+        }
+    }
+
+    .addedit {
+        text-align: center;
+        position: relative;
+        left: 130px;
+        top: 0px;
+        //   white-space: nowrap;
+        padding: 6px;
+        margin-top: 8px;
+        font-size: $rem0_8;
+        border: 2px $fontColor solid;
+        background-color: white;
+        display: none;
+    }
+
+    ul,
+    li {
+        width: 100px;
+        background-color: white;
+        padding: 0px 0px;
+        border: 1.2px solid rgba(0, 0, 0, 0);
+    }
+
+    li:hover {
+        transform: scale(1.1);
+    }
+
+    @media screen and (max-width:936px) {
+        .addedit {
+            position: relative;
+            left: 80px;
+        }
+    }
+
+    @media screen and (max-width:878px) {
+        .addedit {
+            position: relative;
+            left: 200px;
+            top: -35px;
+        }
+    }
+
+    @media screen and (max-width:768px) {
+        .addedit {
+            position: relative;
+            left: 310px;
+            top: -35px;
+        }
+    }
+
+    @media screen and (max-width:576px) {
+        .addedit {
+            position: relative;
+            left: 310px;
+            top: -65px;
+        }
+    }
+
+    @media screen and (max-width:376px) {
+        .addedit {
+            position: relative;
+            left: 260px;
+            top: -65px;
+        }
+    }
+}
+
+.adddeletecheck {
+    width: 400px;
+    height: 260px;
+    background-color: white;
+    border-radius: 10px;
+
+    .checkbtn {
+        @include butttonn02;
+    }
+}
+
+.checkline {
+    border: 2.5px solid black;
+    text-align: center;
+}
+
+.adddeletecheck .fancybox-content {
+    position: absolute;
+    top: 500px;
+}
+
+
+.inside2form {
+    position: relative;
+    left: -300px;
+
+    article {
+        position: relative;
+        top: -30px;
+
+        img {
+            position: relative;
+            left: 50px;
+        }
+    }
+
+    .inside2count {
+        // border: 1px solid red;
+        width: 420px;
+        position: relative;
+        left: 270px;
+        height: 200px;
+            .infopathbtom,
+            .infopathbtom2,
+            .infopathbtom3{
+                position: relative;
+                top: 10px;
+                left: 100px;
+                .songsadd_path{
+                    position: relative;
+                    top: -25px;
+                }
+            }
+            .songinfo_bb {
+                position: relative;
+                left: 200px;
+                top: -60px;
+            }
+            .infohashtagbtom{
+                position: relative;
+                top: -60px;
+                left: 0px;
+                .btominpt{
+                   position: relative;
+                   top: 0px;
+                   left: 0px;
+                }
+            }
+            .add_btom{
+                width: 240px;
+                position: relative;
+                top: -5px;
+                left: 20px;
+                @media screen and (max-width:992px) {
+                    .add_btom {
+                        width: 260px !important;
+                    }
+                }
+            }
+    }
+}
+@media screen and (max-width:1165px) {
+    .inside2form{
+        position: relative;
+        left: -370px;
+    }
+}
+@media screen and (max-width:1030px) {
+    .inside2form{
+        position: relative;
+        left: -310px;
+    }
+}
+@media screen and (max-width:936px) {
+    .inside2count .add_btom {
+        position: relative;
+        left: 0px !important;
+    }
+    .inside2count .songinfo_bb {
+        position: relative;
+        left: 140px !important;
+    }
+    .inside2count #add_tta {
+        width: 320px !important;
+    }
+    .inside2count .songsadd_path{
+        position: relative;
+        left: -100px !important;
+    }
+}
+@media screen and (max-width:878px) {
+    .inside2count {
+        position: relative;
+        left: 240px !important;
+        top: -20px !important;
+    }
+    .inside2form article{
+        position: relative;
+        left: 50px !important;
+    }
+    .inside2count .songsadd_path{
+        position: relative;
+        left: -100px !important;
+    }
+}
+@media screen and (max-width:768px) {
+    .inside2count {
+        position: relative;
+        left: 280px !important;
+        top: -40px !important;
+    }
+    .inside2form article{
+        position: relative;
+        left: 290px !important;
+        top: -50px !important;
+    }
+    .inside2count .songsadd_path{
+        position: relative;
+        left: -100px !important;
+    }
+    .inside2count #add_tta {
+        height: 70px !important;
+    }
+}
+@media screen and (max-width:376px){
+    .inside2count{
+        position: relative;
+        left: 300px !important;
+    }
+    .inside2count #add_tta{
+        width: 300px !important;
+    }
+    .inside2count .add_btom{
+        width: 225px !important;
+    }
+    .inside2count .songinfo_bb{
+        position: relative;
+        left: 120px !important;
+    }
+}
+
+.btomsen{
+    .sd_btn{
+        position: relative;
+        top: 70px;
+        left: 300px;
+    }
+    .sd{
+        position: relative;
+        top: 70px;
+        left: 350px;
+    }
+}
+@media screen and (max-width:768px) {
+    .btomsen .sd_btn{
+        position: relative;
+        top: 500px;
+        left: 50px;
+    }
+    .btomsen .sd{
+        position: relative;
+        top: 500px;
+        left: 100px;
+    }
+}
+@media screen and (max-width:376px) {
+    .btomsen .sd_btn{
+        position: relative;
+        top: 500px;
+        left: 70px;
+    }
+    .btomsen .sd{
+        position: relative;
+        top: 500px;
+        left: 120px;
+    }
+}
+
+.inside2form .songsadded_ff{
+    margin-left: 5px !important;
+}
+@media screen and (max-width:768px){
+    .inside2form .songsadded_ff{
+        margin-top: -20px !important;
+    }
+}
+
+
+@media screen and (max-width:878px){
+    .songsadded_inside2_ol{
+        width: 630px;
+    }
+}
+@media screen and (max-width:768px){
+    .songsadded_inside2_ol{
+        width: 450px;
+    }
+}
+
+
+
+.songaddfoot {
+    height: 100px;
+}
+
+
+.songadd_all {
+    overflow: hidden;
+}
+
+.addallall {
     overflow: hidden;
 }
