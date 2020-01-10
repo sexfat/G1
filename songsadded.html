@@ -480,7 +480,7 @@
                             </a>
                         </li>
                         <ol class="songsadded_inside">
-                            <form action="" method="POST">
+                            <form class="addinsideadd" action="" method="POST">
                                 <article>
                                     <br>
                                     <p style="width: 100px;height: 100px;">
@@ -1119,6 +1119,60 @@
             })
         });
     </script>
+
+    <script>
+        //元素節點<h3>，屬性節點class
+        window.onload = message
+
+        function message() {
+
+            //獲取留言區的內容
+            var text = document.getElementsByClassName('addinsideadd')[0]; //返回一個Nodelist節點列表
+            //獲取提交按鈕
+            var submit = document.getElementById('sd')[0];
+            
+            //獲取評論區
+            var addinside = document.getElementsByClassName('songsadded_inside')[0]
+            //獲取評論區的列表
+            var messlist = mess.getElementsByClassName('infomess_ul')[0];
+            //獲取到messlist下面的所有的子節點
+            var li = mess.getElementsByTagName('li');
+            submit.onclick = function () {
+                //獲取留言區的內容
+                var content = text.value
+                //創建一個評論列表項元素createElement
+                var item = document.createElement('li');
+                //給新創建的節點創建內容：innerHTML
+                //item.innerHTML = content;
+                // item.innerHTML = content + '<button class="songinfo_re">删除</button>'
+                item.innerHTML =
+                    '<img class="infomessimg" src="./img/songinfo/people.png" style="width: 50px;height: 50px;float: left;margin-left: -10px;margin-top: 5px;"><div class="clearfix"></div><p>&ensp;ID : Bella <button class="infocreat_re">Report</button><br>&ensp;WOW ! Awesome ! </p>' +
+                    content
+                // item.innerHTML = content + '<div class="re-report"></div>'
+                // item.innerHTML = content + '<label class="songinfo_re" for="inforeport">&ensp;Report</label>'
+                //將新節點添加到評論區：添加到頁面父節點.appendChild 
+                //messlist.appendChild(item)
+                //將新節點插入到某個節點之前，父節點.insertBefore(子節點，在那個子節點之前)
+                messlist.insertBefore(item, li[0]);
+
+                if (li.length == 0) {
+                    messlist.appendChild(item)
+                } else {
+                    messlist.insertBefore(item, li[0]);
+                }
+            }
+            empty.onclick = function () {
+                text.value = ''
+            }
+            if (li.length > 0) {
+                for (var i = 0; i < li.length; i++) {
+                    messlist.removeChild(this.parent)
+                }
+            }
+        }
+    </script>
+
+
     <script>
         let url = "./php/songupload.php";
         xhr.open("post", url, true);
