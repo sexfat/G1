@@ -4,7 +4,8 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <!-- <meta http-equiv="X-UA-Compatible" content="ie=edge"> -->
+    <meta content="text/html; charset=UTF-8" http-equiv="content-type">
     <title>SOUNDWAVE | songsadded</title>
     <link rel="Shortcut Icon" type="image/x-icon" href="./img/collection/smalllogo.ico" />
     <link rel="stylesheet" href="./css/main.css">
@@ -1117,6 +1118,15 @@
                 $(this).next("ol").slideToggle(300).siblings("ol").slideUp(300);
             })
         });
+    </script>
+    <script>
+        let url = "./php/";
+        xhr.open("post", url, true);
+        xhr.setRequestHeader("content-type", "application/x-www-form-urlencoded");
+        let member_data = "mem_acct=" + document.getElementById('mem_acct').value + "&&mem_psw=" + document
+            .getElementById('mem_psw').value;
+        xhr.send(member_data);
+        console.log(member_data);
     </script>
 </body>
 

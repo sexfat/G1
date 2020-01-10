@@ -275,9 +275,12 @@
 @media screen and (max-width:376px){
     .songinfo_infos4 .mess_write{
         width: 320px;
+        position: relative;
+        top: -70px;
     }
     .songinfo_infos4 .infomess_ta{
         width: 270px;
+        height: 80px;
     } 
 }
 .songinfo_infos4 .mess li{
@@ -605,9 +608,6 @@ $bg: rgba(44,15,15,1);
         @include butttonn02;
     }
 }
-
-
-
 
 .songinfofoot{
     height: 100px;

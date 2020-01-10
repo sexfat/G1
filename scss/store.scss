@@ -181,7 +181,7 @@ $buttonyellow: #efc318;
       margin: 0 auto;
       background-color: $green;
       padding-top: 4vw;
-
+      // border: solid 1px #333;
       // ============= choose_money
       &.choose_money {
         position: relative;
@@ -237,7 +237,7 @@ $buttonyellow: #efc318;
         }
 
         .cardinfo {
-
+          position: relative;
           h4,
           input {
             text-align: left;
@@ -249,6 +249,19 @@ $buttonyellow: #efc318;
             border: none;
             font-size: 0.8rem;
             background-color: $green;
+          }
+          .fal{
+            position: relative;
+          }
+          span{
+            font-size: $rem0_8;
+            color: #ff2244;
+            position: absolute;
+            right: 3%;
+            width: 60%;
+            top: 50%;
+            transform: translateY(-50%);
+            text-align: right;
           }
         }
 
@@ -304,7 +317,7 @@ $buttonyellow: #efc318;
         background-color: transparent;
         text-align: left;
         flex-wrap: wrap;
-
+        border: solid 1px #333;
         .success_info {
           width: 50%;
           background-color: $green;
@@ -315,7 +328,7 @@ $buttonyellow: #efc318;
         .dance {
           width: 50%;
           position: relative;
-          // border: solid 1px #333;
+          border: solid 1px #333;
           .dance_place{
             padding-top: 70%;
           }

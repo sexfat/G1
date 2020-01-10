@@ -867,6 +867,7 @@
   <script src="./js/vue.js"></script>
   <script src="js/public.js"></script>
   <script src="./js/player.js"></script>
+  
   <script>
     var app = new Vue({
       el: '#remix_app',
@@ -1470,7 +1471,7 @@
             ...commonProps
           }, 0);
 
-          // internals.timeline[internals.running ? 'play' : 'stop']();
+          internals.timeline[internals.running ? 'play' : 'stop']();
           
           function play() {
             TweenLite.set(internals.svg.characterA, {
@@ -1503,6 +1504,9 @@
           }
           // internals.ui.info.classList.add('active');
           toggle();
+        },
+        lightbox(){
+
         }
       },
       computed: {},
@@ -1577,8 +1581,8 @@
         },
       },
     })
-  </script>
 
+  </script>
 </body>
 
 </html>

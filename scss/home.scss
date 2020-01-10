@@ -1,13 +1,11 @@
 #pp-nav {
   .pp-tooltip {
     color: #539e90;
-    // pagepiling.js navigation text color
   }
   li {
     .active {
       span {
         background: #ffcb1e !important;
-        // pagepiling.js navigation circle bg-color
       }
     }
   }
@@ -180,7 +178,6 @@
           text-align: center;
           line-height: 35px;
           padding: 5px;
-          // margin: -6px 5px 0;
           border: 0;
           transition: transform 0.5s;
           &:hover {
@@ -191,7 +188,6 @@
         .home_next {
           width: 25px;
           height: 25px;
-          // float: left;
           border-radius: 15px;
           text-align: center;
           line-height: 25px;
@@ -237,8 +233,8 @@
 .home_sec02 {
   .home_paint01 {
     position: absolute;
-    top: 10%;
-    right: 20%;
+    top: 12%;
+    left: 24%;
     width: 398px;
     height: 138px;
     background: url(../img/home/sec02_p01.png);
@@ -247,7 +243,7 @@
   .home_paint02 {
     position: absolute;
     top: 52%;
-    right: 10%;
+    right: 5%;
     width: 552px;
     height: 421px;
     background: url(../img/home/sec02_p02.png);
@@ -255,33 +251,107 @@
   }
   .home_mixer {
     position: absolute;
-    top: 15%;
-    right: 10%;
-    width: 556px;
-    height: 616px;
+    bottom: 15%;
+    right: 5%;
+    width: calc(556px * 0.66);
+    height: calc(616px * 0.66);
     background: url(../img/home/mixer.png);
     background-size: cover;
   }
-  .home_remix {
-    position: absolute;
-    top: 10%;
-    left: 10%;
-    width: 628px;
-    height: 230px;
-    background: url(../img/home/remix.png) center center no-repeat;
-    background-size: cover;
+  .home_container {
+    position: relative;
+    top: 60px;
+    height: 100%;
+    margin: 0 auto;
+    max-width: 1280px;
+    padding: 0 25px;
+    .home_remix {
+      width: calc(628px * 0.66);
+      height: calc(230px * 0.66);
+      background: url(../img/home/remix.png) center center no-repeat;
+      background-size: cover;
+    }
+
+    h2 {
+      position: relative;
+      font-size: 1rem;
+      letter-spacing: 1px;
+      line-height: 33px;
+      margin: 0 0 20px 0;
+      padding: 40px 0 0 0;
+      text-transform: uppercase;
+      span {
+        position: relative;
+        display: block;
+        font-size: 52px;
+        letter-spacing: 0px;
+        line-height: 60px;
+        padding-top: 5px;
+        text-transform: uppercase;
+      }
+    }
+    .content1 {
+      max-width: 540px;
+    }
+    .content2 {
+      position: absolute;
+      width: 540px;
+      top: 30px;
+      left: 600px;
+      ul {
+        display: inline-block;
+        margin: 0 0 10px 0;
+        width: 100%;
+        li {
+          float: left;
+          height: 42px;
+          margin: 0 15px 0 0;
+          overflow: hidden;
+          position: relative;
+          text-align: left;
+          text-decoration: none;
+          transition: all 0.25s ease-in-out 0s;
+          width: 30%;
+          .dex-number {
+            font-size: 42px;
+            left: 0;
+            line-height: 42px;
+            opacity: 0.5;
+            position: absolute;
+            top: 0;
+          }
+          .dex-toptext {
+            font-size: 14px;
+            left: 27px;
+            line-height: 14px;
+            opacity: 0.5;
+            position: absolute;
+            top: 0;
+          }
+          .dex-bottomtext {
+            float: left;
+            font-size: 26px;
+            line-height: 26px;
+            margin: 15px 0 0 26px;
+            position: relative;
+          }
+          .dex-arrow {
+            float: left;
+            font-size: 14px;
+            margin: 20px 0 0 0;
+            opacity: 0.5;
+            padding: 0 0 0 5px;
+            position: relative;
+          }
+        }
+      }
+    }
   }
-  p {
-    position: absolute;
-    top: 40%;
-    left: 20%;
-    width: 400px;
-    font-size: 1.5rem;
-  }
+
   .home_more_bt {
     position: absolute;
-    top: 70%;
-    left: 40%;
+    top: 68%;
+    left: 60%;
     width: 170px;
     height: 110px;
     background: url(../img/home/more_bt.png) center center no-repeat;
@@ -292,142 +362,132 @@
       height: 100%;
     }
   }
-  @media screen and (max-width: 1440px) {
-    .home_paint01 {
-      right: 15%;
-      width: 398px;
-      height: 138px;
-    }
-    .home_paint02 {
-      right: 5%;
-      width: 552px;
-      height: 421px;
-    }
-    .home_mixer {
-      right: 5%;
-      width: 556px;
-      height: 616px;
-    }
-    .home_remix {
-      left: 5%;
-      width: 628px;
-      height: 230px;
-    }
-    p {
-      left: 15%;
-      width: 400px;
-    }
-    .home_more_bt {
-      left: 30%;
-      width: 170px;
-      height: 110px;
-    }
-  }
   @media screen and (max-width: 1200px) {
-    .home_paint01 {
-      top: 15%;
-      right: 15%;
-      width: calc(0.66 * 398px);
-      height: calc(0.66 * 138px);
-    }
-    .home_paint02 {
-      right: 5%;
-      width: calc(0.66 * 552px);
-      height: calc(0.66 * 421px);
-    }
-    .home_mixer {
-      top: 20%;
-      right: 5%;
-      width: calc(0.66 * 556px);
-      height: calc(0.66 * 616px);
-    }
-    .home_remix {
-      top: 15%;
-      left: 5%;
-      width: calc(0.66 * 628px);
-      height: calc(0.66 * 230px);
-    }
-    p {
-      top: 40%;
-      left: 10%;
-      width: 400px;
-    }
-    .home_more_bt {
-      top: 70%;
-      left: 30%;
-      width: calc(0.66 * 170px);
-      height: calc(0.66 * 110px);
+    .home_container {
+      .home_remix {
+        width: calc(628px * 0.5);
+        height: calc(230px * 0.5);
+      }
+      h2 {
+        font-size: 0.8rem;
+        span {
+          font-size: 48px;
+        }
+      }
+      .content1 {
+        max-width: 400px;
+      }
+      .content2 {
+        width: 400px;
+        left: 460px;
+      }
     }
   }
+
   @media screen and (max-width: 992px) {
     .home_paint01 {
-      right: 15%;
-      width: calc(0.5 * 398px);
-      height: calc(0.5 * 138px);
+      display: none;
     }
     .home_paint02 {
-      top: 45%;
-      right: 5%;
-      width: calc(0.5 * 552px);
-      height: calc(0.5 * 421px);
+      display: none;
     }
     .home_mixer {
-      top: 20%;
-      right: 5%;
-      width: calc(0.5 * 556px);
-      height: calc(0.5 * 616px);
+      display: none;
     }
-    .home_remix {
-      top: 10%;
-      left: 5%;
-      width: calc(0.5 * 628px);
-      height: calc(0.5 * 230px);
-    }
-    p {
-      top: 28%;
-      left: 10%;
-      width: 400px;
-    }
-    .home_more_bt {
-      top: 60%;
-      left: 30%;
-      width: calc(0.5 * 170px);
-      height: calc(0.5 * 110px);
+    .home_container {
+      .home_remix {
+        width: calc(628px * 0.5);
+        height: calc(230px * 0.5);
+      }
+      h2 {
+        font-size: 0.8rem;
+        span {
+          font-size: 36px;
+        }
+      }
+      .content1 {
+        max-width: 350px;
+      }
+      .content2 {
+        width: 350px;
+        left: 400px;
+      }
     }
   }
   @media screen and (max-width: 768px) {
-    .home_paint01 {
-      display: none;
-    }
-    .home_paint02 {
-      display: none;
-    }
-    .home_mixer {
-      display: none;
+    .home_container {
+      .home_remix {
+        width: calc(628px * 0.4);
+        height: calc(230px * 0.4);
+        margin: 0 auto;
+      }
+      h2 {
+        width: 540px;
+        margin: 0 auto;
+        font-size: 0.8rem;
+        span {
+          font-size: 36px;
+        }
+      }
+      .content1 {
+        max-width: 100%;
+        width: 540px;
+        margin: 0 auto;
+      }
+      .content2 {
+        display: none;
+      }
     }
   }
   @media screen and (max-width: 576px) {
-    .home_remix {
-      position: initial;
-      margin: 80px auto 0 auto;
-      width: calc(0.33 * 628px);
-      height: calc(0.33 * 230px);
-    }
-    p {
-      position: initial;
-      width: 100%;
-      padding: 30px 15px 0 15px;
-    }
-    .home_more_bt {
-      position: initial;
-      margin: 60px 20% 0 auto;
-      width: calc(0.5 * 170px);
-      height: calc(0.5 * 110px);
+    .home_container {
+      .home_remix {
+        width: calc(628px * 0.3);
+        height: calc(230px * 0.3);
+        margin: 0 auto;
+      }
+      h2 {
+        width: 100%;
+        margin: 0 auto;
+        font-size: 0.8rem;
+        span {
+          font-size: 36px;
+        }
+      }
     }
   }
   @media screen and (max-width: 375px) {
-    p {
-      font-size: 1rem;
+    .home_container {
+      .home_remix {
+        width: calc(628px * 0.3);
+        height: calc(230px * 0.3);
+        margin: 0 auto;
+      }
+      h2 {
+        display: none;
+      }
+      .content1 {
+        position: relative;
+        height: 55%;
+        overflow: hidden;
+        .hidden {
+          position: absolute;
+          left: 0px;
+          bottom: 0px;
+          width: 100%;
+          height: 40px;
+          background: linear-gradient(transparent 20%, #fafaf1 80%);
+        }
+      }
+    }
+    .home_more_bt {
+      position: absolute;
+      width: 60px;
+      height: 40px;
+      bottom: 80px;
+      right: 36px;
+      left: initial;
+      top: initial;
     }
   }
 }
@@ -539,6 +599,14 @@
               height: 100%;
               background: url(../img/home/test.jpg);
               background-size: cover;
+              justify-content: center;
+              align-items: center;
+              i:nth-child(2) {
+                position: absolute;
+                z-index: -1;
+                color: #ffffff;
+                font-size: 22px;
+              }
             }
           }
 
@@ -654,17 +722,37 @@
             left: 0px;
             width: 100%;
             height: 100%;
-            padding: 15px 15px;
+            padding: 5px 10px;
             font-size: 0.6rem;
             background: #d8d1c5;
             transition: all 0.3s;
             overflow: hidden;
 
-            .home_icon_container {
-              margin: 10px 0 0 0;
-              .home_play {
-                margin: 0 auto 0 0;
+            .container {
+              width: 100%;
+              height: 60px;
+              flex-direction: column;
+              span {
+                &.home_song_name {
+                  overflow: hidden;
+                  font-size: 1rem;
+                  white-space: nowrap;
+                  &::after {
+                    content: "";
+                    display: block;
+                    position: relative;
+                    width: 180px;
+                    border-top: 1px solid #999999;
+                  }
+                }
+                &.home_song_author {
+                  overflow: hidden;
+                  font-size: 0.8rem;
+                  white-space: nowrap;
+                }
               }
+            }
+            .home_icon_container {
               .home_favorite {
                 margin: 0 10px 0 0;
                 i {
@@ -678,6 +766,16 @@
               }
               i {
                 font-size: 0.5rem;
+              }
+            }
+            .introduction {
+              .more {
+                position: absolute;
+                left: 0px;
+                bottom: 0px;
+                width: 100%;
+                height: 40px;
+                background: linear-gradient(transparent 20%, #d8d1c5 80%);
               }
             }
           }
@@ -731,11 +829,54 @@
     }
 
     @media screen and (max-width: 576px) {
+      .home_perspective {
+        .home_song_container {
+          .home_song {
+            .home_song_info {
+              padding: 5px;
+              .container {
+                span {
+                  &.home_song_name {
+                    font-size: 0.8rem;
+                  }
+                  &.home_song_author {
+                    font-size: 0.6rem;
+                  }
+                }
+              }
+              .introduction {
+                .more {
+                  display: none;
+                }
+              }
+            }
+          }
+        }
+      }
       .home_arrow_container {
         width: 350px;
       }
     }
     @media screen and (max-width: 480px) {
+      .home_perspective {
+        .home_song_container {
+          .home_song {
+            .home_song_info {
+              padding: 0px 5px;
+              .container {
+                span {
+                  &.home_song_name {
+                    font-size: 0.8rem;
+                  }
+                  &.home_song_author {
+                    font-size: 0.6rem;
+                  }
+                }
+              }
+            }
+          }
+        }
+      }
       .home_arrow_container {
         width: 300px;
       }
@@ -915,7 +1056,7 @@
         align-items: center;
         font-size: 2.4rem;
         text-shadow: 0px 0px 5px black, 0px 0px 10px black;
-        white-space:nowrap;
+        white-space: nowrap;
       }
     }
     .home_sort01 {
@@ -1164,9 +1305,8 @@
           }
         }
         a {
-          font-size: 2.0rem;
+          font-size: 2rem;
         }
-
       }
     }
   }

@@ -1357,6 +1357,7 @@
         margin: 0 20px;
         display: inline-block;
         font-size: 0;
+        vertical-align: top;
 
         @include respond(latop-max) {
             width: 160px;
@@ -1849,6 +1850,7 @@
     @include respond(latop-max) {
         margin: 0px auto;
         max-width: 940px;
+        min-height: 800px;
     }
 
     @include respond(latop-min) {
@@ -2485,7 +2487,7 @@
             margin: 0 20px;
             display: inline-block;
             font-size: 0;
-
+            vertical-align: top;
 
             @include respond(latop-max) {
                 width: 160px;
