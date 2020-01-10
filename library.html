@@ -136,6 +136,9 @@
           <h4>Liked songs</h4>
         </div>
         <div class="listSubtitle">My list</div>
+        <div class="mobile_listChoose"> --choose-- 
+          <div class="arrow"><i class="fas fa-sort-down"></i></div>
+        </div>
         <ul class="lists">
           <!-- <li>
             <h4>Peaceful songs</h4>
@@ -150,12 +153,12 @@
             <div class="delete"><i class="fas fa-times"></i></div>
           </li> -->
         </ul>
-        <select id="mobile_listChoose">
+        <!-- <select id="mobile_listChoose"> -->
           <!-- <option disabled selected>-- choose --</option>
           <option value="peaceful songs">Peaceful songs</option>
           <option value="party">Party</option>
           <option value="who cares">Who cares</option> -->
-        </select>
+        <!-- </select> -->
         <div class="btns">
           <button class="normalbtn" id="createBtn">Create</button>
           <button class="normalbtn" id="modifyBtn">Modify</button>
@@ -166,7 +169,7 @@
 
     <div class="right">
       <div class="listInfo">
-        <form action="./php/copyCoverImg.php" method="POST" enctype="multipart/form-data" target="id_iframe">
+        <form action="" method="POST" enctype="multipart/form-data">
         <div class="listCover">
           <img src="./img/library/list_pic0.jpg" alt="">
           <label for="library_editCover" class="editBtn">choose
@@ -336,6 +339,7 @@
             <li>party</li> -->
           </ul>
           <input type="hidden" name="lightPlistNo" id="lightPlistNo">
+          <input type="hidden" name="lightPlistNoA" id="lightPlistNoA">
           <input type="hidden" name="lightSongNo" id="lightSongNo">
         </div>
         <button>ok</button>
@@ -362,6 +366,7 @@
         <button>ok</button>
       </div>
     </div>
+    <input type="hidden" name="libraryMsg" id="libraryMsg">
   </main>
   <div class="before"></div>
   <div class="after"></div>

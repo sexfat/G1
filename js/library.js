@@ -222,6 +222,7 @@
    $(".lists").on('click', 'li', function () {
      let myListIndex = $(this).index();
      nowList = $(this).find('h4').text();
+     console.log(nowList);
      $('.lists li').removeClass('choose');
      $(this).addClass('choose');
      $(".favor").removeClass('choose');
@@ -234,15 +235,28 @@
    });
 
    //手機select選歌單
-   $("#mobile_listChoose").change(function () {
-     let myListIndex = $(this)[0].selectedIndex;
-     nowList = $(this).val();
-     $('#inputListTitle').val(nowList);
-     $('#library_editCover').attr('disabled', false);
-     $('.enterBtn').attr('disabled', false);
-     $('#inputListTitle').attr('disabled', false);
-     getLibrarySongs(nowList);
-     myListInfoCha(myListIndex - 1, libraryList.length);
+   $(".mobile_listChoose").click(function () {
+     if ($(this).hasClass('open')) {
+       $('.lists').animate({
+         height: '0px',
+       }, 500);
+       $(this).removeClass('open');
+     } else {
+       let hei = $('.lists li').height();
+       let len = $('.lists li').length+1;
+       $('.lists').animate({
+         height: (hei * len+30)+'px',
+       }, 500);
+       $(this).addClass('open');
+     }
+     //  let myListIndex = $(this)[0].selectedIndex;
+     //  nowList = $(this).val();
+     //  $('#inputListTitle').val(nowList);
+     //  $('#library_editCover').attr('disabled', false);
+     //  $('.enterBtn').attr('disabled', false);
+     //  $('#inputListTitle').attr('disabled', false);
+     //  getLibrarySongs(nowList);
+     //  myListInfoCha(myListIndex - 1, libraryList.length);
    });
 
    //刪除清單
@@ -251,9 +265,7 @@
      let delListNo = getListIndex(delName);
      $('#inputListNo').val(mylistInfo[delListNo].plist_no);
      let xhr = new XMLHttpRequest();
-     console.log(delName);
-     console.log(delListNo);
-     console.log($('#inputListNo').val());
+
      xhr.onload = function () {
        if (xhr.status == 200) {
          if (xhr.responseText == 'success') {
@@ -405,17 +417,17 @@
  //顯示所有清單列表
  function showAllMyList(mylist) {
    $('.my_list .lists').children().remove();
-   $('#mobile_listChoose').children().remove();
+   //  $('#mobile_listChoose').children().remove();
    for (let i = 0; i < mylist.length; i++) {
      $('.my_list .lists').append(`<li>
      <h4>${mylist[i].plist_name}</h4>
      <div class="delete"><i class="fas fa-times"></i></div>
    </li>`);
    }
-   $('#mobile_listChoose').append(`<option disabled='disabled' selected='selected' >-- choose --</option>`);
-   for (let j = 0; j < mylist.length; j++) {
-     $('#mobile_listChoose').append(`<option value="${mylist[j].plist_name}">${mylist[j].plist_name}</option>`);
-   }
+   //  $('#mobile_listChoose').append(`<option disabled='disabled' selected='selected' >-- choose --</option>`);
+   //  for (let j = 0; j < mylist.length; j++) {
+   //    $('#mobile_listChoose').append(`<option value="${mylist[j].plist_name}">${mylist[j].plist_name}</option>`);
+   //  }
  };
 
  //顯示清單歌曲列表
@@ -454,8 +466,12 @@
  function songChangeListD(songNo) {
    let listOldind = getListIndex(nowList);
    let plistNo = mylistInfo[listOldind].plist_no; //舊的清單
+   let listNewind = getListIndex(getNewListName);
+   let plistNoN = mylistInfo[listNewind].plist_no; //新的清單
+   $('#lightPlistNoA').val(plistNoN);
    $('#lightPlistNo').val(plistNo);
    $('#lightSongNo').val(songNo);
+   $('#libraryMsg').val('del');
 
    let xhr = new XMLHttpRequest();
    xhr.onload = function () {
@@ -472,18 +488,20 @@
        alert(xhr.statusText);
      }
    };
-   xhr.open("POST", "./php/songChangeList_d.php", true);
+   xhr.open("POST", "./php/songChangeList.php", true);
    xhr.setRequestHeader('content-type', 'application/x-www-form-urlencoded');
-   let data_info = `lightPlistNo=${plistNo}&lightSongNo=${songNo}`;
+   let data_info = `libraryMsg=${$('#libraryMsg').val()}&lightPlistNoA=${plistNoN}&lightPlistNo=${plistNo}&lightSongNo=${songNo}`;
    xhr.send(data_info);
  }
 
  //歌改變歌單-新的新增
  function songChangeListA(songNo) {
    let listNewind = getListIndex(getNewListName);
-   let plistNo = mylistInfo[listNewind].plist_no;
-   $('#lightPlistNo').val(plistNo);
+   let plistNoN = mylistInfo[listNewind].plist_no;
+   $('#lightPlistNoA').val(plistNoN);
    $('#lightSongNo').val(songNo);
+   $('#libraryMsg').val('add');
+
    let xhr = new XMLHttpRequest();
    xhr.onload = function () {
      if (xhr.status == 200) {
@@ -499,8 +517,8 @@
        alert(xhr.statusText);
      }
    };
-   xhr.open("post", "./php/songChangeList_a.php", true);
+   xhr.open("post", "./php/songChangeList.php", true);
    xhr.setRequestHeader('content-type', 'application/x-www-form-urlencoded');
-   let data_info = `lightPlistNo=${plistNo}&lightSongNo=${songNo}`;
+   let data_info = `libraryMsg=${$('#libraryMsg').val()}&lightPlistNoA=${plistNoN}&lightSongNo=${songNo}`;
    xhr.send(data_info);
  }

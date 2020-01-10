@@ -49,13 +49,16 @@ $mainRed : #de267d;
   max-width: 1200px;
   margin: 50px auto 0;
   padding-bottom: 70px;
-  @include respond(ipadpro){
+
+  @include respond(ipadpro) {
     margin: 20px auto 0;
   }
-  @include respond(ipad){
+
+  @include respond(ipad) {
     margin: 10px auto 0;
   }
-  @include respond(phone){
+
+  @include respond(phone) {
     margin: 5px auto 0;
   }
 
@@ -98,11 +101,6 @@ $mainRed : #de267d;
         &:hover {
           transform: scale(1.1);
         }
-
-        // i {
-        //   color: $mainRed;
-        //   margin-right: 8px;
-        // }
       }
 
       .listSubtitle {
@@ -161,8 +159,37 @@ $mainRed : #de267d;
         }
       }
 
+      .mobile_listChoose {
+        width: 100%;
+        text-align: center;
+        padding: 10px 0;
+        border: 1px solid #b3b3b3;
+        position: relative;
+        display: none;
+        cursor: pointer;
+
+        .arrow {
+          position: absolute;
+          width: 25px;
+          height: 25px;
+          right: 0;
+          top: 8px;
+        }
+
+        @include respond(latop-min) {
+          display: block;
+        }
+      }
+
       .lists {
         text-align: left;
+        display: block;
+        margin-bottom: 5px;
+
+        @include respond(latop-min) {
+          height: 0px;
+          overflow: hidden;
+        }
 
         li {
           padding: 10px 0;
@@ -201,50 +228,23 @@ $mainRed : #de267d;
           }
         }
 
-        @include respond(latop-min) {
-          display: none;
-        }
-
-        @include respond(ipadpro) {
-          display: none;
-        }
-
-        @include respond(ipad) {
-          display: none;
-        }
-
-        @include respond(phone) {
-          display: none;
-        }
       }
 
-      select {
-        width: 100%;
-        background-color: $green;
-        font-size: $rem1;
-        padding: 16px 8px;
-        display: none;
+      // select {
+      //   width: 100%;
+      //   background-color: $green;
+      //   font-size: $rem1;
+      //   padding: 16px 8px;
+      //   display: none;
 
-        option {
-          padding: 16px 0;
-        }
+      //   option {
+      //     padding: 16px 0;
+      //   }
 
-        @include respond(latop-min) {
-          display: block;
-        }
-
-        @include respond(ipadpro) {
-          display: block;
-        }
-
-        @include respond(ipad) {
-          display: block;
-        }
-
-        @include respond(phone) {
-          display: block;
-        }
-      }
+      //   @include respond(latop-min) {
+      //     display: block;
+      //   }
+      // }
     }
 
     .list_pic {
@@ -427,11 +427,13 @@ $mainRed : #de267d;
         }
       }
     }
-    .listInfoSubmit{
+
+    .listInfoSubmit {
       text-align: center;
       padding: 20px 0;
-      border-bottom:1px solid #cacaca;
+      border-bottom: 1px solid #cacaca;
     }
+
     ul.songs {
       padding-top: 20px;
       display: none;
@@ -833,7 +835,7 @@ $mainRed : #de267d;
     }
   }
 
-  .editBtn{
+  .editBtn {
     @include buttonno04;
     display: none;
 
@@ -841,6 +843,7 @@ $mainRed : #de267d;
       transform: scale(1.1);
     }
   }
+
   .enterBtn {
     @include butttonn02;
     display: none;
