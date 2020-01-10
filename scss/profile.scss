@@ -4,52 +4,12 @@
   background: url(../img/member/border.png) top center no-repeat;
   background-size: 1280px 640px;
   border-top: 1px solid transparent;
-
-  .profile_password_modify {
-    position: absolute;
-    top: 90px;
-    right: 600px;
-    width: 100px;
-    height: 50px;
-    border: 1px solid $yellow;
-    justify-content: center;
-    align-items: center;
-    text-align: center;
-    line-height: 1rem;
-  }
-
-  .profile_modify {
-    position: absolute;
-    top: 90px;
-    right: 480px;
-    width: 100px;
-    height: 50px;
-    border: 1px solid $yellow;
-    justify-content: center;
-    align-items: center;
-    text-align: center;
-    line-height: 1rem;
-  }
-
-  .profile_complete {
-    position: absolute;
-    top: 480px;
-    right: 714px;
-    width: 100px;
-    height: 50px;
-    border: 1px solid $yellow;
-    justify-content: center;
-    align-items: center;
-    text-align: center;
-    line-height: 1rem;
-  }
-
   .profile_container {
     max-width: 1280px;
     min-height: 640px;
-    margin: 150px auto 0 auto;
+    margin: 120px auto 0 auto;
     justify-content: center;
-
+    overflow: hidden;
     .profile_leftbox {
       flex: 0 1 25%;
       padding: 30px;
@@ -83,29 +43,130 @@
     .profile_rightbox {
       flex: 0 1 40%;
       margin: 0 0 0 60px;
-      .row:not(:last-child) {
-        transition: all 0.3s;
-        cursor: pointer;
+      overflow: hidden;
 
+      .edit_box {
+        position: absolute;
+        z-index: 1;
+        height: 100%;
+        width: 0px;
+        transition: all 0.3s;
+        overflow: hidden;
+
+        .th {
+          padding: 10px 10px 5px 10px;
+          line-height: 20px;
+          margin: 30px 15px 0px 15px;
+        }
+        .td {
+          padding: 5px 10px 10px 10px;
+          line-height: 20px;
+          margin: 0px 15px 15px 15px;
+          label {
+            margin: 0 0 0 5px;
+            color: #c4c4c4;
+          }
+        }
+        .psw_th {
+          padding: 10px 10px 5px 10px;
+          line-height: 20px;
+          margin: 0px 15px;
+        }
+        .warn {
+          padding: 0px 10px;
+          margin: -15px 15px 0 15px;
+          font-size: 0.8rem;
+          color: red;
+        }
+
+        input[type="text"],
+        input[type="password"] {
+          width: 275px;
+          font-size: 1rem;
+          background: $green;
+          border-radius: 5px;
+        }
+
+        .cancel {
+          @include butttonn02;
+          position: absolute;
+          top: 270px;
+          left: 44px;
+          width: 123px;
+          background: #e6e6e6;
+          border: 1px solid #e6e6e6;
+          transition: all 0.3s;
+        }
+        .confirm {
+          @include butttonn02;
+          position: absolute;
+          top: 270px;
+          left: 177px;
+          width: 123px;
+          transition: all 0.3s;
+        }
+      }
+      .row2,
+      .row3 {
+        transition: all 0.3s;
         &:hover {
           background: rgba(200, 200, 200, 0.3);
         }
       }
+
       .row {
+        width: 100%;
+        max-height: 120px;
+        transition: all 0.3s;
+
         .th,
         .td,
-        i {
+        .td_i {
           padding: 15px;
           line-height: 20px;
           margin: 15px;
-          // align-items: center;
+          align-items: center;
         }
         .th {
-          width: 150px;
+          flex: 0 0 130px;
         }
         .td {
           width: 250px;
           word-wrap: break-word;
+          transition: all 0.3s;
+          overflow: hidden;
+        }
+        .td_i {
+          cursor: pointer;
+
+          &:hover i {
+            transform: scale(1.1);
+          }
+          i {
+            transition: all 0.1s;
+          }
+        }
+        .to_small {
+          animation: to_small 0.3s;
+        }
+        @keyframes to_small {
+          0% {
+            width: 250px;
+          }
+          100% {
+            width: 0px;
+          }
+        }
+        .to_big {
+          animation: to_big 0.3s;
+        }
+        @keyframes to_big {
+          0% {
+            width: 0px;
+          }
+          100% {
+            width: 250px;
+          }
         }
       }
     }
@@ -178,8 +239,6 @@
 
 @media screen and (max-width: 992px) {
   .profile_content {
-    background-size: 100% 480px;
-
     .profile_container {
       .profile_leftbox {
         padding: 15px;
@@ -190,15 +249,32 @@
       }
       .profile_rightbox {
         margin: 0 0 0 30px;
+        .edit_box {
+          .th {
+            margin: 0px 15px;
+          }
+          .td {
+            margin: 0px 15px;
+          }
+          .psw_th {
+            margin: 0px 15px;
+          }
+          .cancel {
+            top: 200px;
+          }
+          .confirm {
+            top: 200px;
+          }
+        }
         .row {
           .th,
           .td,
-          i {
+          .td_i {
             margin: 0px;
             font-size: 16px;
           }
           .th {
-            width: 100px;
+            flex: 0 0 100px;
           }
           .td {
             width: 200px;
@@ -211,39 +287,43 @@
 @media screen and (max-width: 768px) {
   .profile_content {
     .profile_container {
-      margin: 90px auto 0 auto;
+      display: block;
+      margin: 60px auto 0 auto;
+      .profile_leftbox {
+        width: 210px;
+        margin: 0 auto;
+        .profile_mem_img {
+          width: 180px;
+          height: 180px;
+        }
+      }
       .profile_rightbox {
+        width: 100%;
+        padding: 0 30px 0 10px;
+        margin: 0;
+
+        .edit_box {
+          left: calc((100% - 330px) / 2);
+        }
         .row {
           display: block;
           overflow: hidden;
           padding: 0 15px;
           .th,
-          .td,
-          i {
+          .td {
             float: left;
             margin: 0px;
             font-size: 16px;
             padding: 15px 0;
+          }
+          .td_i {
+            float: right;
           }
           .th {
             width: 80px;
           }
           .td {
             width: 60%;
-          }
-        }
-        .row1 {
-          .th,
-          i {
-            line-height: 50px;
-          }
-          .td {
-            .profile_mem_img {
-              width: 50px;
-              height: 50px;
-              background: url(../img/home/test.jpg);
-              background-size: cover;
-            }
           }
         }
       }
@@ -253,14 +333,61 @@
 @media screen and (max-width: 576px) {
   .profile_content {
     .profile_container {
-      display: block;
+      margin: 30px auto 0 auto;
+      .profile_leftbox {
+        width: 180px;
+        margin: 0 auto;
+        .profile_mem_img {
+          width: 150px;
+          height: 150px;
+        }
+      }
+
       .profile_rightbox {
-        margin: 0 15px;
         .row {
-          display: block;
-          overflow: hidden;
-          i {
+          .th,
+          .td,
+          .td_i {
+            padding: 5px 0;
+          }
+          .th {
+            float: initial;
+          }
+          .td {
+            margin: 0 0 10px 0;
+          }
+          .td_i {
             float: right;
+          }
+        }
+        .row2,
+        .row3,
+        .row4 {
+          &::before {
+            content: "";
+            display: block;
+            width: 98%;
+            border: 1px solid #e6e6e6;
+          }
+        }
+      }
+    }
+  }
+}
+@media screen and (max-width: 375px) {
+  .profile_content {
+    .profile_container {
+      .profile_rightbox {
+        .edit_box {
+          input[type="text"],
+          input[type="password"] {
+            width: 260px;
+          }
+          .cancel {
+            left: 25px;
+          }
+          .confirm {
+            left: 162px;
           }
         }
       }
