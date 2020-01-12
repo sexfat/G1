@@ -47,6 +47,7 @@
         <a href="./index.html">
           <div class="logo"></div>
         </a>
+        <div class="finger"></div>
       </div>
       <ul class="main_list flexbox">
         <li class="REMIX flexbox">
@@ -78,8 +79,8 @@
       <div class="mem_bt" @click="mem_bt_click" v-if="mem_login == true">
         <a href="#"></a>
       </div>
-      <div class="login_bt" @click="" v-if="mem_login == true">
-        <a class="flexbox" href="./login.html">Login</a>
+      <div class="login_bt" v-if="mem_login == false">
+        <a href="./login.html"></a>
       </div>
       <div class="mem_list" @click="stopPropagation">
         <div class="paint_border"></div>
@@ -87,11 +88,6 @@
           <li>
             <a href="./profile.html">
               <h4>Profile</h4>
-            </a>
-          </li>
-          <li>
-            <a href="./library.html">
-              <h4>Library</h4>
             </a>
           </li>
           <li>
@@ -115,6 +111,11 @@
               <h4>Donate Record</h4>
             </a>
           </li>
+          <li @click="logout">
+            <a href="#">
+              <h4>Log Out</h4>
+            </a>
+          </li>
         </ul>
       </div>
     </div>
@@ -124,42 +125,56 @@
     </header>
     <div class="profile_content">
       <div class="profile_container flexbox">
-        <div class="profile_leftbox" v-if="window768 == false">
+        <div class="profile_leftbox">
           <div class="profile_mem_img">
             <div class="edit">Edit</div>
           </div>
         </div>
         <div class="profile_rightbox">
-          <div class="row row1 flexbox" v-if="window768 == true">
-            <div class="th">Photo</div>
-            <div class="td">
-              <div class="profile_mem_img"></div>
+          <div class="edit_box">
+            <div class="th" v-if="name_edit == true">New Name</div>
+            <div class="td" v-if="name_edit == true">
+              <input class="name" type="text" maxlength="8"><label><i class="far fa-check-circle"></i></label>
             </div>
-            <i class="fas fa-chevron-right"></i>
+            <div class="th" v-if="psw_edit == true">New Password</div>
+            <div class="td" v-if="psw_edit == true">
+              <input class="psw" type="text" maxlength="20" placeholder="Enter New Password"><label><i
+                  class="far fa-check-circle"></i></label>
+            </div>
+            <div class="psw_th" v-if="psw_edit == true">confirm Password</div>
+            <div class="td" v-if="psw_edit == true">
+              <input class="confirm_psw" type="password" maxlength="20" placeholder="Enter Password Again"><label><i
+                  class="far fa-check-circle"></i></label>
+            </div>
+            <div class="warn">{{warn}}</div>
+            <input class="cancel" type="button" value="cancel" @click="cancel_click">
+            <input class="confirm" type="button" value="confirm" @click="confirm_click">
           </div>
-          <div class="row row2 flexbox">
-            <div class="th">Account</div>
+          <div class="row row1 flexbox" v-if="name_edit == false && psw_edit == false">
+            <div class="th flexbox">Account</div>
             <div class="td">{{account}}</div>
-            <i class="fas fa-chevron-right"></i>
           </div>
-          <div class="row row3 flexbox">
-            <div class="th">Name</div>
+          <div class="row row2 flexbox" v-if="name_edit == false && psw_edit == false">
+            <div class="th flexbox">Name</div>
             <div class="td">{{mem_name}}</div>
-            <i class="fas fa-chevron-right"></i>
+            <div class="td_i flexbox" @click="name_edit_click">
+              <i class="fas fa-chevron-right"></i>
+            </div>
           </div>
-          <div class="row row4 flexbox">
-            <div class="th">Password</div>
+          <div class="row row3 flexbox" v-if="name_edit == false && psw_edit == false">
+            <div class="th flexbox">Password</div>
             <div class="td">{{password}}</div>
-            <i class="fas fa-chevron-right"></i>
+            <div class="td_i flexbox" @click="psw_edit_click">
+              <i class="fas fa-chevron-right"></i>
+            </div>
           </div>
-          <div class="row row5 flexbox">
-            <div class="th">Point</div>
+          <div class="row row4 flexbox" v-if="name_edit == false && psw_edit == false">
+            <div class="th flexbox">Point</div>
             <div class="td">{{point}}</div>
           </div>
         </div>
       </div>
     </div>
-
   </div>
 
   <script>
@@ -170,16 +185,22 @@
         search_bar: false,
         mem_list: false,
         mobile_list: false,
-        mem_login: true,
+        mem_login: false,
 
         // profile
-        profile_modify: false,
-        password_modify: false,
-        window768: true,
-        account: 'abc123afdasfdasfdasfdasfdsafds@gmail.com',
-        mem_name: 'QQ',
-        password: '●●●●●●●●',
-        point: 500,
+        onresize: false,
+        name_edit: false,
+        psw_edit: false,
+        warn: 'test',
+        // input_name,
+        // input_psw,
+        // input_confirm_psw,
+
+        account: '',
+        mem_name: '',
+        password: '',
+        point: '',
+        img_src: '',
       },
       mounted() {
         document.querySelector('.mem_list ul').setAttribute('style', `height: ${window.innerHeight}px;`);
@@ -187,19 +208,21 @@
         document.querySelectorAll('.paint_border')[0].setAttribute('style', `height: ${window.innerHeight}px;`);
         document.querySelectorAll('.paint_border')[1].setAttribute('style', `height: ${window.innerHeight}px;`);
 
-        if (window.innerWidth <= 768) {
-          this.window768 = true;
-        } else {
-          this.window768 = false;
-        }
-        $(window).resize(() => {
-          if (window.innerWidth <= 768) {
-            this.window768 = true;
-          } else {
-            this.window768 = false;
-          }
-        });
+        document.addEventListener('click', () => {
+          this.mem_list = false;
+          this.search_bar = false;
+          this.mobile_list = false;
 
+          document
+            .querySelector(".search_bar")
+            .setAttribute("style", "height: 0px; filter: opacity(0);");
+          document
+            .querySelector(".mem_list")
+            .setAttribute("style", "transform: translateX(270px); filter: opacity(0);");
+          document
+            .querySelector(".mobile_list")
+            .setAttribute("style", "transform: translateX(-270px); filter: opacity(0);");
+        });
       },
       methods: {
         // nav_bar
@@ -300,32 +323,198 @@
               .setAttribute("style", "height: 0px; filter: opacity(0);");
           }
         },
+        logout() {
+          let xhr = new XMLHttpRequest();
+          xhr.onload = () => {
+            this.mem_login = false;
+            document
+              .querySelector(".mem_list")
+              .setAttribute("style", "transform: translateX(270px); filter: opacity(0);");
+          }
+          xhr.open("get", "./php/logout.php", true);
+          xhr.send(null)
+        },
+
         // nav_bar end
 
-
-        profile_modify_click() {
-          if (this.profile_modify) {
-            this.profile_modify = false;
-          } else {
-            this.profile_modify = true;
-          }
-        },
-
-        password_modify_click() {
-          if (this.password_modify) {
-            this.password_modify = false;
-          } else {
-            this.password_modify = true;
+        // profile start
+        name_edit_click() {
+          let w = document.querySelector('.profile_rightbox').offsetWidth;
+          let h = document.querySelector('.profile_rightbox').offsetHeight;
+          document.querySelector('.row2').style.transform = `translateX(${w}px)`;
+          setTimeout(() => {
+            for (let i = 1; i <= 4; i++) {
+              if (i != 2) {
+                document.querySelector(`.row${i}`).style.transform = `translateX(${w}px)`;
+              }
+            }
+          }, 300)
+          setTimeout(() => {
+            this.name_edit = true;
+            document.querySelector(`.edit_box`).style.width = `${w}px`;
             this.$nextTick(() => {
-              // DOM 更新
-              document.querySelector('.profile_lightCover').setAttribute('style', `height: ${window.innerHeight}px`)
-            });
-          }
+            })
+          }, 400)
         },
 
+        psw_edit_click() {
+          let w = document.querySelector('.profile_rightbox').offsetWidth;
+          document.querySelector('.row3').style.transform = `translateX(${w}px)`;
+          setTimeout(() => {
+            for (let i = 1; i <= 4; i++) {
+              if (i != 3) {
+                document.querySelector(`.row${i}`).style.transform = `translateX(${w}px)`;
+              }
+            }
+          }, 300)
+          setTimeout(() => {
+            this.psw_edit = true;
+            document.querySelector(`.edit_box`).style.width = `${w}px`;
+            this.$nextTick(() => {
+              document.querySelector('input.psw').addEventListener('input', input_check);
+              document.querySelector('input.confirm_psw').addEventListener('input', input_check);
+            })
 
+          }, 400)
+        },
 
+        cancel_click() {
+          document.querySelector(`.edit_box`).style.width = `0px`;
+          setTimeout(() => {
+            for (let i = 1; i <= 4; i++) {
+              document.querySelector(`.row${i}`).style.transform = `translateX(0px)`;
+            }
+          }, 300)
+          setTimeout(() => {
+            this.name_edit = false;
+            this.psw_edit = false;
+          }, 300)
+        },
+
+        confirm_click() {
+          edit();
+        }
       }
+    });
+    let mem_login = () => {
+      let xhr = new XMLHttpRequest();
+      xhr.onload = () => {
+        let member = JSON.parse(xhr.responseText);
+        if (member.mem_acct) {
+          vm.mem_login = true;
+        } else {
+          vm.mem_login = false;
+        }
+      }
+      xhr.open("get", "./php/getLoginInfo.php", true);
+      xhr.send(null);
+    }
+    let get_mem_info = () => {
+      let xhr = new XMLHttpRequest();
+      xhr.onload = () => {
+        let member = JSON.parse(xhr.responseText);
+        vm.account = member.mem_acct;
+        vm.mem_name = member.mem_name;
+        vm.password = (() => {
+          let str = '';
+          for (let i = 0; i < member.mem_psw.length; i++) {
+            str += '●';
+          }
+          return str;
+        })();
+        vm.point = member.mem_point;
+        vm.img_src = member.mem_img;
+      }
+      xhr.open("get", "./php/getMemInfo.php", true);
+      xhr.send(null);
+    }
+
+    let input_check = (e) => {
+      if (vm.name_edit == true) {
+      } else if (vm.psw_edit == true) {
+        if (e.target == document.querySelector('input.psw')) {
+          if (!e.target.value.replace(/\　/g, "")) {
+            document.querySelector('.warn').innerHTML = 'Password cannot be empty!'
+          } else {
+            if (!/^(?=.{6,})/.test(e.target.value)) {
+              document.querySelector('.warn').innerHTML = 'Password must be at least 6 characters!'
+            } else {
+              if (!/^(?=.*[0-9])(?=.*[a-zA-Z])[A-Za-z0-9]+$/.test(e.target.value)) {
+                document.querySelector('.warn').innerHTML = 'Password must be at least one number and one letter!'
+              } else {
+                document.querySelector('.warn').innerHTML = '';
+              }
+            }
+          }
+        } else {
+          if (!e.target.value.replace(/\　/g, "")) {
+            document.querySelector('.warn').innerHTML = 'Password cannot be empty!'
+          } else {
+            if (!/^(?=.{6,})/.test(e.target.value)) {
+              document.querySelector('.warn').innerHTML = 'Password must be at least 6 characters!'
+            } else {
+              if (!/^(?=.*[0-9])(?=.*[a-zA-Z])[A-Za-z0-9]+$/.test(e.target.value)) {
+                document.querySelector('.warn').innerHTML = 'Password must be at least one number and one letter!'
+              } else {
+                console.log(e.target.value == document.querySelector('input.psw').value)
+                if (e.target.value != document.querySelector('input.psw').value){
+                  document.querySelector('.warn').innerHTML = 'Inconsistent passwords, Please reconfirm!';
+                } else {
+                  document.querySelector('.warn').innerHTML = '';
+                }
+              }
+            }
+          }
+        }
+      }
+    }
+
+    let edit = () => {
+      let mem_name, mem_psw, mem_data;
+      if (vm.name_edit == true) {
+        mem_name = document.querySelector('input.name').value;
+      }
+      if (vm.psw_edit == true) {
+        mem_psw = document.querySelector('input.psw').value;
+      }
+      let xhr = new XMLHttpRequest();
+      xhr.onload = () => {
+        if (xhr.readyState == 4) {
+          if (xhr.status == 200) {
+            get_mem_info();
+            let result = xhr.responseText;
+            document.querySelector(`.edit_box`).style.width = `0px`;
+            setTimeout(() => {
+              for (let i = 1; i <= 4; i++) {
+                document.querySelector(`.row${i}`).style.transform = `translateX(0px)`;
+              }
+            }, 300)
+            setTimeout(() => {
+              vm.name_edit = false;
+              vm.psw_edit = false;
+            }, 300)
+            alert(result);
+          } else {
+            alert('some fail');
+          }
+        }
+      }
+      xhr.open("post", "./php/memEdit.php", true);
+      xhr.setRequestHeader("content-type", "application/x-www-form-urlencoded");
+      if (vm.name_edit == true) {
+        mem_data = `mem_name=${mem_name}&edit=name`
+      }
+      if (vm.psw_edit == true) {
+        mem_data = `mem_psw=${mem_psw}&edit=psw`
+      }
+      xhr.send(mem_data);
+
+      console.log(mem_data);
+    };
+
+    window.addEventListener('load', () => {
+      mem_login();
+      get_mem_info();
     });
   </script>
 </body>

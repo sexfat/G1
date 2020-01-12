@@ -15,8 +15,8 @@
 </head>
 
 <body class="librarybg">
-
-  <div id="app">
+  <!-- nav_bar start -->
+  <div id="nav_app">
     <div class="nav_bar flexbox">
       <div class="hamburger" @click="hamburger_click">
         <div class="hamburger-box">
@@ -47,6 +47,7 @@
       <div class="logo_container">
         <a href="./index.html">
           <div class="logo"></div>
+          <div class="finger"></div>
         </a>
       </div>
       <ul class="main_list flexbox">
@@ -75,11 +76,12 @@
         <div class="tag_container">
         </div>
       </div>
-      <div class="login_bt" @click="" v-if="mem_login == false">
-        <a class="flexbox" href="#">Login</a>
-      </div>
+
       <div class="mem_bt" @click="mem_bt_click" v-if="mem_login == true">
         <a href="#"></a>
+      </div>
+      <div class="login_bt" v-if="mem_login == false">
+        <a href="./login.html"></a>
       </div>
       <div class="mem_list" @click="stopPropagation">
         <div class="paint_border"></div>
@@ -87,11 +89,6 @@
           <li>
             <a href="./profile.html">
               <h4>Profile</h4>
-            </a>
-          </li>
-          <li>
-            <a href="./library.html">
-              <h4>Library</h4>
             </a>
           </li>
           <li>
@@ -111,30 +108,37 @@
             </a>
           </li>
           <li>
-            <a href="">
+            <a href="./donate.html">
               <h4>Donate Record</h4>
+            </a>
+          </li>
+          <li @click="logout">
+            <a href="#">
+              <h4>Log Out</h4>
             </a>
           </li>
         </ul>
       </div>
     </div>
+    <!-- nav_bar end -->
   </div>
-
   <!-- header -->
   <header>
     <img src="./img/library/title_library.png" alt="">
     <div class="header_bg"></div>
   </header>
-
   <!-- main -->
   <main class="library_main">
     <aside>
       <div class="my_list">
         <div class="listSubtitle">Favorite list</div>
-        <div class="favor">
+        <div class="favor choose">
           <h4>Liked songs</h4>
         </div>
         <div class="listSubtitle">My list</div>
+        <div class="mobile_listChoose"> --choose-- 
+          <div class="arrow"><i class="fas fa-sort-down"></i></div>
+        </div>
         <ul class="lists">
           <!-- <li>
             <h4>Peaceful songs</h4>
@@ -149,12 +153,12 @@
             <div class="delete"><i class="fas fa-times"></i></div>
           </li> -->
         </ul>
-        <select id="mobile_listChoose">
+        <!-- <select id="mobile_listChoose"> -->
           <!-- <option disabled selected>-- choose --</option>
           <option value="peaceful songs">Peaceful songs</option>
           <option value="party">Party</option>
           <option value="who cares">Who cares</option> -->
-        </select>
+        <!-- </select> -->
         <div class="btns">
           <button class="normalbtn" id="createBtn">Create</button>
           <button class="normalbtn" id="modifyBtn">Modify</button>
@@ -165,20 +169,20 @@
 
     <div class="right">
       <div class="listInfo">
+        <form action="" method="POST" enctype="multipart/form-data">
         <div class="listCover">
           <img src="./img/library/list_pic0.jpg" alt="">
-          <label for="library_editCover" class="editBtn">edit
-            <input type="file" name="library_edit" id="library_editCover">
+          <label for="library_editCover" class="editBtn">choose
+            <input type="file" name="listPicFake" id="library_editCover">
+            <input type="hidden" name="listPic" id="listPic">
           </label>
         </div>
         <div class="nameAndBtn">
           <div class="listName">
             <div class="name">
               <h2>Liked Songs</h2>
-              <form action="">
-                <input type="text" name="listTitle" id="inputListTitle" value="Peaceful Songs">
-                <button class="enterBtn">submit</button>
-              </form>
+              <input type="text" name="plistName" id="inputListTitle" value="">
+              <input type="hidden" name="plistNo" id="inputListNo">
             </div>
             <div class="totalSong">8 songs</div>
           </div>
@@ -188,9 +192,12 @@
           </div>
         </div>
         <div class="clearfix"></div>
+        <div class="listInfoSubmit"><button type="submit" class="enterBtn" id="modifyName">submit</button></div>
+        </form>
+        <iframe id="id_iframe" name="id_iframe" style="display:none;"></iframe>
       </div>
       <ul class="songs chooseList">
-        <li>
+        <!-- <li>
           <div class="songPlay">
             <div class="songCover">
               <img src="./img/collection/album1.jpg" alt="">
@@ -315,283 +322,27 @@
             <div class="changeList">change list</div>
           </div>
           <div class="clearfix"></div>
-        </li>
+        </li> -->
       </ul>
-      <ul class="songs">
-        <li>
-          <div class="songPlay">
-            <div class="songCover">
-              <img src="./img/collection/album5.jpg" alt="">
-              <div class="listPlay"><img src="./img/library/coverPlay-s.png"></div>
-            </div>
-          </div>
-          <div class="listSongInfo">
-            <div class="name">
-              <a href="./songinfo.html">Lucid dreamer</a>
-            </div>
-            <div class="creator">Spazz Cardigan</div>
-          </div>
-          <div class="totalTime">3:11</div>
-          <div class="heart becomeRed"><img src="./img/collection/redheart.png"></div>
-          <div class="more">
-            <i class="fas fa-ellipsis-h"></i>
-            <div class="changeList">change list</div>
-          </div>
-          <div class="clearfix"></div>
-        </li>
-        <li>
-          <div class="songPlay">
-            <div class="songCover">
-              <img src="./img/collection/album6.jpg" alt="">
-              <div class="listPlay"><img src="./img/library/coverPlay-s.png"></div>
-            </div>
-          </div>
-          <div class="listSongInfo">
-            <div class="name">
-              <a href="./songinfo.html">Spring in my step</a>
-            </div>
-            <div class="creator">Silent Partner</div>
-          </div>
-          <div class="totalTime">1:59</div>
-          <div class="heart becomeRed"><img src="./img/collection/redheart.png"></div>
-          <div class="more">
-            <i class="fas fa-ellipsis-h"></i>
-            <div class="changeList">change list</div>
-          </div>
-          <div class="clearfix"></div>
-        </li>
-        <li>
-          <div class="songPlay">
-            <div class="songCover">
-              <img src="./img/collection/album7.jpg" alt="">
-              <div class="listPlay"><img src="./img/library/coverPlay-s.png"></div>
-            </div>
-          </div>
-          <div class="listSongInfo">
-            <div class="name">
-              <a href="./songinfo.html">On my way home</a>
-            </div>
-            <div class="creator">The 126ers</div>
-          </div>
-          <div class="totalTime">1:56</div>
-          <div class="heart becomeRed"><img src="./img/collection/redheart.png"></div>
-          <div class="more">
-            <i class="fas fa-ellipsis-h"></i>
-            <div class="changeList">change list</div>
-          </div>
-          <div class="clearfix"></div>
-        </li>
-      </ul>
-      <ul class="songs">
-        <li>
-          <div class="songPlay">
-            <div class="songCover">
-              <img src="./img/collection/album1.jpg" alt="">
-              <div class="listPlay"><img src="./img/library/coverPlay-s.png"></div>
-            </div>
-          </div>
-          <div class="listSongInfo">
-            <div class="name">
-              <a href="./songinfo.html">Lucid dreamer</a>
-            </div>
-            <div class="creator">Spazz Cardigan</div>
-          </div>
-          <div class="totalTime">3:11</div>
-          <div class="heart becomeRed"><img src="./img/collection/redheart.png"></div>
-          <div class="more">
-            <i class="fas fa-ellipsis-h"></i>
-            <div class="changeList">change list</div>
-          </div>
-          <div class="clearfix"></div>
-        </li>
-        <li>
-          <div class="songPlay">
-            <div class="songCover">
-              <img src="./img/collection/album3.jpg" alt="">
-              <div class="listPlay"><img src="./img/library/coverPlay-s.png"></div>
-            </div>
-          </div>
-          <div class="listSongInfo">
-            <div class="name">
-              <a href="./songinfo.html">Spring in my step</a>
-            </div>
-            <div class="creator">Silent Partner</div>
-          </div>
-          <div class="totalTime">1:59</div>
-          <div class="heart becomeRed"><img src="./img/collection/redheart.png"></div>
-          <div class="more">
-            <i class="fas fa-ellipsis-h"></i>
-            <div class="changeList">change list</div>
-          </div>
-          <div class="clearfix"></div>
-        </li>
-        <li>
-          <div class="songPlay">
-            <div class="songCover">
-              <img src="./img/collection/album5.jpg" alt="">
-              <div class="listPlay"><img src="./img/library/coverPlay-s.png"></div>
-            </div>
-          </div>
-          <div class="listSongInfo">
-            <div class="name">
-              <a href="./songinfo.html">On my way home</a>
-            </div>
-            <div class="creator">The 126ers</div>
-          </div>
-          <div class="totalTime">1:56</div>
-          <div class="heart becomeRed"><img src="./img/collection/redheart.png"></div>
-          <div class="more">
-            <i class="fas fa-ellipsis-h"></i>
-            <div class="changeList">change list</div>
-          </div>
-          <div class="clearfix"></div>
-        </li>
-        <li>
-          <div class="songPlay">
-            <div class="songCover">
-              <img src="./img/collection/album7.jpg" alt="">
-              <div class="listPlay"><img src="./img/library/coverPlay-s.png"></div>
-            </div>
-          </div>
-          <div class="listSongInfo">
-            <div class="name">
-              <a href="./songinfo.html">On my way home</a>
-            </div>
-            <div class="creator">The 126ers</div>
-          </div>
-          <div class="totalTime">1:56</div>
-          <div class="heart becomeRed"><img src="./img/collection/redheart.png"></div>
-          <div class="more">
-            <i class="fas fa-ellipsis-h"></i>
-            <div class="changeList">change list</div>
-          </div>
-          <div class="clearfix"></div>
-        </li>
-      </ul>
-      <ul class="songs">
-        <li>
-          <div class="songPlay">
-            <div class="songCover">
-              <img src="./img/collection/album2.jpg" alt="">
-              <div class="listPlay"><img src="./img/library/coverPlay-s.png"></div>
-            </div>
-          </div>
-          <div class="listSongInfo">
-            <div class="name">
-              <a href="./songinfo.html">Lucid dreamer</a>
-            </div>
-            <div class="creator">Spazz Cardigan</div>
-          </div>
-          <div class="totalTime">3:11</div>
-          <div class="heart becomeRed"><img src="./img/collection/redheart.png"></div>
-          <div class="more">
-            <i class="fas fa-ellipsis-h"></i>
-            <div class="changeList">change list</div>
-          </div>
-          <div class="clearfix"></div>
-        </li>
-        <li>
-          <div class="songPlay">
-            <div class="songCover">
-              <img src="./img/collection/album4.jpg" alt="">
-              <div class="listPlay"><img src="./img/library/coverPlay-s.png"></div>
-            </div>
-          </div>
-          <div class="listSongInfo">
-            <div class="name">
-              <a href="./songinfo.html">Spring in my step</a>
-            </div>
-            <div class="creator">Silent Partner</div>
-          </div>
-          <div class="totalTime">1:59</div>
-          <div class="heart becomeRed"><img src="./img/collection/redheart.png"></div>
-          <div class="more">
-            <i class="fas fa-ellipsis-h"></i>
-            <div class="changeList">change list</div>
-          </div>
-          <div class="clearfix"></div>
-        </li>
-        <li>
-          <div class="songPlay">
-            <div class="songCover">
-              <img src="./img/collection/album6.jpg" alt="">
-              <div class="listPlay"><img src="./img/library/coverPlay-s.png"></div>
-            </div>
-          </div>
-          <div class="listSongInfo">
-            <div class="name">
-              <a href="./songinfo.html">On my way home</a>
-            </div>
-            <div class="creator">The 126ers</div>
-          </div>
-          <div class="totalTime">1:56</div>
-          <div class="heart becomeRed"><img src="./img/collection/redheart.png"></div>
-          <div class="more">
-            <i class="fas fa-ellipsis-h"></i>
-            <div class="changeList">change list</div>
-          </div>
-          <div class="clearfix"></div>
-        </li>
-        <li>
-          <div class="songPlay">
-            <div class="songCover">
-              <img src="./img/collection/album8.jpg" alt="">
-              <div class="listPlay"><img src="./img/library/coverPlay-s.png"></div>
-            </div>
-          </div>
-          <div class="listSongInfo">
-            <div class="name">
-              <a href="./songinfo.html">On my way home</a>
-            </div>
-            <div class="creator">The 126ers</div>
-          </div>
-          <div class="totalTime">1:56</div>
-          <div class="heart becomeRed"><img src="./img/collection/redheart.png"></div>
-          <div class="more">
-            <i class="fas fa-ellipsis-h"></i>
-            <div class="changeList">change list</div>
-          </div>
-          <div class="clearfix"></div>
-        </li>
-        <li>
-          <div class="songPlay">
-            <div class="songCover">
-              <img src="./img/collection/album10.jpg" alt="">
-              <div class="listPlay"><img src="./img/library/coverPlay-s.png"></div>
-            </div>
-          </div>
-          <div class="listSongInfo">
-            <div class="name">
-              <a href="./songinfo.html">On my way home</a>
-            </div>
-            <div class="creator">The 126ers</div>
-          </div>
-          <div class="totalTime">1:56</div>
-          <div class="heart becomeRed"><img src="./img/collection/redheart.png"></div>
-          <div class="more">
-            <i class="fas fa-ellipsis-h"></i>
-            <div class="changeList">change list</div>
-          </div>
-          <div class="clearfix"></div>
-        </li>
-      </ul>
-
     </div>
     <div class="clearfix"></div>
 
     <!-- 燈箱 -->
     <div class="lightCover">
-      <div class="lightbox_s" id="myAllList">
+      <div class="lightbox_s allmylist" id="libraryMyAllList">
         <div class="closeLight"><i class="fas fa-times"></i></div>
         <h3>My List</h3>
         <div class="lightSelectMenu">
           <ul>
-            <li>Liked songs</li>
+            <!-- <li>Liked songs</li>
             <li>Peaceful songs</li>
-            <li>party</li>
+            <li>party</li> -->
           </ul>
+          <input type="hidden" name="lightPlistNo" id="lightPlistNo">
+          <input type="hidden" name="lightPlistNoA" id="lightPlistNoA">
+          <input type="hidden" name="lightSongNo" id="lightSongNo">
         </div>
-        <button class="">ok</button>
+        <button>ok</button>
       </div>
 
       <div class="lightbox_s" id="deleteCheck">
@@ -604,13 +355,18 @@
       <div class="lightbox_s" id="createListBox">
         <div class="closeLight"><i class="fas fa-times"></i></div>
         <h3>Create the new playlist</h3>
-        <form action="">
-          <input type="text" name="createListName" id="createListName">
-          <button type="submit">ok</button>
-          <button>cancel</button>
-        </form>
+        <input type="text" name="createListName" id="createListName">
+        <button id="createSubmit">ok</button>
+        <button id="createCancel">cancel</button>
+      </div>
+
+      <div class="lightbox_s" id="listAlert">
+        <div class="closeLight"><i class="fas fa-times"></i></div>
+        <h4></h4>
+        <button>ok</button>
       </div>
     </div>
+    <input type="hidden" name="libraryMsg" id="libraryMsg">
   </main>
   <div class="before"></div>
   <div class="after"></div>
@@ -732,14 +488,14 @@
 
       <!-- 撥放器燈箱 -->
       <div class="lightCover">
-        <div class="lightbox_s" id="myAllList">
+        <div class="lightbox_s allmylist" id="myAllList">
           <div class="closeLight"><i class="fas fa-times"></i></div>
           <h4>My list</h4>
           <div class="lightSelectMenu">
             <ul>
             </ul>
           </div>
-            <input type="hidden" name="plistName" id="plistName">
+          <input type="hidden" name="plistName" id="plistName">
           <button id="mylistOK">ok</button>
         </div>
       </div>
@@ -747,7 +503,8 @@
   </div>
 
   <!-- nav vue -->
-  <script src="./js/public.js"></script>
+  <script src="./js/nav_bar.js"></script>
+  <!-- <script src="./js/public.js"></script> -->
   <script src="./js/player.js"></script>
   <!-- 自己的script -->
   <script src="./js/library.js"></script>
