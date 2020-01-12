@@ -498,11 +498,9 @@
 
 
         </div>
-        <component :is="content" 
-        :now-Vote-Song="nowVoteSong" 
-        :old-Vote-Song2018="oldVoteSong2018" 
-        :old-Vote-Song2017="oldVoteSong2017" ></component>
-      
+        <component :is="content" :now-Vote-Song=" nowVoteSong" :now-Vote="nowVoteSong.vote_per":old-Vote-Song2018="oldVoteSong2018"
+            :old-Vote-Song2017="oldVoteSong2017"></component>
+
 
     </section>
     <script type="text/x-template" id="act-old">
@@ -981,15 +979,15 @@
                     formContent: 0,
                     MemberName: "Bob",
                     MenberEmail: "Bob@gmail.com",
-                   
+
                     SongName: "",
                     SongInformation: "",
                     SignUpImg: "",
                     SignSongURL: "",
                     SignSongURLSelect: [],
-                    Votes: 415,
+                    // vote:[number.this.nowVoteSong.vote_per],
                    
-              }
+                }
 
             },
             methods: {
@@ -1032,15 +1030,16 @@
                 showChangeVote(e) {
                     let voteButton = e.target;
                     voteButton.classList.toggle('act_vote-button');
-                    clearBush()
-
+                    // this.$emit('showChangeVote',  this.nowVoteSong.vote_per++);
+                    console.log(this.nowVoteSong.vote_per);
                 },
-
-
+               
+                
 
             },
+           
 
-
+          
 
         });
 
@@ -1109,16 +1108,15 @@
                 SignUpImg: "",
                 SignSongURL: "",
                 SignSongURLSelect: "",
-                Votes: 415,
                 GoTopBush: false,
                 nowVoteSong: [],
                 oldVoteSong2018: [],
                 oldVoteSong2017: [],
-               
+              
 
 
             },
-           
+
             computed: {
 
 
