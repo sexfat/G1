@@ -1,10 +1,9 @@
 <!DOCTYPE html>
 <html lang="en">
-
 <head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <meta http-equiv="X-UA-Compatible" content="ie=edge">
+	<meta charset="UTF-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1.0">
+	<meta http-equiv="X-UA-Compatible" content="ie=edge">
   <title>SOUNDWAVE | log in</title>
   <link rel="Shortcut Icon" type="image/x-icon" href="./img/collection/smalllogo.ico" />
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.11.2/css/all.min.css" />
@@ -14,131 +13,115 @@
   <script src="./js/player.js"></script>
   <script src="./js/public.js"></script>
 </head>
-
 <body class="loginbody">
-  <!-- nav_bar and player -->
-  <div id="app">
-    <!-- nav_bar start -->
-    <div class="nav_bar flexbox">
-      <div class="hamburger" @click="hamburger_click">
-        <div class="hamburger-box">
-          <div class="hamburger-inner"></div>
-        </div>
-        <div class="logo_container">
-            <a href="./index.html">
-                <div class="logo"></div>
-                <div class="finger"></div>
-            </a>
-          </li>
-          <li class="COLLECTION flexbox">
-            <a href="./collection.html">
-            </a>
-          </li>
-          <li class="ACTIVITY flexbox">
-            <a href="./activity.html">
-            </a>
-          </li>
-          <li class="LIBRARY flexbox">
-            <a href="./library.html">
-            </a>
-          </li>
-        </ul>
-        <div class="search_bt" @click="search_bt_click">
-            <a href="#"></a>
-        </div>
-        <div class="search_bar" @click="stopPropagation">
-            <input class="search" type="text" />
-            <div class="tag_container">
-            </div>
-        </div>
-        <div class="mem_bt" @click="mem_bt_click" v-if="mem_login == true">
-          <a href="#"></a>
+  <div>
+    <div id="nav_app">
+      <!-- nav_bar start -->
+      <div class="nav_bar flexbox">
+          <div class="hamburger" @click="hamburger_click">
+              <div class="hamburger-box">
+                  <div class="hamburger-inner"></div>
+              </div>
+          </div>
+          <div class="mobile_list" @click="stopPropagation">
+              <div class="paint_border"></div>
+              <ul>
+                  <li class="REMIX flexbox">
+                      <a href="./remix.html">
+                      </a>
+                  </li>
+                  <li class="COLLECTION flexbox">
+                      <a href="./collection.html">
+                      </a>
+                  </li>
+                  <li class="ACTIVITY flexbox">
+                      <a href="./activity.html">
+                      </a>
+                  </li>
+                  <li class="LIBRARY flexbox">
+                      <a href="./library.html">
+                      </a>
+                  </li>
+              </ul>
+          </div>
+          <div class="logo_container">
+              <a href="./index.html">
+                  <div class="logo"></div>
+                  <div class="finger"></div>
+              </a>
+          </div>
+          <ul class="main_list flexbox">
+              <li class="REMIX flexbox">
+                  <a href="./remix.html">
+                  </a>
+              </li>
+              <li class="COLLECTION flexbox">
+                  <a href="./collection.html">
+                  </a>
+              </li>
+              <li class="ACTIVITY flexbox">
+                  <a href="./activity.html">
+                  </a>
+              </li>
+              <li class="LIBRARY flexbox">
+                  <a href="./library.html">
+                  </a>
+              </li>
+          </ul>
+          <div class="search_bt" @click="search_bt_click">
+              <a href="#"></a>
+          </div>
+          <div class="search_bar" @click="stopPropagation">
+              <input class="search" type="text" />
+              <div class="tag_container">
+              </div>
+          </div>
+
+          <div class="mem_bt" @click="mem_bt_click" v-if="mem_login == true">
+              <a href="#"></a>
+          </div>
+          <div class="login_bt" v-if="mem_login == false">
+              <a href="./login.html"></a>
+          </div>
+          <div class="mem_list" @click="stopPropagation">
+              <div class="paint_border"></div>
+              <ul>
+                  <li>
+                      <a href="./profile.html">
+                          <h4>Profile</h4>
+                      </a>
+                  </li>
+                  <li>
+                      <a href="./songsadded.html">
+                          <h4>
+                              Song Upload
+                              <br />&amp; Remove
+                          </h4>
+                      </a>
+                  </li>
+                  <li>
+                      <a href="./store.html">
+                          <h4>
+                              Store Value
+                              <br />&amp;Store Record
+                          </h4>
+                      </a>
+                  </li>
+                  <li>
+                      <a href="./donate.html">
+                          <h4>Donate Record</h4>
+                      </a>
+                  </li>
+                  <li @click="logout">
+                      <a href="#">
+                          <h4>Log Out</h4>
+                      </a>
+                  </li>
+              </ul>
+          </div>
       </div>
-      <div class="login_bt" @click="" v-if="mem_login == true">
-          <a href="./login.html"></a>
-      </div>
-        <div class="mem_list" @click="stopPropagation">
-            <div class="paint_border"></div>
-            <ul>
-                <li>
-                    <a href="./profile.html">
-                        <h4>Profile</h4>
-                    </a>
-                </li>
-                <li>
-                    <a href="./library.html">
-                        <h4>Library</h4>
-                    </a>
-                </li>
-                <li>
-                    <a href="./songsadded.html">
-                        <h4>
-                            Song Upload
-                            <br />&amp; Remove
-                        </h4>
-                    </a>
-                </li>
-                <li>
-                    <a href="./store.html">
-                        <h4>
-                            Store Value
-                            <br />&amp;Store Record
-                        </h4>
-                    </a>
-                </li>
-                <li>
-                    <a href="./donate.html">
-                        <h4>Donate Record</h4>
-                    </a>
-                </li>
-            </ul>
-        </div>
-      </div>
-      <div class="login_bt" @click="" v-if="mem_login == false">
-        <a class="flexbox" href="#">Login</a>
-      </div>
-      <div class="mem_bt" @click="mem_bt_click" v-if="mem_login == true">
-        <a href="#"></a>
-      </div>
-      <div class="mem_list" @click="stopPropagation">
-        <div class="paint_border"></div>
-        <ul>
-          <li>
-            <a href="./profile.html">
-              <h4>Profile</h4>
-            </a>
-          </li>
-          <li>
-            <a href="./library.html">
-              <h4>Library</h4>
-            </a>
-          </li>
-          <li>
-            <a href="./songsadded.html">
-              <h4>
-                Song Upload
-                <br />&amp; Remove
-              </h4>
-            </a>
-          </li>
-          <li>
-            <a href="./store.html">
-              <h4>
-                Store Value
-                <br />&amp;Store Record
-              </h4>
-            </a>
-          </li>
-          <li>
-            <a href="">
-              <h4>Donate Record</h4>
-            </a>
-          </li>
-        </ul>
-      </div>
+      <!-- nav_bar end -->
     </div>
-    <!-- nav_bar end -->
-    <!-- player start -->
     <div id="player">
       <audio src="" id="audioPlayer"></audio>
       <div class="player_s">
@@ -151,7 +134,7 @@
           <div class="heart becomeRed"><img src="./img/collection/redheart.png" alt=""></div>
           <div class="clearfix"></div>
         </div>
-
+  
         <div class="controlPanel">
           <div class="progressbar">
             <div class="progress"></div>
@@ -181,11 +164,11 @@
             <div class="clearfix"></div>
           </div>
         </div>
-
+  
         <div class="expand" id="expand"><i class="fas fa-expand"></i></div>
         <div class="clearfix"></div>
       </div>
-
+  
       <!-- 詳細版 -->
       <div class="player_b">
         <div class="left">
@@ -232,7 +215,7 @@
           </div>
           <div class="pushBtn"></div>
         </div>
-
+  
         <div class="right">
           <div class="pushBtn"></div>
           <div class="listTitle">
@@ -352,13 +335,13 @@
                 <div class="heart becomeRed"><img src="./img/collection/redheart.png" alt=""></div>
                 <div class="clearfix"></div>
               </li>
-
+  
             </ul>
           </div>
         </div>
         <div class="close" id="closePlayer"><i class="fas fa-times"></i></div>
         <div class="clearfix"></div>
-
+  
         <!-- 撥放器燈箱 -->
         <div class="lightCover">
           <div class="lightbox_s" id="myAllList">
@@ -376,7 +359,6 @@
         </div>
       </div>
     </div>
-    <!-- player end -->
   </div>
   <!-- the end of the nav_bar and player -->
   <!-- start to the content -->
@@ -385,50 +367,49 @@
       <div class="whiteform">
         <div class="signup displaynone">
           <h1>Register</h1>
-          <form autocomplete="off" action="" method="post">
+          <form autocomplete="off">
             <label>E-mail*:</label>
-            <input type="email" class="emailinput" title="ENTER RIGHT" name="mem_acct" required>
+            <input type="email"class="emailinput regiterinput" title="ENTER RIGHT" name="mem_acct" required>
             <label>Password*:</label>
-            <input type="password" class="emailinput firsttimepsw" pattern="\w{5,17}$" name="mem_psw"
-              title="字母開頭，長度在6~18間，只能包含字母、數字、下底線">
+            <input type="password"class="emailinput firsttimepsw regiterinput1" pattern="\w{5,17}$" name="mem_psw" title="字母開頭，長度在6~18間，只能包含字母、數字、下底線" >
             <label>Confirm password*:</label>
-            <input type="password"class="emailinput confirmpsw" pattern="\w{5,17}$" name="mem_psw" title="字母開頭，長度在6~18間，只能包含字母、數字、下底線">
-            <button type="button" class="loginregisterbtn registerbutton">Create</button>
+            <input type="password"class="emailinput confirmpsw regiterinput1" pattern="\w{5,17}$" name="mem_psw" title="字母開頭，長度在6~18間，只能包含字母、數字、下底線">
+            <button type="button" class="loginregisterbtn">Create</button>
           </form>
         </div>
         <div class="signin">
-          <h1>Sign in</h1>
-          <form autocomplete="off">
+            <h1>Sign in</h1>
+            <form  autocomplete="off">
             <label>E-mail*:</label>
             <input type="email" class="emailinput" title="ENTER RIGHT" id="mem_acct" name="mem_acct" required>
-            <label>Password*:</label>
+            <label >Password*:</label>
             <input type="password" id="mem_psw" pattern="\w{5,17}$" name="mem_psw" title="字母開頭，長度在6~18間，只能包含字母、數字、下底線">
             <a href="" class="forgetpswlightbox">forget password?</a>
             <button type="button" class="buttonsubmitlogin loginbutton" >Log in</button>
           </form>
         </div>
       </div>
-      <div class="leftbox">
-        <h2 class="title"><span>EDM</span><br>IN SOUNDWAVE</h2>
-        <img class="flower smaller" src="./img/register/flower.png" alt="1357d638624297b" border="0">
-        <p class="account">have an account?</p>
-        <button id="signin">Login</button>
-      </div>
-      <div class="rightbox">
-        <h2 class="title"><span>SOUNDWAVE</span><br>IN HEART</h2>
-        <img class="flower" src="./img/register/water.png" />
-        <p class="account">don't have an account?</p>
-        <button id="signup">Sign up</button>
+        <div class="leftbox">
+          <h2 class="title"><span>EDM</span><br>IN SOUNDWAVE</h2>
+          <img class="flower smaller" src="./img/register/flower.png" alt="1357d638624297b" border="0">
+          <p class="account">have an account?</p>
+          <button id="signin">Login</button>
+        </div>
+        <div class="rightbox">
+          <h2 class="title"><span>SOUNDWAVE</span><br>IN HEART</h2>
+          <img class="flower" src="./img/register/water.png"/>
+          <p class="account">don't have an account?</p>
+          <button id="signup">Sign up</button>
+        </div>
       </div>
     </div>
-  </div>
   <div id=mobilelogintab>
     <ul class="motabtitle">
       <li><a href="#mobilelogintab1">Sign in</a></li>
       <li><a href="#mobilelogintab2">Register</a></li>
     </ul>
     <div id="mobilelogintab1" class="motabinner">
-      <form autocomplete="off" action="./php/login.php" method="post">
+      <form  autocomplete="off">
         <label>E-mail*:</label>
         <input type="email" class="emailinput" title="ENTER RIGHT" name="mem_acct" required>
         <label >Password*:</label>
@@ -438,11 +419,11 @@
       </form>
     </div>
     <div id="mobilelogintab2" class="motabinner">
-      <form autocomplete="off" action="" method="post">
+      <form autocomplete="off" >
         <label>E-mail:</label>
-        <input type="email" class="emailinput" title="ENTER RIGHT" name="mem_acct" required>
+        <input type="email"class="emailinput regiterinput" title="ENTER RIGHT" name="mem_acct" required>
         <label>Password:</label>
-        <input type="password" class="emailinput firsttimepsw" pattern="\w{5,17}$" title="字母開頭，長度在6~18間，只能包含字母、數字、下底線">
+        <input type="password"class="emailinput firsttimepsw regiterinput1" pattern="\w{5,17}$" title="字母開頭，長度在6~18間，只能包含字母、數字、下底線" >
         <label>Confirm password:</label>
         <input type="password"class="emailinput confirmpsw" pattern="\w{5,17}$" title="字母開頭，長度在6~18間，只能包含字母、數字、下底線">
         <button type="button" class="loginregisterbtn registerbutton">Create</button>
@@ -461,30 +442,51 @@
     </div>
   </div>
   <!-- the end of light box -->
+  <script src="./js/nav_bar.js"></script>
 </body>
 <!-- the script of myself -->
 <script>
+
   //click login XML function
   function loginfun(){  
+  let xhr = new XMLHttpRequest();
+  xhr.onreadystatechange = function(){
+    if(xhr.readyState == 4){
+      if( xhr.status == 200){ //success
+        alert(xhr.responseText);
+        $(location).attr('href', 'http://localhost/g1test/index.html');
+      }else{ 
+        alert(xhr.responseText);
+      }
+    }
+  }
+  let url = "./php/memlogin.php";
+  xhr.open("post", url, true);
+  xhr.setRequestHeader("content-type","application/x-www-form-urlencoded");
+  let member_data = "mem_acct=" + document.getElementById('mem_acct').value+"&mem_psw=" + document.getElementById('mem_psw').value ;
+  xhr.send(member_data);
+  console.log(member_data);
+}
+ //click register XML function
+ function registerfun(){  
   let xhr = new XMLHttpRequest();
   console.log(xhr.readyState);
   xhr.onreadystatechange = function(){
     if(xhr.readyState == 4){
-      if( xhr.status == 200){
-        $(location).attr('href', '//www.localhost/g1test/index.html');
+      if( xhr.status == 200){ //success
         alert(xhr.responseText);
       }else{ 
         alert(xhr.responseText);
       }
     }
   }
-  let url = "./php/login.php";
+  let url = "./php/memRegister.php";
   xhr.open("post", url, true);
   xhr.setRequestHeader("content-type","application/x-www-form-urlencoded");
-  let member_data = "mem_acct=" + document.getElementById('mem_acct').value+"&&mem_psw=" + document.getElementById('mem_psw').value ;
+  let member_data = "mem_acct=" + document.getElementsByClassName('regiterinput')[0].value+"&mem_psw=" + document.getElementsByClassName('regiterinput1')[0].value ;
   xhr.send(member_data);
   console.log(member_data);
-  }
+}
   //the lightbox forgetpswlightbox
   $('.forgetpswlightbox').click(function (e) {
     e.preventDefault();
@@ -495,17 +497,17 @@
     $('.loginforgetpsw1').hide();
   });
   //the email double check
-  $('.emailcheck').click(function () {
+  $('.emailcheck').click(function(){
     $('.emailchecklabel').text('Please check the confirmation in your E-mail.');
     $('.emailcheckinput').hide();
     $('.emailcheck').text('Close');
-    $('.emailcheck').click(function () {
-      $('.loginforgetpsw1').hide();
-      location.reload(['.forgetpswlightbox']);
-    });
+      $('.emailcheck').click(function(){
+        $('.loginforgetpsw1').hide();
+        location.reload(['.forgetpswlightbox']);  
+      }); 
   });
   //the change of the div
-  $('#signup').click(function () {
+  $('#signup').click(function() {
     $('.whiteform').css('transform', 'translateX(80%)');
     $('.signin').addClass('displaynone');
     $('.signup').removeClass('displaynone');
@@ -525,9 +527,8 @@
           $(this).addClass('active'). siblings ('.active').removeClass('active');
         });
    $('.loginbutton').click(loginfun);
-   $('.registerbutton').click(register);
+   $('.loginregisterbtn').click(registerfun);
    });
 </script>
 <!-- the end of my script -->
-
 </html>
