@@ -2,7 +2,7 @@
 try {
     require_once("connectBooks.php");
 
-    // $pdo = new PDO($dsn,$user,$password,$options);
+    $pdo = new PDO($dsn,$user,$password,$options);
     $sql = "select * from `member` where mem_acct =:mem_acct and mem_psw =:mem_psw";
     $memInsert = $pdo -> prepare($sql);
     $memInsert->bindValue('mem_acct',$_POST['mem_acct']);
@@ -15,7 +15,6 @@ try {
         $_SESSION["mem_no"] = $memRow["mem_no"];
         $_SESSION["mem_acct"] = $memRow["mem_acct"];
         $_SESSION["mem_psw"] = $memRow["mem_psw"];
-
         echo "Log in successly!";
     }else{
         echo "Account or password is wrong,please enter the right one";
