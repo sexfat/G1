@@ -480,7 +480,7 @@
                             </a>
                         </li>
                         <ol class="songsadded_inside">
-                            <form class="addinsideadd" action="" >
+                            <form class="addinsideadd" action="./php/songupload.php" method="POST" target="id_iframe">
                                 <article>
                                     <br>
                                     <p style="width: 100px;height: 100px;">
@@ -488,29 +488,31 @@
                                     </p>
                                     <!-- <img class="songsadded_ff" style="width: 50px;height: 30px;"
                                         src="./img/songupload/button_edit.png"> -->
-                                    <input type="file" name="" id="theFile" style="display: none;">
+                                    <input type="file" name="song_pic" id="theFile" style="display: none;">
                                     <label class="songsadded_ff" for="theFile"
                                         style="text-align: center;margin-left: -5px;">Edit</label>
 
                                 </article>
                                 <div>
                                     <p style="font-weight: bold;">Song Title : <input type="text" id="add_pp"
-                                            style="border: 1px solid #d0d6d6;width:350px;height:28px;background-color: #d0d6d6;">
+                                            name="song_name"
+                                            style="border: 1px solid #d0d6d6;width:350px;height:28px;background-color: #d0d6d6;"
+                                            required>
                                     </p>
                                     <div id="infopath">
                                         <span
                                             style="position: relative;left: -100px;top: -20px;font-weight: bold;">Upload
                                             path :</span>
                                         <p class="songsadd_path">{{infopathURL}}</p>
-                                        <input type="file" name="" id="songinfo_btn" @change="changeSignUpload"
+                                        <input type="file" name="song_addr" id="songinfo_btn" @change="changeSignUpload"
                                             style="display: none;">
                                         <label class="songinfo_bb" for="songinfo_btn"
                                             style="text-align: center;">Choose</label>
                                     </div><br>
                                     <div id="infohashtag">
                                         <span style="font-weight: bold;">Song type : </span><input type="radio"
-                                            name="type" id=""> House&ensp;
-                                        <input type="radio" style="border-radius: 5px;" name="type" id="">Trap
+                                            name="cat_no" id=""> House&ensp;
+                                        <input type="radio" style="border-radius: 5px;" name="cat_no" id="">Trap
                                         <br>
                                         <span style="font-weight: bold;">Hashtag : </span><br>
                                         <input type="checkbox" name="" id=""> #Scratch&ensp;
@@ -518,7 +520,7 @@
                                         <input type="checkbox" name="" id="add_Ethereal"> #Ethereal&ensp;
                                         <br>
                                         <p style="font-weight: bold;">Introduction :</p>
-                                        <textarea name="" id="add_tta" cols="65" rows="6"
+                                        <textarea name="song_idn" id="add_tta" cols="65" rows="6"
                                             style="border: 1px solid #d0d6d6;background-color: #D0D6D6;"></textarea>
                                     </div>
                                 </div>
@@ -527,7 +529,7 @@
                                     <label class="sd_btn" for="sd">Send</label>
                                 </section>
                             </form>
-
+                            <iframe id="id_iframe" name="id_iframe" style="display:none;"></iframe>
                         </ol>
                         <li class="songsadded_lif">
                             <a href="#">
@@ -538,7 +540,8 @@
                         </li>
                         <ol class="songsadded_inside2" style="overflow:scroll;overflow-X:hidden;">
                             <a href="#">
-                                <li class="songsadded_inside2_li">Andy Warhol - Because of you <span style="float: right;margin-right: 20px;"></span>
+                                <li class="songsadded_inside2_li">Andy Warhol - Because of you <span
+                                        style="float: right;margin-right: 20px;"></span>
                                     <div class="more" style="float: right;margin-right: 310px;z-index: 1000;">
                                         <i class="fas fa-ellipsis-h"></i>
                                         <div class="addedit">
@@ -577,14 +580,14 @@
                                                     style="border: 1px solid #d0d6d6;height:28px;background-color: #d0d6d6;">
                                             </p>
                                             <div class="infopathbtom">
-                                                <span
+                                                <!-- <span
                                                     style="position: relative;left: -100px;top: -20px;font-weight: bold;">Upload
-                                                    path :</span>
-                                                <p class="songsadd_path">{{infopathURL2}}</p>
-                                                <input type="file" name="" id="songinfo_btnbtom"
+                                                    path :</span> -->
+                                                <!-- <p class="songsadd_path">{{infopathURL2}}</p> -->
+                                                <!-- <input type="file" name="" id="songinfo_btnbtom"
                                                     @change="changeSignUpload" style="display: none;">
                                                 <label class="songinfo_bb" for="songinfo_btnbtom"
-                                                    style="text-align: center;">Choose</label>
+                                                    style="text-align: center;">Choose</label> -->
                                             </div><br>
                                             <div class="infohashtagbtom">
                                                 <span style="font-weight: bold;">Song type :
@@ -681,17 +684,17 @@
                                         <div class="inside2count">
                                             <p style="font-weight: bold;">Song Title : <input type="text"
                                                     class="add_btom"
-                                                    style="border: 1px solid #d0d6d6;width:350px;height:28px;background-color: #d0d6d6;">
+                                                    style="border: 1px solid #d0d6d6;width:240px;height:28px;background-color: #d0d6d6;">
                                             </p>
                                             <div class="infopathbtom2">
-                                                <span
+                                                <!-- <span
                                                     style="position: relative;left: -100px;top: -20px;font-weight: bold;">Upload
-                                                    path :</span>
-                                                <p class="songsadd_path">{{infopathURL3}}</p>
-                                                <input type="file" name="" id="songinfo_btnbtom"
+                                                    path :</span> -->
+                                                <!-- <p class="songsadd_path">{{infopathURL3}}</p> -->
+                                                <!-- <input type="file" name="" id="songinfo_btnbtom"
                                                     @change="changeSignUpload" style="display: none;">
                                                 <label class="songinfo_bb" for="songinfo_btnbtom"
-                                                    style="text-align: center;">Choose</label>
+                                                    style="text-align: center;">Choose</label> -->
                                             </div><br>
                                             <div class="infohashtagbtom">
                                                 <span style="font-weight: bold;">Song type :
@@ -788,17 +791,17 @@
                                         <div class="inside2count">
                                             <p style="font-weight: bold;">Song Title : <input type="text"
                                                     class="add_btom"
-                                                    style="border: 1px solid #d0d6d6;width:350px;height:28px;background-color: #d0d6d6;">
+                                                    style="border: 1px solid #d0d6d6;width:240px;height:28px;background-color: #d0d6d6;">
                                             </p>
                                             <div class="infopathbtom3">
-                                                <span
+                                                <!-- <span
                                                     style="position: relative;left: -100px;top: -20px;font-weight: bold;">Upload
-                                                    path :</span>
-                                                <p class="songsadd_path">{{infopathURL4}}</p>
-                                                <input type="file" name="" id="songinfo_btnbtom"
+                                                    path :</span> -->
+                                                <!-- <p class="songsadd_path">{{infopathURL4}}</p> -->
+                                                <!-- <input type="file" name="" id="songinfo_btnbtom"
                                                     @change="changeSignUpload" style="display: none;">
                                                 <label class="songinfo_bb" for="songinfo_btnbtom"
-                                                    style="text-align: center;">Choose</label>
+                                                    style="text-align: center;">Choose</label> -->
                                             </div><br>
                                             <div class="infohashtagbtom">
                                                 <span style="font-weight: bold;">Song type :
@@ -872,18 +875,14 @@
                 <label class="songsadded_ff" for="theFile"> &emsp; Edit</label> -->
             </article>
             <div>
-                <span><span style="font-weight: bold;">Song Title :</span><span
-                        style="font-size:16px"> Because
+                <span><span style="font-weight: bold;">Song Title :</span><span style="font-size:16px"> Because
                         of you</span></span><br>
-                <span><span style="font-weight: bold;">Author :</span><span
-                        style="font-size:16px">
+                <span><span style="font-weight: bold;">Author :</span><span style="font-size:16px">
                         Andy
                         Warhol</span></span><br>
-                <span><span style="font-weight: bold;">Song Type :</span><span
-                        style="font-size:16px">
+                <span><span style="font-weight: bold;">Song Type :</span><span style="font-size:16px">
                         House</span></span><br>
-                <span><span style="font-weight: bold;">HashTag :</span><span
-                        style="font-size:16px">
+                <span><span style="font-weight: bold;">HashTag :</span><span style="font-size:16px">
                         #Scratch</span></span><br>
                 <span><span style="font-weight: bold;">Introduction :</span></span><br>
                 <span style="font-size:16px">"Hold It Against Me" is three <br>
@@ -1153,13 +1152,26 @@
     </script>
 
     <script>
-        let url = "./php/songupload.php";
+        function songsadd() {
+            var xhr = new XMLHttpRequest();
+            console.log(xhr.readyState);
+            xhr.onreadystatechange = function () {
+                if (xhr.readyState == 4) {
+                    if (xhr.status == 200) {
+                        $(location).attr('href', '//www.localhost/g1test/index.html');
+                        alert(xhr.responseText);
+                    } else {
+                        alert(xhr.responseText);
+                    }
+                }
+            }
+        }
+        var url = "./php/songupload.php";
         xhr.open("post", url, true);
         xhr.setRequestHeader("content-type", "application/x-www-form-urlencoded");
-        let member_data = "mem_acct=" + document.getElementById('mem_acct').value + "&&mem_psw=" + document
-            .getElementById('mem_psw').value;
-        xhr.send(member_data);
-        console.log(member_data);
+        
+        xhr.send(songsadd);
+        console.log(songsadd);
     </script>
 </body>
 
