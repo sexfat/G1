@@ -391,8 +391,7 @@
       </div>
       <div id="tab01" class="collectiontabinner">
         <section class="collectionalbumsection1">
-          <div class="collectionsinglealbum">
-            <div class="collectionsinglecover">
+            <!-- <div class="collectionsinglecover">
               <div class="collalbumpic sampleblum1">
                 <div class="collplayer"><a href=""><img src="./img/library/coverPlay-b.png" alt=""></a></div>
               </div>
@@ -428,8 +427,6 @@
                 <span>NERVO</span>
               </p>
             </div>
-          </div>
-          <div class="collectionsinglealbum">
             <div class="collectionsinglecover">
               <div class="collalbumpic sampleblum5">
                 <div class="collplayer"><a href=""><img src="./img/library/coverPlay-b.png" alt=""></a></div>
@@ -466,8 +463,6 @@
                 <span>Martin Jensen</span>
               </p>
             </div>
-          </div>
-          <div class="collectionsinglealbum">
             <div class="collectionsinglecover">
               <div class="collalbumpic sampleblum9">
                 <div class="collplayer"><a href=""><img src="./img/library/coverPlay-b.png" alt=""></a></div>
@@ -503,13 +498,11 @@
               <p><a class="collsongnamea" href="./songinfo.html">Phatt bass</a><br>
                 <span>Warp Brothersk</span>
               </p>
-            </div>
-          </div>
+            </div> -->
         </section>
       </div>
       <div id="tab02" class="collectiontabinner">
         <section class="collectionalbumsection1">
-          <div class="collectionsinglealbum">
             <div class="collectionsinglecover">
               <div class="collalbumpic sampleblum12">
                 <div class="collplayer"><a href=""><img src="./img/library/coverPlay-b.png" alt=""></a></div>
@@ -546,8 +539,6 @@
                 <span>Playmen</span>
               </p>
             </div>
-          </div>
-          <div class="collectionsinglealbum">
             <div class="collectionsinglecover">
               <div class="collalbumpic sampleblum8">
                 <div class="collplayer"><a href=""><img src="./img/library/coverPlay-b.png" alt=""></a></div>
@@ -584,8 +575,6 @@
                 <span>Galantis</span>
               </p>
             </div>
-          </div>
-          <div class="collectionsinglealbum">
             <div class="collectionsinglecover">
               <div class="collalbumpic sampleblum4">
                 <div class="collplayer"><a href=""><img src="./img/library/coverPlay-b.png" alt=""></a></div>
@@ -622,12 +611,10 @@
                 <span>Kayzo</span>
               </p>
             </div>
-          </div>
         </section>
       </div>
       <div id="tab03" class="collectiontabinner">
         <section class="collectionalbumsection1">
-          <div class="collectionsinglealbum">
             <div class="collectionsinglecover">
               <div class="collalbumpic sampleblum1">
                 <div class="collplayer"><a href=""><img src="./img/library/coverPlay-b.png" alt=""></a></div>
@@ -664,8 +651,6 @@
                 <span>NERVO</span>
               </p>
             </div>
-          </div>
-          <div class="collectionsinglealbum">
             <div class="collectionsinglecover">
               <div class="collalbumpic sampleblum5">
                 <div class="collplayer"><a href=""><img src="./img/library/coverPlay-b.png" alt=""></a></div>
@@ -702,8 +687,6 @@
                 <span>Martin Jensen</span>
               </p>
             </div>
-          </div>
-          <div class="collectionsinglealbum">
             <div class="collectionsinglecover">
               <div class="collalbumpic sampleblum9">
                 <div class="collplayer"><a href=""><img src="./img/library/coverPlay-b.png" alt=""></a></div>
@@ -740,13 +723,11 @@
                 <span>Warp Brothersk</span>
               </p>
             </div>
-          </div>
         </section>
       </div>
       <div id="tab04" class="collectiontabinner">
         <section class="collectionalbumsection1">
-          <div class="collectionsinglealbum">
-            <div class="collectionsinglecover">
+            <!-- <div class="collectionsinglecover">
               <div class="collalbumpic sampleblum12">
                 <div class="collplayer"><a href=""><img src="./img/library/coverPlay-b.png" alt=""></a></div>
               </div>
@@ -782,8 +763,6 @@
                 <span>Playmen</span>
               </p>
             </div>
-          </div>
-          <div class="collectionsinglealbum">
             <div class="collectionsinglecover">
               <div class="collalbumpic sampleblum8">
                 <div class="collplayer"><a href=""><img src="./img/library/coverPlay-b.png" alt=""></a></div>
@@ -820,8 +799,6 @@
                 <span>Galantis</span>
               </p>
             </div>
-          </div>
-          <div class="collectionsinglealbum">
             <div class="collectionsinglecover">
               <div class="collalbumpic sampleblum4">
                 <div class="collplayer"><a href=""><img src="./img/library/coverPlay-b.png" alt=""></a></div>
@@ -857,8 +834,7 @@
               <p><a class="collsongnamea" href="./songinfo.html">Cruel love</a><br>
                 <span>Kayzo</span>
               </p>
-            </div>
-          </div>
+            </div> -->
         </section>
       </div>
     </div>
@@ -868,14 +844,46 @@
 </body>
 <!-- the script of myself -->
 <script>
-  // CHANGE HEART
-  $('.collheart').click(function () {
-    if ($(this).hasClass('becomeRed')) {
-      $(this).html('<img src="./img/collection/grayheart.png">').removeClass('becomeRed');
-    } else {
-      $(this).html('<img src="./img/collection/redheart.png">').addClass('becomeRed');
+      let colllist =[];
+      function findCollList(){
+        $('.collectionalbumsection1').children().remove();
+      // let $collimg,$collsong,$collsinger;
+      for(i=0;i<colllist.length;i++){
+        console.log(colllist[i].song_pic);
+        $('.collectionalbumsection1').append(`
+        <div class="collectionsinglecover">
+          <div class="collalbumpic sampleblum12">
+            <div class="collplayer"><a href=""><img src="./img/library/coverPlay-b.png" alt=""></a></div>
+          </div>
+          <div class="collheart"><img src="./img/collection/grayheart.png" alt=""></div>
+          <p><a class="collsongnamea" href="./songinfo.html">${colllist[i].song_name}</a><br>
+            <span>${colllist[i].mem_name}</span>
+          </p>
+        </div>`);
+        $(`.collectionsinglecover:nth-of-type(${i+1}) .sampleblum12`).css('background-image',`url(${colllist[i].song_pic})`);
+      }
     }
-  });
+    //click coll function
+      function CollListYa(){
+      let xhr = new XMLHttpRequest();
+      xhr.open("get", "./php/collectionAdd(all).php", true);
+      xhr.send(null);
+      xhr.onload = function(){
+        colllist = JSON.parse(xhr.responseText);
+        findCollList();
+        console.log(colllist);
+      };
+    }
+    function CollListFav(){
+      let xhr = new XMLHttpRequest();
+      xhr.open("get", "./php/collectionAdd(fav).php", true);
+      xhr.send(null);
+      xhr.onload = function(){
+        colllist = JSON.parse(xhr.responseText);
+        findCollList();
+        console.log(colllist);
+      };
+    }
   // PLAY BUTTON
   $('.collalbumpic').hover(function () {
     $(this).find('.collplayer').css("display", "block");
@@ -927,6 +935,16 @@
       $('.collpinkradio').find('img').attr("src","./img/collection/closeeye.png");
     }
   });
+  $(function(){
+    var $li = $('ul.motabtitle li');
+        $($li. eq(0) .addClass('active').find('a').attr('href')).siblings('.motabinner').hide();
+        $li.click(function(){
+          $($(this).find('a'). attr ('href')).show().siblings ('.motabinner').hide();
+          $(this).addClass('active'). siblings ('.active').removeClass('active');
+        });
+   CollListYa();
+   CollListFav();
+   });
 </script>
 <!-- the end of my script -->
 </html>

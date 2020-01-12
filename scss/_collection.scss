@@ -12,6 +12,8 @@ $albumbottom: 340px;
     background-position:bottom;
     background-size: cover;
     background-repeat: no-repeat;
+    // max-width: 1200px;
+    // margin: 0 auto;
     .collsongnamea{
         &:hover {
             font-weight: bold;
@@ -69,6 +71,8 @@ $albumbottom: 340px;
       }
     .collectionsection{
         padding: 50px 0px 70px 0px;
+        max-width: 1200px;
+        margin: 0 auto;
         @include respond (ipadpro){
             padding: 0px 0px 50px 0px;
         }
@@ -175,12 +179,8 @@ $albumbottom: 340px;
     }
     .collectionalbumsection1{
         width:100%;
+        margin:0px 0px 50px 0px;
         display: inline-block;
-        .collectionsinglealbum{
-            width:100%;
-            margin:0px 0px 50px 0px;
-            display: inline-block;
-            font-size: 0px;
             .collectionsinglecover{
                 margin:20px;
                 display: inline-block;
@@ -303,7 +303,6 @@ $albumbottom: 340px;
                     background-image:url(../img/collection/album12.jpg);
                 }
             }
-        }
     }
     .collectionsection{
         text-align: center;
