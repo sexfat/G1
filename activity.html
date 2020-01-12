@@ -363,9 +363,10 @@
             </div>
         </div>
     </div>
+    <script src="./js/nav_bar.js"></script>
     <script src="./js/player.js"></script>
-    <script src="./js/public.js"></script>
-    <div id="act_title"><img src="./img/activity/title.png" alt=""></div>
+    <header>
+        <div id="act_title"><img src="./img/activity/title.png" alt=""></div>
     </header>
     <section id="activity">
         <div id="actHead" class="wrapper">
@@ -479,8 +480,8 @@
 
 
         </div>
-        <component :is="content" :now-Vote-Song=" nowVoteSong" :now-Vote="nowVoteSong.vote_per"
-            :old-Vote-Song2018="oldVoteSong2018" :old-Vote-Song2017="oldVoteSong2017"></component>
+        <component :is="content" :now-Vote-Song=" nowVoteSong" :old-Vote-Song2018="oldVoteSong2018"
+            :old-Vote-Song2017="oldVoteSong2017"></component>
 
 
     </section>
@@ -1174,12 +1175,10 @@
                 vml.oldVoteSong2017 = JSON.parse(xhrA.responseText);
             }
 
-
-
-
         }
 
     </script>
+
 
 
 

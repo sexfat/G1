@@ -1,12 +1,17 @@
 @import"_public";
 
-#nav_app {
-    position: fixed;
-    top: 0;
-    left: 0;
-    z-index: 999;
+div {
+    margin: 0;
 
+    #nav_app {
+        position: fixed;
+        top: 0;
+        left: 0;
+        z-index: 999;
+
+    }
 }
+
 
 #activityTop {
     position: relative;
@@ -2372,7 +2377,7 @@
             }
 
             @include respond(ipadpro) {
-                width:100%;
+                width: 100%;
             }
         }
 
@@ -2384,7 +2389,7 @@
 
             @include respond(ipadpro) {
                 left: 25px;
-                top:0;
+                top: 0;
 
             }
 
