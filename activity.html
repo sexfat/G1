@@ -12,28 +12,48 @@
     <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/vue/2.6.10/vue.js"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/axios/0.19.0/axios.min.js"></script>
-
-    <script src="./js/player.js"></script>
-    <script src="./js/public.js"></script>
     <link rel="Shortcut Icon" type="image/x-icon" href="./img/collection/smalllogo.ico" />
 </head>
 
 <body>
     <div id="activityTop"></div>
-    <div id="app">
-        <!-- 記得包在 Vue 裡-->
-
-
-        <!-- nav_bar start -->
-        <div class="nav_bar flexbox">
-            <div class="hamburger" @click="hamburger_click">
-                <div class="hamburger-box">
-                    <div class="hamburger-inner"></div>
+    <div>
+        <div id="nav_app">
+            <!-- nav_bar start -->
+            <div class="nav_bar flexbox">
+                <div class="hamburger" @click="hamburger_click">
+                    <div class="hamburger-box">
+                        <div class="hamburger-inner"></div>
+                    </div>
                 </div>
-            </div>
-            <div class="mobile_list" @click="stopPropagation">
-                <div class="paint_border"></div>
-                <ul>
+                <div class="mobile_list" @click="stopPropagation">
+                    <div class="paint_border"></div>
+                    <ul>
+                        <li class="REMIX flexbox">
+                            <a href="./remix.html">
+                            </a>
+                        </li>
+                        <li class="COLLECTION flexbox">
+                            <a href="./collection.html">
+                            </a>
+                        </li>
+                        <li class="ACTIVITY flexbox">
+                            <a href="./activity.html">
+                            </a>
+                        </li>
+                        <li class="LIBRARY flexbox">
+                            <a href="./library.html">
+                            </a>
+                        </li>
+                    </ul>
+                </div>
+                <div class="logo_container">
+                    <a href="./index.html">
+                        <div class="logo"></div>
+                        <div class="finger"></div>
+                    </a>
+                </div>
+                <ul class="main_list flexbox">
                     <li class="REMIX flexbox">
                         <a href="./remix.html">
                         </a>
@@ -51,98 +71,70 @@
                         </a>
                     </li>
                 </ul>
-            </div>
-            <div class="logo_container">
-                <a href="./index.html">
-                    <div class="logo"></div>
-                </a>
-            </div>
-            <ul class="main_list flexbox">
-                <li class="REMIX flexbox">
-                    <a href="./remix.html">
-                    </a>
-                </li>
-                <li class="COLLECTION flexbox">
-                    <a href="./collection.html">
-                    </a>
-                </li>
-                <li class="ACTIVITY flexbox">
-                    <a href="./activity.html">
-                    </a>
-                </li>
-                <li class="LIBRARY flexbox">
-                    <a href="./library.html">
-                    </a>
-                </li>
-            </ul>
-            <div class="search_bt" @click="search_bt_click">
-                <a href="#"></a>
-            </div>
-            <div class="search_bar" @click="stopPropagation">
-                <input class="search" type="text" />
-                <div class="tag_container">
+                <div class="search_bt" @click="search_bt_click">
+                    <a href="#"></a>
+                </div>
+                <div class="search_bar" @click="stopPropagation">
+                    <input class="search" type="text" />
+                    <div class="tag_container">
+                    </div>
+                </div>
+
+                <div class="mem_bt" @click="mem_bt_click" v-if="mem_login == true">
+                    <a href="#"></a>
+                </div>
+                <div class="login_bt" v-if="mem_login == false">
+                    <a href="./login.html"></a>
+                </div>
+                <div class="mem_list" @click="stopPropagation">
+                    <div class="paint_border"></div>
+                    <ul>
+                        <li>
+                            <a href="./profile.html">
+                                <h4>Profile</h4>
+                            </a>
+                        </li>
+                        <li>
+                            <a href="./songsadded.html">
+                                <h4>
+                                    Song Upload
+                                    <br />&amp; Remove
+                                </h4>
+                            </a>
+                        </li>
+                        <li>
+                            <a href="./store.html">
+                                <h4>
+                                    Store Value
+                                    <br />&amp;Store Record
+                                </h4>
+                            </a>
+                        </li>
+                        <li>
+                            <a href="./donate.html">
+                                <h4>Donate Record</h4>
+                            </a>
+                        </li>
+                        <li @click="logout">
+                            <a href="#">
+                                <h4>Log Out</h4>
+                            </a>
+                        </li>
+                    </ul>
                 </div>
             </div>
-            <div class="login_bt" @click="" v-if="mem_login == false">
-                <a class="flexbox" href="#">Login</a>
-            </div>
-            <div class="mem_bt" @click="mem_bt_click" v-if="mem_login == true">
-                <a href="#"></a>
-            </div>
-            <div class="mem_list" @click="stopPropagation">
-                <div class="paint_border"></div>
-                <ul>
-                    <li>
-                        <a href="./profile.html">
-                            <h4>Profile</h4>
-                        </a>
-                    </li>
-                    <li>
-                        <a href="./library.html">
-                            <h4>Library</h4>
-                        </a>
-                    </li>
-                    <li>
-                        <a href="./songsadded.html">
-                            <h4>
-                                Song Upload
-                                <br />&amp; Remove
-                            </h4>
-                        </a>
-                    </li>
-                    <li>
-                        <a href="./store.html">
-                            <h4>
-                                Store Value
-                                <br />&amp;Store Record
-                            </h4>
-                        </a>
-                    </li>
-                    <li>
-                        <a href="">
-                            <h4>Donate Record</h4>
-                        </a>
-                    </li>
-                </ul>
-            </div>
+            <!-- nav_bar end -->
         </div>
-        <!-- nav_bar end -->
-
-
-
-
-        <!-- player start -->
-
         <div id="player">
             <audio src="" id="audioPlayer"></audio>
             <div class="player_s">
                 <div class="info">
-                    <div class="cover"><img src="./img/library/cover1.jpg"></div>
+                    <div class="cover"><img src="./img/collection/album1.jpg"></div>
                     <div class="songInfo">
                         <span class="name">Lucid Dreamer</span>
                         <span class="creator">Spazz Cardigan</span>
                     </div>
-                    <div class="heart becomeRed"><i class="fas fa-heart"></i></div>
+                    <div class="heart becomeRed"><img src="./img/collection/redheart.png" alt=""></div>
                     <div class="clearfix"></div>
                 </div>
 
@@ -183,20 +175,16 @@
             <!-- 詳細版 -->
             <div class="player_b">
                 <div class="left">
-                    <div class="songCover">
-                        <div class="coverImg">
-                            <img src="./img/library/cover1.jpg">
+                    <div class="info">
+                        <div class="songCover">
+                            <img src="./img/collection/album1.jpg">
                             <div class="coverRec"><img src="./img/library/player_record.png" alt=""></div>
                         </div>
                     </div>
                     <div class="songInfo">
-                        <div class="name">
-                            Lucid Dreamer
-                        </div>
-                        <div class="creator">
-                            Spazz Cardigan
-                        </div>
-                        <div class="heart becomeRed"><i class="fas fa-heart"></i></div>
+                        <div class="name">Lucid Dreamer</div>
+                        <div class="creator">Spazz Cardigan</div>
+                        <div class="heart becomeRed"><img src="./img/collection/redheart.png" alt=""></div>
                         <div class="clearfix"></div>
                     </div>
                     <div class="controlPanel">
@@ -205,7 +193,7 @@
                         </div>
                         <div class="time">
                             <span class="start">00:00</span>
-                            <span class="end">04:30</span>
+                            <span class="end">00:00</span>
                             <div class="clearfix"></div>
                         </div>
                         <div class="btns">
@@ -247,8 +235,8 @@
                         <ul>
                             <li>
                                 <div class="songCover">
-                                    <img src="./img/library/cover1.jpg" alt="">
-                                    <div class="listPlay"><i class="fas fa-play"></i></div>
+                                    <img src="./img/collection/album1.jpg" alt="">
+                                    <div class="listPlay nowlistening"><img src="./img/library/coverPlay-s.png"></div>
                                 </div>
                                 <div class="listSongInfo">
                                     <div class="name">
@@ -257,13 +245,13 @@
                                     </div>
                                 </div>
                                 <div class="totalTime">3:11</div>
-                                <div class="heart becomeRed"><i class="fas fa-heart"></i></div>
+                                <div class="heart becomeRed"><img src="./img/collection/redheart.png"></div>
                                 <div class="clearfix"></div>
                             </li>
                             <li>
                                 <div class="songCover">
-                                    <img src="./img/library/cover2.jpg" alt="">
-                                    <div class="listPlay"><i class="fas fa-play"></i></div>
+                                    <img src="./img/collection/album2.jpg" alt="">
+                                    <div class="listPlay"><img src="./img/library/coverPlay-s.png"></div>
                                 </div>
                                 <div class="listSongInfo">
                                     <div class="name">
@@ -272,13 +260,13 @@
                                     </div>
                                 </div>
                                 <div class="totalTime">1:59</div>
-                                <div class="heart becomeRed"><i class="fas fa-heart"></i></div>
+                                <div class="heart becomeRed"><img src="./img/collection/redheart.png" alt=""></div>
                                 <div class="clearfix"></div>
                             </li>
                             <li>
                                 <div class="songCover">
-                                    <img src="./img/library/cover3.jpg" alt="">
-                                    <div class="listPlay"><i class="fas fa-play"></i></div>
+                                    <img src="./img/collection/album3.jpg" alt="">
+                                    <div class="listPlay"><img src="./img/library/coverPlay-s.png"></div>
                                 </div>
                                 <div class="listSongInfo">
                                     <div class="name">
@@ -287,13 +275,13 @@
                                     </div>
                                 </div>
                                 <div class="totalTime">1:56</div>
-                                <div class="heart becomeRed"><i class="fas fa-heart"></i></div>
+                                <div class="heart becomeRed"><img src="./img/collection/redheart.png" alt=""></div>
                                 <div class="clearfix"></div>
                             </li>
                             <li>
                                 <div class="songCover">
-                                    <img src="./img/library/cover4.jpg" alt="">
-                                    <div class="listPlay"><i class="fas fa-play"></i></div>
+                                    <img src="./img/collection/album4.jpg" alt="">
+                                    <div class="listPlay"><img src="./img/library/coverPlay-s.png"></div>
                                 </div>
                                 <div class="listSongInfo">
                                     <div class="name">
@@ -302,13 +290,13 @@
                                     </div>
                                 </div>
                                 <div class="totalTime">4:30</div>
-                                <div class="heart becomeRed"><i class="fas fa-heart"></i></div>
+                                <div class="heart becomeRed"><img src="./img/collection/redheart.png" alt=""></div>
                                 <div class="clearfix"></div>
                             </li>
                             <li>
                                 <div class="songCover">
-                                    <img src="./img/library/cover5.jpg" alt="">
-                                    <div class="listPlay"><i class="fas fa-play"></i></div>
+                                    <img src="./img/collection/album5.jpg" alt="">
+                                    <div class="listPlay"><img src="./img/library/coverPlay-s.png"></div>
                                 </div>
                                 <div class="listSongInfo">
                                     <div class="name">
@@ -317,13 +305,13 @@
                                     </div>
                                 </div>
                                 <div class="totalTime">4:30</div>
-                                <div class="heart becomeRed"><i class="fas fa-heart"></i></div>
+                                <div class="heart becomeRed"><img src="./img/collection/redheart.png" alt=""></div>
                                 <div class="clearfix"></div>
                             </li>
                             <li>
                                 <div class="songCover">
-                                    <img src="./img/library/cover6.jpg" alt="">
-                                    <div class="listPlay"><i class="fas fa-play"></i></div>
+                                    <img src="./img/collection/album6.jpg" alt="">
+                                    <div class="listPlay"><img src="./img/library/coverPlay-s.png"></div>
                                 </div>
                                 <div class="listSongInfo">
                                     <div class="name">
@@ -332,13 +320,13 @@
                                     </div>
                                 </div>
                                 <div class="totalTime">4:30</div>
-                                <div class="heart becomeRed"><i class="fas fa-heart"></i></div>
+                                <div class="heart becomeRed"><img src="./img/collection/redheart.png" alt=""></div>
                                 <div class="clearfix"></div>
                             </li>
                             <li>
                                 <div class="songCover">
-                                    <img src="./img/library/cover1.jpg" alt="">
-                                    <div class="listPlay"><i class="fas fa-play"></i></div>
+                                    <img src="./img/collection/album7.jpg" alt="">
+                                    <div class="listPlay"><img src="./img/library/coverPlay-s.png"></div>
                                 </div>
                                 <div class="listSongInfo">
                                     <div class="name">
@@ -347,7 +335,7 @@
                                     </div>
                                 </div>
                                 <div class="totalTime">4:30</div>
-                                <div class="heart becomeRed"><i class="fas fa-heart"></i></div>
+                                <div class="heart becomeRed"><img src="./img/collection/redheart.png" alt=""></div>
                                 <div class="clearfix"></div>
                             </li>
 
@@ -374,17 +362,10 @@
                 </div>
             </div>
         </div>
-
-        <!-- player end -->
-
-
-
-
-
-
     </div>
-    <header>
-        <div id="act_title"><img src="./img/activity/title.png" alt=""></div>
+    <script src="./js/player.js"></script>
+    <script src="./js/public.js"></script>
+    <div id="act_title"><img src="./img/activity/title.png" alt=""></div>
     </header>
     <section id="activity">
         <div id="actHead" class="wrapper">
@@ -498,8 +479,8 @@
 
 
         </div>
-        <component :is="content" :now-Vote-Song=" nowVoteSong" :now-Vote="nowVoteSong.vote_per":old-Vote-Song2018="oldVoteSong2018"
-            :old-Vote-Song2017="oldVoteSong2017"></component>
+        <component :is="content" :now-Vote-Song=" nowVoteSong" :now-Vote="nowVoteSong.vote_per"
+            :old-Vote-Song2018="oldVoteSong2018" :old-Vote-Song2017="oldVoteSong2017"></component>
 
 
     </section>
@@ -986,7 +967,7 @@
                     SignSongURL: "",
                     SignSongURLSelect: [],
                     // vote:[number.this.nowVoteSong.vote_per],
-                   
+
                 }
 
             },
@@ -1033,13 +1014,13 @@
                     // this.$emit('showChangeVote',  this.nowVoteSong.vote_per++);
                     console.log(this.nowVoteSong.vote_per);
                 },
-               
-                
+
+
 
             },
-           
 
-          
+
+
 
         });
 
@@ -1112,7 +1093,7 @@
                 nowVoteSong: [],
                 oldVoteSong2018: [],
                 oldVoteSong2017: [],
-              
+
 
 
             },
