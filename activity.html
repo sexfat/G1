@@ -16,7 +16,7 @@
 </head>
 
 <body>
-    <div id="activityTop"></div>
+
     <div>
         <div id="nav_app">
             <!-- nav_bar start -->
@@ -421,7 +421,7 @@
 
                 <div id="act_TopAnchor" @click="GoTopAnima">
 
-                    <a href="#activityTop" class="act_Anchor ">
+                    <a href="body" class="act_Anchor ">
                         <img src="./img/activity/top-bush.png" alt="" class="act_Bush">
 
                         <div class="act_ShowTopBush" v-if="GoTopBush==true">
@@ -481,7 +481,7 @@
 
         </div>
         <component :is="content" :now-Vote-Song=" nowVoteSong" :old-Vote-Song2018="oldVoteSong2018"
-            :old-Vote-Song2017="oldVoteSong2017"></component>
+            :old-Vote-Song2017="oldVoteSong2017" :vote-All="voteAll"> </component>
 
 
     </section>
@@ -503,7 +503,7 @@
                  </p>
                  <div class="act_oldVotes">
                      <h3>Votes</h3>
-                     <span>45415</span>
+                     <span>{{voteAll[1].total_vote}}</span>
                  </div>
              </div>
      
@@ -587,7 +587,7 @@
                  </p>
                  <div class="act_oldVotes">
                      <h3>Votes</h3>
-                     <span>45415</span>
+                     <span>{{voteAll[0].total_vote}}</span>
                  </div>
              </div>
      
@@ -735,7 +735,7 @@
                         
                      </p>
                        <p class="act_from-button-box">
-                        <button type="button" @click="NextFormPage(1)">Go</button>
+                        <button type="button" @click="formLogin" >Go</button>
                       </p>
     
                    </div>
@@ -820,12 +820,12 @@
                   
                        <div>
                          <h4>Member name:</h4> 
-                         {{MemberName}}
+                         {{member.mem_name}}
                        </div>
 
                        <div>
                              <h4>Menber email:</h4>
-                             {{MenberEmail}}
+                             {{member.mem_acct}}
                         </div>
 
                       <div>
@@ -890,7 +890,7 @@
                    </p>
                    <div>
                      <h3>Votes</h3>
-                     <span>41815</span>
+                     <span>{{voteAll[2].total_vote}}</span>
                  </div>
                  </article>
          
@@ -898,7 +898,7 @@
                     <div v-for="item in nowVoteSong">   
                     
                         <button type="button" @click.once="showChangeVote" >Vote</button>
-                         <p >Votes <span >{{item.vote_per}}</span></p>
+                         <p >Votes <span>{{item.vote_per}}</span></p>
 
                            <div>
                                <img :src="item.entries_img" alt="">
@@ -954,25 +954,44 @@
             template: '#act-now',
             props: {
                 nowVoteSong: [Array],
+                voteAll: [Array],
             },
             data: function () {
                 return {
 
                     formContent: 0,
-                    MemberName: "Bob",
-                    MenberEmail: "Bob@gmail.com",
-
                     SongName: "",
                     SongInformation: "",
                     SignUpImg: "",
                     SignSongURL: "",
                     SignSongURLSelect: [],
                     // vote:[number.this.nowVoteSong.vote_per],
-
+                    member: [],
                 }
 
             },
+            computed: {
+                // addVote() {
+                //     parseInt(this.nowVoteSong.vote_per) += 1;
+                // }
+
+            },
             methods: {
+                formLogin() {
+
+                    if (vml.mem_login == false) {
+
+                        alert("Please login first!");
+                        location.href = "./login.html";
+
+                    } else {
+                        this.formContent = 1;
+                        fetch('./phps/getMemInfo.php').then(res => res.json()).then(data => this.member = data);
+
+                    };
+
+
+                },
                 NextFormPage(Index) {
                     this.formContent = Index;
                 },
@@ -1010,10 +1029,21 @@
                     playButton.classList.toggle('act_old-play-Pause');
                 },
                 showChangeVote(e) {
-                    let voteButton = e.target;
-                    voteButton.classList.toggle('act_vote-button');
-                    // this.$emit('showChangeVote',  this.nowVoteSong.vote_per++);
-                    console.log(this.nowVoteSong.vote_per);
+                    if (vml.mem_login == false) {
+
+                        alert("Please login first!");
+                        location.href = "./login.html";
+
+                    } else {
+                        let voteButton = e.target;
+                        voteButton.classList.toggle('act_vote-button');
+                        fetch('./phps/getMemInfo.php').then(res => res.json()).then(data => this.member = data);
+
+                    };
+                    // let voteButton = e.target;
+                    // voteButton.classList.toggle('act_vote-button');
+
+
                 },
 
 
@@ -1030,10 +1060,11 @@
             props: {
                 oldVoteSong2018: [Array],
                 oldVoteSong2017: [Array],
+                voteAll: [Array],
             },
             data: function () {
                 return {
-                    Votes: 455,
+
                 }
 
             },
@@ -1083,8 +1114,6 @@
                 imageActive: `./img/activity/banner-activ.jpg`,
                 isActive: 0,
                 currentIndex: 1,
-                MemberName: "Bob",
-                MenberEmail: "Bob@gmail.com",
                 SongName: "",
                 SongInformation: "",
                 SignUpImg: "",
@@ -1094,6 +1123,8 @@
                 nowVoteSong: [],
                 oldVoteSong2018: [],
                 oldVoteSong2017: [],
+                mem_login: false,
+                voteAll: [],
 
 
 
@@ -1157,22 +1188,46 @@
         window.onload = function () {
             let xhr = new XMLHttpRequest();
 
-            xhr.open("get", "./php/getContestNowSong.php", true);
+            xhr.open("get", "./phps/getContestNowSong.php", true);
             xhr.send(null);
             xhr.onload = function () {
                 vml.nowVoteSong = JSON.parse(xhr.responseText);
             }
             let xhrL = new XMLHttpRequest();
-            xhrL.open("get", "./php/getContestOldsong2018.php", true);
+            xhrL.open("get", "./phps/getContestOldsong2018.php", true);
             xhrL.send(null);
             xhrL.onload = function () {
                 vml.oldVoteSong2018 = JSON.parse(xhrL.responseText);
             }
             let xhrA = new XMLHttpRequest();
-            xhrA.open("get", "./php/getContestOldsong2017.php", true);
+            xhrA.open("get", "./phps/getContestOldsong2017.php", true);
             xhrA.send(null);
             xhrA.onload = function () {
                 vml.oldVoteSong2017 = JSON.parse(xhrA.responseText);
+            }
+
+            let xhrI = new XMLHttpRequest();
+            xhrI.onload = function () {
+                member = JSON.parse(xhrI.responseText);
+                if (member.mem_acct) {
+                    vml.mem_login = true;
+
+                    // let xhr = new XMLHttpRequest();
+                    // xhr.open("get", "./php/getMemcontestheart.php", true);
+                    // xhr.send(null);
+
+                } else {
+                    vml.mem_login = false;
+                }
+            }
+            xhrI.open("get", "./phps/getLoginInfo.php", true);
+            xhrI.send(null);
+
+            let xhrB = new XMLHttpRequest();
+            xhrB.open("get", "./phps/getContestVoteAll.php", true);
+            xhrB.send(null);
+            xhrB.onload = function () {
+                vml.voteAll = JSON.parse(xhrB.responseText);
             }
 
         }
