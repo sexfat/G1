@@ -15,108 +15,114 @@
 </head>
 <body class="collectionbody">
   <!-- nav_bar and player -->
-  <div id="app">
-    <div class="nav_bar flexbox">
-      <div class="hamburger" @click="hamburger_click">
-        <div class="hamburger-box">
-          <div class="hamburger-inner"></div>
-        </div>
+  <div>
+    <div id="nav_app">
+      <!-- nav_bar start -->
+      <div class="nav_bar flexbox">
+          <div class="hamburger" @click="hamburger_click">
+              <div class="hamburger-box">
+                  <div class="hamburger-inner"></div>
+              </div>
+          </div>
+          <div class="mobile_list" @click="stopPropagation">
+              <div class="paint_border"></div>
+              <ul>
+                  <li class="REMIX flexbox">
+                      <a href="./remix.html">
+                      </a>
+                  </li>
+                  <li class="COLLECTION flexbox">
+                      <a href="./collection.html">
+                      </a>
+                  </li>
+                  <li class="ACTIVITY flexbox">
+                      <a href="./activity.html">
+                      </a>
+                  </li>
+                  <li class="LIBRARY flexbox">
+                      <a href="./library.html">
+                      </a>
+                  </li>
+              </ul>
+          </div>
+          <div class="logo_container">
+              <a href="./index.html">
+                  <div class="logo"></div>
+                  <div class="finger"></div>
+              </a>
+          </div>
+          <ul class="main_list flexbox">
+              <li class="REMIX flexbox">
+                  <a href="./remix.html">
+                  </a>
+              </li>
+              <li class="COLLECTION flexbox">
+                  <a href="./collection.html">
+                  </a>
+              </li>
+              <li class="ACTIVITY flexbox">
+                  <a href="./activity.html">
+                  </a>
+              </li>
+              <li class="LIBRARY flexbox">
+                  <a href="./library.html">
+                  </a>
+              </li>
+          </ul>
+          <div class="search_bt" @click="search_bt_click">
+              <a href="#"></a>
+          </div>
+          <div class="search_bar" @click="stopPropagation">
+              <input class="search" type="text" />
+              <div class="tag_container">
+              </div>
+          </div>
+
+          <div class="mem_bt" @click="mem_bt_click" v-if="mem_login == true">
+              <a href="#"></a>
+          </div>
+          <div class="login_bt" v-if="mem_login == false">
+              <a href="./login.html"></a>
+          </div>
+          <div class="mem_list" @click="stopPropagation">
+              <div class="paint_border"></div>
+              <ul>
+                  <li>
+                      <a href="./profile.html">
+                          <h4>Profile</h4>
+                      </a>
+                  </li>
+                  <li>
+                      <a href="./songsadded.html">
+                          <h4>
+                              Song Upload
+                              <br />&amp; Remove
+                          </h4>
+                      </a>
+                  </li>
+                  <li>
+                      <a href="./store.html">
+                          <h4>
+                              Store Value
+                              <br />&amp;Store Record
+                          </h4>
+                      </a>
+                  </li>
+                  <li>
+                      <a href="./donate.html">
+                          <h4>Donate Record</h4>
+                      </a>
+                  </li>
+                  <li @click="logout">
+                      <a href="#">
+                          <h4>Log Out</h4>
+                      </a>
+                  </li>
+              </ul>
+          </div>
       </div>
-      <div class="mobile_list" @click="stopPropagation">
-        <div class="paint_border"></div>
-        <ul>
-          <li class="REMIX flexbox">
-            <a href="./remix.html">
-            </a>
-          </li>
-          <li class="COLLECTION flexbox">
-            <a href="./collection.html">
-            </a>
-          </li>
-          <li class="ACTIVITY flexbox">
-            <a href="./activity.html">
-            </a>
-          </li>
-          <li class="LIBRARY flexbox">
-            <a href="./library.html">
-            </a>
-          </li>
-        </ul>
-      </div>
-      <div class="logo_container">
-        <a href="./index.html">
-          <div class="logo"></div>
-        </a>
-      </div>
-      <ul class="main_list flexbox">
-        <li class="REMIX flexbox">
-          <a href="./remix.html">
-          </a>
-        </li>
-        <li class="COLLECTION flexbox">
-          <a href="./collection.html">
-          </a>
-        </li>
-        <li class="ACTIVITY flexbox">
-          <a href="./activity.html">
-          </a>
-        </li>
-        <li class="LIBRARY flexbox">
-          <a href="./library.html">
-          </a>
-        </li>
-      </ul>
-      <div class="search_bt" @click="search_bt_click">
-        <a href="#"></a>
-      </div>
-      <div class="search_bar" @click="stopPropagation">
-        <input class="search" type="text" />
-        <div class="tag_container">
-        </div>
-      </div>
-      <div class="login_bt" @click="" v-if="mem_login == false">
-        <a class="flexbox" href="#">Login</a>
-      </div>
-      <div class="mem_bt" @click="mem_bt_click" v-if="mem_login == true">
-        <a href="#"></a>
-      </div>
-      <div class="mem_list" @click="stopPropagation">
-        <div class="paint_border"></div>
-        <ul>
-          <li>
-            <a href="./profile.html">
-              <h4>Profile</h4>
-            </a>
-          </li>
-          <li>
-            <a href="./library.html">
-              <h4>Library</h4>
-            </a>
-          </li>
-          <li>
-            <a href="./songsadded.html">
-              <h4>
-                Song Upload
-                <br />&amp; Remove
-              </h4>
-            </a>
-          </li>
-          <li>
-            <a href="./store.html">
-              <h4>
-                Store Value
-                <br />&amp;Store Record
-              </h4>
-            </a>
-          </li>
-          <li>
-            <a href="">
-              <h4>Donate Record</h4>
-            </a>
-          </li>
-        </ul>
-      </div>
-    </div>
+      <!-- nav_bar end -->
+  </div>
     <!-- nav_bar end -->
     <!-- player start -->
     <div id="player">
@@ -362,7 +368,7 @@
   <section class="collectionsection">
     <div class="collectionradio">
       <div class="collgreenradio">
-        <img src="./img/collection/closeeye.png" alt="">
+        <img src="./img/collection/openeye.png" alt="">
       </div>
       <div class="collpinkradio">
         <img src="./img/collection/closeeye.png" alt="">
@@ -385,8 +391,7 @@
       </div>
       <div id="tab01" class="collectiontabinner">
         <section class="collectionalbumsection1">
-          <div class="collectionsinglealbum">
-            <div class="collectionsinglecover">
+            <!-- <div class="collectionsinglecover">
               <div class="collalbumpic sampleblum1">
                 <div class="collplayer"><a href=""><img src="./img/library/coverPlay-b.png" alt=""></a></div>
               </div>
@@ -422,8 +427,6 @@
                 <span>NERVO</span>
               </p>
             </div>
-          </div>
-          <div class="collectionsinglealbum">
             <div class="collectionsinglecover">
               <div class="collalbumpic sampleblum5">
                 <div class="collplayer"><a href=""><img src="./img/library/coverPlay-b.png" alt=""></a></div>
@@ -460,8 +463,6 @@
                 <span>Martin Jensen</span>
               </p>
             </div>
-          </div>
-          <div class="collectionsinglealbum">
             <div class="collectionsinglecover">
               <div class="collalbumpic sampleblum9">
                 <div class="collplayer"><a href=""><img src="./img/library/coverPlay-b.png" alt=""></a></div>
@@ -497,13 +498,11 @@
               <p><a class="collsongnamea" href="./songinfo.html">Phatt bass</a><br>
                 <span>Warp Brothersk</span>
               </p>
-            </div>
-          </div>
+            </div> -->
         </section>
       </div>
       <div id="tab02" class="collectiontabinner">
         <section class="collectionalbumsection1">
-          <div class="collectionsinglealbum">
             <div class="collectionsinglecover">
               <div class="collalbumpic sampleblum12">
                 <div class="collplayer"><a href=""><img src="./img/library/coverPlay-b.png" alt=""></a></div>
@@ -540,8 +539,6 @@
                 <span>Playmen</span>
               </p>
             </div>
-          </div>
-          <div class="collectionsinglealbum">
             <div class="collectionsinglecover">
               <div class="collalbumpic sampleblum8">
                 <div class="collplayer"><a href=""><img src="./img/library/coverPlay-b.png" alt=""></a></div>
@@ -578,8 +575,6 @@
                 <span>Galantis</span>
               </p>
             </div>
-          </div>
-          <div class="collectionsinglealbum">
             <div class="collectionsinglecover">
               <div class="collalbumpic sampleblum4">
                 <div class="collplayer"><a href=""><img src="./img/library/coverPlay-b.png" alt=""></a></div>
@@ -616,12 +611,10 @@
                 <span>Kayzo</span>
               </p>
             </div>
-          </div>
         </section>
       </div>
       <div id="tab03" class="collectiontabinner">
         <section class="collectionalbumsection1">
-          <div class="collectionsinglealbum">
             <div class="collectionsinglecover">
               <div class="collalbumpic sampleblum1">
                 <div class="collplayer"><a href=""><img src="./img/library/coverPlay-b.png" alt=""></a></div>
@@ -658,8 +651,6 @@
                 <span>NERVO</span>
               </p>
             </div>
-          </div>
-          <div class="collectionsinglealbum">
             <div class="collectionsinglecover">
               <div class="collalbumpic sampleblum5">
                 <div class="collplayer"><a href=""><img src="./img/library/coverPlay-b.png" alt=""></a></div>
@@ -696,8 +687,6 @@
                 <span>Martin Jensen</span>
               </p>
             </div>
-          </div>
-          <div class="collectionsinglealbum">
             <div class="collectionsinglecover">
               <div class="collalbumpic sampleblum9">
                 <div class="collplayer"><a href=""><img src="./img/library/coverPlay-b.png" alt=""></a></div>
@@ -734,13 +723,11 @@
                 <span>Warp Brothersk</span>
               </p>
             </div>
-          </div>
         </section>
       </div>
       <div id="tab04" class="collectiontabinner">
         <section class="collectionalbumsection1">
-          <div class="collectionsinglealbum">
-            <div class="collectionsinglecover">
+            <!-- <div class="collectionsinglecover">
               <div class="collalbumpic sampleblum12">
                 <div class="collplayer"><a href=""><img src="./img/library/coverPlay-b.png" alt=""></a></div>
               </div>
@@ -776,8 +763,6 @@
                 <span>Playmen</span>
               </p>
             </div>
-          </div>
-          <div class="collectionsinglealbum">
             <div class="collectionsinglecover">
               <div class="collalbumpic sampleblum8">
                 <div class="collplayer"><a href=""><img src="./img/library/coverPlay-b.png" alt=""></a></div>
@@ -814,8 +799,6 @@
                 <span>Galantis</span>
               </p>
             </div>
-          </div>
-          <div class="collectionsinglealbum">
             <div class="collectionsinglecover">
               <div class="collalbumpic sampleblum4">
                 <div class="collplayer"><a href=""><img src="./img/library/coverPlay-b.png" alt=""></a></div>
@@ -851,24 +834,56 @@
               <p><a class="collsongnamea" href="./songinfo.html">Cruel love</a><br>
                 <span>Kayzo</span>
               </p>
-            </div>
-          </div>
+            </div> -->
         </section>
       </div>
     </div>
   </section>
   <!-- the end of the content -->
+  <script src="./js/nav_bar.js"></script>
 </body>
 <!-- the script of myself -->
 <script>
-  // CHANGE HEART
-  $('.collheart').click(function () {
-    if ($(this).hasClass('becomeRed')) {
-      $(this).html('<img src="./img/collection/grayheart.png">').removeClass('becomeRed');
-    } else {
-      $(this).html('<img src="./img/collection/redheart.png">').addClass('becomeRed');
+      let colllist =[];
+      function findCollList(){
+        $('.collectionalbumsection1').children().remove();
+      // let $collimg,$collsong,$collsinger;
+      for(i=0;i<colllist.length;i++){
+        console.log(colllist[i].song_pic);
+        $('.collectionalbumsection1').append(`
+        <div class="collectionsinglecover">
+          <div class="collalbumpic sampleblum12">
+            <div class="collplayer"><a href=""><img src="./img/library/coverPlay-b.png" alt=""></a></div>
+          </div>
+          <div class="collheart"><img src="./img/collection/grayheart.png" alt=""></div>
+          <p><a class="collsongnamea" href="./songinfo.html">${colllist[i].song_name}</a><br>
+            <span>${colllist[i].mem_name}</span>
+          </p>
+        </div>`);
+        $(`.collectionsinglecover:nth-of-type(${i+1}) .sampleblum12`).css('background-image',`url(${colllist[i].song_pic})`);
+      }
     }
-  });
+    //click coll function
+      function CollListYa(){
+      let xhr = new XMLHttpRequest();
+      xhr.open("get", "./php/collectionAdd(all).php", true);
+      xhr.send(null);
+      xhr.onload = function(){
+        colllist = JSON.parse(xhr.responseText);
+        findCollList();
+        console.log(colllist);
+      };
+    }
+    function CollListFav(){
+      let xhr = new XMLHttpRequest();
+      xhr.open("get", "./php/collectionAdd(fav).php", true);
+      xhr.send(null);
+      xhr.onload = function(){
+        colllist = JSON.parse(xhr.responseText);
+        findCollList();
+        console.log(colllist);
+      };
+    }
   // PLAY BUTTON
   $('.collalbumpic').hover(function () {
     $(this).find('.collplayer').css("display", "block");
@@ -920,6 +935,16 @@
       $('.collpinkradio').find('img').attr("src","./img/collection/closeeye.png");
     }
   });
+  $(function(){
+    var $li = $('ul.motabtitle li');
+        $($li. eq(0) .addClass('active').find('a').attr('href')).siblings('.motabinner').hide();
+        $li.click(function(){
+          $($(this).find('a'). attr ('href')).show().siblings ('.motabinner').hide();
+          $(this).addClass('active'). siblings ('.active').removeClass('active');
+        });
+   CollListYa();
+   CollListFav();
+   });
 </script>
 <!-- the end of my script -->
 </html>
