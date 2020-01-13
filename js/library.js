@@ -19,10 +19,19 @@
 
  /* ---------------- library load ---------------- */
  window.addEventListener('load', function () {
+   console.log(member);
    //library 初始
    getLibraryList(); //抓左側列表
    getLibrarySongs(nowList);
    myListInfoCha(-1, libraryList.length);
+
+   if (!member['mem_no']) {
+     $('#modifyBtn').hide();
+     $('#createBtn').hide();
+   } else {
+     $('#modifyBtn').show();
+     $('#createBtn').show();
+   }
 
    //more -- changeList
    $('.songs').on('click', '.more', function () {
@@ -98,7 +107,7 @@
          alert(xhr.statusText);
        }
      };
-     let url = `./php/createNewList.php`;
+     let url = `./phps/createNewList.php`;
      xhr.open("POST", url, true);
      xhr.setRequestHeader('content-type', 'application/x-www-form-urlencoded');
      let data_info = `createListName=${createNewLi}`;
@@ -181,7 +190,7 @@
          alert(xhr.statusText);
        }
      };
-     let url = `./php/modifyList.php`;
+     let url = `./phps/modifyList.php`;
      xhr.open("POST", url, true);
      xhr.setRequestHeader('content-type', 'application/x-www-form-urlencoded');
      let data_info = `plistName=${modifyName}&plistNo=${plistno}&listPic=${coverFileData}`;
@@ -243,9 +252,9 @@
        $(this).removeClass('open');
      } else {
        let hei = $('.lists li').height();
-       let len = $('.lists li').length+1;
+       let len = $('.lists li').length + 1;
        $('.lists').animate({
-         height: (hei * len+30)+'px',
+         height: (hei * len + 30) + 'px',
        }, 500);
        $(this).addClass('open');
      }
@@ -285,7 +294,7 @@
          alert(xhr.statusText);
        }
      };
-     xhr.open("POST", "./php/deleteList.php", true);
+     xhr.open("POST", "./phps/deleteList.php", true);
      xhr.setRequestHeader('content-type', 'application/x-www-form-urlencoded');
      let data_info = `plistNo=${mylistInfo[delListNo].plist_no}`;
      xhr.send(data_info);
@@ -333,17 +342,23 @@
 
  //抓資料庫清單
  function getLibraryList() {
-   let xhr = new XMLHttpRequest();
-   xhr.onload = function () {
-     if (xhr.status == 200) {
-       mylistInfo = JSON.parse(xhr.responseText);
-       showAllMyList(mylistInfo);
-     } else {
-       alert(xhr.statusText);
-     }
-   };
-   xhr.open("get", "./php/getListName.php", false);
-   xhr.send(null);
+   if (member['mem_no']) {
+     let xhr = new XMLHttpRequest();
+     xhr.onload = function () {
+       if (xhr.status == 200) {
+         mylistInfo = JSON.parse(xhr.responseText);
+         showAllMyList(mylistInfo);
+       } else {
+         alert(xhr.statusText);
+       }
+     };
+     xhr.open("get", "./phps/getListName.php", false);
+     xhr.send(null);
+   } else {
+     mylistInfo = JSON.parse('[{"plist_name":"Total songs","list_pic":"./img/library/list_pic_no.jpg"}]');
+     showAllMyList(mylistInfo);
+   }
+
  }
 
  //抓資料庫單一歌單
@@ -358,10 +373,14 @@
        alert(xhr.statusText);
      }
    };
-   if (listname == 'Liked songs') {
-     url = `./php/likedSongsList.php`;
+   if (!member['mem_no']) {
+     url = `./phps/allSongs.php`;
    } else {
-     url = `./php/showPlayList.php?plistName=${listname}`;
+     if (listname == 'Liked songs') {
+       url = `./phps/likedSongsList.php`;
+     } else {
+       url = `./phps/showPlayList.php?plistName=${listname}`;
+     }
    }
    xhr.open("get", url, false);
    xhr.send(null);
@@ -403,6 +422,7 @@
  };
 
  function libraryLightListName(ListInfo) {
+   console.log(ListInfo);
    let ul, li, text;
    $('#libraryMyAllList ul').children().remove();
    ul = $('#libraryMyAllList ul');
@@ -450,7 +470,6 @@
          </div>
          <div class="creator">${songList[i].mem_name}</div>
        </div>
-       <div class="totalTime">${songList[i].totaltime}</div>
        <div class="heart becomeRed"><img src="./img/collection/redheart.png"></div>
        <div class="more">
          <i class="fas fa-ellipsis-h"></i>
@@ -488,7 +507,7 @@
        alert(xhr.statusText);
      }
    };
-   xhr.open("POST", "./php/songChangeList.php", true);
+   xhr.open("POST", "./phps/songChangeList.php", true);
    xhr.setRequestHeader('content-type', 'application/x-www-form-urlencoded');
    let data_info = `libraryMsg=${$('#libraryMsg').val()}&lightPlistNoA=${plistNoN}&lightPlistNo=${plistNo}&lightSongNo=${songNo}`;
    xhr.send(data_info);
@@ -517,7 +536,7 @@
        alert(xhr.statusText);
      }
    };
-   xhr.open("post", "./php/songChangeList.php", true);
+   xhr.open("post", "./phps/songChangeList.php", true);
    xhr.setRequestHeader('content-type', 'application/x-www-form-urlencoded');
    let data_info = `libraryMsg=${$('#libraryMsg').val()}&lightPlistNoA=${plistNoN}&lightSongNo=${songNo}`;
    xhr.send(data_info);

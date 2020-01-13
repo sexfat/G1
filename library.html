@@ -136,7 +136,7 @@
           <h4>Liked songs</h4>
         </div>
         <div class="listSubtitle">My list</div>
-        <div class="mobile_listChoose"> --choose-- 
+        <div class="mobile_listChoose"> --choose--
           <div class="arrow"><i class="fas fa-sort-down"></i></div>
         </div>
         <ul class="lists">
@@ -154,7 +154,7 @@
           </li> -->
         </ul>
         <!-- <select id="mobile_listChoose"> -->
-          <!-- <option disabled selected>-- choose --</option>
+        <!-- <option disabled selected>-- choose --</option>
           <option value="peaceful songs">Peaceful songs</option>
           <option value="party">Party</option>
           <option value="who cares">Who cares</option> -->
@@ -170,29 +170,29 @@
     <div class="right">
       <div class="listInfo">
         <form action="" method="POST" enctype="multipart/form-data">
-        <div class="listCover">
-          <img src="./img/library/list_pic0.jpg" alt="">
-          <label for="library_editCover" class="editBtn">choose
-            <input type="file" name="listPicFake" id="library_editCover">
-            <input type="hidden" name="listPic" id="listPic">
-          </label>
-        </div>
-        <div class="nameAndBtn">
-          <div class="listName">
-            <div class="name">
-              <h2>Liked Songs</h2>
-              <input type="text" name="plistName" id="inputListTitle" value="">
-              <input type="hidden" name="plistNo" id="inputListNo">
+          <div class="listCover">
+            <img src="./img/library/list_pic0.jpg" alt="">
+            <label for="library_editCover" class="editBtn">choose
+              <input type="file" name="listPicFake" id="library_editCover">
+              <input type="hidden" name="listPic" id="listPic">
+            </label>
+          </div>
+          <div class="nameAndBtn">
+            <div class="listName">
+              <div class="name">
+                <h2>Liked Songs</h2>
+                <input type="text" name="plistName" id="inputListTitle" value="">
+                <input type="hidden" name="plistNo" id="inputListNo">
+              </div>
+              <div class="totalSong">8 songs</div>
             </div>
-            <div class="totalSong">8 songs</div>
+            <div class="playall_btn">
+              <button id="listAllPlay" class="circlebtn"><img src="./img/library/coverPlay-b.png"></button>
+              <p>play all</p>
+            </div>
           </div>
-          <div class="playall_btn">
-            <button id="listAllPlay" class="circlebtn"><img src="./img/library/coverPlay-b.png"></button>
-            <p>play all</p>
-          </div>
-        </div>
-        <div class="clearfix"></div>
-        <div class="listInfoSubmit"><button type="submit" class="enterBtn" id="modifyName">submit</button></div>
+          <div class="clearfix"></div>
+          <div class="listInfoSubmit"><button type="submit" class="enterBtn" id="modifyName">submit</button></div>
         </form>
         <iframe id="id_iframe" name="id_iframe" style="display:none;"></iframe>
       </div>
@@ -470,10 +470,10 @@
         <div class="pushBtn"></div>
         <div class="listTitle">
           <div class="listCover">
-            <img src="./img/library/list_pic0.jpg"></div>
+            <img src="./img/library/list_pic_no.jpg"></div>
           <div class="listName">
-            <h2>Liked songs</h2>
-            <span>8 songs</span>
+            <h2>Total songs</h2>
+            <span>0 songs</span>
           </div>
           <button class="selectBtn" id="selectBtn">SELECT</button>
           <div class="clearfix"></div>
@@ -504,7 +504,6 @@
 
   <!-- nav vue -->
   <script src="./js/nav_bar.js"></script>
-  <!-- <script src="./js/public.js"></script> -->
   <script src="./js/player.js"></script>
   <!-- 自己的script -->
   <script src="./js/library.js"></script>
