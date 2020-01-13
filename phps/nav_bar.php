@@ -237,7 +237,7 @@
                 }
             },
 
-            logout() {
+            logout() {1
                 let xhr = new XMLHttpRequest();
                 xhr.onload = function() {
                     this.mem_login = false;

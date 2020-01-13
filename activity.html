@@ -12,28 +12,48 @@
     <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/vue/2.6.10/vue.js"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/axios/0.19.0/axios.min.js"></script>
-
-    <script src="./js/player.js"></script>
-    <script src="./js/public.js"></script>
     <link rel="Shortcut Icon" type="image/x-icon" href="./img/collection/smalllogo.ico" />
 </head>
 
 <body>
-    <div id="activityTop"></div>
-    <div id="app">
-        <!-- 記得包在 Vue 裡-->
 
-
-        <!-- nav_bar start -->
-        <div class="nav_bar flexbox">
-            <div class="hamburger" @click="hamburger_click">
-                <div class="hamburger-box">
-                    <div class="hamburger-inner"></div>
+    <div>
+        <div id="nav_app">
+            <!-- nav_bar start -->
+            <div class="nav_bar flexbox">
+                <div class="hamburger" @click="hamburger_click">
+                    <div class="hamburger-box">
+                        <div class="hamburger-inner"></div>
+                    </div>
                 </div>
-            </div>
-            <div class="mobile_list" @click="stopPropagation">
-                <div class="paint_border"></div>
-                <ul>
+                <div class="mobile_list" @click="stopPropagation">
+                    <div class="paint_border"></div>
+                    <ul>
+                        <li class="REMIX flexbox">
+                            <a href="./remix.html">
+                            </a>
+                        </li>
+                        <li class="COLLECTION flexbox">
+                            <a href="./collection.html">
+                            </a>
+                        </li>
+                        <li class="ACTIVITY flexbox">
+                            <a href="./activity.html">
+                            </a>
+                        </li>
+                        <li class="LIBRARY flexbox">
+                            <a href="./library.html">
+                            </a>
+                        </li>
+                    </ul>
+                </div>
+                <div class="logo_container">
+                    <a href="./index.html">
+                        <div class="logo"></div>
+                        <div class="finger"></div>
+                    </a>
+                </div>
+                <ul class="main_list flexbox">
                     <li class="REMIX flexbox">
                         <a href="./remix.html">
                         </a>
@@ -51,98 +71,70 @@
                         </a>
                     </li>
                 </ul>
-            </div>
-            <div class="logo_container">
-                <a href="./index.html">
-                    <div class="logo"></div>
-                </a>
-            </div>
-            <ul class="main_list flexbox">
-                <li class="REMIX flexbox">
-                    <a href="./remix.html">
-                    </a>
-                </li>
-                <li class="COLLECTION flexbox">
-                    <a href="./collection.html">
-                    </a>
-                </li>
-                <li class="ACTIVITY flexbox">
-                    <a href="./activity.html">
-                    </a>
-                </li>
-                <li class="LIBRARY flexbox">
-                    <a href="./library.html">
-                    </a>
-                </li>
-            </ul>
-            <div class="search_bt" @click="search_bt_click">
-                <a href="#"></a>
-            </div>
-            <div class="search_bar" @click="stopPropagation">
-                <input class="search" type="text" />
-                <div class="tag_container">
+                <div class="search_bt" @click="search_bt_click">
+                    <a href="#"></a>
+                </div>
+                <div class="search_bar" @click="stopPropagation">
+                    <input class="search" type="text" />
+                    <div class="tag_container">
+                    </div>
+                </div>
+
+                <div class="mem_bt" @click="mem_bt_click" v-if="mem_login == true">
+                    <a href="#"></a>
+                </div>
+                <div class="login_bt" v-if="mem_login == false">
+                    <a href="./login.html"></a>
+                </div>
+                <div class="mem_list" @click="stopPropagation">
+                    <div class="paint_border"></div>
+                    <ul>
+                        <li>
+                            <a href="./profile.html">
+                                <h4>Profile</h4>
+                            </a>
+                        </li>
+                        <li>
+                            <a href="./songsadded.html">
+                                <h4>
+                                    Song Upload
+                                    <br />&amp; Remove
+                                </h4>
+                            </a>
+                        </li>
+                        <li>
+                            <a href="./store.html">
+                                <h4>
+                                    Store Value
+                                    <br />&amp;Store Record
+                                </h4>
+                            </a>
+                        </li>
+                        <li>
+                            <a href="./donate.html">
+                                <h4>Donate Record</h4>
+                            </a>
+                        </li>
+                        <li @click="logout">
+                            <a href="#">
+                                <h4>Log Out</h4>
+                            </a>
+                        </li>
+                    </ul>
                 </div>
             </div>
-            <div class="login_bt" @click="" v-if="mem_login == false">
-                <a class="flexbox" href="#">Login</a>
-            </div>
-            <div class="mem_bt" @click="mem_bt_click" v-if="mem_login == true">
-                <a href="#"></a>
-            </div>
-            <div class="mem_list" @click="stopPropagation">
-                <div class="paint_border"></div>
-                <ul>
-                    <li>
-                        <a href="./profile.html">
-                            <h4>Profile</h4>
-                        </a>
-                    </li>
-                    <li>
-                        <a href="./library.html">
-                            <h4>Library</h4>
-                        </a>
-                    </li>
-                    <li>
-                        <a href="./songsadded.html">
-                            <h4>
-                                Song Upload
-                                <br />&amp; Remove
-                            </h4>
-                        </a>
-                    </li>
-                    <li>
-                        <a href="./store.html">
-                            <h4>
-                                Store Value
-                                <br />&amp;Store Record
-                            </h4>
-                        </a>
-                    </li>
-                    <li>
-                        <a href="">
-                            <h4>Donate Record</h4>
-                        </a>
-                    </li>
-                </ul>
-            </div>
+            <!-- nav_bar end -->
         </div>
-        <!-- nav_bar end -->
-
-
-
-
-        <!-- player start -->
-
         <div id="player">
             <audio src="" id="audioPlayer"></audio>
             <div class="player_s">
                 <div class="info">
-                    <div class="cover"><img src="./img/library/cover1.jpg"></div>
+                    <div class="cover"><img src="./img/collection/album1.jpg"></div>
                     <div class="songInfo">
                         <span class="name">Lucid Dreamer</span>
                         <span class="creator">Spazz Cardigan</span>
                     </div>
-                    <div class="heart becomeRed"><i class="fas fa-heart"></i></div>
+                    <div class="heart becomeRed"><img src="./img/collection/redheart.png" alt=""></div>
                     <div class="clearfix"></div>
                 </div>
 
@@ -183,20 +175,16 @@
             <!-- 詳細版 -->
             <div class="player_b">
                 <div class="left">
-                    <div class="songCover">
-                        <div class="coverImg">
-                            <img src="./img/library/cover1.jpg">
+                    <div class="info">
+                        <div class="songCover">
+                            <img src="./img/collection/album1.jpg">
                             <div class="coverRec"><img src="./img/library/player_record.png" alt=""></div>
                         </div>
                     </div>
                     <div class="songInfo">
-                        <div class="name">
-                            Lucid Dreamer
-                        </div>
-                        <div class="creator">
-                            Spazz Cardigan
-                        </div>
-                        <div class="heart becomeRed"><i class="fas fa-heart"></i></div>
+                        <div class="name">Lucid Dreamer</div>
+                        <div class="creator">Spazz Cardigan</div>
+                        <div class="heart becomeRed"><img src="./img/collection/redheart.png" alt=""></div>
                         <div class="clearfix"></div>
                     </div>
                     <div class="controlPanel">
@@ -205,7 +193,7 @@
                         </div>
                         <div class="time">
                             <span class="start">00:00</span>
-                            <span class="end">04:30</span>
+                            <span class="end">00:00</span>
                             <div class="clearfix"></div>
                         </div>
                         <div class="btns">
@@ -247,8 +235,8 @@
                         <ul>
                             <li>
                                 <div class="songCover">
-                                    <img src="./img/library/cover1.jpg" alt="">
-                                    <div class="listPlay"><i class="fas fa-play"></i></div>
+                                    <img src="./img/collection/album1.jpg" alt="">
+                                    <div class="listPlay nowlistening"><img src="./img/library/coverPlay-s.png"></div>
                                 </div>
                                 <div class="listSongInfo">
                                     <div class="name">
@@ -257,13 +245,13 @@
                                     </div>
                                 </div>
                                 <div class="totalTime">3:11</div>
-                                <div class="heart becomeRed"><i class="fas fa-heart"></i></div>
+                                <div class="heart becomeRed"><img src="./img/collection/redheart.png"></div>
                                 <div class="clearfix"></div>
                             </li>
                             <li>
                                 <div class="songCover">
-                                    <img src="./img/library/cover2.jpg" alt="">
-                                    <div class="listPlay"><i class="fas fa-play"></i></div>
+                                    <img src="./img/collection/album2.jpg" alt="">
+                                    <div class="listPlay"><img src="./img/library/coverPlay-s.png"></div>
                                 </div>
                                 <div class="listSongInfo">
                                     <div class="name">
@@ -272,13 +260,13 @@
                                     </div>
                                 </div>
                                 <div class="totalTime">1:59</div>
-                                <div class="heart becomeRed"><i class="fas fa-heart"></i></div>
+                                <div class="heart becomeRed"><img src="./img/collection/redheart.png" alt=""></div>
                                 <div class="clearfix"></div>
                             </li>
                             <li>
                                 <div class="songCover">
-                                    <img src="./img/library/cover3.jpg" alt="">
-                                    <div class="listPlay"><i class="fas fa-play"></i></div>
+                                    <img src="./img/collection/album3.jpg" alt="">
+                                    <div class="listPlay"><img src="./img/library/coverPlay-s.png"></div>
                                 </div>
                                 <div class="listSongInfo">
                                     <div class="name">
@@ -287,13 +275,13 @@
                                     </div>
                                 </div>
                                 <div class="totalTime">1:56</div>
-                                <div class="heart becomeRed"><i class="fas fa-heart"></i></div>
+                                <div class="heart becomeRed"><img src="./img/collection/redheart.png" alt=""></div>
                                 <div class="clearfix"></div>
                             </li>
                             <li>
                                 <div class="songCover">
-                                    <img src="./img/library/cover4.jpg" alt="">
-                                    <div class="listPlay"><i class="fas fa-play"></i></div>
+                                    <img src="./img/collection/album4.jpg" alt="">
+                                    <div class="listPlay"><img src="./img/library/coverPlay-s.png"></div>
                                 </div>
                                 <div class="listSongInfo">
                                     <div class="name">
@@ -302,13 +290,13 @@
                                     </div>
                                 </div>
                                 <div class="totalTime">4:30</div>
-                                <div class="heart becomeRed"><i class="fas fa-heart"></i></div>
+                                <div class="heart becomeRed"><img src="./img/collection/redheart.png" alt=""></div>
                                 <div class="clearfix"></div>
                             </li>
                             <li>
                                 <div class="songCover">
-                                    <img src="./img/library/cover5.jpg" alt="">
-                                    <div class="listPlay"><i class="fas fa-play"></i></div>
+                                    <img src="./img/collection/album5.jpg" alt="">
+                                    <div class="listPlay"><img src="./img/library/coverPlay-s.png"></div>
                                 </div>
                                 <div class="listSongInfo">
                                     <div class="name">
@@ -317,13 +305,13 @@
                                     </div>
                                 </div>
                                 <div class="totalTime">4:30</div>
-                                <div class="heart becomeRed"><i class="fas fa-heart"></i></div>
+                                <div class="heart becomeRed"><img src="./img/collection/redheart.png" alt=""></div>
                                 <div class="clearfix"></div>
                             </li>
                             <li>
                                 <div class="songCover">
-                                    <img src="./img/library/cover6.jpg" alt="">
-                                    <div class="listPlay"><i class="fas fa-play"></i></div>
+                                    <img src="./img/collection/album6.jpg" alt="">
+                                    <div class="listPlay"><img src="./img/library/coverPlay-s.png"></div>
                                 </div>
                                 <div class="listSongInfo">
                                     <div class="name">
@@ -332,13 +320,13 @@
                                     </div>
                                 </div>
                                 <div class="totalTime">4:30</div>
-                                <div class="heart becomeRed"><i class="fas fa-heart"></i></div>
+                                <div class="heart becomeRed"><img src="./img/collection/redheart.png" alt=""></div>
                                 <div class="clearfix"></div>
                             </li>
                             <li>
                                 <div class="songCover">
-                                    <img src="./img/library/cover1.jpg" alt="">
-                                    <div class="listPlay"><i class="fas fa-play"></i></div>
+                                    <img src="./img/collection/album7.jpg" alt="">
+                                    <div class="listPlay"><img src="./img/library/coverPlay-s.png"></div>
                                 </div>
                                 <div class="listSongInfo">
                                     <div class="name">
@@ -347,7 +335,7 @@
                                     </div>
                                 </div>
                                 <div class="totalTime">4:30</div>
-                                <div class="heart becomeRed"><i class="fas fa-heart"></i></div>
+                                <div class="heart becomeRed"><img src="./img/collection/redheart.png" alt=""></div>
                                 <div class="clearfix"></div>
                             </li>
 
@@ -374,15 +362,9 @@
                 </div>
             </div>
         </div>
-
-        <!-- player end -->
-
-
-
-
-
-
     </div>
+    <script src="./js/nav_bar.js"></script>
+    <script src="./js/player.js"></script>
     <header>
         <div id="act_title"><img src="./img/activity/title.png" alt=""></div>
     </header>
@@ -439,7 +421,7 @@
 
                 <div id="act_TopAnchor" @click="GoTopAnima">
 
-                    <a href="#activityTop" class="act_Anchor ">
+                    <a href="body" class="act_Anchor ">
                         <img src="./img/activity/top-bush.png" alt="" class="act_Bush">
 
                         <div class="act_ShowTopBush" v-if="GoTopBush==true">
@@ -498,11 +480,9 @@
 
 
         </div>
-        <component :is="content" 
-        :now-Vote-Song="nowVoteSong" 
-        :old-Vote-Song2018="oldVoteSong2018" 
-        :old-Vote-Song2017="oldVoteSong2017" ></component>
-      
+        <component :is="content" :now-Vote-Song=" nowVoteSong" :old-Vote-Song2018="oldVoteSong2018"
+            :old-Vote-Song2017="oldVoteSong2017" :vote-All="voteAll"> </component>
+
 
     </section>
     <script type="text/x-template" id="act-old">
@@ -523,7 +503,7 @@
                  </p>
                  <div class="act_oldVotes">
                      <h3>Votes</h3>
-                     <span>45415</span>
+                     <span>{{voteAll[1].total_vote}}</span>
                  </div>
              </div>
      
@@ -607,7 +587,7 @@
                  </p>
                  <div class="act_oldVotes">
                      <h3>Votes</h3>
-                     <span>45415</span>
+                     <span>{{voteAll[0].total_vote}}</span>
                  </div>
              </div>
      
@@ -755,7 +735,7 @@
                         
                      </p>
                        <p class="act_from-button-box">
-                        <button type="button" @click="NextFormPage(1)">Go</button>
+                        <button type="button" @click="formLogin" >Go</button>
                       </p>
     
                    </div>
@@ -840,12 +820,12 @@
                   
                        <div>
                          <h4>Member name:</h4> 
-                         {{MemberName}}
+                         {{member.mem_name}}
                        </div>
 
                        <div>
                              <h4>Menber email:</h4>
-                             {{MenberEmail}}
+                             {{member.mem_acct}}
                         </div>
 
                       <div>
@@ -910,7 +890,7 @@
                    </p>
                    <div>
                      <h3>Votes</h3>
-                     <span>41815</span>
+                     <span>{{voteAll[2].total_vote}}</span>
                  </div>
                  </article>
          
@@ -918,7 +898,7 @@
                     <div v-for="item in nowVoteSong">   
                     
                         <button type="button" @click.once="showChangeVote" >Vote</button>
-                         <p >Votes <span >{{item.vote_per}}</span></p>
+                         <p >Votes <span>{{item.vote_per}}</span></p>
 
                            <div>
                                <img :src="item.entries_img" alt="">
@@ -974,25 +954,44 @@
             template: '#act-now',
             props: {
                 nowVoteSong: [Array],
+                voteAll: [Array],
             },
             data: function () {
                 return {
 
                     formContent: 0,
-                    MemberName: "Bob",
-                    MenberEmail: "Bob@gmail.com",
-                   
                     SongName: "",
                     SongInformation: "",
                     SignUpImg: "",
                     SignSongURL: "",
                     SignSongURLSelect: [],
-                    Votes: 415,
+                    member: [],
                    
-              }
+                }
+
+            },
+            computed: {
+                // addVote() {
+                //     parseInt(this.nowVoteSong.vote_per) += 1;
+                // }
 
             },
             methods: {
+                formLogin() {
+
+                    if (vml.mem_login == false) {
+
+                        alert("Please login first!");
+                        location.href = "./login.html";
+
+                    } else {
+                        this.formContent = 1;
+                        fetch('./phps/getMemInfo.php').then(res => res.json()).then(data => this.member = data);
+
+                    };
+
+
+                },
                 NextFormPage(Index) {
                     this.formContent = Index;
                 },
@@ -1030,15 +1029,27 @@
                     playButton.classList.toggle('act_old-play-Pause');
                 },
                 showChangeVote(e) {
-                    let voteButton = e.target;
-                    voteButton.classList.toggle('act_vote-button');
-                    clearBush()
+                    if (vml.mem_login == false) {
+
+                        alert("Please login first!");
+                        location.href = "./login.html";
+
+                    } else {
+                        let voteButton = e.target;
+                        voteButton.classList.toggle('act_vote-button');
+                        fetch('./phps/getMemInfo.php').then(res => res.json()).then(data => this.member = data);
+
+                    };
 
                 },
 
+                showMemberSong(){
+                    fetch('./phps/getMemContestSong.php').then(res => res.json()).then(data => this.SignSongURLSelect = data);
+                }
 
 
             },
+
 
 
 
@@ -1049,10 +1060,11 @@
             props: {
                 oldVoteSong2018: [Array],
                 oldVoteSong2017: [Array],
+                voteAll: [Array],
             },
             data: function () {
                 return {
-                    Votes: 455,
+
                 }
 
             },
@@ -1102,23 +1114,22 @@
                 imageActive: `./img/activity/banner-activ.jpg`,
                 isActive: 0,
                 currentIndex: 1,
-                MemberName: "Bob",
-                MenberEmail: "Bob@gmail.com",
                 SongName: "",
                 SongInformation: "",
                 SignUpImg: "",
                 SignSongURL: "",
                 SignSongURLSelect: "",
-                Votes: 415,
                 GoTopBush: false,
                 nowVoteSong: [],
                 oldVoteSong2018: [],
                 oldVoteSong2017: [],
-               
+                mem_login: false,
+                voteAll: [],
+
 
 
             },
-           
+
             computed: {
 
 
@@ -1177,30 +1188,52 @@
         window.onload = function () {
             let xhr = new XMLHttpRequest();
 
-            xhr.open("get", "./php/getContestNowSong.php", true);
+            xhr.open("get", "./phps/getContestNowSong.php", true);
             xhr.send(null);
             xhr.onload = function () {
                 vml.nowVoteSong = JSON.parse(xhr.responseText);
             }
             let xhrL = new XMLHttpRequest();
-            xhrL.open("get", "./php/getContestOldsong2018.php", true);
+            xhrL.open("get", "./phps/getContestOldsong2018.php", true);
             xhrL.send(null);
             xhrL.onload = function () {
                 vml.oldVoteSong2018 = JSON.parse(xhrL.responseText);
             }
             let xhrA = new XMLHttpRequest();
-            xhrA.open("get", "./php/getContestOldsong2017.php", true);
+            xhrA.open("get", "./phps/getContestOldsong2017.php", true);
             xhrA.send(null);
             xhrA.onload = function () {
                 vml.oldVoteSong2017 = JSON.parse(xhrA.responseText);
             }
 
+            let xhrI = new XMLHttpRequest();
+            xhrI.onload = function () {
+                member = JSON.parse(xhrI.responseText);
+                if (member.mem_acct) {
+                    vml.mem_login = true;
 
+                    let xhr = new XMLHttpRequest();
+                    xhr.open("get", "./php/getMemcontestheart.php", true);
+                    xhr.send(null);
 
+                } else {
+                    vml.mem_login = false;
+                }
+            }
+            xhrI.open("get", "./phps/getLoginInfo.php", true);
+            xhrI.send(null);
+
+            let xhrB = new XMLHttpRequest();
+            xhrB.open("get", "./phps/getContestVoteAll.php", true);
+            xhrB.send(null);
+            xhrB.onload = function () {
+                vml.voteAll = JSON.parse(xhrB.responseText);
+            }
 
         }
 
     </script>
+
 
 
 

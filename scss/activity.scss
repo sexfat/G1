@@ -1,18 +1,5 @@
 @import"_public";
 
-#app {
-    position: fixed;
-    top: 0;
-    left: 0;
-    z-index: 999;
-
-}
-
-#activityTop {
-    position: relative;
-    width: 10px;
-    height: 10px;
-}
 
 #act_title {
     margin: 0 auto;
@@ -2372,7 +2359,7 @@
             }
 
             @include respond(ipadpro) {
-                width:100%;
+                width: 100%;
             }
         }
 
@@ -2384,7 +2371,7 @@
 
             @include respond(ipadpro) {
                 left: 25px;
-                top:0;
+                top: 0;
 
             }
 
