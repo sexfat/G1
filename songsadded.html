@@ -480,7 +480,7 @@
                             </a>
                         </li>
                         <ol class="songsadded_inside">
-                            <form class="addinsideadd" action="./php/songupload.php" method="GET" >
+                            <form class="addinsideadd" action="./phps/songupload.php" method="GET">
                                 <article>
                                     <!-- target="id_iframe" -->
                                     <br>
@@ -512,7 +512,7 @@
                                     </div><br>
                                     <div id="infohashtag">
                                         <span style="font-weight: bold;">Song type : </span><input type="radio"
-                                            name="cat_no" id=""> House&ensp;
+                                            name="cat_no" id="" checked="checked"> House&ensp;
                                         <input type="radio" style="border-radius: 5px;" name="cat_no" id="">Trap
                                         <br>
                                         <span style="font-weight: bold;">Hashtag : </span><br>
@@ -1167,10 +1167,10 @@
                 }
             }
         }
-        var url = "./php/songupload.php";
+        var url = "./phps/songupload.php";
         xhr.open("post", url, true);
         xhr.setRequestHeader("content-type", "application/x-www-form-urlencoded");
-        
+
         xhr.send(songsadd);
         console.log(songsadd);
     </script>
