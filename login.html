@@ -439,7 +439,7 @@
       <form action="./PHPMailer-master/src/forgetPassword.php" method="POST">
         <label class="emailchecklabel">Please enter your e-mail:</label> <br>
         <input class="emailcheckinput forpswlogin" name="forpswlogin" type="text"> <br>
-        <button class="emailcheck" type="submit">Ok</button>
+        <button class="emailcheck" type="button">Ok</button>
       </form>
     </div>
   </div>
@@ -461,7 +461,7 @@
       }
     }
   }
-  let url = "./php/memlogin.php";
+  let url = "./phps/memlogin.php";
   xhr.open("post", url, true);
   xhr.setRequestHeader("content-type","application/x-www-form-urlencoded");
   let member_data = "mem_acct=" + document.getElementById('mem_acct').value+"&mem_psw=" + document.getElementById('mem_psw').value ;
@@ -481,7 +481,7 @@
       }
     }
   }
-  let url = "./php/memRegister.php";
+  let url = "./phps/memRegister.php";
   xhr.open("post", url, true);
   xhr.setRequestHeader("content-type","application/x-www-form-urlencoded");
   let member_data = "mem_acct=" + document.getElementsByClassName('regiterinput')[0].value+"&mem_psw=" + document.getElementsByClassName('regiterinput1')[0].value ;
