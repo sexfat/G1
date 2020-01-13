@@ -436,9 +436,11 @@
     <div class="loginforgetpsw2 lightbox_s">
       <div class="loginlightboxclose closeLight"><i class="fas fa-times"></i></div>
       <h4>Return password</h4>
-      <label class="emailchecklabel">Please enter your e-mail:</label> <br>
-      <input class="emailcheckinput" type="text"> <br>
-      <button class="emailcheck">Ok</button>
+      <form action="./PHPMailer-master/src/forgetPassword.php" method="POST">
+        <label class="emailchecklabel">Please enter your e-mail:</label> <br>
+        <input class="emailcheckinput forpswlogin" name="forpswlogin" type="text"> <br>
+        <button class="emailcheck" type="submit">Ok</button>
+      </form>
     </div>
   </div>
   <!-- the end of light box -->
@@ -446,7 +448,6 @@
 </body>
 <!-- the script of myself -->
 <script>
-
   //click login XML function
   function loginfun(){  
   let xhr = new XMLHttpRequest();
