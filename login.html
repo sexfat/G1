@@ -436,10 +436,10 @@
     <div class="loginforgetpsw2 lightbox_s">
       <div class="loginlightboxclose closeLight"><i class="fas fa-times"></i></div>
       <h4>Return password</h4>
-      <form action="./PHPMailer-master/src/forgetPassword.php" method="POST">
+      <form>
         <label class="emailchecklabel">Please enter your e-mail:</label> <br>
         <input class="emailcheckinput forpswlogin" name="forpswlogin" type="text"> <br>
-        <button class="emailcheck" type="button">Ok</button>
+        <button class="emailcheck" type="submit">Ok</button>
       </form>
     </div>
   </div>
@@ -448,6 +448,26 @@
 </body>
 <!-- the script of myself -->
 <script>
+  //forget password 
+    function forgetfun(){  
+  let xhr = new XMLHttpRequest();
+  xhr.onreadystatechange = function(){
+    if(xhr.readyState == 4){
+      if( xhr.status == 200){ //success
+        alert(xhr.responseText);
+        $(location).attr('href', './index.html');
+      }else{ 
+        alert(xhr.responseText);
+      }
+    }
+  }
+  let url = "./PHPMailer-master/src/forgetPassword.php";
+  xhr.open("post", url, true);
+  xhr.setRequestHeader("content-type","application/x-www-form-urlencoded");
+  let memberdata = "forpswlogin=" + getElementsByClassName('forpswlogin').value;
+  xhr.send(memberdata);
+  console.log(memberdata);
+}
   //click login XML function
   function loginfun(){  
   let xhr = new XMLHttpRequest();
@@ -529,6 +549,7 @@
         });
    $('.loginbutton').click(loginfun);
    $('.loginregisterbtn').click(registerfun);
+   $('.forpswlogin').click(forgetfun);
    });
 </script>
 <!-- the end of my script -->
