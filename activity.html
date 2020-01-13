@@ -965,8 +965,8 @@
                     SignUpImg: "",
                     SignSongURL: "",
                     SignSongURLSelect: [],
-                    // vote:[number.this.nowVoteSong.vote_per],
                     member: [],
+                   
                 }
 
             },
@@ -1040,12 +1040,12 @@
                         fetch('./phps/getMemInfo.php').then(res => res.json()).then(data => this.member = data);
 
                     };
-                    // let voteButton = e.target;
-                    // voteButton.classList.toggle('act_vote-button');
-
 
                 },
 
+                showMemberSong(){
+                    fetch('./phps/getMemContestSong.php').then(res => res.json()).then(data => this.SignSongURLSelect = data);
+                }
 
 
             },
@@ -1212,9 +1212,9 @@
                 if (member.mem_acct) {
                     vml.mem_login = true;
 
-                    // let xhr = new XMLHttpRequest();
-                    // xhr.open("get", "./php/getMemcontestheart.php", true);
-                    // xhr.send(null);
+                    let xhr = new XMLHttpRequest();
+                    xhr.open("get", "./php/getMemcontestheart.php", true);
+                    xhr.send(null);
 
                 } else {
                     vml.mem_login = false;
