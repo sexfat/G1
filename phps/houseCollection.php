@@ -12,10 +12,10 @@ try {
     ON total_station_music_library.cat_no = category.cat_no
     WHERE category.cat_no=3;";
     
-    $collAlbumAdd = $pdo -> prepare($sql);
-    $collAlbumAdd -> execute();
-    $collAllAlbum = $collAlbumAdd->fetchAll(PDO::FETCH_ASSOC);
-    echo json_encode($collAllAlbum);
+    $collAlbumhou = $pdo -> prepare($sql);
+    $collAlbumhou -> execute();
+    $collAllAlbum3 = $collAlbumhou->fetchAll(PDO::FETCH_ASSOC);
+    echo json_encode($collAllAlbum3);
 
 } catch (PDOException $e) {
     echo "例外行號:", $e->getLine(), "<br>";
