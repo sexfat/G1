@@ -148,7 +148,6 @@ div.nav_bar {
     position: relative;
     width: 100px;
     height: 55px;
-
     .logo {
       position: absolute;
       z-index: 2;
@@ -165,6 +164,7 @@ div.nav_bar {
       width: 138px;
       height: 100px;
       background: url("../img/public/finger.png") center center no-repeat;
+      pointer-events: none;
     }
   }
 

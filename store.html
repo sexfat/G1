@@ -262,23 +262,25 @@
                 <div class="col-xl-12">
                   <h4>Card Number: </h4>
                 </div>
-                <div class="col-xl-12">
-                  <input type="text" placeholder="4444444444444444" v-model="card_infos.card_number">
+                <div class="col-xl-12 fal">
+                  <input type="number" placeholder="4444444444444444" v-model="card_infos.card_number">
+                  <span v-if="checkNum(card_infos.card_number) && enter">need to enter 16 number</span>
                 </div>
               </div>
               <div class="col-xl-11">
                 <div class="col-xl-12">
                   <h4>CVC: </h4>
                 </div>
-                <div class="col-xl-12">
-                  <input type="text" placeholder="444" v-model="card_infos.cvc">
+                <div class="col-xl-12 fal">
+                  <input type="number" placeholder="444" v-model="card_infos.cvc">
+                  <span v-if="checkCvc(card_infos.cvc) && enter">need to enter 3 number</span>
                 </div>
               </div>
               <div class="col-xl-11">
                 <div class="col-xl-12">
                   <h4>Valid Through: </h4>
                 </div>
-                <div class="col-xl-12">
+                <div class="col-xl-12 fal">
                   <input type="date" value="2019-12-26" v-model="card_infos.vaild_through">
                 </div>
               </div>
@@ -288,7 +290,7 @@
                 <div class="btn" @click="step = 1">Back</div>
               </div>
               <div class="col-xl-5 press">
-                <div class="btn" @click="step = 3">Next</div>
+                <div class="btn" @click="step3Next">Next</div>
               </div>
             </div>
           </div>
@@ -307,13 +309,13 @@
                 <div class="btn" @click="step = 2">Back</div>
               </div>
               <div class="col-xl-5 press">
-                <div class="btn" @click="step = 4;dance()">Checkout</div>
+                <div class="btn" @click="step = 4;checkout()">Checkout</div>
               </div>
             </div>
           </div>
           <div class="flexbox step done" v-if="step == 4">
             <div class="success_info">
-              <h5>Stored value successfully</h5>
+              <h5>{{ isSuccess }}</h5>
               <h5>Your Point: 1100</h5>
             </div>
             <div class="dance">
@@ -604,127 +606,26 @@
   <script src='https://cdnjs.cloudflare.com/ajax/libs/jquery/3.4.1/jquery.js'></script>
   <script src='https://cdnjs.cloudflare.com/ajax/libs/vue/2.6.10/vue.js'></script>
   <script src='https://cdnjs.cloudflare.com/ajax/libs/gsap/2.1.3/TweenMax.min.js'></script>
+  <script src='https://cdnjs.cloudflare.com/ajax/libs/axios/0.19.0/axios.min.js'></script>
   <script src="./js/public.js"></script>
   <script src="./js/player.js"></script>
   <script>
     new Vue({
       el: '#store_app',
       data: {
-        step: 1,
+        screenWidth: document.body.clientWidth,
+        step: 3,
+        start: false,
         choose_money: 100,
         isActive: 1, // 選金錢的是否active
+        enter: false,
+        isSuccess: '',
         card_infos: {
-          card_number: '444444444444',
-          cvc: '111',
+          card_number: '',
+          cvc: '',
           vaild_through: '2019-12-26',
         },
-        history: [{
-            no: 1,
-            cost: 500,
-            date: '2019-1-12',
-          },
-          {
-            no: 2,
-            cost: 300,
-            date: '2019-2-12',
-          },
-          {
-            no: 3,
-            cost: 500,
-            date: '2019-3-12',
-          },
-          {
-            no: 4,
-            cost: 500,
-            date: '2019-4-12',
-          },
-          {
-            no: 5,
-            cost: 500,
-            date: '2019-5-12',
-          },
-          {
-            no: 6,
-            cost: 500,
-            date: '2019-5-22',
-          },
-          {
-            no: 7,
-            cost: 500,
-            date: '2019-1-12',
-          },
-          {
-            no: 1,
-            cost: 500,
-            date: '2019-1-12',
-          },
-          {
-            no: 1,
-            cost: 500,
-            date: '2019-1-12',
-          },
-          {
-            no: 1,
-            cost: 500,
-            date: '2019-1-12',
-          },
-          {
-            no: 1,
-            cost: 500,
-            date: '2019-1-12',
-          },
-          {
-            no: 1,
-            cost: 500,
-            date: '2019-1-12',
-          },
-          {
-            no: 1,
-            cost: 500,
-            date: '2019-1-12',
-          },
-          {
-            no: 1,
-            cost: 500,
-            date: '2019-1-12',
-          },
-          {
-            no: 1,
-            cost: 500,
-            date: '2019-1-12',
-          },
-          {
-            no: 1,
-            cost: 500,
-            date: '2019-1-12',
-          },
-          {
-            no: 1,
-            cost: 500,
-            date: '2019-1-12',
-          },
-          {
-            no: 1,
-            cost: 500,
-            date: '2019-1-12',
-          },
-          {
-            no: 1,
-            cost: 500,
-            date: '2019-1-12',
-          },
-          {
-            no: 1,
-            cost: 500,
-            date: '2019-1-12',
-          },
-          {
-            no: 1,
-            cost: 500,
-            date: '2019-1-12',
-          },
-
-        ]
+        history: [],
       },
       methods: {
         moveDiv() {
@@ -736,47 +637,152 @@
           // return false;
         },
         dance() {
-          setTimeout(function () {
+          var vm = this;
+          // if (vm.start == true) {
+          //   vm.start = false;
+          //   clearTimeout(move);
+          //   console.log(move)
+          // }
+          move = '';
+          move = setTimeout(function () {
+            vm.start = true;
+            // console.log("clear");
+            TweenMax.set($('.head'), {
+              x: '-50%',
+              rotation: '45deg',
+            })
+            TweenMax.set($('.body_top'),{
+              x: '-50%',
+              y: '0%',
+              rotation: '35deg',
+            })
+            TweenMax.set($('.body_down'),{
+              x: '-50%',
+              y: '0%',
+              rotation: '13deg',
+
+            })
+            TweenMax.set($('.feet'),{
+              x: '-50%',
+              y: '0%',
+              rotation: '0deg',
+            })
+
+
             TweenMax.to($('.head'), 1, {
               x: '-50%',
               rotation: '20deg',
-              transformOrigin:"50% 50%",
+              transformOrigin: "50% 50%",
               repeatDelay: 1,
               repeat: -1,
               yoyo: true,
             })
             TweenMax.to($('.body_top'), 1, {
               x: '-33%',
-              y:'31%',
+              y: '31%',
               rotation: '22deg',
-              transformOrigin:"50% 50%",
+              transformOrigin: "50% 50%",
               repeatDelay: 1,
               repeat: -1,
               yoyo: true,
             })
             TweenMax.to($('.body_down'), 1, {
               x: '-16%',
-              y:'38%',
+              y: '38%',
               rotation: '11deg',
-              transformOrigin:"50% 50%",
+              transformOrigin: "50% 50%",
               repeatDelay: 1,
               repeat: -1,
               yoyo: true,
             })
             TweenMax.to($('.feet'), 1, {
               x: '-43%',
-              y:'8%',
+              y: '8%',
               rotation: '0deg',
-              transformOrigin:"50% 50%",
+              transformOrigin: "50% 50%",
               repeatDelay: 1,
               repeat: -1,
               yoyo: true,
             })
-          }, 500)
+          }, 0)
+
+        },
+        checkNum(cardNum) {
+          if (cardNum.length != 16) return true;
+        },
+        checkCvc(cvc) {
+          if (cvc.length != 3) return true;
+        },
+        step3Next() {
+          this.enter = true
+          if (this.checkNum(this.card_infos.card_number) && this.checkCvc(this.card_infos.cvc)) {
+            return;
+          }
+          this.step = 3;
+        },
+        checkout() {
+          const vm = this;
+          // 獲得日期
+          var now = new Date();
+          var year = now.getFullYear();
+          var mon = now.getMonth() + 1 > 10 ? now.getMonth() + 1 : "0" + (now.getMonth() + 1);
+          var date = now.getDate() > 10 ? now.getDate() : "0" + now.getDate();
+
+          var today = `${year}-${mon}-${date}`;
+
+          axios.get(`./phps/store.php?store_no=1&mem_no=1&store_price=${vm.choose_money}&store_day=${today}`).then((
+            res) => {
+            vm.isSuccess = res.data;
+            console.log('success')
+          }).catch((error) => {
+            console.error(error)
+          })
+        },
+        history_php() {
+          const vm = this;
+          axios.get('./phps/store_history.php').then(res => {
+            var all = [];
+            all = res.data;
+            for (var item in all) {
+              // console.log(all[item].mem_no)
+              vm.history.push({
+                no: all[item].store_no,
+                cost: all[item].store_price,
+                date: all[item].store_day
+              })
+            }
+          }).catch(error => {
+            console.log(error)
+          })
         }
       },
       mounted() {
         // nav_bar end
+        var vm = this;
+        window.onresize = () => {
+          return (() => {
+            vm.screenWidth = document.body.clientWidth;
+
+          })()
+        }
+
+        vm.history_php();
+
+      },
+      watch: {
+        screenWidth() {
+          var vm = this;
+          if (vm.step == 4) {
+            this.dance();
+          }
+        },
+        step() {
+          var vm = this;
+          if (vm.step == 4) {
+            this.dance();
+          }
+        }
+
       },
     })
   </script>

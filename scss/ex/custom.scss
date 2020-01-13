@@ -1,0 +1,86 @@
+// Here you can add other styles
+body {
+  width: 100%;
+  height: 100%;
+}
+
+#app {
+  width: 100%;
+  height: 100%;
+}
+
+#accordionExample {
+  .card {
+    margin-bottom: 0rem;
+  }
+}
+
+.updata_act {
+  border: solid 1px #b1b1b1;
+  border-radius: 5px;
+  text-align: center;
+  vertical-align: middle;
+  position: relative;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  height: 400px;
+  .uploadimg {
+    padding: 28%;
+    width: 70%;
+    cursor: pointer;
+  }
+  .act_img{
+    width: 100%;
+    height: 400px;
+    // position: absolute;
+  }
+  .img_name{
+    position: absolute;
+    width: 50%;
+    height: 24px;
+    bottom: 16px;
+    right: 0;
+    text-align: center;
+    line-height: 24px;
+    background-color: #fff;
+  }
+}
+
+form {
+  width: 100%;
+
+  .form-group {
+    input,
+    textarea {
+      border: 1px solid #bfbfbf;
+    }
+  }
+  
+
+}
+
+.upact{
+  display: flex;
+}
+
+th,
+td {
+  text-align: center !important;
+}
+
+@media all and (max-width: 992px) {
+  .upact{
+    display: inline-block;
+  }
+}
+@media all and (max-width: 576px) {
+  .updata_act {
+    height: 250px;
+  }
+}
+

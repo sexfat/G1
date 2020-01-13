@@ -1,0 +1,476 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="utf-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, shrink-to-fit=no">
+  <title>CoreUI Free Bootstrap Admin Template</title>
+  <!-- Icons-->
+  <link href="node_modules/@coreui/icons/css/coreui-icons.min.css" rel="stylesheet">
+  <link href="node_modules/simple-line-icons/css/simple-line-icons.css" rel="stylesheet">
+  <link href="./css/style.css" rel="stylesheet">
+</head>
+
+<body class="app header-fixed sidebar-fixed aside-menu-fixed sidebar-lg-show">
+  <!-- top_header -->
+  <div id="app">
+    <header class="app-header navbar">
+      <button class="navbar-toggler sidebar-toggler d-lg-none mr-auto" type="button" data-toggle="sidebar-show">
+        <span class="navbar-toggler-icon"></span>
+      </button>
+      <a class="navbar-brand" href="#">
+        <img class="navbar-brand-full" src="img/brand/logo.svg" width="89" height="25" alt="CoreUI Logo">
+        <img class="navbar-brand-minimized" src="img/brand/sygnet.svg" width="30" height="30" alt="CoreUI Logo">
+      </a>
+      <button class="navbar-toggler sidebar-toggler d-md-down-none" type="button" data-toggle="sidebar-lg-show">
+        <span class="navbar-toggler-icon"></span>
+      </button>
+      
+      <ul class="nav navbar-nav ml-auto" style="visibility: hidden;">
+        <li class="nav-item d-md-down-none">
+          <a class="nav-link" href="#">
+            <i class="icon-bell"></i>
+            <span class="badge badge-pill badge-danger">5</span>
+          </a>
+        </li>
+        <li class="nav-item d-md-down-none">
+          <a class="nav-link" href="#">
+            <i class="icon-list"></i>
+          </a>
+        </li>
+        <li class="nav-item d-md-down-none">
+          <a class="nav-link" href="#">
+            <i class="icon-location-pin"></i>
+          </a>
+        </li>
+        <li class="nav-item dropdown">
+          <a class="nav-link" data-toggle="dropdown" href="#" role="button" aria-haspopup="true" aria-expanded="false">
+            <img class="img-avatar" src="img/avatars/6.jpg" alt="admin@bootstrapmaster.com">
+          </a>
+          <div class="dropdown-menu dropdown-menu-right">
+            <div class="dropdown-header text-center">
+              <strong>Account</strong>
+            </div>
+            <a class="dropdown-item" href="#">
+              <i class="fa fa-bell-o"></i> Updates
+              <span class="badge badge-info">42</span>
+            </a>
+            <a class="dropdown-item" href="#">
+              <i class="fa fa-envelope-o"></i> Messages
+              <span class="badge badge-success">42</span>
+            </a>
+            <a class="dropdown-item" href="#">
+              <i class="fa fa-tasks"></i> Tasks
+              <span class="badge badge-danger">42</span>
+            </a>
+            <a class="dropdown-item" href="#">
+              <i class="fa fa-comments"></i> Comments
+              <span class="badge badge-warning">42</span>
+            </a>
+            <div class="dropdown-header text-center">
+              <strong>Settings</strong>
+            </div>
+            <a class="dropdown-item" href="#">
+              <i class="fa fa-user"></i> Profile</a>
+            <a class="dropdown-item" href="#">
+              <i class="fa fa-wrench"></i> Settings</a>
+            <a class="dropdown-item" href="#">
+              <i class="fa fa-usd"></i> Payments
+              <span class="badge badge-secondary">42</span>
+            </a>
+            <a class="dropdown-item" href="#">
+              <i class="fa fa-file"></i> Projects
+              <span class="badge badge-primary">42</span>
+            </a>
+            <div class="dropdown-divider"></div>
+            <a class="dropdown-item" href="#">
+              <i class="fa fa-shield"></i> Lock Account</a>
+            <a class="dropdown-item" href="#">
+              <i class="fa fa-lock"></i> Logout</a>
+          </div>
+        </li>
+      </ul>
+    </header>
+    <div class="app-body">
+      <div class="sidebar">
+        <!-- sidebar  menu -->
+        <nav class="sidebar-nav">
+          <ul class="nav">
+            <li class="nav-item" @click="currpos = '管理員帳號管理';currchild = ''">
+              <a class="nav-link">
+                <i class="nav-icon icon-speedometer"></i>管理員帳號管理
+              </a>
+            </li>
+            <li class="nav-title">Theme</li>
+            <li class="nav-item" @click="currpos = '會員資料瀏覽';currchild = ''">
+              <a class="nav-link">
+                <i class="nav-icon icon-drop"></i> 會員資料瀏覽</a>
+            </li>
+            <li class="nav-item" @click="currpos = '音樂庫管理';currchild = ''">
+              <a class="nav-link" href="#">
+                <i class="nav-icon icon-puzzle"></i>音樂庫管理</a>
+            </li>
+            <li class="nav-item nav-dropdown">
+              <a class="nav-link nav-dropdown-toggle" href="#">
+                <i class="nav-icon icon-cursor"></i> 活動管理</a>
+              <ul class="nav-dropdown-items">
+                <li class="nav-item" @click.stop="currpos = '活動管理';currchild = '活動投票管理'">
+                  <a class="nav-link">
+                    <i class="nav-icon icon-cursor"></i> 活動投票管理</a>
+                </li>
+                <li class="nav-item" @click.stop="currpos = '活動管理';currchild = '活動上下架'">
+                  <a class="nav-link">
+                    <i class="nav-icon icon-cursor"></i>活動上下架</a>
+                </li>
+              </ul>
+            </li>
+            <li class="nav-item nav-dropdown">
+              <a class="nav-link  nav-dropdown-toggle" href="#">
+                <i class="nav-icon icon-pencil"></i> 檢舉管理</a>
+              <ul class="nav-dropdown-items">
+                <li class="nav-item" @click="currpos = '檢舉管理';currchild = '已處理'">
+                  <a class="nav-link">
+                    <i class="nav-icon icon-pencil"></i> 已處理</a>
+                </li>
+                <li class="nav-item" @click="currpos = '檢舉管理';currchild = '未處理'">
+                  <a class="nav-link">
+                    <i class="nav-icon icon-pencil"></i>未處理</a>
+                </li>
+              </ul>
+            </li>
+            <li class="nav-item" @click="currpos = '留言總覽';currchild = ''">
+              <a class="nav-link">
+                <i class="nav-icon icon-pie-chart"></i> 留言總覽</a>
+            </li>
+            <li class="nav-item">
+              <a class="nav-link" href="#">
+                <i class="nav-icon icon-star"></i>登出</a>
+            </li>
+          </ul>
+        </nav>
+        <button class="sidebar-minimizer brand-minimizer" type="button"></button>
+      </div>
+      <main class="main">
+        <!-- Breadcrumb-->
+        <ol class="breadcrumb">
+          <li class="breadcrumb-item">{{ currpos }}</li>
+          <li class="breadcrumb-item" v-if="currchild != ''">{{ currchild }}</li>
+          <!-- Breadcrumb Menu-->
+        </ol>
+        <div class="container-fluid">
+          <!-- 中間內容 -->
+          <div class="row" v-if="currpos == '管理員帳號管理'">
+            <div class="col-md-12">
+              <table class="table">
+                <thead class="thead-dark">
+                  <tr>
+                    <th scope="col">管理員</th>
+                    <th scope="col">編號</th>
+                    <th scope="col">帳號</th>
+                    <th scope="col">密碼</th>
+                  </tr>
+                </thead>
+                <tbody>
+                  <tr class="table-light" v-for="(info,index) in controller">
+                    <th scope="row">{{ index+1 }}</th>
+                    <td>{{ info.act_no }}</td>
+                    <td>{{ info.act_account }}</td>
+                    <td>{{ info.act_psw }}</td>
+                  </tr>
+                </tbody>
+              </table>
+            </div>
+          </div>
+          <div class="row" v-if="currpos == '會員資料瀏覽' && screenWidth > 576">
+            <div class="col-md-12">
+              <table class="table">
+                <thead class="thead-dark">
+                  <tr>
+                    <th scope="col">會員</th>
+                    <th scope="col">編號</th>
+                    <th scope="col">帳號</th>
+                    <th scope="col">密碼</th>
+                    <th scope="col">姓名</th>
+                  </tr>
+                </thead>
+                <tbody>
+                  <tr class="table-light" v-for="(info,index) in memberinfos">
+                    <th scope="row">{{ index+1 }}</th>
+                    <td>{{ info.mem_no }}</td>
+                    <td>{{ info.mem_acct }}</td>
+                    <td>{{ info.mem_psw }}</td>
+                    <td>{{ info.mem_name }}</td>
+                  </tr>
+                </tbody>
+              </table>
+            </div>
+          </div>
+          <div class="row" v-if="currpos == '會員資料瀏覽' && screenWidth <= 576">
+            <div class="col-md-12">
+              <div class="card border-secondary mb-3" v-for="(info,index) in memberinfos">
+                <div class="card-header" style="background-color: #2f353a;color: #fff">會員{{ index+1 }}</div>
+                <div class="card-body">
+                  <table>
+                    <tr>
+                      <th style="width: 30%;text-align: center">姓名:</th>
+                      <td>{{ info.mem_name }}</td>
+                    </tr>
+                    <tr>
+                      <th style="width: 30%;text-align: center">編號: </th>
+                      <td>{{ info.mem_no }}</td>
+                    </tr>
+                    <tr>
+                      <th style="width: 30%;text-align: center">帳號: </th>
+                      <td>{{ info.mem_acct }}</td>
+                    </tr>
+                    <tr>
+                      <th style="width: 30%;text-align: center">密碼: </th>
+                      <td>{{ info.mem_psw }}</td>
+                    </tr>
+                  </table>
+                </div>
+              </div>
+            </div>
+          </div>
+          <div class="row" v-if="currpos == '音樂庫管理'">
+            <div class="col-md-12">
+              <table class="table">
+                <thead class="thead-dark">
+                  <tr>
+                    <th scope="col">編號</th>
+                    <th scope="col">圖片</th>
+                    <th scope="col">歌名</th>
+                    <th scope="col">類別編號</th>
+                    <th scope="col">收藏數</th>
+                  </tr>
+                </thead>
+                <tbody>
+                  <tr class="table-light" v-for="(info,index) in total_music">
+                    <th scope="row">{{ info.song_no }}</th>
+                    <td><img :src=info.song_pic style="width:50px"></td>
+                    <td>{{ info.song_name }}</td>
+                    <td>{{ info.cat_no }}</td>
+                    <td>{{ info.fav_total }}</td>
+                  </tr>
+                </tbody>
+              </table>
+            </div>
+          </div>
+          <div class="row" v-if="currchild == '活動投票管理'">
+            <div class="col-md-12">
+              <table class="table">
+                <thead class="thead-dark">
+                  <tr>
+                    <th scope="col">投票編號</th>
+                    <th scope="col">參賽歌曲編號</th>
+                    <th scope="col">會員編號</th>
+                  </tr>
+                </thead>
+                <tbody>
+                  <tr class="table-light" v-for="(info,index) in vote">
+                    <td>{{ info.vote_no }}</td>
+                    <td>{{ info.entries_no }}</td>
+                    <td>{{ info.mem_no }}</td>
+                  </tr>
+                </tbody>
+              </table>
+            </div>
+          </div>
+          <div class="row" v-if="currchild == '活動上下架'">
+            <div class="col-md-12">
+              <div class="accordion" id="accordionExample">
+                <div class="card">
+                  <div class="card-header" id="headingOne">
+                    <h2 class="mb-0">
+                      <button class="btn btn-link" type="button" data-toggle="collapse" data-target="#collapseOne"
+                        aria-expanded="true" aria-controls="collapseOne">
+                        活動上架
+                      </button>
+                    </h2>
+                  </div>
+                  <div id="collapseOne" class="collapse show" aria-labelledby="headingOne"
+                    data-parent="#accordionExample">
+                    <div class="card-body">
+                      <div class="row">
+                        <iframe id="id_iframe" name="id_iframe" style="display:none;"></iframe>
+                        <form action="./phps/post.php" method="POST" enctype="multipart/form-data"
+                          class="col-xl-12 upact" target="id_iframe">
+                          <input type="text" name="post" value="updata_activity" style="display: none;"
+                            v-if="update == true">
+                          <input type="text" name="post" value="add_activity" style="display: none;" v-if="update == false">
+
+                          <div class="col-xl-6 updata_act_mom" style="vertical-align: middle">
+                            <label class="col-xl-12 updata_act" for="upimg">
+                              <input type="file" name="act_img" id="upimg" style="display: none;" @change="up_img">
+                              <img src="./img/upload.png" class="uploadimg" v-if="upact_infos.activity_img == ''">
+                              <img :src=upact_infos.activity_img class="act_img" v-else>
+                              <div class="img_name">{{ upact_infos.activity_g }}</div>
+                            </label>
+                          </div>
+                          <div class="col-xl-6" style="">
+                            <div class="form-group" style="display: inline-block; width: 49%;">
+                              <label for="activity_num">活動編號</label>
+                              <input type="number" class="form-control" id="activity_num" name="activity_num"
+                                v-model="upact_infos.activity_num" v-if="update == false">
+                              <input type="number" class="form-control" id="activity_num" name="activity_num"
+                                v-model="upact_infos.activity_num" v-if="update == true" readonly>
+                            </div>
+                            <div class="form-group" style="display: inline-block; width: 49%;">
+                              <label for="activity_name">活動名稱</label>
+                              <input type="text" class="form-control" id="activity_name" name="activity_name"
+                                v-model="upact_infos.activity_name">
+                            </div>
+                            <div class="form-group" style="display: inline-block; width: 49%;">
+                              <label for="activity_start">活動開始時間</label>
+                              <input type="date" class="form-control" id="activity_start" name="activity_start"
+                                v-model="upact_infos.activity_start">
+                            </div>
+                            <div class="form-group" style="display: inline-block; width: 49%;">
+                              <label for="activity_fin">活動結束時間</label>
+                              <input type="date" class="form-control" id="activity_fin" name="activity_fin"
+                                v-model="upact_infos.activity_fin">
+                            </div>
+                            <div class="form-group" style="display: inline-block; width: 100%">
+                              <label for="activity_Introduction">活動內容介紹</label>
+                              <textarea type="date" class="form-control" id="activity_Introduction" rows="8"
+                                name="activity_Introduction" v-model="upact_infos.activity_Introduction"></textarea>
+                            </div>
+                            <button type="submit" class="btn btn-primary submitbtn" style="display:block"
+                              @click="send_act" v-if="!update">Submit</button>
+                            <button type="submit" class="btn btn-primary submitbtn" style="display:block"
+                              @click="update_act" v-else>Update</button>
+                          </div>
+                        </form>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+                <div class="card">
+                  <div class="card-header" id="headingTwo">
+                    <h2 class="mb-0">
+                      <button class="btn btn-link collapsed" type="button" data-toggle="collapse"
+                        data-target="#collapseTwo" aria-expanded="false" aria-controls="collapseTwo">
+                        活動下架
+                      </button>
+                    </h2>
+                  </div>
+                  <div id="collapseTwo" class="collapse" aria-labelledby="headingTwo" data-parent="#accordionExample">
+                    <div class="card-body">
+                      <table class="table table-borderless">
+                        <thead>
+                          <tr>
+                            <th scope="col">活動編號</th>
+                            <th scope="col">活動名稱</th>
+                            <th scope="col">活動開始時間</th>
+                            <th scope="col">活動結束時間</th>
+                            <th scope="col">活動內容介紹</th>
+                            <th scope="col">設定</th>
+                          </tr>
+                        </thead>
+                        <tbody>
+                          <tr v-for="item in activity">
+                            <th scope="row">{{ item.activity_no }}</th>
+                            <td>{{ item.activity_name }}</td>
+                            <td>{{ item.activity_str }}</td>
+                            <td>{{ item.activity_fin }}</td>
+                            <td>{{ item.activity_con }}</td>
+                            <td>
+                              <a href="#"
+                                @click.prevent="get_edit(item.activity_no);update = true">
+                                編輯</a> / <a href="#" @click.prevent="get_delete(item.activity_no)">下架</a>
+                            </td>
+                          </tr>
+                        </tbody>
+                      </table>
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+          <div class="row" v-if="currchild == '已處理'">
+            <div class="col-md-12">
+              <table class="table">
+                <thead class="thead-dark">
+                  <tr>
+                    <th scope="col">檢舉編號</th>
+                    <th scope="col">留言編號</th>
+                    <th scope="col">會員編號</th>
+                    <th scope="col">檢舉處理狀態</th>
+                  </tr>
+                </thead>
+                <tbody>
+                  <tr class="table-light" v-for="(report0,index) in report1">
+                    <th scope="row">{{ report0.re_no }}</th>
+                    <td>{{ report0.message_no }}</td>
+                    <td>{{ report0.mem_no }}</td>
+                    <td>{{ report0.re_sta }}</td>
+                  </tr>
+                </tbody>
+              </table>
+            </div>
+          </div>
+          <div class="row" v-if="currchild == '未處理'">
+            <div class="col-md-12">
+              <table class="table">
+                <thead class="thead-dark">
+                  <tr>
+                    <th scope="col">檢舉編號</th>
+                    <th scope="col">留言編號</th>
+                    <th scope="col">會員編號</th>
+                    <th scope="col">檢舉處理狀態</th>
+                    <th scope="col">設定</th>
+                  </tr>
+                </thead>
+                <tbody>
+                  <tr class="table-light" v-for="(report0,index) in report0">
+                    <th scope="row">{{ report0.re_no }}</th>
+                    <td>{{ report0.message_no }}</td>
+                    <td>{{ report0.mem_no }}</td>
+                    <td>{{ report0.re_sta }}</td>
+                    <td><a href="#" @click.stop="get_hid_report(report0.re_no)">屏蔽</a></td>
+                  </tr>
+                </tbody>
+              </table>
+            </div>
+          </div>
+          <div class="row" v-if="currpos == '留言總覽'">
+            <div class="col-md-12">
+              <table class="table">
+                <thead class="thead-dark">
+                  <tr>
+                    <th scope="col">檢舉編號</th>
+                    <th scope="col">留言編號</th>
+                    <th scope="col">會員編號</th>
+                    <th scope="col">檢舉處理狀態</th>
+                  </tr>
+                </thead>
+                <tbody>
+                  <tr class="table-light" v-for="(reportall,index) in report">
+                    <th scope="row">{{ reportall.re_no }}</th>
+                    <td>{{ reportall.message_no }}</td>
+                    <td>{{ reportall.mem_no }}</td>
+                    <td>{{ reportall.re_sta }}</td>
+                  </tr>
+                </tbody>
+              </table>
+            </div>
+          </div>
+          <!-- end -->
+        </div>
+
+      </main>
+    </div>
+  </div>
+  <!-- CoreUI and necessary plugins-->
+  <script src="node_modules/jquery/dist/jquery.min.js"></script>
+  <script src="node_modules/popper.js/dist/umd/popper.min.js"></script>
+  <script src="node_modules/bootstrap/dist/js/bootstrap.min.js"></script>
+  <script src="node_modules/@coreui/coreui/dist/js/coreui.min.js"></script>
+  <script src="node_modules/axios/dist/axios.min.js"></script>
+  <script src="./js/vue.js"></script>
+  <script src="./js/back.js"></script>
+</body>
+
+</html>
