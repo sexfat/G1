@@ -6,16 +6,16 @@
             VALUES (`song_no`=:song_no,`song_name`=:song_name,`song_date`=:song_date,`song_idn`=:song_idn,`song_pic`=:song_pic,
             `mem_no`=:mem_no,`donate_acount`=:donate_acount,`cat_no`=:cat_no,`fav_total`=:fav_total,`song_addr`=:song_addr)";
     $songsadd = $pdo -> prepare($sql);
-    $songsadd->bindValue('song_name',$_GET['song_name']);
-    $songsadd->bindValue('song_no',11);
-    $songsadd->bindValue('song_date','2020-01-12');
-    $songsadd->bindValue('song_idn',$_GET['song_idn']);
-    $songsadd->bindValue('song_pic',$_GET['song_pic']);
-    $songsadd->bindValue('mem_no',0);
-    $songsadd->bindValue('donate_acount','0');
-    $songsadd->bindValue('cat_no',0);
-    $songsadd->bindValue('fav_total','0');
-    $songsadd->bindValue('song_addr',$_GET['song_addr']);
+    $songsadd->bindValue(":song_name",$_GET["song_name"]);
+    $songsadd->bindValue(":song_no",11);
+    $songsadd->bindValue(":song_date","2020-01-12");
+    $songsadd->bindValue(":song_idn",$_GET["song_idn"]);
+    $songsadd->bindValue(":song_pic",$_GET["song_pic"]);
+    $songsadd->bindValue(":mem_no",[0]);
+    $songsadd->bindValue(":donate_acount","0");
+    $songsadd->bindValue(":cat_no",0);
+    $songsadd->bindValue(":fav_total","0");
+    $songsadd->bindValue(":song_addr",$_GET["song_addr"]);
     $songsadd->execute();
     if( $songsadd->rowCount() != 0){
         // $addRow = $songsadd->fetch(PDO::FETCH_ASSOC);

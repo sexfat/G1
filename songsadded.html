@@ -495,7 +495,7 @@
 
                                 </article>
                                 <div>
-                                    <p style="font-weight: bold;">Song Title : <input type="text" id="add_pp"
+                                    <p style="font-weight: bold;">Song Name : <input type="text" id="add_pp"
                                             name="song_name"
                                             style="border: 1px solid #d0d6d6;width:350px;height:28px;background-color: #d0d6d6;"
                                             required>
@@ -576,7 +576,7 @@
 
                                         </article>
                                         <div class="inside2count">
-                                            <p style="font-weight: bold;">Song Title : <input type="text"
+                                            <p style="font-weight: bold;">Song Name : <input type="text"
                                                     class="add_btom"
                                                     style="border: 1px solid #d0d6d6;height:28px;background-color: #d0d6d6;">
                                             </p>
@@ -626,7 +626,7 @@
                                         <label class="songsadded_ff" for="theFile"> &emsp; Edit</label> -->
                                     </article>
                                     <div>
-                                        <span><span style="font-weight: bold;">Song Title :</span><span
+                                        <span><span style="font-weight: bold;">Song Name :</span><span
                                                 style="font-size:16px"> Because
                                                 of you</span></span><br>
                                         <span><span style="font-weight: bold;">Author :</span><span
@@ -683,7 +683,7 @@
 
                                         </article>
                                         <div class="inside2count">
-                                            <p style="font-weight: bold;">Song Title : <input type="text"
+                                            <p style="font-weight: bold;">Song Name : <input type="text"
                                                     class="add_btom"
                                                     style="border: 1px solid #d0d6d6;width:240px;height:28px;background-color: #d0d6d6;">
                                             </p>
@@ -733,7 +733,7 @@
                                     <label class="songsadded_ff" for="theFile"> &emsp; Edit</label> -->
                                     </article>
                                     <div>
-                                        <span><span style="font-weight: bold;">Song Title :</span><span
+                                        <span><span style="font-weight: bold;">Song Name :</span><span
                                                 style="font-size:16px"> Because
                                                 of you</span></span><br>
                                         <span><span style="font-weight: bold;">Author :</span><span
@@ -790,7 +790,7 @@
 
                                         </article>
                                         <div class="inside2count">
-                                            <p style="font-weight: bold;">Song Title : <input type="text"
+                                            <p style="font-weight: bold;">Song Name : <input type="text"
                                                     class="add_btom"
                                                     style="border: 1px solid #d0d6d6;width:240px;height:28px;background-color: #d0d6d6;">
                                             </p>
@@ -840,7 +840,7 @@
                                     <label class="songsadded_ff" for="theFile"> &emsp; Edit</label> -->
                                     </article>
                                     <div>
-                                        <span><span style="font-weight: bold;">Song Title :</span><span
+                                        <span><span style="font-weight: bold;">Song Name :</span><span
                                                 style="font-size:16px"> Because
                                                 of you</span></span><br>
                                         <span><span style="font-weight: bold;">Author :</span><span
@@ -1152,9 +1152,9 @@
         });
     </script>
 
-    <script>
+    <!-- <script>
         function songsadd() {
-            var xhr = new XMLHttpRequest();
+            let xhr = new XMLHttpRequest();
             console.log(xhr.readyState);
             xhr.onreadystatechange = function () {
                 if (xhr.readyState == 4) {
@@ -1168,11 +1168,31 @@
             }
         }
         var url = "./phps/songupload.php";
-        xhr.open("post", url, true);
+        xhr.open("get", url, true);
         xhr.setRequestHeader("content-type", "application/x-www-form-urlencoded");
-
-        xhr.send(songsadd);
-        console.log(songsadd);
+        var songsadd_send =
+            xhr.send(songsadd_send);
+        console.log(songsadd_send);
+    </script> -->
+    <script>
+        function songsaddsend() {
+            let xhr = new XMLHttpRequest();
+            console.log(xhr.readyState);
+            xhr.onreadystatechange = function () {
+                if (xhr.readyState == XMLHttpRequest.DONE) {
+                    if (xhr.status == 200) { //success
+                        // document.getElementById("idMsg").innerHTML = xhr.responseText;
+                    } else { //其它
+                        alert(xhr.status);
+                    }
+                }
+            }
+            //設定好所要連結的程式
+            let url = "songupload.php?song_name=" + document.getElementsByName("song_name").value;
+            xhr.open("get", url, true); //
+            //送出資料
+            xhr.send(null);
+        } //function_checkId
     </script>
 </body>
 
