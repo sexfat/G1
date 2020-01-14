@@ -154,6 +154,6 @@ window.addEventListener('load', () => {
             vm.mem_login = false;
         }
     }
-    xhr.open("get", "./php/getLoginInfo.php", true);
+    xhr.open("get", "./phps/getLoginInfo.php", true);
     xhr.send(null);
 });

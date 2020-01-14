@@ -438,8 +438,8 @@
       <h4>Return password</h4>
       <form>
         <label class="emailchecklabel">Please enter your e-mail:</label> <br>
-        <input class="emailcheckinput forpswlogin" name="forpswlogin" type="text"> <br>
-        <button class="emailcheck" type="submit">Ok</button>
+        <input class="emailcheckinput forgetwho" name="forgetwho" type="text"> <br>
+        <button class="emailcheck" id="forpswlogin" type="button">Ok</button>
       </form>
     </div>
   </div>
@@ -448,39 +448,40 @@
 </body>
 <!-- the script of myself -->
 <script>
-  //forget password 
+  //forget password XML function
     function forgetfun(){  
-  let xhr = new XMLHttpRequest();
-  xhr.onreadystatechange = function(){
-    if(xhr.readyState == 4){
-      if( xhr.status == 200){ //success
-        alert(xhr.responseText);
-        $(location).attr('href', './index.html');
-      }else{ 
-        alert(xhr.responseText);
+    let xhr = new XMLHttpRequest();
+    xhr.onreadystatechange = function(){
+      if(xhr.readyState == 4){
+        if( xhr.status == 200){
+          alert(xhr.responseText);
+          $(location).attr('href', './login.html');
+        }else{ 
+          alert(xhr.responseText);
+        }
       }
     }
-  }
   let url = "./PHPMailer-master/src/forgetPassword.php";
   xhr.open("post", url, true);
   xhr.setRequestHeader("content-type","application/x-www-form-urlencoded");
-  let memberdata = "forpswlogin=" + getElementsByClassName('forpswlogin').value;
+  let memberdata = "forgetwho=" + document.getElementsByClassName('forgetwho')[0].value;
   xhr.send(memberdata);
-  console.log(memberdata);
+  console.log('ok');
 }
   //click login XML function
-  function loginfun(){  
-  let xhr = new XMLHttpRequest();
-  xhr.onreadystatechange = function(){
-    if(xhr.readyState == 4){
-      if( xhr.status == 200){ //success
-        alert(xhr.responseText);
-        $(location).attr('href', './index.html');
-      }else{ 
-        alert(xhr.responseText);
+    function loginfun(){  
+    let xhr = new XMLHttpRequest();
+    xhr.onreadystatechange = function(){
+      if(xhr.readyState == 4){
+        if( xhr.responseText == 'Log in successly!'){
+          alert(xhr.responseText);
+          $(location).attr('href', './index.html');
+        }else{ 
+          alert(xhr.responseText);
+          $(location).attr('href', './login.html');
+        }
       }
     }
-  }
   let url = "./phps/memlogin.php";
   xhr.open("post", url, true);
   xhr.setRequestHeader("content-type","application/x-www-form-urlencoded");
@@ -549,8 +550,9 @@
         });
    $('.loginbutton').click(loginfun);
    $('.loginregisterbtn').click(registerfun);
-   $('.forpswlogin').click(forgetfun);
-   });
+   $('#forpswlogin').click(forgetfun);
+
+    });
 </script>
 <!-- the end of my script -->
 </html>
