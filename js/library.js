@@ -3,7 +3,7 @@
  let nowList = 'Liked songs';
  let mylistInfo = []; //清單資訊
  let libraryList = []; //歌曲資訊
-
+ let member = [];
  /* ---------------- library TimelineMax ---------------- */
  //  var library_tl = new TimelineMax();
 
@@ -19,19 +19,30 @@
 
  /* ---------------- library load ---------------- */
  window.addEventListener('load', function () {
-   console.log(member);
+   let xhr = new XMLHttpRequest();
+   xhr.onload = () => {
+     member = JSON.parse(xhr.responseText);
+     if (member.mem_acct) {
+       vm.mem_login = true;
+     } else {
+       vm.mem_login = false;
+     }
+   }
+   xhr.open("get", "./phps/getLoginInfo.php", false);
+   xhr.send(null);
+
    //library 初始
    getLibraryList(); //抓左側列表
-   getLibrarySongs(nowList);
-   myListInfoCha(-1, libraryList.length);
-
    if (!member['mem_no']) {
+     showLibrarySongs('no');
      $('#modifyBtn').hide();
      $('#createBtn').hide();
    } else {
+     getLibrarySongs(nowList);
      $('#modifyBtn').show();
      $('#createBtn').show();
    }
+   myListInfoCha(-1, libraryList.length);
 
    //more -- changeList
    $('.songs').on('click', '.more', function () {
@@ -61,7 +72,7 @@
      e.stopPropagation();
    });
    $('#libraryMyAllList ul').on('click', 'li', function () {
-     getNewListName = $(this).text(); //抓清單名字 -- 要把歌新增過去
+     getNewListName = $(this).text();
      $(this).addClass('choose');
      $('#libraryMyAllList li').not(this).removeClass('choose');
    });
@@ -123,11 +134,23 @@
    });
 
    //remove favor
-   $('.library_main .right .heart').click(function () {
-     if ($(this).hasClass('becomeRed')) {
-       $(this).html('<img src="./img/collection/grayheart.png">').removeClass('becomeRed');
+   $('.library_main .right').on('click', '.heart', function () {
+     let heartSong = $(this).siblings('.listSongInfo').find('.name a').text();
+     let libraryInd = getSongIndex(heartSong);
+     let favSongInd = libraryList[libraryInd].song_no;
+     if (!member['mem_no']) {
+       $('.lightCover').show();
+       $('#listAlert').show();
+       $('#listAlert h4').text('Please login!');
      } else {
-       $(this).html('<img src="./img/collection/redheart.png">').addClass('becomeRed');
+       if ($(this).hasClass('becomeRed')) {
+         $('#favorStatus').val('gray');
+         $(this).html('<img src="./img/collection/grayheart.png">').removeClass('becomeRed');
+       } else {
+         $('#favorStatus').val('red');
+         $(this).html('<img src="./img/collection/redheart.png">').addClass('becomeRed');
+       }
+       favorStatus(favSongInd);
      }
    });
 
@@ -204,7 +227,7 @@
      $('#listAlert').hide();
    });
 
-   //修改清單圖片-- 有問題待修
+   //修改清單圖片
    $('#library_editCover').change(function (e) {
      libraryFileData = e.target.files[0];
      let reader = new FileReader();
@@ -220,7 +243,11 @@
      $(this).addClass('choose');
      $(".lists li").removeClass('choose');
      $('#inputListTitle').val(nowList);
-     getLibrarySongs(nowList);
+     if (member['mem_no']) {
+       getLibrarySongs(nowList);
+     } else {
+       showLibrarySongs('no');
+     }
      myListInfoCha(-1, libraryList.length);
      $('#library_editCover').attr('disabled', true);
      $('.enterBtn').attr('disabled', true);
@@ -231,7 +258,6 @@
    $(".lists").on('click', 'li', function () {
      let myListIndex = $(this).index();
      nowList = $(this).find('h4').text();
-     console.log(nowList);
      $('.lists li').removeClass('choose');
      $(this).addClass('choose');
      $(".favor").removeClass('choose');
@@ -243,7 +269,7 @@
      $('#inputListTitle').attr('disabled', false);
    });
 
-   //手機select選歌單
+   //手機選歌單
    $(".mobile_listChoose").click(function () {
      if ($(this).hasClass('open')) {
        $('.lists').animate({
@@ -258,14 +284,6 @@
        }, 500);
        $(this).addClass('open');
      }
-     //  let myListIndex = $(this)[0].selectedIndex;
-     //  nowList = $(this).val();
-     //  $('#inputListTitle').val(nowList);
-     //  $('#library_editCover').attr('disabled', false);
-     //  $('.enterBtn').attr('disabled', false);
-     //  $('#inputListTitle').attr('disabled', false);
-     //  getLibrarySongs(nowList);
-     //  myListInfoCha(myListIndex - 1, libraryList.length);
    });
 
    //刪除清單
@@ -303,8 +321,10 @@
    //清單歌曲撥放 -- 裡面的播放icon待修正
    $(".songs").on('click', '.listPlay', function () {
      nowPlaying = $(this).parent().parent().parent().index();
+     nowPlayerList=$('.name h2').text();
+     console.log(nowPlayerList);
      myPlaylist = libraryList;
-     $(".songs .listPlay").removeClass("nowlistening").html('<img src="./img/library/coverPlay-s.png">');
+     $(".songs .listPlay").not(this).removeClass("nowlistening").html('<img src="./img/library/coverPlay-s.png">');
      if ($(this).hasClass('nowlistening')) {
        if (playStatus) {
          $(this).html('<img src="./img/library/coverPlay-s.png">');
@@ -325,6 +345,7 @@
    //ALL PLAY BTN
    $("#listAllPlay").click(function () {
      playerListName = nowList;
+     nowPlayerList = nowList;
      phpGetListName = mylistInfo;
      myPlaylist = libraryList;
      nowPlaying = 0;
@@ -422,7 +443,6 @@
  };
 
  function libraryLightListName(ListInfo) {
-   console.log(ListInfo);
    let ul, li, text;
    $('#libraryMyAllList ul').children().remove();
    ul = $('#libraryMyAllList ul');
@@ -444,39 +464,60 @@
      <div class="delete"><i class="fas fa-times"></i></div>
    </li>`);
    }
-   //  $('#mobile_listChoose').append(`<option disabled='disabled' selected='selected' >-- choose --</option>`);
-   //  for (let j = 0; j < mylist.length; j++) {
-   //    $('#mobile_listChoose').append(`<option value="${mylist[j].plist_name}">${mylist[j].plist_name}</option>`);
-   //  }
  };
 
  //顯示清單歌曲列表
  function showLibrarySongs(songList = libraryList) {
    $('.songs').children().remove();
-   if (songList.length == undefined) {
-     $('.songs').append(`<li style="color:#aaa;text-align:center">No songs</li>`);
+   if (songList == 'no') {
+     $('.songs').append(`<li style="color:#aaa;text-align:center">Please login !</li>`);
    } else {
-     for (let i = 0; i < songList.length; i++) {
-       $('.songs').append(`<li>
-       <div class="songPlay">
-         <div class="songCover">
-           <img src="${songList[i].song_pic}" alt="">
-           <div class="listPlay"><img src="./img/library/coverPlay-s.png"></div>
+     if (songList.length == undefined) {
+       $('.songs').append(`<li style="color:#aaa;text-align:center">No songs</li>`);
+     } else {
+       if (member['mem_no']) {
+         for (let i = 0; i < songList.length; i++) {
+           $('.songs').append(`<li>
+         <div class="songPlay">
+           <div class="songCover">
+             <img src="${songList[i].song_pic}" alt="">
+             <div class="listPlay"><img src="./img/library/coverPlay-s.png"></div>
+           </div>
          </div>
-       </div>
-       <div class="listSongInfo">
-         <div class="name">
-           <a href="./songinfo.html">${songList[i].song_name}</a>
+         <div class="listSongInfo">
+           <div class="name">
+             <a href="./songinfo.html?song_no=${songList[i].song_no}">${songList[i].song_name}</a>
+           </div>
+           <div class="creator">${songList[i].mem_name}</div>
          </div>
-         <div class="creator">${songList[i].mem_name}</div>
-       </div>
-       <div class="heart becomeRed"><img src="./img/collection/redheart.png"></div>
-       <div class="more">
-         <i class="fas fa-ellipsis-h"></i>
-         <div class="changeList">change list</div>
-       </div>
-       <div class="clearfix"></div>
-     </li>`);
+         <div class="heart becomeRed"><img src="./img/collection/redheart.png"></div>
+         <div class="more">
+           <i class="fas fa-ellipsis-h"></i>
+           <div class="changeList">change list</div>
+         </div>
+         <div class="clearfix"></div>
+       </li>`);
+         }
+       } else {
+         for (let i = 0; i < songList.length; i++) {
+           $('.songs').append(`<li>
+         <div class="songPlay">
+           <div class="songCover">
+             <img src="${songList[i].song_pic}" alt="">
+             <div class="listPlay"><img src="./img/library/coverPlay-s.png"></div>
+           </div>
+         </div>
+         <div class="listSongInfo">
+           <div class="name">
+             <a href="./songinfo.html?song_no=${songList[i].song_no}">${songList[i].song_name}</a>
+           </div>
+           <div class="creator">${songList[i].mem_name}</div>
+         </div>
+         <div class="heart"><img src="./img/collection/grayheart.png"></div>
+         <div class="clearfix"></div>
+       </li>`);
+         }
+       }
      }
    }
  }
@@ -539,5 +580,31 @@
    xhr.open("post", "./phps/songChangeList.php", true);
    xhr.setRequestHeader('content-type', 'application/x-www-form-urlencoded');
    let data_info = `libraryMsg=${$('#libraryMsg').val()}&lightPlistNoA=${plistNoN}&lightSongNo=${songNo}`;
+   xhr.send(data_info);
+ }
+
+ //收藏狀態
+ function favorStatus(favorSong) {
+   let xhr = new XMLHttpRequest();
+   xhr.onload = function () {
+     if (xhr.status == 200) {
+       if (xhr.responseText == 'Asuccess') {
+         $('#listAlert h4').text('Success to add');
+       } else if (xhr.responseText == 'Dsuccess') {
+         $('#listAlert h4').text('Success to cancel');
+       } else if (xhr.responseText == 'Afail') {
+         $('#listAlert h4').text('Fail to add');
+       } else if (xhr.responseText == 'Dfail') {
+         $('#listAlert h4').text('Fail to cancel');
+       }
+       $('.lightCover').show();
+       $('#listAlert').show();
+     } else {
+       alert(xhr.statusText);
+     }
+   };
+   xhr.open("post", "./phps/LibraryHeart.php", true);
+   xhr.setRequestHeader('content-type', 'application/x-www-form-urlencoded');
+   let data_info = `favorStatus=${$('#favorStatus').val()}&favorSong=${favorSong}`;
    xhr.send(data_info);
  }

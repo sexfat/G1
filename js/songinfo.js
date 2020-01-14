@@ -1,3 +1,13 @@
+window.addEventListener('load', function () {
+
+    //取得頁面song_no
+    let searchURL = window.location.search;
+    searchURL = searchURL.substring(1, searchURL.length);
+    let targetPageId = searchURL.split("=")[1];
+
+});
+
+
 function Particle(opt) {
     this.x = opt.x || 0;
     this.y = opt.y || 0;
@@ -5,7 +15,7 @@ function Particle(opt) {
     this.vy = opt.vy || Math.random() - .5;
     this.size = opt.size || Math.random() * 3;
     this.life = opt.life || Math.random() * 5;
-    
+
     this.dead = false;
 
     this.alpha = 1;
@@ -34,7 +44,8 @@ function update(ctx) {
 }
 
 function render(ctx) {
-    var dot = this, gA = ctx.globalAlpha;
+    var dot = this,
+        gA = ctx.globalAlpha;
     // ctx.shadowBlur = dot.size / 2;
     // ctx.shadowColor = 'rgba(244,244,244,.2)';
     ctx.fillStyle = dot.color;

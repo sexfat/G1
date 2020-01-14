@@ -6,7 +6,7 @@ try {
   if ($_SESSION['mem_no']) {
     $sql = "select tsml.song_no,song_name,song_pic,song_addr,totaltime,mem.mem_name
     from `member` mem join total_station_music_library tsml using (mem_no) join myfavorite mf using (song_no)
-    where mem.mem_no = :mem_no
+    where mem.mem_no = :memNo
     group by song_no
     order by mf.song_no asc;";
 
