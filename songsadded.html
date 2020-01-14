@@ -512,13 +512,13 @@
                                     </div><br>
                                     <div id="infohashtag">
                                         <span style="font-weight: bold;">Song type : </span><input type="radio"
-                                            name="cat_no" id="" checked="checked"> House&ensp;
-                                        <input type="radio" style="border-radius: 5px;" name="cat_no" id="">Trap
+                                            name="cat_no" value="3" id="" checked="checked"> House&ensp;
+                                        <input type="radio" style="border-radius: 5px;" name="cat_no" value="2" id="">Trap
                                         <br>
                                         <span style="font-weight: bold;">Hashtag : </span><br>
-                                        <input type="checkbox" name="" id=""> #Scratch&ensp;
-                                        <input type="checkbox" name="" id=""> #Stress&ensp;
-                                        <input type="checkbox" name="" id="add_Ethereal"> #Ethereal&ensp;
+                                        <input type="radio" name="song_hashtag" value="1" id=""> #Scratch&ensp;
+                                        <input type="radio" name="song_hashtag" value="2" id=""> #Stress&ensp;
+                                        <input type="radio" name="song_hashtag" value="3" id="add_Ethereal"> #Ethereal&ensp;
                                         <br>
                                         <p style="font-weight: bold;">Introduction :</p>
                                         <textarea name="song_idn" id="add_tta" cols="65" rows="6"
@@ -1188,11 +1188,16 @@
                 }
             }
             //設定好所要連結的程式
-            let url = "songupload.php?song_name=" + document.getElementsByName("song_name").value;
+            let url = "songupload.php?song_name=" + document.getElementsByName("song_name").value 
+                                   + "&song_idn=" + document.getElementsByName("song_idn").value 
+                                   + "&song_pic=" + document.getElementsByName("song_pic").value
+                                   + "&cat_no" + document.getElementsByName("cat_no").value
+                                   + "&song_hashtag" + document.getElementsByName("song_hashtag").value
+                                   + "&song_addr" + document.getElementsByName("song_addr").value;
             xhr.open("get", url, true); //
             //送出資料
             xhr.send(null);
-        } //function_checkId
+        }
     </script>
 </body>
 
