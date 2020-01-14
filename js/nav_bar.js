@@ -139,7 +139,7 @@ let vm = new Vue({
                     .querySelector(".mem_list")
                     .setAttribute("style", "transform: translateX(270px); filter: opacity(0);");
             }
-            xhr.open("get", "./php/logout.php", true);
+            xhr.open("get", "./phps/logout.php", true);
             xhr.send(null)
         }
     }
