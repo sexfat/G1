@@ -1,23 +1,26 @@
  /* ---------------- 全域變數 ---------------- */
  var audio = $("#player audio")[0]; //撥放器
  let vol_s, vol_b, vol_drag = false,
-   songTime,//目前播放歌曲時間
+   songTime, //目前播放歌曲時間
    playStatus = true, //撥放狀態-true:播放中
-   playerAuto=true,//---- 是否要自動撥放
+   playerAuto = true, //---- 是否要自動撥放
    nowPlaying = 0, //現在播放的歌索引值
-   myPlaylist = phpGetListName = [], // 目前播放清單 | php抓來的清單
+   nowPlayerList,
+   myPlaylist = phpGetListName = [], // 目前播放清單 | php抓來的清單 | 會員資料
    playerListName, //player清單名
    listLen = myPlaylist.length;
 
 
  /* ---------------- player load ---------------- */
  window.addEventListener('load', function () {
+
    //撥放器縮放
    $('#expand').click(function () {
      $('.player_b').addClass('open');
      $('.player_s').animate({
        bottom: '-70px'
      });
+     ListTopInfo();
    });
    $('#closePlayer').click(function () {
      $('.player_b').removeClass('open');
@@ -56,15 +59,41 @@
      $('#player #myAllList').hide();
    });
 
-
-   //點愛心
-   $(document).on('click', '.heart', function () {
-     let songName = $(this).siblings('.listSongInfo').find('.name h4').text();
-     if ($(this).hasClass('becomeRed')) {
-       $(this).html('<img src="./img/collection/grayheart.png">').removeClass('becomeRed');
-
+   //顯示歌曲點愛心
+   $('#player .songInfo').on('click', '.heart', function () {
+     let songName = $(this).siblings('.name').text();
+     let playerInd = getPlayerSongIndex(songName);
+     let favSongInd = myPlaylist[playerInd].song_no;
+     if (!member['mem_no']) {
+       $('#player .lightCover').show();
+       $('#playerAlert').show();
+       $('#playerAlert h4').text('Please login!');
      } else {
-       $(this).html('<img src="./img/collection/redheart.png">').addClass('becomeRed');
+       if ($(this).hasClass('becomeRed')) {
+         $(this).html('<img src="./img/collection/grayheart.png">').removeClass('becomeRed');
+       } else {
+         $(this).html('<img src="./img/collection/redheart.png">').addClass('becomeRed');
+       }
+       favorStatus(favSongInd);
+     }
+   });
+
+   //播放清單點愛心
+   $('#player .list').on('click', '.heart', function () {
+     let songName = $(this).siblings('.listSongInfo').find('.name h4').text();
+     let playerInd = getPlayerSongIndex(songName);
+     let favSongInd = myPlaylist[playerInd].song_no;
+     if (!member['mem_no']) {
+       $('#player .lightCover').show();
+       $('#playerAlert').show();
+       $('#playerAlert h4').text('Please login!');
+     } else {
+       if ($(this).hasClass('becomeRed')) {
+         $(this).html('<img src="./img/collection/grayheart.png">').removeClass('becomeRed');
+       } else {
+         $(this).html('<img src="./img/collection/redheart.png">').addClass('becomeRed');
+       }
+       favorStatus(favSongInd);
      }
    });
 
@@ -85,7 +114,7 @@
      $('#plistName').val(playerListName);
    });
 
-   $('#myAllList #mylistOK').click(function () {
+   $('#myAllList #mylistOK').click(function () { //----有bug
      if (playerListName == undefined) {
        myPlaylist = myPlaylist;
      } else {
@@ -93,7 +122,11 @@
        if (playerListName == 'Liked songs') {
          getLikedList();
        } else {
-         getOtherPlayList();
+         if (!member['mem_no']) {
+           showAllSongs();
+         } else {
+           getOtherPlayList();
+         }
        }
        nowPlaying = 0;
        audio.currentTime = 0;
@@ -253,26 +286,37 @@
  //初始化
  function playerInit() {
    audio.volume = 0.5;
-   getLikedList(); //待改-----這裡要改要判斷哪個清單
+   if (member['mem_no']) {
+     getLikedList(); //待改-----這裡要改要判斷哪個清單
+   } else {
+     showAllSongs();
+   }
    isLocalHave();
+   ListTopInfo();
  }
 
  //取得Light -- ListName
  function getLightName() {
-   let xhr = new XMLHttpRequest();
-   xhr.onload = function () {
-     if (xhr.status == 200) {
-       phpGetListName = JSON.parse(xhr.responseText);
-       mylistInfo = phpGetListName;
-       lightListName(phpGetListName);
-       showAllMyList(mylistInfo);
-       libraryLightListName(phpGetListName);
-     } else {
-       alert(xhr.statusText);
-     }
-   };
-   xhr.open("get", "./php/getListName.php", true);
-   xhr.send(null);
+   if (!member['mem_no']) {
+     mylistInfo = JSON.parse('[{"plist_name":"Total songs","list_pic":"./img/library/list_pic_no.jpg"}]');
+     lightListName(mylistInfo);
+   } else {
+     let xhr = new XMLHttpRequest();
+     xhr.onload = function () {
+       if (xhr.status == 200) {
+         phpGetListName = JSON.parse(xhr.responseText);
+         mylistInfo = phpGetListName;
+         lightListName(mylistInfo);
+         showAllMyList(mylistInfo);
+         libraryLightListName(mylistInfo);
+       } else {
+         alert(xhr.statusText);
+       }
+     };
+     let url = "./phps/getListName.php";
+     xhr.open("get", url, true);
+     xhr.send(null);
+   }
  }
  //取得Liked Songs
  function getLikedList() {
@@ -286,7 +330,25 @@
        alert(xhr.statusText);
      }
    };
-   xhr.open("get", "./php/likedSongsList.php", false);
+   let url = "./phps/likedSongsList.php";
+   xhr.open("get", url, false);
+   xhr.send(null);
+ }
+
+ //取得all songs
+ function showAllSongs() {
+   let xhr = new XMLHttpRequest();
+   xhr.onload = function () {
+     if (xhr.status == 200) {
+       myPlaylist = JSON.parse(xhr.responseText);
+       listLen = myPlaylist.length;
+       createPlayerList(myPlaylist);
+     } else {
+       alert(xhr.statusText);
+     }
+   };
+   let url = "./phps/allSongs.php";
+   xhr.open("get", url, false);
    xhr.send(null);
  }
 
@@ -302,19 +364,26 @@
        alert(xhr.statusText);
      }
    };
-   let url = `./php/showPlayList.php?plistName=${playerListName}`;
+   let url = `./phps/showPlayList.php?plistName=${playerListName}`;
    xhr.open("GET", url, false);
    xhr.send(null);
  }
  //歌單資訊
  function ListTopInfo() {
    let listIndex = getListIndex(playerListName);
-   if (listIndex == -1) {
-     $('.player_b .listCover img').attr('src', './img/library/list_pic0.jpg');
-     $('.player_b .listName h2').text('Liked songs');
+   if (member['mem_no']) {
+     if (listIndex == -1) {
+       $('.player_b .listCover img').attr('src', './img/library/list_pic0.jpg');
+       $('.player_b .listName h2').text('Liked songs');
+     } else {
+       $('#player .heart').not('.list .heart').addClass('becomeRed');
+       $('#player .heart img').not('.list .heart').attr('src', './img/collection/redheart.png');
+       $('.player_b .listCover img').attr('src', myPlaylist[listIndex].list_pic);
+       $('.player_b .listName h2').text(playerListName);
+     }
    } else {
-     $('.player_b .listCover img').attr('src', phpGetListName[listIndex].list_pic);
-     $('.player_b .listName h2').text(playerListName);
+     $('.player_b .listCover img').attr('src', './img/library/list_pic_no.jpg');
+     $('.player_b .listName h2').text('Total songs');
    }
    $('.player_b .listName span').text(`${listLen} songs`);
  }
@@ -323,22 +392,40 @@
  function createPlayerList(songlistbuild) {
    $('#player .list ul').text("");
    if (songlistbuild != "{}") {
-     for (let i = 0; i < songlistbuild.length; i++) {
-       $('#player .list ul').append(`<li>
-       <div class="songCover">
-         <img src="${songlistbuild[i].song_pic}" alt="">
-         <div class="listPlay"><img src="./img/library/coverPlay-s.png"></div>
-       </div>
-       <div class="listSongInfo">
-         <div class="name">
-           <h4>${songlistbuild[i].song_name}</h4>
-           <p>${songlistbuild[i].mem_name}</p>
-         </div>
-       </div>
-       <div class="totalTime">${songlistbuild[i].totaltime}</div>
-       <div class="heart becomeRed"><img src="./img/collection/redheart.png"></div>
-       <div class="clearfix"></div>
-     </li>`);
+     if (member['mem_no']) {
+       for (let i = 0; i < songlistbuild.length; i++) {
+         $('#player .list ul').append(`<li>
+        <div class="songCover">
+          <img src="${songlistbuild[i].song_pic}" alt="">
+          <div class="listPlay"><img src="./img/library/coverPlay-s.png"></div>
+        </div>
+        <div class="listSongInfo">
+          <div class="name">
+            <h4><a href="./songinfo.html?song_no=${songlistbuild[i].song_no}">${songlistbuild[i].song_name}</a></h4>
+            <p>${songlistbuild[i].mem_name}</p>
+          </div>
+        </div>
+        <div class="heart becomeRed"><img src="./img/collection/redheart.png"></div>
+        <div class="clearfix"></div>
+      </li>`);
+       }
+     } else {
+       for (let i = 0; i < songlistbuild.length; i++) {
+         $('#player .list ul').append(`<li>
+        <div class="songCover">
+          <img src="${songlistbuild[i].song_pic}" alt="">
+          <div class="listPlay"><img src="./img/library/coverPlay-s.png"></div>
+        </div>
+        <div class="listSongInfo">
+          <div class="name">
+            <h4><a href="./songinfo.html?song_no=${songlistbuild[i].song_no}">${songlistbuild[i].song_name}</a></h4>
+            <p>${songlistbuild[i].mem_name}</p>
+          </div>
+        </div>
+        <div class="heart"><img src="./img/collection/grayheart.png"></div>
+        <div class="clearfix"></div>
+      </li>`);
+       }
      }
    } else {
      $('#player .list ul').append(`<li style="text-align:center">No songs</li>`);
@@ -350,14 +437,22 @@
    let ul;
    $('#myAllList ul').children().remove();
    ul = $('#myAllList ul');
-   ul.append(`<li class="chooseList">Liked songs</li>`);
-   for (let i = 0; i < ListInfo.length; i++) {
-     ul.append(`<li>${ListInfo[i].plist_name}</li>`);
+   if (member['mem_no']) {
+     ul.append(`<li class="chooseList">Liked songs</li>`);
+     for (let i = 0; i < ListInfo.length; i++) {
+       ul.append(`<li>${ListInfo[i].plist_name}</li>`);
+     }
+   } else {
+     ul.append(`<li class="chooseList">Total songs</li>`);
    }
  }
 
  //localstorage
  function isLocalHave() {
+   if (localStorage['listName']) {
+    playerListName = localStorage['listName'];
+    getOtherPlayList();
+   }
    if (localStorage.length != 0) {
      nowPlaying = localStorage["nowPlaying"];
      audio.currentTime = localStorage['songTime'];
@@ -371,6 +466,7 @@
      $('#player audio').attr("autoplay", false);
      playStatus = true;
    }
+   console.log(myPlaylist);
    $('#player audio').attr("src", myPlaylist[nowPlaying].song_addr);
    audio.load();
    isPlaying(playStatus);
@@ -380,7 +476,7 @@
 
  //播放狀態控制 -- 如果沒有播放就讓他撥
  function isPlaying(isPlaying) {
-   playerAuto=true;
+   playerAuto = true;
    if (!isPlaying) {
      playAudio();
      $("#player .play").html('<i class="fas fa-pause"></i>');
@@ -414,25 +510,29 @@
  //進度條 -- timer
  function progressingShow() {
    songTime = audio.currentTime;
+
    //存進localstorage
    localStorage.setItem("nowPlaying", nowPlaying);
    localStorage.setItem("songTime", songTime);
    localStorage.setItem("playStatus", playStatus);
+   if (nowPlayerList != 'Liked songs' && nowPlayerList != 'Total songs' && nowPlayerList != undefined) {
+     localStorage.setItem("listName", nowPlayerList);
+   }
 
    let progressColor = (songTime / audio.duration) * 100;
    if (audio.ended) {
-     if(!playerAuto){
-      autoChange(false);
-      audio.currentTime=0;
-      isPlaying(true);
-     }else{
-      autoChange(true);
+     if (!playerAuto) {
+       autoChange(false);
+       audio.currentTime = 0;
+       isPlaying(true);
+     } else {
+       autoChange(true);
      }
    }
    // console.log(audio.duration); //歌曲總長秒數
    $("#player .progress").css("width", `${progressColor.toFixed(2)}%`);
    $("#player span.start").text(`${parseInt(songTime / 60)}:${parseInt(songTime % 60)}`)
-   $("#player span.end").text(myPlaylist[nowPlaying].totaltime);
+   $("#player span.end").text(`${parseInt(audio.duration / 60)}:${parseInt(audio.duration % 60)}`);
    //順便同步音量
    $(".player_b .volLine .volControl").css('width', `${parseInt(audio.volume*100)}%`);
    $(".player_s .volLine .volControl").css('width', `${parseInt(audio.volume*100)}%`);
@@ -473,16 +573,16 @@
  //清單播放狀態
  function listStatus() {
    $(`.player_b .listPlay`).removeClass("nowlistening");
-   $(`.songCover .listPlay`).removeClass("nowlistening");
+   //  $(`.songCover .listPlay`).removeClass("nowlistening");
    $(`.player_b li:nth-of-type(${nowPlaying+1}) .listPlay`).addClass("nowlistening");
-   $(`.songs li:nth-of-type(${nowPlaying+1}) .listPlay`).addClass("nowlistening");
+   //  $(`.songs li:nth-of-type(${nowPlaying+1}) .listPlay`).addClass("nowlistening");
    if (playStatus) {
      $(`.player_b li:nth-of-type(${nowPlaying+1}) .listPlay`).html('<img src="./img/library/coverPause-s.png">');
-     $(`.songs li:nth-of-type(${nowPlaying+1}) .listPlay`).html('<img src="./img/library/coverPause-s.png">');
+     //  $(`.songs li:nth-of-type(${nowPlaying+1}) .listPlay`).html('<img src="./img/library/coverPause-s.png">');
    } else {
      $(`.player_b li:nth-of-type(${nowPlaying+1}) .listPlay`).html('<img src="./img/library/coverPlay-s.png">');
-     $(`.songs li:nth-of-type(${nowPlaying+1}) .listPlay`).html('<img src="./img/library/coverPlay-s.png">');
-    }
+     //  $(`.songs li:nth-of-type(${nowPlaying+1}) .listPlay`).html('<img src="./img/library/coverPlay-s.png">');
+   }
  }
 
  //音量控制
@@ -531,4 +631,14 @@
      audio.volume = vol_s / 100;
      $(".player_s .volLine .volControl").css('width', `${vol_s}%`);
    }
+ }
+
+ //player歌曲索引值
+ function getPlayerSongIndex(name) {
+   let songName = [];
+   for (let i = 0; i < myPlaylist.length; i++) {
+     songName.push(myPlaylist[i].song_name);
+   }
+   let songind = songName.indexOf(name);
+   return songind;
  }
