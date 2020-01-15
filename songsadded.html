@@ -480,7 +480,7 @@
                             </a>
                         </li>
                         <ol class="songsadded_inside">
-                            <form class="addinsideadd" action="./phps/songupload.php" method="POST">
+                            <form class="addinsideadd" action="./phps/songsupload.php" method="GET" enctype="multipart/form-data">
                                 <article>
                                     <!-- target="id_iframe" -->
                                     <br>
@@ -1152,7 +1152,7 @@
         });
     </script>
 
-    <script>
+    <!-- <script>
         function songsaddsend() {
             let xhr = new XMLHttpRequest();
             console.log(xhr.readyState);
@@ -1167,7 +1167,7 @@
                 }
             }
         }
-        let url = "./phps/songupload.php";
+        let url = "./phps/songsupload.php";
         xhr.open("post", url, true);
         xhr.setRequestHeader("content-type", "application/x-www-form-urlencoded");
         let songsadd_send = "song_name=" + document.getElementsByName("song_name").value
@@ -1178,8 +1178,8 @@
                              + "&song_addr" + document.getElementsByName("song_addr").value;
             xhr.send(songsadd_send);
         console.log(songsadd_send);
-    </script>
-    <!-- <script>
+    </script> -->
+    <script>
         function songsaddsend() {
             let xhr = new XMLHttpRequest();
             console.log(xhr.readyState);
@@ -1203,7 +1203,7 @@
             //送出資料
             xhr.send(null);
         }
-    </script> -->
+    </script>
 </body>
 
 </html>
