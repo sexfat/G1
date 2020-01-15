@@ -738,12 +738,12 @@
               
                       <div>  
                         Upload from my local song:
-                         <label  class="act_SignUPButton"for="act_SignUp-UpLoadSong">Upload</label>
+                         <label  class="act_SignUPButton"for="act_SignUp-UpLoadSong" >Upload</label>
                         <input type="file" id="act_SignUp-UpLoadSong" style="display:none"
-                         @change="getObjectURL"> 
+                         @change="changeSignUpload"  accept="audio/mpeg"> 
                          </div>
 
-                     <div  class="act_SignSongURL-box" v-if="url">{{url}}</div>
+                     <div  class="act_SignSongURL-box" v-if="SignSongURL">{{SignSongURL}}</div>
                      
                      <div>
                         Select from my music list:
@@ -758,7 +758,7 @@
                 
                    <p class="act_from-button-box">
                      <button type="button"  @click="BackFormPage(0)">Back</button>
-                     <button type="button"  @click="formNextsong(2)">Next </button>
+                     <button type="button"  @click="formNextsong()">Next </button>
                    </p>
                 </div>
                 
@@ -771,7 +771,7 @@
                         <div>
                             <h4>Song name:</h4>
                             <input type="text" class="act_Sign-up-song-name"maxlength="20"
-                                    v-model="SongName"    placeholder="Your song name!"  v-if="SignSongURL">
+                                    v-model="SongName"    placeholder="Your song name!"  v-if="SignSongURL" required>
                             <div  class="act_Sign-up-song-name" v-if="selectSong">{{selectSong.song_name}}</div>
                                     
                         </div>
@@ -782,7 +782,7 @@
                                       cols="40" rows="5" maxlength="150"
                                       v-model="SongInformation"
                                       placeholder="Introduce your song!"
-                                      v-if="SignSongURL"></textarea>
+                                      v-if="SignSongURL" required></textarea>
                             
                             <div class="act_Sign-up-song-information" 
                                      v-if="selectSong">{{selectSong.song_idn}}</div>
@@ -796,7 +796,7 @@
                                 <p v-if="SignSongURL">Upload The album cover:
                                    <label class="act_SignUPButton2"  for="act_SignUp-Song-img"  v-if="SignSongURL">Upload</label>
                                 </p>
-                               <input type="file" id="act_SignUp-Song-img" style="display:none" @change="changeSignUpImg">
+                               <input type="file" id="act_SignUp-Song-img" style="display:none" @change="changeSignUpImg" accept="image/jpeg, image/png" required>
                                <div class="act_showSignUpImg" v-if="SignUpImg"> <img :src="SignUpImg" alt=""></div>
                                <div class="act_showSignUpImg" v-if="selectSong"> <img :src="selectSong.song_pic" alt=""></div>
                                
@@ -806,7 +806,7 @@
                 
                 <p class="act_from-button-box">
                   <button type="button"  @click="BackFormPage(1)">Back</button>
-                  <button type="button" @click="NextFormPage(3)">Next </button>
+                  <button type="button" @click=" formNextInformation">Next </button>
                   </p>
                 </div>
                 
@@ -848,7 +848,7 @@
                        <div> 
                            <h4>Song URL:</h4>    
                             <p  class="act_SignSongURL-box" v-if="SignSongURL">{{SignSongURL}}</p> 
-                            <p  class="act_SignSongURL-box" v-if="selectSong">{{SignSong.song_addr}}</p> 
+                            <p  class="act_SignSongURL-box" v-if="selectSong">{{selectSong.song_addr}}</p> 
                        </div>
 
                      <p class="act_from-button-box">
@@ -970,7 +970,7 @@
 
                     member: [],
                     memberContestSong: [],
-                    url:'',
+
 
 
                 }
@@ -1009,6 +1009,18 @@
                         this.formContent = 2;
                     }
                 },
+                formNextInformation() {//確認有填寫歌曲路徑
+                    let Name = this.SongName;
+                    let Information= this.SongInformation;
+                    let Img=this.SignUpImg;
+        
+                    if (Name== "" || Information== "" || Img=="") {
+                        alert('Song introduce cannot be empty!');
+                    } else {
+                        this.formContent =3;
+                    }
+                },
+                
                 NextFormPage(Index) {
                     this.formContent = Index;
                 },
@@ -1025,31 +1037,32 @@
                 imageLoader(img) {//獲取檔案路徑，顯示在頁面
                     this.SignUpImg = img.target.result;
                 },
-                changeSignUpload(song) {//獲取檔案路徑
-                    const songFile = song.target.files.item(0);
-                    // const readers = new FileReader();
-                    // readers.addEventListener('load', this.SignUploadLoader);
-                    // readers.readAsDataURL(songFile);
+                checkSongFormat(song) {//檢查檔案格式
+                    const readers = new FileReader();
+                    readers.readAsDataURL(song);
+    
+                },
+               
+                changeSignUpload(event) {//獲取檔案
+                    let song = event.target.files.item(0);
+                    this.SignSongURL = this.getObjectURL(song);
+                    this.checkSongFormat(song);
                     if (this.selectSong != "") {
                         this.selectSong = "";
-
                     }
                 },
-                SignUploadLoader(song) {//獲取檔案路徑，顯示在頁面
-                    this.SignSongURL = song.target.result;
-                },
-                getObjectURL(file) {
-
-                    var url = null;
+                getObjectURL(song) {//獲取檔案路徑
+                    let url = null;
                     if (window.createObjectURL != undefined) { // basic
-                        url = window.createObjectURL(file);
-                    } else if (window.URL != undefined) { // mozilla(firefox)
-                        url = window.URL.createObjectURL(file);
+                        url = window.createObjectURL(song);
                     } else if (window.webkitURL != undefined) { // webkit or chrome
-                        url = window.webkitURL.createObjectURL(file);
+                        url = window.webkitURL.createObjectURL(song);
+                    } else if (window.URL != undefined) { // mozilla(firefox)
+                        url = window.URL.createObjectURL(song);
                     }
-                    url= this.url;
+                    return url;
                 },
+
 
 
                 selectSignUpload() {//清除上傳路徑確保本地上傳和選擇上傳二擇一
