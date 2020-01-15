@@ -480,7 +480,7 @@
                             </a>
                         </li>
                         <ol class="songsadded_inside">
-                            <form class="addinsideadd" action="./phps/songupload.php" method="GET">
+                            <form class="addinsideadd" action="./phps/songupload.php" method="POST">
                                 <article>
                                     <!-- target="id_iframe" -->
                                     <br>
@@ -512,7 +512,7 @@
                                     </div><br>
                                     <div id="infohashtag">
                                         <span style="font-weight: bold;">Song type : </span><input type="radio"
-                                            name="cat_no" value="3" id="" checked="checked"> House&ensp;
+                                            name="cat_no" value="3" id=""> House&ensp;
                                         <input type="radio" style="border-radius: 5px;" name="cat_no" value="2" id="">Trap
                                         <br>
                                         <span style="font-weight: bold;">Hashtag : </span><br>
@@ -1152,8 +1152,8 @@
         });
     </script>
 
-    <!-- <script>
-        function songsadd() {
+    <script>
+        function songsaddsend() {
             let xhr = new XMLHttpRequest();
             console.log(xhr.readyState);
             xhr.onreadystatechange = function () {
@@ -1167,14 +1167,19 @@
                 }
             }
         }
-        var url = "./phps/songupload.php";
-        xhr.open("get", url, true);
+        let url = "./phps/songupload.php";
+        xhr.open("post", url, true);
         xhr.setRequestHeader("content-type", "application/x-www-form-urlencoded");
-        var songsadd_send =
+        let songsadd_send = "song_name=" + document.getElementsByName("song_name").value
+                             + "&song_idn=" + document.getElementsByName("song_idn").value 
+                             + "&song_pic=" + document.getElementsByName("song_pic").value
+                             + "&cat_no" + document.getElementsByName("cat_no").value
+                             + "&song_hashtag" + document.getElementsByName("song_hashtag").value
+                             + "&song_addr" + document.getElementsByName("song_addr").value;
             xhr.send(songsadd_send);
         console.log(songsadd_send);
-    </script> -->
-    <script>
+    </script>
+    <!-- <script>
         function songsaddsend() {
             let xhr = new XMLHttpRequest();
             console.log(xhr.readyState);
@@ -1198,7 +1203,7 @@
             //送出資料
             xhr.send(null);
         }
-    </script>
+    </script> -->
 </body>
 
 </html>
