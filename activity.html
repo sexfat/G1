@@ -481,24 +481,23 @@
 
         </div>
         <component :is="content" :now-Vote-Song=" nowVoteSong" :old-Vote-Song2018="oldVoteSong2018"
-            :old-Vote-Song2017="oldVoteSong2017" :vote-All="voteAll"> </component>
+            :old-Vote-Song2017="oldVoteSong2017" :vote-All="voteAll" :act-Information="actInformation"> </component>
 
 
     </section>
     <script type="text/x-template" id="act-old">
         <div>
-         <article class="act_old_years " id="act_old_year2018">
+         <article class="act_old_years " id="act_old_year2018"  
+         v-for="(information,index) in actInformation.slice(1,2)">
              <div class="act_oldink"><img src="./img/activity/Splash-ink05.png" alt=""></div>
              <div>
-                 <div class="act_year">2018</div>
+                 <div class="act_year">{{information.activity_no}}</div>
                  <h2>Information</h2>
-                 <h3>Electronic dance music contest 2018</h3>
+                 <h3>{{information.activity_name}}</h3>
      
                  <p>
      
-                    SoundWave aims to provide an amateur music creation platform for more people to discover more and better mixed music.
-                    <br>
-                    The theme of this event is pop style!
+                    {{information.activity_con}}
                    
                  </p>
                  <div class="act_oldVotes">
@@ -510,7 +509,7 @@
      
              <div class="act_oldposterbox">
                  <div class="act_oldposter">
-                     <img src="./img/activity/2018-poster02.png" alt="">
+                     <img :src="information.activity_img" alt="">
                  </div>
      
                  <div class="act_oldSplash-ink">
@@ -570,18 +569,16 @@
                 
             </div> 
          </section>
-         <article class="act_old_years " id="act_old-year2017">
+         <article class="act_old_years " id="act_old-year2017" v-for="(information,index) in actInformation.slice(2,3)">
              <div class="act_oldink"><img src="./img/activity/Splash-ink06.png" alt=""></div>
              <div>
-                 <div class="act_year">2017</div>
+                 <div class="act_year">{{information.activity_no}}</div>
                  <h2>Information</h2>
-                 <h3>Electronic dance music contest 2017</h3>
+                 <h3>{{information.activity_name}}</h3>
      
                  <p>
      
-                    SoundWave aims to provide an amateur music creation platform for more people to discover more and better mixed music.
-                    <br>
-                    The theme of this event is hit-hop style!
+                    {{information.activity_con}}
      
      
                  </p>
@@ -597,7 +594,7 @@
                      <img src="./img/activity/0.textline-top.svg" alt="">
                  </div> -->
                  <div class="act_oldposter">
-                     <img src="./img/activity/2017-poster02.png" alt="">
+                     <img :src="information.activity_img" alt="">
                  </div>
      
                  <div class="act_oldSplash-ink">
@@ -667,44 +664,36 @@
 
     <script type="text/x-template" id="act-now">
         <div>
-             <article class="act_now-year" id="act_Now-Introduction">
+             <article class="act_now-year" id="act_Now-Introduction" 
+             v-for="(information,index) in actInformation.slice(0, 1)">
  
-                 <div>
+                 <div >
 
                      <h2>Introduction</h2>
-                     <div>Electronic dance music contest 2019</div>
+                     <div>{{information.activity_name}}</div>
                      <h3>Information</h3>
-                     <p>
-                        SoundWave aims to provide an amateur music creation platform for more people to discover more and better mixed music.
-                        <br>
-                        The theme of this event is rock style,let's rock it!<br>
-                        Come and sign up for our competition so that more people can hear your music.
+                     <p style="word-break: keep-all;">
+                        {{information.activity_con}}
                       
-                         
-         
-         
                      </p>
                      <h3>Time</h3>
-                     <p>2019 Dec 31 to 2022 Dec 31 </p>
+                     <p>Start:{{information.activity_str}}<br>
+                        End:{{information.activity_fin}} </p>
                      
          
                  </div>
          
          
                  <div class="act_nowposterbox">
-                     <!-- <div class="act_nowposter-linetop">
-                         <img src="./img/activity/0.textline-top.svg" alt="">
-                     </div> -->
+                  
                      <div class="act_nowposter">
-                         <img src="./img/activity/2019-rock-poster-2.png" alt="">
+                         <img :src="information.activity_img" alt="">
                      </div>
          
                      <div class="act_nowSplash-ink">
                          <img src="./img/activity/Splash-ink02.png" alt="">
                      </div>
-                     <!-- <div class="act_nowposter-linebotom">
-                         <img src="./img/activity/0.textline-bottom.svg ">
-                     </div> -->
+                     
          
                  </div>
          
@@ -749,27 +738,27 @@
               
                       <div>  
                         Upload from my local song:
-                         <label  class="act_SignUPButton"for="act_SignUp-UpLoadSong">Upload</label>
+                         <label  class="act_SignUPButton"for="act_SignUp-UpLoadSong" >Upload</label>
                         <input type="file" id="act_SignUp-UpLoadSong" style="display:none"
-                         @change="changeSignUpload"> 
+                         @change="changeSignUpload"  accept="audio/mpeg"> 
                          </div>
 
                      <div  class="act_SignSongURL-box" v-if="SignSongURL">{{SignSongURL}}</div>
                      
                      <div>
                         Select from my music list:
-                          <label class="act_SignUPButton" for="act_SignUp-selectSong">  Select</label>
+                          <label class="act_SignUPButton" for="act_SignUp-selectSong" @click="selectSignUpload" v-if='memberContestSong'>  Select</label>
                           <br>   
-                          <select id="act_SignUp-selectSong"  v-model="selected">
-                           <option  value="cat">1.cat</option>
-                           <option  value="hello">2.hello</option>
+                          <select id="act_SignUp-selectSong"  v-model="selectSong"@click="selectSignUpload" v-if='memberContestSong'>
+                            <option value="" disabled selected>select you song</option>
+                           <option  v-for="(list,index) in memberContestSong" :value="memberContestSong[index]">{{list.song_name}}</option>
                           </select>
                        </div>
 
                 
                    <p class="act_from-button-box">
                      <button type="button"  @click="BackFormPage(0)">Back</button>
-                     <button type="button"  @click="NextFormPage(2)">Next </button>
+                     <button type="button"  @click="formNextsong()">Next </button>
                    </p>
                 </div>
                 
@@ -781,27 +770,35 @@
                    
                         <div>
                             <h4>Song name:</h4>
-                            <input type="text" id="act_Sign-up-song-name"maxlength="20"
-                                    v-model="SongName"    placeholder="Your song name!"       >
+                            <input type="text" class="act_Sign-up-song-name"maxlength="20"
+                                    v-model="SongName"    placeholder="Your song name!"  v-if="SignSongURL" required>
+                            <div  class="act_Sign-up-song-name" v-if="selectSong">{{selectSong.song_name}}</div>
+                                    
                         </div>
 
                         <div>
                             <h4>Song information:</h4>
-                            <textarea id="act_Sign-up-song-information" 
+                            <textarea class="act_Sign-up-song-information" 
                                       cols="40" rows="5" maxlength="150"
                                       v-model="SongInformation"
                                       placeholder="Introduce your song!"
-                                     ></textarea>
+                                      v-if="SignSongURL" required></textarea>
+                            
+                            <div class="act_Sign-up-song-information" 
+                                     v-if="selectSong">{{selectSong.song_idn}}</div>
+                                   
 
                         </div>
 
                         <div>
                             <h4>Song img:</h4>
                           
-                                Upload The album cover:
-                               <label class="act_SignUPButton2"  for="act_SignUp-Song-img">Upload</label>
-                               <input type="file" id="act_SignUp-Song-img" style="display:none" @change="changeSignUpImg">
+                                <p v-if="SignSongURL">Upload The album cover:
+                                   <label class="act_SignUPButton2"  for="act_SignUp-Song-img"  v-if="SignSongURL">Upload</label>
+                                </p>
+                               <input type="file" id="act_SignUp-Song-img" style="display:none" @change="changeSignUpImg" accept="image/jpeg, image/png" required>
                                <div class="act_showSignUpImg" v-if="SignUpImg"> <img :src="SignUpImg" alt=""></div>
+                               <div class="act_showSignUpImg" v-if="selectSong"> <img :src="selectSong.song_pic" alt=""></div>
                                
                         
                         </div>
@@ -809,7 +806,7 @@
                 
                 <p class="act_from-button-box">
                   <button type="button"  @click="BackFormPage(1)">Back</button>
-                  <button type="button" @click="NextFormPage(3)">Next </button>
+                  <button type="button" @click=" formNextInformation">Next </button>
                   </p>
                 </div>
                 
@@ -832,19 +829,26 @@
                          <h4>Song img:</h4>
                          <div class="act_showSignUpImgSmall" 
                          v-if="SignUpImg"><img :src="SignUpImg" alt=""></div>
+                         <div class="act_showSignUpImgSmall" 
+                         v-if="selectSong"><img :src="selectSong.song_pic" alt=""></div>
                            
                        </div>
                        <div>
-                            <h4>Song name:</h4> {{SongName}}
+                            <h4>Song name:</h4>
+                             <p  v-if="SongName">{{SongName}}</p>
+                            <p  v-if="selectSong">{{selectSong.song_name}}</p>
+
                        </div>
                        <div>
                               <h4>Song information:</h4>
                               <p class="act_showSong-information" v-if="SongInformation" >{{SongInformation}}</p> 
+                              <p class="act_showSong-information" v-if="selectSong" >{{selectSong.song_idn}}</p> 
                        </div>
 
                        <div> 
                            <h4>Song URL:</h4>    
                             <p  class="act_SignSongURL-box" v-if="SignSongURL">{{SignSongURL}}</p> 
+                            <p  class="act_SignSongURL-box" v-if="selectSong">{{selectSong.song_addr}}</p> 
                        </div>
 
                      <p class="act_from-button-box">
@@ -869,14 +873,13 @@
                  
                 </div>
             </article> 
-         
-             </section>
+        </section>
+            
              <section id="act_Now-Vote"> 
-                  <h2>Vote</h2>
+                <h2>Vote</h2>
                  <article class="act_Now-Vote-content">
                    
                    <img src="./img/activity/Splash-ink07.png" alt="">
-                  
                    <h3>Rules</h3>
                    <p>
                     Depending on the category, submissions are judged on the following criteria:<br>
@@ -891,40 +894,28 @@
                    <div>
                      <h3>Votes</h3>
                      <span>{{voteAll[2].total_vote}}</span>
-                 </div>
+                   </div>
+                   
                  </article>
          
                  <section>
-                    <div v-for="item in nowVoteSong">   
-                    
+                    <div v-for="(item,index) in nowVoteSong" :key="index">   
                         <button type="button" @click.once="showChangeVote" >Vote</button>
-                         <p >Votes <span>{{item.vote_per}}</span></p>
-
-                           <div>
-                               <img :src="item.entries_img" alt="">
-                               <div class="act_old-play" @click="showChangePlay">
-                                   
-                               </div>
-                            
-                          </div>
+                        <p >Votes <span>{{item.vote_per}}</span></p>
+                        <div>
+                              <img :src="item.entries_img" alt="">
+                              <div class="act_old-play" @click="showChangePlay"></div>
+                        </div>
                           <div class="act_songBox"> 
-                              <div class="act_old-hear1" @click="showChangeHeart">
-                                
-                           </div>
-                            
-                           <a href="./songinfo.html"><h4>' {{item.entries_name}}'</h4></a>  
-                              
-                                  <p> {{item.mem_name}} </p>
+                              <div class="act_old-hear1" @click="showChangeHeart" ref="index"></div>
+                              <a href="./songinfo.html"><h4>' {{item.entries_name}}'</h4></a>  
+                              <p> {{item.mem_name}} </p>
                           </div>
                      </div>
-                      
-                  
                  </section>
-         
-         
+
              </section>
            </div>
- 
      </script>
     <script>
 
@@ -955,29 +946,44 @@
             props: {
                 nowVoteSong: [Array],
                 voteAll: [Array],
+                actInformation: [Array],
+
             },
             data: function () {
                 return {
 
                     formContent: 0,
+
+
                     SongName: "",
                     SongInformation: "",
                     SignUpImg: "",
                     SignSongURL: "",
-                    SignSongURLSelect: [],
+
+
+
+
+                    selectSong: [
+
+                    ],
+
+
                     member: [],
-                   
+                    memberContestSong: [],
+
+
+
                 }
 
             },
             computed: {
-                // addVote() {
-                //     parseInt(this.nowVoteSong.vote_per) += 1;
-                // }
+
 
             },
             methods: {
-                formLogin() {
+
+
+                formLogin() {//確認會員登入後才能繼續填寫表單
 
                     if (vml.mem_login == false) {
 
@@ -986,49 +992,110 @@
 
                     } else {
                         this.formContent = 1;
+                        this.SignSongURL = "";
+                        this.selectSong = "";
                         fetch('./phps/getMemInfo.php').then(res => res.json()).then(data => this.member = data);
 
                     };
 
-
                 },
+                formNextsong() {//確認有填寫歌曲路徑
+                    let upload = this.SignSongURL;
+                    let select = this.selectSong;
+
+                    if (upload == "" && select == "") {
+                        alert('Song path cannot be empty!');
+                    } else {
+                        this.formContent = 2;
+                    }
+                },
+                formNextInformation() {//確認有填寫歌曲路徑
+                    let Name = this.SongName;
+                    let Information= this.SongInformation;
+                    let Img=this.SignUpImg;
+        
+                    if (Name== "" || Information== "" || Img=="") {
+                        alert('Song introduce cannot be empty!');
+                    } else {
+                        this.formContent =3;
+                    }
+                },
+                
                 NextFormPage(Index) {
                     this.formContent = Index;
                 },
                 BackFormPage(Index) {
                     this.formContent = Index;
                 },
-                changeSignUpImg(img) {
-                    imgFile = img.target.files.item(0);
-                    reader = new FileReader();
+                changeSignUpImg(img) {//獲取檔案路徑
+                    const imgFile = img.target.files.item(0);
+                    const reader = new FileReader();
                     reader.addEventListener('load', this.imageLoader);
                     reader.readAsDataURL(imgFile);
 
                 },
-                imageLoader(img) {
+                imageLoader(img) {//獲取檔案路徑，顯示在頁面
                     this.SignUpImg = img.target.result;
                 },
-                changeSignUpload(song) {
-                    songFile = song.target.files.item(0);
-                    readers = new FileReader();
-                    readers.addEventListener('load', this.SignUploadLoader);
-                    readers.readAsDataURL(songFile);
+                checkSongFormat(song) {//檢查檔案格式
+                    const readers = new FileReader();
+                    readers.readAsDataURL(song);
+    
                 },
-                SignUploadLoader(song) {
-                    this.SignSongURL = song.target.result;
+               
+                changeSignUpload(event) {//獲取檔案
+                    let song = event.target.files.item(0);
+                    this.SignSongURL = this.getObjectURL(song);
+                    this.checkSongFormat(song);
+                    if (this.selectSong != "") {
+                        this.selectSong = "";
+                    }
+                },
+                getObjectURL(song) {//獲取檔案路徑
+                    let url = null;
+                    if (window.createObjectURL != undefined) { // basic
+                        url = window.createObjectURL(song);
+                    } else if (window.webkitURL != undefined) { // webkit or chrome
+                        url = window.webkitURL.createObjectURL(song);
+                    } else if (window.URL != undefined) { // mozilla(firefox)
+                        url = window.URL.createObjectURL(song);
+                    }
+                    return url;
                 },
 
-                showChangeHeart(e) {
+
+
+                selectSignUpload() {//清除上傳路徑確保本地上傳和選擇上傳二擇一
+                    if (this.SignSongURL != "") {
+                        this.SignSongURL = "";
+                    }
+                },
+
+                showChangeHeart(e) {//更換愛心顏色
                     let button = e.target;
                     button.classList.toggle('actShowHeart');
+                },
+                ChangeRedHeart() {//獲取會員已收藏歌曲，並更換顏色
+                    let nowSong = this.nowVoteSong.entries_name;
+                    let memHave = vml.memHeart.song_name;
+                    for (let i = 0; i <= nowSong.length; i++) {
+                        for (let j = 0; j <= memHave.length; j++) {
+                            if (nowSong[i] == memHave[j]) {
+                                let heart = document.querySelectorAll(".act_old-hear1");
+                                heart.$refs.i.classList.toggle('actShowHeart');
+                            }
+                        };
+
+                    };
 
 
                 },
-                showChangePlay(e) {
+
+                showChangePlay(e) {//切換撥放按鈕
                     let playButton = e.target;
                     playButton.classList.toggle('act_old-play-Pause');
                 },
-                showChangeVote(e) {
+                showChangeVote(e) {//確認會員登入後才能繼續投票
                     if (vml.mem_login == false) {
 
                         alert("Please login first!");
@@ -1043,13 +1110,16 @@
 
                 },
 
-                showMemberSong(){
-                    fetch('./phps/getMemContestSong.php').then(res => res.json()).then(data => this.SignSongURLSelect = data);
-                }
+
 
 
             },
+            mounted() {
+                fetch('./phps/getMemContestSong.php').then(res => res.json()).then(data => this.memberContestSong = data);
+                this.ChangeRedHeart;
 
+
+            },
 
 
 
@@ -1061,6 +1131,8 @@
                 oldVoteSong2018: [Array],
                 oldVoteSong2017: [Array],
                 voteAll: [Array],
+                actInformation: [Array],
+
             },
             data: function () {
                 return {
@@ -1079,6 +1151,11 @@
                     let playButton = e.target;
                     playButton.classList.toggle('act_old-play-Pause');
                 },
+
+
+
+            },
+            mounted() {
 
 
 
@@ -1094,18 +1171,23 @@
             el: '#activity',
 
             data: {
+                //當前頁面
                 content: 'actNow',
+
+                //切換按鈕顏色
                 tabImgON: './img/activity/button-on.png',
                 tabImgOFF: './img/activity/button-off.png',
                 sectionAnchor: './img/activity/button2-on.png',
 
-                countDownDate: new Date("jan 1 2022 00:00:00").getTime(),
+                //活動倒數時間
+                countDownDate: "",
                 days: 0,
                 hours: 0,
                 minutes: 0,
                 seconds: 0,
                 distance: 0,
 
+                //輪撥切換圖
                 BannerImgURL: [
                     `./img/activity/banner-activ.jpg`,
                     `./img/activity/banner-collection.jpg`,
@@ -1114,17 +1196,26 @@
                 imageActive: `./img/activity/banner-activ.jpg`,
                 isActive: 0,
                 currentIndex: 1,
-                SongName: "",
-                SongInformation: "",
-                SignUpImg: "",
-                SignSongURL: "",
-                SignSongURLSelect: "",
+
+                //GOTOP動畫判斷
                 GoTopBush: false,
+
+                //比賽歌曲陣列
                 nowVoteSong: [],
                 oldVoteSong2018: [],
                 oldVoteSong2017: [],
+
+                //會員登入狀態
                 mem_login: false,
+
+                //投票總數
                 voteAll: [],
+
+                //會員收藏
+                memHeart: [],
+
+                //活動資訊
+                actInformation: [],
 
 
 
@@ -1150,6 +1241,11 @@
                         vml.currentIndex = 0;
 
                     }
+                },
+                getCountDownDate() {
+                    let finTime = this.actInformation[0].activity_fin;
+                    this.countDownDate = Date.parse(new Date(finTime)).getTime();
+
                 },
                 timerCount() {
                     now = new Date().getTime();
@@ -1177,6 +1273,8 @@
 
             },
             mounted() {
+
+                this.getCountDownDate;
                 this.ChangeBannerImg = setInterval(this.timeChangeBanner, 3000);
                 this.countTimer = setInterval(this.timerCount, 1000);
 
@@ -1187,18 +1285,19 @@
 
         window.onload = function () {
             let xhr = new XMLHttpRequest();
-
             xhr.open("get", "./phps/getContestNowSong.php", true);
             xhr.send(null);
             xhr.onload = function () {
                 vml.nowVoteSong = JSON.parse(xhr.responseText);
             }
+
             let xhrL = new XMLHttpRequest();
             xhrL.open("get", "./phps/getContestOldsong2018.php", true);
             xhrL.send(null);
             xhrL.onload = function () {
                 vml.oldVoteSong2018 = JSON.parse(xhrL.responseText);
             }
+
             let xhrA = new XMLHttpRequest();
             xhrA.open("get", "./phps/getContestOldsong2017.php", true);
             xhrA.send(null);
@@ -1209,11 +1308,15 @@
             let xhrI = new XMLHttpRequest();
             xhrI.onload = function () {
                 member = JSON.parse(xhrI.responseText);
+
                 if (member.mem_acct) {
                     vml.mem_login = true;
 
                     let xhr = new XMLHttpRequest();
-                    xhr.open("get", "./php/getMemcontestheart.php", true);
+                    xhr.onload = function () {
+                        vml.memHeart = JSON.parse(xhr.responseText);
+                    }
+                    xhr.open("get", "./phps/getMemcontestheart.php", true);
                     xhr.send(null);
 
                 } else {
@@ -1230,7 +1333,15 @@
                 vml.voteAll = JSON.parse(xhrB.responseText);
             }
 
+            let xhrC = new XMLHttpRequest();
+            xhrC.open("get", "./phps/getContestInformation.php", true);
+            xhrC.send(null);
+            xhrC.onload = function () {
+                vml.actInformation = JSON.parse(xhrC.responseText);
+            }
+
         }
+
 
     </script>
 

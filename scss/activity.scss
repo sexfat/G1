@@ -2145,7 +2145,7 @@
 
                 }
 
-                #act_Sign-up-song-name {
+                .act_Sign-up-song-name {
 
                     border: 1px #d0d6d6 solid;
                     background-color: #d0d6d6;
@@ -2155,7 +2155,7 @@
 
                 }
 
-                #act_Sign-up-song-information {
+                .act_Sign-up-song-information {
                     margin: 0;
                     border: 1px #d0d6d6 solid;
                     background-color: #d0d6d6;
@@ -2223,7 +2223,7 @@
             }
 
             .act_showSong-information {
-                font-size: $rem0_6;
+                font-size: $rem1;
                 // border: 1px #d0d6d6 solid;
                 margin: 0;
                 text-align: left;

@@ -487,22 +487,22 @@ $mainRed : #de267d;
         .listSongInfo {
           float: left;
           margin: 0 3%;
-          width: 60%;
+          width: 70%;
 
           @include respond(latop-min) {
-            width: 55%;
+            width: 65%;
           }
 
           @include respond(ipadpro) {
-            width: 50%;
+            width: 60%;
           }
 
           @include respond(ipad) {
-            width: 48%;
+            width: 58%;
           }
 
           @include respond(phone) {
-            width: 58%;
+            width: 65%;
           }
 
           .name {
