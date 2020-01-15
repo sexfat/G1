@@ -27,11 +27,6 @@
         // $cat_no=$_GET["cat_no"];
         // $song_hashtag=$_GET["song_hashtag"];
         // $song_addr=$_GET["song_addr"];
-        $ch = curl_init();
-        curl_setopt($ch, CURLOPT_TIMEOUT, 1);
-        curl_setopt($ch, CURLOPT_URL, "./phps/fileupload.php");
-        curl_exec($ch);
-        curl_close($ch);
         echo "Successly";
     }else{
         echo "Failure";
@@ -41,3 +36,55 @@
 	echo "例外原因 : ", $up->getMessage(),"<br>";		
   }
   ?>
+  <?php
+  $type=$_FILES['song_addr']['type'];
+  $size=$_FILES['song_addr']['size'];
+  $name=$_FILES['song_addr']['name'];
+  $tmp_name=$_FILES['song_addr']['tmp_name'];
+//   switch ( $_FILES['song_addr']['error'] ){
+//     case UPLOAD_ERR_OK: 
+//       $dir = "./music";
+//         if( file_exists($dir) == false){
+//           mkdir($dir); 
+//       $from = $_FILES['song_addr']['tmp_name'];
+//       $to = "$dir/".$_FILES['song_addr']['name'];
+//       if(copy( $from, $to)){
+        
+//         echo "上傳成功 <br>";
+//       }else{
+//         echo "上傳失敗 <br>";
+//       }
+//       break;
+//     case UPLOAD_ERR_INI_SIZE:
+//       echo "檔案太大, 不得超過", ini_get("song_addr_max_filesize"),  "<br>";
+//       break;
+//     case UPLOAD_ERR_FORM_SIZE:
+//       echo "檔案太大, 不得超過", $_POST["MAX_FILE_SIZE"],  "<br>";
+//       break;
+//     case UPLOAD_ERR_PARTIAL:
+//     echo "上傳過程發生錯誤, 請重送<br>";
+//       break;
+//     case UPLOAD_ERR_NO_FILE:
+//       echo "您没選檔案<br>";
+//       break;
+//     default:
+//       echo "['error']: " , $_FILES['song_addr']['error'] , "<br>"; 	
+//   }
+?>
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+</head>
+<body>
+    <?php
+      echo "檔案類型:".$type."</br>";
+      echo "檔案大小:".$size."</br>";
+      echo "檔案名稱:".$name."</br>";
+      echo "暫存名稱:".$tmp_name."</br>";
+    ?>
+</body>
+</html>
