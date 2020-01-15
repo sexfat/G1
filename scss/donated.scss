@@ -1,10 +1,11 @@
 @import './colmix.scss';
 
-#donate_app{
+#donate_app {
   width: 100%;
   overflow: hidden;
   position: relative;
-  .bg_down{
+
+  .bg_down {
     position: absolute;
     right: 0;
     bottom: 0;
@@ -17,6 +18,7 @@
   position: relative;
   max-width: 1200px;
   width: 100%;
+
   p {
     font-size: $rem1;
   }
@@ -35,6 +37,37 @@
 
   h5 {
     font-size: $rem1;
+  }
+
+  .donate_meminfos {
+    margin-bottom: 10%;
+    font-size: 0;
+
+    div[class*=col-] {
+      // border: solid 1px #333;
+      vertical-align: middle;
+      text-align: center;
+    }
+
+    p {
+      text-align: center;
+      font-size: 1.6vw;
+    }
+
+    .pline {
+      border-left: 0.2vw solid #333;
+      border-right: 0.2vw solid #333;
+    }
+
+    .mem_img {
+      text-align: center;
+
+      img {
+        width: 100%;
+        border-radius: 100%;
+      }
+
+    }
   }
 
   .donate_history {
@@ -71,7 +104,7 @@
     }
 
     .tr:nth-of-type(even) {
-      background-color: #f2f2f2;
+      background-color: #ebebeb;
     }
 
     .thead {
@@ -83,6 +116,7 @@
       overflow-y: scroll;
       height: 25rem;
       background-color: #fafaf1;
+
       &::-webkit-scrollbar {
         width: 10px;
       }
@@ -93,11 +127,12 @@
         margin: 0px 0px 0px 0px;
         background-color: #e4e4e4;
       }
+
       &::-webkit-scrollbar-thumb {
         -webkit-border-radius: 4px;
         border-radius: 4px;
         background: #8d8d8d;
-        }
+      }
     }
   }
 }
@@ -108,13 +143,24 @@
   html {
     font-size: 17px;
   }
+
   .donate_wrapper {
     width: 100%;
   }
 }
+
 @include respond(ipadpro) {
+
   // 768 
+  .store_wrapper {
+    .store_meminfos {
+      p {
+        font-size: 2.5vw;
+      }
+    }
+  }
 }
+
 @include respond(ipad) {
 
   // 576
@@ -122,11 +168,26 @@
     margin-bottom: 30%;
   }
 }
+
 @include respond(phone) {
   html {
     font-size: 16px;
   }
+
   .donate_wrapper {
     width: 95%;
+    h2{
+      font-size: 1.5rem;
+    }
+
+    .donate_history {
+      h4{
+        font-size: 4.5vw;
+      }
+      .td{
+        font-size: 0.9rem;
+      }
+    }
   }
+
 }
