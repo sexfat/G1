@@ -1,18 +1,5 @@
 @import"_public";
 
-#app {
-    position: fixed;
-    top: 0;
-    left: 0;
-    z-index: 999;
-
-}
-
-#activityTop {
-    position: relative;
-    width: 10px;
-    height: 10px;
-}
 
 #act_title {
     margin: 0 auto;
@@ -2158,7 +2145,7 @@
 
                 }
 
-                #act_Sign-up-song-name {
+                .act_Sign-up-song-name {
 
                     border: 1px #d0d6d6 solid;
                     background-color: #d0d6d6;
@@ -2168,7 +2155,7 @@
 
                 }
 
-                #act_Sign-up-song-information {
+                .act_Sign-up-song-information {
                     margin: 0;
                     border: 1px #d0d6d6 solid;
                     background-color: #d0d6d6;
@@ -2236,7 +2223,7 @@
             }
 
             .act_showSong-information {
-                font-size: $rem0_6;
+                font-size: $rem1;
                 // border: 1px #d0d6d6 solid;
                 margin: 0;
                 text-align: left;
@@ -2372,7 +2359,7 @@
             }
 
             @include respond(ipadpro) {
-                width:100%;
+                width: 100%;
             }
         }
 
@@ -2384,7 +2371,7 @@
 
             @include respond(ipadpro) {
                 left: 25px;
-                top:0;
+                top: 0;
 
             }
 
