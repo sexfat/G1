@@ -5,14 +5,25 @@
    playStatus = true, //撥放狀態-true:播放中
    playerAuto = true, //---- 是否要自動撥放
    nowPlaying = 0, //現在播放的歌索引值
-   nowPlayerList,
    myPlaylist = phpGetListName = [], // 目前播放清單 | php抓來的清單 | 會員資料
    playerListName, //player清單名
    listLen = myPlaylist.length;
+ var member = [];
 
 
  /* ---------------- player load ---------------- */
  window.addEventListener('load', function () {
+   let xhr = new XMLHttpRequest();
+   xhr.onload = () => {
+     member = JSON.parse(xhr.responseText);
+     if (member.mem_acct) {
+       vm.mem_login = true;
+     } else {
+       vm.mem_login = false;
+     }
+   }
+   xhr.open("get", "./phps/getLoginInfo.php", false);
+   xhr.send(null);
 
    //撥放器縮放
    $('#expand').click(function () {
@@ -287,7 +298,13 @@
  function playerInit() {
    audio.volume = 0.5;
    if (member['mem_no']) {
-     getLikedList(); //待改-----這裡要改要判斷哪個清單
+     if (localStorage['listName']) {
+       playerListName = localStorage['listName'];
+       console.log(playerListName);
+       getOtherPlayList();
+     } else {
+       getLikedList(); //待改-----這裡要改要判斷哪個清單
+     }
    } else {
      showAllSongs();
    }
@@ -370,7 +387,7 @@
  }
  //歌單資訊
  function ListTopInfo() {
-   let listIndex = getListIndex(playerListName);
+   let listIndex = getPlayerListIndex(playerListName);
    if (member['mem_no']) {
      if (listIndex == -1) {
        $('.player_b .listCover img').attr('src', './img/library/list_pic0.jpg');
@@ -449,10 +466,6 @@
 
  //localstorage
  function isLocalHave() {
-   if (localStorage['listName']) {
-    playerListName = localStorage['listName'];
-    getOtherPlayList();
-   }
    if (localStorage.length != 0) {
      nowPlaying = localStorage["nowPlaying"];
      audio.currentTime = localStorage['songTime'];
@@ -466,7 +479,6 @@
      $('#player audio').attr("autoplay", false);
      playStatus = true;
    }
-   console.log(myPlaylist);
    $('#player audio').attr("src", myPlaylist[nowPlaying].song_addr);
    audio.load();
    isPlaying(playStatus);
@@ -515,8 +527,10 @@
    localStorage.setItem("nowPlaying", nowPlaying);
    localStorage.setItem("songTime", songTime);
    localStorage.setItem("playStatus", playStatus);
-   if (nowPlayerList != 'Liked songs' && nowPlayerList != 'Total songs' && nowPlayerList != undefined) {
-     localStorage.setItem("listName", nowPlayerList);
+   if (playerListName != 'Liked songs' && playerListName != 'Total songs' && playerListName != undefined) {
+     localStorage.setItem("listName", playerListName);
+   }else if(playerListName == 'Liked songs' || playerListName == 'Total songs'){
+    localStorage.removeItem('listName');
    }
 
    let progressColor = (songTime / audio.duration) * 100;
@@ -641,4 +655,14 @@
    }
    let songind = songName.indexOf(name);
    return songind;
+ }
+
+ //抓清單索引值
+ function getPlayerListIndex(name) {
+   let listName = [];
+   for (let i = 0; i < myPlaylist.length; i++) {
+     listName.push(myPlaylist[i].plist_name);
+   }
+   let listind = listName.indexOf(name);
+   return listind;
  }
