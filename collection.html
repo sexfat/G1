@@ -35,7 +35,6 @@
   <!-- nav_bar and player -->
   <div>
     <div id="nav_app">
-      <!-- nav_bar start -->
       <div class="nav_bar flexbox">
         <div
           class="hamburger"
@@ -164,10 +163,7 @@
           </ul>
         </div>
       </div>
-      <!-- nav_bar end -->
     </div>
-    <!-- nav_bar end -->
-    <!-- player start -->
     <div id="player">
       <audio
         src=""
@@ -440,9 +436,7 @@
         </div>
       </div>
     </div>
-    <!-- player end -->
   </div>
-  <!-- the end of the nav_bar and player  -->
   <!-- start to the content -->
   <header>
     <img
@@ -545,10 +539,54 @@
   </section>
   <!-- the end of the content -->
   <script src="./js/nav_bar.js"></script>
+  <input type="hidden" name="favorStatus" id="favorStatus">
+  <input type="hidden" name="favorSong" id="favorSong">
 </body>
 <!-- the script of myself -->
 <script>
   let collheartall = [];
+  let colllist = [];
+     //fav data
+     $('document').on('click', '.collheart img', function () {
+     let heartSong = $(this).next('p').children('.collsongnamea').text(); //find song name
+    //  console.log(heartSong);
+     let libraryInd = getSongIndex(heartSong);
+     let favSongInd = colllist[libraryInd].song_no;
+     if (!member['mem_no']){
+        alert("Please login.");
+     } else{
+       if ($(this).hasClass('becomeRed')) {
+         $('#favorStatus').val('gray');
+         $(this).html('<img src="./img/collection/grayheart.png">').removeClass('becomeRed');
+       } else {
+         $('#favorStatus').val('red');
+         $(this).html('<img src="./img/collection/redheart.png">').addClass('becomeRed');
+       }
+       favorStatus(favSongInd);
+     }
+   });
+ function favorStatus(favorSong) {
+   let xhr = new XMLHttpRequest();
+   xhr.onload = function () {
+     if (xhr.status == 200) {
+       if (xhr.responseText == 'Asuccess') {
+        alert ("Success to add");
+       } else if (xhr.responseText == 'Dsuccess') {
+        alert ("Success to cancel");
+       } else if (xhr.responseText == 'Afail') {
+        alert ("Fail to add");
+       } else if (xhr.responseText == 'Dfail') {
+        alert ("Fail to cancel");
+       }
+     } else {
+       alert(xhr.statusText);
+     }
+   };
+   xhr.open("post", "./phps/LibraryHeart.php", true);
+   xhr.setRequestHeader('content-type', 'application/x-www-form-urlencoded');
+   let data_info = `favorStatus=${$('#favorStatus').val()}&favorSong=${favorSong}`;
+   xhr.send(data_info);
+ }
   //load coll heart
   function CollHeart() {
     let xhr = new XMLHttpRequest();
@@ -587,8 +625,7 @@
       $(this).html('<img src="./img/library/coverPause-b.png">').addClass('Pause');
     }
   });
-  //ALL
-  let colllist = [];
+  //INPUT ALBUM DATA
   function findCollList() {
     $('.collectionalbumsection1').children().remove();
     for (i = 0; i < colllist.length; i++) {
@@ -602,20 +639,22 @@
             <span>${colllist[i].mem_name}</span>
           </p>
         </div>`)
-      $(`.collectionsinglecover:nth-of-type(${i+1}) .sampleblum12`).css('background-image',`url(${colllist[i].song_pic})`);
+      $(`.collectionsinglecover:nth-of-type(${i+1}) .sampleblum12`).css('background-image',
+        `url(${colllist[i].song_pic})`);
     }
   }
+  //READ MEMBER FAV STATUS
   function collHeart() {
     for (let i = 0; i < colllist.length; i++) {
       for (let j = 0; j < collheartall.length; j++) {
         if (colllist[i].song_no == collheartall[j].song_no) {
           $(`.collectionsinglecover:nth-of-type(${i+1}) .collheart img`).replaceWith('<img src="./img/collection/redheart.png" alt="">');
-        } 
+        }
       }
     }
   }
   //click coll function
-  function CollListYa() {
+  $('.tabtitlechange1').click(function CollListFav() {
     let xhr = new XMLHttpRequest();
     xhr.open("get", "./phps/allCollection.php", true);
     xhr.send(null);
@@ -624,17 +663,7 @@
       findCollList();
       collHeart();
     };
-  }
-  // $('.tabtitlechange1').click(function CollListFav() {
-  //   let xhr = new XMLHttpRequest();
-  //   xhr.open("get", "./phps/allCollection.php", true);
-  //   xhr.send(null);
-  //   xhr.onload = function () {
-  //     colllist = JSON.parse(xhr.responseText);
-  //     findCollList();
-  //     collHeart();
-  //   };
-  // });
+  });
   $('.tabtitlechange2').click(function CollListFav() {
     let xhr = new XMLHttpRequest();
     xhr.open("get", "./phps/favCollection.php", true);
@@ -706,11 +735,24 @@
       $($(this).find('a').attr('href')).show().siblings('.motabinner').hide();
       $(this).addClass('active').siblings('.active').removeClass('active');
     });
+
+    function loveHeart() {
+      $('.collheart').children('img').attr("src", "./img/collection/redheart.png");
+    }
+    function CollListYa() {
+    let xhr = new XMLHttpRequest();
+    xhr.open("get", "./phps/allCollection.php", true);
+    xhr.send(null);
+    xhr.onload = function () {
+      colllist = JSON.parse(xhr.responseText);
+      findCollList();
+      console.log(colllist);
+      collHeart();
+    };
+  }
     CollListYa();
-    findCollList();
     CollHeart();
   });
 </script>
 <!-- the end of my script -->
-
 </html>
