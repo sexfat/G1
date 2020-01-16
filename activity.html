@@ -483,7 +483,8 @@
 
         </div>
         <component :is="content" :now-Vote-Song=" nowVoteSong" :old-Vote-Song2018="oldVoteSong2018"
-            :old-Vote-Song2017="oldVoteSong2017" :vote-All="voteAll" :act-Information="actInformation"> </component>
+            :old-Vote-Song2017="oldVoteSong2017" :vote-All="voteAll" :act-Information="actInformation"
+            :mem-Heart="memHeart" :mem-Votes="memVotes"> </component>
 
 
     </section>
@@ -909,9 +910,11 @@
                         <div>
                               <img :src="item.entries_img" alt="">
                               <div class="act_old-play" @click="showChangePlay"></div>
+                              
                         </div>
                           <div class="act_songBox"> 
-                              <div class="act_old-hear1" @click="showChangeHeart" ></div>
+                              <div class="act_old-hear1"  @click="showChangeHeart(item)" ref="hearts"></div>
+                              <input type="hidden" name="favorStatus" v-model='heartSongNo'>
                               <a href="./songinfo.html"><h4>' {{item.entries_name}}'</h4></a>  
                               <p> {{item.mem_name}} </p>
                           </div>
@@ -950,7 +953,8 @@
                 nowVoteSong: [Array],
                 voteAll: [Array],
                 actInformation: [Array],
-
+                memHeart: [Array],
+                memVotes: [Array],
             },
             data: function () {
                 return {
@@ -973,6 +977,15 @@
 
                     //被投票的歌曲編號
                     voteSongNo: '',
+
+                    //愛心收藏
+                    heartSongNo: [],
+
+                    // heartSaute:[
+                    //     {red:true, backgroundImage: url('./img/collection/redheart.png')},
+                    //     {gray:false,backgroundImage: url('./img/collection/grayheart.png')}
+
+                    // ]
 
 
                 }
@@ -1063,37 +1076,74 @@
                 },
 
                 showChangeHeart(e) {//確認會員登入狀態，變更收藏愛心顏色
+                    console.log(e);
                     if (vml.mem_login == false) {
                         alert("Please login first!");
                         location.href = "./login.html";
                     } else {
-                        let button = e.target;
-                        button.classList.toggle('actShowHeart');
-                        fetch('./phps/getMemInfo.php').then(res => res.json()).then(data => this.member = data);
+                        this.memHeart
+                        // let button = e.target;
+                        // button.classList.toggle('actShowHeart');
+                        if (button.classList.contains('actShowHeart')) {
+                            this.heartSongNo = 'red';
+                            var vote = $.ajax({
+                                url: '',
+                                data: {
+                                    favorStatus: this.heartSongNo,
+                                },
+                                type: 'POST',
+                                dataType: 'json'
+                            });
+
+                        } else {
+                            this.heartSongNo = 'gray';
+                            var vote = $.ajax({
+                                url: '',
+                                data: {
+                                    favorStatus: this.heartSongNo,
+                                },
+                                type: 'POST',
+                                dataType: 'json'
+                            });
+
+                        }
+
                     }
 
                 },
                 ChangeRedHeart() {//獲取會員已收藏歌曲，並更換顏色
-                    let nowSong = this.nowVoteSong.entries_name;
-                    let memHave = vml.memHeart.song_name;
-                    console.log(nowSong, memHave)
-                    for (let i = 0; i <= nowSong.length; i++) {
-                        for (let j = 0; j <= memHave.length; j++) {
-                            if (nowSong[i] == memHave[j]) {
-                                let red = document.querySelector(".act_old-hear1")[i].classList.toggle('actShowHeart');
-                                console.log(this.$refs.hearts[i])
-                            }
+                    this.nowVoteSong;
+                    this.memHeart;
+                    // console.log(this.nowVoteSong);
+                    // console.log(this.memHeart);
+                    // console.log(this.memHeart[1].song_name);
+
+                    for (let i = 0; i <= this.nowVoteSong.length; i++) {
+                        console.log(this.nowVoteSong[i].entries_name);
+
+                        for (let j = 0; j <= this.memHeart.length; j++) {
+                            console.log(this.memHeart[j].song_name);
+                            // console.log(this.nowVoteSong[i].entries_name);
+                            // console.log(this.memHeart[j].song_name);
+
+                            // if (this.nowVoteSong[i].entries_name == this.memHeart[j].song_name) {
+                            //     console.log(1);
+                            //     // this.$refs.hearts.classList.toggle('actShowHeart');
+                            //     // console.log(nowSong[i]);
+                            //     // console.log(memHave[j]);
+                            // }
                         };
 
                     };
 
 
+
                 },
 
-                showChangePlay(e) {//切換撥放按鈕
-                    let playButton = e.target;
-                    playButton.classList.toggle('act_old-play-Pause');
-                },
+                // showChangePlay(e) {//切換撥放按鈕
+                //     let playButton = e.target;
+                //     playButton.classList.toggle('act_old-play-Pause');
+                // },
 
                 showChangeVote(item) {//確認會員登入後才能繼續投票
                     if (vml.mem_login == false) {
@@ -1115,18 +1165,31 @@
                                 type: 'POST',
                                 dataType: 'json'
                             });
-
-                        
                         }
-
                     }
+                },
+                ChangeGrayVotes() {
+                    for (let i = 0; i <= this.nowVoteSong.length; i++) {
+                        for (let j = 0; j <= this.memVotes.length; j++) {
+                            // console.log(this.memVotes[j].entries_name);
+                            // if (this.nowVoteSong[i].entries_name == this.memVotes[j].entries_name) {
+                            //     // this.$refs.votes.classList.toggle('act_old-play-Pause');
+                            //     Console.log(123);
+
+                            // }
+                        };
+
+                    };
+
                 },
 
 
             },
             mounted() {
                 fetch('./phps/getMemContestSong.php').then(res => res.json()).then(data => this.memberContestSong = data);
-                this.ChangeRedHeart;
+                this.ChangeHeart = setTimeout(this.ChangeRedHeart, 1000);
+                this.ChangeVotes = setTimeout(this.ChangeGrayVotes, 1000)
+                console.log(this.$refs);
             },
         });
 
@@ -1137,6 +1200,7 @@
                 oldVoteSong2017: [Array],
                 voteAll: [Array],
                 actInformation: [Array],
+                memHeart: [Array],
 
             },
             data: function () {
@@ -1217,6 +1281,9 @@
                 voteAll: [],
                 total_vote: [],
 
+                //會員已投票歌曲
+                memVotes: [],
+
                 //會員收藏
                 memHeart: [],
 
@@ -1250,7 +1317,7 @@
                 },
                 getCountDownDate() {
                     let finTime = this.actInformation[0].activity_fin;
-                    this.countDownDate = Date.parse(new Date(finTime)).getTime();
+                    this.countDownDate = new Date(finTime).getTime();
 
                 },
                 timerCount() {
@@ -1278,21 +1345,26 @@
                 // }
 
 
+
+
+
+
+
             },
             mounted() {
-
-                this.getCountDownDate;
+                this.timer = setTimeout(this.getCountDownDate, 500);
                 this.ChangeBannerImg = setInterval(this.timeChangeBanner, 3000);
                 this.countTimer = setInterval(this.timerCount, 1000);
 
             },
             watch: {
-                // votes() {
-                //     voteAll: [],
-                //     nowVoteSong: [],
-                //     deep:true
-                // }
-            }
+
+            },
+            // created() {
+            //     // 在 created 的時候才建立 penguine 順便設值為 0
+            //     // 使用 $set 動態新增響應式組件
+            //     this.$set(this.nowVoteSong, 'nowVoteSong.vote_per', 0)
+            // }
         });
 
 
@@ -1326,12 +1398,19 @@
                 if (member.mem_acct) {
                     vml.mem_login = true;
 
-                    let xhr = new XMLHttpRequest();
-                    xhr.onload = function () {
-                        vml.memHeart = JSON.parse(xhr.responseText);
+                    let xhrH = new XMLHttpRequest();
+                    xhrH.onload = function () {
+                        vml.memHeart = JSON.parse(xhrH.responseText);
                     }
-                    xhr.open("get", "./phps/getMemcontestheart.php", true);
-                    xhr.send(null);
+                    xhrH.open("get", "./phps/getMemcontestheart.php", true);
+                    xhrH.send(null);
+
+                    let xhrV = new XMLHttpRequest();
+                    xhrV.onload = function () {
+                        vml.memVotes = JSON.parse(xhrV.responseText);
+                    }
+                    xhrV.open("get", "./phps/getMemcontestvote.php", true);
+                    xhrV.send(null);
 
                 } else {
                     vml.mem_login = false;
