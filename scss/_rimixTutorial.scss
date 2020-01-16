@@ -168,7 +168,10 @@
   right: 10px;
   top: 35%;
   cursor: pointer;
-
+  @include respond(ipad) {
+    text-align: right;
+    right: 0px;
+  }
 
   p {
     margin: 0;
@@ -180,6 +183,13 @@
     background-color: #333;
     color: white;
     border-radius: 50px;
+
+    @include respond(ipad) {
+      width: 30px;
+      height: 30px;
+      padding: 6px;
+      font-size: 0.6rem;
+    }
 
     &:hover {
       transform: scale(1.2);
@@ -290,17 +300,18 @@
       }
 
       .owl-nav {
-        // display: none;
-        top:0;
-        .owl-prev{
-          border-radius:15px;
+        pointer-events: auto;
+
+        .owl-prev {
+          border-radius: 15px;
           background-color: $yellow;
           font-size: 20px;
           width: 30px;
           margin-right: 60px;
         }
-        .owl-next{
-          border-radius:15px;
+
+        .owl-next {
+          border-radius: 15px;
           background-color: $yellow;
           font-size: 20px;
           width: 30px;
@@ -310,7 +321,9 @@
 
       .owl-dots {
         margin-top: -30px;
-        position: relative;
+        // position: relative;
+        pointer-events: auto;
+
         .owl-dot {
           margin: 0 5px;
           width: 10px;
