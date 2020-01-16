@@ -549,14 +549,14 @@
     bottom: -25%;
     left: 50%;
     text-align: center;
-    transform: translate(-50%, 0%);
+    transform: translate(-30%, -0%);
 
 
 
     @include respond(latop-min) {
         width: 300px;
         height: 75px;
-        transform: translate(-35%, 0%);
+        transform: translate(-40%, 0%);
     }
 
     @include respond(ipadpro) {
@@ -577,11 +577,12 @@
     p {
         vertical-align: bottom;
         font-size: $rem1;
-        margin: 0;
-
-        @include respond(ipad) {
+        margin: 0 5px 0 0;
+      
+        @include respond(latop-min) {
             font-size: $rem0_8;
         }
+        
     }
 
     div {
@@ -596,14 +597,14 @@
 
 
             @include respond(latop-min) {
-                width: 30px;
-                height: 30px;
+                width: 50px;
+                height: 50px;
                 margin: 5px;
 
             }
 
             p {
-                margin: 0;
+                margin: 5px;
                 padding: 0;
                 font-size: $rem1_5;
                 color: #333;
@@ -618,11 +619,12 @@
             span {
                 font-size: $rem0_8;
                 position: relative;
-                top: -20px;
+                top: -10px;
                 color: #333;
 
                 @include respond(latop-min) {
                     font-size: 0.4rem;
+                    
 
                 }
             }
@@ -2578,7 +2580,7 @@
 
             }
 
-            button {
+          button {
                 display: inline-block;
                 @include butttonn02();
                 margin: 0 0 10px -30px;
