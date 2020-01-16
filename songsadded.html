@@ -912,54 +912,7 @@
 
 
 
-    <script>
-        $(document).ready(function(){
-            $('#theFile').click(function(){
-                var song_pic=$('#theFile').val();
-            $.ajax({
-                url: './phps/fileupload.php',
-                cache: false,
-                // dataType: 'html',
-                    // type:'POST',
-                data:{
-                    "song_pic":song_pic,
-                },
-                method:"POST",
-                // error: function(xhr){
-                //     alert('Fail');
-                // },
-                success: function(response){
-                    $('.addinsideadd').html(response);
-                    // alert('success');
-                }
-              });
-            });
-        });
-    </script>
-    <!-- <script>
-        $(document).ready(function(){
-            $('#songinfo_btn').click(function(){
-                var song_pic=$('#theFile').val();
-            $.ajax({
-                url: './phps/fileupload.php',
-                cache: false,
-                // dataType: 'html',
-                    // type:'POST',
-                data:{
-                    "song_pic":song_pic,
-                },
-                method:"POST",
-                error: function(xhr){
-                    alert('Fail');
-                },
-                success: function(response){
-                    $('.addinsideadd').html(response);
-                    // alert('success');
-                }
-              });
-            });
-        });
-    </script> -->
+   
 
     <!-- <script>
        function submit(){
@@ -1025,7 +978,7 @@
         })
     </script> -->
 
-    <script>
+    <!-- <script>
         $(document).ready(function(){
             $('#sd').click(function (){
               $a
@@ -1082,7 +1035,7 @@
         
 
         
-    </script>
+    </script> -->
 
     <script src="https://cdn.jsdelivr.net/gh/fancyapps/fancybox@3.5.7/dist/jquery.fancybox.min.js"></script>
     <script>
