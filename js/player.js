@@ -298,6 +298,7 @@
  function playerInit() {
    audio.volume = 0.5;
    if (member['mem_no']) {
+     playerListName = 'Liked songs';
      if (localStorage['listName']) {
        playerListName = localStorage['listName'];
        console.log(playerListName);
@@ -306,6 +307,7 @@
        getLikedList(); //待改-----這裡要改要判斷哪個清單
      }
    } else {
+     playerListName = 'Total songs';
      showAllSongs();
    }
    isLocalHave();
@@ -324,7 +326,7 @@
          phpGetListName = JSON.parse(xhr.responseText);
          mylistInfo = phpGetListName;
          lightListName(mylistInfo);
-         showAllMyList(mylistInfo);
+         //  showAllMyList(mylistInfo);
          libraryLightListName(mylistInfo);
        } else {
          alert(xhr.statusText);
@@ -529,8 +531,8 @@
    localStorage.setItem("playStatus", playStatus);
    if (playerListName != 'Liked songs' && playerListName != 'Total songs' && playerListName != undefined) {
      localStorage.setItem("listName", playerListName);
-   }else if(playerListName == 'Liked songs' || playerListName == 'Total songs'){
-    localStorage.removeItem('listName');
+   } else if (playerListName == 'Liked songs' || playerListName == 'Total songs') {
+     localStorage.removeItem('listName');
    }
 
    let progressColor = (songTime / audio.duration) * 100;
