@@ -1,0 +1,42 @@
+body{
+    // margin: 0 auto;
+    // text-align: center;
+    .welcomedisc{
+        border: 1px solid pink;
+        height: 100vh;
+        width:100vw;
+        background-image: url(../img/collection/welcome.svg);
+        background-position: center;
+        background-repeat: no-repeat;
+        text-align: center;
+        // display: inline-block;
+    }
+    section{
+        position: relative;
+        display: inline-block;
+        margin: 0 auto;
+        text-align: center;
+        top:40%;
+        // transform:scale(-50%,-50%);
+        .welcord{
+            text-align: center;
+            background-image: url(../img/collection/record.png);
+            display: inline-block;
+            width: 470px;
+            height: 450px;
+            border: 1px solid green;
+            background-position: center;
+            background-repeat: no-repeat;
+            background-size: cover;
+            animation: 9.5s linear 0s normal none infinite rotateDisc;
+            margin: 0px 45px 0px 45px;
+            div{
+                color: #fff;
+            }
+            @keyframes rotateDisc{
+                from{transform:rotate(0deg)}
+                to{transform:rotate(360deg)}
+                }
+        }
+    }
+}
