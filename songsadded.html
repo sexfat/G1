@@ -13,6 +13,7 @@
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.11.2/css/all.min.css" />
     <script src="https://cdnjs.cloudflare.com/ajax/libs/vue/2.6.10/vue.js"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.0.4/gsap.min.js"></script>
     <script src="./js/player.js"></script>
     <script src="./js/public.js"></script>
     <style>
@@ -480,7 +481,7 @@
                             </a>
                         </li>
                         <ol class="songsadded_inside">
-                            <form class="addinsideadd" action="./phps/songsupload.php" method="GET" enctype="multipart/form-data">
+                            <form class="addinsideadd" action="./phps/songsupload.php" method="POST" enctype="multipart/form-data">
                                 <article>
                                     <!-- target="id_iframe" -->
                                     <br>
@@ -490,6 +491,7 @@
                                     <!-- <img class="songsadded_ff" style="width: 50px;height: 30px;"
                                         src="./img/songupload/button_edit.png"> -->
                                     <input type="file" name="song_pic" id="theFile" style="display: none;">
+                                    <!-- <input type="hidden" name="songpicfack" id="songpicfack"> -->
                                     <label class="songsadded_ff" for="theFile"
                                         style="text-align: center;margin-left: -5px;">Edit</label>
 
@@ -507,18 +509,21 @@
                                         <p class="songsadd_path">{{infopathURL}}</p>
                                         <input type="file" name="song_addr" id="songinfo_btn" @change="changeSignUpload"
                                             style="display: none;">
-                                        <label class="songinfo_bb" for="songinfo_btn"
+                                        <!-- <input type="hidden" name="songaddrfack" id="songaddrfack"> -->
+                                        <label class="songinfo_bb" for="songinfo_btn" onClick="songaddchoose"
                                             style="text-align: center;">Choose</label>
                                     </div><br>
                                     <div id="infohashtag">
                                         <span style="font-weight: bold;">Song type : </span><input type="radio"
                                             name="cat_no" value="3" id=""> House&ensp;
-                                        <input type="radio" style="border-radius: 5px;" name="cat_no" value="2" id="">Trap
+                                        <input type="radio" style="border-radius: 5px;" name="cat_no" value="2"
+                                            id="">Trap
                                         <br>
                                         <span style="font-weight: bold;">Hashtag : </span><br>
                                         <input type="radio" name="song_hashtag" value="1" id=""> #Scratch&ensp;
                                         <input type="radio" name="song_hashtag" value="2" id=""> #Stress&ensp;
-                                        <input type="radio" name="song_hashtag" value="3" id="add_Ethereal"> #Ethereal&ensp;
+                                        <input type="radio" name="song_hashtag" value="3" id="add_Ethereal">
+                                        #Ethereal&ensp;
                                         <br>
                                         <p style="font-weight: bold;">Introduction :</p>
                                         <textarea name="song_idn" id="add_tta" cols="65" rows="6"
@@ -526,7 +531,7 @@
                                     </div>
                                 </div>
 
-                                <section><input type="submit" id="sd" name="submit" onClick="document.form.submit()">
+                                <section><input type="submit" id="sd" name="submit">
                                     <label class="sd_btn" for="sd">Send</label>
                                 </section>
                             </form>
@@ -907,6 +912,178 @@
 
 
 
+    <script>
+        $(document).ready(function(){
+            $('#theFile').click(function(){
+                var song_pic=$('#theFile').val();
+            $.ajax({
+                url: './phps/fileupload.php',
+                cache: false,
+                // dataType: 'html',
+                    // type:'POST',
+                data:{
+                    "song_pic":song_pic,
+                },
+                method:"POST",
+                // error: function(xhr){
+                //     alert('Fail');
+                // },
+                success: function(response){
+                    $('.addinsideadd').html(response);
+                    // alert('success');
+                }
+              });
+            });
+        });
+    </script>
+    <!-- <script>
+        $(document).ready(function(){
+            $('#songinfo_btn').click(function(){
+                var song_pic=$('#theFile').val();
+            $.ajax({
+                url: './phps/fileupload.php',
+                cache: false,
+                // dataType: 'html',
+                    // type:'POST',
+                data:{
+                    "song_pic":song_pic,
+                },
+                method:"POST",
+                error: function(xhr){
+                    alert('Fail');
+                },
+                success: function(response){
+                    $('.addinsideadd').html(response);
+                    // alert('success');
+                }
+              });
+            });
+        });
+    </script> -->
+
+    <!-- <script>
+       function submit(){
+           let xhr = new XMLHttpRequest();
+           xhr.open("get","./phps/songsupload.php",true);
+           xhr.send(null);
+           console.log();
+       }
+    </script> -->
+
+    <!-- <script>
+        let songinfobtnData;
+        window.addEventListener('load', function () {
+            let xhr = new XMLHttpRequest();
+            xhr.onload = () => {
+                member = JSON.parse(xhr.responseText);
+                if (member.mem_acct) {
+                    vm.mem_login = true;
+                } else {
+                    vm.mem_login = false;
+                }
+            }
+            xhr.open("get", "./phps/getLoginInfo.php", false);
+            xhr.send(null);
+
+            //music
+            $('#songinfo_btn').change(function (e) {
+                songinfobtnData = e.target.files[0];
+                let reader = new FileReader();
+                reader.onload = function () {
+                    $('.songsadded_inside img').attr('src', reader.result);
+                }
+                reader.readAsDataURL(songinfobtnData);
+            });
+
+            function songsaddsend() {
+                let xhr = new XMLHttpRequest();
+                console.log(xhr.readyState);
+                xhr.onreadystatechange = function () {
+                    if (xhr.readyState == 4) {
+                        if (xhr.status == 200) {
+                            $(location).attr('href', '//www.localhost/g1test/index.html');
+                            alert(xhr.responseText);
+                        } else {
+                            alert(xhr.responseText);
+                        }
+                    }
+                }
+            }
+            let url = "./phps/songsupload.php";
+            xhr.open("post", url, true);
+            xhr.setRequestHeader("content-type", "application/x-www-form-urlencoded");
+            let songsadd_send = "song_name=" + document.getElementsByName("song_name").value +
+                "&song_idn=" + document.getElementsByName("song_idn").value +
+                "&songpicfack=" + document.getElementsByName("songpicfack").value +
+                "&cat_no" + document.getElementsByName("cat_no").value +
+                "&song_hashtag" + document.getElementsByName("song_hashtag").value +
+                "&songaddrfack" + document.getElementsByName("songaddrfack").value;
+            xhr.send(songsadd_send);
+            console.log(songsadd_send);
+
+            
+        })
+    </script> -->
+
+    <script>
+        $(document).ready(function(){
+            $('#sd').click(function (){
+              $a
+            });
+        });
+          
+        // let xhr = new XMLHttpRequest();
+        //     console.log(xhr.readyState);
+        //     xhr.onreadystatechange = function () {
+        //         if (xhr.readyState == XMLHttpRequest.DONE) {
+        //             if (xhr.status == 200) { //success
+        //                 // document.getElementById("idMsg").innerHTML = xhr.responseText;
+        //             } else { //其它
+        //                 alert(xhr.status);
+        //             }
+        //         }
+        //     }
+        //     //設定好所要連結的程式
+        //     let url = "songsupload.php?song_name=" + document.getElementsByName("song_name").value 
+        //                            + "&song_idn=" + document.getElementsByName("song_idn").value 
+        //                            + "&song_pic=" + document.getElementsByName("song_pic").value
+        //                            + "&cat_no" + document.getElementsByName("cat_no").value
+        //                            + "&song_hashtag" + document.getElementsByName("song_hashtag").value
+        //                            + "&song_addr" + document.getElementsByName("song_addr").value;
+        //     xhr.open("get", url, true); //
+        //     //送出資料
+        //     xhr.send(null);
+
+        // $('#sd').click(function () {
+        //     let xhr = new XMLHttpRequest();
+        //     console.log(xhr.readyState);
+        //     xhr.onreadystatechange = function () {
+        //         if (xhr.readyState == 4) {
+        //             if (xhr.status == 200) {
+        //                 $(location).attr('href', '//www.localhost/g1test/index.html');
+        //                 alert(xhr.responseText);
+        //             } else {
+        //                 alert(xhr.responseText);
+        //             }
+        //         }
+        //     }
+        //     let url = "./phps/songsupload.php";
+        //     xhr.open("post", url, true);
+        //     xhr.setRequestHeader("content-type", "application/x-www-form-urlencoded");
+        //     let songsadd_send = "song_name=" + document.getElementsByName("song_name").value +
+        //         "&song_idn=" + document.getElementsByName("song_idn").value +
+        //         "&songpicfack=" + document.getElementsByName("songpicfack").value +
+        //         "&cat_no" + document.getElementsByName("cat_no").value +
+        //         "&song_hashtag" + document.getElementsByName("song_hashtag").value +
+        //         "&songaddrfack" + document.getElementsByName("songaddrfack").value;
+        //     xhr.send(songsadd_send);
+        //     console.log(songsadd_send);
+        //     });
+        
+
+        
+    </script>
+
     <script src="https://cdn.jsdelivr.net/gh/fancyapps/fancybox@3.5.7/dist/jquery.fancybox.min.js"></script>
     <script>
         $(".test-b").on('click', function () {
@@ -1152,34 +1329,8 @@
         });
     </script>
 
+
     <!-- <script>
-        function songsaddsend() {
-            let xhr = new XMLHttpRequest();
-            console.log(xhr.readyState);
-            xhr.onreadystatechange = function () {
-                if (xhr.readyState == 4) {
-                    if (xhr.status == 200) {
-                        $(location).attr('href', '//www.localhost/g1test/index.html');
-                        alert(xhr.responseText);
-                    } else {
-                        alert(xhr.responseText);
-                    }
-                }
-            }
-        }
-        let url = "./phps/songsupload.php";
-        xhr.open("post", url, true);
-        xhr.setRequestHeader("content-type", "application/x-www-form-urlencoded");
-        let songsadd_send = "song_name=" + document.getElementsByName("song_name").value
-                             + "&song_idn=" + document.getElementsByName("song_idn").value 
-                             + "&song_pic=" + document.getElementsByName("song_pic").value
-                             + "&cat_no" + document.getElementsByName("cat_no").value
-                             + "&song_hashtag" + document.getElementsByName("song_hashtag").value
-                             + "&song_addr" + document.getElementsByName("song_addr").value;
-            xhr.send(songsadd_send);
-        console.log(songsadd_send);
-    </script> -->
-    <script>
         function songsaddsend() {
             let xhr = new XMLHttpRequest();
             console.log(xhr.readyState);
@@ -1203,7 +1354,7 @@
             //送出資料
             xhr.send(null);
         }
-    </script>
+    </script> -->
 </body>
 
 </html>
