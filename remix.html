@@ -131,7 +131,7 @@
           <p class="remix_intro">On this page, you can experiment with the different music making tools you've used so
             far. They'll all play together in sync.</p>
           <div class="remix_choose_song">
-            <h4 class="remix_h4 demo_song" @click="npm = 120;song_list('always_with_me');demo=1">
+            <h4 class="remix_h4 demo_song" @click="npm = 120;song_list('always_with_me');demo=1;demoSec=8750">
               <img src="./img/remix/start.png" v-if="!demostart || demo!=1">
               <img src="./img/remix/pause.png" v-if="demostart && demo==1">
               always with me</h4>
@@ -139,7 +139,7 @@
               <img src="./img/remix/start.png" v-if="!demostart || demo!=2">
               <img src="./img/remix/pause.png" v-if="demostart && demo==2">
               Happy Birthday</h4>
-            <h4 class="remix_h4 demo_song" @click="npm = 120;song_list('cat');demo=3">
+            <h4 class="remix_h4 demo_song" @click="npm = 120;song_list('cat');demo=3;demoSec=14750">
               <img src="./img/remix/start.png" v-if="!demostart || demo!=3">
               <img src="./img/remix/pause.png" v-if="demostart  && demo==3">
               cat</h4>
@@ -877,6 +877,7 @@
     var app = new Vue({
       el: '#remix_app',
       data: {
+        demoSec: 0, // demo 有幾秒
         className: {
           isActive: 0,
         },
@@ -1170,7 +1171,7 @@
           }
           if (!vm.loop) { // 沒有在循環播放
             vm.loop = !vm.loop;
-            console.log(vm.loop);
+            // console.log(vm.loop);
 
             function repeat() {
               var step = vm.index % vm.lattice;
@@ -1199,7 +1200,7 @@
                 }
               }
               vm.index++;
-              console.log(vm.index);
+              // console.log(vm.index);
               start = setTimeout(repeat, (60000 / vm.npm) / 2);
             }
             repeat();
@@ -1214,7 +1215,6 @@
               sound_note[x].style.borderTop = 'solid 1px rgba(0,0,0,1)';
             }
           }
-          this.svgmove();
         },
         song_list(list) { // 播放 Demo
           // this.demostart = !this.demostart
@@ -1293,7 +1293,8 @@
             }
             vm.index++;
             // console.log(vm.index);
-            start = setTimeout(repeat, 60000 / vm.npm / 2);
+            // start = setTimeout(repeat, 60000 / vm.npm / 2);
+            start = setTimeout(repeat, 60000 / 120 / 2);
           };
           repeat();
         },
@@ -1493,26 +1494,52 @@
             });
             internals.timeline.pause();
             internals.timeline.seek(0);
+            vm.running = !vm.running;
           }
 
           function toggle() {
             if (internals.running || vm.demostart) {
               vm.running = !vm.running;
-              return play();
+              play();
+              clear = setTimeout(() => {
+                pause();
+              }, vm.demoSec)
+              vm.running = !vm.running;
+            } else {
+              pause();
             }
-            vm.running = !vm.running;
-            return pause();
+
           }
           var demo_song = document.getElementsByClassName('demo_song');
+          var remix_btn = document.getElementsByClassName('remix_btn');
+
+
           for (var i = 0; i < demo_song.length; i++) {
-            demo_song[i].addEventListener('click',toggle);
+            demo_song[i].addEventListener('click', toggle);
           }
-          
+
+          // for (var i = 0; i < remix_btn.length; i++) {
+          //   remix_btn[i].addEventListener('click', function () {
+          //     var btn = document.getElementsByClassName('remix_btn');
+          //     for (var y = 0; y < btn.length; y++) {
+
+          //     }
+          //   });
+          // }
+
+          for (var i = 0; i < remix_btn.length; i++) {
+            remix_btn[i].addEventListener('click', function () {
+
+                clearTimeout(clear);
+                vm.running = !vm.running;
+                pause();
+            })
+          }
+
+
+
           toggle();
         },
-        lightbox() {
-
-        }
       },
       computed: {},
       mounted() {
