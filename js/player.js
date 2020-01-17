@@ -25,6 +25,8 @@
    xhr.open("get", "./phps/getLoginInfo.php", false);
    xhr.send(null);
 
+   playerInit();
+
    //撥放器縮放
    $('#expand').click(function () {
      $('.player_b').addClass('open');
@@ -154,8 +156,6 @@
    });
 
    /* ---------------- 音樂播放器 ---------------- */
-
-   playerInit();
 
    //播放暫停按鈕 -- 音樂撥放/暫停
    $("#player .play").click(function () {
@@ -305,7 +305,7 @@
        playerListName = localStorage['listName'];
        getOtherPlayList();
      } else {
-       getLikedList(); //待改-----這裡要改要判斷哪個清單
+       getLikedList();
      }
    } else {
      playerListName = 'Total songs';

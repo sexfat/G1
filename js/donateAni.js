@@ -1,7 +1,15 @@
 let bbf, bff, fff, fbf, tail, catN; //貓咪
 let ballon, waterPlace, waterBall;
 
-
+{/* <div class="mess_write">
+<textarea class="infomess_ta" name="" placeholder="Please leave a message." rows="8" cols="125"></textarea>
+<input type="radio" name="dollar" id=""> $ 100 dollars
+<input type="radio" name="dollar" id=""> $ 300 dollars
+<input type="radio" name="dollar" id=""> $ 500 dollars
+<input type="radio" name="dollar" id=""> $ 1000 dollars
+<div class="infose-send"><button class="infose-send" style="display: none;"></button>
+<span style="position: relative;left: -15px;top: -8px;">Send</span></div>
+</div> */}
 
 
 $('input[type="radio"]').change(function () {

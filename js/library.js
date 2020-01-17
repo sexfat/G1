@@ -180,9 +180,9 @@
      let fileType = libraryFileData.name.substr(pointPos + 1, 3);
      let coverFileData
      if (fileType == "jpg" || fileType == "png" || fileType == "gif") {
-      coverFileData = './img/library/' + libraryFileData.name;
+       coverFileData = './img/library/' + libraryFileData.name;
      } else {
-      coverFileData = "";
+       coverFileData = "";
      }
      $('#listPic').val(coverFileData);
      if (modifyName != "" && coverFileData != "") {
@@ -294,7 +294,6 @@
      let delListNo = getListIndex(delName);
      $('#inputListNo').val(mylistInfo[delListNo].plist_no);
      let xhr = new XMLHttpRequest();
-
      xhr.onload = function () {
        if (xhr.status == 200) {
          if (xhr.responseText == 'success') {
@@ -306,7 +305,9 @@
            $('.enterBtn').hide();
            $('#inputListTitle').hide();
            $('.listName').find('.name').find('h2').show();
-           $('#listAlert h4').text('Successfully modified');
+           $('#listAlert h4').text('Success to delete!'); 
+           $('.lightCover').show();
+           $('#listAlert').show();
          } else {
            alert(xhr.responseText);
          }
@@ -474,7 +475,7 @@
  };
 
  //顯示清單歌曲列表
- function showLibrarySongs(songList = libraryList) { 
+ function showLibrarySongs(songList = libraryList) {
    $('.songs').children().remove();
    if (songList == 'no') {
      $('.songs').append(`<li style="color:#aaa;text-align:center">Please login !</li>`);
@@ -637,4 +638,9 @@
      xhr.open("get", url, true);
      xhr.send(null);
    }
+ }
+
+ //登出刷新頁面
+ function libraryLogout() {
+  location.replace(location.href);
  }
