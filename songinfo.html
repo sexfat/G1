@@ -566,12 +566,11 @@
             </section>
             <br>
             <br>
-            <br>
             <section class="songinfo_infos3">
                 <div class="songinfo_titl">
-                    <p>Introduction</p>
-                    <br>
-                    <div class="songinfo_info">
+                    <!-- <p>Introduction</p> -->
+                    <!-- <br> -->
+                    <!-- <div class="songinfo_info">
                         "Hold It Against Me" is three minutes and forty-nine seconds long.<br>
                         It is a dance-pop song that blends pulsating industrial and trance <br>
                         beats with elements of grime.Musically, "Hold It Against Me" features <br>
@@ -579,18 +578,28 @@
                         with elements of rave.Initially, the single was going to be released in<br>
                         the United Kingdom on February 20, 2011, but the date was moved <br>
                         up to January 17, 2011, due to overwhelming demand.
-                    </div>
-                    <div class="info_square"></div>
-                    <div class="songinfo_ear">
-                        <img src="./img/songinfo/ear2.png" alt="">
+                    </div> -->
+                    <div class="info_square">
+                        <p>Introduction</p>
+                        <br>
+                        <div class="square_info">
+                            <div class="square_info_info" style="overflow: scroll;overflow-X: hidden;height: 250px;">
+                                "Hold It Against Me" is three minutes and forty-nine seconds long.
+                                It is a dance-pop song that blends pulsating industrial and trance 
+                                beats with elements of grime.Musically, "Hold It Against Me" features
+                                industrial beats, a dubstep-influenced breakdown and a final chorus
+                                with elements of rave.Initially, the single was going to be released in
+                                the United Kingdom on February 20, 2011, but the date was moved
+                                up to January 17, 2011, due to overwhelming demand.
+                            </div>
+
+                        </div>
+                        <div class="songinfo_ear">
+                            <img src="./img/songinfo/ear2.png" alt="">
+                        </div>
                     </div>
                 </div>
-
             </section>
-            <br>
-            <br>
-            <br>
-            <br>
             <section class="songinfo_infos4">
                 <div>
                     <div class="message">
@@ -706,8 +715,8 @@
         ];
         var types = ['waveform', 'circlebar', 'lighting', 'circlewave'];
         var prettify = false;
-        var canvas = $('#infoinfocanvas');
-        var audio = $('#infoaudio');
+        var canvas = song('#infoinfocanvas');
+        var audio = song('#infoaudio');
         var vudio = new Vudio(audio, canvas, {
             effect: 'waveform',
             accuracy: 128,
@@ -731,7 +740,7 @@
         });
         vudio.dance();
 
-        function $(selector) {
+        function song(selector) {
             return document.querySelector(selector);
         }
 
@@ -757,8 +766,8 @@
         });
     </script> -->
 
-    <!-- <script>
-        $(".infomess_ul").on("mouseenter mouseleave", function (event) { //挷定滑鼠進入及離開事件
+    <script>
+        $(".square_info_info").on("mouseenter mouseleave", function (event) { //挷定滑鼠進入及離開事件
             if (event.type == "mouseenter") {
                 $(this).css({
                     "overflow-y": "scroll"
@@ -769,7 +778,7 @@
                 }); //滑鼠離開
             }
         });
-    </script> -->
+    </script>
     <script>
         //元素節點<h3>，屬性節點class
         window.onload = message
@@ -797,8 +806,8 @@
                 //item.innerHTML = content;
                 // item.innerHTML = content + '<button class="songinfo_re">删除</button>'
                 item.innerHTML =
-                    '<img class="infomessimg" src="./img/songinfo/people.png" style="width: 50px;height: 50px;float: left;margin-left: -10px;margin-top: 5px;"><div class="clearfix"></div><p>&ensp;ID : Bella <button class="infocreat_re">Report</button><br>&ensp;WOW ! Awesome ! </p>' +
-                    content
+                    '<img class="infomessimg" src="./img/songinfo/people.png" style="width: 50px;height: 50px;float: left;margin-left: -10px;margin-top: 5px;"><div class="clearfix"></div><p>&ensp;ID : Bella <button class="infocreat_re">Report</button></p>' +
+                    content;
                 // item.innerHTML = content + '<div class="re-report"></div>'
                 // item.innerHTML = content + '<label class="songinfo_re" for="inforeport">&ensp;Report</label>'
                 //將新節點添加到評論區：添加到頁面父節點.appendChild 
@@ -875,8 +884,8 @@
             }
         }, 150);
     </script>
-    
-    
+
+
 </body>
 
 </html>

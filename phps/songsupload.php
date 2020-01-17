@@ -36,13 +36,13 @@
         }
         move_uploaded_file($_FILES['song_pic']['tmp_name'],'../img/uploadpic/'.$_FILES['song_pic']['name']);
         // echo '<a href="file/'.$_FILES['song_pic']['name'].'">img/uploadpic/'.$_FILES['song_pic']['name'].'</a>';
-        echo $_FILES['song_pic']['name'].'">img/uploadpic/'.$_FILES['song_pic']['name'];
+        echo $_POST["song_name"];
         if($_FILES['song_addr']['error']>0){
           exit("上傳失敗！");
         }
         move_uploaded_file($_FILES['song_addr']['tmp_name'],'../music/'.$_FILES['song_addr']['name']);
         // echo '<a href="file/'.$_FILES['song_addr']['name'].'">music/'.$_FILES['song_addr']['name'].'</a>';
-        echo "Successly";
+        // echo "Successly";
     }else{
         echo "Failure";
     }
