@@ -98,6 +98,7 @@
             -webkit-transform: rotate(-45deg);
             transform: rotate(-45deg);
         }
+        
     </style>
 </head>
 
@@ -481,7 +482,7 @@
                             </a>
                         </li>
                         <ol class="songsadded_inside">
-                            <form class="addinsideadd" method="POST" enctype="multipart/form-data">
+                            <form id="myForm" class="addinsideadd" method="POST" enctype="multipart/form-data">
                                 <article>
                                     <!-- target="id_iframe" -->
                                     <br>
@@ -871,7 +872,7 @@
                 </ol>
         </div>
 
-        
+        <!-- ---------------------------------------------------------------------- -->
         <ol class="songsadded_inside2" style="overflow:scroll;overflow-X:hidden;display: none;">
             <a href="#">
                 <li class="songsadded_inside2_li">Andy Warhol - Because of you <span
@@ -894,59 +895,60 @@
             </a>
             <ol class="songsadded_inside2_ol" style="overflow:scroll;overflow-X:hidden;">
                 <div id="d1" style="display: none">
-                    <form class="inside2form" action="" method="POST">
-                        <article>
-                            <br>
-                            <p style="width: 100px;height: 100px;">
-                                <img id="image"
-                                    style="width: 230px;height: 230px;background-color: #D0D6D6;">
-                            </p>
-                            <!-- <img class="songsadded_ff" style="width: 50px;height: 30px;"
-                                src="./img/songupload/button_edit.png"> -->
-                            <input type="file" name="" id="theFile" style="display: none;">
-                            <label class="songsadded_ff" for="theFile"
-                                style="text-align: center;margin-left: -5px;">Edit</label>
+                    <form class="addinsideadd" method="POST" enctype="multipart/form-data">
+                                <article>
+                                    <!-- target="id_iframe" -->
+                                    <br>
+                                    <p style="width: 100px;height: 100px;">
+                                        <img id="image" style="width: 300px;height: 300px;background-color: #D0D6D6;">
+                                    </p>
+                                    <!-- <img class="songsadded_ff" style="width: 50px;height: 30px;"
+                                        src="./img/songupload/button_edit.png"> -->
+                                    <input type="file" name="song_pic" id="theFile" style="display: none;">
+                                    <!-- <input type="hidden" name="songpicfack" id="songpicfack"> -->
+                                    <label class="songsadded_ff" for="theFile"
+                                        style="text-align: center;margin-left: -5px;">Edit</label>
 
-                        </article>
-                        <div class="inside2count">
-                            <p style="font-weight: bold;">Song Name : <input type="text"
-                                    class="add_btom"
-                                    style="border: 1px solid #d0d6d6;height:28px;background-color: #d0d6d6;">
-                            </p>
-                            <div class="infopathbtom">
-                                <!-- <span
-                                    style="position: relative;left: -100px;top: -20px;font-weight: bold;">Upload
-                                    path :</span> -->
-                                <!-- <p class="songsadd_path">{{infopathURL2}}</p> -->
-                                <!-- <input type="file" name="" id="songinfo_btnbtom"
-                                    @change="changeSignUpload" style="display: none;">
-                                <label class="songinfo_bb" for="songinfo_btnbtom"
-                                    style="text-align: center;">Choose</label> -->
-                            </div><br>
-                            <div class="infohashtagbtom">
-                                <span style="font-weight: bold;">Song type :
-                                </span><input type="radio" name="type" class="btominpt">
-                                House&ensp;
-                                <input type="radio" style="border-radius: 5px;" name="type"
-                                    class="btominpt">Trap
-                                <br>
-                                <span style="font-weight: bold;">Hashtag : </span><br>
-                                <input type="checkbox" name="" class="btominpt"> #Scratch&ensp;
-                                <input type="checkbox" name="" class="btominpt"> #Stress&ensp;
-                                <input type="checkbox" name="" class="btominpt">
-                                #Ethereal&ensp;
-                                <br>
-                                <p style="font-weight: bold;">Introduction :</p>
-                                <textarea name="" id="add_tta" cols="52" rows="3"
-                                    style="border: 1px solid #d0d6d6;background-color: #D0D6D6;"></textarea>
-                            </div>
-                        </div>
+                                </article>
+                                <div>
+                                    <p style="font-weight: bold;">Song Name : <input type="text" id="add_pp"
+                                            name="song_name"
+                                            style="border: 1px solid #d0d6d6;width:350px;height:28px;background-color: #d0d6d6;"
+                                            required>
+                                    </p>
+                                    <div id="infopath">
+                                        <span
+                                            style="position: relative;left: -100px;top: -20px;font-weight: bold;">Upload
+                                            path :</span>
+                                        <p class="songsadd_path">{{infopathURL}}</p>
+                                        <input type="file" name="song_addr" id="songinfo_btn" @change="changeSignUpload"
+                                            style="display: none;">
+                                        <!-- <input type="hidden" name="songaddrfack" id="songaddrfack"> -->
+                                        <label class="songinfo_bb" for="songinfo_btn" onClick="songaddchoose"
+                                            style="text-align: center;">Choose</label>
+                                    </div><br>
+                                    <div id="infohashtag">
+                                        <span style="font-weight: bold;">Song type : </span><input type="radio"
+                                            name="cat_no" value="3" id=""> House&ensp;
+                                        <input type="radio" style="border-radius: 5px;" name="cat_no" value="2"
+                                            id="">Trap
+                                        <br>
+                                        <span style="font-weight: bold;">Hashtag : </span><br>
+                                        <input type="radio" name="song_hashtag" value="1" id=""> #Scratch&ensp;
+                                        <input type="radio" name="song_hashtag" value="2" id=""> #Stress&ensp;
+                                        <input type="radio" name="song_hashtag" value="3" id="add_Ethereal">
+                                        #Ethereal&ensp;
+                                        <br>
+                                        <p style="font-weight: bold;">Introduction :</p>
+                                        <textarea name="song_idn" id="add_tta" cols="65" rows="6"
+                                            style="border: 1px solid #d0d6d6;background-color: #D0D6D6;"></textarea>
+                                    </div>
+                                </div>
 
-                        <section class="btomsen"><input type="submit" class="sd" name="submit"
-                                onClick="document.form.submit()">
-                            <label class="sd_btn" for="sd">Send</label>
-                        </section>
-                    </form>
+                                <section><input type="button" id="sd" name="submit" onclick="">
+                                    <label class="sd_btn" for="sd">Send</label>
+                                </section>
+                            </form>
                 </div>
                 <div id="c1" style="position: relative;left: 0px;">
                     <article>
@@ -982,6 +984,7 @@
                 </div>
             </ol>
         </ol>
+        <!-- ---------------------------------------------------------------------- -->
 
         <!-- <div id="c1" style="position: relative;left: 0px; display: none;">
             <article>
@@ -1116,9 +1119,15 @@
                         let btnsend =document.querySelector('#sd')
                         let temp = document.querySelector('.addinsideadd');
                         let newSong = temp.cloneNode( true );
+                        let myForm = document.getElementById("myFor");
                         newSong.style.display = '';
-                        newSong.querySelector('.songsadded_inside2_li .name').innerText = xhr.responseText;
-
+                        newSong.getElementsByName("song_name")[0].value = document.querySelector("#myForm input[name='song_name']").value;
+                        newSong.getElementsByName("song_idn")[0].value = document.querySelector("#myForm input[name='song_name']").value
+                        newSong.getElementsByName("song_name")[0].value = document.getElementsByName('song_pic')[0].value 
+                        newSong.getElementsByName("cat_no")[0].value = document.getElementsByName('cat_no')[0].value 
+                        newSong.getElementsByName("song_hashtag")[0].value = document.getElementsByName('song_hashtag')[0].value
+                        newSong.getElementsByName("song_addr")[0].value = document.getElementsByName('song_addr')[0].value;
+                        
                         temp.insertBefore( newSong, btnsend);
 
 
