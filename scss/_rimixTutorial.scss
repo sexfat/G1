@@ -260,6 +260,7 @@
       background-repeat: no-repeat;
       background-position: right center;
       z-index: -1;
+      pointer-events: auto;
 
       @include respond(ipad) {
         display: none;
@@ -270,7 +271,7 @@
       content: "";
       position: absolute;
       width: 260px;
-      height: 450px;
+      height: 300px;
       top: 50%;
       right: -100px;
       transform: translateY(-50%);
@@ -279,6 +280,7 @@
       background-repeat: no-repeat;
       background-position: right center;
       z-index: 3;
+      pointer-events: auto;
 
       @include respond(ipad) {
         display: none;

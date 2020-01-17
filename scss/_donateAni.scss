@@ -83,20 +83,10 @@
       fill: #F4E9BE;
     }
 
-    .oct0 {
-      fill: #F7B56C;
-    }
-
-    .oct1 {
-      fill: #FFFFFF;
-    }
-
-    .oct2 {
-      fill: #D168A4;
-      stroke: #070606;
-      stroke-width: 1.5;
-      stroke-miterlimit: 10;
-    }
+    .oct0{fill:#F7B56C;}
+    .oct1{fill:#FFFFFF;}
+    .oct2{opacity:0.8;fill:#D168A4;stroke:#070606;stroke-width:1.5;stroke-miterlimit:10;}
+    .oct3{opacity:0.8;fill:#F4D3E8;}
   }
 
 

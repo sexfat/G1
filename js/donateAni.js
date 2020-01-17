@@ -3,7 +3,7 @@ let ballon, waterPlace, waterBall;
 
 
 
-/* -- 貓咪 -- */
+
 $('input[type="radio"]').change(function () {
     let donateVal = $(this).val();
     if (donateVal == 100) {
@@ -23,29 +23,29 @@ $('input[type="radio"]').change(function () {
 $('#donateSubmit').click(function () {
     $('.lightCover').show();
     $('.donanimate').show();
-
+    /* -- 貓咪 -- */
     bbf = TweenMax.to('#cat_bbf', 1, {
         rotation: 10,
         transformOrigin: 'top center',
-        repeat: 7,
+        repeat: 6,
         yoyo: true,
     });
     bff = TweenMax.to('#cat_bff', 1, {
         rotation: -10,
         transformOrigin: 'top center',
-        repeat: 7,
+        repeat: 6,
         yoyo: true,
     });
     fff = TweenMax.to('#cat_fff', 1, {
         rotation: 10,
         transformOrigin: 'top right',
-        repeat: 7,
+        repeat: 6,
         yoyo: true,
     });
     fbf = TweenMax.to('#cat_fbf', 1, {
         rotation: -10,
         transformOrigin: 'top center',
-        repeat: 7,
+        repeat: 6,
         yoyo: true,
     });
     tail = TweenMax.to('#cat_tail', 2, {
@@ -68,10 +68,10 @@ $('#donateSubmit').click(function () {
         repeat: -1,
     });
     catN.set('#catNormal', {
-        x: 2000,
+        x: 1200,
     });
-    catN.fromTo('#catNormal', 7, {
-        x: 1500,
+    catN.fromTo('#catNormal', 5, {
+        x: 1200,
     }, {
         x: 0,
         ease: Power0.easeNone,
@@ -86,13 +86,23 @@ $('#donateSubmit').click(function () {
     }).to('#catpop', 0.5, {
         y: 0,
         x: -1000,
+    }).fromTo('#catpop', 2, {
+        y: 470,
+        x: -1000,
+        rotation: 480
+    }, {
+        y: 470,
+        x: -150,
+        rotation: 45
+    }).to('#catpop', 0.1, {
+        rotation: 0
     });
     TweenMax.fromTo('#catBomb', .2, {
         scale: 1,
         transformOrigin: 'bottom center',
         opacity: 0
     }, {
-        delay: 8.2,
+        delay: 6.2,
         scale: 1.2,
         opacity: 1,
         ease: Elastic.easeOut.config(1, 0.3),
@@ -101,7 +111,7 @@ $('#donateSubmit').click(function () {
         scale: 1,
     });
     TweenMax.to('#catNormal', 0.1, {
-        delay: 8.2,
+        delay: 6.2,
         opacity: 0,
         ease: Elastic.easeOut.config(1, 0.3),
     });
@@ -109,7 +119,7 @@ $('#donateSubmit').click(function () {
         opacity: 0,
         scale: 0.5,
     }, {
-        delay: 8.2,
+        delay: 6.2,
         opacity: 1,
         scale: 1,
         ease: Elastic.easeOut.config(1, 0.3),
@@ -147,7 +157,7 @@ $('#donateSubmit').click(function () {
     });
 
     /* -- 火箭爆米花 -- */
-    let rocketAll, rocket, popBox;
+    let rocket, popBox;
     TweenMax.set(['#pops', '#popBox', '#popL1', '#popL2', '#popR1', '#popR2', '#popB1'], {
         opacity: 0,
     });
@@ -177,7 +187,7 @@ $('#donateSubmit').click(function () {
         opacity: 0,
     }, {
         x: 50,
-        y: 800,
+        y: 1500,
         opacity: 1,
         scale: 1.2,
     }).fromTo('#popR1', 0.1, {
@@ -187,25 +197,25 @@ $('#donateSubmit').click(function () {
     }, {
         delay: 0.5,
         x: 50,
-        y: 800,
+        y: 1500,
         opacity: 1,
         scale: 1,
     }).fromTo('#popL1', 0.1, {
         x: 50,
-        y: 800,
+        y: 1500,
         opacity: 1,
     }, {
         x: -150,
-        y: -800,
+        y: -1500,
         scale: 2,
         opacity: 1,
     }).fromTo('#popR1', 0.2, {
         x: -200,
-        y: 800,
+        y: 1500,
         opacity: 0,
     }, {
         x: 0,
-        y: -800,
+        y: -1500,
         opacity: 1,
         scale: 0.5,
     }).fromTo('#popB1', 0.2, {
@@ -214,16 +224,16 @@ $('#donateSubmit').click(function () {
         opacity: 0,
     }, {
         x: 0,
-        y: 800,
+        y: 1500,
         opacity: 1,
         scale: 0.5,
     }).fromTo('#popR1', 0.2, {
         x: -200,
-        y: 800,
+        y: 1500,
         opacity: 0,
     }, {
         x: 100,
-        y: 800,
+        y: 1500,
         opacity: 1,
         scale: 0.5,
     }).fromTo('#rocket', 5, {
@@ -236,10 +246,11 @@ $('#donateSubmit').click(function () {
         x: 150,
         y: -200,
         opacity: 0,
+        scale: 2
     }, {
         delay: 6,
         x: 50,
-        y: 800,
+        y: 1500,
         opacity: 1,
         repeat: 3,
     });
@@ -247,57 +258,60 @@ $('#donateSubmit').click(function () {
         x: -200,
         y: -300,
         opacity: 0,
+        scale: 3
     }, {
         delay: 6.5,
         x: -150,
-        y: 800,
+        y: 1500,
         opacity: 1,
         scale: 1.2,
         repeat: 3,
     });
     TweenMax.fromTo('#popL1', .5, {
         x: 50,
-        y: 800,
+        y: 1500,
+        scale: 1.5,
     }, {
         delay: 7.5,
         x: -250,
-        y: -800,
-        scale: .8,
+        y: -1500,
+        scale: 1.2,
         repeat: 2,
     });
     TweenMax.fromTo('#popR1', .5, {
         x: -200,
-        y: 800,
+        y: 1500,
+        scale: 1.8,
     }, {
         delay: 6.5,
         x: 300,
-        y: 800,
-        scale: 1.1,
+        y: 1500,
+        scale: 1.5,
         repeat: 2,
     });
     TweenMax.fromTo('#popL1', 3, {
         x: 0,
-        y: -800,
-        scale: 0.8,
+        y: -1500,
+        scale: 1,
     }, {
         delay: 10,
         x: 0,
         y: 450,
-        scale: 1,
+        scale: 1.1,
     });
     TweenMax.fromTo('#popR1', 3, {
         x: 0,
-        y: -800,
-        scale: 0.9,
+        y: -1500,
+        scale: 1.2,
     }, {
         delay: 12,
         x: 0,
         y: 400,
-        scale: 1.1,
+        scale: 1,
     });
     TweenMax.fromTo('#pops', 5, {
         x: 0,
-        y: 800,
+        y: 1500,
         opacity: 0,
     }, {
         delay: 10,
@@ -307,7 +321,7 @@ $('#donateSubmit').click(function () {
     });
     popBox.fromTo('#popBox', .5, {
         x: 0,
-        y: -1000,
+        y: -1500,
         opacity: 1,
     }, {
         x: 0,
@@ -327,62 +341,90 @@ $('#donateSubmit').click(function () {
         opacity: 1,
     });
 
+    /* -- 章魚 -- */
     let oct;
-    TweenMax.set(['#octHeart1', '#octHeart2', '#octHeart3'], {
+    TweenMax.set(['#octRed', '#octHeart1', '#octHeart2', '#octText'], {
         opacity: 0
     })
-    oct = new TimelineMax();
-    oct.fromTo(['#oct', '#octRed'], 5, {
-        x: -1000,
+
+    oct = octRed = octHeart1 = octHeart2 = octText = new TimelineMax();
+    oct.fromTo('#oct', 5, {
+        x: 0,
         y: 1000,
     }, {
         x: 0,
         y: 0,
-        
-    });
-    TweenMax.fromTo('#octHeart1', 1, {
-        repeatDelay: 3,
-        opacity: 0.8,
-        scale: 0,
-        x: 0,
+        ease: Bounce.easeOut,
+    }).fromTo('#oct', 2, {
         y: 0,
-        transformOrigin: 'top center',
     }, {
-        delay: 3,
-        repeat: 3,
-        opacity: 0,
-        scale: 1,
-        x: 0,
         y: 50,
+        repeat: -1,
+        yoyo: true,
+        ease: Power0.easeNone,
     });
-    TweenMax.fromTo('#octHeart2', 1.5, {
-        repeatDelay: 3,
-        opacity: 0.8,
-        scale: 0,
-        transformOrigin: 'rigtht center',
-        x: 0,
-        y: 0,
-    }, {
-        delay: 3,
-        repeat: 3,
+    octHeart2.fromTo('#octHeart2', 0.2, {
+        transformOrigin: 'bottom right',
         opacity: 0,
+        scale: 0,
+    }, {
+        opacity: 1,
         scale: 1,
-        x: -50,
-        y: -50,
+    }).fromTo('#octHeart2', 3, {
+        y: 50,
+        scale: 1,
+    }, {
+        x: -200,
+        y: -150,
+        scale: 2,
+    }).to('#octHeart2', 3, {
+        opacity:0
     });
-    TweenMax.fromTo('#octHeart3', 1, {
-        repeatDelay: 3,
-        opacity: 0.8,
-        scale: 0,
-        transformOrigin: 'rigtht center',
-        x: 0,
-        y: 0
-    }, {
-        delay: 4,
-        repeat: 2,
+    octHeart1.fromTo('#octHeart1', 0.2, {
+        transformOrigin: 'bottom right',
         opacity: 0,
+        scale: 0,
+    }, {
+        opacity: 1,
         scale: 1,
-        x: -50,
-        y: -50,
+    },'-=5').fromTo('#octHeart1', 5, {
+        y: 50,
+        scale: 1,
+    }, {
+        x: 100,
+        y: -250,
+        scale: 2,
+    }).to('#octHeart1', 3, {
+        opacity:0
+    },'-=1');
+    octRed.fromTo('#octRed', 0.2, {
+        transformOrigin: 'bottom right',
+        opacity: 0,
+        scale: 0,
+    }, {
+        opacity: 1,
+        scale: 1,
+    },'-=5').fromTo('#octRed', 5, {
+        y: 50,
+        scale: 1,
+    }, {
+        x: 300,
+        y: -350,
+        scale: 2,
+    }).to('#octRed', 3, {
+        opacity:0
+    },'-=1');
+    octText.fromTo('#octText', 0.2, {
+        transformOrigin: 'bottom right',
+        opacity: 0,
+        scale: 0,
+    }, {
+        opacity: 1,
+        scale: 1,
+    },'-=2').fromTo('#octText', 3, {
+        y: 50,
+    }, {
+        x: 0,
+        y: -100,
     });
 });
