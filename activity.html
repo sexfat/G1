@@ -13,6 +13,7 @@
     <script src="https://cdnjs.cloudflare.com/ajax/libs/vue/2.6.10/vue.js"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/axios/0.19.0/axios.min.js"></script>
     <link rel="Shortcut Icon" type="image/x-icon" href="./img/collection/smalllogo.ico" />
+
 </head>
 
 <body>
@@ -363,8 +364,9 @@
             </div>
         </div>
     </div>
-    <script src="./js/nav_bar.js"></script>
     <script src="./js/player.js"></script>
+    <script src="./js/nav_bar.js"></script>
+
     <header>
         <div id="act_title"><img src="./img/activity/title.png" alt=""></div>
     </header>
@@ -443,9 +445,9 @@
                 </div>
 
                 <div id="act_carousel">
-                    <transition name="fade">
+                    <a :href="imageHref">
                         <img :src=" imageActive">
-                    </transition>
+                    </a>
 
                 </div>
 
@@ -481,7 +483,8 @@
 
         </div>
         <component :is="content" :now-Vote-Song=" nowVoteSong" :old-Vote-Song2018="oldVoteSong2018"
-            :old-Vote-Song2017="oldVoteSong2017" :vote-All="voteAll" :act-Information="actInformation"> </component>
+            :old-Vote-Song2017="oldVoteSong2017" :vote-All="voteAll" :act-Information="actInformation"
+            :mem-Heart="memHeart" :mem-Votes="memVotes"> </component>
 
 
     </section>
@@ -584,7 +587,7 @@
                  </p>
                  <div class="act_oldVotes">
                      <h3>Votes</h3>
-                     <span>{{voteAll[0].total_vote}}</span>
+                     <span>{{voteAll[2].total_vote}}</span>
                  </div>
              </div>
      
@@ -719,7 +722,7 @@
                    <div>
                       <h3>Qualifications</h3>
                       <p>
-                          1.Must be a website member,please login or register
+                          1.Must be a website member,please login or register<br>
                           2.Cannot register with songs that have already participated in previous events
                         
                      </p>
@@ -758,7 +761,7 @@
                 
                    <p class="act_from-button-box">
                      <button type="button"  @click="BackFormPage(0)">Back</button>
-                     <button type="button"  @click="formNextsong()">Next </button>
+                     <button type="button"  @click="formNextsong()" >Next </button>
                    </p>
                 </div>
                 
@@ -797,7 +800,7 @@
                                    <label class="act_SignUPButton2"  for="act_SignUp-Song-img"  v-if="SignSongURL">Upload</label>
                                 </p>
                                <input type="file" id="act_SignUp-Song-img" style="display:none" @change="changeSignUpImg" accept="image/jpeg, image/png" required>
-                               <div class="act_showSignUpImg" v-if="SignUpImg"> <img :src="SignUpImg" alt=""></div>
+                               <div class="act_showSignUpImg" v-if="SignUpImg&&SignSongURL"> <img :src="SignUpImg" alt=""></div>
                                <div class="act_showSignUpImg" v-if="selectSong"> <img :src="selectSong.song_pic" alt=""></div>
                                
                         
@@ -806,7 +809,8 @@
                 
                 <p class="act_from-button-box">
                   <button type="button"  @click="BackFormPage(1)">Back</button>
-                  <button type="button" @click=" formNextInformation">Next </button>
+                  <button type="button" @click=" NextFormPage(3)"  v-if="selectSong">Next </button>
+                  <button type="button" @click=" formNextInformation"  v-if="SignSongURL">Next </button>
                   </p>
                 </div>
                 
@@ -828,7 +832,7 @@
                       <div>
                          <h4>Song img:</h4>
                          <div class="act_showSignUpImgSmall" 
-                         v-if="SignUpImg"><img :src="SignUpImg" alt=""></div>
+                         v-if="SignUpImg&&SignSongURL"><img :src="SignUpImg" alt=""></div>
                          <div class="act_showSignUpImgSmall" 
                          v-if="selectSong"><img :src="selectSong.song_pic" alt=""></div>
                            
@@ -864,7 +868,7 @@
                 <div >
                    <h3>Qualifications</h3>
                    <p>  
-                       1.Must be a website member,please login or register
+                       1.Must be a website member,please login or register<br>
                        2.Cannot register with songs that have already participated in previous events
                   </p>
                   <p class="act_from-button-box">
@@ -893,21 +897,24 @@
                    </p>
                    <div>
                      <h3>Votes</h3>
-                     <span>{{voteAll[2].total_vote}}</span>
+                     <span>{{voteAll[0].total_vote}}</span>
                    </div>
                    
                  </article>
          
                  <section>
                     <div v-for="(item,index) in nowVoteSong" :key="index">   
-                        <button type="button" @click.once="showChangeVote" >Vote</button>
+                        <button type="button" @click.once="showChangeVote(item)" ref="votes">Vote</button>
                         <p >Votes <span>{{item.vote_per}}</span></p>
+                        <input type="hidden" name="entries_no" v-model='voteSongNo'>
                         <div>
                               <img :src="item.entries_img" alt="">
                               <div class="act_old-play" @click="showChangePlay"></div>
+                              
                         </div>
                           <div class="act_songBox"> 
-                              <div class="act_old-hear1" @click="showChangeHeart" ref="index"></div>
+                              <div class="act_old-hear1"  @click="showChangeHeart(item)" ref="hearts"></div>
+                              <input type="hidden" name="favorStatus" v-model='heartSongNo'>
                               <a href="./songinfo.html"><h4>' {{item.entries_name}}'</h4></a>  
                               <p> {{item.mem_name}} </p>
                           </div>
@@ -934,8 +941,7 @@
 
 
     <style scoped>
-        @import "./css/activity.css";
-        @import "./css/public.css";
+        @import "./css/main.css";
     </style>
 
 
@@ -947,42 +953,46 @@
                 nowVoteSong: [Array],
                 voteAll: [Array],
                 actInformation: [Array],
-
+                memHeart: [Array],
+                memVotes: [Array],
             },
             data: function () {
                 return {
-
+                    //表單步驟頁面
                     formContent: 0,
 
-
+                    //報名歌曲，本地上傳資料
                     SongName: "",
                     SongInformation: "",
                     SignUpImg: "",
                     SignSongURL: "",
 
+                    //會員選擇已有歌曲，資料陣列
+                    selectSong: [],
 
-
-
-                    selectSong: [
-
-                    ],
-
-
+                    //會員資料
                     member: [],
                     memberContestSong: [],
+                    total_vote: [],
 
+                    //被投票的歌曲編號
+                    voteSongNo: '',
+
+                    //愛心收藏
+                    heartSongNo: [],
+
+                    // heartSaute:[
+                    //     {red:true, backgroundImage: url('./img/collection/redheart.png')},
+                    //     {gray:false,backgroundImage: url('./img/collection/grayheart.png')}
+
+                    // ]
 
 
                 }
 
             },
-            computed: {
 
-
-            },
             methods: {
-
-
                 formLogin() {//確認會員登入後才能繼續填寫表單
 
                     if (vml.mem_login == false) {
@@ -1011,16 +1021,16 @@
                 },
                 formNextInformation() {//確認有填寫歌曲路徑
                     let Name = this.SongName;
-                    let Information= this.SongInformation;
-                    let Img=this.SignUpImg;
-        
-                    if (Name== "" || Information== "" || Img=="") {
+                    let Information = this.SongInformation;
+                    let Img = this.SignUpImg;
+
+                    if (Name == "" || Information == "" || Img == "") {
                         alert('Song introduce cannot be empty!');
                     } else {
-                        this.formContent =3;
+                        this.formContent = 3;
                     }
                 },
-                
+
                 NextFormPage(Index) {
                     this.formContent = Index;
                 },
@@ -1037,16 +1047,10 @@
                 imageLoader(img) {//獲取檔案路徑，顯示在頁面
                     this.SignUpImg = img.target.result;
                 },
-                checkSongFormat(song) {//檢查檔案格式
-                    const readers = new FileReader();
-                    readers.readAsDataURL(song);
-    
-                },
-               
+
                 changeSignUpload(event) {//獲取檔案
                     let song = event.target.files.item(0);
                     this.SignSongURL = this.getObjectURL(song);
-                    this.checkSongFormat(song);
                     if (this.selectSong != "") {
                         this.selectSong = "";
                     }
@@ -1071,58 +1075,122 @@
                     }
                 },
 
-                showChangeHeart(e) {//更換愛心顏色
-                    let button = e.target;
-                    button.classList.toggle('actShowHeart');
+                showChangeHeart(e) {//確認會員登入狀態，變更收藏愛心顏色
+                    console.log(e);
+                    if (vml.mem_login == false) {
+                        alert("Please login first!");
+                        location.href = "./login.html";
+                    } else {
+                        this.memHeart
+                        // let button = e.target;
+                        // button.classList.toggle('actShowHeart');
+                        if (button.classList.contains('actShowHeart')) {
+                            this.heartSongNo = 'red';
+                            var vote = $.ajax({
+                                url: '',
+                                data: {
+                                    favorStatus: this.heartSongNo,
+                                },
+                                type: 'POST',
+                                dataType: 'json'
+                            });
+
+                        } else {
+                            this.heartSongNo = 'gray';
+                            var vote = $.ajax({
+                                url: '',
+                                data: {
+                                    favorStatus: this.heartSongNo,
+                                },
+                                type: 'POST',
+                                dataType: 'json'
+                            });
+
+                        }
+
+                    }
+
                 },
                 ChangeRedHeart() {//獲取會員已收藏歌曲，並更換顏色
-                    let nowSong = this.nowVoteSong.entries_name;
-                    let memHave = vml.memHeart.song_name;
-                    for (let i = 0; i <= nowSong.length; i++) {
-                        for (let j = 0; j <= memHave.length; j++) {
-                            if (nowSong[i] == memHave[j]) {
-                                let heart = document.querySelectorAll(".act_old-hear1");
-                                heart.$refs.i.classList.toggle('actShowHeart');
-                            }
+                    this.nowVoteSong;
+                    this.memHeart;
+                    // console.log(this.nowVoteSong);
+                    // console.log(this.memHeart);
+                    // console.log(this.memHeart[1].song_name);
+
+                    for (let i = 0; i <= this.nowVoteSong.length; i++) {
+                        console.log(this.nowVoteSong[i].entries_name);
+
+                        for (let j = 0; j <= this.memHeart.length; j++) {
+                            console.log(this.memHeart[j].song_name);
+                            // console.log(this.nowVoteSong[i].entries_name);
+                            // console.log(this.memHeart[j].song_name);
+
+                            // if (this.nowVoteSong[i].entries_name == this.memHeart[j].song_name) {
+                            //     console.log(1);
+                            //     // this.$refs.hearts.classList.toggle('actShowHeart');
+                            //     // console.log(nowSong[i]);
+                            //     // console.log(memHave[j]);
+                            // }
                         };
 
                     };
 
 
+
                 },
 
-                showChangePlay(e) {//切換撥放按鈕
-                    let playButton = e.target;
-                    playButton.classList.toggle('act_old-play-Pause');
-                },
-                showChangeVote(e) {//確認會員登入後才能繼續投票
+                // showChangePlay(e) {//切換撥放按鈕
+                //     let playButton = e.target;
+                //     playButton.classList.toggle('act_old-play-Pause');
+                // },
+
+                showChangeVote(item) {//確認會員登入後才能繼續投票
                     if (vml.mem_login == false) {
 
                         alert("Please login first!");
                         location.href = "./login.html";
 
                     } else {
-                        let voteButton = e.target;
-                        voteButton.classList.toggle('act_vote-button');
-                        fetch('./phps/getMemInfo.php').then(res => res.json()).then(data => this.member = data);
+                        // console.log(item.entries_no);
+                        // console.log(item);
+                        this.voteSongNo = item.entries_no;
+                        // console.log(this.voteSongNo);
+                        if (this.voteSongNo) {
+                            var vote = $.ajax({
+                                url: './phps/act_VoteSong.php',
+                                data: {
+                                    entries_no: this.voteSongNo,
+                                },
+                                type: 'POST',
+                                dataType: 'json'
+                            });
+                        }
+                    }
+                },
+                ChangeGrayVotes() {
+                    for (let i = 0; i <= this.nowVoteSong.length; i++) {
+                        for (let j = 0; j <= this.memVotes.length; j++) {
+                            // console.log(this.memVotes[j].entries_name);
+                            // if (this.nowVoteSong[i].entries_name == this.memVotes[j].entries_name) {
+                            //     // this.$refs.votes.classList.toggle('act_old-play-Pause');
+                            //     Console.log(123);
+
+                            // }
+                        };
 
                     };
 
                 },
 
 
-
-
             },
             mounted() {
                 fetch('./phps/getMemContestSong.php').then(res => res.json()).then(data => this.memberContestSong = data);
-                this.ChangeRedHeart;
-
-
+                this.ChangeHeart = setTimeout(this.ChangeRedHeart, 1000);
+                this.ChangeVotes = setTimeout(this.ChangeGrayVotes, 1000)
+                console.log(this.$refs);
             },
-
-
-
         });
 
         Vue.component('actOld', {
@@ -1132,10 +1200,12 @@
                 oldVoteSong2017: [Array],
                 voteAll: [Array],
                 actInformation: [Array],
+                memHeart: [Array],
 
             },
             data: function () {
                 return {
+                    total_vote: [],
 
                 }
 
@@ -1167,9 +1237,7 @@
 
 
         let vml = new Vue({
-
             el: '#activity',
-
             data: {
                 //當前頁面
                 content: 'actNow',
@@ -1194,6 +1262,7 @@
                     `./img/activity/banner-remix02.jpg`,
                 ],
                 imageActive: `./img/activity/banner-activ.jpg`,
+                imageHref: `./activity.html`,
                 isActive: 0,
                 currentIndex: 1,
 
@@ -1210,6 +1279,10 @@
 
                 //投票總數
                 voteAll: [],
+                total_vote: [],
+
+                //會員已投票歌曲
+                memVotes: [],
 
                 //會員收藏
                 memHeart: [],
@@ -1244,7 +1317,7 @@
                 },
                 getCountDownDate() {
                     let finTime = this.actInformation[0].activity_fin;
-                    this.countDownDate = Date.parse(new Date(finTime)).getTime();
+                    this.countDownDate = new Date(finTime).getTime();
 
                 },
                 timerCount() {
@@ -1260,25 +1333,38 @@
 
                     let GoTopButton = e.target;
                     if (GoTopButton.classList.contains('act_ShowTopAnchor') == true) {
-                        clearBush();
+                        // this.clearBush();
                     } else {
                         GoTopButton.classList.toggle('act_ShowTopAnchor');
                     }
                     this.GoTopBush = true;
                 },
-                clearBush() {
-                    this.GoTopBush = false;
-                    GoTopButton.classList.remove('act_ShowTopAnchor');
-                }
+                // clearBush() {
+                //     this.GoTopBush = false;
+                //     GoTopButton.classList.remove('act_ShowTopAnchor');
+                // }
+
+
+
+
+
+
 
             },
             mounted() {
-
-                this.getCountDownDate;
+                this.timer = setTimeout(this.getCountDownDate, 500);
                 this.ChangeBannerImg = setInterval(this.timeChangeBanner, 3000);
                 this.countTimer = setInterval(this.timerCount, 1000);
 
-            }
+            },
+            watch: {
+
+            },
+            // created() {
+            //     // 在 created 的時候才建立 penguine 順便設值為 0
+            //     // 使用 $set 動態新增響應式組件
+            //     this.$set(this.nowVoteSong, 'nowVoteSong.vote_per', 0)
+            // }
         });
 
 
@@ -1312,12 +1398,19 @@
                 if (member.mem_acct) {
                     vml.mem_login = true;
 
-                    let xhr = new XMLHttpRequest();
-                    xhr.onload = function () {
-                        vml.memHeart = JSON.parse(xhr.responseText);
+                    let xhrH = new XMLHttpRequest();
+                    xhrH.onload = function () {
+                        vml.memHeart = JSON.parse(xhrH.responseText);
                     }
-                    xhr.open("get", "./phps/getMemcontestheart.php", true);
-                    xhr.send(null);
+                    xhrH.open("get", "./phps/getMemcontestheart.php", true);
+                    xhrH.send(null);
+
+                    let xhrV = new XMLHttpRequest();
+                    xhrV.onload = function () {
+                        vml.memVotes = JSON.parse(xhrV.responseText);
+                    }
+                    xhrV.open("get", "./phps/getMemcontestvote.php", true);
+                    xhrV.send(null);
 
                 } else {
                     vml.mem_login = false;
