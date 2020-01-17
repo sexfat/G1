@@ -8,11 +8,12 @@
   <title>Document</title>
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.11.2/css/all.min.css" />
   <link rel="stylesheet" href="./css/main.css">
-  <link rel="stylesheet" href="./css/donated.css">
+  <!-- <link rel="stylesheet" href="./css/donated.css"> -->
 </head>
 
 <body>
-  <div id="app">
+  <div id="nav_app">
+    <!-- nav_bar start -->
     <div class="nav_bar flexbox">
       <div class="hamburger" @click="hamburger_click">
         <div class="hamburger-box">
@@ -44,6 +45,7 @@
         <a href="./index.html">
           <div class="logo"></div>
         </a>
+        <div class="finger"></div>
       </div>
       <ul class="main_list flexbox">
         <li class="REMIX flexbox">
@@ -71,11 +73,12 @@
         <div class="tag_container">
         </div>
       </div>
-      <div class="login_bt" @click="" v-if="mem_login == false">
-        <a class="flexbox" href="#">Login</a>
-      </div>
+
       <div class="mem_bt" @click="mem_bt_click" v-if="mem_login == true">
         <a href="#"></a>
+      </div>
+      <div class="login_bt" v-if="mem_login == false">
+        <a href="./login.html"></a>
       </div>
       <div class="mem_list" @click="stopPropagation">
         <div class="paint_border"></div>
@@ -83,11 +86,6 @@
           <li>
             <a href="./profile.html">
               <h4>Profile</h4>
-            </a>
-          </li>
-          <li>
-            <a href="./library.html">
-              <h4>Library</h4>
             </a>
           </li>
           <li>
@@ -107,13 +105,19 @@
             </a>
           </li>
           <li>
-            <a href="">
+            <a href="./donate.html">
               <h4>Donate Record</h4>
+            </a>
+          </li>
+          <li @click="logout">
+            <a href="#">
+              <h4>Log Out</h4>
             </a>
           </li>
         </ul>
       </div>
     </div>
+    <!-- nav_bar end -->
   </div>
   <header>
     <img src="./img/member/doNATE.png" alt="">
@@ -125,8 +129,33 @@
       <img src="./img/member/bg_down.png" class="bg_down">
     </div>
     <div class="wrapper donate_wrapper">
+      <div class="donate_meminfos">
+        <div class="col-xl-3 mem_img">
+          <div class="col-xl-8 ">
+            <img :src=memberinfos.mem_img>
+          </div>
+        </div>
+        <div class="col-xl-3">
+          <div class="col-xl-10 col-11">
+            <p>Member ID</p>
+            <p>{{ memberinfos.mem_no }}</p>
+          </div>
+        </div>
+        <div class="col-xl-3 pline">
+          <div class="col-xl-10 col-11">
+            <p>Name</p>
+            <p>{{ memberinfos.mem_name }}</p>
+          </div>
+        </div>
+        <div class="col-xl-3">
+          <div class="col-xl-10 col-11">
+            <p>Point</p>
+            <p>{{ memberinfos.mem_point }}</p>
+          </div>
+        </div>
+      </div>
       <div class="donate_history">
-        <div class="col-xl-12 title">
+        <div class="col-xl-10 col-lg-11 col-12 title">
           <h2>Donate record</h2>
         </div>
         <div class="col-xl-10 col-lg-11 col-12 table">
@@ -152,8 +181,6 @@
       </div>
     </div>
   </div>
-
-
   <!-- ======================= my code =========================== -->
   <div id="player">
     <audio src="" id="audioPlayer"></audio>
@@ -400,19 +427,20 @@
   <script src='https://cdnjs.cloudflare.com/ajax/libs/jquery/3.4.1/jquery.js'></script>
   <script src='https://cdnjs.cloudflare.com/ajax/libs/axios/0.19.0/axios.js'></script>
   <script src="./js/vue.js"></script>
-  <script src="./js/public.js"></script>
+  <script src="./js/nav_bar.js"></script>
   <script src="./js/player.js"></script>
 
   <script>
     new Vue({
       el: '#donate_app',
       data: {
-        history: []
+        history: [],
+        memberinfos: {},
       },
       methods: {
-        history_load(){
+        history_load() {
           const vm = this;
-          axios.get('./phps/donate_record.php').then((res)=>{
+          axios.get('./phps/donate_record.php').then((res) => {
             console.log(res)
             res.data.forEach(donate => {
               vm.history.push({
@@ -421,11 +449,27 @@
                 date: donate.donate_day
               })
             });
-          }) .catch((err) =>console.error(err))
+          }).catch((err) => console.error(err))
+        },
+        meminfos() {
+          var vm = this;
+          axios.get('./phps/store.php?get=meminfos').then(res => {
+            vm.memberinfos = {};
+            vm.memberinfos = {
+              mem_no: res.data[0].mem_no,
+              mem_acct: res.data[0].mem_acct,
+              mem_psw: res.data[0].mem_psw,
+              mem_name: res.data[0].mem_name,
+              mem_img: res.data[0].mem_img,
+              mem_point: res.data[0].mem_point
+            }
+
+          })
         }
       },
       mounted() {
         this.history_load();
+        this.meminfos();
       },
     })
   </script>

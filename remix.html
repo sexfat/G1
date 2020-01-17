@@ -8,12 +8,13 @@
   <link rel="Shortcut Icon" type="image/x-icon" href="./img/collection/smalllogo.ico" />
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.11.2/css/all.min.css" />
   <link rel="stylesheet" href="./css/main.css">
-  <link rel="stylesheet" href="./css/remix.css">
+  <!-- <link rel="stylesheet" href="./css/remix.css"> -->
   <title>remix</title>
 </head>
 
 <body>
-  <div id="app">
+  <div id="nav_app">
+    <!-- nav_bar start -->
     <div class="nav_bar flexbox">
       <div class="hamburger" @click="hamburger_click">
         <div class="hamburger-box">
@@ -45,6 +46,7 @@
         <a href="./index.html">
           <div class="logo"></div>
         </a>
+        <div class="finger"></div>
       </div>
       <ul class="main_list flexbox">
         <li class="REMIX flexbox">
@@ -72,11 +74,12 @@
         <div class="tag_container">
         </div>
       </div>
-      <div class="login_bt" @click="" v-if="mem_login == false">
-        <a class="flexbox" href="#">Login</a>
-      </div>
+
       <div class="mem_bt" @click="mem_bt_click" v-if="mem_login == true">
         <a href="#"></a>
+      </div>
+      <div class="login_bt" v-if="mem_login == false">
+        <a href="./login.html"></a>
       </div>
       <div class="mem_list" @click="stopPropagation">
         <div class="paint_border"></div>
@@ -84,11 +87,6 @@
           <li>
             <a href="./profile.html">
               <h4>Profile</h4>
-            </a>
-          </li>
-          <li>
-            <a href="./library.html">
-              <h4>Library</h4>
             </a>
           </li>
           <li>
@@ -100,7 +98,7 @@
             </a>
           </li>
           <li>
-            <a href="">
+            <a href="./store.html">
               <h4>
                 Store Value
                 <br />&amp;Store Record
@@ -108,13 +106,19 @@
             </a>
           </li>
           <li>
-            <a href="">
+            <a href="./donate.html">
               <h4>Donate Record</h4>
+            </a>
+          </li>
+          <li @click="logout">
+            <a href="#">
+              <h4>Log Out</h4>
             </a>
           </li>
         </ul>
       </div>
     </div>
+    <!-- nav_bar end -->
   </div>
   <header>
     <img src="./img/remix/REMIX.png">
@@ -127,15 +131,15 @@
           <p class="remix_intro">On this page, you can experiment with the different music making tools you've used so
             far. They'll all play together in sync.</p>
           <div class="remix_choose_song">
-            <h4 class="remix_h4" @click="npm = 120;song_list('always_with_me');demo=1">
+            <h4 class="remix_h4 demo_song" @click="npm = 120;song_list('always_with_me');demo=1">
               <img src="./img/remix/start.png" v-if="!demostart || demo!=1">
               <img src="./img/remix/pause.png" v-if="demostart && demo==1">
               always with me</h4>
-            <h4 class="remix_h4" @click="song_list(0);demo=2">
+            <h4 class="remix_h4 demo_song" @click="song_list(0);demo=2">
               <img src="./img/remix/start.png" v-if="!demostart || demo!=2">
               <img src="./img/remix/pause.png" v-if="demostart && demo==2">
               Happy Birthday</h4>
-            <h4 class="remix_h4" @click="npm = 120;song_list('cat');demo=3">
+            <h4 class="remix_h4 demo_song" @click="npm = 120;song_list('cat');demo=3">
               <img src="./img/remix/start.png" v-if="!demostart || demo!=3">
               <img src="./img/remix/pause.png" v-if="demostart  && demo==3">
               cat</h4>
@@ -144,7 +148,7 @@
         <div class="remix_svg_move col-xl-6 col-md-10 col-sm-12">
           <div class="remix_rock_move">
             <!-- <img src="./img/remix/rock.png" class="" v-if="running == false"> -->
-            <svg  id="svgmove" width='150%' height='100%' preserveAspectRatio='xMidYMid meet' version='1.1'
+            <svg id="svgmove" width='150%' height='100%' preserveAspectRatio='xMidYMid meet' version='1.1'
               viewbox='0 0 1600 800' xmlns:xlink='http://www.w3.org/1999/xlink' xmlns='http://www.w3.org/2000/svg'>
               <defs>
                 <clipPath id='tshirt-mask'>
@@ -866,9 +870,9 @@
   <script src='https://cdnjs.cloudflare.com/ajax/libs/gsap/2.1.3/TweenMax.min.js'></script>
   <script src='https://cdnjs.cloudflare.com/ajax/libs/jquery/3.4.1/jquery.min.js'></script>
   <script src="./js/vue.js"></script>
-  <script src="js/public.js"></script>
+  <script src="./js/nav_bar.js"></script>
   <script src="./js/player.js"></script>
-  
+
   <script>
     var app = new Vue({
       el: '#remix_app',
@@ -1215,10 +1219,6 @@
         song_list(list) { // 播放 Demo
           // this.demostart = !this.demostart
           var vm = this;
-          vm.running = !vm.running
-          vm.svgmove();
-
-
           var sound_note = document.getElementsByClassName('sound_note');
           for (var x = 0; x < sound_note.length; x++) {
             sound_note[x].style.border = 'none';
@@ -1378,7 +1378,7 @@
         svgmove() {
           var vm = this;
           const internals = {
-            running: this.running,
+            running: vm.running,
             speed: .075,
             timeline: null,
             audio: null,
@@ -1473,7 +1473,7 @@
           }, 0);
 
           internals.timeline[internals.running ? 'play' : 'stop']();
-          
+
           function play() {
             TweenLite.set(internals.svg.characterA, {
               autoAlpha: 0
@@ -1496,17 +1496,21 @@
           }
 
           function toggle() {
-            // internals.running = !internals.running;
-            if (internals.running) {
+            if (internals.running || vm.demostart) {
+              vm.running = !vm.running;
               return play();
             }
+            vm.running = !vm.running;
             return pause();
-            
           }
-          // internals.ui.info.classList.add('active');
+          var demo_song = document.getElementsByClassName('demo_song');
+          for (var i = 0; i < demo_song.length; i++) {
+            demo_song[i].addEventListener('click',toggle);
+          }
+          
           toggle();
         },
-        lightbox(){
+        lightbox() {
 
         }
       },
@@ -1538,6 +1542,8 @@
           rotation: 0,
           ease: Bounce.easeOut,
         })
+
+        vm.svgmove();
       },
       watch: {
         screenWidth(val) {
@@ -1582,7 +1588,6 @@
         },
       },
     })
-
   </script>
 </body>
 

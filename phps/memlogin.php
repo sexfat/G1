@@ -1,6 +1,6 @@
 <?php
 try {
-    require_once("./connectBooks.php");
+    require_once("connectBooks.php");
 
     $pdo = new PDO($dsn,$user,$password,$options);
     $sql = "select * from `member` where mem_acct =:mem_acct and mem_psw =:mem_psw";

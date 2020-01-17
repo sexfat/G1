@@ -1,0 +1,124 @@
+// button {
+//   background-color: #f1c40f;
+//   font-size: 0.8rem;
+//   padding: 10px 30px;
+//   border: 1px solid #f1c40f;
+//   border-radius: 5px;
+//   color: #333;
+//   font-weight: bold;
+//   cursor: pointer;
+//   text-transform: capitalize;
+// }
+
+.donanimate {
+  width: 100%;
+  height: 100%;
+  margin: 0 auto;
+  position: relative;
+  border: 1px solid red;
+
+  svg {
+    width: 100%;
+    height: 100%;
+    border: 1px solid orange;
+
+    .cat0 {
+      fill: #F7F7F7;
+    }
+
+    .cat1 {
+      fill: #FFC76E;
+    }
+
+    .cat2 {
+      fill: #BF9A66;
+    }
+
+    .cat3 {
+      fill: #58B0E0;
+    }
+
+    .cat4 {
+      fill: #D9DADB;
+    }
+
+    .cat5 {
+      fill: #9FBAD1;
+    }
+
+    .water0 {
+      fill: #B0DDE5;
+    }
+
+    .water1 {
+      opacity: 0.5;
+      fill: #D05399;
+    }
+
+    .water2 {
+      fill: #FFFFFF;
+    }
+
+    .pop0 {
+      fill: #FFFFFF;
+    }
+
+    .pop1 {
+      fill: #FF6E6E;
+    }
+
+    .pop2 {
+      fill: #EAD065;
+    }
+
+    .pop3 {
+      fill: #7DD1EF;
+    }
+
+    .pop4 {
+      fill: #F9F5E4;
+    }
+
+    .pop5 {
+      fill: #F4E9BE;
+    }
+
+    .oct0 {
+      fill: #F7B56C;
+    }
+
+    .oct1 {
+      fill: #FFFFFF;
+    }
+
+    .oct2 {
+      fill: #D168A4;
+      stroke: #070606;
+      stroke-width: 1.5;
+      stroke-miterlimit: 10;
+    }
+  }
+
+
+
+  #catAll {
+    position: absolute;
+    width: 100%;
+    left: 0;
+    bottom: 0;
+  }
+
+  #catBomb {
+    opacity: 0;
+  }
+
+  #rocketAll {
+    position: absolute;
+    bottom: 0;
+  }
+  #octAll{
+    position: absolute;
+    bottom:0;
+  }
+
+}
