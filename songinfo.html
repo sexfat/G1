@@ -452,145 +452,26 @@
           <audio id="music" src="./music/Paul_Flint.mp3"></audio>
         </div>
         <label class="label" for="audioFile" id="audioLabel"></label>
-        <input type="file" name="audioFile" id="audioFile"
-          onchange="vudio.readAudioSrc(this,vudio,document.querySelector('#audioLabel'))" accept="audio/*">
+        <!-- <input type="file" name="audioFile" id="audioFile"
+          onchange="vudio.readAudioSrc(this,vudio,document.querySelector('#audioLabel'))" accept="audio/*"> -->
         <div class="songinfo_wave" style="z-index: -1;">
           <div class="infoinfocontainer">
             <img id="bg" />
             <canvas id="infoinfocanvas"></canvas>
             <audio id="infoaudio" src="./music/Paul_Flint.mp3" preload="auto"></audio>
           </div>
-          <!-- <iframe width="420" height="315" src="./music/Paul_Flint.mp3" frameborder="0"
-                        allowfullscreen></iframe>
-                    <div class="jumping-things-wrap">
-                        <span></span>
-                        <span></span>
-                        <span></span>
-                        <span></span>
-                        <span></span>
-                        <span></span>
-                        <span></span>
-                        <span></span>
-                        <span></span>
-                        <span></span>
-                        <span></span>
-                        <span></span>
-                        <span></span>
-                        <span></span>
-                        <span></span>
-                        <span></span>
-                        <span></span>
-                        <span></span>
-                        <span></span>
-                        <span></span>
-                        <span></span>
-                        <span></span>
-                        <span></span>
-                        <span></span>
-                        <span></span>
-                        <span></span>
-                        <span></span>
-                        <span></span>
-                        <span></span>
-                        <span></span>
-                        <span></span>
-                        <span></span>
-                        <span></span>
-                        <span></span>
-                        <span></span>
-                        <span></span>
-                        <span></span>
-                        <span></span>
-                        <span></span>
-                        <span></span>
-                        <span></span>
-                        <span></span>
-                        <span></span>
-                        <span></span>
-                        <span></span>
-                        <span></span>
-                        <span></span>
-                        <span></span>
-                        <span></span>
-                        <span></span>
-                        <span></span>
-                        <span></span>
-                        <span></span>
-                        <span></span>
-                        <span></span>
-                        <span></span>
-                        <span></span>
-                        <span></span>
-                        <span></span>
-                        <span></span>
-                        <span></span>
-                        <span></span>
-                        <span></span>
-                        <span></span>
-                        <span></span>
-                        <span></span>
-                        <span></span>
-                        <span></span>
-                        <span></span>
-                        <span></span>
-                        <span></span>
-                        <span></span>
-                        <span></span>
-                        <span></span>
-                        <span></span>
-                        <span></span>
-                        <span></span>
-                        <span></span>
-                        <span></span>
-                        <span></span>
-                        <span></span>
-                        <span></span>
-                        <span></span>
-                        <span></span>
-                        <span></span>
-                        <span></span>
-                        <span></span>
-                        <span></span>
-                        <span></span>
-                        <span></span>
-                        <span></span>
-                        <span></span>
-                        <span></span>
-                        <span></span>
-                        <span></span>
-                        <span></span>
-                        <span></span>
-                    </div>
-                    <h4 class="title">Darko's &amp; Timo's Randomly jumping music player</h4> -->
         </div>
       </section>
       <br>
       <br>
       <section class="songinfo_infos3">
         <div class="songinfo_titl">
-          <!-- <p>Introduction</p> -->
-          <!-- <br> -->
-          <!-- <div class="songinfo_info">
-                        "Hold It Against Me" is three minutes and forty-nine seconds long.<br>
-                        It is a dance-pop song that blends pulsating industrial and trance <br>
-                        beats with elements of grime.Musically, "Hold It Against Me" features <br>
-                        industrial beats, a dubstep-influenced breakdown and a final chorus <br>
-                        with elements of rave.Initially, the single was going to be released in<br>
-                        the United Kingdom on February 20, 2011, but the date was moved <br>
-                        up to January 17, 2011, due to overwhelming demand.
-                    </div> -->
           <div class="info_square">
             <p>Introduction</p>
             <br>
             <div class="square_info">
-              <div class="square_info_info" style="overflow: scroll;overflow-X: hidden;height: 250px;">
-                "Hold It Against Me" is three minutes and forty-nine seconds long.
-                It is a dance-pop song that blends pulsating industrial and trance 
-                beats with elements of grime.Musically, "Hold It Against Me" features
-                industrial beats, a dubstep-influenced breakdown and a final chorus
-                with elements of rave.Initially, the single was going to be released in
-                the United Kingdom on February 20, 2011, but the date was moved
-                up to January 17, 2011, due to overwhelming demand.
+              <div class="square_info_info">
+                {{ songInfos.song_idn }}
               </div>
 
             </div>
@@ -607,17 +488,15 @@
             <h3>Message</h3>
             <br>
             <div class="mess">
-              <ul class="infomess_ul" style="overflow-X:hidden;height:400px;">
-                <li class="infomess_li">
-                  <img class="infomessimg" src="./img/songinfo/people.png"
-                    style="width: 50px;height: 50px;float: left;margin-left: -10px;margin-top: 5px;">
+              <ul class="infomess_ul" style="height: 500px">
+                <li class="infomess_li" v-for="item in songmess">
+                  <img class="infomessimg" src="./img/songinfo/people.png">
                   <div class="clearfix"></div>
-                  <p>&ensp;ID : Alice</p>
-                  &ensp;WOW ! Awesome !
-                  <!-- <div class="clearfix"></div> -->
-                  <!-- <div class="re-report"></div> -->
+                  <p>&ensp;ID : {{ item.mem_name }}</p>
+                  &ensp;{{ item.message_info }}
                   <input type="button" name="" class="inforeport" style="display: none;">
-                  <label class="songinfo_re" for="inforeport" style="text-align: center;">Report</label>
+                  <label class="songinfo_re" for="inforeport" style="text-align: center;"
+                    @click="report_mess(item.message_no)">Report</label>
                 </li>
               </ul>
             </div>
@@ -642,8 +521,9 @@
                 $ 1000 dollars
               </label>
               <br>
-              <div class="infose-send"><button class="infose-send" style="display: none;"></button><span
-                  style="position: relative;left: -15px;top: -8px;">Send</span></div>
+              <div class="infose-send" @click="get_push_message">
+                <button class="infose-send">Send</button>
+              </div>
               <!-- <button class="infomess_btn">清空</button> -->
             </div>
           </div>
@@ -657,7 +537,7 @@
   </footer>
 
   <script src='https://cdnjs.cloudflare.com/ajax/libs/axios/0.19.1/axios.min.js'></script>
-  <!-- <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.4.1/jquery.js"></script> -->
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.4.1/jquery.js"></script>
   <script>
     (function () {
       $('.inforeport').on('click', function () {
@@ -671,134 +551,6 @@
   </script>
   <script src="./js/songinfo.js"></script>
   <script src="./js/vudio.js"></script>
-  <script>
-    new Vue({
-      el: '.songinfo_all',
-      data: {
-        songnum: null,
-        songInfos: {},
-        songmess: [],
-        push_mess: {
-          donate_money: 0,
-          text: '',
-
-        }
-      },
-      methods: {
-        async loca_search() {
-          var vm = this;
-
-          function Infos() {
-            return new Promise((resolve, reject) => {
-              var songInfo = location.search.substring(9);
-              vm.songnum = songInfo;
-              resolve();
-            })
-          };
-          await Infos();
-          await vm.get_Page_infos();
-          vm.get_mess_infos()
-        },
-        get_Page_infos() { // 獲取歌曲資訊
-          var vm = this;
-          return new Promise((resolve, reject) => {
-
-            axios.get('./phps/songinfos.php?get=song&song_no=' + vm.songnum)
-              .then(res => {
-                vm.songInfos = res.data;
-                resolve();
-              })
-          })
-        },
-        get_mess_infos() { // 獲取留言資訊
-          var vm = this;
-          axios.get('./phps/songinfos.php?get=message&song_no=' + vm.songnum)
-            .then(res => {
-              vm.songmess = res.data;
-            })
-        },
-        get_push_message() { // 新增資料
-          var vm = this;
-          $.post('./phps/songinfos_post.php', {
-            post: 'post_message',
-            song_no: vm.songnum,
-            donate_money: vm.push_mess.donate_money,
-            text: vm.push_mess.text,
-          }, res => {
-            console.log(res);
-            vm.get_Page_infos();
-          })
-        }
-      },
-      mounted() {
-        this.loca_search();
-      },
-    })
-  </script>
-
-  <script>
-    let qq = new Vue({
-      el: '.songinfo_all',
-      data: {
-        songnum: null,
-        songInfos: {},
-        songmess: [],
-        push_mess: {
-          donate_money: 0,
-          text: '',
-        },
-      },
-      methods: {
-        async loca_search() {
-          var vm = this;
-
-          function Infos() {
-            return new Promise((resolve, reject) => {
-              var songInfo = location.search.substring(9);
-              vm.songnum = songInfo;
-              resolve();
-            })
-          };
-          await Infos();
-          await vm.get_Page_infos();
-          vm.get_mess_infos()
-        },
-        get_Page_infos() { // 獲取歌曲資訊
-          var vm = this;
-          return new Promise((resolve, reject) => {
-
-            axios.get('./phps/songinfos.php?get=song&song_no=' + vm.songnum)
-              .then(res => {
-                vm.songInfos = res.data;
-                resolve();
-              })
-          })
-        },
-        get_mess_infos() { // 獲取留言資訊
-          var vm = this;
-          axios.get('./phps/songinfos.php?get=message&song_no=' + vm.songnum)
-            .then(res => {
-              vm.songmess = res.data;
-            })
-        },
-        get_push_message() { // 新增資料
-          var vm = this;
-          $.post('./phps/songinfos_post.php', {
-            post: 'post_message',
-            song_no: vm.songnum,
-            donate_money: vm.push_mess.donate_money,
-            text: vm.push_mess.text,
-          }, res => {
-            console.log(res);
-            vm.get_Page_infos();
-          })
-        }
-      },
-      mounted() {
-        this.loca_search();
-      }
-    })
-  </script>
   <script>
     var colors = [
       [
@@ -885,59 +637,6 @@
       }
     });
   </script>
-  <!-- <script>
-    //元素節點<h3>，屬性節點class
-    window.onload = message
-
-    function message() {
-
-      //獲取留言區的內容
-      var text = document.getElementsByClassName('infomess_ta')[0]; //返回一個Nodelist節點列表
-      //獲取提交按鈕
-      var submit = document.getElementsByClassName('infose-send')[0];
-      //獲取清空按鈕
-      var empty = document.getElementsByClassName('infose-send')[1];
-      //獲取評論區
-      var mess = document.getElementsByClassName('mess')[0]
-      //獲取評論區的列表
-      var messlist = mess.getElementsByClassName('infomess_ul')[0];
-      //獲取到messlist下面的所有的子節點
-      var li = mess.getElementsByTagName('li');
-      submit.onclick = function () {
-        //獲取留言區的內容
-        var content = text.value
-        //創建一個評論列表項元素createElement
-        var item = document.createElement('li');
-        //給新創建的節點創建內容：innerHTML
-        //item.innerHTML = content;
-        // item.innerHTML = content + '<button class="songinfo_re">删除</button>'
-        item.innerHTML =
-          '<img class="infomessimg" src="./img/songinfo/people.png" style="width: 50px;height: 50px;float: left;margin-left: -10px;margin-top: 5px;"><div class="clearfix"></div><p>&ensp;ID : Bella <button class="infocreat_re">Report</button><br>&ensp;WOW ! Awesome ! </p>'
-        // item.innerHTML = content + '<div class="re-report"></div>'
-        // item.innerHTML = content + '<label class="songinfo_re" for="inforeport">&ensp;Report</label>'
-        //將新節點添加到評論區：添加到頁面父節點.appendChild 
-        //messlist.appendChild(item)
-        //將新節點插入到某個節點之前，父節點.insertBefore(子節點，在那個子節點之前)
-        messlist.insertBefore(item, li[0]);
-
-        if (li.length == 0) {
-          messlist.appendChild(item)
-        } else {
-          messlist.insertBefore(item, li[0]);
-        }
-      }
-      empty.onclick = function () {
-        text.value = ''
-      }
-      if (li.length > 0) {
-        for (var i = 0; i < li.length; i++) {
-          messlist.removeChild(this.parent)
-        }
-      }
-    }
-  </script> -->
-
-
   <script>
     (function ($) {
       $(document).ready(function () {
@@ -988,6 +687,95 @@
 
       }
     }, 150);
+  </script>
+  <script>
+    let qq = new Vue({
+      el: '.songinfo_all',
+      data: {
+        songnum: null,
+        songInfos: {},
+        songmess: [],
+        push_mess: {
+          donate_money: 0,
+          text: '',
+        },
+        member: '',
+      },
+      methods: {
+        async loca_search() {
+          var vm = this;
+
+          function Infos() {
+            return new Promise((resolve, reject) => {
+              var songInfo = location.search.substring(9);
+              vm.songnum = songInfo;
+              resolve();
+            })
+          };
+          await Infos();
+          await vm.get_Page_infos();
+          vm.get_mess_infos()
+        },
+        get_Page_infos() { // 獲取歌曲資訊
+          var vm = this;
+          return new Promise((resolve, reject) => {
+
+            axios.get('./phps/songinfos.php?get=song&song_no=' + vm.songnum)
+              .then(res => {
+                vm.songInfos = res.data;
+                resolve();
+              })
+          })
+        },
+        get_mess_infos() { // 獲取留言資訊
+          var vm = this;
+          axios.get('./phps/songinfos.php?get=message&song_no=' + vm.songnum)
+            .then(res => {
+              vm.songmess = [];
+              vm.songmess = res.data;
+            })
+        },
+        get_member() {
+          var vm = this;
+          axios.get('./phps/songinfos.php?get=mem')
+            .then(res => {
+              vm.member = res.data.mem_name;
+            })
+        },
+        get_push_message() { // 新增資料
+          var vm = this;
+          $.post('./phps/songinfos_post.php', {
+            post: 'post_message',
+            song_no: vm.songnum,
+            donate_money: vm.push_mess.donate_money,
+            text: vm.push_mess.text,
+            message_time: Date.now(),
+
+          }, res => {
+            alert(res);
+            vm.get_mess_infos();
+            vm.push_mess = {
+              donate_money: 0,
+              text: '',
+            }
+            // $('.infomess_ul').animate({
+            //   scrollTop: 0,
+            // },300)
+          })
+        },
+        report_mess(message_no) {
+          axios.get('./phps/songinfos.php?get=report_mess&message_no=' + message_no)
+            .then(res => {
+              alert(res.data);
+              console.log(res.data)
+            })
+        }
+      },
+      mounted() {
+        this.loca_search();
+        this.get_member();
+      }
+    })
   </script>
 </body>
 
