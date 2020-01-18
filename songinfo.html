@@ -2,465 +2,465 @@
 <html lang="en">
 
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <meta http-equiv="X-UA-Compatible" content="ie=edge">
-    <title>SOUNDWAVE | songinfo</title>
-    <link rel="Shortcut Icon" type="image/x-icon" href="./img/collection/smalllogo.ico" />
-    <link rel="stylesheet" href="./css/main.css">
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.11.2/css/all.min.css" />
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/vue/2.6.10/vue.js"></script>
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery.colorbox/1.6.4/jquery.colorbox.js"></script>
-    <script src="./js/player.js"></script>
-    <script src="./js/public.js"></script>
-    <style>
-        input[type="radio"] {
-            -webkit-appearance: none;
-            vertical-align: middle;
-            margin-top: 0;
-            background: #fff;
-            border: #d0d6d6 solid 1px;
-            border-radius: 3px;
-            min-height: 20px;
-            min-width: 20px;
-        }
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta http-equiv="X-UA-Compatible" content="ie=edge">
+  <title>SOUNDWAVE | songinfo</title>
+  <link rel="Shortcut Icon" type="image/x-icon" href="./img/collection/smalllogo.ico" />
+  <link rel="stylesheet" href="./css/main.css">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.11.2/css/all.min.css" />
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/vue/2.6.10/vue.js"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery.colorbox/1.6.4/jquery.colorbox.js"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.4.1/jquery.js"></script>
+  <script src="./js/player.js"></script>
+  <script src="./js/public.js"></script>
+  <style>
+    input[type="radio"] {
+      -webkit-appearance: none;
+      vertical-align: middle;
+      margin-top: 0;
+      background: #fff;
+      border: #d0d6d6 solid 1px;
+      border-radius: 3px;
+      min-height: 20px;
+      min-width: 20px;
+    }
 
-        input[type="radio"]:checked {
-            background: #7ED5E5;
-        }
+    input[type="radio"]:checked {
+      background: #7ED5E5;
+    }
 
-        input[type=radio]:checked::after {
-            content: '';
-            top: 3px;
-            left: 3px;
-            position: absolute;
-            background: transparent;
-            border: #fff solid 2px;
-            border-top: none;
-            border-right: none;
-            height: 6px;
-            width: 10px;
-            -moz-transform: rotate(-45deg);
-            -ms-transform: rotate(-45deg);
-            -webkit-transform: rotate(-45deg);
-            transform: rotate(-45deg);
-        }
-    </style>
+    input[type=radio]:checked::after {
+      content: '';
+      top: 3px;
+      left: 3px;
+      position: absolute;
+      background: transparent;
+      border: #fff solid 2px;
+      border-top: none;
+      border-right: none;
+      height: 6px;
+      width: 10px;
+      -moz-transform: rotate(-45deg);
+      -ms-transform: rotate(-45deg);
+      -webkit-transform: rotate(-45deg);
+      transform: rotate(-45deg);
+    }
+  </style>
 </head>
 
 <body class="songinfo_back">
-    <div class="infoallall">
-        <div id="app">
-            <!-- 記得包在 Vue 裡-->
+  <div class="infoallall">
+    <div id="app">
+      <!-- 記得包在 Vue 裡-->
 
 
-            <!-- nav_bar start -->
-            <div class="nav_bar flexbox">
-                <div class="hamburger" @click="hamburger_click">
-                    <div class="hamburger-box">
-                        <div class="hamburger-inner"></div>
-                    </div>
-                </div>
-                <div class="mobile_list" @click="stopPropagation">
-                    <div class="paint_border"></div>
-                    <ul>
-                        <li class="REMIX flexbox">
-                            <a href="./remix.html">
-                            </a>
-                        </li>
-                        <li class="COLLECTION flexbox">
-                            <a href="./collection.html">
-                            </a>
-                        </li>
-                        <li class="ACTIVITY flexbox">
-                            <a href="./activity.html">
-                            </a>
-                        </li>
-                        <li class="LIBRARY flexbox">
-                            <a href="./library.html">
-                            </a>
-                        </li>
-                    </ul>
-                </div>
-                <div class="logo_container">
-                    <a href="./index.html">
-                        <div class="logo"></div>
-                    </a>
-                </div>
-                <ul class="main_list flexbox">
-                    <li class="REMIX flexbox">
-                        <a href="./remix.html">
-                        </a>
-                    </li>
-                    <li class="COLLECTION flexbox">
-                        <a href="./collection.html">
-                        </a>
-                    </li>
-                    <li class="ACTIVITY flexbox">
-                        <a href="./activity.html">
-                        </a>
-                    </li>
-                    <li class="LIBRARY flexbox">
-                        <a href="./library.html">
-                        </a>
-                    </li>
-                </ul>
-                <div class="search_bt" @click="search_bt_click">
-                    <a href="#"></a>
-                </div>
-                <div class="search_bar" @click="stopPropagation">
-                    <input class="search" type="text" />
-                    <div class="tag_container">
-                    </div>
-                </div>
-                <div class="login_bt" @click="" v-if="mem_login == false">
-                    <a class="flexbox" href="#">Login</a>
-                </div>
-                <div class="mem_bt" @click="mem_bt_click" v-if="mem_login == true">
-                    <a href="#"></a>
-                </div>
-                <div class="mem_list" @click="stopPropagation">
-                    <div class="paint_border"></div>
-                    <ul>
-                        <li>
-                            <a href="./profile.html">
-                                <h4>Profile</h4>
-                            </a>
-                        </li>
-                        <li>
-                            <a href="./library.html">
-                                <h4>Library</h4>
-                            </a>
-                        </li>
-                        <li>
-                            <a href="./songsadded.html">
-                                <h4>
-                                    Song Upload
-                                    <br />&amp; Remove
-                                </h4>
-                            </a>
-                        </li>
-                        <li>
-                            <a href="./store.html">
-                                <h4>
-                                    Store Value
-                                    <br />&amp;Store Record
-                                </h4>
-                            </a>
-                        </li>
-                        <li>
-                            <a href="">
-                                <h4>Donate Record</h4>
-                            </a>
-                        </li>
-                    </ul>
-                </div>
-            </div>
-            <!-- nav_bar end -->
-
-
-
-
-            <!-- player start -->
-            <div id="player">
-                <audio src="" id="audioPlayer"></audio>
-                <div class="player_s">
-                    <div class="info">
-                        <div class="cover"><img src="./img/library/cover1.jpg"></div>
-                        <div class="songInfo">
-                            <span class="name">Lucid Dreamer</span>
-                            <span class="creator">Spazz Cardigan</span>
-                        </div>
-                        <div class="heart becomeRed"><i class="fas fa-heart"></i></div>
-                        <div class="clearfix"></div>
-                    </div>
-
-                    <div class="controlPanel">
-                        <div class="progressbar">
-                            <div class="progress"></div>
-                        </div>
-                        <div class="time">
-                            <span class="start">00:00</span>
-                            <span class="end">04:30</span>
-                            <div class="clearfix"></div>
-                        </div>
-                        <div class="btns">
-                            <div class="controls">
-                                <button class="prev"><i class="fas fa-step-backward"></i></button>
-                                <button class="play"><i class="fas fa-play"></i></button>
-                                <button class="next"><i class="fas fa-step-forward"></i></button>
-                                <button class="stop"><i class="fas fa-stop"></i></button>
-                                <button class="rand"><i class="fas fa-random"></i></button>
-                                <button class="loop"><i class="fas fa-undo-alt"></i></button>
-                                <div class="clearfix"></div>
-                            </div>
-                            <div class="vol">
-                                <div class="volicon"><i class="fas fa-volume-down"></i></div>
-                                <div class="volLine">
-                                    <div class="volControl"></div>
-                                </div>
-                                <div class="clearfix"></div>
-                            </div>
-                            <div class="clearfix"></div>
-                        </div>
-                    </div>
-
-                    <div class="expand" id="expand"><i class="fas fa-expand"></i></div>
-                    <div class="clearfix"></div>
-                </div>
-
-                <!-- 詳細版 -->
-                <div class="player_b">
-                    <div class="left">
-                        <div class="songCover">
-                            <div class="coverImg">
-                                <img src="./img/library/cover1.jpg">
-                                <div class="coverRec"><img src="./img/library/player_record.png" alt=""></div>
-                            </div>
-                        </div>
-                        <div class="songInfo">
-                            <div class="name">
-                                Lucid Dreamer
-                            </div>
-                            <div class="creator">
-                                Spazz Cardigan
-                            </div>
-                            <div class="heart becomeRed"><i class="fas fa-heart"></i></div>
-                            <div class="clearfix"></div>
-                        </div>
-                        <div class="controlPanel">
-                            <div class="progressbar">
-                                <div class="progress"></div>
-                            </div>
-                            <div class="time">
-                                <span class="start">00:00</span>
-                                <span class="end">04:30</span>
-                                <div class="clearfix"></div>
-                            </div>
-                            <div class="btns">
-                                <div class="controls">
-                                    <button class="rand"><i class="fas fa-random"></i></button>
-                                    <button class="prev"><i class="fas fa-step-backward"></i></button>
-                                    <button class="play"><i class="fas fa-play"></i></button>
-                                    <button class="next"><i class="fas fa-step-forward"></i></button>
-                                    <button class="stop"><i class="fas fa-stop"></i></button>
-                                    <button class="loop"><i class="fas fa-undo-alt"></i></button>
-                                    <div class="clearfix"></div>
-                                </div>
-                                <div class="vol">
-                                    <div class="volicon"><i class="fas fa-volume-down"></i></div>
-                                    <div class="volLine">
-                                        <div class="volControl"></div>
-                                    </div>
-                                    <div class="clearfix"></div>
-                                </div>
-                                <div class="clearfix"></div>
-                            </div>
-                        </div>
-                        <div class="pushBtn"></div>
-                    </div>
-
-                    <div class="right">
-                        <div class="pushBtn"></div>
-                        <div class="listTitle">
-                            <div class="listCover">
-                                <img src="./img/library/list_pic1.jpg"></div>
-                            <div class="listName">
-                                <h2>peaceful list</h2>
-                                <span>8 songs</span>
-                            </div>
-                            <button class="selectBtn" id="selectBtn">SELECT</button>
-                            <div class="clearfix"></div>
-                        </div>
-                        <div class="list">
-                            <ul>
-                                <li>
-                                    <div class="songCover">
-                                        <img src="./img/library/cover1.jpg" alt="">
-                                        <div class="listPlay"><i class="fas fa-play"></i></div>
-                                    </div>
-                                    <div class="listSongInfo">
-                                        <div class="name">
-                                            <h4>Lucid Dreamer</h4>
-                                            <p> Spazz Cardigan</p>
-                                        </div>
-                                    </div>
-                                    <div class="totalTime">4:30</div>
-                                    <div class="heart becomeRed"><i class="fas fa-heart"></i></div>
-                                    <div class="clearfix"></div>
-                                </li>
-                                <li>
-                                    <div class="songCover">
-                                        <img src="./img/library/cover2.jpg" alt="">
-                                        <div class="listPlay"><i class="fas fa-play"></i></div>
-                                    </div>
-                                    <div class="listSongInfo">
-                                        <div class="name">
-                                            <h4>Lucid Dreamer</h4>
-                                            <p> Spazz Cardigan</p>
-                                        </div>
-                                    </div>
-                                    <div class="totalTime">4:30</div>
-                                    <div class="heart becomeRed"><i class="fas fa-heart"></i></div>
-                                    <div class="clearfix"></div>
-                                </li>
-                                <li>
-                                    <div class="songCover">
-                                        <img src="./img/library/cover3.jpg" alt="">
-                                        <div class="listPlay"><i class="fas fa-play"></i></div>
-                                    </div>
-                                    <div class="listSongInfo">
-                                        <div class="name">
-                                            <h4>Lucid Dreamer</h4>
-                                            <p> Spazz Cardigan</p>
-                                        </div>
-                                    </div>
-                                    <div class="totalTime">4:30</div>
-                                    <div class="heart becomeRed"><i class="fas fa-heart"></i></div>
-                                    <div class="clearfix"></div>
-                                </li>
-                                <li>
-                                    <div class="songCover">
-                                        <img src="./img/library/cover4.jpg" alt="">
-                                        <div class="listPlay"><i class="fas fa-play"></i></div>
-                                    </div>
-                                    <div class="listSongInfo">
-                                        <div class="name">
-                                            <h4>Lucid Dreamer</h4>
-                                            <p> Spazz Cardigan</p>
-                                        </div>
-                                    </div>
-                                    <div class="totalTime">4:30</div>
-                                    <div class="heart becomeRed"><i class="fas fa-heart"></i></div>
-                                    <div class="clearfix"></div>
-                                </li>
-                                <li>
-                                    <div class="songCover">
-                                        <img src="./img/library/cover5.jpg" alt="">
-                                        <div class="listPlay"><i class="fas fa-play"></i></div>
-                                    </div>
-                                    <div class="listSongInfo">
-                                        <div class="name">
-                                            <h4>Lucid Dreamer</h4>
-                                            <p> Spazz Cardigan</p>
-                                        </div>
-                                    </div>
-                                    <div class="totalTime">4:30</div>
-                                    <div class="heart becomeRed"><i class="fas fa-heart"></i></div>
-                                    <div class="clearfix"></div>
-                                </li>
-                                <li>
-                                    <div class="songCover">
-                                        <img src="./img/library/cover6.jpg" alt="">
-                                        <div class="listPlay"><i class="fas fa-play"></i></div>
-                                    </div>
-                                    <div class="listSongInfo">
-                                        <div class="name">
-                                            <h4>Lucid Dreamer</h4>
-                                            <p> Spazz Cardigan</p>
-                                        </div>
-                                    </div>
-                                    <div class="totalTime">4:30</div>
-                                    <div class="heart becomeRed"><i class="fas fa-heart"></i></div>
-                                    <div class="clearfix"></div>
-                                </li>
-                                <li>
-                                    <div class="songCover">
-                                        <img src="./img/library/cover1.jpg" alt="">
-                                        <div class="listPlay"><i class="fas fa-play"></i></div>
-                                    </div>
-                                    <div class="listSongInfo">
-                                        <div class="name">
-                                            <h4>Lucid Dreamer</h4>
-                                            <p> Spazz Cardigan</p>
-                                        </div>
-                                    </div>
-                                    <div class="totalTime">4:30</div>
-                                    <div class="heart becomeRed"><i class="fas fa-heart"></i></div>
-                                    <div class="clearfix"></div>
-                                </li>
-
-                            </ul>
-                        </div>
-                    </div>
-                    <div class="close" id="closePlayer"><i class="fas fa-times"></i></div>
-                    <div class="clearfix"></div>
-
-                    <!-- 撥放器燈箱 -->
-                    <div class="lightCover">
-                        <div class="lightbox_s" id="myAllList">
-                            <div class="closeLight"><i class="fas fa-times"></i></div>
-                            <h3>My List</h3>
-                            <div class="lightSelectMenu">
-                                <ul>
-                                    <li>Liked songs</li>
-                                    <li>Peaceful songs</li>
-                                    <li>party</li>
-                                </ul>
-                            </div>
-                            <button class="">ok</button>
-                        </div>
-                    </div>
-                </div>
-            </div>
-            <!-- player end -->
-
-
-
-
-
+      <!-- nav_bar start -->
+      <div class="nav_bar flexbox">
+        <div class="hamburger" @click="hamburger_click">
+          <div class="hamburger-box">
+            <div class="hamburger-inner"></div>
+          </div>
         </div>
-        <header>
-            <div>
-                <img src="./img/songinfo/songinfotitle.png" alt="">
+        <div class="mobile_list" @click="stopPropagation">
+          <div class="paint_border"></div>
+          <ul>
+            <li class="REMIX flexbox">
+              <a href="./remix.html">
+              </a>
+            </li>
+            <li class="COLLECTION flexbox">
+              <a href="./collection.html">
+              </a>
+            </li>
+            <li class="ACTIVITY flexbox">
+              <a href="./activity.html">
+              </a>
+            </li>
+            <li class="LIBRARY flexbox">
+              <a href="./library.html">
+              </a>
+            </li>
+          </ul>
+        </div>
+        <div class="logo_container">
+          <a href="./index.html">
+            <div class="logo"></div>
+          </a>
+        </div>
+        <ul class="main_list flexbox">
+          <li class="REMIX flexbox">
+            <a href="./remix.html">
+            </a>
+          </li>
+          <li class="COLLECTION flexbox">
+            <a href="./collection.html">
+            </a>
+          </li>
+          <li class="ACTIVITY flexbox">
+            <a href="./activity.html">
+            </a>
+          </li>
+          <li class="LIBRARY flexbox">
+            <a href="./library.html">
+            </a>
+          </li>
+        </ul>
+        <div class="search_bt" @click="search_bt_click">
+          <a href="#"></a>
+        </div>
+        <div class="search_bar" @click="stopPropagation">
+          <input class="search" type="text" />
+          <div class="tag_container">
+          </div>
+        </div>
+        <div class="login_bt" @click="" v-if="mem_login == false">
+          <a class="flexbox" href="#">Login</a>
+        </div>
+        <div class="mem_bt" @click="mem_bt_click" v-if="mem_login == true">
+          <a href="#"></a>
+        </div>
+        <div class="mem_list" @click="stopPropagation">
+          <div class="paint_border"></div>
+          <ul>
+            <li>
+              <a href="./profile.html">
+                <h4>Profile</h4>
+              </a>
+            </li>
+            <li>
+              <a href="./library.html">
+                <h4>Library</h4>
+              </a>
+            </li>
+            <li>
+              <a href="./songsadded.html">
+                <h4>
+                  Song Upload
+                  <br />&amp; Remove
+                </h4>
+              </a>
+            </li>
+            <li>
+              <a href="./store.html">
+                <h4>
+                  Store Value
+                  <br />&amp;Store Record
+                </h4>
+              </a>
+            </li>
+            <li>
+              <a href="">
+                <h4>Donate Record</h4>
+              </a>
+            </li>
+          </ul>
+        </div>
+      </div>
+      <!-- nav_bar end -->
+
+
+
+
+      <!-- player start -->
+      <div id="player">
+        <audio src="" id="audioPlayer"></audio>
+        <div class="player_s">
+          <div class="info">
+            <div class="cover"><img src="./img/library/cover1.jpg"></div>
+            <div class="songInfo">
+              <span class="name">Lucid Dreamer</span>
+              <span class="creator">Spazz Cardigan</span>
             </div>
-        </header>
-        <div class="songinfo_all">
-            <section class="songinfo_infos2">
-                <div class="songinfo_infoplay">
-                    <div class="music-player-container is-playing">
-                        <div class="music-player">
-                            <div class="player-content-container">
-                                <h2 class="song-title">Lucid dreamer</h2><!--  /.song-title -->
-                                <h1 class="artist-name">Spazz Cardigan</h1><!--  /.track-title -->
-                                <!-- <h1 class="album-title">Lucid Dreamer</h1> /.album-title -->
-                                <div class="music-player-controls">
-                                    <!-- <div class="control-back"></div> /.control-back -->
-                                    <br>
-                                    <div class="control-play"></div><!--  /.control-play -->
-                                    <div class="song_tllike"><span>total like<br>
-                                            89757
-                                        </span></div>
-                                    <div class="heart-like-container is-click">
-                                        <div class="heart-like"></div>
-                                    </div>
-                                    <!-- <div class="dona-donate"> -->
-                                    <input type="button" name="" class="infotopdona" style="display: none;">
-                                    <label class="infodona" for="infotopdona">Donate</label>
-                                    <!-- </div> -->
-                                    <!-- <div class="control-forwards"></div> /.control-forwards -->
-                                </div><!--  /.music-player-controls -->
-                            </div><!--  /.player-content-container -->
-                        </div><!--  /.music-player -->
-                        <div class="album">
-                            <div class="album-art"></div><!--  /.album-art -->
-                            <div class="vinyl"></div><!--  /.vinyl -->
-                        </div><!--  /.album-art -->
-                        <div style="clear: both;"></div>
-                    </div><!--  /.music-player -->
-                    <audio id="music" src="./music/Paul_Flint.mp3"></audio>
+            <div class="heart becomeRed"><i class="fas fa-heart"></i></div>
+            <div class="clearfix"></div>
+          </div>
+
+          <div class="controlPanel">
+            <div class="progressbar">
+              <div class="progress"></div>
+            </div>
+            <div class="time">
+              <span class="start">00:00</span>
+              <span class="end">04:30</span>
+              <div class="clearfix"></div>
+            </div>
+            <div class="btns">
+              <div class="controls">
+                <button class="prev"><i class="fas fa-step-backward"></i></button>
+                <button class="play"><i class="fas fa-play"></i></button>
+                <button class="next"><i class="fas fa-step-forward"></i></button>
+                <button class="stop"><i class="fas fa-stop"></i></button>
+                <button class="rand"><i class="fas fa-random"></i></button>
+                <button class="loop"><i class="fas fa-undo-alt"></i></button>
+                <div class="clearfix"></div>
+              </div>
+              <div class="vol">
+                <div class="volicon"><i class="fas fa-volume-down"></i></div>
+                <div class="volLine">
+                  <div class="volControl"></div>
                 </div>
-                <label class="label" for="audioFile" id="audioLabel"></label>
-                <input type="file" name="audioFile" id="audioFile"
-                    onchange="vudio.readAudioSrc(this,vudio,document.querySelector('#audioLabel'))" accept="audio/*">
-                <div class="songinfo_wave" style="z-index: -1;">
-                    <div class="infoinfocontainer">
-                        <img id="bg" />
-                        <canvas id="infoinfocanvas"></canvas>
-                        <audio id="infoaudio" src="./music/Paul_Flint.mp3" preload="auto"></audio>
+                <div class="clearfix"></div>
+              </div>
+              <div class="clearfix"></div>
+            </div>
+          </div>
+
+          <div class="expand" id="expand"><i class="fas fa-expand"></i></div>
+          <div class="clearfix"></div>
+        </div>
+
+        <!-- 詳細版 -->
+        <div class="player_b">
+          <div class="left">
+            <div class="songCover">
+              <div class="coverImg">
+                <img src="./img/library/cover1.jpg">
+                <div class="coverRec"><img src="./img/library/player_record.png" alt=""></div>
+              </div>
+            </div>
+            <div class="songInfo">
+              <div class="name">
+                Lucid Dreamer
+              </div>
+              <div class="creator">
+                Spazz Cardigan
+              </div>
+              <div class="heart becomeRed"><i class="fas fa-heart"></i></div>
+              <div class="clearfix"></div>
+            </div>
+            <div class="controlPanel">
+              <div class="progressbar">
+                <div class="progress"></div>
+              </div>
+              <div class="time">
+                <span class="start">00:00</span>
+                <span class="end">04:30</span>
+                <div class="clearfix"></div>
+              </div>
+              <div class="btns">
+                <div class="controls">
+                  <button class="rand"><i class="fas fa-random"></i></button>
+                  <button class="prev"><i class="fas fa-step-backward"></i></button>
+                  <button class="play"><i class="fas fa-play"></i></button>
+                  <button class="next"><i class="fas fa-step-forward"></i></button>
+                  <button class="stop"><i class="fas fa-stop"></i></button>
+                  <button class="loop"><i class="fas fa-undo-alt"></i></button>
+                  <div class="clearfix"></div>
+                </div>
+                <div class="vol">
+                  <div class="volicon"><i class="fas fa-volume-down"></i></div>
+                  <div class="volLine">
+                    <div class="volControl"></div>
+                  </div>
+                  <div class="clearfix"></div>
+                </div>
+                <div class="clearfix"></div>
+              </div>
+            </div>
+            <div class="pushBtn"></div>
+          </div>
+
+          <div class="right">
+            <div class="pushBtn"></div>
+            <div class="listTitle">
+              <div class="listCover">
+                <img src="./img/library/list_pic1.jpg"></div>
+              <div class="listName">
+                <h2>peaceful list</h2>
+                <span>8 songs</span>
+              </div>
+              <button class="selectBtn" id="selectBtn">SELECT</button>
+              <div class="clearfix"></div>
+            </div>
+            <div class="list">
+              <ul>
+                <li>
+                  <div class="songCover">
+                    <img src="./img/library/cover1.jpg" alt="">
+                    <div class="listPlay"><i class="fas fa-play"></i></div>
+                  </div>
+                  <div class="listSongInfo">
+                    <div class="name">
+                      <h4>Lucid Dreamer</h4>
+                      <p> Spazz Cardigan</p>
                     </div>
-                    <!-- <iframe width="420" height="315" src="./music/Paul_Flint.mp3" frameborder="0"
+                  </div>
+                  <div class="totalTime">4:30</div>
+                  <div class="heart becomeRed"><i class="fas fa-heart"></i></div>
+                  <div class="clearfix"></div>
+                </li>
+                <li>
+                  <div class="songCover">
+                    <img src="./img/library/cover2.jpg" alt="">
+                    <div class="listPlay"><i class="fas fa-play"></i></div>
+                  </div>
+                  <div class="listSongInfo">
+                    <div class="name">
+                      <h4>Lucid Dreamer</h4>
+                      <p> Spazz Cardigan</p>
+                    </div>
+                  </div>
+                  <div class="totalTime">4:30</div>
+                  <div class="heart becomeRed"><i class="fas fa-heart"></i></div>
+                  <div class="clearfix"></div>
+                </li>
+                <li>
+                  <div class="songCover">
+                    <img src="./img/library/cover3.jpg" alt="">
+                    <div class="listPlay"><i class="fas fa-play"></i></div>
+                  </div>
+                  <div class="listSongInfo">
+                    <div class="name">
+                      <h4>Lucid Dreamer</h4>
+                      <p> Spazz Cardigan</p>
+                    </div>
+                  </div>
+                  <div class="totalTime">4:30</div>
+                  <div class="heart becomeRed"><i class="fas fa-heart"></i></div>
+                  <div class="clearfix"></div>
+                </li>
+                <li>
+                  <div class="songCover">
+                    <img src="./img/library/cover4.jpg" alt="">
+                    <div class="listPlay"><i class="fas fa-play"></i></div>
+                  </div>
+                  <div class="listSongInfo">
+                    <div class="name">
+                      <h4>Lucid Dreamer</h4>
+                      <p> Spazz Cardigan</p>
+                    </div>
+                  </div>
+                  <div class="totalTime">4:30</div>
+                  <div class="heart becomeRed"><i class="fas fa-heart"></i></div>
+                  <div class="clearfix"></div>
+                </li>
+                <li>
+                  <div class="songCover">
+                    <img src="./img/library/cover5.jpg" alt="">
+                    <div class="listPlay"><i class="fas fa-play"></i></div>
+                  </div>
+                  <div class="listSongInfo">
+                    <div class="name">
+                      <h4>Lucid Dreamer</h4>
+                      <p> Spazz Cardigan</p>
+                    </div>
+                  </div>
+                  <div class="totalTime">4:30</div>
+                  <div class="heart becomeRed"><i class="fas fa-heart"></i></div>
+                  <div class="clearfix"></div>
+                </li>
+                <li>
+                  <div class="songCover">
+                    <img src="./img/library/cover6.jpg" alt="">
+                    <div class="listPlay"><i class="fas fa-play"></i></div>
+                  </div>
+                  <div class="listSongInfo">
+                    <div class="name">
+                      <h4>Lucid Dreamer</h4>
+                      <p> Spazz Cardigan</p>
+                    </div>
+                  </div>
+                  <div class="totalTime">4:30</div>
+                  <div class="heart becomeRed"><i class="fas fa-heart"></i></div>
+                  <div class="clearfix"></div>
+                </li>
+                <li>
+                  <div class="songCover">
+                    <img src="./img/library/cover1.jpg" alt="">
+                    <div class="listPlay"><i class="fas fa-play"></i></div>
+                  </div>
+                  <div class="listSongInfo">
+                    <div class="name">
+                      <h4>Lucid Dreamer</h4>
+                      <p> Spazz Cardigan</p>
+                    </div>
+                  </div>
+                  <div class="totalTime">4:30</div>
+                  <div class="heart becomeRed"><i class="fas fa-heart"></i></div>
+                  <div class="clearfix"></div>
+                </li>
+
+              </ul>
+            </div>
+          </div>
+          <div class="close" id="closePlayer"><i class="fas fa-times"></i></div>
+          <div class="clearfix"></div>
+
+          <!-- 撥放器燈箱 -->
+          <div class="lightCover">
+            <div class="lightbox_s" id="myAllList">
+              <div class="closeLight"><i class="fas fa-times"></i></div>
+              <h3>My List</h3>
+              <div class="lightSelectMenu">
+                <ul>
+                  <li>Liked songs</li>
+                  <li>Peaceful songs</li>
+                  <li>party</li>
+                </ul>
+              </div>
+              <button class="">ok</button>
+            </div>
+          </div>
+        </div>
+      </div>
+      <!-- player end -->
+
+
+
+
+
+    </div>
+    <header>
+      <div>
+        <img src="./img/songinfo/songinfotitle.png" alt="">
+      </div>
+    </header>
+    <div class="songinfo_all">
+      <section class="songinfo_infos2">
+        <div class="songinfo_infoplay">
+          <div class="music-player-container is-playing">
+            <div class="music-player">
+              <div class="player-content-container">
+                <h2 class="song-title">Lucid dreamer</h2><!--  /.song-title -->
+                <h1 class="artist-name">Spazz Cardigan</h1><!--  /.track-title -->
+                <!-- <h1 class="album-title">Lucid Dreamer</h1> /.album-title -->
+                <div class="music-player-controls">
+                  <!-- <div class="control-back"></div> /.control-back -->
+                  <br>
+                  <div class="control-play"></div><!--  /.control-play -->
+                  <div class="song_tllike"><span>total like<br>
+                      89757
+                    </span></div>
+                  <div class="heart-like-container is-click">
+                    <div class="heart-like"></div>
+                  </div>
+                  <!-- <div class="dona-donate"> -->
+                  <input type="button" name="" class="infotopdona" style="display: none;">
+                  <label class="infodona" for="infotopdona">Donate</label>
+                  <!-- </div> -->
+                  <!-- <div class="control-forwards"></div> /.control-forwards -->
+                </div><!--  /.music-player-controls -->
+              </div><!--  /.player-content-container -->
+            </div><!--  /.music-player -->
+            <div class="album">
+              <div class="album-art"></div><!--  /.album-art -->
+              <div class="vinyl"></div><!--  /.vinyl -->
+            </div><!--  /.album-art -->
+            <div style="clear: both;"></div>
+          </div><!--  /.music-player -->
+          <audio id="music" src="./music/Paul_Flint.mp3"></audio>
+        </div>
+        <label class="label" for="audioFile" id="audioLabel"></label>
+        <input type="file" name="audioFile" id="audioFile"
+          onchange="vudio.readAudioSrc(this,vudio,document.querySelector('#audioLabel'))" accept="audio/*">
+        <div class="songinfo_wave" style="z-index: -1;">
+          <div class="infoinfocontainer">
+            <img id="bg" />
+            <canvas id="infoinfocanvas"></canvas>
+            <audio id="infoaudio" src="./music/Paul_Flint.mp3" preload="auto"></audio>
+          </div>
+          <!-- <iframe width="420" height="315" src="./music/Paul_Flint.mp3" frameborder="0"
                         allowfullscreen></iframe>
                     <div class="jumping-things-wrap">
                         <span></span>
@@ -566,12 +566,11 @@
             </section>
             <br>
             <br>
-            <br>
             <section class="songinfo_infos3">
                 <div class="songinfo_titl">
-                    <p>Introduction</p>
-                    <br>
-                    <div class="songinfo_info">
+                    <!-- <p>Introduction</p> -->
+                    <!-- <br> -->
+                    <!-- <div class="songinfo_info">
                         "Hold It Against Me" is three minutes and forty-nine seconds long.<br>
                         It is a dance-pop song that blends pulsating industrial and trance <br>
                         beats with elements of grime.Musically, "Hold It Against Me" features <br>
@@ -579,18 +578,28 @@
                         with elements of rave.Initially, the single was going to be released in<br>
                         the United Kingdom on February 20, 2011, but the date was moved <br>
                         up to January 17, 2011, due to overwhelming demand.
-                    </div>
-                    <div class="info_square"></div>
-                    <div class="songinfo_ear">
-                        <img src="./img/songinfo/ear2.png" alt="">
+                    </div> -->
+                    <div class="info_square">
+                        <p>Introduction</p>
+                        <br>
+                        <div class="square_info">
+                            <div class="square_info_info" style="overflow: scroll;overflow-X: hidden;height: 250px;">
+                                "Hold It Against Me" is three minutes and forty-nine seconds long.
+                                It is a dance-pop song that blends pulsating industrial and trance 
+                                beats with elements of grime.Musically, "Hold It Against Me" features
+                                industrial beats, a dubstep-influenced breakdown and a final chorus
+                                with elements of rave.Initially, the single was going to be released in
+                                the United Kingdom on February 20, 2011, but the date was moved
+                                up to January 17, 2011, due to overwhelming demand.
+                            </div>
+
+                        </div>
+                        <div class="songinfo_ear">
+                            <img src="./img/songinfo/ear2.png" alt="">
+                        </div>
                     </div>
                 </div>
-
             </section>
-            <br>
-            <br>
-            <br>
-            <br>
             <section class="songinfo_infos4">
                 <div>
                     <div class="message">
@@ -666,99 +675,167 @@
                 </div>
             </section>
         </div>
+      </section>
     </div>
-    <footer class="songinfofoot">
-    </footer>
+  </div>
+  <footer class="songinfofoot">
+  </footer>
 
-
-    <script>
-        (function () {
-            $('.inforeport').on('click', function () {
-                $.colorbox({
-                    html: '<h1>Hello lightbox!!!</h1>', //在燈箱中要顯示的html字段
-                    width: 700, //燈箱中間區塊的寬度
-                    height: 600, //燈箱中間區塊的高度
-                });
-            });
-        })();
-    </script>
-    <script src="./js/songinfo.js"></script>
-    <script src="./js/vudio.js"></script>
-    <script>
-        var colors = [
-            [
-                [0, '#f00'],
-                [0.3, '#f00'],
-                [0.3, '#f90'],
-                [0.7, '#f90'],
-                [0.7, '#ff0'],
-                [1, '#ff0']
-            ],
-            '#ff0',
-            ['#06f', '#09f', ' #0Cf', '#0ff'],
-            ['#fb6d6b', '#c10056', ' #a50053', '#51074b'],
-            [
-                [0, '#ff422d'],
-                [0.5, '#ff422d'],
-                [0.5, '#6072ff'],
-                [1, '#6072ff']
-            ]
-        ];
-        var types = ['waveform', 'circlebar', 'lighting', 'circlewave'];
-        var prettify = false;
-        var canvas = $('#infoinfocanvas');
-        var audio = $('#infoaudio');
-        var vudio = new Vudio(audio, canvas, {
-            effect: 'waveform',
-            accuracy: 128,
-            waveform: {
-                maxHeight: 160,
-                spacing: 1,
-                shadowBlur: 6,
-                shadowColor: 'rgba(208,214,214,0.5)',
-                prettify: true,
-                fadeSide: true,
-                color: [
-                    [0, '#d0d6d6'],
-                    [0.3, '#afc0c0'],
-                    [0.3, '#afc0c0'],
-                    [0.7, '#afc0c0'],
-                    [0.7, '#afc0c0'],
-                    [1, '#d0d6d6'],
-
-                ]
-            },
+  <script src='https://cdnjs.cloudflare.com/ajax/libs/axios/0.19.1/axios.min.js'></script>
+  <!-- <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.4.1/jquery.js"></script> -->
+  <script>
+    (function () {
+      $('.inforeport').on('click', function () {
+        $.colorbox({
+          html: '<h1>Hello lightbox!!!</h1>', //在燈箱中要顯示的html字段
+          width: 700, //燈箱中間區塊的寬度
+          height: 600, //燈箱中間區塊的高度
         });
-        vudio.dance();
+      });
+    })();
+  </script>
+  <script src="./js/songinfo.js"></script>
+  <script src="./js/vudio.js"></script>
 
-        function $(selector) {
-            return document.querySelector(selector);
+
+  <script>
+    let qq = new Vue({
+      el: '.songinfo_all',
+      data: {
+        songnum: null,
+        songInfos: {},
+        songmess: [],
+        push_mess: {
+          donate_money: 0,
+          text: '',
+        },
+      },
+      methods: {
+        async loca_search() {
+          var vm = this;
+
+          function Infos() {
+            return new Promise((resolve, reject) => {
+              var songInfo = location.search.substring(9);
+              vm.songnum = songInfo;
+              resolve();
+            })
+          };
+          await Infos();
+          await vm.get_Page_infos();
+          vm.get_mess_infos()
+        },
+        get_Page_infos() { // 獲取歌曲資訊
+          var vm = this;
+          return new Promise((resolve, reject) => {
+
+            axios.get('./phps/songinfos.php?get=song&song_no=' + vm.songnum)
+              .then(res => {
+                vm.songInfos = res.data;
+                resolve();
+              })
+          })
+        },
+        get_mess_infos() { // 獲取留言資訊
+          var vm = this;
+          axios.get('./phps/songinfos.php?get=message&song_no=' + vm.songnum)
+            .then(res => {
+              vm.songmess = res.data;
+            })
+        },
+        get_push_message() { // 新增資料
+          var vm = this;
+          $.post('./phps/songinfos_post.php',{
+            post: 'post_message',
+            song_no: vm.songnum,
+            donate_money: vm.push_mess.donate_money,
+            text: vm.push_mess.text,
+          }, res => {
+            console.log(res);
+            vm.get_Page_infos();
+          })
         }
+      },
+      mounted() {
+        this.loca_search();
+      }
+    })
+  </script>
+  <script>
+    var colors = [
+      [
+        [0, '#f00'],
+        [0.3, '#f00'],
+        [0.3, '#f90'],
+        [0.7, '#f90'],
+        [0.7, '#ff0'],
+        [1, '#ff0']
+      ],
+      '#ff0',
+      ['#06f', '#09f', ' #0Cf', '#0ff'],
+      ['#fb6d6b', '#c10056', ' #a50053', '#51074b'],
+      [
+        [0, '#ff422d'],
+        [0.5, '#ff422d'],
+        [0.5, '#6072ff'],
+        [1, '#6072ff']
+      ]
+    ];
+    var types = ['waveform', 'circlebar', 'lighting', 'circlewave'];
+    var prettify = false;
+    var canvas = song('#infoinfocanvas');
+    var audio = song('#infoaudio');
+    var vudio = new Vudio(audio, canvas, {
+      effect: 'waveform',
+      accuracy: 128,
+      waveform: {
+        maxHeight: 160,
+        spacing: 1,
+        shadowBlur: 6,
+        shadowColor: 'rgba(208,214,214,0.5)',
+        prettify: true,
+        fadeSide: true,
+        color: [
+          [0, '#d0d6d6'],
+          [0.3, '#afc0c0'],
+          [0.3, '#afc0c0'],
+          [0.7, '#afc0c0'],
+          [0.7, '#afc0c0'],
+          [1, '#d0d6d6'],
 
-        function prettifyWaveform() {
-            vudio.setOption({
-                waveform: {
-                    prettify: prettify
-                },
-                circlewave: {
-                    prettify: prettify
-                },
-                circlebar: {
-                    prettify: prettify
-                },
-            });
-            prettify = !prettify;
-        }
-    </script>
+        ]
+      },
+    });
+    vudio.dance();
 
-    <!-- <script>
+    function song(selector) {
+      return document.querySelector(selector);
+    }
+
+    function prettifyWaveform() {
+      vudio.setOption({
+        waveform: {
+          prettify: prettify
+        },
+        circlewave: {
+          prettify: prettify
+        },
+        circlebar: {
+          prettify: prettify
+        },
+      });
+      prettify = !prettify;
+    }
+  </script>
+
+  <!-- <script>
         $(".songinfo_re").on('click', function () {
             $.fancybox.open('<div class="message"><h2>Hello!</h2><p>You are awesome!</p></div>');
         });
     </script> -->
 
-    <!-- <script>
-        $(".infomess_ul").on("mouseenter mouseleave", function (event) { //挷定滑鼠進入及離開事件
+    <script>
+        $(".square_info_info").on("mouseenter mouseleave", function (event) { //挷定滑鼠進入及離開事件
             if (event.type == "mouseenter") {
                 $(this).css({
                     "overflow-y": "scroll"
@@ -769,114 +846,111 @@
                 }); //滑鼠離開
             }
         });
-    </script> -->
-    <script>
-        //元素節點<h3>，屬性節點class
-        window.onload = message
+    </script>
+  <!-- <script>
+    //元素節點<h3>，屬性節點class
+    window.onload = message
 
-        function message() {
+    function message() {
 
-            //獲取留言區的內容
-            var text = document.getElementsByClassName('infomess_ta')[0]; //返回一個Nodelist節點列表
-            //獲取提交按鈕
-            var submit = document.getElementsByClassName('infose-send')[0];
-            //獲取清空按鈕
-            var empty = document.getElementsByClassName('infose-send')[1];
-            //獲取評論區
-            var mess = document.getElementsByClassName('mess')[0]
-            //獲取評論區的列表
-            var messlist = mess.getElementsByClassName('infomess_ul')[0];
-            //獲取到messlist下面的所有的子節點
-            var li = mess.getElementsByTagName('li');
-            submit.onclick = function () {
-                //獲取留言區的內容
-                var content = text.value
-                //創建一個評論列表項元素createElement
-                var item = document.createElement('li');
-                //給新創建的節點創建內容：innerHTML
-                //item.innerHTML = content;
-                // item.innerHTML = content + '<button class="songinfo_re">删除</button>'
-                item.innerHTML =
-                    '<img class="infomessimg" src="./img/songinfo/people.png" style="width: 50px;height: 50px;float: left;margin-left: -10px;margin-top: 5px;"><div class="clearfix"></div><p>&ensp;ID : Bella <button class="infocreat_re">Report</button><br>&ensp;WOW ! Awesome ! </p>' +
-                    content
-                // item.innerHTML = content + '<div class="re-report"></div>'
-                // item.innerHTML = content + '<label class="songinfo_re" for="inforeport">&ensp;Report</label>'
-                //將新節點添加到評論區：添加到頁面父節點.appendChild 
-                //messlist.appendChild(item)
-                //將新節點插入到某個節點之前，父節點.insertBefore(子節點，在那個子節點之前)
-                messlist.insertBefore(item, li[0]);
+      //獲取留言區的內容
+      var text = document.getElementsByClassName('infomess_ta')[0]; //返回一個Nodelist節點列表
+      //獲取提交按鈕
+      var submit = document.getElementsByClassName('infose-send')[0];
+      //獲取清空按鈕
+      var empty = document.getElementsByClassName('infose-send')[1];
+      //獲取評論區
+      var mess = document.getElementsByClassName('mess')[0]
+      //獲取評論區的列表
+      var messlist = mess.getElementsByClassName('infomess_ul')[0];
+      //獲取到messlist下面的所有的子節點
+      var li = mess.getElementsByTagName('li');
+      submit.onclick = function () {
+        //獲取留言區的內容
+        var content = text.value
+        //創建一個評論列表項元素createElement
+        var item = document.createElement('li');
+        //給新創建的節點創建內容：innerHTML
+        //item.innerHTML = content;
+        // item.innerHTML = content + '<button class="songinfo_re">删除</button>'
+        item.innerHTML =
+          '<img class="infomessimg" src="./img/songinfo/people.png" style="width: 50px;height: 50px;float: left;margin-left: -10px;margin-top: 5px;"><div class="clearfix"></div><p>&ensp;ID : Bella <button class="infocreat_re">Report</button><br>&ensp;WOW ! Awesome ! </p>'
+        // item.innerHTML = content + '<div class="re-report"></div>'
+        // item.innerHTML = content + '<label class="songinfo_re" for="inforeport">&ensp;Report</label>'
+        //將新節點添加到評論區：添加到頁面父節點.appendChild 
+        //messlist.appendChild(item)
+        //將新節點插入到某個節點之前，父節點.insertBefore(子節點，在那個子節點之前)
+        messlist.insertBefore(item, li[0]);
 
-                if (li.length == 0) {
-                    messlist.appendChild(item)
-                } else {
-                    messlist.insertBefore(item, li[0]);
-                }
-            }
-            empty.onclick = function () {
-                text.value = ''
-            }
-            if (li.length > 0) {
-                for (var i = 0; i < li.length; i++) {
-                    messlist.removeChild(this.parent)
-                }
-            }
+        if (li.length == 0) {
+          messlist.appendChild(item)
+        } else {
+          messlist.insertBefore(item, li[0]);
         }
-    </script>
-
-
-    <script>
-        (function ($) {
-            $(document).ready(function () {
-
-                // Pause/Play functionality
-                var playButton = $('.control-play'),
-                    album = $('.album');
-
-                playButton.on('click', function () {
-                    $('.music-player-container').toggleClass('is-playing');
-                });
-            });
-        })(jQuery);
-    </script>
-    <script>
-        (function ($) {
-            $(document).ready(function () {
-                var heartButton = $('.heart-like'),
-                    album = $('.album');
-                heartButton.on('click', function () {
-                    $('.heart-like-container').toggleClass('is-click');
-                });
-            });
-        })(jQuery);
-    </script>
-    <script>
-        document.getElementById("control-play").onclick = function () {
-            var mu = document.getElementById("music");
-            // mu.play();
-
-            if (this.innerHTML == "play") {
-                this.innerHTML = "stop";
-                mu.src = "./music/Paul Flint - SAVAGE Worlds First 21 Launchpad Cover.mp3";
-            } else {
-                this.innerHTML = "play";
-                mu.src = "";
-            }
+      }
+      empty.onclick = function () {
+        text.value = ''
+      }
+      if (li.length > 0) {
+        for (var i = 0; i < li.length; i++) {
+          messlist.removeChild(this.parent)
         }
-    </script>
-    <script>
-        var bars = document.querySelectorAll('span');
+      }
+    }
+  </script> -->
 
-        setInterval(function () {
-            for (var i = 0; i < bars.length; i++) {
-                var bar = bars[i];
-                var height = Math.floor(Math.random() * 100);
-                bar.style.height = height + '%';
 
-            }
-        }, 150);
-    </script>
-    
-    
+  <script>
+    (function ($) {
+      $(document).ready(function () {
+
+        // Pause/Play functionality
+        var playButton = $('.control-play'),
+          album = $('.album');
+
+        playButton.on('click', function () {
+          $('.music-player-container').toggleClass('is-playing');
+        });
+      });
+    })(jQuery);
+  </script>
+  <script>
+    (function ($) {
+      $(document).ready(function () {
+        var heartButton = $('.heart-like'),
+          album = $('.album');
+        heartButton.on('click', function () {
+          $('.heart-like-container').toggleClass('is-click');
+        });
+      });
+    })(jQuery);
+  </script>
+  <script>
+    document.getElementById("control-play").onclick = function () {
+      var mu = document.getElementById("music");
+      // mu.play();
+
+      if (this.innerHTML == "play") {
+        this.innerHTML = "stop";
+        mu.src = "./music/Paul Flint - SAVAGE Worlds First 21 Launchpad Cover.mp3";
+      } else {
+        this.innerHTML = "play";
+        mu.src = "";
+      }
+    }
+  </script>
+  <script>
+    var bars = document.querySelectorAll('span');
+
+    setInterval(function () {
+      for (var i = 0; i < bars.length; i++) {
+        var bar = bars[i];
+        var height = Math.floor(Math.random() * 100);
+        bar.style.height = height + '%';
+
+      }
+    }, 150);
+  </script>
 </body>
 
 </html>
