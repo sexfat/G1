@@ -3,318 +3,264 @@
 @import "./public";
 
 .songinfo_infoplay .music-player-container {
-    //   -webkit-transform: translate(-50%, -50%);
-    //   -moz-transform: translate(-50%, -50%);
-    //   -ms-transform: translate(-50%, -50%);
-    //   -o-transform: translate(-50%, -50%);
-    //   transform: translate(-50%, -50%);
-    height: 370px;
-    width: 100%;
-    max-width: 1200px;
-    margin: 20px auto 0;
-    padding: 10px;
+  height: 370px;
+  width: 100%;
+  max-width: 1200px;
+  margin: 20px auto 0;
+  padding: 10px;
 
-    @include respond(ipadpro) {
-        display: flex;
-        flex-wrap: wrap;
-    }
+  @include respond(ipadpro) {
+    display: flex;
+    flex-wrap: wrap;
+  }
 }
 
 
 .songinfo_infoplay .music-player {
-    height: 250px;
-    text-align: right;
-    width: 50%;
-    float: left;
-    @include respond(ipadpro) {
-        width: 100%;
-        order: 2;
-    }
+  height: 250px;
+  text-align: right;
+  width: 50%;
+  float: left;
+
+  @include respond(ipadpro) {
+    width: 100%;
+    order: 2;
+  }
 }
 
 
 .songinfo_infoplay .player-content-container {
-    //   -webkit-transform: translateY(-50%);
-    //   -moz-transform: translateY(-50%);
-    //   -ms-transform: translateY(-50%);
-    //   -o-transform: translateY(-50%);
-    //   transform: translateY(-50%);
-    //   top: 50%;
-    //   position: relative;
-    //   left: -40px;
-    padding-top: 15%;
-    width: 100%;
-    @include respond(ipadpro){
-        padding-top: 0;
-    }
+  padding-top: 15%;
+  width: 100%;
+
+  @include respond(ipadpro) {
+    padding-top: 0;
+  }
 }
 
 
 .songinfo_infoplay .artist-name {
-    font-size: 1rem;
-    // @include infoname();
-    font-weight: normal;
-    // margin: 0 0 0.75em 0;
-    margin: 0 0 20px 0;
-    text-align: left;
-    padding-left: 30%;
+  font-size: 1rem;
+  // @include infoname();
+  font-weight: normal;
+  // margin: 0 0 0.75em 0;
+  margin: 0 0 20px 0;
+  text-align: left;
+  padding-left: 30%;
 
-    @include respond(latop-max) {
-        padding-left: 20%;
-    }
-    @include respond(latop-min) {
-        padding-left: 10%;
-    }
-    @include respond(ipadpro){
-        padding-left: 0;
-        text-align: center;
-    }
+  @include respond(latop-max) {
+    padding-left: 20%;
+  }
 
-    //   position: relative;
-    //   left: 20px;
-    //   top: 30px;
+  @include respond(latop-min) {
+    padding-left: 10%;
+  }
+
+  @include respond(ipadpro) {
+    padding-left: 0;
+    text-align: center;
+  }
 }
 
-// .songinfo_infoplay .album-title {
-//   font-weight: 200;
-//   font-size: 24px;
-//   margin: 0 0 1.75em 0;
-// }
 
 .songinfo_infoplay .song-title {
-    font-size: 1.5rem;
-    // @include infosongtitle();
-    // font-weight: 200;
-    // margin: 0 0 1.5em 0;
-    margin: 0 auto;
-    text-align: left;
-    padding-left: 30%;
+  font-size: 1.5rem;
+  margin: 0 auto;
+  text-align: left;
+  padding-left: 30%;
 
-    @include respond(latop-max) {
-        padding-left: 20%;
-    }
-    @include respond(latop-min) {
-        padding-left: 10%;
-    }
-    @include respond(ipadpro){
-        padding-left: 0;
-        margin-top: 20px;
-        text-align: center;
-    }
+  @include respond(latop-max) {
+    padding-left: 20%;
+  }
+
+  @include respond(latop-min) {
+    padding-left: 10%;
+  }
+
+  @include respond(ipadpro) {
+    padding-left: 0;
+    margin-top: 20px;
+    text-align: center;
+  }
 }
 
 .songinfo_infoplay .album {
-    // box-shadow: 3px 3px 15px rgba(0, 0, 0, 0.65);
-    height: 400px;
-    position: relative;
-    width: 400px;
-    z-index: 10;
-    float: left;
-    @include respond(latop-max) {
-        width: 350px;
-        height: 350px;
-    }
-    @include respond(latop-min) {
-        width: 300px;
-        height: 300px;
-    }
-    @include respond(ipadpro) {
-        margin: 0 auto;
-        order: 1;
-    }
-    @include respond(phone){
-        width: 250px;
-        height: 250px;
-    }
+  height: 400px;
+  position: relative;
+  width: 400px;
+  z-index: 10;
+  float: left;
+
+  @include respond(latop-max) {
+    width: 350px;
+    height: 350px;
+  }
+
+  @include respond(latop-min) {
+    width: 300px;
+    height: 300px;
+  }
+
+  @include respond(ipadpro) {
+    margin: 0 auto;
+    order: 1;
+  }
+
+  @include respond(phone) {
+    width: 250px;
+    height: 250px;
+  }
 }
 
 .songinfo_infoplay .album-art {
-    background: #fff url("../img/songinfo/cover1.jpg") (center / cover) no-repeat;
-    height: 400px;
-    position: absolute;
-    display: block;
-    top: 0;
-    left: 0;
-    width: 400px;
-    z-index: 10;
+  background: #fff url("../img/songinfo/cover1.jpg") (center / cover) no-repeat;
+  height: 400px;
+  position: absolute;
+  display: block;
+  top: 0;
+  left: 0;
+  width: 400px;
+  z-index: 10;
 
-    @include respond(latop-max) {
-        width: 350px;
-        height: 350px;
-    }
-    @include respond(latop-min) {
-        width: 300px;
-        height: 300px;
-    }
-    @include respond(phone){
-        width: 250px;
-        height: 250px;
-    }
+  @include respond(latop-max) {
+    width: 350px;
+    height: 350px;
+  }
+
+  @include respond(latop-min) {
+    width: 300px;
+    height: 300px;
+  }
+
+  @include respond(phone) {
+    width: 250px;
+    height: 250px;
+  }
 }
 
 
 
 .songinfo_infoplay .vinyl {
-    -webkit-animation: spin 2s linear infinite;
-    -moz-animation: spin 2s linear infinite;
-    animation: spin 2s linear infinite;
-    -webkit-transition: all 500ms;
-    -moz-transition: all 500ms;
-    transition: all 500ms;
-    background-image: url("../img/songinfo/player_record.png") !important;
-    background-position: center, center;
-    background-size: cover, 40% auto;
-    background-repeat: no-repeat;
-    border-radius: 100%;
-    // box-shadow: 0 0 10px rgba(0, 0, 0, 0.8);
-    height: 400px;
-    left: 0;
-    position: absolute;
-    top: 0;
-    // bottom: 0px;
-    width: 400px;
-    z-index: 5;
-    will-change: transform, left;
+  -webkit-animation: spin 2s linear infinite;
+  -moz-animation: spin 2s linear infinite;
+  animation: spin 2s linear infinite;
+  -webkit-transition: all 500ms;
+  -moz-transition: all 500ms;
+  transition: all 500ms;
+  background-image: url("../img/songinfo/player_record.png") !important;
+  background-position: center, center;
+  background-size: cover, 40% auto;
+  background-repeat: no-repeat;
+  border-radius: 100%;
+  height: 400px;
+  left: 0;
+  position: absolute;
+  top: 0;
+  // bottom: 0px;
+  width: 400px;
+  z-index: 5;
+  will-change: transform, left;
 
-    @include respond(latop-max) {
-        width: 350px;
-        height: 350px;
-    }
-    @include respond(latop-min) {
-        width: 300px;
-        height: 300px;
-    }
-    @include respond(phone){
-        width: 250px;
-        height: 250px;
-    }
+  @include respond(latop-max) {
+    width: 350px;
+    height: 350px;
+  }
+
+  @include respond(latop-min) {
+    width: 300px;
+    height: 300px;
+  }
+
+  @include respond(phone) {
+    width: 250px;
+    height: 250px;
+  }
 }
 
 
 
 
 .songinfo_infoplay .is-playing .vinyl {
-    left: 52%;
+  left: 52%;
 }
 
 .songinfo_infoplay .music-player-controls {
-    text-align: left;
-    padding-left: 30%;
-    width: 100%;
-    display: flex;
+  text-align: left;
+  padding-left: 30%;
+  width: 100%;
+  display: flex;
 
-    @include respond(latop-max) {
-        padding-left: 20%;
-    }
-    @include respond(latop-min) {
-        padding-left: 10%;
-    }
-    @include respond(ipadpro) {
-        padding-left: 0;
-        max-width: 300px;
-        margin: 20px auto 0;
-    }
+  @include respond(latop-max) {
+    padding-left: 20%;
+  }
+
+  @include respond(latop-min) {
+    padding-left: 10%;
+  }
+
+  @include respond(ipadpro) {
+    padding-left: 0;
+    max-width: 300px;
+    margin: 20px auto 0;
+  }
 }
 
 
 [class^="control-"] {
-    // -webkit-filter: brightness(95%);
-    // filter: brightness(95%);
-    border-radius: 100%;
-    height: 44px;
-    width: 44px;
-    // &:hover {
-    //   -webkit-filter: brightness(85%);
-    //   filter: brightness(85%);
-    //   cursor: pointer;
-    // }
+  border-radius: 100%;
+  height: 44px;
+  width: 44px;
 }
-
-// @import './public';
 
 // .songinfo_infoplay .control-play {
 //   background: transparent url("https://s3-us-west-2.amazonaws.com/s.cdpn.io/83141/play.svg") (center / cover) no-repeat;
 // }
 .songinfo_infoplay .control-play {
-    background: transparent url("../img/songinfo/coverPlay-b.png") (center / cover) no-repeat;
-    //   position: relative;
-    //   left: -150px;
-    //   top: 20px;
-    display: inline-block;
-    margin: 0 20px 0 0;
-    @include buttonno05();
+  background: transparent url("../img/songinfo/coverPlay-b.png") (center / cover) no-repeat;
+  display: inline-block;
+  margin: 0 20px 0 0;
+  cursor: pointer;
+  @include buttonno05();
 }
 
 // .songinfo_infoplay .is-playing .control-play {
 //   background: transparent url("https://s3-us-west-2.amazonaws.com/s.cdpn.io/83141/pause.svg") (center / cover) no-repeat;
 // }
 .songinfo_infoplay .is-playing .control-play {
-    background: transparent url("../img/songinfo/coverPause-b.png") (center / cover) no-repeat;
-    @include buttonno05();
+  background: transparent url("../img/songinfo/coverPause-b.png") (center / cover) no-repeat;
+  @include buttonno05();
 }
-
-
-
-// [class^="dona-"] {
-//   // -webkit-filter: brightness(95%);
-//   // filter: brightness(95%);
-//   border-radius: 5px;
-//   display: inline-block;
-//   height: 30px;
-//   width: 70px;
-
-//   &:hover {
-//     -webkit-filter: brightness(85%);
-//     filter: brightness(85%);
-//     cursor: pointer;
-//   }
-// }
 
 .songinfo_infoplay .infodona {
-    // background: transparent url("../img/songinfo/donate.png") (center / cover) no-repeat;
-    //   position: relative;
-    //   top: -90px;
-    //   left: 130px;
-    @include butttonn02();
-    display: inline-block;
-    margin: 0 20px;
-    @include respond(ipadpro){
-        margin: 0 10px;
-    }
+  @include butttonn02();
+  display: inline-block;
+  margin: 0 20px;
+
+  @include respond(ipadpro) {
+    margin: 0 10px;
+  }
 }
 
-// .infodona {
-//   @include butttonn02();
-// }
 
 
 [class^="heart-"] {
-    // -webkit-filter: brightness(95%);
-    // filter: brightness(95%);
-    border-radius: 5px;
-    display: inline-block;
-    height: 25px;
-    width: 25px;
-
-    // &:hover {
-    //   -webkit-filter: brightness(85%);
-    //   filter: brightness(85%);
-    //   cursor: pointer;
-    // }
+  // -webkit-filter: brightness(95%);
+  // filter: brightness(95%);
+  border-radius: 5px;
+  display: inline-block;
+  height: 25px;
+  width: 25px;
 }
 
 .songinfo_infoplay .heart-like {
-    background: transparent url("../img/songinfo/grayheart.png") (center / cover) no-repeat;
-    width: 100%;
-    max-width: 25px;
-    background-size: cover;
-    //   position: relative;
-    //   top: -75px;
-    //   left: -50px;
+  background: transparent url("../img/songinfo/grayheart.png") (center / cover) no-repeat;
+  width: 100%;
+  max-width: 25px;
+  background-size: cover;
 }
 
 .songinfo_infoplay .is-click .heart-like {
-    background: transparent url("../img/songinfo/redheart.png") (center / cover) no-repeat;
+  background: transparent url("../img/songinfo/redheart.png") (center / cover) no-repeat;
 }
 
 
@@ -329,61 +275,50 @@
 // }
 
 .song_tllike {
-    // border: 1px solid orange;
-    // width: 80px;
-    //   position: relative;
-    //   left: 120px;
-    //   top: -32px;
-    font-size: 0.7rem;
-    margin: 0 20px;
-    @include respond(ipadpro) {
-        margin: 0 10px;
-    }
-}
+  font-size: 0.7rem;
+  margin: 0 20px;
 
-// .songinfo_donate{
-//   width: 70px;
-//   height: 30px;
-//   position: relative;
-//   top: -30px;
-// }
+  @include respond(ipadpro) {
+    margin: 0 10px;
+  }
+}
 
 
 
 @-webkit-keyframes spin {
-    0% {
-        -webkit-transform: rotate(0deg);
-    }
+  0% {
+    -webkit-transform: rotate(0deg);
+  }
 
-    100% {
-        -webkit-transform: rotate(360deg);
-    }
+  100% {
+    -webkit-transform: rotate(360deg);
+  }
 }
 
 @-moz-keyframes spin {
-    0% {
-        -moz-transform: rotate(0deg);
-    }
+  0% {
+    -moz-transform: rotate(0deg);
+  }
 
-    100% {
-        -moz-transform: rotate(360deg);
-    }
+  100% {
+    -moz-transform: rotate(360deg);
+  }
 }
 
 @keyframes spin {
-    0% {
-        -webkit-transform: rotate(0deg);
-        -moz-transform: rotate(0deg);
-        -ms-transform: rotate(0deg);
-        -o-transform: rotate(0deg);
-        transform: rotate(0deg);
-    }
+  0% {
+    -webkit-transform: rotate(0deg);
+    -moz-transform: rotate(0deg);
+    -ms-transform: rotate(0deg);
+    -o-transform: rotate(0deg);
+    transform: rotate(0deg);
+  }
 
-    100% {
-        -webkit-transform: rotate(360deg);
-        -moz-transform: rotate(360deg);
-        -ms-transform: rotate(360deg);
-        -o-transform: rotate(360deg);
-        transform: rotate(360deg);
-    }
+  100% {
+    -webkit-transform: rotate(360deg);
+    -moz-transform: rotate(360deg);
+    -ms-transform: rotate(360deg);
+    -o-transform: rotate(360deg);
+    transform: rotate(360deg);
+  }
 }

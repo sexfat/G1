@@ -1,5 +1,5 @@
 <?php
-require_once('./connect_dd104g1.php');
+require_once('./connectBooks.php');
 session_start();
 switch ($_GET['get']) {
   case 'song':
