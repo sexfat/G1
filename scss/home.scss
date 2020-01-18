@@ -57,7 +57,7 @@
       background: url(../img/home/stylus.png) center center no-repeat;
       background-size: cover;
       transform: scaleX(-1);
-      animation: stylus_rotate 0.9s infinite linear alternate;
+      animation: test02 0.9s infinite linear alternate;
     }
     .home_vinyl_records {
       position: absolute;
@@ -68,7 +68,7 @@
       height: 1100px;
       background: url(../img/home/vinyl_records.png) center center no-repeat;
       background-size: cover;
-      animation: record_rotate 6s infinite linear;
+      animation: test 6s infinite linear;
 
       .home_cover_img {
         position: relative;
@@ -77,11 +77,12 @@
         width: 370px;
         height: 370px;
         border-radius: 100%;
+        background: url(../img/home/test.jpg) center center;
         background-size: cover;
       }
     }
 
-    @keyframes record_rotate {
+    @keyframes test {
       0% {
         transform: rotate(0deg);
       }
@@ -90,7 +91,7 @@
       }
     }
 
-    @keyframes stylus_rotate {
+    @keyframes test02 {
       0% {
         transform: scaleX(-1) rotate(15deg);
       }
@@ -125,19 +126,50 @@
 
     .home_songInfo_container {
       position: relative;
-      width: 300px;
-      height: 100px;
+      width: 280px;
+      height: 150px;
       padding: 10px;
       background: rgba(216, 209, 197, 0.3);
 
       .home_song_cover {
         float: left;
-        width: 80px;
-        height: 80px;
+        width: 60px;
+        height: 60px;
+        background: url(../img/library/cover1.jpg) center center no-repeat;
+        background-size: cover;
+      }
+      .contain {
+        float: left;
+        width: 200px;
+        height: 60px;
+        flex-direction: column;
+        span {
+          padding: 0 10px;
+          color: #ffffff;
+          &.home_song_name {
+            overflow: hidden;
+            &::after {
+              content: "";
+              display: block;
+              position: relative;
+              width: 180px;
+              border-top: 1px solid #d8d1c5;
+            }
+          }
+          &.home_song_author {
+            overflow: hidden;
+            font-size: 0.8rem;
+          }
+        }
+      }
+      .home_control_container {
+        position: absolute;
+        left: 0px;
+        top: 80px;
+        width: 260px;
+        height: 40px;
+        padding: 0 10px;
         .home_play {
-          position: relative;
-          top: calc((100% - 35px) / 2);
-          left: calc((100% - 35px) / 2);
           width: 35px;
           height: 35px;
           display: inline-block;
@@ -148,40 +180,28 @@
           padding: 5px;
           border: 0;
           transition: transform 0.5s;
-          i {
-            display: block;
-          }
           &:hover {
             transform: scale(1.1);
           }
         }
-      }
-      .contain {
-        float: left;
-        width: 200px;
-        height: 80px;
-        flex-direction: column;
-        overflow: hidden;
-        span {
-          padding: 0 10px;
-          height: 40px;
-          white-space: nowrap;
-          line-height: 40px;
-          text-shadow: 0px 0px 3px #ffffff, 0px 0px 3px #ffffff;
-          &.home_song_name {
-            font-size: 1.4rem;
-            &::after {
-              content: "";
-              display: block;
-              position: relative;
-              width: 180px;
-              border-top: 1px solid #666666;
-            }
+        .home_prev,
+        .home_next {
+          width: 25px;
+          height: 25px;
+          border-radius: 15px;
+          text-align: center;
+          line-height: 25px;
+          padding: 5px;
+          margin: 0px 5px;
+          border: 0;
+          transition: transform 0.5s;
+
+          &:hover {
+            transform: scale(1.1);
           }
-          &.home_song_author {
-            overflow: hidden;
-            font-size: 1.2rem;
-          }
+        }
+        i {
+          display: block;
         }
       }
     }
@@ -213,8 +233,8 @@
 .home_sec02 {
   .home_paint01 {
     position: absolute;
-    top: 90px;
-    left: 1002px;
+    top: 12%;
+    left: 24%;
     width: 398px;
     height: 138px;
     background: url(../img/home/sec02_p01.png);
@@ -222,75 +242,43 @@
   }
   .home_paint02 {
     position: absolute;
-    bottom: 30px;
-    left: 1088px;
+    top: 52%;
+    right: 5%;
     width: 552px;
     height: 421px;
     background: url(../img/home/sec02_p02.png);
     background-size: cover;
   }
-  .home_mixer_bt {
+  .home_mixer {
     position: absolute;
-    left: 1044px;
-    width: 556px;
-    height: 616px;
+    bottom: 15%;
+    right: 5%;
+    width: calc(556px * 0.66);
+    height: calc(616px * 0.66);
     background: url(../img/home/mixer.png);
     background-size: cover;
-    .home_mixer_box {
-      position: fixed;
-      z-index: 10;
-      display: none;
-      max-width: 556px;
-      max-height: 616px;
-      min-width: 320px;
-      min-height: 480px;
-      background: #fafaf1;
-      border: 1px solid #333333;
-      border-radius: 10px;
-      .home_mixer {
-        position: relative;
-        top: 0px;
-        left: 0px;
-        width: 100%;
-        height: 100%;
-        background: url(../img/home/mixer.png);
-        background-size: cover;
-      }
-      .close {
-        position: absolute;
-        right: 5px;
-        top: 5px;
-        width: 40px;
-        height: 40px;
-        i {
-          font-size: 40px;
-        }
-      }
-    }
   }
-  .home_remix {
-    width: calc(628px * 0.5);
-    height: calc(230px * 0.5);
-    margin: 60px auto 0 auto;
-    background: url(../img/home/remix.png) center center no-repeat;
-    background-size: cover;
-  }
-
   .home_container {
     position: relative;
-    top: 0px;
+    top: 60px;
     height: 100%;
     margin: 0 auto;
     max-width: 1280px;
     padding: 0 25px;
+    .home_remix {
+      width: calc(628px * 0.66);
+      height: calc(230px * 0.66);
+      background: url(../img/home/remix.png) center center no-repeat;
+      background-size: cover;
+    }
 
     h2 {
       position: relative;
       font-size: 1rem;
       letter-spacing: 1px;
       line-height: 33px;
-      margin: 0px;
-      padding: 0px;
+      margin: 0 0 20px 0;
+      padding: 40px 0 0 0;
       text-transform: uppercase;
       span {
         position: relative;
@@ -302,42 +290,29 @@
         text-transform: uppercase;
       }
     }
-    .content {
-      max-width: 640px;
-      .text0 {
-        overflow: hidden;
-        h4 {
-          display: inline-block;
-        }
-        .home_more_bt {
-          display: inline-block;
-          width: calc(170px * 0.5);
-          height: calc(110px * 0.5);
-          background: url(../img/home/more_bt.png) center center no-repeat;
-          background-size: cover;
-          vertical-align: middle;
-          a {
-            display: block;
-            width: 100%;
-            height: 100%;
-          }
-        }
-      }
+    .content1 {
+      max-width: 540px;
+    }
+    .content2 {
+      position: absolute;
+      width: 540px;
+      top: 30px;
+      left: 600px;
       ul {
         display: inline-block;
-        margin: 10px 0;
+        margin: 0 0 10px 0;
         width: 100%;
         li {
-          position: relative;
           float: left;
           height: 42px;
           margin: 0 15px 0 0;
           overflow: hidden;
+          position: relative;
           text-align: left;
           text-decoration: none;
-          cursor: pointer;
           transition: all 0.25s ease-in-out 0s;
-          .number {
+          width: 30%;
+          .dex-number {
             font-size: 42px;
             left: 0;
             line-height: 42px;
@@ -345,7 +320,7 @@
             position: absolute;
             top: 0;
           }
-          .toptext {
+          .dex-toptext {
             font-size: 14px;
             left: 27px;
             line-height: 14px;
@@ -353,14 +328,14 @@
             position: absolute;
             top: 0;
           }
-          .bottomtext {
+          .dex-bottomtext {
             float: left;
             font-size: 26px;
             line-height: 26px;
             margin: 15px 0 0 26px;
             position: relative;
           }
-          .arrow {
+          .dex-arrow {
             float: left;
             font-size: 14px;
             margin: 20px 0 0 0;
@@ -370,100 +345,149 @@
           }
         }
       }
-      .text {
-        &.text1 {
-          height: 0px;
-          overflow: hidden;
-        }
-        &.text2 {
-          height: 0px;
-          overflow: hidden;
-        }
-        &.text3 {
-          height: 0px;
-          overflow: hidden;
-        }
-      }
     }
   }
-  @media screen and (max-height: 640px) {
+
+  .home_more_bt {
+    position: absolute;
+    top: 68%;
+    left: 60%;
+    width: 170px;
+    height: 110px;
+    background: url(../img/home/more_bt.png) center center no-repeat;
+    background-size: cover;
+    a {
+      display: block;
+      width: 100%;
+      height: 100%;
+    }
+  }
+  @media screen and (max-width: 1200px) {
     .home_container {
+      .home_remix {
+        width: calc(628px * 0.5);
+        height: calc(230px * 0.5);
+      }
       h2 {
+        font-size: 0.8rem;
         span {
-          font-size: 30px;
-          line-height: 30px;
-          padding: 0;
+          font-size: 48px;
         }
+      }
+      .content1 {
+        max-width: 400px;
+      }
+      .content2 {
+        width: 400px;
+        left: 460px;
       }
     }
   }
-  @media screen and (max-height: 576px) {
-    .home_container {
-      .content {
-        ul {
-          display: none;
-        }
-      }
+
+  @media screen and (max-width: 992px) {
+    .home_paint01 {
+      display: none;
     }
-  }
-  @media screen and (max-height: 480px) {
-    .home_mixer_bt {
-      .home_mixer_box {
-        .home_mixer {
-          top: -20px;
-        }
-      }
-    }
-  }
-  @media screen and (max-width: 1280px) {
-    .home_container {
-      max-width: 50%;
-      margin: 0 auto 0 0;
-    }
-  }
-  @media screen and (max-width: 768px) {
-    .home_paint01,
     .home_paint02 {
       display: none;
     }
+    .home_mixer {
+      display: none;
+    }
     .home_container {
-      max-width: 100%;
+      .home_remix {
+        width: calc(628px * 0.5);
+        height: calc(230px * 0.5);
+      }
+      h2 {
+        font-size: 0.8rem;
+        span {
+          font-size: 36px;
+        }
+      }
+      .content1 {
+        max-width: 350px;
+      }
+      .content2 {
+        width: 350px;
+        left: 400px;
+      }
+    }
+  }
+  @media screen and (max-width: 768px) {
+    .home_container {
+      .home_remix {
+        width: calc(628px * 0.4);
+        height: calc(230px * 0.4);
+        margin: 0 auto;
+      }
+      h2 {
+        width: 540px;
+        margin: 0 auto;
+        font-size: 0.8rem;
+        span {
+          font-size: 36px;
+        }
+      }
+      .content1 {
+        max-width: 100%;
+        width: 540px;
+        margin: 0 auto;
+      }
+      .content2 {
+        display: none;
+      }
     }
   }
   @media screen and (max-width: 576px) {
     .home_container {
-      h2 {
-        line-height: 24px;
+      .home_remix {
+        width: calc(628px * 0.3);
+        height: calc(230px * 0.3);
+        margin: 0 auto;
       }
-      .content {
-        h3 {
-          line-height: 24px;
-        }
-        p {
-          font-size: 0.8rem;
-          line-height: 18px;
+      h2 {
+        width: 100%;
+        margin: 0 auto;
+        font-size: 0.8rem;
+        span {
+          font-size: 36px;
         }
       }
     }
   }
   @media screen and (max-width: 375px) {
     .home_container {
-      .content {
-        p {
-          overflow: hidden;
-          text-overflow: ellipsis;
-          display: -webkit-box;
-          -webkit-line-clamp: 3;
-          -webkit-box-orient: vertical;
-        }
-        h4 {
-          margin: 15px 0 0 0;
-        }
-        .home_more_bt {
+      .home_remix {
+        width: calc(628px * 0.3);
+        height: calc(230px * 0.3);
+        margin: 0 auto;
+      }
+      h2 {
+        display: none;
+      }
+      .content1 {
+        position: relative;
+        height: 55%;
+        overflow: hidden;
+        .hidden {
           position: absolute;
-          left: 200px;
+          left: 0px;
+          bottom: 0px;
+          width: 100%;
+          height: 40px;
+          background: linear-gradient(transparent 20%, #fafaf1 80%);
         }
       }
+    }
+    .home_more_bt {
+      position: absolute;
+      width: 60px;
+      height: 40px;
+      bottom: 80px;
+      right: 36px;
+      left: initial;
+      top: initial;
     }
   }
 }
@@ -488,11 +512,23 @@
   }
 
   .home_rank {
-    width: calc(515px * 0.5);
-    height: calc(230px * 0.5);
-    margin: 60px auto 0 auto;
-    background: url(../img/home/rank.png) center center no-repeat;
-    background-size: cover;
+    position: absolute;
+    top: 100px;
+    left: 100px;
+    width: 165px;
+    height: 730px;
+    background: url(../img/home/rank01.png) center center no-repeat;
+  }
+  @media screen and (max-width: 768px) {
+    .home_rank {
+      position: absolute;
+      top: 60px;
+      left: calc((100% - 257.5px) / 2);
+      width: 257.5px;
+      height: 115px;
+      background: url(../img/home/rank02.png) center center no-repeat;
+      background-size: cover;
+    }
   }
   .home_paint01 {
     position: absolute;
@@ -519,106 +555,165 @@
     width: 100%;
     height: 100%;
 
-    .rank_title {
-      margin: 180px auto 0 auto;
+    .home_title {
+      margin: 100px auto 0 auto;
       text-align: center;
     }
     @media screen and (max-width: 768px) {
-      .rank_title {
+      .home_title {
         font-size: 0.8rem;
       }
     }
     @media screen and (max-width: 576px) {
-      .rank_title {
+      .home_title {
         font-size: 0.6rem;
       }
     }
     .home_perspective {
       position: absolute;
       top: 100px;
-      left: 390px;
+      left: 540px;
+      pointer-events: none;
       width: 1280px;
       height: 640px;
       perspective: 700px;
       perspective-origin: 87% 50%;
       .home_song_container {
         position: absolute;
-        top: 250px;
-        left: 800px;
+        top: 33%;
+        left: 57%;
         transform-style: preserve-3d;
 
         .home_song {
           position: absolute;
-          z-index: 10;
           width: 200px;
           height: 200px;
           backface-visibility: hidden;
-          .home_cover_img {
-            position: absolute;
-            z-index: 1;
-            width: 100%;
-            height: 100%;
-            background-size: cover;
-            .home_play {
-              position: absolute;
-              top: calc((100% - 35px) / 2);
-              left: calc((100% - 35px) / 2);
-              width: 35px;
-              height: 35px;
-              display: inline-block;
-              background-color: #f1c40f;
-              border-radius: 20px;
-              text-align: center;
-              line-height: 35px;
-              padding: 5px;
-              cursor: pointer;
-              transition: transform 0.5s;
-              i {
-                display: block;
-                pointer-events: none;
-              }
-              // &:hover {
-              //   transform: scale(1.1);
-              // }
-            }
-          }
 
           &.home_song1 {
             transform: rotateY(0deg) translateZ(360px);
+            .home_cover_img {
+              position: absolute;
+              z-index: 1;
+              width: 100%;
+              height: 100%;
+              background: url(../img/home/test.jpg);
+              background-size: cover;
+              justify-content: center;
+              align-items: center;
+              i:nth-child(2) {
+                position: absolute;
+                z-index: -1;
+                color: #ffffff;
+                font-size: 22px;
+              }
+            }
           }
+
           &.home_song2 {
             transform: rotateY(36deg) translateZ(360px);
+            .home_cover_img {
+              position: absolute;
+              z-index: 1;
+              width: 100%;
+              height: 100%;
+              background: url(../img/home/test.jpg);
+              background-size: cover;
+            }
           }
           &.home_song3 {
             transform: rotateY(72deg) translateZ(360px);
+            .home_cover_img {
+              position: absolute;
+              z-index: 1;
+              width: 100%;
+              height: 100%;
+              background: url(../img/home/test.jpg);
+              background-size: cover;
+            }
           }
           &.home_song4 {
             transform: rotateY(108deg) translateZ(360px);
+            .home_cover_img {
+              position: absolute;
+              z-index: 1;
+              width: 100%;
+              height: 100%;
+              background: url(../img/home/test.jpg);
+              background-size: cover;
+            }
           }
           &.home_song5 {
             transform: rotateY(144deg) translateZ(360px);
+            .home_cover_img {
+              position: absolute;
+              z-index: 1;
+              width: 100%;
+              height: 100%;
+              background: url(../img/home/test.jpg);
+              background-size: cover;
+            }
           }
           &.home_song6 {
             transform: rotateY(180deg) translateZ(360px);
+            .home_cover_img {
+              position: absolute;
+              z-index: 1;
+              width: 100%;
+              height: 100%;
+              background: url(../img/home/test.jpg);
+              background-size: cover;
+            }
           }
           &.home_song7 {
             transform: rotateY(216deg) translateZ(360px);
+            .home_cover_img {
+              position: absolute;
+              z-index: 1;
+              width: 100%;
+              height: 100%;
+              background: url(../img/home/test.jpg);
+              background-size: cover;
+            }
           }
           &.home_song8 {
             transform: rotateY(252deg) translateZ(360px);
+            .home_cover_img {
+              position: absolute;
+              z-index: 1;
+              width: 100%;
+              height: 100%;
+              background: url(../img/home/test.jpg);
+              background-size: cover;
+            }
           }
           &.home_song9 {
             transform: rotateY(288deg) translateZ(360px);
+            .home_cover_img {
+              position: absolute;
+              z-index: 1;
+              width: 100%;
+              height: 100%;
+              background: url(../img/home/test.jpg);
+              background-size: cover;
+            }
           }
           &.home_song10 {
             transform: rotateY(324deg) translateZ(360px);
+            .home_cover_img {
+              position: absolute;
+              z-index: 1;
+              width: 100%;
+              height: 100%;
+              background: url(../img/home/test.jpg);
+              background-size: cover;
+            }
           }
 
           .home_shadow {
             width: 100%;
             height: 100%;
             transition: all 0.5s;
-            pointer-events: none;
           }
 
           .home_song_info {
@@ -657,18 +752,30 @@
                 }
               }
             }
-            .more {
-              position: absolute;
-              bottom: 0px;
-              left: 0px;
-              width: 100%;
-              height: 40px;
-              background: linear-gradient(transparent 30%, #d8d1c5 70%);
-              justify-content: center;
-              align-items: flex-end;
-              cursor: pointer;
+            .home_icon_container {
+              .home_favorite {
+                margin: 0 10px 0 0;
+                i {
+                  color: #de267d;
+                }
+              }
+              .home_donate {
+                i {
+                  color: #f1c410;
+                }
+              }
               i {
-                margin: 0 0 5px 0;
+                font-size: 0.5rem;
+              }
+            }
+            .introduction {
+              .more {
+                position: absolute;
+                left: 0px;
+                bottom: 0px;
+                width: 100%;
+                height: 40px;
+                background: linear-gradient(transparent 20%, #d8d1c5 80%);
               }
             }
           }
@@ -697,7 +804,6 @@
         background: url(../img/home/top_arrow.png) center center no-repeat;
         background-size: cover;
         transform: rotate(-80deg);
-        cursor: pointer;
       }
       .home_right_arrow {
         float: right;
@@ -706,11 +812,11 @@
         background: url(../img/home/top_arrow.png) center center no-repeat;
         background-size: cover;
         transform: rotate(100deg);
-        cursor: pointer;
       }
     }
     @media screen and (max-width: 768px) {
       .home_arrow_container {
+        width: 500px;
         .home_left_arrow {
           width: 80px;
           height: 80px;
@@ -726,14 +832,6 @@
       .home_perspective {
         .home_song_container {
           .home_song {
-            .home_cover_img {
-              .home_play {
-                top: calc((100% - 25px) / 2);
-                left: calc((100% - 25px) / 2);
-                width: 25px;
-                height: 25px;
-              }
-            }
             .home_song_info {
               padding: 5px;
               .container {
@@ -746,23 +844,17 @@
                   }
                 }
               }
-              .more {
-                top: 0px;
-                right: 0px;
-                bottom: initial;
-                left: initial;
-                width: 40px;
-                height: 100%;
-                background: linear-gradient(90deg, transparent 30%, #d8d1c5 70%);
-                justify-content: flex-end;
-                align-items: center;
-                i {
-                  margin: 0 5px 0 0;
+              .introduction {
+                .more {
+                  display: none;
                 }
               }
             }
           }
         }
+      }
+      .home_arrow_container {
+        width: 350px;
       }
     }
     @media screen and (max-width: 480px) {
@@ -785,26 +877,11 @@
           }
         }
       }
+      .home_arrow_container {
+        width: 300px;
+      }
     }
     @media screen and (max-width: 375px) {
-      .home_perspective {
-        .home_song_container {
-          .home_song {
-            .home_song_info {
-              .container {
-                span {
-                  &.home_song_name {
-                    font-size: 0.7rem;
-                  }
-                  &.home_song_author {
-                    font-size: 0.6rem;
-                  }
-                }
-              }
-            }
-          }
-        }
-      }
       .home_arrow_container {
         width: 250px;
         .home_left_arrow {
@@ -823,7 +900,6 @@
 .home_sec04 {
   .home_paint01 {
     position: absolute;
-    z-index: -1;
     top: 0;
     right: 0;
     width: 526px;
@@ -832,7 +908,6 @@
   }
   .home_paint02 {
     position: absolute;
-    z-index: -1;
     bottom: -60px;
     left: 0;
     width: 1168px;
@@ -840,10 +915,12 @@
     background: url(../img/home/sec04_p02.png);
   }
   .home_activity {
-    width: calc(750px * 0.5);
-    height: calc(258px * 0.5);
-    margin: 60px auto 0 auto;
-    background: url(../img/home/activity.png) center center no-repeat;
+    position: absolute;
+    top: 60px;
+    left: 40px;
+    width: 750px;
+    height: 258px;
+    background: url(../img/home/activity.png);
     background-size: cover;
   }
   .home_DJ {
@@ -852,22 +929,12 @@
     left: 0;
     width: 613px;
     height: 522px;
-    background: url(../img/home/DJ.png) center center no-repeat;
-    .home_DJ_g {
-      width: 100%;
-      height: 100%;
-      background: url(../img/home/DJ_g.png) center center no-repeat;
-      filter: opacity(0);
-      transition: all 0.3s;
-    }
-    &:hover .home_DJ_g {
-      filter: opacity(1);
-    }
+    background: url(../img/home/DJ.png);
   }
   .home_activity_info {
     position: absolute;
-    top: 160px;
-    right: 780px;
+    top: 100px;
+    right: 37.5%;
     width: 400px;
     height: 650px;
 
@@ -875,10 +942,10 @@
       position: absolute;
       top: 0px;
       left: 420px;
-      width: 400px;
-      height: 520px;
+      width: 500px;
+      height: 650px;
       background: url(../img/activity/2019-rock-poster.png);
-      background-size: contain;
+      background-size: cover;
     }
     h2 {
       padding: 20px 0;
@@ -888,15 +955,13 @@
     h3 {
       font-size: 1.6rem;
     }
-    h4 {
-      display: inline-block;
-      margin: 60px 0 0 0;
-    }
     .enter_bt {
-      display: inline-block;
-      width: calc(180px * 0.5);
-      height: calc(120px * 0.5);
-      vertical-align: middle;
+      position: absolute;
+      bottom: 80px;
+      right: 30px;
+      width: 180px;
+      height: 120px;
+      margin: 60px 0 0 80px;
       background: url(../img/home/enter_bt.png) center center no-repeat;
       background-size: cover;
       a {
@@ -906,142 +971,48 @@
       }
     }
   }
-
-  @media screen and (max-width: 870px) {
+  @media screen and (max-width: 768px) {
     .home_activity_info {
-      width: 350px;
-      .home_activity_img {
-        left: 370px;
-        width: 350px;
-        height: calc(520px / (400 / 350));
-      }
       h2 {
         font-size: 1.6rem;
-        padding: 10px 0;
       }
       h3 {
         font-size: 1.2rem;
       }
-      h4 {
-        margin: 30px 0 0 0;
-      }
     }
   }
-  @media screen and (max-width: 768px) {
-    .home_paint01,
-    .home_paint02 {
-      filter: opacity(0.5);
-    }
+  @media screen and (max-width: 440px) {
     .home_activity_info {
-      position: initial;
       width: 100%;
-      padding: 0 25px;
-      .home_activity_img {
-        width: 263px;
-        height: 340px;
-        margin: 0 10px 0 0;
-        position: initial;
-        float: left;
-      }
-      h2 {
-        font-size: 1.4rem;
-      }
+      padding: 20px;
     }
   }
-  @media screen and (max-height: 768px) {
+  @media screen and (max-width: 375px) {
+    .home_paint01 {
+      display: none;
+    }
+    .home_paint02 {
+      display: none;
+    }
     .home_activity_info {
-      top: 140px;
-      .home_activity_img {
-        width: 320px;
-        height: 420px;
-      }
       h2 {
-        font-size: 1.4rem;
-        padding: 10px 0;
+        padding: 0px;
+        font-size: 1.2rem;
+        line-height: 1;
       }
       h3 {
-        font-size: 1.2rem;
-      }
-      h4 {
-        margin: 30px 0 0 0;
-      }
-    }
-  }
-
-  @media screen and (max-height: 640px) {
-    .home_activity_info {
-      .home_activity_img {
-        width: 260px;
-        height: 340px;
-      }
-      h2 {
-        font-size: 1.2rem;
-        padding: 0;
-      }
-      h3,
-      h4 {
+        margin: 10px 0 0 0;
         font-size: 1rem;
       }
       p {
         font-size: 0.8rem;
-      }
-      h4 {
-        margin: 30px 0 0 0;
-      }
-    }
-  }
-  @media screen and (max-height: 576px) {
-    .home_activity_info {
-      top: 120px;
-      .home_activity_img {
-        width: 200px;
-        height: 260px;
-      }
-      h2 {
-        line-height: 30px;
-      }
-      h3,
-      h4 {
-        line-height: 24px;
-      }
-      p {
-        line-height: 18px;
-      }
-      h4 {
-        margin: 0px;
-      }
-    }
-  }
-
-  @media screen and (max-width: 576px) {
-    .home_activity_info {
-      .home_activity_img {
-        display: none;
-        width: 135px;
-        height: 180px;
-        margin: 0 10px 0 0;
-        position: initial;
-        float: left;
-      }
-      h2 {
-        font-size: 1.2rem;
-      }
-      h3,
-      h4 {
-        font-size: 1rem;
-      }
-      p {
-        font-size: 0.8rem;
-        overflow: hidden;
-        text-overflow: ellipsis;
-        display: -webkit-box;
-        -webkit-line-clamp: 2;
-        -webkit-box-orient: vertical;
       }
     }
   }
 }
 .home_sec05 {
+  background: url(../img/home/brick_wall.png);
+
   .home_paint01 {
     position: absolute;
     z-index: -1;
@@ -1052,452 +1023,363 @@
     background: url(../img/home/sec05_p01.png) center center no-repeat;
   }
   .home_collection {
-    width: calc(1043px * 0.5);
-    height: calc(250px * 0.5);
-    margin: 60px auto 0 auto;
-    background: url(../img/home/collection.png) center center no-repeat;
-    background-size: cover;
-  }
-  .home_sloth_top {
     position: absolute;
-    z-index: 1;
-    top: -510px;
-    right: 0px;
-    width: calc(490px * 0.9);
-    height: calc(696px * 0.9);
-    background: url(../img/home/sloth_top.png) center center no-repeat;
-    background-size: cover;
-    transition: all 0.3s;
+    top: 80px;
+    left: 100px;
+    width: 605px;
+    height: 735px;
+    background: url(../img/home/collection.png);
   }
-  .home_sloth_bottom {
+  p {
     position: absolute;
-    left: 160px;
-    bottom: -30px;
-    width: calc(550px * 0.9);
-    height: calc(622px * 0.9);
-    background: url(../img/home/sloth_bottom.png) center center no-repeat;
-    background-size: cover;
-    transition: all 0.3s;
+    top: 180px;
+    right: 60%;
+    width: 300px;
+    font-size: 1.5rem;
   }
-  .holder {
-    max-width: 1280px;
-    margin: 0 auto;
-    overflow: hidden;
-    .text_container {
-      float: left;
-      width: 560px;
-      padding: 20px;
-      p {
-        font-size: 1.2rem;
+
+  .home_sort_container {
+    position: absolute;
+    top: 120px;
+    right: 100px;
+    width: 720px;
+    height: 640px;
+    perspective: 700px;
+    perspective-origin: 40% 40%;
+    .home_sort {
+      position: relative;
+      a {
+        width: 100%;
+        height: 100%;
+        color: #ffffff;
+        justify-content: center;
+        align-items: center;
+        font-size: 2.4rem;
+        text-shadow: 0px 0px 5px black, 0px 0px 10px black;
+        white-space: nowrap;
       }
+    }
+    .home_sort01 {
+      float: left;
+      margin: 20px;
+      width: 200px;
+      height: 200px;
+      background: url(../img/song_cover/a01.jpg) center center;
+      background-size: 100% 100%;
+      transition: background-size 0.3s;
+      .selector {
+        position: absolute;
+        top: -25px;
+        left: -25px;
+        width: 250px;
+        height: 250px;
+        pointer-events: none;
+
+        .st0 {
+          stroke-dasharray: 582;
+          stroke-dashoffset: 582;
+        }
+      }
+      &:hover {
+        background-size: 120% 120%;
+      }
+      &:hover .st0 {
+        animation: stroke 0.5s forwards;
+      }
+      @keyframes stroke {
+        0% {
+          stroke-dashoffset: 582;
+        }
+        100% {
+          stroke-dashoffset: 0;
+        }
+      }
+    }
+    .home_sort02 {
+      float: left;
+      margin: 20px;
+      width: 200px;
+      height: 200px;
+      background: url(../img/song_cover/a02.jpg) center center no-repeat;
+      background-size: 100% 100%;
+      transition: background-size 0.3s;
+      .selector {
+        position: absolute;
+        top: -25px;
+        left: -25px;
+        width: 250px;
+        height: 250px;
+        pointer-events: none;
+
+        .st0 {
+          stroke-dasharray: 582;
+          stroke-dashoffset: 582;
+        }
+      }
+      &:hover {
+        background-size: 120% 120%;
+      }
+
+      &:hover .st0 {
+        animation: stroke 0.5s forwards;
+      }
+      @keyframes stroke {
+        0% {
+          stroke-dashoffset: 582;
+        }
+        100% {
+          stroke-dashoffset: 0;
+        }
+      }
+    }
+    .home_sort03 {
+      float: left;
+      margin: 20px;
+      width: 200px;
+      height: 200px;
+      background: url(../img/song_cover/a03.jpg) center center no-repeat;
+      background-size: 100% 100%;
+      transition: background-size 0.3s;
+      .selector {
+        position: absolute;
+        top: -25px;
+        left: -25px;
+        width: 250px;
+        height: 250px;
+        pointer-events: none;
+
+        .st0 {
+          stroke-dasharray: 582;
+          stroke-dashoffset: 582;
+        }
+      }
+      &:hover {
+        background-size: 120% 120%;
+      }
+
+      &:hover .st0 {
+        animation: stroke 0.5s forwards;
+      }
+      @keyframes stroke {
+        0% {
+          stroke-dashoffset: 582;
+        }
+        100% {
+          stroke-dashoffset: 0;
+        }
+      }
+    }
+    .home_sort04 {
+      float: left;
+      margin: 20px;
+      width: 200px;
+      height: 200px;
+      background: url(../img/song_cover/a04.jpg) center center no-repeat;
+      background-size: 100% 100%;
+      transition: background-size 0.3s;
+      .selector {
+        position: absolute;
+        top: -25px;
+        left: -25px;
+        width: 250px;
+        height: 250px;
+        pointer-events: none;
+
+        .st0 {
+          stroke-dasharray: 582;
+          stroke-dashoffset: 582;
+        }
+      }
+      &:hover {
+        background-size: 120% 120%;
+      }
+
+      &:hover .st0 {
+        animation: stroke 0.5s forwards;
+      }
+      @keyframes stroke {
+        0% {
+          stroke-dashoffset: 582;
+        }
+        100% {
+          stroke-dashoffset: 0;
+        }
+      }
+    }
+    .home_sort05 {
+      float: left;
+      margin: 20px;
+      width: 200px;
+      height: 200px;
+      background: url(../img/song_cover/a05.jpg) center center no-repeat;
+      background-size: 100% 100%;
+      transition: background-size 0.3s;
+      .selector {
+        position: absolute;
+        top: -25px;
+        left: -25px;
+        width: 250px;
+        height: 250px;
+        pointer-events: none;
+
+        .st0 {
+          stroke-dasharray: 582;
+          stroke-dashoffset: 582;
+        }
+      }
+      &:hover {
+        background-size: 120% 120%;
+      }
+
+      &:hover .st0 {
+        animation: stroke 0.5s forwards;
+      }
+      @keyframes stroke {
+        0% {
+          stroke-dashoffset: 582;
+        }
+        100% {
+          stroke-dashoffset: 0;
+        }
+      }
+    }
+    .home_sort06 {
+      float: left;
+      margin: 20px;
+      width: 200px;
+      height: 200px;
+      background: url(../img/song_cover/a06.jpg) center center no-repeat;
+      background-size: 100% 100%;
+      transition: background-size 0.3s;
+      .selector {
+        position: absolute;
+        top: -25px;
+        left: -25px;
+        width: 250px;
+        height: 250px;
+        pointer-events: none;
+
+        .st0 {
+          stroke-dasharray: 582;
+          stroke-dashoffset: 582;
+        }
+      }
+      &:hover {
+        background-size: 120% 120%;
+      }
+
+      &:hover .st0 {
+        animation: stroke 0.5s forwards;
+      }
+      @keyframes stroke {
+        0% {
+          stroke-dashoffset: 582;
+        }
+        100% {
+          stroke-dashoffset: 0;
+        }
+      }
+    }
+  }
+  @media screen and (max-width: 1440px) {
+    p {
+      top: 160px;
+      left: calc((50% - 300px) + 10%);
+      width: 600px;
+      font-size: 1rem;
     }
     .home_sort_container {
-      float: left;
-      width: 720px;
-      height: 480px;
+      top: 180px;
 
       .home_sort {
-        position: relative;
-        a {
-          width: 100%;
-          height: 100%;
-          color: #ffffff;
-          justify-content: center;
-          align-items: center;
-          font-size: 2.4rem;
-          text-shadow: 0px 0px 5px black, 0px 0px 10px black;
-          white-space: nowrap;
-        }
-      }
-      .home_sort01 {
-        float: left;
-        margin: 20px;
-        width: 200px;
-        height: 200px;
-        background: url(../img/song_cover/a01.jpg) center center;
-        background-size: 100% 100%;
-        transition: background-size 0.3s;
+        width: 160px;
+        height: 160px;
         .selector {
-          position: absolute;
-          top: -25px;
-          left: -25px;
-          width: 250px;
-          height: 250px;
-          pointer-events: none;
-
-          .st0 {
-            stroke-dasharray: 582;
-            stroke-dashoffset: 582;
-          }
-        }
-        &:hover {
-          background-size: 120% 120%;
-        }
-        &:hover .st0 {
-          animation: stroke 0.5s forwards;
-        }
-        @keyframes stroke {
-          0% {
-            stroke-dashoffset: 582;
-          }
-          100% {
-            stroke-dashoffset: 0;
-          }
-        }
-      }
-      .home_sort02 {
-        float: left;
-        margin: 20px;
-        width: 200px;
-        height: 200px;
-        background: url(../img/song_cover/a02.jpg) center center no-repeat;
-        background-size: 100% 100%;
-        transition: background-size 0.3s;
-        .selector {
-          position: absolute;
-          top: -25px;
-          left: -25px;
-          width: 250px;
-          height: 250px;
-          pointer-events: none;
-
-          .st0 {
-            stroke-dasharray: 582;
-            stroke-dashoffset: 582;
-          }
-        }
-        &:hover {
-          background-size: 120% 120%;
-        }
-
-        &:hover .st0 {
-          animation: stroke 0.5s forwards;
-        }
-        @keyframes stroke {
-          0% {
-            stroke-dashoffset: 582;
-          }
-          100% {
-            stroke-dashoffset: 0;
-          }
-        }
-      }
-      .home_sort03 {
-        float: left;
-        margin: 20px;
-        width: 200px;
-        height: 200px;
-        background: url(../img/song_cover/a03.jpg) center center no-repeat;
-        background-size: 100% 100%;
-        transition: background-size 0.3s;
-        .selector {
-          position: absolute;
-          top: -25px;
-          left: -25px;
-          width: 250px;
-          height: 250px;
-          pointer-events: none;
-
-          .st0 {
-            stroke-dasharray: 582;
-            stroke-dashoffset: 582;
-          }
-        }
-        &:hover {
-          background-size: 120% 120%;
-        }
-
-        &:hover .st0 {
-          animation: stroke 0.5s forwards;
-        }
-        @keyframes stroke {
-          0% {
-            stroke-dashoffset: 582;
-          }
-          100% {
-            stroke-dashoffset: 0;
-          }
-        }
-      }
-      .home_sort04 {
-        float: left;
-        margin: 20px;
-        width: 200px;
-        height: 200px;
-        background: url(../img/song_cover/a04.jpg) center center no-repeat;
-        background-size: 100% 100%;
-        transition: background-size 0.3s;
-        .selector {
-          position: absolute;
-          top: -25px;
-          left: -25px;
-          width: 250px;
-          height: 250px;
-          pointer-events: none;
-
-          .st0 {
-            stroke-dasharray: 582;
-            stroke-dashoffset: 582;
-          }
-        }
-        &:hover {
-          background-size: 120% 120%;
-        }
-
-        &:hover .st0 {
-          animation: stroke 0.5s forwards;
-        }
-        @keyframes stroke {
-          0% {
-            stroke-dashoffset: 582;
-          }
-          100% {
-            stroke-dashoffset: 0;
-          }
-        }
-      }
-      .home_sort05 {
-        float: left;
-        margin: 20px;
-        width: 200px;
-        height: 200px;
-        background: url(../img/song_cover/a05.jpg) center center no-repeat;
-        background-size: 100% 100%;
-        transition: background-size 0.3s;
-        .selector {
-          position: absolute;
-          top: -25px;
-          left: -25px;
-          width: 250px;
-          height: 250px;
-          pointer-events: none;
-
-          .st0 {
-            stroke-dasharray: 582;
-            stroke-dashoffset: 582;
-          }
-        }
-        &:hover {
-          background-size: 120% 120%;
-        }
-
-        &:hover .st0 {
-          animation: stroke 0.5s forwards;
-        }
-        @keyframes stroke {
-          0% {
-            stroke-dashoffset: 582;
-          }
-          100% {
-            stroke-dashoffset: 0;
-          }
-        }
-      }
-      .home_sort06 {
-        float: left;
-        margin: 20px;
-        width: 200px;
-        height: 200px;
-        background: url(../img/song_cover/a06.jpg) center center no-repeat;
-        background-size: 100% 100%;
-        transition: background-size 0.3s;
-        .selector {
-          position: absolute;
-          top: -25px;
-          left: -25px;
-          width: 250px;
-          height: 250px;
-          pointer-events: none;
-
-          .st0 {
-            stroke-dasharray: 582;
-            stroke-dashoffset: 582;
-          }
-        }
-        &:hover {
-          background-size: 120% 120%;
-        }
-
-        &:hover .st0 {
-          animation: stroke 0.5s forwards;
-        }
-        @keyframes stroke {
-          0% {
-            stroke-dashoffset: 582;
-          }
-          100% {
-            stroke-dashoffset: 0;
-          }
-        }
-      }
-    }
-  }
-  @media screen and (max-width: 1280px) {
-    .home_sloth_bottom {
-      width: calc(550px * 0.8);
-      height: calc(622px * 0.8);
-    }
-    .holder {
-      .text_container {
-        width: 450px;
-      }
-      .home_sort_container {
-        width: 540px;
-        height: 360px;
-        .home_sort {
-          width: 160px;
-          height: 160px;
-          margin: 10px;
-          .selector {
+          top: -20px;
+          left: -20px;
+          width: 200px;
+          height: 200px;
+          svg {
             width: 200px;
             height: 200px;
-            svg {
-              width: 200px;
-              height: 200px;
-            }
           }
-          a {
-            font-size: 1.6rem;
-          }
+        }
+        a {
+          font-size: 2rem;
         }
       }
     }
   }
   @media screen and (max-width: 992px) {
-    .home_sloth_bottom {
-      width: calc(550px * 0.7);
-      height: calc(622px * 0.7);
-    }
-    .holder {
-      .text_container {
-        display: block;
-        width: 100%;
-        padding: 25px;
-        p {
-          font-size: 1rem;
-        }
-      }
-      .home_sort_container {
-        display: block;
-        width: 480px;
-        height: 320px;
-        .home_sort {
-          width: 140px;
-          height: 140px;
-          .selector {
-            width: 180px;
-            height: 180px;
-            svg {
-              width: 180px;
-              height: 180px;
-            }
-          }
-          a {
-            font-size: 1.4rem;
-          }
-        }
-      }
-    }
-  }
-  @media screen and (max-width: 768px) {
-    .home_sloth_bottom {
+    .home_collection {
       display: none;
     }
-    .holder {
-      .text_container {
-        display: block;
-        width: 100%;
-        p {
-          font-size: 0.8rem;
-        }
-      }
-      .home_sort_container {
-        display: block;
-        width: 100%;
-        height: 280px;
-        padding: 0 40px 0 15px;
-        .home_sort {
-          width: 120px;
-          height: 120px;
-          .selector {
-            width: 160px;
-            height: 160px;
-            svg {
-              width: 160px;
-              height: 160px;
-            }
-          }
-          a {
-            font-size: 1.2rem;
-          }
+    p {
+      left: calc((50% - 300px));
+    }
+
+    .home_sort_container {
+      left: calc(50% - 300px);
+      width: 600px;
+      height: 400px;
+      .home_sort {
+        a {
+          font-size: 1.6rem;
         }
       }
     }
   }
   @media screen and (max-width: 576px) {
-    .holder {
-      .text_container {
-        padding: 10px 25px;
+    p {
+      position: initial;
+      width: 100%;
+      margin: 160px 0 0 0;
+      padding: 0 10px;
+    }
+    .home_sort_container {
+      top: 220px;
+      left: calc(50% - 195px);
+      width: 390px;
+      .home_sort {
+        width: 110px;
+        height: 110px;
+        margin: 10px;
+        .selector {
+          top: -13.75px;
+          left: -13.75px;
+          width: 137.5px;
+          height: 137.5px;
+          svg {
+            width: 137.5px;
+            height: 137.5px;
+          }
+        }
+        a {
+          font-size: 1rem;
+        }
       }
-      .home_sort_container {
-        height: 360px;
-        .home_sort {
+    }
+  }
+  @media screen and (max-width: 375px) {
+    .home_sort_container {
+      left: calc(50% - 135px);
+      width: 270px;
+      .home_sort {
+        width: 80px;
+        height: 80px;
+        margin: 5px;
+        .selector {
+          top: -10px;
+          left: -10px;
           width: 100px;
           height: 100px;
-          .selector {
-            top: -10px;
-            left: -10px;
-            width: 120px;
-            height: 120px;
-            svg {
-              width: 120px;
-              height: 120px;
-            }
-          }
-          a {
-            font-size: 1rem;
-          }
-        }
-      }
-    }
-  }
-  @media screen and (max-height: 640px) {
-    .holder {
-      .text_container {
-        padding: 0px 25px;
-      }
-      .home_sort_container {
-        .home_sort {
-          height: 80px;
-          .selector {
-            top: -10px;
+          svg {
+            width: 100px;
             height: 100px;
-            svg {
-              height: 100px;
-            }
-          }
-          a {
-            font-size: 1rem;
           }
         }
-      }
-    }
-  }
-  @media screen and (max-height: 576px) {
-    .holder {
-      .home_sort_container {
-        .home_sort {
-          height: 60px;
-          .selector {
-            top: -10px;
-            height: 80px;
-            svg {
-              height: 80px;
-            }
-          }
-          a {
-            font-size: 1rem;
-          }
+        a {
+          font-size: 0.8rem;
         }
       }
     }
@@ -1505,55 +1387,12 @@
 }
 .home_sec06 {
   .home_about {
-    width: calc(624px * 0.5);
-    height: calc(228px * 0.5);
-    margin: 60px auto 0 auto;
-    background: url(../img/home/about.png) center center no-repeat;
-    background-size: cover;
-  }
-  .home_audioMan {
     position: absolute;
-    left: 320px;
-    width: 1153px;
-    height: 751px;
-    background: url(../img/home/audio_man.png) center center no-repeat;
-    background-size: cover;
-    .gear01 {
-      position: absolute;
-      top: 157px;
-      left: 299px;
-      width: 66px;
-      height: 63px;
-      background: url(../img/home/audiotape_item01.png) center center no-repeat;
-      background-size: cover;
-      animation: gear_rotate01 3s infinite linear;
-    }
-    .gear02 {
-      position: absolute;
-      top: 184px;
-      left: 146px;
-      width: 66px;
-      height: 63px;
-      background: url(../img/home/audiotape_item02.png) center center no-repeat;
-      background-size: cover;
-      animation: gear_rotate02 3s infinite linear;
-    }
-    @keyframes gear_rotate01 {
-      0% {
-        transform: rotate(0deg);
-      }
-      100% {
-        transform: rotate(360deg);
-      }
-    }
-    @keyframes gear_rotate02 {
-      0% {
-        transform: rotate(360deg);
-      }
-      100% {
-        transform: rotate(0deg);
-      }
-    }
+    top: 60px;
+    left: 80px;
+    width: 190px;
+    height: 790px;
+    background: url(../img/home/about.png);
   }
   p {
     position: absolute;

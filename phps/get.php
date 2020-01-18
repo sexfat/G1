@@ -94,7 +94,10 @@
     case "report":
       try {
         require_once('./connect_dd104g1.php');
-        $sql = "SELECT * FROM `report`";
+        $sql = "SELECT report.re_no,report.message_no,report.mem_no,report.re_sta,message_board.message_info 
+        FROM `report` inner join `message_board` on  
+        (message_board.message_no = report.message_no)";
+
         $report = $pdo->prepare($sql);
         $report->execute();
         

@@ -5,7 +5,7 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
-    <title>Sound Wave</title>
+    <title>Document</title>
     <link rel="stylesheet" href="./css/main.css">
     <link rel="stylesheet" href="./css/home.css">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/pagePiling.js/1.5.6/jquery.pagepiling.min.css">
@@ -110,6 +110,7 @@
         $(document).ready(() => {
             /* ---------------- 全域變數 ---------------- */
             let audio = $("#player audio")[0]; //撥放器
+            console.log(audio)
             let vol_s, vol_b, vol_drag = false,
                 songTime,
                 playStatus = true,
@@ -198,24 +199,7 @@
                     if (playerListName == undefined) {
                         myPlaylist = myPlaylist;
                     } else {
-                        if (temporary === true) {
-                            if (home_play === true) {
-                                myPlaylist.splice(0, 1);
-                                temporary = false;
-                                home_play = false;
-                                nowPlaying = 0;
-                                document.querySelector('.home_play[data-playstatus=true]').setAttribute('data-playstatus', 'false');
-                                isPlaying(true);
-
-                            } else {
-                                myPlaylist.splice(0, 1);
-                                temporary = false;
-                                home_play = false;
-                                isPlaying(true);
-                            }
-                        } else {
-                            isPlaying(true);
-                        }
+                        isPlaying(true);
                         if (playerListName == 'Liked songs') {
                             getLikedList();
                         } else {
@@ -223,7 +207,6 @@
                         }
                         nowPlaying = 0;
                         audio.currentTime = 0;
-                        console.log(myPlaylist)
                         $("#player audio").attr("src", myPlaylist[nowPlaying].song_addr);
                         $("#player .songInfo .name").text(myPlaylist[nowPlaying].song_name);
                         $("#player .songInfo .creator").text(myPlaylist[nowPlaying].mem_name);
@@ -245,46 +228,18 @@
 
                 //下一首按鈕 -- 切換下一首
                 $("#player .next").click(function () {
-                    console.log(myPlaylist);
+                    console.log(listLen);
                     if (nowPlaying == listLen - 1) {
                         nowPlaying = listLen - 1;
                     } else {
                         nowPlaying++;
                     }
                     $("#player audio").attr("src", myPlaylist[nowPlaying].song_addr);
-                    if (temporary === true) {
-                        if (home_play === true) {
-                            myPlaylist.splice(0, 1);
-                            nowPlaying = 0;
-                            temporary = false;
-                            home_play = false;
-                            document.querySelector('.home_play[data-playstatus=true] i.fa-pause').classList.add('fa-play')
-                            document.querySelector('.home_play[data-playstatus=true] i.fa-pause').classList.remove('fa-pause')
-                            document.querySelector('.home_play[data-playstatus=true]').setAttribute('data-playstatus', 'false');
-                            if (playStatus == true) {
-                                isPlaying(false);
-                            } else {
-                                isPlaying(true);
-                            }
-
-                        } else {
-                            myPlaylist.splice(0, 1);
-                            temporary = false;
-                            home_play = false;
-                            if (playStatus == true) {
-                                isPlaying(false);
-                            } else {
-                                isPlaying(true);
-                            }
-                        }
+                    if (playStatus == true) {
+                        isPlaying(false);
                     } else {
-                        if (playStatus == true) {
-                            isPlaying(false);
-                        } else {
-                            isPlaying(true);
-                        }
+                        isPlaying(true);
                     }
-
                     listStatus();
                 });
 
@@ -296,37 +251,10 @@
                         nowPlaying--;
                     }
                     $("#player audio").attr("src", myPlaylist[nowPlaying].song_addr);
-                    if (temporary === true) {
-                        if (home_play === true) {
-                            myPlaylist.splice(0, 1);
-                            nowPlaying = 0;
-                            temporary = false;
-                            home_play = false;
-                            document.querySelector('.home_play[data-playstatus=true] i.fa-pause').classList.add('fa-play')
-                            document.querySelector('.home_play[data-playstatus=true] i.fa-pause').classList.remove('fa-pause')
-                            document.querySelector('.home_play[data-playstatus=true]').setAttribute('data-playstatus', 'false');
-                            if (playStatus == true) {
-                                isPlaying(false);
-                            } else {
-                                isPlaying(true);
-                            }
-
-                        } else {
-                            myPlaylist.splice(0, 1);
-                            temporary = false;
-                            home_play = false;
-                            if (playStatus == true) {
-                                isPlaying(false);
-                            } else {
-                                isPlaying(true);
-                            }
-                        }
+                    if (playStatus == true) {
+                        isPlaying(false);
                     } else {
-                        if (playStatus == true) {
-                            isPlaying(false);
-                        } else {
-                            isPlaying(true);
-                        }
+                        isPlaying(true);
                     }
                     listStatus();
                 });
@@ -472,6 +400,7 @@
                         myPlaylist = JSON.parse(xhr.responseText);
                         listLen = myPlaylist.length;
                         createPlayerList(myPlaylist);
+                        console.log(myPlaylist);
                     } else {
                         alert(xhr.status);
                     }
@@ -603,7 +532,6 @@
 
             //播放狀態控制 -- 如果沒有播放就讓他撥
             function isPlaying(isPlaying) {
-                // console.log(playStatus)
                 context.resume().then(() => {
                     if (!isPlaying) {
                         audio.play();
@@ -613,37 +541,18 @@
                             right: "-50%",
                             opacity: "1"
                         }, "fast", "swing").addClass("recRotate");
-                        if (home_play === false) {
-                            if (temporary === true) {
-                                home_play = true;
-                                document.querySelector(`.home_play[data-songNo="${vm.play_song_info.song_no}"]`).setAttribute('data-playStatus', 'true');
-                                document.querySelector(`.home_play[data-songNo="${vm.play_song_info.song_no}"] i.fa-play`).classList.add('fa-pause')
-                                document.querySelector(`.home_play[data-songNo="${vm.play_song_info.song_no}"] i.fa-play`).classList.remove('fa-play')
-                            }
-                        }
                         playStatus = true;
-                        if (waveLooperSwitch === false) {
-                            waveLooper();
-                        }
+                        waveLooper();
                         listStatus();
                     } else {
                         audio.pause();
                         $("#player .play").html('<i class="fas fa-play"></i>');
                         $(".listPlay.nowlistening").html('<img src="./img/library/coverPlay-s.png">');
-                        if (home_play === true) {
-                            if (temporary === true) {
-                                document.querySelector('.home_play[data-playStatus=true]').setAttribute('data-playStatus', 'false');
-                                document.querySelector('.home_play i.fa-pause').classList.add('fa-play')
-                                document.querySelector('.home_play i.fa-pause').classList.remove('fa-pause')
-                            }
-                        }
                         playStatus = false;
-
                         listStatus();
                         $("#player .player_b .coverRec").animate({
                             right: "0%"
                         }).removeClass("recRotate");
-                        home_play = false;
                     }
                 });
                 $("#player .songInfo .name").text(myPlaylist[nowPlaying].song_name);
@@ -764,10 +673,6 @@
                 }
             }
 
-
-            // pagepiling =====================================================================================================================
-
-
             $('#pagepiling').pagepiling(
                 {
                     verticalCentered: false, //section 內物件置中對齊
@@ -778,11 +683,11 @@
                     },
                 }
             );
-            $('.home_sec').on('swipedown', () => {
-                $.fn.pagepiling.moveSectionUp();
-            });
-            $('.home_sec').on('swipeup', () => {
+            $(document).on('swipedown', () => {
                 $.fn.pagepiling.moveSectionDown();
+            });
+            $(document).on('swipeup', () => {
+                $.fn.pagepiling.moveSectionUp();
             });
 
             // PIXI =======================================================================================================================================
@@ -795,84 +700,90 @@
                 antialias: true,
             });
 
-            let sprites = new PIXI.Container();
-            let items = [
-                'apple',
-                'banana',
-                'banner',
-                'cloud',
-                'cross',
-                'gear',
-                'heart',
-                'lightning',
-                'note',
-                'radio',
-                'rock',
-                'skull',
-                'star',
-                'sunglasses',
-                'sword',
-                'vue',
-                'weeds',
-            ]
-            let spritesArr = new Array();
-            let direction = new Array();
+            let sprites = new PIXI.ParticleContainer(10000, {
+                scale: true,
+                position: true,
+                rotation: true,
+                uvs: true,
+                alpha: true,
+            });
 
+            let GodrayFilter = new PIXI.filters.GodrayFilter({
+                angle: 0,
+                gain: 0.6,
+                lacunrity: 2.8,
+                parallel: true,
+            });
+
+
+            let tt = PIXI.Sprite.from('./img/home/bg.png')
             let graphics01 = new PIXI.Graphics();
             let graphics02 = new PIXI.Graphics();
             let graphics03 = new PIXI.Graphics();
             let graphics04 = new PIXI.Graphics();
             let graphics05 = new PIXI.Graphics();
 
+
             graphics01.position = { x: 0, y: window.innerHeight }
             graphics02.position = { x: 0, y: window.innerHeight }
             graphics03.position = { x: 0, y: window.innerHeight }
             graphics04.position = { x: 0, y: window.innerHeight }
             graphics05.position = { x: 0, y: window.innerHeight }
-
+            sprites.position = { x: 0, y: window.innerHeight }
             graphics01.scale.y = -1;
             graphics02.scale.y = -1;
             graphics03.scale.y = -1;
             graphics04.scale.y = -1;
             graphics05.scale.y = -1;
+            sprites.scale.y = -1;
+            // app.stage.filters = [GodrayFilter];
 
-            app.stage.addChild(sprites, graphics01, graphics02, graphics03, graphics04, graphics05);
+            app.stage.addChild(graphics01, graphics02, graphics03, graphics04, graphics05);
 
+            let points = [];
+            let totalSprites = app.renderer instanceof PIXI.Renderer ? 10000 : 100;
             document.body.appendChild(app.view);
 
 
-            // audio
 
+
+
+            // audio
+            // audio = new Audio();
             context = new (window.AudioContext || window.webkitAudioContext);
             analyser = context.createAnalyser();
             analyser.fftSize = 4096;
 
+            // audio.src = "./img/home/Heroes Tonight.m4a"
+            audio.volume = 0.05;
             source = context.createMediaElementSource(audio);
             source.connect(analyser);
             analyser.connect(context.destination);
             frequency_array = new Float32Array(analyser.frequencyBinCount); //音頻取值
-            // document.querySelector('.home_play').addEventListener('click', () => {
-            //     context.resume().then(() => {
-            //         audio.play();
-            //         waveLooper();
-            //     })
-            // })
 
             document.querySelector('.home_wave_container').appendChild(app.view);
-            let waveLooperSwitch = false;
+
 
             let waveLooper = () => {
-                waveLooperSwitch = true;
                 if (playStatus) {
+                    sprites.removeChildren()
                     analyser.getFloatFrequencyData(frequency_array);
-                    direction.push(Math.PI * (Math.random() * 3));
-                    let itemsRandom = parseInt(Math.random() * items.length)
-                    sprite = PIXI.Sprite.from(`./img/home/items/${items[itemsRandom]}.png`)
+                    if (GodrayFilter.time >= 100) {
+                        GodrayFilter.time = 0;
+                    } else {
+                        GodrayFilter.time += 0.01;
+                    }
+                    for (let i = 0; i <= 100; i++) {
+                        let aa = frequency_array[i] <= -100 ? 0 : parseInt((window.innerHeight + frequency_array[i] * 10) / 10)
+                        for (let j = 0; j <= aa; j++) {
+                            let point = PIXI.Sprite.from('./img/home/items/star.png');
 
-                    sprite.x = Math.random() * window.innerWidth + 1;
-                    sprite.y = window.innerHeight / 2;
-                    spritesArr.push(sprite)
-                    sprites.addChild(sprite)
+                            point.tint = Math.random() * 0xE8D4CD;
+                            point.x = 20 * i;
+                            point.y = (10 * j + j * 2);
+                            sprites.addChild(point)
+                        }
+                    }
 
                     draw(frequency_array);
                     window.requestAnimationFrame(waveLooper);
@@ -883,55 +794,50 @@
                     graphics03.clear(0, 0, window.innerWidth, window.innerHeight);
                     graphics04.clear(0, 0, window.innerWidth, window.innerHeight);
                     graphics05.clear(0, 0, window.innerWidth, window.innerHeight);
-                    waveLooperSwitch = false;
+
                     return;
                 }
             }
+            document.querySelector('.home_play').addEventListener('click', () => {
+                context.resume().then(() => {
+                    audio.play();
+                    waveLooper();
+                });
+            });
 
             let draw = (frequency_array) => {
+
                 graphics01.clear(0, 0, window.innerWidth, window.innerHeight);
                 graphics02.clear(0, 0, window.innerWidth, window.innerHeight);
                 graphics03.clear(0, 0, window.innerWidth, window.innerHeight);
                 graphics04.clear(0, 0, window.innerWidth, window.innerHeight);
                 graphics05.clear(0, 0, window.innerWidth, window.innerHeight);
 
-                graphics01.lineStyle(1, 0xF6F63D);
+                // graphics01.lineStyle(2, 0x5BCCFD);
+                graphics01.lineStyle(2, 0xFFD700);
                 graphics02.lineStyle(1, 0xF5C900);
-                graphics03.lineStyle(2, 0xFFD700);
-                graphics04.lineStyle(1, 0xF5C900);
+                graphics03.lineStyle(1, 0xF5C900);
+                graphics04.lineStyle(1, 0xF6F63D);
                 graphics05.lineStyle(1, 0xF6F63D);
 
-                let volume = audio.volume * 15;
-                for (let i = 0; i <= 2000; i++) {
-                    frequency_array[i] = frequency_array[i] - volume <= -100 ? -100 : frequency_array[i] - volume;
-                    if (i == 0) {
-                        graphics01.moveTo((2 * i) + 10, window.innerHeight / 2 + (frequency_array[i] + 98) * 4);
-                        graphics02.moveTo((2 * i) + 10, window.innerHeight / 2 + (frequency_array[i] + 99) * 4);
-                        graphics03.moveTo((2 * i) + 10, window.innerHeight / 2 + (frequency_array[i] + 100) * 4);
-                        graphics04.moveTo((2 * i) + 10, window.innerHeight / 2 + (frequency_array[i] + 101) * 4);
-                        graphics05.moveTo((2 * i) + 10, window.innerHeight / 2 + (frequency_array[i] + 102) * 4);
-                    } else {
-                        graphics01.lineTo((2 * i) + 10, window.innerHeight / 2 + (frequency_array[i] + 98) * 4);
-                        graphics02.lineTo((2 * i) + 10, window.innerHeight / 2 + (frequency_array[i] + 99) * 4);
-                        graphics03.lineTo((2 * i) + 10, window.innerHeight / 2 + (frequency_array[i] + 100) * 4);
-                        graphics04.lineTo((2 * i) + 10, window.innerHeight / 2 + (frequency_array[i] + 101) * 4);
-                        graphics05.lineTo((2 * i) + 10, window.innerHeight / 2 + (frequency_array[i] + 102) * 4);
-                    }
-                }
 
-                for (let i = 0; i < spritesArr.length; i++) {
-                    let sprite = spritesArr[i];
-                    sprite.x -= 1 * Math.cos(direction[i] + Math.random());
-                    sprite.y -= 1 * Math.sin(direction[i] + Math.random());
-                    sprite.alpha -= 0.004;
-                    if (sprite.y <= window.innerHeight / 2 - 400) {
-                        sprites.removeChild(sprite);
-                        spritesArr.splice(i, 1);
-                        direction.splice(i, 1);
-                    } else if (sprite.y >= window.innerHeight / 2 + 400) {
-                        sprites.removeChild(sprite);
-                        spritesArr.splice(i, 1);
-                        direction.splice(i, 1);
+                for (let i = 0; i <= 2000; i++) {
+                    frequency_array[i] = frequency_array[i] <= -100 ? -100 : frequency_array[i]
+                    if (i == 0) {
+                        graphics01.moveTo((2 * i) + 10, window.innerHeight / 2 + (frequency_array[i] + 100) * 4);
+                        graphics02.moveTo((2 * i) + 10, window.innerHeight / 2 + (frequency_array[i] + 101) * 4);
+                        graphics03.moveTo((2 * i) + 10, window.innerHeight / 2 + (frequency_array[i] + 99) * 4);
+                        graphics04.moveTo((2 * i) + 10, window.innerHeight / 2 + (frequency_array[i] + 102) * 4);
+                        graphics05.moveTo((2 * i) + 10, window.innerHeight / 2 + (frequency_array[i] + 98) * 4);
+
+
+                    } else {
+                        graphics01.lineTo((2 * i) + 10, window.innerHeight / 2 + (frequency_array[i] + 100) * 4);
+                        graphics02.lineTo((2 * i) + 10, window.innerHeight / 2 + (frequency_array[i] + 101) * 4);
+                        graphics03.lineTo((2 * i) + 10, window.innerHeight / 2 + (frequency_array[i] + 99) * 4);
+                        graphics04.lineTo((2 * i) + 10, window.innerHeight / 2 + (frequency_array[i] + 102) * 4);
+                        graphics05.lineTo((2 * i) + 10, window.innerHeight / 2 + (frequency_array[i] + 98) * 4);
+
                     }
                 }
             }
@@ -943,93 +849,54 @@
             });
 
 
-            // REMIX function =====================================================================================================================
-
-            // ul li click
-            let li1Click = false;
-            let li2Click = false;
-            let li3Click = false;
-
-            document.querySelectorAll('.content ul li')[0].addEventListener('click', () => {
-                if (li1Click === true) {
-                    li1Click = false
-                    document.querySelector('.text0').style.height = '100%';
-                    document.querySelector('.text1').style.height = '0px';
-                    document.querySelector('.text2').style.height = '0px';
-                    document.querySelector('.text3').style.height = '0px';
-                } else {
-                    li1Click = true;
-                    li2Click = false;
-                    li3Click = false;
-                    document.querySelector('.text0').style.height = '0px';
-                    document.querySelector('.text1').style.height = '100%';
-                    document.querySelector('.text2').style.height = '0px';
-                    document.querySelector('.text3').style.height = '0px';
-                }
-            });
-            document.querySelectorAll('.content ul li')[1].addEventListener('click', () => {
-                if (li2Click === true) {
-                    li2Click = false
-                    document.querySelector('.text0').style.height = '100%';
-                    document.querySelector('.text1').style.height = '0px';
-                    document.querySelector('.text2').style.height = '0px';
-                    document.querySelector('.text3').style.height = '0px';
-                } else {
-                    li2Click = true;
-                    li1Click = false;
-                    li3Click = false;
-                    document.querySelector('.text0').style.height = '0px';
-                    document.querySelector('.text1').style.height = '0px';
-                    document.querySelector('.text2').style.height = '100%';
-                    document.querySelector('.text3').style.height = '0px';
-                }
-            });
-            document.querySelectorAll('.content ul li')[2].addEventListener('click', () => {
-                if (li3Click === true) {
-                    li3Click = false
-                    document.querySelector('.text0').style.height = '100%';
-                    document.querySelector('.text1').style.height = '0px';
-                    document.querySelector('.text2').style.height = '0px';
-                    document.querySelector('.text3').style.height = '0px';
-                } else {
-                    li3Click = true;
-                    li1Click = false;
-                    li2Click = false;
-                    document.querySelector('.text0').style.height = '0px';
-                    document.querySelector('.text1').style.height = '0px';
-                    document.querySelector('.text2').style.height = '0px';
-                    document.querySelector('.text3').style.height = '100%';
-                }
-            });
-
-            // home_mixer_bt click
-            let home_mixer_bt_click = (e) => {
-                e.stopPropagation();
-                document.querySelector('.home_mixer_box').setAttribute('style', `display: block; top: 60px; width: ${556 - ((768 - window.innerWidth) / 4.48) * 0.01 * 236}px; height: ${616 - ((768 - window.innerWidth) / 4.48) * 0.01 * (616 - 616 / 1.7375)}px`)
-                document.querySelector('.home_mixer_box').style.left = `${(window.innerWidth - parseInt(document.querySelector('.home_mixer_box').style.width)) / 2}px`
-                document.querySelector('.home_mixer').setAttribute('style', `width: ${556 - ((768 - window.innerWidth) / 4.48) * 0.01 * 236}px; height: ${616 - ((768 - window.innerWidth) / 4.48) * 0.01 * (616 - 616 / 1.7375)}px`)
-                document.querySelector('.close').addEventListener('click', (e) => {
-                    e.stopPropagation();
-                    document.querySelector('.home_mixer_box').style.display = 'none'
-                });
-            }
-
-
             // RANK Slider =====================================================================================================================
 
 
             transform_rotate = new Array();
-            for (let i = 0; i < 10; i++) {
-                transform_rotate.push(i * 36);
-            }
             rankOrder = 1;
             set_value = {
                 size: parseInt(160 - (((1920 - window.innerWidth) / 16) * 0.01 * 60)),
                 translateZ: parseInt(360 - (((1920 - window.innerWidth) / 16) * 0.01 * 130)),
             }
 
-            let left_arrow_click = () => {
-                document.querySelector('.home_left_arrow').removeEventListener('click', left_arrow_click);
+            for (let i = 0; i < 10; i++) {
+                if (i == 0) {
+                    document.querySelector(`.home_song${i + 1}`).setAttribute(
+                        'style',
+                        `width: ${set_value.size}px;
+                        height: ${set_value.size}px;
+                        transform: rotateY(${i * 36}deg) translateZ(${set_value.translateZ}px) scale(1.18);`
+                    );
+                    transform_rotate.push(`${parseInt(document.querySelector(`.home_song${i + 1}`).style.transform.substr(8, 3))}`);
+                    document.querySelector(`.home_song${rankOrder} .home_shadow`).style.boxShadow = '5px 5px 5px 1px rgba(0, 0, 0, 0.2)';
+                    if (window.innerWidth <= 576) {
+                        document.querySelector(`.home_song${rankOrder} .home_song_info`).style.transform = `translateX(${set_value.size}px)`;
+                    } else {
+                        document.querySelector(`.home_song${rankOrder} .home_song_info`).style.transform = `translateX(${-set_value.size}px)`;
+                    }
+                    if (window.innerWidth <= 576) {
+                        document.querySelector(`.home_song${rankOrder} .home_vinyl_records_s`).style.transform = `translateX(${-set_value.size / 2}px)`;
+                    } else {
+                        document.querySelector(`.home_song${rankOrder} .home_vinyl_records_s`).style.transform = `translateX(${set_value.size / 2}px)`;
+                    }
+                    document.querySelector(`.home_song${rankOrder} .home_vinyl_records_s`).style.transform = `translateX(${set_value.size / 2}px)`;
+
+                } else {
+                    document.querySelector(`.home_song${i + 1}`).setAttribute(
+                        'style',
+                        `width: ${set_value.size}px;
+                        height: ${set_value.size}px;
+                        transform: rotateY(${i * 36}deg) translateZ(${set_value.translateZ}px`
+                    );
+                    transform_rotate.push(`${parseInt(document.querySelector(`.home_song${i + 1}`).style.transform.substr(8, 3))}`);
+                }
+            }
+            document.querySelector('.home_perspective').setAttribute(
+                'style',
+                `left: ${540 - (((1920 - window.innerWidth) / 16) * 0.01 * 1020)}px`
+            );
+
+            let right_arrow_click = () => {
                 document.querySelector('.home_right_arrow').removeEventListener('click', right_arrow_click);
                 document.querySelector('.home_slider').removeEventListener('mousedown', myMousedown);
                 document.querySelector('.home_slider').removeEventListener('mousemove', myMousemove);
@@ -1075,13 +942,11 @@
                     }
                     document.querySelector(`.home_song${rankOrder + 1} .home_vinyl_records_s`).style.transform = 'translateX(0px)';
                 }
-                left_spin();
+                right_spin();
             };
-            document.querySelector('.home_left_arrow').addEventListener('click', left_arrow_click);
-            document.querySelector('.home_left_arrow').addEventListener('mousedown', vm.stopPropagation);
+            document.querySelector('.home_right_arrow').addEventListener('click', right_arrow_click);
 
-            let right_arrow_click = () => {
-                document.querySelector('.home_right_arrow').removeEventListener('click', right_arrow_click);
+            let left_arrow_click = () => {
                 document.querySelector('.home_left_arrow').removeEventListener('click', left_arrow_click);
                 document.querySelector('.home_slider').removeEventListener('mousedown', myMousedown);
                 document.querySelector('.home_slider').removeEventListener('mousemove', myMousemove);
@@ -1127,13 +992,12 @@
                     }
                     document.querySelector(`.home_song${rankOrder - 1} .home_vinyl_records_s`).style.transform = 'translateX(0px)';
                 }
-                right_spin();
+                left_spin();
             };
-            document.querySelector('.home_right_arrow').addEventListener('click', right_arrow_click);
-            document.querySelector('.home_right_arrow').addEventListener('mousedown', vm.stopPropagation);
+            document.querySelector('.home_left_arrow').addEventListener('click', left_arrow_click);
 
             spin = 0;
-            let left_spin = () => {
+            let right_spin = () => {
                 if (spin <= 36) {
                     for (let i = 0; i < 10; i++) {
                         if (+transform_rotate[i] == 360 || +transform_rotate[i] == 0) {
@@ -1148,20 +1012,19 @@
                         }
                     }
                     spin++;
-                    window.requestAnimationFrame(left_spin);
+                    window.requestAnimationFrame(right_spin);
                 } else {
                     transform_rotate = [];
                     for (let i = 0; i < 10; i++) {
                         transform_rotate.push(`${parseInt(document.querySelector(`.home_song${i + 1}`).style.transform.substr(8, 3))} `)
                     }
                     spin = 0;
-                    document.querySelector('.home_left_arrow').addEventListener('click', left_arrow_click);
                     document.querySelector('.home_right_arrow').addEventListener('click', right_arrow_click);
                     document.querySelector('.home_slider').addEventListener('mousedown', myMousedown);
                     document.querySelector('.home_slider').addEventListener('mousemove', myMousemove);
                 }
             }
-            let right_spin = () => {
+            let left_spin = () => {
                 if (spin <= 36) {
                     for (let i = 0; i < 10; i++) {
                         if (+transform_rotate[i] == 0 || +transform_rotate[i] == 360) {
@@ -1178,14 +1041,13 @@
                         }
                     }
                     spin++;
-                    window.requestAnimationFrame(right_spin);
+                    window.requestAnimationFrame(left_spin);
                 } else {
                     transform_rotate = [];
                     for (let i = 0; i < 10; i++) {
                         transform_rotate.push(`${parseInt(document.querySelector(`.home_song${i + 1}`).style.transform.substr(8, 3))}`)
                     }
                     spin = 0;
-                    document.querySelector('.home_right_arrow').addEventListener('click', right_arrow_click);
                     document.querySelector('.home_left_arrow').addEventListener('click', left_arrow_click);
                     document.querySelector('.home_slider').addEventListener('mousedown', myMousedown);
                     document.querySelector('.home_slider').addEventListener('mousemove', myMousemove);
@@ -1297,7 +1159,7 @@
                             }
                             document.querySelector(`.home_song${rankOrder + 1} .home_vinyl_records_s`).style.transform = 'translateX(0px)';
                         }
-                        left_spin();
+                        right_spin();
                     } else if (moveDirection == 'left') {
                         rankOrder++;
                         moveDirection = '';
@@ -1341,7 +1203,7 @@
                             }
                             document.querySelector(`.home_song${rankOrder - 1} .home_vinyl_records_s`).style.transform = 'translateX(0px)';
                         }
-                        right_spin();
+                        left_spin();
                     }
                 } else if (move == false) {
                     document.querySelector('.home_slider').addEventListener('mousedown', myMousedown);
@@ -1351,185 +1213,17 @@
             window.addEventListener('mouseup', myMouseup);
 
 
-            // rank play =============================================================================================
-
-
-            let home_play = false;
-            let temporary = false;
-
-            document.querySelectorAll('.home_song .home_play').forEach((el) => {
-                el.addEventListener('click', (e) => {
-                    home_play = true;
-                    if (temporary === true) {
-                        if (e.target.getAttribute('data-songNo') == vm.play_song_info.song_no) {
-                            if (e.target.getAttribute('data-playStatus') === 'false') {
-                                isPlaying(false);
-                                e.target.setAttribute('data-playStatus', 'true')
-                                e.target.firstChild.classList.add('fa-pause');
-                                e.target.firstChild.classList.remove('fa-play');
-                            } else if (e.target.getAttribute('data-playStatus') === 'true') {
-                                isPlaying(isPlaying)
-                            }
-                        } else {
-                            let play_no = `${e.target.getAttribute('data-songNo')}`
-                            let xhr = new XMLHttpRequest();
-                            xhr.onload = () => {
-                                let play_song_info = JSON.parse(xhr.responseText);
-                                vm.play_song_info.song_no = play_song_info.song_no;
-                                vm.play_song_info.song_name = play_song_info.song_name;
-                                vm.play_song_info.song_author = play_song_info.mem_name;
-                                vm.play_song_info.song_img = play_song_info.song_pic;
-                                vm.play_song_info.song_addr = play_song_info.song_addr;
-                                vm.play_song_info.song_time = play_song_info.totaltime;
-
-                                myPlaylist.splice(0, 1);
-                                myPlaylist.splice(0, 0, {
-                                    song_name: vm.play_song_info.song_name,
-                                    song_pic: vm.play_song_info.song_img,
-                                    song_addr: vm.play_song_info.song_addr,
-                                    totaltime: vm.play_song_info.song_time,
-                                    mem_name: vm.play_song_info.song_author,
-                                });
-                                nowPlaying = 0;
-                                temporary = true;
-                                audio.src = myPlaylist[nowPlaying].song_addr;
-                                isPlaying(false);
-                                document.querySelector('.home_play[data-playStatus=true]').setAttribute('data-playStatus', 'false');
-                                document.querySelector('.home_play i.fa-pause').classList.add('fa-play')
-                                document.querySelector('.home_play i.fa-pause').classList.remove('fa-pause');
-                                e.target.setAttribute('data-playStatus', 'true')
-                                e.target.firstChild.classList.add('fa-pause');
-                                e.target.firstChild.classList.remove('fa-play');
-                            }
-                            xhr.open("post", "./phps/getPlaySongInfo.php", true);
-                            xhr.setRequestHeader("content-type", "application/x-www-form-urlencoded");
-                            xhr.send(`song_no=${play_no}`);
-                        }
-                    } else if (temporary === false) {
-                        if (e.target.getAttribute('data-playStatus') === 'false') {
-                            let play_no = `${e.target.getAttribute('data-songNo')}`
-                            let xhr = new XMLHttpRequest();
-                            xhr.onload = () => {
-                                let play_song_info = JSON.parse(xhr.responseText);
-                                vm.play_song_info.song_no = play_song_info.song_no;
-                                vm.play_song_info.song_name = play_song_info.song_name;
-                                vm.play_song_info.song_author = play_song_info.mem_name;
-                                vm.play_song_info.song_img = play_song_info.song_pic;
-                                vm.play_song_info.song_addr = play_song_info.song_addr;
-                                vm.play_song_info.song_time = play_song_info.totaltime;
-
-                                myPlaylist.splice(0, 0, {
-                                    song_name: vm.play_song_info.song_name,
-                                    song_pic: vm.play_song_info.song_img,
-                                    song_addr: vm.play_song_info.song_addr,
-                                    totaltime: vm.play_song_info.song_time,
-                                    mem_name: vm.play_song_info.song_author,
-                                });
-                                nowPlaying = 0;
-                                temporary = true;
-                                audio.src = myPlaylist[nowPlaying].song_addr;
-                                isPlaying(false);
-                                e.target.setAttribute('data-playStatus', 'true')
-                                e.target.firstChild.classList.add('fa-pause');
-                                e.target.firstChild.classList.remove('fa-play');
-                            }
-                            xhr.open("post", "./phps/getPlaySongInfo.php", true);
-                            xhr.setRequestHeader("content-type", "application/x-www-form-urlencoded");
-                            xhr.send(`song_no=${play_no}`);
-                        }
-                    }
-                });
-            });
-
-
-            // collection hover =======================================================================================
-            document.querySelector('.home_sloth_top').addEventListener('mouseenter', (e) => {
-                e.target.style.top = '20px';
-                document.querySelector('.home_sloth_bottom').style.bottom = `-${document.querySelector('.home_sloth_bottom').offsetHeight / 2}px`
-            })
-            document.querySelector('.home_sloth_top').addEventListener('mouseout', (e) => {
-                e.target.style.top = '-510px';
-                document.querySelector('.home_sloth_bottom').style.bottom = `-30px`
-
-            });
-
-
 
             // RWD and size set =======================================================================================
 
 
             // HOME
-            document.querySelector('.home_vinyl_records').setAttribute('style', `left: ${-250 + ((1920 - window.innerWidth) / 16) * 0.01 * 70}px; width: ${1100 - ((1920 - window.innerWidth) / 16) * 0.01 * 700}px; height: ${1100 - ((1920 - window.innerWidth) / 16) * 0.01 * 700}px`);
+            document.querySelector('.home_vinyl_records').setAttribute('style', `top: ${-100 - ((1920 - window.innerWidth) / 16) * 0.01 * 20}px; left: ${-250 + ((1920 - window.innerWidth) / 16) * 0.01 * 70}px; width: ${1100 - ((1920 - window.innerWidth) / 16) * 0.01 * 700}px; height: ${1100 - ((1920 - window.innerWidth) / 16) * 0.01 * 700}px`);
             document.querySelector('.home_stylus').setAttribute('style', `top: ${-30 + ((1920 - window.innerWidth) / 16) * 0.01 * 55}px; left: ${480 - ((1920 - window.innerWidth) / 16) * 0.01 * 360}px; width: ${618 - ((1920 - window.innerWidth) / 16) * 0.01 * 393}px; height: ${180 - ((1920 - window.innerWidth) / 16) * 0.01 * 114.5}px`);
             document.querySelector('.home_cover_img').setAttribute('style', `top: calc((100% - ${370 - ((1920 - window.innerWidth) / 16) * 0.01 * 230}px) / 2); left: calc((100% - ${370 - ((1920 - window.innerWidth) / 16) * 0.01 * 230}px) / 2); width: ${370 - ((1920 - window.innerWidth) / 16) * 0.01 * 230}px; height: ${370 - ((1920 - window.innerWidth) / 16) * 0.01 * 230}px`);
-            document.querySelector('.home_ctrl_container').setAttribute('style', `left: ${610 - ((1920 - window.innerWidth) / 16) * 0.01 * 600}px; height:${400 - ((1080 - window.innerHeight) / 6) * 0.01 * 100}px;`);
+            document.querySelector('.home_ctrl_container').setAttribute('style', `top:${260 - ((1920 - window.innerWidth) / 16) * 0.01 * 200}px; left: ${610 - ((1920 - window.innerWidth) / 16) * 0.01 * 600}px; height:${400 - ((1080 - window.innerHeight) / 6) * 0.01 * 100}px;`);
             document.querySelector('.home_top_arrow').setAttribute('style', `width: ${100 - ((1080 - window.innerHeight) / 6) * 0.01 * 40}px; height: ${100 - ((1080 - window.innerHeight) / 6) * 0.01 * 40}px;`);
             document.querySelector('.home_bot_arrow').setAttribute('style', `width: ${100 - ((1080 - window.innerHeight) / 6) * 0.01 * 40}px; height: ${100 - ((1080 - window.innerHeight) / 6) * 0.01 * 40}px;`);
-            document.querySelector('.home_vinyl_records').style.top = `${-80 - ((1080 - window.innerHeight) / 6) * 0.01 * 140}px`
-            document.querySelector('.home_ctrl_container').style.top = `${260 - ((1080 - window.innerHeight) / 6) * 0.01 * 180}px`
-
-            // title
-            if (window.innerWidth <= window.innerHeight) {
-                // window 320px 時 ex:188.4 => 原寬度 * 0.2
-                document.querySelector('.home_remix').setAttribute('style', `width: ${314 - ((1080 - window.innerHeight) / 6) * 0.01 * 188.4}px; height: ${115 - ((1080 - window.innerHeight) / 6) * 0.01 * 69}px;`);
-                document.querySelector('.home_remix').setAttribute('style', `width: ${314 - ((1920 - window.innerWidth) / 16) * 0.01 * 188.4}px; height: ${115 - ((1920 - window.innerWidth) / 16) * 0.01 * 69}px;`);
-                document.querySelector('.home_rank').setAttribute('style', `width: ${257.5 - ((1080 - window.innerHeight) / 6) * 0.01 * 154.5}px; height: ${115 - ((1080 - window.innerHeight) / 6) * 0.01 * 69}px;`);
-                document.querySelector('.home_rank').setAttribute('style', `width: ${257.5 - ((1920 - window.innerWidth) / 16) * 0.01 * 154.5}px; height: ${115 - ((1920 - window.innerWidth) / 16) * 0.01 * 69}px;`);
-                document.querySelector('.home_activity').setAttribute('style', `width: ${375 - ((1080 - window.innerHeight) / 6) * 0.01 * 225}px; height: ${129 - ((1080 - window.innerHeight) / 6) * 0.01 * 77.4}px;`);
-                document.querySelector('.home_activity').setAttribute('style', `width: ${375 - ((1920 - window.innerWidth) / 16) * 0.01 * 225}px; height: ${129 - ((1920 - window.innerWidth) / 16) * 0.01 * 77.4}px;`);
-                document.querySelector('.home_collection').setAttribute('style', `width: ${521.5 - ((1080 - window.innerHeight) / 6) * 0.01 * 312.9}px; height: ${125 - ((1080 - window.innerHeight) / 6) * 0.01 * 75}px;`);
-                document.querySelector('.home_collection').setAttribute('style', `width: ${521.5 - ((1920 - window.innerWidth) / 16) * 0.01 * 312.9}px; height: ${125 - ((1920 - window.innerWidth) / 16) * 0.01 * 75}px;`);
-                document.querySelector('.home_about').setAttribute('style', `width: ${312 - ((1080 - window.innerHeight) / 6) * 0.01 * 187.2}px; height: ${114 - ((1080 - window.innerHeight) / 6) * 0.01 * 68.4}px;`);
-                document.querySelector('.home_about').setAttribute('style', `width: ${312 - ((1920 - window.innerWidth) / 16) * 0.01 * 187.2}px; height: ${114 - ((1920 - window.innerWidth) / 16) * 0.01 * 68.4}px;`);
-            } else if (window.innerWidth > window.innerHeight) {
-                document.querySelector('.home_remix').setAttribute('style', `width: ${314 - ((1920 - window.innerWidth) / 16) * 0.01 * 188.4}px; height: ${115 - ((1920 - window.innerWidth) / 16) * 0.01 * 69}px;`);
-                document.querySelector('.home_remix').setAttribute('style', `width: ${314 - ((1080 - window.innerHeight) / 6) * 0.01 * 188.4}px; height: ${115 - ((1080 - window.innerHeight) / 6) * 0.01 * 69}px;`);
-                document.querySelector('.home_rank').setAttribute('style', `width: ${257.5 - ((1920 - window.innerWidth) / 16) * 0.01 * 154.5}px; height: ${115 - ((1920 - window.innerWidth) / 16) * 0.01 * 69}px;`);
-                document.querySelector('.home_rank').setAttribute('style', `width: ${257.5 - ((1080 - window.innerHeight) / 6) * 0.01 * 154.5}px; height: ${115 - ((1080 - window.innerHeight) / 6) * 0.01 * 69}px;`);
-                document.querySelector('.home_activity').setAttribute('style', `width: ${375 - ((1920 - window.innerWidth) / 16) * 0.01 * 225}px; height: ${129 - ((1920 - window.innerWidth) / 16) * 0.01 * 77.4}px;`);
-                document.querySelector('.home_activity').setAttribute('style', `width: ${375 - ((1080 - window.innerHeight) / 6) * 0.01 * 225}px; height: ${129 - ((1080 - window.innerHeight) / 6) * 0.01 * 77.4}px;`);
-                document.querySelector('.home_collection').setAttribute('style', `width: ${521.5 - ((1080 - window.innerHeight) / 6) * 0.01 * 312.9}px; height: ${125 - ((1080 - window.innerHeight) / 6) * 0.01 * 75}px;`);
-                document.querySelector('.home_collection').setAttribute('style', `width: ${521.5 - ((1920 - window.innerWidth) / 16) * 0.01 * 312.9}px; height: ${125 - ((1920 - window.innerWidth) / 16) * 0.01 * 75}px;`);
-                document.querySelector('.home_about').setAttribute('style', `width: ${312 - ((1080 - window.innerHeight) / 6) * 0.01 * 187.2}px; height: ${114 - ((1080 - window.innerHeight) / 6) * 0.01 * 68.4}px;`);
-                document.querySelector('.home_about').setAttribute('style', `width: ${312 - ((1920 - window.innerWidth) / 16) * 0.01 * 187.2}px; height: ${114 - ((1920 - window.innerWidth) / 16) * 0.01 * 68.4}px;`);
-            }
-
-            // REMIX
-            document.querySelector('.home_mixer_bt').style.top = `${60 + parseInt(document.querySelector('.home_remix').style.height)}px`
-            if (window.innerWidth >= 1280) {
-                document.querySelector('.home_mixer_bt').style.left = `${1044 - ((1920 - window.innerWidth) / 6.4) * 0.01 * 340}px`
-                document.querySelector('.home_sec02 .home_paint01').style.left = `${1002 - ((1920 - window.innerWidth) / 6.4) * 0.01 * 340}px`
-                document.querySelector('.home_sec02 .home_paint02').style.left = `${1088 - ((1920 - window.innerWidth) / 6.4) * 0.01 * 340}px`
-            } else if (window.innerWidth > 768 && window.innerWidth < 1280) {
-                document.querySelector('.home_mixer_bt').style.left = `${704 - ((1280 - window.innerWidth) / 5.12) * 0.01 * 320}px`
-                document.querySelector('.home_mixer_bt').style.width = `${556 - ((1280 - window.innerWidth) / 5.12) * 0.01 * 171.5}px`
-                document.querySelector('.home_mixer_bt').style.height = `${616 - ((1280 - window.innerWidth) / 5.12) * 0.01 * 171.5}px`
-                document.querySelector('.home_sec02 .home_paint01').style.left = `${662 - ((1280 - window.innerWidth) / 5.12) * 0.01 * 320}px`
-                document.querySelector('.home_sec02 .home_paint01').style.width = `${398 - ((1920 - window.innerWidth) / 6.4) * 0.01 * 398 - (398 / (556 / 348.5))}px`
-                document.querySelector('.home_sec02 .home_paint01').style.height = `${138 - ((1920 - window.innerWidth) / 6.4) * 0.01 * 138 - (138 / (556 / 348.5))}px`
-                document.querySelector('.home_sec02 .home_paint02').style.left = `${748 - ((1280 - window.innerWidth) / 5.12) * 0.01 * 320}px`
-                document.querySelector('.home_sec02 .home_paint02').style.bottom = `${30 + ((1280 - window.innerWidth) / 5.12) * 0.01 * 160}px`
-                document.querySelector('.home_sec02 .home_paint02').style.width = `${552 - ((1920 - window.innerWidth) / 6.4) * 0.01 * 552 - (552 / (556 / 348.5))}px`
-                document.querySelector('.home_sec02 .home_paint02').style.height = `${421 - ((1920 - window.innerWidth) / 6.4) * 0.01 * 421 - (421 / (556 / 348.5))}px`
-            } else {
-                document.querySelector('.home_mixer_bt').style.width = `${556 * 0.08}px`
-                document.querySelector('.home_mixer_bt').style.height = `${616 * 0.08}px`
-                document.querySelector('.home_mixer_bt').style.top = `60px`
-                document.querySelector('.home_mixer_bt').style.left = `${(window.innerWidth + parseInt(document.querySelector('.home_remix').style.width)) / 2}px`
-                document.querySelector('.home_mixer_bt').addEventListener('click', home_mixer_bt_click);
-            }
-            if (window.innerWidth > 768) {
-                document.querySelector('.home_mixer_bt').removeEventListener('click', home_mixer_bt_click);
-            }
-            if (window.innerHeight <= 576) {
-                document.querySelector('.text0').style.height = '100%'
-                document.querySelector('.text1').style.height = '0px';
-                document.querySelector('.text2').style.height = '0px';
-                document.querySelector('.text3').style.height = '0px';
-                li1Click = false;
-                li2Click = false;
-                li3Click = false;
-            }
 
             // RANK
             if (window.innerWidth <= 576) {
@@ -1543,12 +1237,23 @@
                     translateZ: parseInt(360 - (((1920 - window.innerWidth) / 16) * 0.01 * 130)),
                 }
             }
-
-            document.querySelector('.rank_title').style.margin = `${180 - (((1920 - window.innerWidth) / 16) * 0.01 * 20)}px auto 0 auto`;
+            if (window.innerWidth <= 768) {
+                document.querySelector('.home_rank').setAttribute('style', `width: ${257.5 - (((1080 - window.innerHeight) / 6) * 0.01 * 128.75)}px; height: ${115 - (((1080 - window.innerHeight) / 6) * 0.01 * 57.5)}px;`);
+                document.querySelector('.home_slider .home_title').style.margin = `${180 - (((1080 - window.innerHeight) / 6) * 0.01 * 40)}px auto 0 auto`;
+                document.querySelector('.home_rank').style.left = `calc((100% - ${document.querySelector('.home_rank').style.width}) / 2)`; //不可合併
+            } else {
+                document.querySelector('.home_rank').setAttribute('style', `left: 100px; width: 165px; height: 730px;`);
+                document.querySelector('.home_slider .home_title').style.margin = `100px auto 0 auto`;
+            }
 
             for (let i = 0; i < 10; i++) {
-                if (i + 1 == rankOrder) {
-                    document.querySelector(`.home_song${rankOrder}`).setAttribute('style', `width: ${set_value.size}px; height: ${set_value.size}px; transform: rotateY(${+ transform_rotate[i]}deg) translateZ(${set_value.translateZ}px) scale(1.18);`);
+                if (i == 0) {
+                    document.querySelector(`.home_song${i + 1}`).setAttribute(
+                        'style',
+                        `width: ${set_value.size}px;
+                        height: ${set_value.size}px;
+                        transform: rotateY(${i * 36}deg) translateZ(${set_value.translateZ}px) scale(1.18);`
+                    );
                     if (window.innerWidth <= 576) {
                         document.querySelector(`.home_song${rankOrder} .home_song_info`).style.transform = `translateX(${set_value.size}px)`;
                         document.querySelector(`.home_song${rankOrder} .home_song_info`).style.width = `200%`;
@@ -1559,130 +1264,82 @@
                         document.querySelector(`.home_song${rankOrder} .home_vinyl_records_s`).style.transform = `translateX(${set_value.size / 2}px)`;
                     }
                 } else {
-                    document.querySelector(`.home_song${i + 1}`).setAttribute('style', `width: ${set_value.size}px;height: ${set_value.size}px;transform: rotateY(${+ transform_rotate[i]}deg) translateZ(${set_value.translateZ}px`);
+                    document.querySelector(`.home_song${i + 1}`).setAttribute(
+                        'style',
+                        `width: ${set_value.size}px;
+                        height: ${set_value.size}px;
+                        transform: rotateY(${i * 36}deg) translateZ(${set_value.translateZ}px`
+                    );
                 }
             }
 
-            if (window.innerWidth <= 576) {
-                document.querySelectorAll('.home_song_info .more i').forEach((el) => {
-                    el.classList.remove('fa-chevron-down');
-                    el.classList.add('fa-chevron-right');
-                });
-            } else {
-                document.querySelectorAll('.home_song_info .more i').forEach((el) => {
-                    el.classList.add('fa-chevron-down');
-                    el.classList.remove('fa-chevron-right');
-                });
-            }
-
-            document.querySelector('.home_perspective').setAttribute('style', `top: ${100 - (((1080 - window.innerHeight) / 6) * 0.01 * 40)}px; left: ${390 - (((1920 - window.innerWidth) / 16) * 0.01 * 950)}px`);
-            document.querySelector('.home_song_container').style.top = `${260 - (((1920 - window.innerWidth) / 16) * 0.01 * 70)}px`
-            if (window.innerWidth <= 576) {
-                document.querySelector('.home_arrow_container').style.margin = `${280 - (((1920 - window.innerWidth) / 16) * 0.01 * 160)}px auto 0 ${60 - (((576 - window.innerWidth) / 2.56) * 0.01 * 30)}px`;
+            document.querySelector('.home_perspective').setAttribute(
+                'style',
+                `top: ${100 - (((1080 - window.innerHeight) / 6) * 0.01 * 40)}px; left: ${540 - (((1920 - window.innerWidth) / 16) * 0.01 * 1020)}px`
+            );
+            if (window.innerWidth <= 480) {
+                document.querySelector('.home_arrow_container').style.margin = `${300 - (((1920 - window.innerWidth) / 16) * 0.01 * 160)}px auto 0 30px`;
+            } else if (window.innerWidth <= 576) {
+                document.querySelector('.home_arrow_container').style.margin = `${300 - (((1920 - window.innerWidth) / 16) * 0.01 * 160)}px auto 0 60px`;
             } else if (window.innerWidth > 576 && window.innerWidth <= 768) {
-                document.querySelector('.home_arrow_container').style.margin = `240px auto 0 auto`;
+                document.querySelector('.home_arrow_container').style.margin = `260px auto 0 auto`;
             } else if (window.innerWidth > 768) {
-                document.querySelector('.home_arrow_container').style.margin = `${420 - (((1920 - window.innerWidth) / 11.52) * 0.01 * 160)}px auto 0 auto`;
+                document.querySelector('.home_arrow_container').style.margin = `${440 - (((1920 - window.innerWidth) / 11.52) * 0.01 * 140)}px auto 0 auto`;
             }
-
-            if (window.innerWidth <= 768) {
-                document.querySelector('.home_arrow_container').style.width = `${600 - (((768 - window.innerWidth) / 4.48) * 0.01 * 350)}px`
-            } else {
-                document.querySelector('.home_arrow_container').style.width = `600px`
-            }
-
 
             // ACTIVITY
-            if (window.innerWidth > 1440) {
-                document.querySelector('.home_activity_info').style.right = `${780 - (((1920 - window.innerWidth) / 4.8) * 0.01 * 335)}px`
-                document.querySelector('.home_DJ').style.left = `0px`
+            if (window.innerWidth <= 440) {
+                document.querySelector('.home_activity_info').style.left = `0px`;
             }
-            if (window.innerWidth <= 1440 && window.innerWidth > 870) {
-                document.querySelector('.home_DJ').style.left = `${0 - (((1440 - window.innerWidth) / 5.7) * 0.01 * 613)}px`
-                document.querySelector('.home_activity_info').style.right = '445px'
-            } else if (window.innerWidth <= 870) {
-                document.querySelector('.home_DJ').style.left = `-613px`
+            if (window.innerWidth <= 768 && window.innerWidth > 440) {
+                document.querySelector('.home_activity_info').style.left = `${(window.innerWidth - 400) / 2}px`;
             }
+            if (window.innerWidth <= 768) {
+                document.querySelector('.home_activity_img').setAttribute('style', `position:initial;float:left; width: ${150 - (((768 - window.innerWidth) / 4.48) * 0.01 * 70)}px; height: ${195 - (((768 - window.innerWidth) / 4.48) * 0.01 * 91)}px;margin: 0 20px 0 0;`);
+                document.querySelector('.home_activity').setAttribute('style', `width:${375 - (((768 - window.innerWidth) / 4.48) * 0.01 * 187.5)}px;; height: ${129 - (((768 - window.innerWidth) / 4.48) * 0.01 * 64.5)}px;`);
+                document.querySelector('.home_activity_info').style.top = `${240 - (((768 - window.innerWidth) / 4.48) * 0.01 * 140)}px`
 
-            if (window.innerWidth <= 870 && window.innerWidth > 768) {
-                document.querySelector('.home_activity_info').style.right = `${445 - (((870 - window.innerWidth) / 1.02) * 0.01 * 55)}px`
+            }
+            if (window.innerWidth <= 992 && window.innerWidth > 768) {
+                document.querySelector('.home_activity').setAttribute('style', `width:${675 - (((992 - window.innerWidth) / 2.24) * 0.01 * 300)}px;; height: ${232.2 - (((992 - window.innerWidth) / 2.24) * 0.01 * 103.2)}px;`);
+                document.querySelector('.home_activity_info').style.left = `${(window.innerWidth - 720) / 2}px`;
+            }
+            if (window.innerWidth <= 992) {
+                document.querySelector('.home_activity').style.left = `calc((100% - ${document.querySelector('.home_activity').style.width}) / 2)`
+                document.querySelector('.home_activity_info').style.height = '390px';
+                document.querySelector('.home_DJ').style.display = 'none';
+            }
+            if (window.innerWidth <= 1600 && window.innerWidth > 992) {
+                document.querySelector('.home_activity').setAttribute('style', `width:675px;; height: 232.2px;`);
+                document.querySelector('.home_activity_info').setAttribute('style', `left: ${720 - (((1600 - window.innerWidth) / 6.08) * 0.01 * (720 - ((window.innerWidth - 720) / 2)))}px; height: 390px`);
+                document.querySelector('.home_DJ').setAttribute('style', `left: ${0 - (((1600 - window.innerWidth) / 6.08) * 0.01 * 613)}px`);
+            }
+            if (window.innerWidth <= 1600 && window.innerWidth > 768) {
+                document.querySelector('.home_activity_img').setAttribute('style', `width:300px; height: 390px;`);
+                document.querySelector('.home_activity_info').style.top = `${340 - (((1600 - window.innerWidth) / 8.32) * 0.01 * 100)}px`
+            }
+            if (window.innerWidth <= 1600) {
+                document.querySelector('.enter_bt').setAttribute('style', `bottom:-90px; width:120px; height: 80px;`);
+            }
+            if (window.innerWidth > 1600) {
+                document.querySelector('.home_activity').setAttribute('style', `width:${750 - (((1920 - window.innerWidth) / 3.2) * 0.01 * 75)}px;; height: ${258 - (((1920 - window.innerWidth) / 3.2) * 0.01 * 25.8)}px;`);
+                document.querySelector('.home_activity_info').setAttribute('style', `top:${100 + (((1920 - window.innerWidth) / 3.2) * 0.01 * 240)}px; right: ${660 - (((1920 - window.innerWidth) / 3.2) * 0.01 * 160)}px; height: ${650 - (((1920 - window.innerWidth) / 3.2) * 0.01 * 260)}px`);
+                document.querySelector('.home_activity_img').setAttribute('style', `width:${500 - (((1920 - window.innerWidth) / 3.2) * 0.01 * 200)}px; height: ${650 - (((1920 - window.innerWidth) / 3.2) * 0.01 * 260)}px;`);
+                document.querySelector('.enter_bt').setAttribute('style', `bottom:${80 - (((1920 - window.innerWidth) / 3.2) * 0.01 * 170)}px; width:${180 - (((1920 - window.innerWidth) / 3.2) * 0.01 * 60)}px; height: ${120 - (((1920 - window.innerWidth) / 3.2) * 0.01 * 40)}px;`);
+                document.querySelector('.home_DJ').setAttribute('style', `left:0px`);
+
             }
 
 
             $(window).resize(() => {
                 // HOME
                 //                                                                 元素最大寬度 - ((螢幕最大寬度 - 當前螢幕寬度) / 16) => 最小螢幕寬度 320，1920-320=1600，除以16=100 => * 0.01 分成100% => 每一% * 元素最大寬與最小寬之差
-                document.querySelector('.home_vinyl_records').setAttribute('style', `left: ${-250 + ((1920 - window.innerWidth) / 16) * 0.01 * 70}px; width: ${1100 - ((1920 - window.innerWidth) / 16) * 0.01 * 700}px; height: ${1100 - ((1920 - window.innerWidth) / 16) * 0.01 * 700}px`);
+                document.querySelector('.home_vinyl_records').setAttribute('style', `top: ${-100 - ((1920 - window.innerWidth) / 16) * 0.01 * 20}px; left: ${-250 + ((1920 - window.innerWidth) / 16) * 0.01 * 70}px; width: ${1100 - ((1920 - window.innerWidth) / 16) * 0.01 * 700}px; height: ${1100 - ((1920 - window.innerWidth) / 16) * 0.01 * 700}px`);
                 document.querySelector('.home_stylus').setAttribute('style', `top: ${-30 + ((1920 - window.innerWidth) / 16) * 0.01 * 55}px; left: ${480 - ((1920 - window.innerWidth) / 16) * 0.01 * 360}px; width: ${618 - ((1920 - window.innerWidth) / 16) * 0.01 * 393}px; height: ${180 - ((1920 - window.innerWidth) / 16) * 0.01 * 114.5}px`);
                 document.querySelector('.home_cover_img').setAttribute('style', `top: calc((100% - ${370 - ((1920 - window.innerWidth) / 16) * 0.01 * 230}px) / 2); left: calc((100% - ${370 - ((1920 - window.innerWidth) / 16) * 0.01 * 230}px) / 2); width: ${370 - ((1920 - window.innerWidth) / 16) * 0.01 * 230}px; height: ${370 - ((1920 - window.innerWidth) / 16) * 0.01 * 230}px`);
-                document.querySelector('.home_ctrl_container').setAttribute('style', `left: ${610 - ((1920 - window.innerWidth) / 16) * 0.01 * 600}px; height:${400 - ((1080 - window.innerHeight) / 6) * 0.01 * 100}px;`);
+                document.querySelector('.home_ctrl_container').setAttribute('style', `top:${260 - ((1920 - window.innerWidth) / 16) * 0.01 * 200}px; left: ${610 - ((1920 - window.innerWidth) / 16) * 0.01 * 600}px; height:${400 - ((1080 - window.innerHeight) / 6) * 0.01 * 100}px;`);
                 document.querySelector('.home_top_arrow').setAttribute('style', `width: ${100 - ((1080 - window.innerHeight) / 6) * 0.01 * 40}px; height: ${100 - ((1080 - window.innerHeight) / 6) * 0.01 * 40}px;`);
                 document.querySelector('.home_bot_arrow').setAttribute('style', `width: ${100 - ((1080 - window.innerHeight) / 6) * 0.01 * 40}px; height: ${100 - ((1080 - window.innerHeight) / 6) * 0.01 * 40}px;`);
-                document.querySelector('.home_vinyl_records').style.top = `${-80 - ((1080 - window.innerHeight) / 6) * 0.01 * 140}px`
-                document.querySelector('.home_ctrl_container').style.top = `${260 - ((1080 - window.innerHeight) / 6) * 0.01 * 180}px`
-
-                // title
-                if (window.innerWidth <= window.innerHeight) {
-                    // window 320px 時 ex:188.4 => 原寬度 * 0.2
-                    document.querySelector('.home_remix').setAttribute('style', `width: ${314 - ((1080 - window.innerHeight) / 6) * 0.01 * 188.4}px; height: ${115 - ((1080 - window.innerHeight) / 6) * 0.01 * 69}px;`);
-                    document.querySelector('.home_remix').setAttribute('style', `width: ${314 - ((1920 - window.innerWidth) / 16) * 0.01 * 188.4}px; height: ${115 - ((1920 - window.innerWidth) / 16) * 0.01 * 69}px;`);
-                    document.querySelector('.home_rank').setAttribute('style', `width: ${257.5 - ((1080 - window.innerHeight) / 6) * 0.01 * 154.5}px; height: ${115 - ((1080 - window.innerHeight) / 6) * 0.01 * 69}px;`);
-                    document.querySelector('.home_rank').setAttribute('style', `width: ${257.5 - ((1920 - window.innerWidth) / 16) * 0.01 * 154.5}px; height: ${115 - ((1920 - window.innerWidth) / 16) * 0.01 * 69}px;`);
-                    document.querySelector('.home_activity').setAttribute('style', `width: ${375 - ((1080 - window.innerHeight) / 6) * 0.01 * 225}px; height: ${129 - ((1080 - window.innerHeight) / 6) * 0.01 * 77.4}px;`);
-                    document.querySelector('.home_activity').setAttribute('style', `width: ${375 - ((1920 - window.innerWidth) / 16) * 0.01 * 225}px; height: ${129 - ((1920 - window.innerWidth) / 16) * 0.01 * 77.4}px;`);
-                    document.querySelector('.home_collection').setAttribute('style', `width: ${521.5 - ((1080 - window.innerHeight) / 6) * 0.01 * 312.9}px; height: ${125 - ((1080 - window.innerHeight) / 6) * 0.01 * 75}px;`);
-                    document.querySelector('.home_collection').setAttribute('style', `width: ${521.5 - ((1920 - window.innerWidth) / 16) * 0.01 * 312.9}px; height: ${125 - ((1920 - window.innerWidth) / 16) * 0.01 * 75}px;`);
-                    document.querySelector('.home_about').setAttribute('style', `width: ${312 - ((1080 - window.innerHeight) / 6) * 0.01 * 187.2}px; height: ${114 - ((1080 - window.innerHeight) / 6) * 0.01 * 68.4}px;`);
-                    document.querySelector('.home_about').setAttribute('style', `width: ${312 - ((1920 - window.innerWidth) / 16) * 0.01 * 187.2}px; height: ${114 - ((1920 - window.innerWidth) / 16) * 0.01 * 68.4}px;`);
-                } else if (window.innerWidth > window.innerHeight) {
-                    document.querySelector('.home_remix').setAttribute('style', `width: ${314 - ((1920 - window.innerWidth) / 16) * 0.01 * 188.4}px; height: ${115 - ((1920 - window.innerWidth) / 16) * 0.01 * 69}px;`);
-                    document.querySelector('.home_remix').setAttribute('style', `width: ${314 - ((1080 - window.innerHeight) / 6) * 0.01 * 188.4}px; height: ${115 - ((1080 - window.innerHeight) / 6) * 0.01 * 69}px;`);
-                    document.querySelector('.home_rank').setAttribute('style', `width: ${257.5 - ((1920 - window.innerWidth) / 16) * 0.01 * 154.5}px; height: ${115 - ((1920 - window.innerWidth) / 16) * 0.01 * 69}px;`);
-                    document.querySelector('.home_rank').setAttribute('style', `width: ${257.5 - ((1080 - window.innerHeight) / 6) * 0.01 * 154.5}px; height: ${115 - ((1080 - window.innerHeight) / 6) * 0.01 * 69}px;`);
-                    document.querySelector('.home_activity').setAttribute('style', `width: ${375 - ((1920 - window.innerWidth) / 16) * 0.01 * 225}px; height: ${129 - ((1920 - window.innerWidth) / 16) * 0.01 * 77.4}px;`);
-                    document.querySelector('.home_activity').setAttribute('style', `width: ${375 - ((1080 - window.innerHeight) / 6) * 0.01 * 225}px; height: ${129 - ((1080 - window.innerHeight) / 6) * 0.01 * 77.4}px;`);
-                    document.querySelector('.home_collection').setAttribute('style', `width: ${521.5 - ((1080 - window.innerHeight) / 6) * 0.01 * 312.9}px; height: ${125 - ((1080 - window.innerHeight) / 6) * 0.01 * 75}px;`);
-                    document.querySelector('.home_collection').setAttribute('style', `width: ${521.5 - ((1920 - window.innerWidth) / 16) * 0.01 * 312.9}px; height: ${125 - ((1920 - window.innerWidth) / 16) * 0.01 * 75}px;`);
-                    document.querySelector('.home_about').setAttribute('style', `width: ${312 - ((1080 - window.innerHeight) / 6) * 0.01 * 187.2}px; height: ${114 - ((1080 - window.innerHeight) / 6) * 0.01 * 68.4}px;`);
-                    document.querySelector('.home_about').setAttribute('style', `width: ${312 - ((1920 - window.innerWidth) / 16) * 0.01 * 187.2}px; height: ${114 - ((1920 - window.innerWidth) / 16) * 0.01 * 68.4}px;`);
-                }
-
-                // REMIX
-                document.querySelector('.home_mixer_bt').style.top = `${60 + parseInt(document.querySelector('.home_remix').style.height)}px`
-                if (window.innerWidth >= 1280) {
-                    document.querySelector('.home_mixer_bt').style.left = `${1044 - ((1920 - window.innerWidth) / 6.4) * 0.01 * 340}px`
-                    document.querySelector('.home_sec02 .home_paint01').style.left = `${1002 - ((1920 - window.innerWidth) / 6.4) * 0.01 * 340}px`
-                    document.querySelector('.home_sec02 .home_paint02').style.left = `${1088 - ((1920 - window.innerWidth) / 6.4) * 0.01 * 340}px`
-                } else if (window.innerWidth > 768 && window.innerWidth < 1280) {
-                    document.querySelector('.home_mixer_bt').style.left = `${704 - ((1280 - window.innerWidth) / 5.12) * 0.01 * 320}px`
-                    document.querySelector('.home_mixer_bt').style.width = `${556 - ((1280 - window.innerWidth) / 5.12) * 0.01 * 171.5}px`
-                    document.querySelector('.home_mixer_bt').style.height = `${616 - ((1280 - window.innerWidth) / 5.12) * 0.01 * 171.5}px`
-                    document.querySelector('.home_sec02 .home_paint01').style.left = `${662 - ((1280 - window.innerWidth) / 5.12) * 0.01 * 320}px`
-                    document.querySelector('.home_sec02 .home_paint01').style.width = `${398 - ((1920 - window.innerWidth) / 6.4) * 0.01 * 398 - (398 / (556 / 348.5))}px`
-                    document.querySelector('.home_sec02 .home_paint01').style.height = `${138 - ((1920 - window.innerWidth) / 6.4) * 0.01 * 138 - (138 / (556 / 348.5))}px`
-                    document.querySelector('.home_sec02 .home_paint02').style.left = `${748 - ((1280 - window.innerWidth) / 5.12) * 0.01 * 320}px`
-                    document.querySelector('.home_sec02 .home_paint02').style.bottom = `${30 + ((1280 - window.innerWidth) / 5.12) * 0.01 * 160}px`
-                    document.querySelector('.home_sec02 .home_paint02').style.width = `${552 - ((1920 - window.innerWidth) / 6.4) * 0.01 * 552 - (552 / (556 / 348.5))}px`
-                    document.querySelector('.home_sec02 .home_paint02').style.height = `${421 - ((1920 - window.innerWidth) / 6.4) * 0.01 * 421 - (421 / (556 / 348.5))}px`
-                } else {
-                    document.querySelector('.home_mixer_bt').style.width = `${556 * 0.08}px`
-                    document.querySelector('.home_mixer_bt').style.height = `${616 * 0.08}px`
-                    document.querySelector('.home_mixer_bt').style.top = `60px`
-                    document.querySelector('.home_mixer_bt').style.left = `${(window.innerWidth + parseInt(document.querySelector('.home_remix').style.width)) / 2}px`
-                    document.querySelector('.home_mixer_bt').addEventListener('click', home_mixer_bt_click);
-                }
-                if (window.innerWidth > 768) {
-                    document.querySelector('.home_mixer_bt').removeEventListener('click', home_mixer_bt_click);
-                }
-                if (window.innerHeight <= 576) {
-                    document.querySelector('.text0').style.height = '100%'
-                    document.querySelector('.text1').style.height = '0px';
-                    document.querySelector('.text2').style.height = '0px';
-                    document.querySelector('.text3').style.height = '0px';
-                    li1Click = false;
-                    li2Click = false;
-                    li3Click = false;
-                }
 
                 // RANK
                 if (window.innerWidth <= 576) {
@@ -1696,14 +1353,23 @@
                         translateZ: parseInt(360 - (((1920 - window.innerWidth) / 16) * 0.01 * 130)),
                     }
                 }
-
-                document.querySelector('.rank_title').style.margin = `${180 - (((1920 - window.innerWidth) / 16) * 0.01 * 20)}px auto 0 auto`;
-                document.querySelector('.rank_title').style.margin = `${parseInt(document.querySelector('.rank_title').style.margin) - (((1080 - window.innerHeight) / 6) * 0.01 * 20)}px auto 0 auto`;
-
+                if (window.innerWidth <= 768) {
+                    document.querySelector('.home_rank').setAttribute('style', `width: ${257.5 - (((1080 - window.innerHeight) / 6) * 0.01 * 128.75)}px; height: ${115 - (((1080 - window.innerHeight) / 6) * 0.01 * 57.5)}px;`);
+                    document.querySelector('.home_slider .home_title').style.margin = `${180 - (((1080 - window.innerHeight) / 6) * 0.01 * 40)}px auto 0 auto`;
+                    document.querySelector('.home_rank').style.left = `calc((100% - ${document.querySelector('.home_rank').style.width}) / 2)`; //不可合併
+                } else {
+                    document.querySelector('.home_rank').setAttribute('style', `left: 100px; width: 165px; height: 730px;`);
+                    document.querySelector('.home_slider .home_title').style.margin = `100px auto 0 auto`;
+                }
 
                 for (let i = 0; i < 10; i++) {
-                    if (i + 1 == rankOrder) {
-                        document.querySelector(`.home_song${rankOrder}`).setAttribute('style', `width: ${set_value.size}px; height: ${set_value.size}px; transform: rotateY(${+ transform_rotate[i]}deg) translateZ(${set_value.translateZ}px) scale(1.18);`);
+                    if (i == 0) {
+                        document.querySelector(`.home_song${i + 1}`).setAttribute(
+                            'style',
+                            `width: ${set_value.size}px;
+                        height: ${set_value.size}px;
+                        transform: rotateY(${i * 36}deg) translateZ(${set_value.translateZ}px) scale(1.18);`
+                        );
                         if (window.innerWidth <= 576) {
                             document.querySelector(`.home_song${rankOrder} .home_song_info`).style.transform = `translateX(${set_value.size}px)`;
                             document.querySelector(`.home_song${rankOrder} .home_song_info`).style.width = `200%`;
@@ -1714,78 +1380,230 @@
                             document.querySelector(`.home_song${rankOrder} .home_vinyl_records_s`).style.transform = `translateX(${set_value.size / 2}px)`;
                         }
                     } else {
-                        document.querySelector(`.home_song${i + 1}`).setAttribute('style', `width: ${set_value.size}px;height: ${set_value.size}px;transform: rotateY(${+ transform_rotate[i]}deg) translateZ(${set_value.translateZ}px`);
+                        document.querySelector(`.home_song${i + 1}`).setAttribute(
+                            'style',
+                            `width: ${set_value.size}px;
+                        height: ${set_value.size}px;
+                        transform: rotateY(${i * 36}deg) translateZ(${set_value.translateZ}px`
+                        );
                     }
                 }
 
-                if (window.innerWidth <= 576) {
-                    document.querySelectorAll('.home_song_info .more i').forEach((el) => {
-                        el.classList.remove('fa-chevron-down');
-                        el.classList.add('fa-chevron-right');
-                    });
-                } else {
-                    document.querySelectorAll('.home_song_info .more i').forEach((el) => {
-                        el.classList.add('fa-chevron-down');
-                        el.classList.remove('fa-chevron-right');
-                    });
-                }
-
-                document.querySelector('.home_perspective').setAttribute('style', `top: ${100 - (((1080 - window.innerHeight) / 6) * 0.01 * 40)}px; left: ${390 - (((1920 - window.innerWidth) / 16) * 0.01 * 950)}px`);
-                document.querySelector('.home_song_container').style.top = `${260 - (((1920 - window.innerWidth) / 16) * 0.01 * 70)}px`
-                if (window.innerWidth <= 576) {
-                    document.querySelector('.home_arrow_container').style.margin = `${280 - (((1920 - window.innerWidth) / 16) * 0.01 * 160)}px auto 0 ${60 - (((576 - window.innerWidth) / 2.56) * 0.01 * 30)}px`;
+                document.querySelector('.home_perspective').setAttribute(
+                    'style',
+                    `top: ${100 - (((1080 - window.innerHeight) / 6) * 0.01 * 40)}px; left: ${540 - (((1920 - window.innerWidth) / 16) * 0.01 * 1020)}px`
+                );
+                if (window.innerWidth <= 480) {
+                    document.querySelector('.home_arrow_container').style.margin = `${300 - (((1920 - window.innerWidth) / 16) * 0.01 * 160)}px auto 0 30px`;
+                } else if (window.innerWidth <= 576) {
+                    document.querySelector('.home_arrow_container').style.margin = `${300 - (((1920 - window.innerWidth) / 16) * 0.01 * 160)}px auto 0 60px`;
                 } else if (window.innerWidth > 576 && window.innerWidth <= 768) {
-                    document.querySelector('.home_arrow_container').style.margin = `240px auto 0 auto`;
+                    document.querySelector('.home_arrow_container').style.margin = `260px auto 0 auto`;
                 } else if (window.innerWidth > 768) {
-                    document.querySelector('.home_arrow_container').style.margin = `${420 - (((1920 - window.innerWidth) / 11.52) * 0.01 * 160)}px auto 0 auto`;
-                }
-
-                if (window.innerWidth <= 768) {
-                    document.querySelector('.home_arrow_container').style.width = `${600 - (((768 - window.innerWidth) / 4.48) * 0.01 * 350)}px`
-                } else {
-                    document.querySelector('.home_arrow_container').style.width = `600px`
+                    document.querySelector('.home_arrow_container').style.margin = `${440 - (((1920 - window.innerWidth) / 11.52) * 0.01 * 140)}px auto 0 auto`;
                 }
 
                 // ACTIVITY
-                if (window.innerWidth > 1440) {
-                    document.querySelector('.home_activity_info').style.right = `${780 - (((1920 - window.innerWidth) / 4.8) * 0.01 * 335)}px`
-                    document.querySelector('.home_DJ').style.left = `0px`
+                if (window.innerWidth <= 440) {
+                    document.querySelector('.home_activity_info').style.left = `0px`;
                 }
-                if (window.innerWidth <= 1440 && window.innerWidth > 870) {
-                    document.querySelector('.home_DJ').style.left = `${0 - (((1440 - window.innerWidth) / 5.7) * 0.01 * 613)}px`
-                    document.querySelector('.home_activity_info').style.right = '445px'
-                } else if (window.innerWidth <= 870) {
-                    document.querySelector('.home_DJ').style.left = `-613px`
+                if (window.innerWidth <= 768 && window.innerWidth > 440) {
+                    document.querySelector('.home_activity_info').style.left = `${(window.innerWidth - 400) / 2}px`;
                 }
+                if (window.innerWidth <= 768) {
+                    document.querySelector('.home_activity_img').setAttribute('style', `position:initial;float:left; width: ${150 - (((768 - window.innerWidth) / 4.48) * 0.01 * 70)}px; height: ${195 - (((768 - window.innerWidth) / 4.48) * 0.01 * 91)}px;margin: 0 20px 0 0;`);
+                    document.querySelector('.home_activity').setAttribute('style', `width:${375 - (((768 - window.innerWidth) / 4.48) * 0.01 * 187.5)}px;; height: ${129 - (((768 - window.innerWidth) / 4.48) * 0.01 * 64.5)}px;`);
+                    document.querySelector('.home_activity_info').style.top = `${240 - (((768 - window.innerWidth) / 4.48) * 0.01 * 140)}px`
 
-                if (window.innerWidth <= 870 && window.innerWidth > 768) {
-                    document.querySelector('.home_activity_info').style.right = `${445 - (((870 - window.innerWidth) / 1.02) * 0.01 * 55)}px`
-                }
-
-                // COLLECTION
-                if (window.innerWidth > 1280) {
-                    document.querySelector('.home_sloth_bottom').style.left = `${160 - (((1920 - window.innerWidth) / 6.4) * 0.01 * 160)}px`
-                    document.querySelector('.text_container').style.margin = `0px`
-                } else if (window.innerWidth <= 1280 && window.innerWidth > 992) {
-                    document.querySelector('.home_sloth_bottom').style.left = `${0 - (((1280 - window.innerWidth) / 2.88) * 0.01 * 30)}px`
-                    document.querySelector('.text_container').style.margin = `0 0 0 ${(window.innerWidth - 990) / 2}px`
-                } else if (window.innerWidth <= 992 && window.innerWidth > 768) {
-                    document.querySelector('.home_sloth_bottom').style.left = `${-30 - (((1280 - window.innerWidth) / 2.88) * 0.01 * 30)}px`
-                }
-                if (window.innerWidth <= 992) {
-                    document.querySelector('.text_container').style.margin = `0px`
                 }
                 if (window.innerWidth <= 992 && window.innerWidth > 768) {
-                    document.querySelector('.home_sort_container').style.margin = `0 0 0 ${460 - (((992 - window.innerWidth) / 2.24) * 0.01 * 220)}px`
-                } else {
-                    document.querySelector('.home_sort_container').style.margin = `0px`
+                    document.querySelector('.home_activity').setAttribute('style', `width:${675 - (((992 - window.innerWidth) / 2.24) * 0.01 * 300)}px;; height: ${232.2 - (((992 - window.innerWidth) / 2.24) * 0.01 * 103.2)}px;`);
+                    document.querySelector('.home_activity_info').style.left = `${(window.innerWidth - 720) / 2}px`;
                 }
-            });  // window resize end
+                if (window.innerWidth <= 992) {
+                    document.querySelector('.home_activity').style.left = `calc((100% - ${document.querySelector('.home_activity').style.width}) / 2)`
+                    document.querySelector('.home_activity_info').style.height = '390px';
+                    document.querySelector('.home_DJ').style.display = 'none';
+                }
+                if (window.innerWidth <= 1600 && window.innerWidth > 992) {
+                    document.querySelector('.home_activity').setAttribute('style', `width:675px;; height: 232.2px;`);
+                    document.querySelector('.home_activity_info').setAttribute('style', `left: ${720 - (((1600 - window.innerWidth) / 6.08) * 0.01 * (720 - ((window.innerWidth - 720) / 2)))}px; height: 390px`);
+                    document.querySelector('.home_DJ').setAttribute('style', `left: ${0 - (((1600 - window.innerWidth) / 6.08) * 0.01 * 613)}px`);
+                }
+                if (window.innerWidth <= 1600 && window.innerWidth > 768) {
+                    document.querySelector('.home_activity_img').setAttribute('style', `width:300px; height: 390px;`);
+                    document.querySelector('.home_activity_info').style.top = `${340 - (((1600 - window.innerWidth) / 8.32) * 0.01 * 100)}px`
+                }
+                if (window.innerWidth <= 1600) {
+                    document.querySelector('.enter_bt').setAttribute('style', `bottom:-90px; width:120px; height: 80px;`);
+                }
+                if (window.innerWidth > 1600) {
+                    document.querySelector('.home_activity').setAttribute('style', `width:${750 - (((1920 - window.innerWidth) / 3.2) * 0.01 * 75)}px;; height: ${258 - (((1920 - window.innerWidth) / 3.2) * 0.01 * 25.8)}px;`);
+                    document.querySelector('.home_activity_info').setAttribute('style', `top:${100 + (((1920 - window.innerWidth) / 3.2) * 0.01 * 240)}px; right: ${660 - (((1920 - window.innerWidth) / 3.2) * 0.01 * 160)}px; height: ${650 - (((1920 - window.innerWidth) / 3.2) * 0.01 * 260)}px`);
+                    document.querySelector('.home_activity_img').setAttribute('style', `width:${500 - (((1920 - window.innerWidth) / 3.2) * 0.01 * 200)}px; height: ${650 - (((1920 - window.innerWidth) / 3.2) * 0.01 * 260)}px;`);
+                    document.querySelector('.enter_bt').setAttribute('style', `bottom:${80 - (((1920 - window.innerWidth) / 3.2) * 0.01 * 170)}px; width:${180 - (((1920 - window.innerWidth) / 3.2) * 0.01 * 60)}px; height: ${120 - (((1920 - window.innerWidth) / 3.2) * 0.01 * 40)}px;`);
+                    document.querySelector('.home_DJ').setAttribute('style', `left:0px`);
+                }
+
+            });
+
+
+
+            // var timeStart, timeEnd, time;//申明全局變數
+
+            // function getTimeNow()//獲取此刻時間
+            // {
+            //     now = new Date();
+            //     return now.getTime();
+            // }
+
+            // function holdDown(e)//滑鼠按下時觸發
+            // {
+            //     preX = e.clientX;
+            //     console.log(preX);
+            //     timeStart = getTimeNow();//獲取滑鼠按下時的時間
+            //     time = setInterval(() =>//setInterval會每100毫秒執行一次
+            //     {
+            //         timeEnd = getTimeNow();//也就是每100毫秒獲取一次時間
+            //         if (timeEnd - timeStart > 500)//如果此時檢測到的時間與第一次獲取的時間差有1000毫秒
+            //         {
+            //             clearInterval(time);//便不再繼續重覆此函數 （clearInterval取消周期性執行）
+            //             document.querySelector('.home_slider').addEventListener('mousemove', (e) => {
+            //                 x = e.clientX;
+            //                 console.log(x);
+            //             });
+            //         }
+            //     }, 100);
+            // }
+            // function holdUp() {
+            //     clearInterval(time);//如果按下時間不到1000毫秒便彈起，
+            // }
 
 
 
 
 
+
+
+
+
+
+            // sec06 canvas
+            var renderer, scene, camera, ww, wh, particles;
+
+            ww = window.innerWidth,
+                wh = window.innerHeight;
+
+            var centerVector = new THREE.Vector3(0, 0, 0);
+            var previousTime = 0;
+
+            var getImageData = function (image) {
+
+                var canvas = document.createElement("canvas");
+                canvas.width = image.width;
+                canvas.height = image.height;
+
+                var ctx = canvas.getContext("2d");
+                ctx.drawImage(image, 0, 0);
+
+                return ctx.getImageData(0, 0, image.width, image.height);
+            }
+
+            var drawTheMap = function () {
+
+                var geometry = new THREE.Geometry();
+                var material = new THREE.PointsMaterial({
+                    size: 3,
+                    color: 0x000000,
+                    sizeAttenuation: false
+                });
+                for (var y = 0, y2 = imagedata.height; y < y2; y += 2) {
+                    for (var x = 0, x2 = imagedata.width; x < x2; x += 2) {
+                        if (imagedata.data[(x * 4 + y * 4 * imagedata.width) + 3] > 128) {
+
+                            var vertex = new THREE.Vector3();
+                            vertex.x = Math.random() * 1000 - 500;
+                            vertex.y = Math.random() * 1000 - 500;
+                            vertex.z = -Math.random() * 500;
+
+                            vertex.destination = {
+                                x: x - imagedata.width / 2,
+                                y: -y + imagedata.height / 2,
+                                z: 0
+                            };
+
+                            vertex.speed = Math.random() / 200 + 0.015;
+
+                            geometry.vertices.push(vertex);
+                        }
+                    }
+                }
+                particles = new THREE.Points(geometry, material);
+
+                scene.add(particles);
+
+                requestAnimationFrame(render);
+            };
+
+            var init = function () {
+                THREE.ImageUtils.crossOrigin = '';
+                renderer = new THREE.WebGLRenderer({
+                    canvas: document.querySelector('.home_map'),
+                    antialias: true
+                });
+                renderer.setSize(ww, wh);
+                renderer.setClearColor(0xFAFAF1);
+
+                scene = new THREE.Scene();
+
+                camera = new THREE.PerspectiveCamera(100, ww / wh, 0.1, 10000);
+                camera.position.set(-100, 0, 400);
+                camera.lookAt(centerVector);
+                scene.add(camera);
+
+                texture = THREE.ImageUtils.loadTexture("./img/home/audio_man.png", undefined, function () {
+                    imagedata = getImageData(texture.image);
+                    drawTheMap();
+                });
+                window.addEventListener('resize', onResize, false);
+
+            };
+            var onResize = function () {
+                ww = window.innerWidth;
+                wh = window.innerHeight;
+                renderer.setSize(ww, wh);
+                camera.aspect = ww / wh;
+                camera.updateProjectionMatrix();
+            };
+
+            var render = function (a) {
+
+                requestAnimationFrame(render);
+
+                for (var i = 0, j = particles.geometry.vertices.length; i < j; i++) {
+                    var particle = particles.geometry.vertices[i];
+                    particle.x += (particle.destination.x - particle.x) * particle.speed;
+                    particle.y += (particle.destination.y - particle.y) * particle.speed;
+                    particle.z += (particle.destination.z - particle.z) * particle.speed;
+                }
+
+                if (a - previousTime > 100) {
+                    var index = Math.floor(Math.random() * particles.geometry.vertices.length);
+                    var particle1 = particles.geometry.vertices[index];
+                    var particle2 = particles.geometry.vertices[particles.geometry.vertices.length - index];
+                    TweenMax.to(particle, Math.random() * 2 + 1, { x: particle2.x, y: particle2.y, ease: Power2.easeInOut });
+                    TweenMax.to(particle2, Math.random() * 2 + 1, { x: particle1.x, y: particle1.y, ease: Power2.easeInOut });
+                    previousTime = a;
+                }
+
+                particles.geometry.verticesNeedUpdate = true;
+                camera.position.x = Math.sin(a / 5000) * 100;
+                camera.lookAt(centerVector);
+
+                renderer.render(scene, camera);
+            };
+
+            init();
         }); //document.ready end
 
 
@@ -1992,12 +1810,15 @@
                 <div class="home_ctrl_container flexbox">
                     <div class="home_top_arrow"></div>
                     <div class="home_songInfo_container">
-                        <div class="home_song_cover">
-                            <button class="home_play"><i class="fas fa-play"></i></button>
-                        </div>
+                        <div class="home_song_cover"></div>
                         <div class="contain flexbox">
                             <span class="home_song_name">Lucid Dreamer</span>
                             <span class="home_song_author">Spazz Cardigan</span>
+                        </div>
+                        <div class="home_control_container">
+                            <button class="home_prev"><i class="fas fa-step-backward"></i></button>
+                            <button class="home_play"><i class="fas fa-play"></i></button>
+                            <button class="home_next"><i class="fas fa-step-forward"></i></button>
                         </div>
                     </div>
                     <div class="home_bot_arrow"></div>
@@ -2010,84 +1831,97 @@
             <div class="home_sec home_sec02 section">
                 <div class="home_paint01"></div>
                 <div class="home_paint02"></div>
-                <div class="home_mixer_bt">
-                    <div class="home_mixer_box">
-                        <div class="home_mixer"></div>
-                        <div class="close"><i class="far fa-times-circle"></i></div>
-                    </div>
-                </div>
-                <div class="home_title home_remix">
+                <div class="home_mixer">
                 </div>
                 <div class="home_container">
+                    <div class="home_remix">
+                    </div>
                     <h2>Creative melody and beat<span>Keeping it real!</span></h2>
-                    <div class="content">
-                        <div class="text0">
-                            <h3>Ordinary operation, Unoperation Creation</h3>
-                            <p>Want to create music without knowing how to start? With soundwave mixing tools, everyone
-                                can do it. With just a few simple steps, you can complete your own song.</p>
-                            <h4>Go Remix Now! >>></h4>
-                            <div class="home_more_bt">
-                                <a href="./remix.html"></a>
-                            </div>
+                    <div class="content1">
+                        <div class="design_text designlead opened" style="display: block;">
+                            <h3>A light in the dark...</h3>
+                            <p>We help make your boldest ideas come alive and turn even your most ambitious visions into
+                                reality. Let us breathe life into your message effectively and innovatively, both online
+                                and
+                                in print, to get you and your product noticed. With the help of sophisticated marketing
+                                and
+                                well-planned image campaigns, we’ll help raise your brand awareness and anchor your
+                                company
+                                firmly in the minds your targeted market giving you a valuable advantage over your
+                                competitors.</p>
+                            <h4 class="togglebox-hinweis">Results that speak volumes...</h4>
                         </div>
                         <div class="hidden"></div>
+                    </div>
+                    <div class="content2">
                         <ul>
-                            <li>
-                                <span class="number">1</span>
-                                <span class="toptext">Online</span>
-                                <span class="bottomtext">Remix</span>
-                                <span class="arrow">▶</span>
+                            <li id="design-1" class="designlink"><a href="" ng-click="openSlideIn(1)"><span
+                                        class="dex-number">1</span><span class="dex-toptext">Remix</span><span
+                                        class="dex-bottomtext">Online</span><span class="dex-arrow">▶</span></a>
                             </li>
-                            <li>
-                                <span class="number">2</span>
-                                <span class="toptext">Complete</span>
-                                <span class="bottomtext">Download</span>
-                                <span class="arrow">▶</span>
+                            <li id="design-2" class="designlink"><a href="" ng-click="openSlideIn(2)"><span
+                                        class="dex-number">2</span><span class="dex-toptext">Compose</span><span
+                                        class="dex-bottomtext">Beat</span><span class="dex-arrow">▶</span></a>
                             </li>
-                            <li>
-                                <span class="number">3</span>
-                                <span class="toptext">Rank</span>
-                                <span class="bottomtext">Upload</span>
-                                <span class="arrow">▶</span>
-                            </li>
+                            <li id="design-3" class="designlink"><a href="" ng-click="openSlideIn(3)"><span
+                                        class="dex-number">3</span><span class="dex-toptext">Upload</span><span
+                                        class="dex-bottomtext">Rank</span><span class="dex-arrow">▶</span></a></li>
                         </ul>
-                        <div class="text text1">
-                            <h3>Online mixing</h3>
-                            <p>No need to download tools, no complicated preparatory work. Just click on the square to
-                                decide your rhythm and melody.</p>
+                        <div class="design_text design_design-1">
+                            <h3>Web Design, E-Commerce and Online-Marketing</h3>
+                            <p>Nowadays, a professional website is a basic necessity for all companies and client
+                                expectations rely on a modern website to give them a comprehensive experience and leave
+                                no questions unanswered. Our websites and e-commerce solutions score with sophisticated
+                                and innovative design as well as a high degree of user-friendliness. The consistent use
+                                of responsive web design means that we can achieve the flexibility that the market
+                                demands with regard to the mobile sector, so guaranteeing that your website will work
+                                perfectly on all devices from your desktop pc right down to your smart phone.</p>
                         </div>
-                        <div class="text text2">
-                            <h3>Complete the song</h3>
-                            <p>After deciding on the rhythm and melody, press the recording while enjoying, and you can
-                                download the song when you are finished.</p>
+                        <div class="design_text design_design-2" style="display: none;">
+                            <h3>Corporate Design and Branding</h3>
+                            <p>The corporate identity of a company embodies all of its characteristics and conveys the
+                                company’s philosophy, competence as well as its understanding of its respective branch.
+                                As an integral part of this, the corporate design plays a leading role by dictating how
+                                the public views you. Corporate design is much more than just the company logo, it’s
+                                about how your stationary is designed or how your online-image is presented and follows
+                                a common theme present throughout all of your correspondence. By unifying the design of
+                                all these elements, we can project a compelling visual image, which conveys your firm’s
+                                message effectively and competently – let us turn your company into a brand.</p>
                         </div>
-                        <div class="text text3">
-                            <h3>Share song</h3>
-                            <p>Upload your own songs in the member area to share with everyone, you can get sponsorship
-                                and more exposure opportunities. You can also participate in competitions and win
-                                championships.</p>
+                        <div class="design_text design_design-3" style="display: none;">
+                            <h3>Print Advertising and Graphic Design</h3>
+                            <p>We are avid followers of modern trends as well as staunch supporters of traditional tried
+                                and tested marketing concepts and are more than happy to mix ground-breaking innovation
+                                with classical elements to create visual results of the greatest consistency. We don’t
+                                just highlight your products, we aim to tell a story designed to evoke emotions and
+                                transport your audience into your world. The secret of a successful print marketing
+                                campaign lies in creating a permanent and enduring connection between your company and
+                                your targeted consumer group.</p>
                         </div>
                     </div>
                 </div>
                 <p>
                     You can mix andmaster EDM in here.It’s easy for everyonewho want create music on their own.
                 </p>
+                <div class="home_more_bt">
+                    <a href="./remix.html"></a>
+                </div>
             </div>
             <div class="home_sec home_sec03 section">
                 <div class="home_pot">
                 </div>
-                <div class="home_title home_rank">
+                <div class="home_rank">
                 </div>
                 <div class="home_slider">
-                    <div class="rank_title">
+                    <div class="home_title">
                         <h1>Favorite TOP 10</h1>
                     </div>
                     <div class="home_perspective">
                         <div class="home_song_container">
                             <div class="home_song home_song1">
-                                <div class="home_cover_img">
-                                    <button class="home_play" data-playStatus="false"
-                                        v-bind:data-songNo="rank.song_no[0]"><i class="fas fa-play"></i></button>
+                                <div class="home_cover_img flexbox">
+                                    <i class="far fa-play-circle"></i>
+                                    <i class="far fa-play-circle"></i>
                                 </div>
                                 <div class="home_shadow"></div>
                                 <div class="home_song_info">
@@ -2107,16 +1941,13 @@
                                     </div>
                                     <div class="introduction">
                                         {{rank.song_intro[0]}}
+                                        <div class="more"></div>
                                     </div>
-                                    <div class="more flexbox"><i class="fas fa-chevron-down"></i></div>
                                 </div>
                                 <div class="home_vinyl_records_s"></div>
                             </div>
                             <div class="home_song home_song2">
-                                <div class="home_cover_img">
-                                    <button class="home_play" data-playStatus="false"
-                                        v-bind:data-songNo="rank.song_no[1]"><i class="fas fa-play"></i></button>
-                                </div>
+                                <div class="home_cover_img"><a href="" draggable="home_false"></a></div>
                                 <div class="home_shadow"></div>
                                 <div class="home_song_info">
                                     <div class="container flexbox">
@@ -2135,16 +1966,13 @@
                                     </div>
                                     <div class="introduction">
                                         {{rank.song_intro[1]}}
+                                        <div class="more"></div>
                                     </div>
                                 </div>
                                 <div class="home_vinyl_records_s"></div>
                             </div>
                             <div class="home_song home_song3">
-                                <div class="home_cover_img">
-                                    <button class="home_play" data-playStatus="false"
-                                        v-bind:data-songNo="rank.song_no[2]"><i class="fas fa-play"></i></button>
-
-                                </div>
+                                <div class="home_cover_img"><a href="" draggable="home_false"></a></div>
                                 <div class="home_shadow"></div>
                                 <div class="home_song_info">
                                     <div class="container flexbox">
@@ -2163,16 +1991,13 @@
                                     </div>
                                     <div class="introduction">
                                         {{rank.song_intro[2]}}
+                                        <div class="more"></div>
                                     </div>
                                 </div>
                                 <div class="home_vinyl_records_s"></div>
                             </div>
                             <div class="home_song home_song4">
-                                <div class="home_cover_img">
-                                    <button class="home_play" data-playStatus="false"
-                                        v-bind:data-songNo="rank.song_no[3]"><i class="fas fa-play"></i></button>
-
-                                </div>
+                                <div class="home_cover_img"><a href="" draggable="home_false"></a></div>
                                 <div class="home_shadow"></div>
                                 <div class="home_song_info">
                                     <div class="container flexbox">
@@ -2191,16 +2016,13 @@
                                     </div>
                                     <div class="introduction">
                                         {{rank.song_intro[3]}}
+                                        <div class="more"></div>
                                     </div>
                                 </div>
                                 <div class="home_vinyl_records_s"></div>
                             </div>
                             <div class="home_song home_song5">
-                                <div class="home_cover_img">
-                                    <button class="home_play" data-playStatus="false"
-                                        v-bind:data-songNo="rank.song_no[4]"><i class="fas fa-play"></i></button>
-
-                                </div>
+                                <div class="home_cover_img"><a href="" draggable="home_false"></a></div>
                                 <div class="home_shadow"></div>
                                 <div class="home_song_info">
                                     <div class="container flexbox">
@@ -2219,16 +2041,13 @@
                                     </div>
                                     <div class="introduction">
                                         {{rank.song_intro[4]}}
+                                        <div class="more"></div>
                                     </div>
                                 </div>
                                 <div class="home_vinyl_records_s"></div>
                             </div>
                             <div class="home_song home_song6">
-                                <div class="home_cover_img">
-                                    <button class="home_play" data-playStatus="false"
-                                        v-bind:data-songNo="rank.song_no[5]"><i class="fas fa-play"></i></button>
-
-                                </div>
+                                <div class="home_cover_img"><a href="" draggable="home_false"></a></div>
                                 <div class="home_shadow"></div>
                                 <div class="home_song_info">
                                     <div class="container flexbox">
@@ -2247,16 +2066,13 @@
                                     </div>
                                     <div class="introduction">
                                         {{rank.song_intro[5]}}
+                                        <div class="more"></div>
                                     </div>
                                 </div>
                                 <div class="home_vinyl_records_s"></div>
                             </div>
                             <div class="home_song home_song7">
-                                <div class="home_cover_img">
-                                    <button class="home_play" data-playStatus="false"
-                                        v-bind:data-songNo="rank.song_no[6]"><i class="fas fa-play"></i></button>
-
-                                </div>
+                                <div class="home_cover_img"><a href="" draggable="home_false"></a></div>
                                 <div class="home_shadow"></div>
                                 <div class="home_song_info">
                                     <div class="container flexbox">
@@ -2275,16 +2091,13 @@
                                     </div>
                                     <div class="introduction">
                                         {{rank.song_intro[6]}}
+                                        <div class="more"></div>
                                     </div>
                                 </div>
                                 <div class="home_vinyl_records_s"></div>
                             </div>
                             <div class="home_song home_song8">
-                                <div class="home_cover_img">
-                                    <button class="home_play" data-playStatus="false"
-                                        v-bind:data-songNo="rank.song_no[7]"><i class="fas fa-play"></i></button>
-
-                                </div>
+                                <div class="home_cover_img"><a href="" draggable="home_false"></a></div>
                                 <div class="home_shadow"></div>
                                 <div class="home_song_info">
                                     <div class="container flexbox">
@@ -2303,16 +2116,13 @@
                                     </div>
                                     <div class="introduction">
                                         {{rank.song_intro[7]}}
+                                        <div class="more"></div>
                                     </div>
                                 </div>
                                 <div class="home_vinyl_records_s"></div>
                             </div>
                             <div class="home_song home_song9">
-                                <div class="home_cover_img">
-                                    <button class="home_play" data-playStatus="false"
-                                        v-bind:data-songNo="rank.song_no[8]"><i class="fas fa-play"></i></button>
-
-                                </div>
+                                <div class="home_cover_img"><a href="" draggable="home_false"></a></div>
                                 <div class="home_shadow"></div>
                                 <div class="home_song_info">
                                     <div class="container flexbox">
@@ -2331,16 +2141,13 @@
                                     </div>
                                     <div class="introduction">
                                         {{rank.song_intro[8]}}
+                                        <div class="more"></div>
                                     </div>
                                 </div>
                                 <div class="home_vinyl_records_s"></div>
                             </div>
                             <div class="home_song home_song10">
-                                <div class="home_cover_img">
-                                    <button class="home_play" data-playStatus="false"
-                                        v-bind:data-songNo="rank.song_no[9]"><i class="fas fa-play"></i></button>
-
-                                </div>
+                                <div class="home_cover_img"><a href="" draggable="home_false"></a></div>
                                 <div class="home_shadow"></div>
                                 <div class="home_song_info">
                                     <div class="container flexbox">
@@ -2359,6 +2166,7 @@
                                     </div>
                                     <div class="introduction">
                                         {{rank.song_intro[9]}}
+                                        <div class="more"></div>
                                     </div>
                                 </div>
                                 <div class="home_vinyl_records_s"></div>
@@ -2376,9 +2184,8 @@
             <div class="home_sec home_sec04 section">
                 <div class="home_paint01"></div>
                 <div class="home_paint02"></div>
-                <div class="home_title home_activity"></div>
+                <div class="home_activity"></div>
                 <div class="home_DJ">
-                    <div class="home_DJ_g"></div>
                 </div>
                 <div class="home_activity_info">
                     <div class="home_activity_img">
@@ -2399,7 +2206,6 @@
                     <p>
                         2019 Dec 31 to 2020 Dec 31
                     </p>
-                    <h4>Enter Contest Now! >>></h4>
                     <div class="enter_bt">
                         <a href="./activity.html"></a>
                     </div>
@@ -2408,103 +2214,93 @@
             </div>
             <div class="home_sec home_sec05 section">
                 <div class="home_paint01"></div>
-                <div class="home_title home_collection">
+                <div class="home_collection">
                 </div>
-                <div class="home_sloth_top"></div>
-                <div class="home_sloth_bottom"></div>
-                <div class="holder">
-                    <div class="text_container">
-                        <p>
-                            More than 100,000 music creators and more than one million songs. You can mine them from our
-                            categories and hashtags. enjoy it.
-                        </p>
+                <p>
+                    We have more than 10,000,00 songs in here. enjoy together!
+                </p>
+                <div class="home_sort_container">
+                    <div class="home_sort home_sort01 flexbox">
+                        <div class="selector">
+                            <svg width="250" height="250" viewbox="0,0,200,200">
+                                <path class="st0" stroke="#26F5F7" stroke-width="10" stroke-linecap="round" fill="none"
+                                    d="M49.2,32.9c-3.5-5.5-11-7.3-17-5.2S21.7,35.2,19,41.2S15.2,54,14.4,60.6c-3,24.9-3,50.2-2.7,75.3
+                                c0.1,8.7,0.3,17.7,4.1,25.4c5.3,10.7,16.5,16.6,27.5,19.7c17.9,5,36.8,4.4,55.3,2.8c17-1.4,50.9-5,67.4-9.4
+                                c6.3-1.7,15.8-11.7,17.4-18.3c2.1-9.1,5-37.4,5.3-46.7c0.8-21.9-1.4-44.1-8.6-64.6c-0.9-2.6-2-5.3-3.7-7.5
+                                c-1.9-2.4-4.5-4.1-7.1-5.6c-16-9.6-33.7-16.4-52-18.7s-33.4-1.1-50,7.2" />
+                            </svg>
+                        </div>
+                        <a class="flexbox" href="./collection.html">Rock</a>
                     </div>
-                    <div class="home_sort_container">
-                        <div class="home_sort home_sort01 flexbox">
-                            <div class="selector">
-                                <svg width="250" height="250" viewbox="0,0,200,200">
-                                    <path class="st0" stroke="#26F5F7" stroke-width="10" stroke-linecap="round"
-                                        fill="none" d="M49.2,32.9c-3.5-5.5-11-7.3-17-5.2S21.7,35.2,19,41.2S15.2,54,14.4,60.6c-3,24.9-3,50.2-2.7,75.3
+                    <div class="home_sort home_sort02 flexbox">
+                        <div class="selector">
+                            <svg width="250" height="250" viewbox="0,0,200,200">
+                                <path class="st0" stroke="#26F5F7" stroke-width="10" stroke-linecap="round" fill="none"
+                                    d="M49.2,32.9c-3.5-5.5-11-7.3-17-5.2S21.7,35.2,19,41.2S15.2,54,14.4,60.6c-3,24.9-3,50.2-2.7,75.3
                                 c0.1,8.7,0.3,17.7,4.1,25.4c5.3,10.7,16.5,16.6,27.5,19.7c17.9,5,36.8,4.4,55.3,2.8c17-1.4,50.9-5,67.4-9.4
                                 c6.3-1.7,15.8-11.7,17.4-18.3c2.1-9.1,5-37.4,5.3-46.7c0.8-21.9-1.4-44.1-8.6-64.6c-0.9-2.6-2-5.3-3.7-7.5
                                 c-1.9-2.4-4.5-4.1-7.1-5.6c-16-9.6-33.7-16.4-52-18.7s-33.4-1.1-50,7.2" />
-                                </svg>
-                            </div>
-                            <a class="flexbox" href="./collection.html">Rock</a>
+                            </svg>
                         </div>
-                        <div class="home_sort home_sort02 flexbox">
-                            <div class="selector">
-                                <svg width="250" height="250" viewbox="0,0,200,200">
-                                    <path class="st0" stroke="#26F5F7" stroke-width="10" stroke-linecap="round"
-                                        fill="none" d="M49.2,32.9c-3.5-5.5-11-7.3-17-5.2S21.7,35.2,19,41.2S15.2,54,14.4,60.6c-3,24.9-3,50.2-2.7,75.3
+                        <a class="flexbox" href="./collection.html">Matel</a>
+                    </div>
+                    <div class="home_sort home_sort03 flexbox">
+                        <div class="selector">
+                            <svg width="250" height="250" viewbox="0,0,200,200">
+                                <path class="st0" stroke="#26F5F7" stroke-width="10" stroke-linecap="round" fill="none"
+                                    d="M49.2,32.9c-3.5-5.5-11-7.3-17-5.2S21.7,35.2,19,41.2S15.2,54,14.4,60.6c-3,24.9-3,50.2-2.7,75.3
                                 c0.1,8.7,0.3,17.7,4.1,25.4c5.3,10.7,16.5,16.6,27.5,19.7c17.9,5,36.8,4.4,55.3,2.8c17-1.4,50.9-5,67.4-9.4
                                 c6.3-1.7,15.8-11.7,17.4-18.3c2.1-9.1,5-37.4,5.3-46.7c0.8-21.9-1.4-44.1-8.6-64.6c-0.9-2.6-2-5.3-3.7-7.5
                                 c-1.9-2.4-4.5-4.1-7.1-5.6c-16-9.6-33.7-16.4-52-18.7s-33.4-1.1-50,7.2" />
-                                </svg>
-                            </div>
-                            <a class="flexbox" href="./collection.html">Matel</a>
+                            </svg>
                         </div>
-                        <div class="home_sort home_sort03 flexbox">
-                            <div class="selector">
-                                <svg width="250" height="250" viewbox="0,0,200,200">
-                                    <path class="st0" stroke="#26F5F7" stroke-width="10" stroke-linecap="round"
-                                        fill="none" d="M49.2,32.9c-3.5-5.5-11-7.3-17-5.2S21.7,35.2,19,41.2S15.2,54,14.4,60.6c-3,24.9-3,50.2-2.7,75.3
+                        <a class="flexbox" href="./collection.html">R & B</a>
+                    </div>
+                    <div class="home_sort home_sort04 flexbox">
+                        <div class="selector">
+                            <svg width="250" height="250" viewbox="0,0,200,200">
+                                <path class="st0" stroke="#26F5F7" stroke-width="10" stroke-linecap="round" fill="none"
+                                    d="M49.2,32.9c-3.5-5.5-11-7.3-17-5.2S21.7,35.2,19,41.2S15.2,54,14.4,60.6c-3,24.9-3,50.2-2.7,75.3
                                 c0.1,8.7,0.3,17.7,4.1,25.4c5.3,10.7,16.5,16.6,27.5,19.7c17.9,5,36.8,4.4,55.3,2.8c17-1.4,50.9-5,67.4-9.4
                                 c6.3-1.7,15.8-11.7,17.4-18.3c2.1-9.1,5-37.4,5.3-46.7c0.8-21.9-1.4-44.1-8.6-64.6c-0.9-2.6-2-5.3-3.7-7.5
                                 c-1.9-2.4-4.5-4.1-7.1-5.6c-16-9.6-33.7-16.4-52-18.7s-33.4-1.1-50,7.2" />
-                                </svg>
-                            </div>
-                            <a class="flexbox" href="./collection.html">R & B</a>
+                            </svg>
                         </div>
-                        <div class="home_sort home_sort04 flexbox">
-                            <div class="selector">
-                                <svg width="250" height="250" viewbox="0,0,200,200">
-                                    <path class="st0" stroke="#26F5F7" stroke-width="10" stroke-linecap="round"
-                                        fill="none" d="M49.2,32.9c-3.5-5.5-11-7.3-17-5.2S21.7,35.2,19,41.2S15.2,54,14.4,60.6c-3,24.9-3,50.2-2.7,75.3
+                        <a class="flexbox" href="./collection.html">Hip-hop</a>
+                    </div>
+                    <div class="home_sort home_sort05 flexbox">
+                        <div class="selector">
+                            <svg width="250" height="250" viewbox="0,0,200,200">
+                                <path class="st0" stroke="#26F5F7" stroke-width="10" stroke-linecap="round" fill="none"
+                                    d="M49.2,32.9c-3.5-5.5-11-7.3-17-5.2S21.7,35.2,19,41.2S15.2,54,14.4,60.6c-3,24.9-3,50.2-2.7,75.3
                                 c0.1,8.7,0.3,17.7,4.1,25.4c5.3,10.7,16.5,16.6,27.5,19.7c17.9,5,36.8,4.4,55.3,2.8c17-1.4,50.9-5,67.4-9.4
                                 c6.3-1.7,15.8-11.7,17.4-18.3c2.1-9.1,5-37.4,5.3-46.7c0.8-21.9-1.4-44.1-8.6-64.6c-0.9-2.6-2-5.3-3.7-7.5
                                 c-1.9-2.4-4.5-4.1-7.1-5.6c-16-9.6-33.7-16.4-52-18.7s-33.4-1.1-50,7.2" />
-                                </svg>
-                            </div>
-                            <a class="flexbox" href="./collection.html">Hip-hop</a>
+                            </svg>
                         </div>
-                        <div class="home_sort home_sort05 flexbox">
-                            <div class="selector">
-                                <svg width="250" height="250" viewbox="0,0,200,200">
-                                    <path class="st0" stroke="#26F5F7" stroke-width="10" stroke-linecap="round"
-                                        fill="none" d="M49.2,32.9c-3.5-5.5-11-7.3-17-5.2S21.7,35.2,19,41.2S15.2,54,14.4,60.6c-3,24.9-3,50.2-2.7,75.3
+                        <a class="flexbox" href="./collection.html">Classical</a>
+                    </div>
+                    <div class="home_sort home_sort06 flexbox">
+                        <div class="selector">
+                            <svg width="250" height="250" viewbox="0,0,200,200">
+                                <path class="st0" stroke="#26F5F7" stroke-width="10" stroke-linecap="round" fill="none"
+                                    d="M49.2,32.9c-3.5-5.5-11-7.3-17-5.2S21.7,35.2,19,41.2S15.2,54,14.4,60.6c-3,24.9-3,50.2-2.7,75.3
                                 c0.1,8.7,0.3,17.7,4.1,25.4c5.3,10.7,16.5,16.6,27.5,19.7c17.9,5,36.8,4.4,55.3,2.8c17-1.4,50.9-5,67.4-9.4
                                 c6.3-1.7,15.8-11.7,17.4-18.3c2.1-9.1,5-37.4,5.3-46.7c0.8-21.9-1.4-44.1-8.6-64.6c-0.9-2.6-2-5.3-3.7-7.5
                                 c-1.9-2.4-4.5-4.1-7.1-5.6c-16-9.6-33.7-16.4-52-18.7s-33.4-1.1-50,7.2" />
-                                </svg>
-                            </div>
-                            <a class="flexbox" href="./collection.html">Classical</a>
+                            </svg>
                         </div>
-                        <div class="home_sort home_sort06 flexbox">
-                            <div class="selector">
-                                <svg width="250" height="250" viewbox="0,0,200,200">
-                                    <path class="st0" stroke="#26F5F7" stroke-width="10" stroke-linecap="round"
-                                        fill="none" d="M49.2,32.9c-3.5-5.5-11-7.3-17-5.2S21.7,35.2,19,41.2S15.2,54,14.4,60.6c-3,24.9-3,50.2-2.7,75.3
-                                c0.1,8.7,0.3,17.7,4.1,25.4c5.3,10.7,16.5,16.6,27.5,19.7c17.9,5,36.8,4.4,55.3,2.8c17-1.4,50.9-5,67.4-9.4
-                                c6.3-1.7,15.8-11.7,17.4-18.3c2.1-9.1,5-37.4,5.3-46.7c0.8-21.9-1.4-44.1-8.6-64.6c-0.9-2.6-2-5.3-3.7-7.5
-                                c-1.9-2.4-4.5-4.1-7.1-5.6c-16-9.6-33.7-16.4-52-18.7s-33.4-1.1-50,7.2" />
-                                </svg>
-                            </div>
-                            <a class="flexbox" href="./collection.html">Country</a>
-                        </div>
+                        <a class="flexbox" href="./collection.html">Country</a>
                     </div>
                 </div>
             </div>
             <div class="home_sec home_sec06 section">
-                <div class="home_title home_about">
-                </div>
-                <div class="home_audioMan">
-                    <div class="gear01"></div>
-                    <div class="gear02"></div>
+                <div class="home_about">
                 </div>
                 <p>
                     We love EDM, so we get togehterto share morew music for you.
                 </p>
+                <canvas class="home_map"></canvas>
             </div>
         </div>
 
@@ -2602,6 +2398,7 @@
                     </div>
                     <div class="pushBtn"></div>
                 </div>
+
                 <div class="right">
                     <div class="pushBtn"></div>
                     <div class="listTitle">
@@ -2616,6 +2413,111 @@
                     </div>
                     <div class="list">
                         <ul class="chooseList">
+                            <!-- <li>
+                      <div class="songCover">
+                        <img src="./img/collection/album1.jpg" alt="">
+                        <div class="listPlay nowlistening"><img src="./img/library/coverPlay-s.png"></div>
+                      </div>
+                      <div class="listSongInfo">
+                        <div class="name">
+                          <h4>Lucid Dreamer</h4>
+                          <p> Spazz Cardigan</p>
+                        </div>
+                      </div>
+                      <div class="totalTime">3:11</div>
+                      <div class="heart becomeRed"><img src="./img/collection/redheart.png"></div>
+                      <div class="clearfix"></div>
+                    </li>
+                    <li>
+                      <div class="songCover">
+                        <img src="./img/collection/album2.jpg" alt="">
+                        <div class="listPlay"><img src="./img/library/coverPlay-s.png"></div>
+                      </div>
+                      <div class="listSongInfo">
+                        <div class="name">
+                          <h4>Spring In My Step</h4>
+                          <p>Silent Partner</p>
+                        </div>
+                      </div>
+                      <div class="totalTime">1:59</div>
+                      <div class="heart becomeRed"><img src="./img/collection/redheart.png" alt=""></div>
+                      <div class="clearfix"></div>
+                    </li>
+                    <li>
+                      <div class="songCover">
+                        <img src="./img/collection/album3.jpg" alt="">
+                        <div class="listPlay"><img src="./img/library/coverPlay-s.png"></div>
+                      </div>
+                      <div class="listSongInfo">
+                        <div class="name">
+                          <h4>On My Way Home</h4>
+                          <p>The 126ers</p>
+                        </div>
+                      </div>
+                      <div class="totalTime">1:56</div>
+                      <div class="heart becomeRed"><img src="./img/collection/redheart.png" alt=""></div>
+                      <div class="clearfix"></div>
+                    </li>
+                    <li>
+                      <div class="songCover">
+                        <img src="./img/collection/album4.jpg" alt="">
+                        <div class="listPlay"><img src="./img/library/coverPlay-s.png"></div>
+                      </div>
+                      <div class="listSongInfo">
+                        <div class="name">
+                          <h4>Lucid Dreamer</h4>
+                          <p> Spazz Cardigan</p>
+                        </div>
+                      </div>
+                      <div class="totalTime">4:30</div>
+                      <div class="heart becomeRed"><img src="./img/collection/redheart.png" alt=""></div>
+                      <div class="clearfix"></div>
+                    </li>
+                    <li>
+                      <div class="songCover">
+                        <img src="./img/collection/album5.jpg" alt="">
+                        <div class="listPlay"><img src="./img/library/coverPlay-s.png"></div>
+                      </div>
+                      <div class="listSongInfo">
+                        <div class="name">
+                          <h4>Lucid Dreamer</h4>
+                          <p> Spazz Cardigan</p>
+                        </div>
+                      </div>
+                      <div class="totalTime">4:30</div>
+                      <div class="heart becomeRed"><img src="./img/collection/redheart.png" alt=""></div>
+                      <div class="clearfix"></div>
+                    </li>
+                    <li>
+                      <div class="songCover">
+                        <img src="./img/collection/album6.jpg" alt="">
+                        <div class="listPlay"><img src="./img/library/coverPlay-s.png"></div>
+                      </div>
+                      <div class="listSongInfo">
+                        <div class="name">
+                          <h4>Lucid Dreamer</h4>
+                          <p> Spazz Cardigan</p>
+                        </div>
+                      </div>
+                      <div class="totalTime">4:30</div>
+                      <div class="heart becomeRed"><img src="./img/collection/redheart.png" alt=""></div>
+                      <div class="clearfix"></div>
+                    </li>
+                    <li>
+                      <div class="songCover">
+                        <img src="./img/collection/album7.jpg" alt="">
+                        <div class="listPlay"><img src="./img/library/coverPlay-s.png"></div>
+                      </div>
+                      <div class="listSongInfo">
+                        <div class="name">
+                          <h4>Lucid Dreamer</h4>
+                          <p> Spazz Cardigan</p>
+                        </div>
+                      </div>
+                      <div class="totalTime">4:30</div>
+                      <div class="heart becomeRed"><img src="./img/collection/redheart.png" alt=""></div>
+                      <div class="clearfix"></div>
+                    </li> -->
                         </ul>
                     </div>
                 </div>
@@ -2641,6 +2543,25 @@
             </div>
         </div>
         <!-- player end -->
+
+
+
+        <div id="lightCover">
+            <div class="lightbox_s" id="myAllList">
+                <div class="close closeLight"><i class="fas fa-times"></i></div>
+                <h3>My List</h3>
+                <div class="lightSelectMenu">
+                    <ul>
+                        <li>Liked songs</li>
+                        <li>Peaceful songs</li>
+                        <li>party</li>
+                    </ul>
+                </div>
+                <button class="">ok</button>
+            </div>
+        </div>
+
+
     </div>
 
 
@@ -2658,7 +2579,6 @@
 
                 // home
                 rank: {
-                    song_no: [],
                     song_name: [],
                     song_author: [],
                     favorite: [],
@@ -2666,17 +2586,7 @@
                     song_intro: [],
                     song_img: [],
                     song_addr: [],
-                },
-
-                // play
-                play_song_info: {
-                    song_no: Number,
-                    song_name: '',
-                    song_author: '',
-                    song_img: '',
-                    song_addr: '',
-                    song_time: '',
-                },
+                }
 
             },
             mounted() {
@@ -2830,7 +2740,7 @@
                     vm.mem_login = false;
                 }
             }
-            xhr.open("get", "./phps/getLoginInfo.php", true);
+            xhr.open("get", "./php/getLoginInfo.php", true);
             xhr.send(null);
         }
 
@@ -2839,18 +2749,18 @@
             xhr.onload = () => {
                 let rank = JSON.parse(xhr.responseText);
                 for (let i = 0; i < 10; i++) {
-                    vm.rank.song_no.push(rank[i].song_no)
                     vm.rank.song_name.push(rank[i].song_name);
                     vm.rank.song_author.push(rank[i].mem_name);
                     vm.rank.favorite.push(rank[i].fav_total);
                     vm.rank.donate.push(rank[i].donate_acount);
                     vm.rank.song_intro.push(rank[i].song_idn);
                     vm.rank.song_img.push(rank[i].song_pic);
-                    document.querySelector(`.home_song${i + 1} .home_cover_img`).style.background = `url(.${vm.rank.song_img[i]})`
-                    document.querySelector(`.home_song${i + 1} .home_cover_img`).style.backgroundSize = 'cover'
+                    vm.rank.song_addr.push(rank[i].song_addr);
                 }
+
+                console.log(rank)
             }
-            xhr.open("get", "./phps/getRankInfo.php", true);
+            xhr.open("get", "./php/getRankInfo.php", true);
             xhr.send(null);
         }
 
