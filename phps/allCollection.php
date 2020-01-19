@@ -2,7 +2,7 @@
 try {
     require_once("connectBooks.php");
     
-    $sql = "SELECT `song_pic`,`song_name`,`category`.`cat_no`,`mem_name`,total_station_music_library.song_no
+    $sql = "SELECT `song_pic`,`song_name`,`category`.`cat_no`,`mem_name`
     FROM (total_station_music_library
     INNER JOIN `member`
     ON `total_station_music_library`.`mem_no` = `member`.`mem_no`)

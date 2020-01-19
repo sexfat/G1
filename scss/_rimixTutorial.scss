@@ -1,0 +1,382 @@
+.owl-carousel {
+  .animated {
+    animation-duration: 1000ms;
+    animation-fill-mode: both;
+  }
+
+  .owl-animated-in {
+    z-index: 0;
+  }
+
+  .owl-animated-out {
+    z-index: 1;
+  }
+
+  .fadeOut {
+    animation-name: fadeOut;
+  }
+}
+
+
+@keyframes fadeOut {
+  0% {
+    opacity: 1;
+  }
+
+  100% {
+    opacity: 0;
+  }
+}
+
+.owl-height {
+  transition: height 500ms ease-in-out;
+}
+
+.owl-carousel {
+  display: none;
+  width: 100%;
+  -webkit-tap-highlight-color: transparent;
+  /* position relative and z-index fix webkit rendering fonts issue */
+  position: relative;
+  z-index: 1;
+
+  .owl-stage {
+    position: relative;
+    -ms-touch-action: pan-Y;
+    touch-action: manipulation;
+    -moz-backface-visibility: hidden;
+    /* fix firefox animation glitch */
+  }
+
+  .owl-stage:after {
+    content: ".";
+    display: block;
+    clear: both;
+    visibility: hidden;
+    line-height: 0;
+    height: 0;
+  }
+
+  .owl-stage-outer {
+    position: relative;
+    overflow: hidden;
+    /* fix for flashing background */
+    -webkit-transform: translate3d(0px, 0px, 0px);
+  }
+
+  .owl-wrapper,
+  .owl-item {
+    -webkit-backface-visibility: hidden;
+    -moz-backface-visibility: hidden;
+    -ms-backface-visibility: hidden;
+    -webkit-transform: translate3d(0, 0, 0);
+    -moz-transform: translate3d(0, 0, 0);
+    -ms-transform: translate3d(0, 0, 0);
+  }
+
+  .owl-item {
+    position: relative;
+    min-height: 1px;
+    float: left;
+    -webkit-backface-visibility: hidden;
+    -webkit-tap-highlight-color: transparent;
+    -webkit-touch-callout: none;
+  }
+
+  .owl-item img {
+    display: block;
+    width: 100%;
+  }
+
+  .owl-nav.disabled,
+  .owl-dots.disabled {
+    display: none;
+  }
+
+  .owl-nav .owl-prev,
+  .owl-nav .owl-next,
+  .owl-dot {
+    cursor: pointer;
+    -webkit-user-select: none;
+    -khtml-user-select: none;
+    -moz-user-select: none;
+    -ms-user-select: none;
+    user-select: none;
+  }
+
+  .owl-nav button.owl-prev,
+  .owl-nav button.owl-next,
+  button.owl-dot {
+    background: none;
+    color: inherit;
+    border: none;
+    padding: 0 !important;
+    font: inherit;
+  }
+
+  &.owl-loaded {
+    display: block;
+  }
+
+  &.owl-loading {
+    opacity: 0;
+    display: block;
+  }
+
+  &.owl-hidden {
+    opacity: 0;
+  }
+
+  &.owl-refresh .owl-item {
+    visibility: hidden;
+  }
+
+  &.owl-drag .owl-item {
+    touch-action: pan-y;
+    -webkit-user-select: none;
+    -moz-user-select: none;
+    -ms-user-select: none;
+    user-select: none;
+  }
+
+  &.owl-grab {
+    cursor: move;
+    cursor: grab;
+  }
+
+  &.owl-rtl {
+    direction: rtl;
+  }
+
+  &.owl-rtl .owl-item {
+    float: right;
+  }
+}
+
+/* No Js */
+.no-js .owl-carousel {
+  display: block;
+}
+
+
+
+/*--------------------------*/
+.tutorial {
+  display: inline-block;
+  padding: 5px;
+  position: fixed;
+  right: 10px;
+  top: 35%;
+  cursor: pointer;
+  @include respond(ipad) {
+    text-align: right;
+    right: 0px;
+  }
+
+  p {
+    margin: 0;
+    padding: 10px;
+    width: 50px;
+    height: 50px;
+    text-align: center;
+    vertical-align: middle;
+    background-color: #333;
+    color: white;
+    border-radius: 50px;
+
+    @include respond(ipad) {
+      width: 30px;
+      height: 30px;
+      padding: 6px;
+      font-size: 0.6rem;
+    }
+
+    &:hover {
+      transform: scale(1.2);
+    }
+  }
+
+  span {
+    font-size: $rem0_7;
+    color: #333;
+  }
+}
+
+.lightCover {
+
+  #tutorialBox {
+    max-width: 1000px;
+    background-color: white;
+    border-radius: 10px;
+    padding-bottom: 20px;
+    position: absolute;
+    top: 50%;
+    left: -50%;
+    transform: translate(-50%, -50%);
+    z-index: 2;
+
+    @include respond(latop-max) {
+      max-width: 800px;
+    }
+
+    @include respond(latop-min) {
+      max-width: 600px;
+    }
+
+    @include respond(ipadpro) {
+      padding-bottom: 15px;
+      max-width: 500px;
+      max-height: 600px;
+    }
+
+    @include respond(ipad) {
+      max-width: 400px;
+    }
+
+    @include respond(phone) {
+      max-width: 300px;
+    }
+
+    h2 {
+      font-size: $rem2;
+      text-align: center;
+      background-color: white;
+      border-radius: 10px;
+
+      @include respond(ipadpro) {
+        font-size: $rem1_5;
+      }
+    }
+
+    &::before {
+      content: "";
+      position: absolute;
+      width: 1500px;
+      height: 450px;
+      top: 50%;
+      right: -100px;
+      transform: translateY(-50%);
+      background-image: url("../img/library/remixTutorialHand-n.svg");
+      background-repeat: no-repeat;
+      background-position: right center;
+      z-index: -1;
+
+      @include respond(ipad) {
+        display: none;
+      }
+    }
+
+    &::after {
+      content: "";
+      position: absolute;
+      width: 260px;
+      height: 450px;
+      top: 50%;
+      right: -100px;
+      transform: translateY(-50%);
+      filter: drop-shadow(0 0 5px #ccc);
+      background-image: url("../img/library/remixTutorialHand-n2.svg");
+      background-repeat: no-repeat;
+      background-position: right center;
+      z-index: 3;
+
+      @include respond(ipad) {
+        display: none;
+      }
+    }
+
+    .stepCarosel {
+      background-color: white;
+      text-align: center;
+      width: 100%;
+      padding: 5px 20px 0;
+
+      &::-webkit-scrollbar {
+        width: 5px;
+      }
+
+      &::-webkit-scrollbar-thumb {
+        background-color: $yellow;
+      }
+
+      .owl-nav {
+        pointer-events: auto;
+
+        .owl-prev {
+          border-radius: 15px;
+          background-color: $yellow;
+          font-size: 20px;
+          width: 30px;
+          margin-right: 60px;
+        }
+
+        .owl-next {
+          border-radius: 15px;
+          background-color: $yellow;
+          font-size: 20px;
+          width: 30px;
+          margin-left: 60px;
+        }
+      }
+
+      .owl-dots {
+        margin-top: -30px;
+        // position: relative;
+        pointer-events: auto;
+
+        .owl-dot {
+          margin: 0 5px;
+          width: 10px;
+          height: 10px;
+          border-radius: 5px;
+          background-color: #ccc;
+          outline: none;
+
+          &.active {
+            background-color: $yellow;
+          }
+        }
+      }
+
+      .stepContent {
+        li {
+          h4 {
+            font-size: $rem1_2;
+            text-align: center;
+
+            @include respond(ipadpro) {
+              font-size: $rem1;
+            }
+          }
+
+          .tutorImg {
+            max-height: 350px;
+            overflow: hidden;
+            background-color: #ccc;
+
+            @include respond(ipadpro) {
+              max-height: 250px;
+            }
+
+            img {
+              display: block;
+              width: 100%;
+            }
+          }
+
+          p {
+            white-space: normal;
+            width: 100%;
+            margin: 10px 0;
+            font-size: $rem0_8;
+            text-align: left;
+
+            @include respond(ipadpro) {
+              font-size: $rem0_7;
+            }
+          }
+        }
+      }
+    }
+  }
+}

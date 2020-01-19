@@ -2,7 +2,7 @@
 switch ( $_FILES['listPicFake']['error'] ){
 	case 0: 
 	    if( file_exists("library") == false){
-	    	mkdir("library");
+	    	mkdir("../img/library/");
 	    }
 		$from = $_FILES['listPicFake']['tmp_name'];
 		$to = "../img/library/".$_FILES['listPicFake']['name'];

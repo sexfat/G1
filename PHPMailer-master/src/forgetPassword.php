@@ -8,7 +8,7 @@ require('Exception.php');
 require('PHPMailer.php');
 require('SMTP.php');
 
-function generateRandomString($length = 8)
+function generateRandomString($length = 6)
 {
     $characters = '0123456789abcde';
     $charactersLength = strlen($characters);
@@ -20,12 +20,11 @@ function generateRandomString($length = 8)
 };
 try {
     require_once "../../phps/connectBooks.php";
-    $searchEmail = $_POST["forgetwho"];
-    // $searchEmail ="ilovesnoopy@gmail.com";
-    $checkEmail = "select * from `member` where mem_acct='$searchEmail';";
+    $searchEmail = $_POST["forpswlogin"];
+    // $searchEmail ="soundwave@gmail.com";
+    $checkEmail = "select * from `member` where mem_acct='{$searchEmail}';";
     $showEmail = $pdo->query($checkEmail);
-    // echo $searchEmail;
-    if ($memberRow = $showEmail->fetch(PDO::FETCH_ASSOC)){
+    if ($memberRow = $showEmail->fetch(PDO::FETCH_ASSOC)) {
         $Randompsw = generateRandomString();
         $updatapsw = "update `member` set mem_psw='{$Randompsw}' where mem_acct='{$searchEmail}';";
         $runpsw = $pdo->exec($updatapsw);
@@ -51,11 +50,16 @@ try {
             'Hello: ' . $memberRow["mem_name"] . '
              New password:' . $Randompsw . '
              Please use this new password log in again.';
-        if( $mail->Send()){
-            echo "New password already send,please check in your E-mail!";
-        }else{
-            echo "E-mail isn't exist,please enter other one.";
-        }
+        $mail->Send();
+        // echo 123;
+
+             //  if ($mail->Send()) {
+            //     echo "已發送郵件";
+            // }
+    
+        // } else {
+        //     echo "查無此帳號";
+        // }
     }
 
 } catch (PDOException $msg) {
