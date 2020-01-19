@@ -536,7 +536,7 @@
                      </div>
                   
                      <div class="act_songBox"> 
-                      <div class="act_old-hear1" @click="showChangeHeart" ref="oneOldHearts"> </div>
+                      <div class="act_old-hear1" @click="showChangeHeart($event,oldSong.entries_name)"ref="oneOldHearts"> </div>
                       <input type="hidden" name="favorStatus" v-model="heartSaute" ref="oneOldHeartsVal">
                       <input type="hidden" name="favorSongName" v-model="getHeartSong" > 
                       <a href="./songinfo.html"><h4>'{{oldSong.entries_name}}'</h4></a>  
@@ -560,7 +560,7 @@
                      </div>
                   
                      <div class="act_songBox"> 
-                      <div class="act_old-hear1" @click="showChangeHeart" ref="oneOldHearts"> </div>
+                      <div class="act_old-hear1" @click="showChangeHeart($event,oldSong.entries_name)"ref="oneOldHearts"> </div>
                       <input type="hidden" name="favorStatus" v-model="heartSaute" ref="oneOldHeartsVal">
                       <input type="hidden" name="favorSongName" v-model="getHeartSong" > 
                       <a href="./songinfo.html"><h4>'{{oldSong.entries_name}}'</h4></a>  
@@ -625,7 +625,7 @@
                      </div>
                   
                      <div class="act_songBox"> 
-                      <div class="act_old-hear1" @click="showChangeHeart" ref="twoOldHearts"> </div>
+                      <div class="act_old-hear1" @click="showChangeHeart($event,oldSong.entries_name)" ref="twoOldHearts"> </div>
                       <input type="hidden" name="favorStatus" v-model="heartSaute" ref="twoOldHeartsVal">
                       <input type="hidden" name="favorSongName" v-model="getHeartSong" > 
                       <a href="./songinfo.html"><h4>'{{oldSong.entries_name}}'</h4></a>  
@@ -650,7 +650,7 @@
                      </div>
                   
                      <div class="act_songBox"> 
-                      <div class="act_old-hear1" @click="showChangeHeart" ref="twoOldHearts"> </div>
+                      <div class="act_old-hear1" @click="showChangeHeart($event,oldSong.entries_name)" ref="twoOldHearts"> </div>
                       <input type="hidden" name="favorStatus" v-model="heartSaute" ref="twoOldHeartsVal">
                       <input type="hidden" name="favorSongName" v-model="getHeartSong" > 
                       <a href="./songinfo.html"><h4>'{{oldSong.entries_name}}'</h4></a>  
@@ -958,8 +958,8 @@
         Vue.component('actNow', {
             template: '#act-now',
             props: {
-                nowVoteSong: [Array],
-                voteAll: [Array],
+                nowVoteSong: [Array, Number],
+                voteAll: [Array, Number],
                 actInformation: [Array],
                 memHeart: [Array],
                 memVotes: [Array],
@@ -1224,6 +1224,9 @@
                             let voteButton = e.target;
                             voteButton.style = "background-color:gray;border:none;";
                             voteButton.disabled = true;
+                            item.vote_per += 1;
+                            console.log(item.vote_per += 1);
+                            this.voteAll.total_vote += 1;
                         }
                     }
                 },
@@ -1337,7 +1340,7 @@
                         for (let i = 0; i < this.oldVoteSong2018.length; i++) {
                             var heart = (this.oldVoteSong2018[i].entries_name == this.memHeart[j].song_name);
                             if (heart == true) {
-                                var heartExist = this.$refs.hearts[i].classList.contains('actShowHeart');
+                                var heartExist = this.$refs.oneOldHearts[i].classList.contains('actShowHeart');
                                 if (heartExist == false) {
                                     this.$refs.oneOldHearts[i].classList.add('actShowHeart');
                                 };
@@ -1355,7 +1358,7 @@
 
                             var heart = (this.oldVoteSong2017[i].entries_name == this.memHeart[j].song_name);
                             if (heart == true) {
-                                var heartExist = this.$refs.hearts[i].classList.contains('actShowHeart');
+                                var heartExist = this.$refs.twoOldHearts[i].classList.contains('actShowHeart');
                                 if (heartExist == false) {
                                     this.$refs.twoOldHearts[i].classList.add('actShowHeart');
                                 };
@@ -1371,8 +1374,8 @@
 
             },
             mounted() {
-                this.ChangeHeart2018 = setTimeout(this.ChangeRedHeart2018, 800);
-                this.ChangeHeart2017 = setTimeout(this.ChangeRedHeart2017, 1000);
+                this.ChangeHeart2018 = setTimeout(this.ChangeRedHeart2018, 500);
+                this.ChangeHeart2017 = setTimeout(this.ChangeRedHeart2017, 800);
                 console.log(this.$refs)
 
             },
@@ -1508,6 +1511,9 @@
             watch: {
 
             },
+            updated() {
+                console.log('view nowVoteSong')
+            }
 
         });
 
