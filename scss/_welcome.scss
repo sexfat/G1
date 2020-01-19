@@ -1,133 +1,153 @@
-.welback{
+.wellaptopback{
+    width:100vw;
+    height:100vh;
+    border: 1px solid red;
     background-image: url(../img/collection/welcome.svg);
-    width: 100vw;
-    height: 100vh;
-    text-align: center;
     background-position: center;
     background-repeat: no-repeat;
     position: relative;
-    @include respond(ipadpro) {
-        display:none;
-    }
-    overflow-y: hidden;
-    .welrecord{
+    .weltworec{
+        border:1px solid red;
         position: relative;
-        top:40%;
-        div{
-            width:26%;
+        display: inline-block;
+        .welrecordtwo{
             display: inline-block;
-            margin: 0px 50px 0px 50px;
             img{
-                width:100%;
+                border: 1px solid green;
             }
-        }
-        .weltext{
-            position: absolute;
-            width: 80%;
-            top:32%;
-            left:10%;
-            z-index: 999;
-            margin: 0px 100px 0px 100px;
-            div{
-                width:26%;
-                display: inline-block;
-                margin: 0px 250px 0px 50px;
-                img{
-                    width:100%;
-                }
-            }
-        }
-        .recordcircle{
-            animation: 5s linear 0s normal none infinite rotateDisc;
-            margin: 0px 100px 0px 100px;
-        }
-        @keyframes rotateDisc{
-            from{transform:rotate(0deg)}
-            to{transform:rotate(360deg)}
         }
     }
+}
+// .welback{
+//     background-image: url(../img/collection/welcome.svg);
+//     width: 100vw;
+//     height: 100vh;
+//     text-align: center;
+//     background-position: center;
+//     background-repeat: no-repeat;
+//     position: relative;
+//     @include respond(ipadpro) {
+//         display:none;
+//     }
+//     overflow-y: hidden;
+//     .welrecord{
+//         position: relative;
+//         top:40%;
+//         div{
+//             width:26%;
+//             display: inline-block;
+//             margin: 0px 50px 0px 50px;
+//             img{
+//                 width:100%;
+//             }
+//         }
+//         .weltext{
+//             position: absolute;
+//             width: 80%;
+//             top:32%;
+//             left:10%;
+//             z-index: 999;
+//             margin: 0px 100px 0px 100px;
+//             div{
+//                 width:26%;
+//                 display: inline-block;
+//                 margin: 0px 250px 0px 50px;
+//                 img{
+//                     width:80%;
+//                 }
+//             }
+//         }
+//         .recordcircle{
+//             animation: 5s linear 0s normal none infinite rotateDisc;
+//             margin: 0px 100px 0px 100px;
+//         }
+//         @keyframes rotateDisc{
+//             from{transform:rotate(0deg)}
+//             to{transform:rotate(360deg)}
+//         }
+//     }
    
-}
-.mobileback{
-    display: none;
-    overflow-y: hidden;
-    @include respond (ipadpro){
-        display: inline-block;
-    }
-    @include respond (phone){
-        display: none;
-    }
-}
-.mobilerec{
-    display:inline-block;
-    position: relative;  
-    top: -700px;
-    left: 90px;
-    display: none;
-    overflow-y: hidden;
-    animation: 5s linear 0s normal none infinite rotateDisc;
-    @include respond (ipadpro){
-        display: inline-block;
-    }
-    @include respond (phone){
-        display: none;
-    }
-}
-.mobiletext{
-    position: relative;
-    bottom: 1250px;
-    text-align: center;
-    display: none;
-    overflow-y: hidden;
-    img{
-        margin: 0px 80px 280px 80px;
-        &:hover{
-            transform: scale(1.1);
-            cursor: pointer;
-        }
-    }
-    @include respond (ipadpro){
-        display: inline-block;
-    }
-    @include respond (phone){
-        display: none;
-    }
-}
-.mobilerecsmall{
-    display: none;
-    margin: 0 auto;
-    overflow-y: hidden;
-    @include respond (phone){
-        display: inline-block;
-        margin: 0 auto;
-        margin-top:50px;
-    }
-    .mobredsmall{
-        position: relative;
-        bottom: 320px;
-        left: 10%;
-        animation: 5s linear 0s normal none infinite rotateDisc;
-    }
-    .mobilesmtext{
-        display: inline-block;
-        position: relative;
-        bottom:670px;
-        left:80px;
-        div{
-            margin-top: 80px;
-            &:hover{
-                transform: scale(1.1);
-            }
-        }
-    }
-}
-a{
-    &:hover{
-    transform: scale(1.1);
-    }
-    img{
-        &:hover{
-            transform: scale(1.1);
-        }
-    }
-}
+// }
+// .mobileback{
+//     display: none;
+//     overflow-y: hidden;
+//     @include respond (ipadpro){
+//         display: inline-block;
+//     }
+//     @include respond (phone){
+//         display: none;
+//     }
+// }
+// .mobilerec{
+//     display:inline-block;
+//     position: relative;  
+//     top: -700px;
+//     left: 90px;
+//     display: none;
+//     overflow-y: hidden;
+//     animation: 5s linear 0s normal none infinite rotateDisc;
+//     @include respond (ipadpro){
+//         display: inline-block;
+//     }
+//     @include respond (phone){
+//         display: none;
+//     }
+// }
+// .mobiletext{
+//     position: relative;
+//     bottom: 1250px;
+//     text-align: center;
+//     display: none;
+//     overflow-y: hidden;
+//     img{
+//         margin: 0px 80px 280px 80px;
+//         &:hover{
+//             transform: scale(1.1);
+//             cursor: pointer;
+//         }
+//     }
+//     @include respond (ipadpro){
+//         display: inline-block;
+//     }
+//     @include respond (phone){
+//         display: none;
+//     }
+// }
+// .mobilerecsmall{
+//     display: none;
+//     margin: 0 auto;
+//     overflow-y: hidden;
+//     @include respond (phone){
+//         display: inline-block;
+//         margin: 0 auto;
+//         margin-top:50px;
+//     }
+//     .mobredsmall{
+//         position: relative;
+//         bottom: 320px;
+//         left: 10%;
+//         animation: 5s linear 0s normal none infinite rotateDisc;
+//     }
+//     .mobilesmtext{
+//         display: inline-block;
+//         position: relative;
+//         bottom:670px;
+//         left:80px;
+//         div{
+//             margin-top: 80px;
+//             &:hover{
+//                 transform: scale(1.1);
+//             }
+//         }
+//     }
+// }
+// a{
+//     &:hover{
+//     transform: scale(1.1);
+//     }
+//     img{
+//         &:hover{
+//             transform: scale(1.1);
+//         }
+//     }
+// }
