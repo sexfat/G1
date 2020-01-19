@@ -990,11 +990,7 @@
                     //愛心收藏
                     heartSaute: [],
                     getHeartSong: [],
-                    // heartSaute:[
-                    //     {red:true, backgroundImage: url('./img/collection/redheart.png')},
-                    //     {gray:false,backgroundImage: url('./img/collection/grayheart.png')}
-
-                    // ]
+                  
 
 
                 }
@@ -1258,8 +1254,6 @@
                 fetch('./phps/getMemContestSong.php').then(res => res.json()).then(data => this.memberContestSong = data);
                 this.ChangeHeart = setTimeout(this.ChangeRedHeart, 800);
                 this.ChangeVotes = setTimeout(this.ChangeGrayVotes, 500);
-                console.log(this.$refs)
-
             },
 
 
@@ -1376,8 +1370,6 @@
             mounted() {
                 this.ChangeHeart2018 = setTimeout(this.ChangeRedHeart2018, 500);
                 this.ChangeHeart2017 = setTimeout(this.ChangeRedHeart2017, 800);
-                console.log(this.$refs)
-
             },
 
         });
@@ -1512,7 +1504,7 @@
 
             },
             updated() {
-                console.log('view nowVoteSong')
+                // console.log('nowVoteSong')
             }
 
         });
