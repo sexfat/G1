@@ -51,33 +51,33 @@
         $song_history = $pdo -> prepare($sql);
         $song_history -> execute();
 
-        class total_station_music_library{
-          public function showsongName(){
-                echo '<li class="songsadded_inside2_li" style="display: none;">'.$this->song_name.'<span style="float: right;margin-right: 20px;"></span>'; 
-                echo '<div class="more" style="float: right;margin-right: 310px;z-index: 1000;">';
-                echo '<i class="fas fa-ellipsis-h"></i>';   
-                echo '<div class="addedit">';     
-                echo '<ul>';       
-                echo '<a id="a1" href="javascript:;" onclick="change()">';           
-                echo '<li><span>Edit</span></li>';            
-                echo '</a>';           
-                echo '<a class="test-b" href="javascript:;">';            
-                echo '<li><span>Delete</span></li>';             
-                echo '</a>';            
-                echo '</ul>';          
-                echo '</div>';    
-                echo '</div>';
-                echo '<div class="clearfix"></div>'; 
-                echo '</li>';
-          }
-        }
+        // class total_station_music_library{
+        //   public function showsongName(){
+        //         echo '<li class="songsadded_inside2_li" style="display: none;">'.$this->song_name.'<span style="float: right;margin-right: 20px;"></span>'; 
+        //         echo '<div class="more" style="float: right;margin-right: 310px;z-index: 1000;">';
+        //         echo '<i class="fas fa-ellipsis-h"></i>';   
+        //         echo '<div class="addedit">';     
+        //         echo '<ul>';       
+        //         echo '<a id="a1" href="javascript:;" onclick="change()">';           
+        //         echo '<li><span>Edit</span></li>';            
+        //         echo '</a>';           
+        //         echo '<a class="test-b" href="javascript:;">';            
+        //         echo '<li><span>Delete</span></li>';             
+        //         echo '</a>';            
+        //         echo '</ul>';          
+        //         echo '</div>';    
+        //         echo '</div>';
+        //         echo '<div class="clearfix"></div>'; 
+        //         echo '</li>';
+        //   }
+        // }
 
         $song_historys = $song_history -> fetchAll(PDO::FETCH_CLASS);
         // foreach($song_historys as $song_history){
         //     // $song_history -> showsongName();
         // }
         // echo json_encode($song_history);
-        echo json_encode($song_historys);
+        // echo json_encode($song_historys);
 
         // echo $_POST["song_name"];
         

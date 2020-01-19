@@ -969,19 +969,19 @@
                             // temp.insertBefore(newSong, btnsend);
 
 
-                            // let li = document.createElement('li');
-                            // li.className = 'songsadded_inside2_li';
-                            // // $('songsadded_inside2_li').bind("click", function (){
-                            // //     $(this).next("ol").slideToggle(300).slideUp(300);
-                            // // });
-                            // li.innerHTML = xhr.responseText;
-                            // let div = document.createElement('div');
-                            // document.querySelector('.songsadded_inside2').append(li);
-                            // // let aa = `<ol class="songsadded_inside2_ol" style="overflow: hidden; display: none;">
-                            // //         
-                            // //     `
-                            // //div.innerHTML = aa;
-                            // document.querySelector('.songsadded_inside2').append(div);
+                            let li = document.createElement('li');
+                            li.className = 'songsadded_inside2_li';
+                            // $('songsadded_inside2_li').bind("click", function (){
+                            //     $(this).next("ol").slideToggle(300).slideUp(300);
+                            // });
+                            li.innerHTML = xhr.responseText;
+                            let div = document.createElement('div');
+                            document.querySelector('.songsadded_inside2').append(li);
+                            // let aa = `<ol class="songsadded_inside2_ol" style="overflow: hidden; display: none;">
+                            //         
+                            //     `
+                            //div.innerHTML = aa;
+                            document.querySelector('.songsadded_inside2').append(div);
 
 
                             console.log(xhr.responseText);
@@ -1000,7 +1000,7 @@
             });
         });
     </script>
-    <script>
+    <!-- <script>
         $(document).ready(function(){
             $('#sd').click(function (){
                 $.ajax({url:"./phps/songsupload.php",success:function(showsongName){
@@ -1009,7 +1009,8 @@
                 }});
             });
         });
-    </script>
+    </script> -->
+    
     <!-- <script>
         document.getElementById("sd").onclick = function () {
             let songaddList = document.querySelector(".songsadded_inside2");
