@@ -932,19 +932,6 @@
              </section>
            </div>
      </script>
-    <script>
-
-        $(function () {
-            $('.act_Anchor').on('click', function (e) {
-                e.preventDefault();
-                $('html, body').animate({ scrollTop: $($(this).attr('href')).offset().top }, 700, 'swing');
-
-            });
-
-        });
-
-
-    </script>
 
 
 
@@ -990,7 +977,7 @@
                     //愛心收藏
                     heartSaute: [],
                     getHeartSong: [],
-                  
+
 
 
                 }
@@ -1094,16 +1081,16 @@
                                 Select_img: this.selectSong.song_pic,
                             },
                             type: 'POST',
+
                         });
+
+
                     } else {
-                        // console.log("-----------", "upload_sign");
-                        // document.getElementById("postAction").value = "Upload_sign";
                         let myForm = new FormData(document.getElementById("act_form"));
                         myForm.append("Song_img", this.SignImg);
                         myForm.append("entries_song", this.SignSong);
                         myForm.append("entries_name", this.SongName);
                         myForm.append("introduction", this.SongInformation);
-
                         // var Upload_sign = $.ajax({
                         //     url: './phps/act_formSignUp.php',
                         //     data: myForm,
@@ -1112,7 +1099,6 @@
                         //     dataType: false,
                         //     processData: false,
                         // });
-
                         let xhr = new XMLHttpRequest();
                         xhr.onload = function () {
                             console.log("-----------final");
@@ -1122,6 +1108,7 @@
                         console.log(myForm);
                         xhr.open("post", "./phps/act_formSignUp.php", true);
                         xhr.send(myForm);
+                        fetch('./phps/getContestNowSong.php').then(res => res.json()).then(data => vml.nowVoteSong = data);
 
                     }
 
@@ -1366,6 +1353,8 @@
                 },
 
 
+
+
             },
             mounted() {
                 this.ChangeHeart2018 = setTimeout(this.ChangeRedHeart2018, 500);
@@ -1575,6 +1564,16 @@
             //     vml.actInformation = JSON.parse(xhrC.responseText);
             // }
 
+
+
+            $(function () {
+                $('.act_Anchor').on('click', function (e) {
+                    e.preventDefault();
+                    $('html, body').animate({ scrollTop: $($(this).attr('href')).offset().top }, 700, 'swing');
+
+                });
+
+            });
 
         }
 
