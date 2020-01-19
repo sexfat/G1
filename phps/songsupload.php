@@ -1,10 +1,11 @@
 <?php 
+ session_start();
   try {
   require_once("connectBooks.php");
-  // $song_pic = $_FILES['song_pic']['name'];
-  // $song_addr = $_FILES['song_addr']['name'];
+    // $addno = $_SESSION["mem_no"];
     $sql = "INSERT INTO `total_station_music_library`(`mem_no`,`song_name`,`song_date`,`song_idn`,`song_pic`,`cat_no`,`song_hashtag`,`song_addr`) 
-    VALUES (`mem_no`=:mem_no,'{$_POST["song_name"]}',CURRENT_DATE(),'{$_POST["song_idn"]}','./img/collection/{$_FILES["song_pic"]["name"]}','{$_POST["cat_no"]}','{$_POST["song_hashtag"]}','./music/{$_FILES["song_addr"]["name"]}')";
+    VALUES ('{$_SESSION["mem_no"]}','{$_POST["song_name"]}',CURRENT_DATE(),'{$_POST["song_idn"]}','./img/uploadpic/{$_FILES["song_pic"]["name"]}',
+    '{$_POST["cat_no"]}','{$_POST["song_hashtag"]}','./music/{$_FILES["song_addr"]["name"]}')";
     $songsadd = $pdo -> prepare($sql);
     // $songsadd->bindValue(":song_name",$_GET["song_name"]);
     // $songsadd->bindValue(":song_no",11);
@@ -13,11 +14,12 @@
     // $songsadd->bindValue(":song_idn",$_GET["song_idn"]);
     // $song_pic = ($_FILES['song_pic']['name']);
     // $songsadd->bindValue('song_pic',$_FILES["song_pic"]["name"]);
-    $songsadd->bindValue(':mem_no',0);
+    // $songsadd->bindValue(':mem_no',0);
+    // $songsadd->bindValue(':mem_no',$addno);
     // $songsadd->bindValue(":donate_acount","0");
-    // $songsadd->bindValue("cat_no",$_POST["cat_no"]);
+    // $songsadd->bindValue('cat_no',$_POST["cat_no"]);
     // $song_hashtag = $_GET["song_hashtag"];
-    // $songsadd->bindValue("song_hashtag",$_POST["song_hashtag"]);
+    // $songsadd->bindValue('song_hashtag',$_POST["song_hashtag"]);
     // $songsadd->bindValue(":fav_total","0");
     // $song_addr = ($_FILES['song_addr']['name']);
     // $songsadd->bindValue('song_addr',$_FILES["song_addr"]["name"]);
@@ -43,6 +45,42 @@
         move_uploaded_file($_FILES['song_addr']['tmp_name'],'../music/'.$_FILES['song_addr']['name']);
         // echo '<a href="file/'.$_FILES['song_addr']['name'].'">music/'.$_FILES['song_addr']['name'].'</a>';
         // echo "Successly";
+
+        // class total_station_music_library{
+        //   public function showsongName(){
+        //         echo '<li class="songsadded_inside2_li" style="display: none;">'.$this->song_name.'<span style="float: right;margin-right: 20px;"></span>'; 
+        //         echo '<div class="more" style="float: right;margin-right: 310px;z-index: 1000;">';
+        //         echo '<i class="fas fa-ellipsis-h"></i>';   
+        //         echo '<div class="addedit">';     
+        //         echo '<ul>';       
+        //         echo '<a id="a1" href="javascript:;" onclick="change()">';           
+        //         echo '<li><span>Edit</span></li>';            
+        //         echo '</a>';           
+        //         echo '<a class="test-b" href="javascript:;">';            
+        //         echo '<li><span>Delete</span></li>';             
+        //         echo '</a>';            
+        //         echo '</ul>';          
+        //         echo '</div>';    
+        //         echo '</div>';
+        //         echo '<div class="clearfix"></div>'; 
+        //         echo '</li>';
+        //   }
+        // }
+        
+
+        $sql = "SELECT * FROM `total_station_music_library` WHERE song_name='{$_POST["song_name"]}'";
+        $song_history = $pdo -> prepare($sql);
+        $song_history -> execute();
+
+        $song_historys = $song_history -> fetchAll(PDO::FETCH_CLASS);
+        // foreach($song_historys as $song_history){
+        //     // $song_history -> showsongName();
+        // }
+        // echo json_encode($song_history);
+        echo json_encode($song_historys);
+
+        // echo $_POST["song_name"];
+        
     }else{
         echo "Failure";
     }
