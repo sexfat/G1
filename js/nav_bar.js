@@ -8,11 +8,38 @@ let vm = new Vue({
 
     },
     mounted() {
-        // nav_bar start
+        // nav_bar init
         document.querySelector('.mem_list ul').setAttribute('style', `height: ${window.innerHeight}px;`);
         document.querySelector('.mobile_list ul').setAttribute('style', `height: ${window.innerHeight}px;`);
         document.querySelectorAll('.paint_border')[0].setAttribute('style', `height: ${window.innerHeight}px;`);
         document.querySelectorAll('.paint_border')[1].setAttribute('style', `height: ${window.innerHeight}px;`);
+
+        let href = location.href;
+        if (href.lastIndexOf('remix') != -1) {
+            document.querySelector('.mobile_list .REMIX').style.background = 'url("../img/public/nav_m_b_bt01.png") center center no-repeat';
+            document.querySelector('.main_list .REMIX').style.background = 'url("../img/public/nav_b_bt01.png") center center no-repeat';
+        } else if (href.lastIndexOf('collection') != -1) {
+            document.querySelector('.mobile_list .COLLECTION').style.background = 'url("../img/public/nav_m_b_bt02.png") center center no-repeat';
+            document.querySelector('.main_list .COLLECTION').style.background = 'url("../img/public/nav_b_bt02.png") center center no-repeat';
+        } else if (href.lastIndexOf('activity') != -1) {
+            document.querySelector('.mobile_list .ACTIVITY').style.background = 'url("../img/public/nav_m_b_bt03.png") center center no-repeat';
+            document.querySelector('.main_list .ACTIVITY').style.background = 'url("../img/public/nav_b_bt03.png") center center no-repeat';
+        } else if (href.lastIndexOf('library') != -1) {
+            document.querySelector('.mobile_list .LIBRARY').style.background = 'url("../img/public/nav_m_b_bt04.png") center center no-repeat';
+            document.querySelector('.main_list .LIBRARY').style.background = 'url("../img/public/nav_b_bt04.png") center center no-repeat';
+        }
+
+        let xhr = new XMLHttpRequest();
+        xhr.onload = () => {
+            member = JSON.parse(xhr.responseText);
+            if (member.mem_acct) {
+                vm.mem_login = true;
+            } else {
+                vm.mem_login = false;
+            }
+        }
+        xhr.open("get", "./phps/getLoginInfo.php", true);
+        xhr.send(null);
 
         document.addEventListener('click', () => {
             this.mem_list = false;
@@ -29,10 +56,13 @@ let vm = new Vue({
                 .querySelector(".mobile_list")
                 .setAttribute("style", "transform: translateX(-270px); filter: opacity(0);");
         });
-        // nav_bar end
     },
     methods: {
         // nav_bar
+        stopPropagation(e) {
+            e.stopPropagation();
+        },
+
         hamburger_click(e) {
             e.stopPropagation();
             document
@@ -67,10 +97,6 @@ let vm = new Vue({
                     .querySelector(".mobile_list")
                     .setAttribute("style", "transform: translateX(-270px); filter: opacity(0);");
             }
-        },
-
-        stopPropagation(e) {
-            e.stopPropagation();
         },
 
         mem_bt_click(e) {
@@ -135,25 +161,14 @@ let vm = new Vue({
             let xhr = new XMLHttpRequest();
             xhr.onload = () => {
                 this.mem_login = false;
-                document
-                    .querySelector(".mem_list")
-                    .setAttribute("style", "transform: translateX(270px); filter: opacity(0);");
+                document.querySelector(".mem_list").setAttribute("style", "transform: translateX(270px); filter: opacity(0);");
+                let href = location.href;
+                if (href.lastIndexOf('profile') != -1 || href.lastIndexOf('songsadded') != -1 || href.lastIndexOf('store') != -1 || href.lastIndexOf('donate') != -1) {
+                    location.href = 'http://localhost/index.html'
+                }
             }
             xhr.open("get", "./phps/logout.php", true);
             xhr.send(null)
         }
     }
-});
-window.addEventListener('load', () => {
-    let xhr = new XMLHttpRequest();
-    xhr.onload = () => {
-        member = JSON.parse(xhr.responseText);
-        if (member.mem_acct) {
-            vm.mem_login = true;
-        } else {
-            vm.mem_login = false;
-        }
-    }
-    xhr.open("get", "./phps/getLoginInfo.php", true);
-    xhr.send(null);
 });
