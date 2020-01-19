@@ -73,9 +73,10 @@
        songChangeListA(songNo);
      } else {
        if (nowList == getNewListName) {
-         $('.lightCover').show();
-         $('#listAlert').show();
-         $('#listAlert h4').text('Fail to change!');
+        //  $('.lightCover').show();
+        //  $('#listAlert').show();
+        //  $('#listAlert h4').text('Fail to change!');
+         alert('Fail to change!');
        } else {
          songChangeListD(songNo);
        }
@@ -126,9 +127,10 @@
      let libraryInd = getSongIndex(heartSong);
      let favSongInd = libraryList[libraryInd].song_no;
      if (!member['mem_no']) {
-       $('.lightCover').show();
-       $('#listAlert').show();
-       $('#listAlert h4').text('Please login!');
+      //  $('.lightCover').show();
+      //  $('#listAlert').show();
+      //  $('#listAlert h4').text('Please login!');
+       alert('Please login!');
      } else {
        if ($(this).hasClass('becomeRed')) {
          $('#favorStatus').val('gray');
@@ -197,12 +199,14 @@
              $('.enterBtn').hide();
              $('#inputListTitle').hide();
              $('.listName').find('.name').find('h2').show();
-             $('#listAlert h4').text('Successfully modified');
+             alert('Successfully modified');
+            //  $('#listAlert h4').text('Successfully modified');
            } else {
-             $('#listAlert h4').text('Fail to modify');
+            //  $('#listAlert h4').text('Fail to modify');
+             alert('Fail to modify!');
            }
-           $('.lightCover').show();
-           $('#listAlert').show();
+          //  $('.lightCover').show();
+          //  $('#listAlert').show();
          } else {
            alert(xhr.statusText);
          }
@@ -305,9 +309,10 @@
            $('.enterBtn').hide();
            $('#inputListTitle').hide();
            $('.listName').find('.name').find('h2').show();
-           $('#listAlert h4').text('Success to delete!'); 
-           $('.lightCover').show();
-           $('#listAlert').show();
+           alert('Success to delete!');
+          //  $('#listAlert h4').text('Success to delete!'); 
+          //  $('.lightCover').show();
+          //  $('#listAlert').show();
          } else {
            alert(xhr.responseText);
          }
@@ -548,9 +553,10 @@
          getLibrarySongs(nowList);
          songChangeListA(songNo);
        } else {
-         $('.lightCover').show();
-         $('#listAlert').show();
-         $('#listAlert h4').text('Fail to change!');
+         alert('Fail to change!');
+        //  $('.lightCover').show();
+        //  $('#listAlert').show();
+        //  $('#listAlert h4').text('Fail to change!');
        }
      } else {
        alert(xhr.statusText);
@@ -575,12 +581,14 @@
      if (xhr.status == 200) {
        if (xhr.responseText == 'success') {
          getLibrarySongs(nowList);
-         $('#listAlert h4').text('Added successfully');
+        //  $('#listAlert h4').text('Added successfully');
+         alert('Success to add');
        } else {
-         $('#listAlert h4').text('Fail to change!');
+        //  $('#listAlert h4').text('Fail to change!');
+         alert('Fail to change!');
        }
-       $('.lightCover').show();
-       $('#listAlert').show();
+      //  $('.lightCover').show();
+      //  $('#listAlert').show();
      } else {
        alert(xhr.statusText);
      }
@@ -597,16 +605,20 @@
    xhr.onload = function () {
      if (xhr.status == 200) {
        if (xhr.responseText == 'Asuccess') {
-         $('#listAlert h4').text('Success to add');
+        alert('Success to add');
+        //  $('#listAlert h4').text('Success to add');
        } else if (xhr.responseText == 'Dsuccess') {
-         $('#listAlert h4').text('Success to cancel');
+        alert('Success to cancel');
+        //  $('#listAlert h4').text('Success to cancel');
        } else if (xhr.responseText == 'Afail') {
-         $('#listAlert h4').text('Fail to add');
+        alert('Fail to add');
+        //  $('#listAlert h4').text('Fail to add');
        } else if (xhr.responseText == 'Dfail') {
-         $('#listAlert h4').text('Fail to cancel');
+         alert('Fail to cancel');
+        //  $('#listAlert h4').text('Fail to cancel');
        }
-       $('.lightCover').show();
-       $('#listAlert').show();
+      //  $('.lightCover').show();
+      //  $('#listAlert').show();
        getLibrarySongs(nowList);
      } else {
        alert(xhr.statusText);
