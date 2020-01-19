@@ -1003,7 +1003,10 @@
     <script>
         $(document).ready(function(){
             $('#sd').click(function (){
-                // $.ajax: 
+                $.ajax({url:"./phps/songsupload.php",success:function(showsongName){
+                    $(".songsadded_inside2").html(showsongName);
+                    console.log();
+                }});
             });
         });
     </script>
