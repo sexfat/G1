@@ -398,7 +398,7 @@
   //FAV DATA
   $('.collectionalbumsection1').on('click', '.collheart img', function () {
     let heartsongname = $(this).parent('.collheart').next('p').children('.collsongnamea').text(); //song_name
-    console.log(heartsongname);
+    // console.log(heartsongname);
     let totalcollInd = getSongIndex(heartsongname); // let song_name take array
     let favsongnoInd = colllist[totalcollInd].song_no; //song_no
     if (!member['mem_no']) {
@@ -412,7 +412,7 @@
         $(this).attr('src', './img/collection/redheart.png').addClass('becomeRed');
       }
       favorStatus(favsongnoInd);
-      console.log(favsongnoInd);
+      console.log(favorStatus);
     }
   });
   function getSongIndex(name) {
