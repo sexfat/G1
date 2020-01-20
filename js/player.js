@@ -380,7 +380,7 @@
  }
  //歌單資訊
  function ListTopInfo() {
-   let listIndex = getListIndex(playerListName);
+   let listIndex = getPlayerListIndex(playerListName);
    if (member['mem_no']) {
      if (playerListName == 'Liked songs') {
        $('#player .heart').not('.list .heart').addClass('becomeRed');
