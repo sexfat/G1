@@ -1,21 +1,23 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <meta http-equiv="X-UA-Compatible" content="ie=edge">
-  <title>SOUNDWAVE |</title>
-  <link rel="Shortcut Icon" type="image/x-icon" href="./img/collection/smalllogo.ico"/>
-  <link rel="stylesheet" href="./css/main.css">
-  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.11.2/css/all.min.css"/>
-  <script src="https://cdnjs.cloudflare.com/ajax/libs/vue/2.6.10/vue.js"></script>
-  <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>SOUNDWAVE |</title>
+    <link rel="Shortcut Icon" type="image/x-icon" href="./img/collection/smalllogo.ico" />
+    <link rel="stylesheet" href="./css/main.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.11.2/css/all.min.css" />
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/vue/2.6.10/vue.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
 </head>
+
 <body>
     <div class="wellaptopback">
         <div class="welallrecord">
             <div class="welreored">
-                <img  class="recordimg" src="./img/collection/recordfront.png" alt="">
+                <img class="recordimg" src="./img/collection/recordfront.png" alt="">
                 <div>
                     <a href="./index.html"><img src="./img/collection/frontlap.png" alt=""></a>
                 </div>
@@ -23,21 +25,19 @@
             <div class="welreored">
                 <img class="recordimg" src="./img/collection/recordback.png" alt="">
                 <div>
-                    <a href="./back.html"><img src="./img/collection/backlaptop.png" alt=""></a>
+                    <img src="./img/collection/backlaptop.png" alt="" class="wecBtn">
                 </div>
             </div>
         </div>
     </div>
-<!-- mobile 768px -->
+    <!-- mobile 768px -->
     <div class="ipadprosize">
         <div>
             <div class="mobilbig"><img src="./img/collection/mobilere.png" alt=""></div>
             <a href="./index.html">
                 <img src="./img/collection/fronttext.png" alt="">
             </a>
-            <a href="./back.html">
-                <img src="./img/collection/backtext.png" alt="">
-            </a>
+                <img src="./img/collection/backtext.png" alt="" class="wecBtn">
         </div>
     </div>
     <!-- mobile 375px -->
@@ -47,10 +47,55 @@
             <a href="./index.html">
                 <img src="./img/collection/fronttextsm.png" alt="">
             </a>
-            <a href="./back.html">
-                <img src="./img/collection/backtextsm.png" alt="">
-            </a>
+                <img src="./img/collection/backtextsm.png" alt="" class="wecBtn">
         </div>
     </div>
+
+    <div class="lightCover">
+        <div id="actLogin" class="lightbox_s">
+            <div class="closeLight"><i class="fas fa-times"></i></div>
+            <form>
+                <h4>Actor login</h4>
+                <label for="actAcc">Account：
+                    <input type="text" name="actAcc" id="actAcc"></label>
+                <label for="actPsw">Password：
+                    <input type="password" name="actPsw" id="actPsw"></label>
+                <button type="button" id="actSubmit">login</button>
+            </form>
+        </div>
+    </div>
+    <script>
+        window.addEventListener('load', function () {
+            $('.wecBtn').click(function () {
+                $('.lightCover').show();
+                $('#actLogin').show();
+
+            });
+
+            $('#actSubmit').click(function () {
+                let actAcc = $("#actAcc").val();
+                let actPsw = $("#actPsw").val();
+                let xhr = new XMLHttpRequest();
+                xhr.onload = function () {
+                    if (xhr.status == 200) {
+                        alert(xhr.responseText);
+                        if (xhr.responseText == 'Login successly!') {
+                            location.href = './back.html';
+                        }
+                    } else {
+                        alert(xhr.statusText);
+                    }
+                };
+                let url = `./phps/ActorLogin.php`;
+                xhr.open("POST", url, true);
+                xhr.setRequestHeader('content-type', 'application/x-www-form-urlencoded');
+                let data_info = `actAcc=${actAcc}&actPsw=${actPsw}`;
+                xhr.send(data_info);
+                $("#actAcc").val("");
+                $("#actPsw").val("");
+            });
+        });
+    </script>
 </body>
+
 </html>
