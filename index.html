@@ -16,8 +16,6 @@
     <script src="https://cdnjs.cloudflare.com/ajax/libs/pagePiling.js/1.5.6/jquery.pagepiling.min.js"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/pixi.js/5.2.0/pixi.min.js"></script>
     <script src="https://cdn.jsdelivr.net/npm/pixi-filters@3.0.3/dist/pixi-filters.js"></script>
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/three.js/110/three.min.js"></script>
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/2.1.3/TweenMax.min.js"></script>
     <script>
 
         $(document).ready(() => {
@@ -750,15 +748,6 @@
             });
 
 
-            // collection hover =======================================================================================
-
-
-            document.querySelector('.home_sloth_top').addEventListener('click', (e) => {
-                e.target.style.top = '20px';
-                document.querySelector('.home_sloth_bottom').style.bottom = `-${document.querySelector('.home_sloth_bottom').offsetHeight / 2}px`
-            })
-
-
             // RWD and size set =======================================================================================
 
             // HOME
@@ -921,6 +910,47 @@
                 document.querySelector('.home_activity_info').style.right = `${445 - (((870 - window.innerWidth) / 1.02) * 0.01 * 55)}px`
             }
 
+            // COLLECTION
+            if (window.innerWidth > 1280) {
+                document.querySelector('.home_girl').style.left = `${160 - (((1920 - window.innerWidth) / 6.4) * 0.01 * 160)}px`
+                document.querySelector('.text_container').style.margin = `0px`
+            } else if (window.innerWidth <= 1280 && window.innerWidth > 992) {
+                document.querySelector('.home_girl').style.left = `${0 - (((1280 - window.innerWidth) / 2.88) * 0.01 * 30)}px`
+                document.querySelector('.text_container').style.margin = `0 0 0 ${(window.innerWidth - 990) / 2}px`
+            } else if (window.innerWidth <= 992 && window.innerWidth > 768) {
+                document.querySelector('.home_girl').style.left = `${-30 - (((1280 - window.innerWidth) / 2.88) * 0.01 * 30)}px`
+            }
+            if (window.innerWidth <= 992) {
+                document.querySelector('.text_container').style.margin = `0px`
+            }
+            if (window.innerWidth <= 992 && window.innerWidth > 768) {
+                document.querySelector('.home_sort_container').style.margin = `0 0 0 ${460 - (((992 - window.innerWidth) / 2.24) * 0.01 * 220)}px`
+            } else {
+                document.querySelector('.home_sort_container').style.margin = `0px`
+            }
+
+            // ABOUT
+            if (window.innerWidth > 1280) {
+                document.querySelector('.home_audioMan').style.left = `${320 - (((1920 - window.innerWidth) / 6.4) * 0.01 * 320)}px`
+                document.querySelector('.home_about_text h2').style.margin = `0 0 0 540px`
+                document.querySelector('.home_about_text h3').style.margin = `0 0 0 540px`
+                document.querySelector('.home_about_text .home_logo').style.margin = `0 0 0 540px`
+                document.querySelector('.home_about_text p').style.margin = `0 0 0 540px`
+            } else if (window.innerWidth <= 1280 && window.innerWidth > 740) {
+                document.querySelector('.home_audioMan').style.left = `${0 - (((1280 - window.innerWidth) / 5.4) * 0.01 * 540)}px`
+                document.querySelector('.home_about_text h2').style.margin = `0 0 0 ${540 - (((1280 - window.innerWidth) / 5.4) * 0.01 * 540)}px`
+                document.querySelector('.home_about_text h3').style.margin = `0 0 0 ${540 - (((1280 - window.innerWidth) / 5.4) * 0.01 * 540)}px`
+                document.querySelector('.home_about_text .home_logo').style.margin = `0 0 0 ${540 - (((1280 - window.innerWidth) / 5.4) * 0.01 * 552)}px`
+                document.querySelector('.home_about_text p').style.margin = `0 0 0 ${540 - (((1280 - window.innerWidth) / 5.4) * 0.01 * 540)}px`
+            } else if (window.innerWidth <= 740) {
+                document.querySelector('.home_audioMan').style.left = `-540px`
+                document.querySelector('.home_about_text h2').style.margin = `0 0 0 0px`
+                document.querySelector('.home_about_text h3').style.margin = `0 0 0 0px`
+                document.querySelector('.home_about_text .home_logo').style.margin = `0 0 0 -12px`
+                document.querySelector('.home_about_text p').style.margin = `0 0 0 0px`
+
+            }
+
 
             $(window).resize(() => {
                 // HOME
@@ -1076,13 +1106,13 @@
 
                 // COLLECTION
                 if (window.innerWidth > 1280) {
-                    document.querySelector('.home_sloth_bottom').style.left = `${160 - (((1920 - window.innerWidth) / 6.4) * 0.01 * 160)}px`
+                    document.querySelector('.home_girl').style.left = `${160 - (((1920 - window.innerWidth) / 6.4) * 0.01 * 160)}px`
                     document.querySelector('.text_container').style.margin = `0px`
                 } else if (window.innerWidth <= 1280 && window.innerWidth > 992) {
-                    document.querySelector('.home_sloth_bottom').style.left = `${0 - (((1280 - window.innerWidth) / 2.88) * 0.01 * 30)}px`
+                    document.querySelector('.home_girl').style.left = `${0 - (((1280 - window.innerWidth) / 2.88) * 0.01 * 30)}px`
                     document.querySelector('.text_container').style.margin = `0 0 0 ${(window.innerWidth - 990) / 2}px`
                 } else if (window.innerWidth <= 992 && window.innerWidth > 768) {
-                    document.querySelector('.home_sloth_bottom').style.left = `${-30 - (((1280 - window.innerWidth) / 2.88) * 0.01 * 30)}px`
+                    document.querySelector('.home_girl').style.left = `${-30 - (((1280 - window.innerWidth) / 2.88) * 0.01 * 30)}px`
                 }
                 if (window.innerWidth <= 992) {
                     document.querySelector('.text_container').style.margin = `0px`
@@ -1689,6 +1719,10 @@
                 <div class="home_paint02"></div>
                 <div class="home_title home_activity"></div>
                 <div class="home_DJ">
+                            <i class="fas fa-bolt lightning1"></i>
+
+                    <i class="fas fa-bolt lightning2"></i>
+                    <i class="fas fa-bolt lightning3"></i>
                     <div class="home_DJ_g"></div>
                 </div>
                 <div class="home_activity_info">
@@ -1721,8 +1755,7 @@
                 <div class="home_paint01"></div>
                 <div class="home_title home_collection">
                 </div>
-                <div class="home_sloth_top"></div>
-                <div class="home_sloth_bottom"></div>
+                <div class="home_girl"></div>
                 <div class="holder">
                     <div class="text_container">
                         <p>
