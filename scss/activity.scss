@@ -4,6 +4,7 @@
 #act_title {
     margin: 0 auto;
     text-align: center;
+    
 
 
 }
@@ -717,7 +718,7 @@
     div {
         width: 45%;
         padding-top: 20px;
-
+      
         @include respond(latop-min) {
             width: 50%;
         }
@@ -1036,7 +1037,7 @@
     max-width: 1200px;
     margin: 50px auto 0px auto;
     min-height: 550px;
-
+    vertical-align: top;
     @include respond(latop-max) {
         max-width: 940px;
         min-height: 450px;
@@ -1093,7 +1094,7 @@
         margin: 0 20px;
         display: inline-block;
         font-size: 0;
-
+        vertical-align: top;
         @include respond(latop-max) {
             width: 200px;
             margin: 0 15px;
@@ -1204,7 +1205,7 @@
             height: 250px;
             margin: 0;
             position: relative;
-
+            vertical-align: top;
             @include respond(latop-max) {
                 width: 200px;
                 height: 200px;
@@ -1288,7 +1289,7 @@
     width: 100%;
     max-width: 1200px;
     margin: 50px auto 0px auto;
-
+    vertical-align: top;
     @include respond(latop-max) {
         max-width: 940px;
 
@@ -1457,7 +1458,7 @@
             height: 200px;
             margin: 0;
             position: relative;
-
+            vertical-align: top;
             @include respond(latop-max) {
                 width: 150px;
                 height: 150px;

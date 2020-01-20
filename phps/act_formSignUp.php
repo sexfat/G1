@@ -53,6 +53,20 @@
     $formList->bindValue(':fav_total',0);
     $formList->bindValue(':mem_no',$no);
     $formList->execute();
+
+    // $sql1= "INSERT INTO `total_station_music_library`(`song_date`, `song_idn`, `song_name`, `song_pic`, `mem_no`, `donate_acount`, `cat_no`, `fav_total`, `song_addr`) 
+    // VALUES (:date,:introduction,:entries_name,:entries_img,:mem_no,:donate_acount,:cat_no,:fav_total,:entries_song);";
+    // $formList = $pdo->prepare($sql1);
+    // $formList->bindValue(':entries_name',$_POST['entries_name']);
+    // $formList->bindValue(':date',2020-1-20);
+    // $formList->bindValue(':entries_song',$songs);
+    // $formList->bindValue(':introduction',$_POST['introduction']);
+    // $formList->bindValue(':entries_img',$tos);
+    // $formList->bindValue(':cat_no',2);
+    // $formList->bindValue(':donate_acount',0);
+    // $formList->bindValue(':fav_total',0);
+    // $formList->bindValue(':mem_no',$no);
+    // $formList->execute();
     
   } catch (PDOException $e) {
     echo "例外行號:", $e->getLine(), "<br>";
