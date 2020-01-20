@@ -10,7 +10,6 @@
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.11.2/css/all.min.css" />
   <script src="https://cdnjs.cloudflare.com/ajax/libs/vue/2.6.10/vue.js"></script>
   <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
-  <script src="./js/player.js"></script>
   <script src="./js/public.js"></script>
 </head>
 <body class="collectionbody">
@@ -129,12 +128,12 @@
       <audio src="" id="audioPlayer"></audio>
       <div class="player_s">
         <div class="info">
-          <div class="cover"><img src="./img/library/cover1.jpg"></div>
+          <div class="cover"><img src="./img/collection/album1.jpg"></div>
           <div class="songInfo">
             <span class="name">Lucid Dreamer</span>
             <span class="creator">Spazz Cardigan</span>
           </div>
-          <div class="heart becomeRed"><i class="fas fa-heart"></i></div>
+          <div class="heart"><img src="./img/collection/grayheart.png" alt=""></div>
           <div class="clearfix"></div>
         </div>
   
@@ -170,6 +169,7 @@
         <div class="expand" id="expand"><i class="fas fa-expand"></i></div>
         <div class="clearfix"></div>
       </div>
+  
       <!-- 詳細版 -->
       <div class="player_b">
         <div class="left">
@@ -182,7 +182,7 @@
           <div class="songInfo">
             <div class="name">Lucid Dreamer</div>
             <div class="creator">Spazz Cardigan</div>
-            <div class="heart becomeRed"><i class="fas fa-heart"></i></div>
+            <div class="heart"><img src="./img/collection/grayheart.png" alt=""></div>
             <div class="clearfix"></div>
           </div>
           <div class="controlPanel">
@@ -216,21 +216,22 @@
           </div>
           <div class="pushBtn"></div>
         </div>
+  
         <div class="right">
           <div class="pushBtn"></div>
           <div class="listTitle">
             <div class="listCover">
-              <img src="./img/library/list_pic1.jpg"></div>
+              <img src="./img/library/list_pic_no.jpg"></div>
             <div class="listName">
-              <h2>peaceful list</h2>
-              <span>8 songs</span>
+              <h2>Total songs</h2>
+              <span>0 songs</span>
             </div>
             <button class="selectBtn" id="selectBtn">SELECT</button>
             <div class="clearfix"></div>
           </div>
           <div class="list">
-            <ul>
-              <li>
+            <ul class="chooseList">
+              <!-- <li>
                 <div class="songCover">
                   <img src="./img/library/cover1.jpg" alt="">
                   <div class="listPlay"><i class="fas fa-play"></i></div>
@@ -345,20 +346,25 @@
         <div class="lightCover">
           <div class="lightbox_s" id="myAllList">
             <div class="closeLight"><i class="fas fa-times"></i></div>
-            <h3>My List</h3>
+            <h4>My List</h4>
             <div class="lightSelectMenu">
               <ul>
-                <li>Liked songs</li>
-                <li>Peaceful songs</li>
-                <li>party</li>
+                <!-- <li class="chooseList">Liked songs</li> -->
               </ul>
             </div>
-            <button class="">ok</button>
+            <input type="hidden" name="plistName" id="plistName">
+            <button id="mylistOK">ok</button>
+          </div>
+          <div class="lightbox_s" id="playerAlert">
+            <div class="closeLight"><i class="fas fa-times"></i></div>
+            <h4></h4>
+            <button>ok</button>
           </div>
         </div>
       </div>
     </div>
     <!-- player end -->
+  </div>
   </div>
   <!-- the end of the nav_bar and player  -->
   <!-- start to the content -->
@@ -412,14 +418,69 @@
 </body>
 <!-- the script of myself -->
 <script>
-  // CHANGE HEART
-    $('.collectionalbumsection1').on('click','.collheart', function(){
-      if ($(this).hasClass('becomeRed')) {
-      $(this).html('<img src="./img/collection/grayheart.png">').removeClass('becomeRed');
+  let collheartall = [];
+  let colllist = [];
+  //FAV STATUS
+  function favorStatus(favorSong) {
+    let xhr = new XMLHttpRequest();
+    xhr.onload = function () {
+      if (xhr.status == 200) {
+        if (xhr.responseText == 'Asuccess') {
+          alert("Success to add");
+        } else if (xhr.responseText == 'Dsuccess') {
+          alert("Success to cancel");
+        } else if (xhr.responseText == 'Afail') {
+          alert("Fail to add");
+        } else if (xhr.responseText == 'Dfail') {
+          alert("Fail to cancel");
+        }
       } else {
-      $(this).html('<img src="./img/collection/redheart.png">').addClass('becomeRed');
+        alert(xhr.statusText);
+      }
+    };
+    xhr.open("post", "./phps/LibraryHeart.php", true);
+    xhr.setRequestHeader('content-type', 'application/x-www-form-urlencoded');
+    let data_info = `favorStatus=${$('#favorStatus').val()}&favorSong=${favorSong}`;
+    xhr.send(data_info);
+  }
+  //LOAD COLL HEART
+  function CollHeart() {
+    let xhr = new XMLHttpRequest();
+    xhr.onload = function () {
+      collheartall = JSON.parse(xhr.responseText);
+      showCollHeart();
+    };
+    xhr.open("get", "./phps/collGetHeart.php", true);
+    xhr.send(null);
+  }
+  //FAV DATA
+  $('.collectionalbumsection1').on('click', '.collheart img', function () {
+    let heartsongname = $(this).parent('.collheart').next('p').children('.collsongnamea').text(); //song_name
+    // console.log(heartsongname);
+    let totalcollInd = getSongIndex(heartsongname); // let song_name take array
+    let favsongnoInd = colllist[totalcollInd].song_no; //song_no
+    if (!member['mem_no']) {
+      alert("Please login.");
+    } else {
+      if ($(this).hasClass('becomeRed')) {
+        $('#favorStatus').val('gray');
+        $(this).attr('src', './img/collection/grayheart.png').removeClass('becomeRed');
+      } else {
+        $('#favorStatus').val('red');
+        $(this).attr('src', './img/collection/redheart.png').addClass('becomeRed');
+      }
+      favorStatus(favsongnoInd);
+      console.log(favorStatus);
     }
   });
+  function getSongIndex(name) {
+    let songName = [];
+    for (let i = 0; i < colllist.length; i++) {
+      songName.push(colllist[i].song_name);
+    }
+    let songind = songName.indexOf(name);
+    return songind;
+  }
   // PLAY BUTTON
   $('.collectionalbumsection1').on('mouseover','.collalbumpic', function(){
     if($(this).find('.collplayer').css("display", "none")){
@@ -441,7 +502,6 @@
     }
   });
   //add
-    let colllist =[];
     function findCollList(){
         $('.collectionalbumsection1').children().remove();
       for(i=0;i<colllist.length;i++){
@@ -455,67 +515,62 @@
           <p><a class="collsongnamea" href="./songinfo.html">${colllist[i].song_name}</a><br>
             <span>${colllist[i].mem_name}</span>
           </p>
-        </div>`);
-        $(`.collectionsinglecover:nth-of-type(${i+1}) .sampleblum12`).css('background-image',`url(${colllist[i].song_pic})`);
+        </div>`)
+      $(`.collectionsinglecover:nth-of-type(${i+1}) .sampleblum12`).css('background-image',
+        `url(${colllist[i].song_pic})`);
+    }
+  }
+  //READ MEMBER FAV STATUS
+  function showCollHeart() {
+    for (let i = 0; i < colllist.length; i++) {
+      for (let j = 0; j < collheartall.length; j++) {
+        if (colllist[i].song_no == collheartall[j].song_no) {
+          $(`.collectionsinglecover:nth-of-type(${i+1}) .collheart img`).replaceWith(
+            '<img class="becomeRed" src="./img/collection/redheart.png" alt="">');
+        }
       }
     }
-    //click coll function
-    function CollListYa(){
-      let xhr = new XMLHttpRequest();
-      xhr.open("get", "./php/allCollection.php", true);
-      xhr.send(null);
-      xhr.onload = function(){
-        colllist = JSON.parse(xhr.responseText);
-        findCollList();
-        console.log(colllist);
-      };
-    }
-    $('.tabtitlechange1').click(function CollListFav (){
-      let xhr = new XMLHttpRequest();
-      xhr.open("get", "./php/allCollection.php", true);
-      xhr.send(null);
-      xhr.onload = function(){
-        colllist = JSON.parse(xhr.responseText);
-        findCollList();
-        // console.log(colllist);
-      };
+  }
+  //CLICK COLL TAB DATA
+  $('.tabtitlechange1').click(function CollListFav() {
+    let xhr = new XMLHttpRequest();
+    xhr.open("get", "./phps/allCollection.php", true);
+    xhr.send(null);
+    xhr.onload = function () {
+      colllist = JSON.parse(xhr.responseText);
+      findCollList();
+      CollHeart();
+    };
   });
-    $('.tabtitlechange2').click(function CollListFav (){
-      let xhr = new XMLHttpRequest();
-      xhr.open("get", "./php/favCollection.php", true);
-      xhr.send(null);
-      xhr.onload = function(){
-        colllist = JSON.parse(xhr.responseText);
-        findCollList();
-        // console.log(colllist);
-      };
+  $('.tabtitlechange2').click(function CollListFav() {
+    let xhr = new XMLHttpRequest();
+    xhr.open("get", "./phps/favCollection.php", true);
+    xhr.send(null);
+    xhr.onload = function () {
+      colllist = JSON.parse(xhr.responseText);
+      findCollList();
+      CollHeart();
+    };
   });
-    $('.tabtitlechange3').click(function CollListFav (){
-      let xhr = new XMLHttpRequest();
-      xhr.open("get", "./php/houseCollection.php", true);
-      xhr.send(null);
-      xhr.onload = function(){
-        colllist = JSON.parse(xhr.responseText);
-        findCollList();
-      };
+  $('.tabtitlechange3').click(function CollListFav() {
+    let xhr = new XMLHttpRequest();
+    xhr.open("get", "./phps/houseCollection.php", true);
+    xhr.send(null);
+    xhr.onload = function () {
+      colllist = JSON.parse(xhr.responseText);
+      findCollList();
+      CollHeart();
+    };
   });
-    $('.tabtitlechange4').click(function CollListFav (){
-      let xhr = new XMLHttpRequest();
-      xhr.open("get", "./php/trapCollection.php", true);
-      xhr.send(null);
-      xhr.onload = function(){
-        colllist = JSON.parse(xhr.responseText);
-        findCollList();
-      };
-  });
-  // TAB CONTENT CHANGE
-  $(function () {
-    var $li = $('ul.collectiontabtitle li');
-    $($li.eq(0).addClass('active').find('a').attr('href')).siblings('.collectiontabinner').hide();
-    $li.click(function () {
-      $($(this).find('a').attr('href')).show().siblings('.collectiontabinner').hide();
-      $(this).addClass('active').siblings('.active').removeClass('active');
-    });
+  $('.tabtitlechange4').click(function CollListFav() {
+    let xhr = new XMLHttpRequest();
+    xhr.open("get", "./phps/trapCollection.php", true);
+    xhr.send(null);
+    xhr.onload = function () {
+      colllist = JSON.parse(xhr.responseText);
+      findCollList();
+      CollHeart();
+    };
   });
   //TAB CHNAGE COLOR
   $('.collectiontabtitle li a').click(function () {
@@ -527,22 +582,32 @@
       $('.collpinkradio').find('img').attr("src","./img/collection/closeeye.png");
       $('.collblueradio').find('img').attr("src","./img/collection/closeeye.png");
     }
-    else if(lia == 1){
-      $('.collpinkradio').find('img').eq(0).attr("src","./img/collection/openeye.png");
-      $('.collgreenradio').find('img').attr("src","./img/collection/closeeye.png");
-      $('.collpinkradio').find('img').eq(1).attr("src","./img/collection/closeeye.png");
-      $('.collblueradio').find('img').attr("src","./img/collection/closeeye.png");
-    }
-    else if(lia == 2){
-      $('.collpinkradio').find('img').eq(1).attr("src","./img/collection/openeye.png");
-      $('.collgreenradio').find('img').attr("src","./img/collection/closeeye.png");
-      $('.collpinkradio').find('img').eq(0).attr("src","./img/collection/closeeye.png");
-      $('.collblueradio').find('img').attr("src","./img/collection/closeeye.png");
-    }else if(lia == 3){
-      $('.collblueradio').find('img').attr("src","./img/collection/openeye.png");
-      $('.collgreenradio').find('img').attr("src","./img/collection/closeeye.png");
-      $('.collpinkradio').find('img').attr("src","./img/collection/closeeye.png");
-    }
+  });
+  function CollListYa() {
+    let xhr = new XMLHttpRequest();
+    xhr.onload = function () {
+      colllist = JSON.parse(xhr.responseText);
+      findCollList();
+    };
+    xhr.open("get", "./phps/allCollection.php", true);
+    xhr.send(null);
+  }
+  $(function () {
+    var $li = $('ul.motabtitle li');
+    $($li.eq(0).addClass('active').find('a').attr('href')).siblings('.motabinner').hide();
+    $li.click(function () {
+      $($(this).find('a').attr('href')).show().siblings('.motabinner').hide();
+      $(this).addClass('active').siblings('.active').removeClass('active');
+    });
+  // TAB CONTENT CHANGE
+    var $li = $('ul.collectiontabtitle li');
+    $($li.eq(0).addClass('active').find('a').attr('href')).siblings('.collectiontabinner').hide();
+    $li.click(function () {
+      $($(this).find('a').attr('href')).show().siblings('.collectiontabinner').hide();
+      $(this).addClass('active').siblings('.active').removeClass('active');
+    });
+    CollListYa();
+    CollHeart();
   });
   $(function(){
     var $li = $('ul.motabtitle li');
@@ -555,4 +620,5 @@
    });
 </script>
 <!-- the end of my script -->
+<script src="./js/player.js"></script>
 </html>

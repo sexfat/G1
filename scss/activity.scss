@@ -2077,6 +2077,7 @@
                 width: 100%;
                 margin: 5px auto;
                 text-align: left;
+                font-weight: normal;
 
                 @include respond(latop-min) {
 
@@ -2116,6 +2117,7 @@
                 padding: 0 0 10px 5px;
                 text-align: left;
                 width: 95%;
+                font-weight: normal;
 
 
                 @include respond(ipadpro) {
@@ -2511,6 +2513,7 @@
                 margin: 0 auto 0 10px;
                 display: inline-block;
                 vertical-align: bottom;
+                min-width: 50px;
 
                 span {
                     font-size: $rem0_8;
