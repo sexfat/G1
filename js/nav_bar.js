@@ -16,17 +16,17 @@ let vm = new Vue({
 
         let href = location.href;
         if (href.lastIndexOf('remix') != -1) {
-            document.querySelector('.mobile_list .REMIX').style.background = 'url("../img/public/nav_m_b_bt01.png") center center no-repeat';
-            document.querySelector('.main_list .REMIX').style.background = 'url("../img/public/nav_b_bt01.png") center center no-repeat';
+            document.querySelector('.mobile_list .REMIX').style.background = 'url("./img/public/nav_m_b_bt01.png") center center no-repeat';
+            document.querySelector('.main_list .REMIX').style.background = 'url("./img/public/nav_b_bt01.png") center center no-repeat';
         } else if (href.lastIndexOf('collection') != -1) {
-            document.querySelector('.mobile_list .COLLECTION').style.background = 'url("../img/public/nav_m_b_bt02.png") center center no-repeat';
-            document.querySelector('.main_list .COLLECTION').style.background = 'url("../img/public/nav_b_bt02.png") center center no-repeat';
+            document.querySelector('.mobile_list .COLLECTION').style.background = 'url("./img/public/nav_m_b_bt02.png") center center no-repeat';
+            document.querySelector('.main_list .COLLECTION').style.background = 'url("./img/public/nav_b_bt02.png") center center no-repeat';
         } else if (href.lastIndexOf('activity') != -1) {
-            document.querySelector('.mobile_list .ACTIVITY').style.background = 'url("../img/public/nav_m_b_bt03.png") center center no-repeat';
-            document.querySelector('.main_list .ACTIVITY').style.background = 'url("../img/public/nav_b_bt03.png") center center no-repeat';
+            document.querySelector('.mobile_list .ACTIVITY').style.background = 'url("./img/public/nav_m_b_bt03.png") center center no-repeat';
+            document.querySelector('.main_list .ACTIVITY').style.background = 'url("./img/public/nav_b_bt03.png") center center no-repeat';
         } else if (href.lastIndexOf('library') != -1) {
-            document.querySelector('.mobile_list .LIBRARY').style.background = 'url("../img/public/nav_m_b_bt04.png") center center no-repeat';
-            document.querySelector('.main_list .LIBRARY').style.background = 'url("../img/public/nav_b_bt04.png") center center no-repeat';
+            document.querySelector('.mobile_list .LIBRARY').style.background = 'url("./img/public/nav_m_b_bt04.png") center center no-repeat';
+            document.querySelector('.main_list .LIBRARY').style.background = 'url("./img/public/nav_b_bt04.png") center center no-repeat';
         }
 
         let xhr = new XMLHttpRequest();
@@ -163,7 +163,7 @@ let vm = new Vue({
                 this.mem_login = false;
                 document.querySelector(".mem_list").setAttribute("style", "transform: translateX(270px); filter: opacity(0);");
                 let href = location.href;
-                if (href.lastIndexOf('profile') != -1 || href.lastIndexOf('songsadded') != -1 || href.lastIndexOf('store') != -1 || href.lastIndexOf('donate') != -1) {
+                if (href.lastIndexOf('library') != -1 || href.lastIndexOf('profile') != -1 || href.lastIndexOf('songsadded') != -1 || href.lastIndexOf('store') != -1 || href.lastIndexOf('donate') != -1) {
                     location.href = 'http://localhost/index.html'
                 }
             }

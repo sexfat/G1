@@ -1,5 +1,4 @@
-@import url(https://fonts.googleapis.com/css?family=Raleway:400,300,700);
-
+@import url('https://fonts.googleapis.com/css?family=Raleway:300,400,700&display=swap');
 @import "./public";
 
 .songinfo_infoplay .music-player-container {
@@ -10,11 +9,10 @@
   padding: 10px;
 
   @include respond(ipadpro) {
-      display: flex;
-      flex-wrap: wrap;
+    display: flex;
+    flex-wrap: wrap;
   }
 }
-
 
 .songinfo_infoplay .music-player {
   height: 250px;
@@ -28,7 +26,6 @@
   }
 }
 
-
 .songinfo_infoplay .player-content-container {
   padding-top: 15%;
   width: 100%;
@@ -37,7 +34,6 @@
     padding-top: 0;
   }
 }
-
 
 .songinfo_infoplay .artist-name {
   font-size: 1rem;
@@ -61,7 +57,6 @@
     text-align: center;
   }
 }
-
 
 .songinfo_infoplay .song-title {
   font-size: 1.5rem;
@@ -138,8 +133,6 @@
   }
 }
 
-
-
 .songinfo_infoplay .vinyl {
   -webkit-animation: spin 2s linear infinite;
   -moz-animation: spin 2s linear infinite;
@@ -177,9 +170,6 @@
   }
 }
 
-
-
-
 .songinfo_infoplay .is-playing .vinyl {
   left: 52%;
 }
@@ -205,31 +195,31 @@
   }
 }
 
-
 [class^="control-"] {
   border-radius: 100%;
   height: 44px;
   width: 44px;
 }
 
-// .songinfo_infoplay .control-play {
-//   background: transparent url("https://s3-us-west-2.amazonaws.com/s.cdpn.io/83141/play.svg") (center / cover) no-repeat;
-// }
 .songinfo_infoplay .control-play {
-  background: transparent url("../img/songinfo/coverPlay-b.png") (center / cover) no-repeat;
+  width: 35px;
+  height: 35px;
   display: inline-block;
-  margin: 0 20px 0 0;
-  cursor: pointer;
-  @include buttonno05();
+  background-color: #f1c40f;
+  border-radius: 20px;
+  text-align: center;
+  line-height: 35px;
+  padding: 5px;
+  border: 0;
+  transition: transform 0.5s;
+  i {
+    display: block;
+  }
+  &:hover {
+    transform: scale(1.1);
+  }
 }
 
-// .songinfo_infoplay .is-playing .control-play {
-//   background: transparent url("https://s3-us-west-2.amazonaws.com/s.cdpn.io/83141/pause.svg") (center / cover) no-repeat;
-// }
-.songinfo_infoplay .is-playing .control-play {
-  background: transparent url("../img/songinfo/coverPause-b.png") (center / cover) no-repeat;
-  @include buttonno05();
-}
 
 .songinfo_infoplay .infodona {
   @include butttonn02();
@@ -240,8 +230,6 @@
     margin: 0 10px;
   }
 }
-
-
 
 [class^="heart-"] {
   // -webkit-filter: brightness(95%);
@@ -263,9 +251,6 @@
   background: transparent url("../img/songinfo/redheart.png") (center / cover) no-repeat;
 }
 
-
-
-
 // .songinfo_infoplay .control-forwards {
 //   background: transparent url("https://s3-us-west-2.amazonaws.com/s.cdpn.io/83141/forwards.svg") (center / cover) no-repeat;
 // }
@@ -282,8 +267,6 @@
     margin: 0 10px;
   }
 }
-
-
 
 @-webkit-keyframes spin {
   0% {

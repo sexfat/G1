@@ -51,7 +51,7 @@ switch ($_GET['get']) {
     break;
   case "mem":
     try {
-      $sql = "SELECT mem_name FROM `member` WHERE mem_no = {$_SESSION['mem_no']}";
+      $sql = "SELECT mem_no, mem_name FROM `member` WHERE mem_no = {$_SESSION['mem_no']}";
       $mem = $pdo->prepare($sql);
       $mem->execute();
 
