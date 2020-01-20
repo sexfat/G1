@@ -2,11 +2,12 @@
 try {
   require_once("./connectBooks.php");
   session_start();
-  $sql = "select plist_no,plist_name,list_pic
-  from allplaylist apl join myfavorite mf using (mem_no)
+  $sql = "select apl.plist_no,apl.plist_name,apl.list_pic
+  from allplaylist apl join myfavorite mf on (apl.mem_no=mf.mem_no)
   where apl.mem_no = :memNo
-  group by plist_name
-  order by plist_no asc;";
+  group by apl.plist_name
+  order by apl.plist_no asc;";
+  
 
   $allList = $pdo->prepare($sql);
   $allList -> bindValue(':memNo',$_SESSION['mem_no']);
