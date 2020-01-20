@@ -1878,8 +1878,11 @@
                                 document.querySelector('.home_play[data-playStatus=true]').setAttribute('data-playStatus', 'false');
                                 document.querySelector('.home_play i.fa-pause').classList.add('fa-play')
                                 document.querySelector('.home_play i.fa-pause').classList.remove('fa-pause');
+                                e.target.setAttribute('data-playStatus', 'true');
+                                e.target.firstChild.classList.add('fa-pause');
+                                e.target.firstChild.classList.remove('fa-play');
                             } catch {
-                                e.target.setAttribute('data-playStatus', 'true')
+                                e.target.setAttribute('data-playStatus', 'true');
                                 e.target.firstChild.classList.add('fa-pause');
                                 e.target.firstChild.classList.remove('fa-play');
                             }
