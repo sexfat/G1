@@ -136,14 +136,6 @@
            getOtherPlayList();
          }
        }
-       //  if (myPlaylist.length != undefined) {
-       //    nowPlaying = 0;
-       //    audio.currentTime = 0;
-       //    $("#player audio").attr("src", myPlaylist[nowPlaying].song_addr);
-       //    $("#player .songInfo .name").text(myPlaylist[nowPlaying].song_name);
-       //    $("#player .songInfo .creator").text(myPlaylist[nowPlaying].mem_name);
-       //    $("#player .info img").not(".coverRec img").not(".heart img").attr("src", myPlaylist[nowPlaying].song_pic);
-       //  }
      }
      ListTopInfo();
      $('.lightCover').hide();
@@ -338,6 +330,11 @@
        myPlaylist = JSON.parse(xhr.responseText);
        listLen = myPlaylist.length;
        createPlayerList(myPlaylist);
+       if(myPlaylist.length==0){
+         showAllSongs();
+         $('.player_b .listCover img').attr('src', './img/library/list_pic_no.jpg');
+         $('.player_b .listName h2').text('Total songs');
+       }
      } else {
        alert(xhr.statusText);
      }
@@ -355,6 +352,7 @@
        myPlaylist = JSON.parse(xhr.responseText);
        listLen = myPlaylist.length;
        createPlayerList(myPlaylist);
+       $('.player_b .listName span').text(`${listLen} songs`);
      } else {
        alert(xhr.statusText);
      }
@@ -537,7 +535,7 @@
    localStorage.setItem("nowPlaying", nowPlaying);
    localStorage.setItem("songTime", songTime);
    localStorage.setItem("playStatus", playStatus);
-   if (playerListName != 'Liked songs' && playerListName != 'Total songs' && playerListName != "") {
+   if (playerListName != 'Liked songs' && playerListName != 'Total songs' && playerListName != "" && playerListName != undefined) {
      localStorage.setItem("listName", playerListName);
    } else if (playerListName == 'Liked songs' || playerListName == 'Total songs') {
      localStorage.removeItem('listName');
@@ -597,15 +595,11 @@
  //清單播放狀態
  function listStatus() {
    $(`.player_b .listPlay`).removeClass("nowlistening");
-   //  $(`.songCover .listPlay`).removeClass("nowlistening");
    $(`.player_b li:nth-of-type(${nowPlaying+1}) .listPlay`).addClass("nowlistening");
-   //  $(`.songs li:nth-of-type(${nowPlaying+1}) .listPlay`).addClass("nowlistening");
    if (playStatus) {
      $(`.player_b li:nth-of-type(${nowPlaying+1}) .listPlay`).html('<img src="./img/library/coverPause-s.png">');
-     //  $(`.songs li:nth-of-type(${nowPlaying+1}) .listPlay`).html('<img src="./img/library/coverPause-s.png">');
    } else {
      $(`.player_b li:nth-of-type(${nowPlaying+1}) .listPlay`).html('<img src="./img/library/coverPlay-s.png">');
-     //  $(`.songs li:nth-of-type(${nowPlaying+1}) .listPlay`).html('<img src="./img/library/coverPlay-s.png">');
    }
  }
 
