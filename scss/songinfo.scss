@@ -6,8 +6,6 @@ $bg: rgba(44, 15, 15, 1);
     background-image: url(../img/songinfo/songinfo_back.jpg);
     background-repeat: no-repeat;
     background-size: cover;
-<<<<<<< HEAD
-=======
 }
 @media screen and (max-width:930px){
     .songinfo_back{
@@ -181,7 +179,6 @@ $bg: rgba(44, 15, 15, 1);
         left: 13px;
     }
 }
->>>>>>> dev
 
     .songinfo_infos2 {
         max-height: 550px;
@@ -453,18 +450,6 @@ $bg: rgba(44, 15, 15, 1);
     left: 27px;
     position: relative;
 
-<<<<<<< HEAD
-    span {
-        width: 20px;
-        margin: 0;
-        padding: 0;
-        background: #d0d6d6;
-        transition: all 0.2s;
-        display: inline-block;
-        position: absolute;
-        bottom: 0;
-    }
-=======
 .songinfo_ear{
     position: relative;
     bottom: 863px;
@@ -510,7 +495,6 @@ $bg: rgba(44, 15, 15, 1);
         display: none;
     }
 }
->>>>>>> dev
 
     @for $i from 1 through 72 {
         span:nth-child(#{$i}) {
@@ -546,12 +530,7 @@ $bg: rgba(44, 15, 15, 1);
     }
 }
 
-<<<<<<< HEAD
-
-.songinfofoot {
-=======
 .songinfofoot{
->>>>>>> dev
     height: 100px;
 }
 
