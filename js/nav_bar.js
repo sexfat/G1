@@ -25,8 +25,8 @@ let vm = new Vue({
             document.querySelector('.mobile_list .ACTIVITY').style.background = 'url("./img/public/nav_m_b_bt03.png") center center no-repeat';
             document.querySelector('.main_list .ACTIVITY').style.background = 'url("./img/public/nav_b_bt03.png") center center no-repeat';
         } else if (href.lastIndexOf('library') != -1) {
-            document.querySelector('.mobile_list .LIBRARY').style.background = 'url("../img/public/nav_m_b_bt04.png") center center no-repeat';
-            document.querySelector('.main_list .LIBRARY').style.background = 'url("../img/public/nav_b_bt04.png") center center no-repeat';
+            document.querySelector('.mobile_list .LIBRARY').style.background = 'url("./img/public/nav_m_b_bt04.png") center center no-repeat';
+            document.querySelector('.main_list .LIBRARY').style.background = 'url("./img/public/nav_b_bt04.png") center center no-repeat';
         }
 
         let xhr = new XMLHttpRequest();
