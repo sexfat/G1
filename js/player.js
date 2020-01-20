@@ -78,16 +78,19 @@
      let playerInd = getPlayerSongIndex(songName);
      let favSongInd = myPlaylist[playerInd].song_no;
      if (!member['mem_no']) {
-       $('#player .lightCover').show();
-       $('#playerAlert').show();
-       $('#playerAlert h4').text('Please login!');
+       //  $('#player .lightCover').show();
+       //  $('#playerAlert').show();
+       //  $('#playerAlert h4').text('Please login!');
+       alert('Please login!');
      } else {
        if ($(this).hasClass('becomeRed')) {
+         $('#playerfavorStatus').val('gray');
          $(this).html('<img src="./img/collection/grayheart.png">').removeClass('becomeRed');
        } else {
+         $('#playerfavorStatus').val('red');
          $(this).html('<img src="./img/collection/redheart.png">').addClass('becomeRed');
        }
-       favorStatus(favSongInd);
+       playerFavorStatus(favSongInd);
      }
    });
 
@@ -97,16 +100,19 @@
      let playerInd = getPlayerSongIndex(songName);
      let favSongInd = myPlaylist[playerInd].song_no;
      if (!member['mem_no']) {
-       $('#player .lightCover').show();
-       $('#playerAlert').show();
-       $('#playerAlert h4').text('Please login!');
+       //  $('#player .lightCover').show();
+       //  $('#playerAlert').show();
+       //  $('#playerAlert h4').text('Please login!');
+       alert('Please login!');
      } else {
        if ($(this).hasClass('becomeRed')) {
+         $('#playerfavorStatus').val('gray');
          $(this).html('<img src="./img/collection/grayheart.png">').removeClass('becomeRed');
        } else {
+         $('#playerfavorStatus').val('red');
          $(this).html('<img src="./img/collection/redheart.png">').addClass('becomeRed');
        }
-       favorStatus(favSongInd);
+       playerFavorStatus(favSongInd);
      }
    });
 
@@ -128,7 +134,7 @@
    });
 
    $('#myAllList #mylistOK').click(function () { //----有bug
-    if (playerListName == undefined) {
+     if (playerListName == undefined) {
        myPlaylist = myPlaylist;
      } else {
        //  isPlaying(true);
@@ -391,8 +397,8 @@
    let listIndex = getPlayerListIndex(playerListName);
    if (member['mem_no']) {
      if (playerListName == 'Liked songs') {
-      $('#player .heart').not('.list .heart').addClass('becomeRed');
-      $('#player .heart img').not('.list .heart').attr('src', './img/collection/redheart.png');
+       $('#player .heart').not('.list .heart').addClass('becomeRed');
+       $('#player .heart img').not('.list .heart').attr('src', './img/collection/redheart.png');
        $('.player_b .listCover img').attr('src', './img/library/list_pic0.jpg');
        $('.player_b .listName h2').text('Liked songs');
      } else {
@@ -677,4 +683,29 @@
    }
    let listind = listName.indexOf(name);
    return listind;
+ }
+
+ //收藏狀態
+ function playerFavorStatus(favorSong) {
+   let xhr = new XMLHttpRequest();
+   xhr.onload = function () {
+     if (xhr.status == 200) {
+       if (xhr.responseText == 'Asuccess') {
+         alert('Success to add');
+       } else if (xhr.responseText == 'Dsuccess') {
+         alert('Success to cancel');
+       } else if (xhr.responseText == 'Afail') {
+         alert('Fail to add');
+       } else if (xhr.responseText == 'Dfail') {
+         alert('Fail to cancel');
+       }
+      //  createPlayerList(nowList);
+     } else {
+       alert(xhr.statusText);
+     }
+   };
+   xhr.open("post", "./phps/LibraryHeart.php", true);
+   xhr.setRequestHeader('content-type', 'application/x-www-form-urlencoded');
+   let data_info = `favorStatus=${$('#playerfavorStatus').val()}&favorSong=${favorSong}`;
+   xhr.send(data_info);
  }

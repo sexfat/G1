@@ -178,16 +178,17 @@
      let listind = getListIndex(nowList);
      let plistno = mylistInfo[listind].plist_no;
      $('#inputListNo').val(plistno);
-     let pointPos = libraryFileData.name.lastIndexOf('.');
-     let fileType = libraryFileData.name.substr(pointPos + 1, 3);
-     let coverFileData
-     if (fileType == "jpg" || fileType == "png" || fileType == "gif") {
+    //  let pointPos = libraryFileData.name.lastIndexOf('.');
+    //  let fileType = libraryFileData.name.substr(pointPos + 1, 3);
+     let coverFileData;
+    //  if (fileType == "jpg" || fileType == "png" || fileType == "gif") {
        coverFileData = './img/library/' + libraryFileData.name;
-     } else {
-       coverFileData = "";
-     }
+       console.log(libraryFileData.name);
+    //  } else {
+    //    coverFileData = "";
+    //  }
      $('#listPic').val(coverFileData);
-     if (modifyName != "" && coverFileData != "") {
+     if (modifyName != "") {
        let xhr = new XMLHttpRequest();
        xhr.onload = function () {
          if (xhr.status == 200) {
@@ -236,11 +237,12 @@
        $('.listCover img').attr('src', reader.result);
      }
      reader.readAsDataURL(libraryFileData);
-     let pointPos = libraryFileData.name.lastIndexOf('.');
-     let fileType = libraryFileData.name.substr(pointPos + 1, 3);
-     if (fileType != "jpg" && fileType != "png" && fileType != "gif") {
-       alert('Please choose a picture!');
-     }
+     console.log(libraryFileData.name);
+    //  let pointPos = libraryFileData.name.lastIndexOf('.');
+    //  let fileType = libraryFileData.name.substr(pointPos + 1, 3);
+    //  if (fileType != "jpg" && fileType != "png" && fileType != "gif") {
+    //    alert('Please choose a picture!');
+    //  }
    });
 
    //收藏清單控制
