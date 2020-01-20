@@ -363,7 +363,7 @@
             <br>
             <div class="mess">
               <ul class="infomess_ul">
-                <li class="infomess_li" v-for="item in songmess">
+                <li class="infomess_li" v-for="item in songmess" v-if="item.re_sta != 2">
                   <img class="infomessimg" src="./img/songinfo/people.png">
                   <div class="clearfix"></div>
                   <p>&ensp;ID : {{ item.mem_name }}<br>
