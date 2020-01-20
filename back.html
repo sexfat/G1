@@ -301,14 +301,16 @@
                           <input type="text" name="post" value="add_activity" style="display: none;" v-if="update == false">
 
                           <div class="col-xl-6 updata_act_mom" style="vertical-align: middle">
-                            <label class="col-xl-12 updata_act" for="upimg">
+                            <label class="col-xl-12 updata_act" 
+                            :style="{backgroundImage: 'url('+upact_infos.activity_img+')'}" 
+                            for="upimg">
                               <input type="file" name="act_img" id="upimg" style="display: none;" @change="up_img">
-                              <img src="./img/upload.png" class="uploadimg" v-if="upact_infos.activity_img == ''">
-                              <img :src=upact_infos.activity_img class="act_img" v-else>
+                              <img src="./img/back/upload.png" class="uploadimg" v-if="upact_infos.activity_img == ''">
+                              <!-- <img :src=upact_infos.activity_img class="act_img" v-else> -->
                               <div class="img_name">{{ upact_infos.activity_g }}</div>
                             </label>
                           </div>
-                          <div class="col-xl-6" style="">
+                          <div class="col-xl-6" >
                             <div class="form-group" style="display: inline-block; width: 49%;">
                               <label for="activity_num">活動編號</label>
                               <input type="number" class="form-control" id="activity_num" name="activity_num"
@@ -369,12 +371,12 @@
                           </tr>
                         </thead>
                         <tbody>
-                          <tr v-for="item in activity">
+                          <tr v-for="item in activity_substr">
                             <th scope="row">{{ item.activity_no }}</th>
                             <td>{{ item.activity_name }}</td>
                             <td>{{ item.activity_str }}</td>
                             <td>{{ item.activity_fin }}</td>
-                            <td>{{ item.activity_con }}</td>
+                            <td ><div class="limit">{{ item.activity_con }}</div></td>
                             <td>
                               <a href="#"
                                 @click.prevent="get_edit(item.activity_no);update = true">
@@ -397,6 +399,7 @@
                     <th scope="col">檢舉編號</th>
                     <th scope="col">留言編號</th>
                     <th scope="col">會員編號</th>
+                    <th scope="col">留言內容</th>
                     <th scope="col">檢舉處理狀態</th>
                   </tr>
                 </thead>
@@ -405,6 +408,7 @@
                     <th scope="row">{{ report0.re_no }}</th>
                     <td>{{ report0.message_no }}</td>
                     <td>{{ report0.mem_no }}</td>
+                    <td>{{ report0.message_info }}</td>
                     <td>{{ report0.re_sta }}</td>
                   </tr>
                 </tbody>
@@ -419,6 +423,7 @@
                     <th scope="col">檢舉編號</th>
                     <th scope="col">留言編號</th>
                     <th scope="col">會員編號</th>
+                    <th scope="col">留言內容</th>
                     <th scope="col">檢舉處理狀態</th>
                     <th scope="col">設定</th>
                   </tr>
@@ -428,6 +433,7 @@
                     <th scope="row">{{ report0.re_no }}</th>
                     <td>{{ report0.message_no }}</td>
                     <td>{{ report0.mem_no }}</td>
+                    <td><div style="margin: 0 auto;max-width: 200px;">{{ report0.message_info }}</div></td>
                     <td>{{ report0.re_sta }}</td>
                     <td><a href="#" @click.stop="get_hid_report(report0.re_no)">屏蔽</a></td>
                   </tr>

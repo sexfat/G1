@@ -1,6 +1,7 @@
 {
   "name": "project",
   "version": "1.0.0",
+  "description": "",
   "main": "index.js",
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1",
@@ -23,14 +24,5 @@
   "devDependencies": {
     "browser-sync": "^2.26.5",
     "node-sass": "^4.12.0"
-  },
-  "repository": {
-    "type": "git",
-    "url": "git+https://github.com/alessandra8566/G1.git"
-  },
-  "bugs": {
-    "url": "https://github.com/alessandra8566/G1/issues"
-  },
-  "homepage": "https://github.com/alessandra8566/G1#readme",
-  "description": ""
+  }
 }

@@ -55,18 +55,7 @@
   @include respond(ipadpro) {
       display: flex;
       flex-wrap: wrap;
-      margin-left: -250px;
   }
-}
-@media screen and (max-width:576px) {
-  .songinfo_infoplay .music-player-container {
-      margin-left: -310px;
-  }
-}
-@media screen and (max-width:376px) {
-    .songinfo_infoplay .music-player-container {
-        margin-left: 0px;
-    }
 }
 
 // @media screen and (max-width:768px) {

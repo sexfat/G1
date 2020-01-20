@@ -21,32 +21,15 @@
     // border: 1px solid red;
     height: 600px;
 }
-@media screen and (max-width:993px){
-    .songinfo_infos2{
-        height: 430px;
-    }
-}
 .songinfo_infoplay{
     // border: 1px solid purple;
     width: 1200px;
     height: 600px;
     margin: 0 auto;
-    box-sizing: border-box;
-}
-@media screen and (max-width:993px){
-    .songinfo_infoplay{
-        height: 430px;
-    }
-}
-@media screen and (max-width:603px){
-    .songinfo_infoplay{
-        height: 480px;
-    }
 }
 @media screen and (max-width:376px){
     .songinfo_infoplay{
         width: 370px;
-        height: 450px;
     }
 }
 // .songinfo_info{
@@ -57,16 +40,6 @@
     // border: 1px solid navy;
     height: 600px;
     margin: 0 auto;
-}
-@media screen and (max-width:603px){
-    .songinfo_infos3{
-        height: 570px;
-    }
-}
-@media screen and (max-width:376px){
-    .songinfo_infos3{
-        height: 550px;
-    }
 }
 
 // @mixin infos2p {
@@ -104,34 +77,29 @@
     }
 }
 @media screen and (max-width:603px){
-    // .songinfo_titl p{
-    //     margin-left: 50px;
-    // }
-    .songinfo_titl{
-        height: 600px;
+    .songinfo_titl p{
+        margin-left: 50px;
     }
 }
 @media screen and (max-width:576px){
     .songinfo_titl{
         width: 450px;
     }
-    // .songinfo_titl p{
-    //     margin-left: 10px;
-    // }
+    .songinfo_titl p{
+        margin-left: 10px;
+    }
 }
 @media screen and (max-width:376px){
     .songinfo_titl{
         width: 370px;
-        height: 600px;
     }
-    // .songinfo_titl p{
-    //     margin-left: 20px;
-    // }
+    .songinfo_titl p{
+        margin-left: 20px;
+    }
 }
 .songinfo_info{
     position: relative;
     left: 50px;
-    height: 500px;
 }
 @media screen and (max-width:930px){
     .songinfo_info{
@@ -170,57 +138,49 @@
 .info_square{
     border: 1px solid #d0d6d6;
     background-color: #d0d6d6;
-    box-sizing: border-box;
     z-index: -1;
-    width: 85%;
-    height: 85%;
-    margin: 0 auto;
-    // position: relative;
-    // bottom: 320px;
-    // left: 100px;
+    width: 1000px;
+    height: 400px;
+    position: relative;
+    bottom: 320px;
+    left: 100px;
 }
 @media screen and (max-width:1100px){
     .info_square{
-        width: 80%;
-        height: 85%;
+        width: 800px;
     }
 }
 @media screen and (max-width:930px){
     .info_square{
-        width: 80%;
-        height: 85%;
+        width: 650px;
     }
 }
 @media screen and (max-width:768px){
     .info_square{
-        width: 80%;
-        height: 85%;
+        width: 500px;
     }
 }
 @media screen and (max-width:603px){
     .info_square{
-        width: 80%;
-        height: 85%;
-        // position: relative;
-        // bottom: 250px;
-        // left: 50px;
+        width: 480px;
+        height: 300px;
+        position: relative;
+        bottom: 250px;
+        left: 50px;
     }
 }
 @media screen and (max-width:576px){
     .info_square{
-        width: 90%;
-        height: 85%;
-        // position: relative;
-        // left: 5px;
+        width: 450px;
+        position: relative;
+        left: 5px;
     }
 }
 @media screen and (max-width:376px){
     .info_square{
-        width: 90%;
-        height: 85%;
-        margin-left: 13px;
-        // position: relative;
-        // left: 0px;
+        width: 340px;
+        position: relative;
+        left: 13px;
     }
 }
 
@@ -488,89 +448,47 @@ $bg: rgba(44,15,15,1);
 
 .songinfo_ear{
     position: relative;
-    bottom: 489px;
-    left: 710px;
+    bottom: 863px;
+    left: 650px;
 }
 @media screen and (max-width:1100px){
     .songinfo_ear{
         position: relative;
-        left: 420px;
-        bottom: 487px;
-    }
-}
-@media screen and (max-width:993px){
-    .songinfo_ear{
-        position: relative;
-        left: 450px;
-        bottom: 474px;
-    }
-    .songinfo_ear img{
-        width: 380px;
-        height: 630px;
-    }
-}
-@media screen and (max-width:992px){
-    .songinfo_ear{
-        position: relative;
-        left: 450px;
-        bottom: 460px;
-    }
-    .songinfo_ear img{
-        width: 380px;
-        height: 630px;
+        left: 510px;
     }
 }
 @media screen and (max-width:930px){
     .songinfo_ear{
         position: relative;
-        left: 360px;
-        bottom: 452px;
-    }
-    .songinfo_ear img{
-        width: 350px;
-        height: 600px;
+        left: 450px;
     }
 }
 @media screen and (max-width:768px){
     .songinfo_ear{
         position: relative;
-        left: 240px;
-        bottom: 452px;
-    }
-    .songinfo_ear img{
-        width: 350px;
-        height: 600px;
+        left: 300px;
     }
 }
 @media screen and (max-width:603px){
     .songinfo_ear{
         position: relative;
-        bottom: 445px;
-        left: 260px;
-    }
-    .songinfo_ear img{
-        width: 320px;
-        height: 570px;
-    }
-}
-@media screen and (max-width:576px){
-    .songinfo_ear{
-        position: relative;
-        left: 165px;
-        bottom: 452px;
+        top: -674px;
+        left: 270px;
     }
     .songinfo_ear img{
         width: 350px;
         height: 600px;
     }
 }
+@media screen and (max-width:576px){
+    .songinfo_ear{
+        position: relative;
+        left: 220px;
+    }
+}
 @media screen and (max-width:376px){
     .songinfo_ear{
         display: none;
-    }
-    .songinfo_ear img{
-        width: 320px;
-        height: 570px;
     }
 }
 
@@ -690,16 +608,6 @@ $bg: rgba(44,15,15,1);
         @include butttonn02;
     }
 }
-
-.square_info_info{
-    padding: 0px 80px 35px 30px;
-}
-@media screen and (max-width:768px){
-    .square_info_info{
-        padding: 0px 80px 60px 30px;
-    }
-}
-
 
 .songinfofoot{
     height: 100px;
