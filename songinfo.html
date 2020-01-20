@@ -1607,8 +1607,7 @@
     var types = ['waveform', 'circlebar', 'lighting', 'circlewave'];
     var prettify = false;
     var canvas = song('#infoinfocanvas');
-    // var audio = song('#infoaudio');
-    var vudio = new Vudio(audio, canvas, {
+    var vudio = new Vudio(document.querySelector('#audioPlayer'), canvas, {
       effect: 'waveform',
       accuracy: 128,
       waveform: {
@@ -1834,18 +1833,6 @@
       myPlaylist = phpGetListName = [], // 目前播放清單 | php抓來的清單 | 會員資料
       playerListName, //player清單名
       listLen = myPlaylist.length;
-
-    // audio
-
-    let context = new (window.AudioContext || window.webkitAudioContext);
-    let analyser = context.createAnalyser();
-    analyser.fftSize = 4096;
-
-    let source = context.createMediaElementSource(audio);
-    source.connect(analyser);
-    analyser.connect(context.destination);
-    let frequency_array = new Float32Array(analyser.frequencyBinCount); //音頻取值
-
 
     /* ---------------- player load ---------------- */
     //撥放器縮放
@@ -2454,55 +2441,53 @@
     //播放狀態控制 -- 如果沒有播放就讓他撥
     function isPlaying(isPlaying) {
       playerAuto = true;
-      context.resume().then(() => {
-        if (!isPlaying) {
-          audio.play();
-          $("#player .play").html('<i class="fas fa-pause"></i>');
-          $(".listPlay.nowlistening").html('<img src="./img/library/coverPause-s.png">');
-          $("#player .player_b .coverRec").animate({
-            right: "-50%",
-            opacity: "1"
-          }, "fast", "swing").addClass("recRotate");
-          if (qq.my_play === false) {
-            if (qq.temporary === true) {
-              qq.my_play = true;
-              try {
-                document.querySelector('.control-play').setAttribute('data-playStatus', 'true');
-                document.querySelector('.control-play i.fa-play').classList.add('fa-pause')
-                document.querySelector('.control-play i.fa-play').classList.remove('fa-play')
-              } catch {
-
-              }
+      if (!isPlaying) {
+        audio.play();
+        $("#player .play").html('<i class="fas fa-pause"></i>');
+        $(".listPlay.nowlistening").html('<img src="./img/library/coverPause-s.png">');
+        $("#player .player_b .coverRec").animate({
+          right: "-50%",
+          opacity: "1"
+        }, "fast", "swing").addClass("recRotate");
+        if (qq.my_play === false) {
+          if (qq.temporary === true) {
+            qq.my_play = true;
+            try {
+              document.querySelector('.control-play').setAttribute('data-playStatus', 'true');
+              document.querySelector('.control-play i.fa-play').classList.add('fa-pause')
+              document.querySelector('.control-play i.fa-play').classList.remove('fa-play')
+            } catch {
 
             }
-          }
-          playStatus = true;
-          listStatus();
-        } else {
-          audio.pause();
-          $("#player .play").html('<i class="fas fa-play"></i>');
-          $(".listPlay.nowlistening").html('<img src="./img/library/coverPlay-s.png">');
-          if (qq.my_play === true) {
-            if (qq.temporary === true) {
-              qq.my_play = false;
-              try {
-                document.querySelector('.control-play').setAttribute('data-playStatus', 'false');
-                document.querySelector('.control-play i.fa-pause').classList.add('fa-play')
-                document.querySelector('.control-play i.fa-pause').classList.remove('fa-pause')
-              } catch {
 
-              }
-            }
           }
-          playStatus = false;
-
-          listStatus();
-          $("#player .player_b .coverRec").animate({
-            right: "0%"
-          }).removeClass("recRotate");
-          qq.my_play = false;
         }
-      });
+        playStatus = true;
+        listStatus();
+      } else {
+        audio.pause();
+        $("#player .play").html('<i class="fas fa-play"></i>');
+        $(".listPlay.nowlistening").html('<img src="./img/library/coverPlay-s.png">');
+        if (qq.my_play === true) {
+          if (qq.temporary === true) {
+            qq.my_play = false;
+            try {
+              document.querySelector('.control-play').setAttribute('data-playStatus', 'false');
+              document.querySelector('.control-play i.fa-pause').classList.add('fa-play')
+              document.querySelector('.control-play i.fa-pause').classList.remove('fa-pause')
+            } catch {
+
+            }
+          }
+        }
+        playStatus = false;
+
+        listStatus();
+        $("#player .player_b .coverRec").animate({
+          right: "0%"
+        }).removeClass("recRotate");
+        qq.my_play = false;
+      }
       $("#player .songInfo .name").text(myPlaylist[nowPlaying].song_name);
       $("#player .songInfo .creator").text(myPlaylist[nowPlaying].mem_name);
       $("#player .info img").not(".coverRec img").not(".heart img").attr("src", myPlaylist[nowPlaying].song_pic);
@@ -2516,7 +2501,7 @@
       localStorage.setItem("nowPlaying", nowPlaying);
       localStorage.setItem("songTime", songTime);
       localStorage.setItem("playStatus", playStatus);
-      if (playerListName != 'Liked songs' && playerListName != 'Total songs' && playerListName != "") {
+      if (playerListName != 'Liked songs' && playerListName != 'Total songs' && playerListName != "" && playerListName != undefined) {
         localStorage.setItem("listName", playerListName);
       } else if (playerListName == 'Liked songs' || playerListName == 'Total songs') {
         localStorage.removeItem('listName');

@@ -673,11 +673,15 @@
               width: 100%;
               height: 40px;
               background: linear-gradient(transparent 30%, #d8d1c5 70%);
-              justify-content: center;
-              align-items: flex-end;
               cursor: pointer;
-              i {
-                margin: 0 0 5px 0;
+              a {
+                width: 100%;
+                height: 100%;
+                justify-content: center;
+                align-items: flex-end;  
+                i {
+                  margin: 0 0 5px 0;
+                }
               }
             }
           }
@@ -887,7 +891,6 @@
       color: #9036ef;
       transform: rotate(36deg);
       animation: lightning3 3.96s infinite linear;
-
     }
 
     @keyframes lightning1 {

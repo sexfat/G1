@@ -318,7 +318,11 @@
                                     <div class="introduction">
                                         {{rank.song_intro[0]}}
                                     </div>
-                                    <div class="more flexbox"><i class="fas fa-chevron-down"></i></div>
+                                    <div class="more">
+                                        <a class="flexbox" :href="'./songinfo.html?song_no=' + rank.song_no[0]">
+                                            <i class="fas fa-chevron-down"></i>
+                                        </a>
+                                    </div>
                                 </div>
                                 <div class="home_vinyl_records_s"></div>
                             </div>
@@ -345,6 +349,11 @@
                                     </div>
                                     <div class="introduction">
                                         {{rank.song_intro[1]}}
+                                    </div>
+                                    <div class="more">
+                                        <a class="flexbox" :href="'./songinfo.html?song_no=' + rank.song_no[1]">
+                                            <i class="fas fa-chevron-down"></i>
+                                        </a>
                                     </div>
                                 </div>
                                 <div class="home_vinyl_records_s"></div>
@@ -374,6 +383,11 @@
                                     <div class="introduction">
                                         {{rank.song_intro[2]}}
                                     </div>
+                                    <div class="more">
+                                        <a class="flexbox" :href="'./songinfo.html?song_no=' + rank.song_no[1]">
+                                            <i class="fas fa-chevron-down"></i>
+                                        </a>
+                                    </div>
                                 </div>
                                 <div class="home_vinyl_records_s"></div>
                             </div>
@@ -401,6 +415,11 @@
                                     </div>
                                     <div class="introduction">
                                         {{rank.song_intro[3]}}
+                                    </div>
+                                    <div class="more">
+                                        <a class="flexbox" :href="'./songinfo.html?song_no=' + rank.song_no[1]">
+                                            <i class="fas fa-chevron-down"></i>
+                                        </a>
                                     </div>
                                 </div>
                                 <div class="home_vinyl_records_s"></div>
@@ -430,6 +449,11 @@
                                     <div class="introduction">
                                         {{rank.song_intro[4]}}
                                     </div>
+                                    <div class="more">
+                                        <a class="flexbox" :href="'./songinfo.html?song_no=' + rank.song_no[1]">
+                                            <i class="fas fa-chevron-down"></i>
+                                        </a>
+                                    </div>
                                 </div>
                                 <div class="home_vinyl_records_s"></div>
                             </div>
@@ -457,6 +481,11 @@
                                     </div>
                                     <div class="introduction">
                                         {{rank.song_intro[5]}}
+                                    </div>
+                                    <div class="more">
+                                        <a class="flexbox" :href="'./songinfo.html?song_no=' + rank.song_no[1]">
+                                            <i class="fas fa-chevron-down"></i>
+                                        </a>
                                     </div>
                                 </div>
                                 <div class="home_vinyl_records_s"></div>
@@ -486,6 +515,11 @@
                                     <div class="introduction">
                                         {{rank.song_intro[6]}}
                                     </div>
+                                    <div class="more">
+                                        <a class="flexbox" :href="'./songinfo.html?song_no=' + rank.song_no[1]">
+                                            <i class="fas fa-chevron-down"></i>
+                                        </a>
+                                    </div>
                                 </div>
                                 <div class="home_vinyl_records_s"></div>
                             </div>
@@ -513,6 +547,11 @@
                                     </div>
                                     <div class="introduction">
                                         {{rank.song_intro[7]}}
+                                    </div>
+                                    <div class="more">
+                                        <a class="flexbox" :href="'./songinfo.html?song_no=' + rank.song_no[1]">
+                                            <i class="fas fa-chevron-down"></i>
+                                        </a>
                                     </div>
                                 </div>
                                 <div class="home_vinyl_records_s"></div>
@@ -542,6 +581,11 @@
                                     <div class="introduction">
                                         {{rank.song_intro[8]}}
                                     </div>
+                                    <div class="more">
+                                        <a class="flexbox" :href="'./songinfo.html?song_no=' + rank.song_no[1]">
+                                            <i class="fas fa-chevron-down"></i>
+                                        </a>
+                                    </div>
                                 </div>
                                 <div class="home_vinyl_records_s"></div>
                             </div>
@@ -569,6 +613,11 @@
                                     </div>
                                     <div class="introduction">
                                         {{rank.song_intro[9]}}
+                                    </div>
+                                    <div class="more">
+                                        <a class="flexbox" :href="'./songinfo.html?song_no=' + rank.song_no[1]">
+                                            <i class="fas fa-chevron-down"></i>
+                                        </a>
                                     </div>
                                 </div>
                                 <div class="home_vinyl_records_s"></div>
@@ -3015,7 +3064,7 @@
             localStorage.setItem("nowPlaying", nowPlaying);
             localStorage.setItem("songTime", songTime);
             localStorage.setItem("playStatus", playStatus);
-            if (playerListName != 'Liked songs' && playerListName != 'Total songs' && playerListName != "") {
+            if (playerListName != 'Liked songs' && playerListName != 'Total songs' && playerListName != "" && playerListName != undefined) {
                 localStorage.setItem("listName", playerListName);
             } else if (playerListName == 'Liked songs' || playerListName == 'Total songs') {
                 localStorage.removeItem('listName');
