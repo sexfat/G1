@@ -1,8 +1,7 @@
 <?php
 try {
   require_once("./connectBooks.php");
-  $sql = "select `entries_no`,`entries_name`,`vote_per`,`entries_song`,`entries_img`,`mem_name` from `entries`,`MEMBER` 
-  where `activity_no`=2019 and `MEMBER`.mem_no=entries.mem_no";
+  $sql = "select `entries_name`,`vote_per`,`entries_song`,`entries_img`,`mem_name` from `entries`,`MEMBER` where `activity_no`=2019 and `MEMBER`.mem_no=entries.mem_no";
   $allNowList = $pdo->query($sql);
   $nowListRow = $allNowList->fetchAll(PDO::FETCH_ASSOC);
   echo json_encode($nowListRow,true);

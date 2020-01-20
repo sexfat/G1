@@ -1,12 +1,13 @@
 <?php
 try {
     require_once("./connectBooks.php");
+    session_start();
     $sql = "delete from singleplaylist
   where plist_no=:plistNo";
     $delData = $pdo->prepare($sql);
     $delData->bindValue(':plistNo',  $_POST['plistNo']);
     $delData->execute();
-    if ($delData->rowCount() > 0) {
+    if ($delData->rowCount() >= 0) {
 
         $sql2 = "delete from allplaylist
     where allplaylist.plist_no=:plistNo";
