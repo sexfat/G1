@@ -3,6 +3,19 @@
  let nowList = 'Liked songs';
  let mylistInfo = []; //清單資訊
  let libraryList = []; //歌曲資訊
+ let member = [];
+ /* ---------------- library TimelineMax ---------------- */
+ //  var library_tl = new TimelineMax();
+
+ //  library_tl.fromTo('.before', 2, {
+ //    opacity: 0
+ //  }, {
+ //    opacity: 1
+ //  }).fromTo('.after', 2, {
+ //    opacity: 0
+ //  }, {
+ //    opacity: 1
+ //  });
 
  /* ---------------- library load ---------------- */
  window.addEventListener('load', function () {
@@ -350,13 +363,12 @@
        $(this).addClass("nowlistening");
      }
      playerAuto = false;
-     createPlayerList(myPlaylist);
-     ListTopInfo();
    });
 
    //ALL PLAY BTN
    $("#listAllPlay").click(function () {
      playerListName = nowList;
+     nowPlayerList = nowList;
      phpGetListName = mylistInfo;
      myPlaylist = libraryList;
      nowPlaying = 0;

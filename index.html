@@ -2059,6 +2059,45 @@
 
             },
             mounted() {
+                let get_login_info = () => {
+                    let xhr = new XMLHttpRequest();
+                    xhr.onload = () => {
+                        member = JSON.parse(xhr.responseText);
+                        console.log(member)
+                        vm.member.mem_no = member.mem_no;
+                        vm.member.mem_acct = member.mem_acct;
+                        if (member.mem_acct) {
+                            vm.mem_login = true;
+                        } else {
+                            vm.mem_login = false;
+                        }
+                    }
+                    xhr.open("get", "./phps/getLoginInfo.php", true);
+                    xhr.send(null);
+                }
+                get_login_info();
+
+                let = get_rank_info = () => {
+                    let xhr = new XMLHttpRequest();
+                    xhr.onload = () => {
+                        let rank = JSON.parse(xhr.responseText);
+                        for (let i = 0; i < 10; i++) {
+                            vm.rank.song_no.push(rank[i].song_no)
+                            vm.rank.song_name.push(rank[i].song_name);
+                            vm.rank.song_author.push(rank[i].mem_name);
+                            vm.rank.favorite.push(rank[i].fav_total);
+                            vm.rank.donate.push(rank[i].donate_acount);
+                            vm.rank.song_intro.push(rank[i].song_idn);
+                            vm.rank.song_img.push(rank[i].song_pic);
+                            document.querySelector(`.home_song${i + 1} .home_cover_img`).style.background = `url(.${vm.rank.song_img[i]})`
+                            document.querySelector(`.home_song${i + 1} .home_cover_img`).style.backgroundSize = 'cover'
+                        }
+                    }
+                    xhr.open("get", "./phps/getRankInfo.php", true);
+                    xhr.send(null);
+                }
+                get_rank_info();
+
                 // nav_bar start
                 document.querySelector('.mem_list ul').setAttribute('style', `height: ${window.innerHeight}px;`);
                 document.querySelector('.mobile_list ul').setAttribute('style', `height: ${window.innerHeight}px;`);
@@ -2081,9 +2120,6 @@
                         .setAttribute("style", "transform: translateX(-270px); filter: opacity(0);");
                 });
                 // nav_bar end
-
-
-
 
             },
             methods: {
@@ -2292,41 +2328,7 @@
 
         // =================================================================================================================================
 
-        let get_login_info = () => {
-            let xhr = new XMLHttpRequest();
-            xhr.onload = () => {
-                member = JSON.parse(xhr.responseText);
-                vm.member.mem_no = member.mem_no;
-                vm.member.mem_acct = member.mem_acct;
-                if (member.mem_acct) {
-                    vm.mem_login = true;
-                } else {
-                    vm.mem_login = false;
-                }
-            }
-            xhr.open("get", "./phps/getLoginInfo.php", true);
-            xhr.send(null);
-        }
 
-        let = get_rank_info = () => {
-            let xhr = new XMLHttpRequest();
-            xhr.onload = () => {
-                let rank = JSON.parse(xhr.responseText);
-                for (let i = 0; i < 10; i++) {
-                    vm.rank.song_no.push(rank[i].song_no)
-                    vm.rank.song_name.push(rank[i].song_name);
-                    vm.rank.song_author.push(rank[i].mem_name);
-                    vm.rank.favorite.push(rank[i].fav_total);
-                    vm.rank.donate.push(rank[i].donate_acount);
-                    vm.rank.song_intro.push(rank[i].song_idn);
-                    vm.rank.song_img.push(rank[i].song_pic);
-                    document.querySelector(`.home_song${i + 1} .home_cover_img`).style.background = `url(.${vm.rank.song_img[i]})`
-                    document.querySelector(`.home_song${i + 1} .home_cover_img`).style.backgroundSize = 'cover'
-                }
-            }
-            xhr.open("get", "./phps/getRankInfo.php", true);
-            xhr.send(null);
-        }
 
         // ===============================================================================================================
 
@@ -3136,11 +3138,11 @@
 
 
 
-        window.addEventListener('load', () => {
-            get_login_info();
-            get_rank_info();
+        // window.addEventListener('load', () => {
+        //     get_login_info();
+        //     get_rank_info();
 
-        });
+        // });
     </script>
 </body>
 

@@ -10,8 +10,13 @@
   padding: 10px;
 
   @include respond(ipadpro) {
+<<<<<<< HEAD
     display: flex;
     flex-wrap: wrap;
+=======
+      display: flex;
+      flex-wrap: wrap;
+>>>>>>> dev
   }
 }
 

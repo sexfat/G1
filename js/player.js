@@ -5,25 +5,14 @@
    playStatus = true, //撥放狀態-true:播放中
    playerAuto = true, //---- 是否要自動撥放
    nowPlaying = 0, //現在播放的歌索引值
+   nowPlayerList,
    myPlaylist = phpGetListName = [], // 目前播放清單 | php抓來的清單 | 會員資料
    playerListName, //player清單名
    listLen = myPlaylist.length;
- var member = [];
 
 
  /* ---------------- player load ---------------- */
  window.addEventListener('load', function () {
-   let xhr = new XMLHttpRequest();
-   xhr.onload = () => {
-     member = JSON.parse(xhr.responseText);
-     if (member.mem_acct) {
-       vm.mem_login = true;
-     } else {
-       vm.mem_login = false;
-     }
-   }
-   xhr.open("get", "./phps/getLoginInfo.php", false);
-   xhr.send(null);
 
    playerInit();
 
@@ -314,7 +303,6 @@
        getLikedList();
      }
    } else {
-     playerListName = 'Total songs';
      showAllSongs();
    }
    isLocalHave();
@@ -394,7 +382,7 @@
  }
  //歌單資訊
  function ListTopInfo() {
-   let listIndex = getPlayerListIndex(playerListName);
+   let listIndex = getListIndex(playerListName);
    if (member['mem_no']) {
      if (playerListName == 'Liked songs') {
        $('#player .heart').not('.list .heart').addClass('becomeRed');
@@ -480,6 +468,10 @@
 
  //localstorage
  function isLocalHave() {
+   if (localStorage['listName']) {
+    playerListName = localStorage['listName'];
+    getOtherPlayList();
+   }
    if (localStorage.length != 0) {
      nowPlaying = localStorage["nowPlaying"];
      audio.currentTime = localStorage['songTime'];
