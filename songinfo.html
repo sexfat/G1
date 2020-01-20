@@ -1759,7 +1759,6 @@
             song_no: vm.songnum,
             donate_money: vm.push_mess.donate_money,
             text: vm.push_mess.text,
-            message_time: Date.now(),
           }, res => {
             alert(res);
             vm.get_mess_infos();
@@ -1767,9 +1766,6 @@
               donate_money: 0,
               text: '',
             }
-            // $('.infomess_ul').animate({
-            //   scrollTop: 0,
-            // },300)
           })
         },
         report_mess(message_no) {
