@@ -917,10 +917,10 @@
                         <div>
                               <img :src="item.entries_img" alt="">
                               <div class="act_old-play"@click="showChangePlay($event,item)"></div>
-                              <input type="text" name="act_myPlaylist" v-model="myPlaylist.song_addr">
-                              <input type="text" name="act_myPlaylist" v-model="myPlaylist.song_name">
-                              <input type="text" name="act_myPlaylist" v-model="myPlaylist.song_pic">
-                              <input type="text" name="act_myPlaylist" v-model="myPlaylist.mem_name">
+                              <input type="hidden" name="act_myPlaylist" v-model="myPlaylist.song_addr">
+                              <input type="hidden" name="act_myPlaylist" v-model="myPlaylist.song_name">
+                              <input type="hidden" name="act_myPlaylist" v-model="myPlaylist.song_pic">
+                              <input type="hidden" name="act_myPlaylist" v-model="myPlaylist.mem_name">
                               
                         </div>
                           <div class="act_songBox"> 
@@ -1585,21 +1585,21 @@
         }
 
 
-        let getMyPlay = document.querySelectorAll(".act_old-play");
-        getMyPlay.addEventListener('click', function (e) {
-            if (vml.getMyPlaylist == "") {
-                getMyPlaylist = document.getElementsByName("act_myPlaylist");
-                console.log(getMyPlaylist[0].value);
-                console.log(getMyPlaylist[1]);
-                console.log(getMyPlaylist[2]);
-                console.log(getMyPlaylist[3]);
+        // let getMyPlay = document.querySelectorAll(".act_old-play");
+        // getMyPlay.addEventListener('click', function (e) {
+        //     if (vml.getMyPlaylist == "") {
+        //         getMyPlaylist = document.getElementsByName("act_myPlaylist");
+        //         console.log(getMyPlaylist[0].value);
+        //         console.log(getMyPlaylist[1]);
+        //         console.log(getMyPlaylist[2]);
+        //         console.log(getMyPlaylist[3]);
 
-            } else {
-                alert(vml.getMyPlaylist);
-            }
+        //     } else {
+        //         alert(vml.getMyPlaylist);
+        //     }
 
 
-        });
+        // });
     //     function getSongInformation() {
     //         alert(getMyPlaylist[0].value);
 
