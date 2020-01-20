@@ -1,185 +1,123 @@
-// .wellaptopback{
-//     width:100vw;
-//     height:100vh;
-//     border: 1px solid red;
-//     background-image: url(../img/collection/welcome.svg);
-//     background-position: center;
-//     background-repeat: no-repeat;
-//     position: relative;
-<<<<<<< HEAD
-//     .weltworec{
-//         border:1px solid red;
-//         position: relative;
-//         display: inline-block;
-//         .welrecordtwo{
-//             display: inline-block;
-//             img{
-//                 border: 1px solid green;
-//             }
-=======
-//     text-align: center;
-// }
-// .welallrecord{
-//     position: relative;
-//     top: 40%;
-//     .welreored{
-//         border: 1px solid orange;
-//         display: inline-block;
-//         width:30%;
-//         margin:1%;
-//         text-align: center;
-//         .recordimg{
-//             animation: 5s linear 0s normal none infinite rotateDisc;
-//             margin: 0px 50px 0px 50px;
-//             width:80%;
-//         }
-//         @keyframes rotateDisc{
-//             from{transform:rotate(0deg)}
-//             to{transform:rotate(360deg)}
-//         }
-//         div{
-//             border: 1px solid red;
-//             position: absolute;
-//             bottom:40%;
-//             // a{
-//             //     img{
-//             //     }
-//             // }
-            
->>>>>>> c2b183df51e3d3ace5a5b230b426218ca546e6de
-//         }
-//     }
-// }
-.welback{
+.wellaptopback{
+    width:100vw;
+    height:100vh;
     background-image: url(../img/collection/welcome.svg);
-    width: 100vw;
-    height: 100vh;
-    text-align: center;
     background-position: center;
     background-repeat: no-repeat;
     position: relative;
-    @include respond(ipadpro) {
+    text-align: center;
+    @include respond (ipadpro){
         display:none;
     }
-    overflow-y: hidden;
-    .welrecord{
-        position: relative;
-        top:40%;
-        div{
-            width:26%;
-            display: inline-block;
-            margin: 0px 50px 0px 50px;
-            img{
-                width:100%;
-            }
+}
+.welallrecord{
+    position: relative;
+    top: 42%;
+    .welreored{
+        display: inline-block;
+        width:30%;
+        margin:1%;
+        margin: 0px 50px 0px 50px;
+        text-align: center;
+        @media screen and(max-width:1299px){
+            margin: 20px 50px 0px 50px;
         }
-        .weltext{
-            position: absolute;
-            width: 80%;
-            top:32%;
-            left:10%;
-            z-index: 999;
-            margin: 0px 100px 0px 100px;
-            div{
-                width:26%;
-                display: inline-block;
-                margin: 0px 250px 0px 50px;
-                img{
-                    width:80%;
-                }
-            }
+        @media screen and(max-width:1366px){
+            margin: 0px 40px 0px 40px;
         }
-        .recordcircle{
+        @media screen and(max-width:1400px){
+            margin: 30px 50px 0px 50px;
+        }
+        .recordimg{
             animation: 5s linear 0s normal none infinite rotateDisc;
-            margin: 0px 100px 0px 100px;
+            width:80%;
+            text-align: center;
+            @media screen and(max-width:1299px){
+                width:90%;
+                height:90%;
+            }
+            @media screen and(max-width:1366px){
+                width:80%;
+            }
+            @media screen and(max-width:1400px){
+                width:90%;
+            }
         }
         @keyframes rotateDisc{
             from{transform:rotate(0deg)}
             to{transform:rotate(360deg)}
         }
-    }
-   
-}
-.mobileback{
-    display: none;
-    overflow-y: hidden;
-    @include respond (ipadpro){
-        display: inline-block;
-    }
-    @include respond (phone){
-        display: none;
-    }
-}
-.mobilerec{
-    display:inline-block;
-    position: relative;  
-    top: -700px;
-    left: 90px;
-    display: none;
-    overflow-y: hidden;
-    animation: 5s linear 0s normal none infinite rotateDisc;
-    @include respond (ipadpro){
-        display: inline-block;
-    }
-    @include respond (phone){
-        display: none;
-    }
-}
-.mobiletext{
-    position: relative;
-    bottom: 1250px;
-    text-align: center;
-    display: none;
-    overflow-y: hidden;
-    img{
-        margin: 0px 80px 280px 80px;
-        &:hover{
-            transform: scale(1.1);
-            cursor: pointer;
+        div{
+            position: absolute;
+            bottom:35%;
+            margin-left:5.5%;
+            width: 20%;
+            a{
+                img{
+                    width:100%;
+                    &:hover{
+                        transform: scale(1.1);
+                    }
+                }
+            }
+            
         }
     }
     @include respond (ipadpro){
-        display: inline-block;
-    }
-    @include respond (phone){
-        display: none;
+        display:none;
     }
 }
-.mobilerecsmall{
-    display: none;
-    margin: 0 auto;
+.ipadprosize{
+    display:none;
+    width:100vw;
+    height:100vh;
+    background-image: url(../img/collection/mobile.png);
+    background-position: center;
+    background-size: cover;
+    text-align: center;
     overflow-y: hidden;
-    @include respond (phone){
-        display: inline-block;
-        margin: 0 auto;
-        margin-top:50px;
+    @include respond (ipadpro){
+        display:block;
     }
-    .mobredsmall{
+    .mobilbig{
         position: relative;
-        bottom: 320px;
-        left: 10%;
+        top: 320px;
         animation: 5s linear 0s normal none infinite rotateDisc;
     }
-    .mobilesmtext{
-        display: inline-block;
+    a{
         position: relative;
-        bottom:670px;
-        left:80px;
-        div{
-            margin-top: 80px;
-            &:hover{
-                transform: scale(1.1);
-            }
-        }
-    }
-}
-a{
-    &:hover{
-    transform: scale(1.1);
-    }
-    img{
+        bottom:150px;
+        z-index: 99;
+        display: inline-block;
+        margin: 0px 50px 170px 0px;
         &:hover{
             transform: scale(1.1);
         }
+        
+    }
+    @include respond(phone){
+        display:none;
+    }
+}
+.mobilephone{
+    width: 100vw;
+    height: 100vh;
+    background-image: url(../img/collection/mobilesmall.png);
+    background-position: center;
+    background-size: cover;
+    text-align: center;
+    display: none;
+    @include respond (phone){
+        display:block;
+    }
+    .mobilesmall{
+        position: relative;
+        top: 350px;
+        animation: 5s linear 0s normal none infinite rotateDisc;
+    }
+    a{
+        display: block;
+        z-index: 99;
+        position: relative;
     }
 }

@@ -1,26 +1,14 @@
-// button {
-//   background-color: #f1c40f;
-//   font-size: 0.8rem;
-//   padding: 10px 30px;
-//   border: 1px solid #f1c40f;
-//   border-radius: 5px;
-//   color: #333;
-//   font-weight: bold;
-//   cursor: pointer;
-//   text-transform: capitalize;
-// }
-
 .donanimate {
   width: 100%;
   height: 100%;
   margin: 0 auto;
   position: relative;
-  border: 1px solid red;
+  // border: 1px solid red;
 
   svg {
     width: 100%;
     height: 100%;
-    border: 1px solid orange;
+    // border: 1px solid orange;
 
     .cat0 {
       fill: #F7F7F7;
@@ -83,20 +71,10 @@
       fill: #F4E9BE;
     }
 
-    .oct0 {
-      fill: #F7B56C;
-    }
-
-    .oct1 {
-      fill: #FFFFFF;
-    }
-
-    .oct2 {
-      fill: #D168A4;
-      stroke: #070606;
-      stroke-width: 1.5;
-      stroke-miterlimit: 10;
-    }
+    .oct0{fill:#F7B56C;}
+    .oct1{fill:#FFFFFF;}
+    .oct2{opacity:0.8;fill:#D168A4;stroke:#070606;stroke-width:1.5;stroke-miterlimit:10;}
+    .oct3{opacity:0.8;fill:#F4D3E8;}
   }
 
 

@@ -1,15 +1,20 @@
 <?php
 try {
   require_once("./connectBooks.php");
-  $sql = "select tsml.song_no,song_name,song_pic,song_addr,totaltime,mem.mem_name
-  from `member` mem join total_station_music_library tsml using (mem_no) join myfavorite mf using (mem_no)
-  where mem.mem_no = 1
-  group by tsml.song_no
-  order by tsml.song_no asc;";
+  session_start();
 
-  $allList = $pdo->query($sql);
+  $sql = "select tsml.song_no,tsml.song_name,tsml.song_pic,tsml.song_addr,mem2.mem_name
+from `member` mem  join myfavorite mf on (mem.mem_no = mf.mem_no) join total_station_music_library tsml on (mf.song_no = tsml.song_no) join `member` mem2 on (mem2.mem_no=tsml.mem_no)
+where mem.mem_no = :memNo
+group by tsml.song_no
+order by tsml.song_no asc";
+
+  $allList = $pdo->prepare($sql);
+  $allList->bindValue(':memNo', $_SESSION['mem_no']);
+  $allList->execute();
+
   if ($allList->rowCount() == 0) {
-    echo '{}';
+    echo '[]';
   } else {
     $listRow = $allList->fetchAll(PDO::FETCH_ASSOC);
     echo json_encode($listRow);

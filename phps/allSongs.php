@@ -10,7 +10,7 @@ try {
     $allList = $pdo->prepare($sql);
     $allList->execute();
     if ($allList->rowCount() == 0) {
-        echo '{}';
+        echo '[]';
     } else {
         $listRow = $allList->fetchAll(PDO::FETCH_ASSOC);
         echo json_encode($listRow);
