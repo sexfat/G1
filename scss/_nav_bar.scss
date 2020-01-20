@@ -129,7 +129,7 @@ div.nav_bar {
           background: url("../img/public/nav_m_y_bt02.png") center center no-repeat;
         }
         &.ACTIVITY {
-          background: url("../img/public/nav_m_y_bt04.png") center center no-repeat;
+          background: url("../img/public/nav_m_y_bt03.png") center center no-repeat;
         }
         &.LIBRARY {
           background: url("../img/public/nav_m_y_bt04.png") center center no-repeat;
@@ -289,10 +289,10 @@ div.nav_bar {
 
       li {
         padding: 5px 10px;
-
         a {
           display: block;
           text-align: end;
+          transform-origin: right;
         }
       }
     }
