@@ -1,7 +1,7 @@
 <?php
 try {
     require_once("./connectBooks.php");
-    $sql = "SELECT music.song_no, song_name, song_pic, song_addr, totaltime, mem.mem_name FROM `total_station_music_library` as music, `member` as mem where music.mem_no = mem.mem_no and song_no = :song_no";
+    $sql = "SELECT `music`.`song_no`, `song_name`, `song_pic`, `song_addr`, `mem`.`mem_name` FROM `total_station_music_library` as music, `member` as mem where music.mem_no = mem.mem_no and song_no = :song_no";
     $song_info = $pdo->prepare($sql);
     $song_info->bindValue('song_no', $_REQUEST["song_no"]);
     $song_info->execute();
