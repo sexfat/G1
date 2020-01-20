@@ -43,12 +43,28 @@
     $addSong->execute();
     if ($addSong -> rowCount() == 0){
         die("{code: 0, message:'保存失敗。'}");
+        // echo $_POST["song_name"];
     }
     // 獲取最後插入一條數據的，僅僅本次插入數據
     $getIdSQL = "select last_insert_id() as id";
     $dbQuery = $pdo ->query($getIdSQL);
     $result = $dbQuery -> fetchAll();
     $ret["id"] = $result[0]["id"];
+
+    $getIdSQL2 = "select last_insert_id() as `cat_no`";
+    $dbQuery2 = $pdo ->query($getIdSQL2);
+    $result = $dbQuery2 -> fetchAll();
+    // $ret["cat_no"] = $result{$_POST["cat_no"]};
+
+    $getIdSQL3 = "select last_insert_id() as `song_hashtag`";
+    $dbQuery3 = $pdo ->query($getIdSQL3);
+    $result = $dbQuery3 -> fetchAll();
+    // $ret["song_hashtag"] = $result[$ret["song_hashtag"]];
+
+    $getIdSQL4 = "select last_insert_id() as `song_idn`";
+    $dbQuery4 = $pdo ->query($getIdSQL4);
+    $result = $dbQuery4 -> fetchAll();
+    $ret["song_idn"] = $result["song_idn"];
 
     echo json_encode($ret);
   } catch (PDOException $up) {

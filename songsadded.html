@@ -101,7 +101,7 @@
             transform: rotate(-45deg);
         }
     </style>
-    <script>
+    <!-- <script>
         $(function () {
             $(".songsadded_inside2").hide();
 
@@ -144,7 +144,18 @@
                 };
             });
         })
-    </script>
+    </script> -->
+    <!-- <script>
+        $(function(){
+            // $(".addedit").hide();
+            $(".more i").click(function(){
+                $(".addedit").slideDown();
+                if($(".addedit").css("display") == "block"){
+                   $(".addedit").slideUp();
+                }
+            });
+        })
+    </script> -->
 </head>
 
 <body class="songsadded_body">
@@ -410,23 +421,19 @@
                                     </article>
                                     <div>
                                           <span><span style="font-weight: bold;">Song Name :</span>
-                                              <span id="songNameSpan" style="font-size:16px"> </span></span><br>
-                                        <span><span style="font-weight: bold;">Author :</span><span
+                                              <span class="songNameSpan" style="font-size:16px"> </span></span><br>
+                                        <!-- <span><span style="font-weight: bold;">Author :</span><span
                                                 style="font-size:16px">
                                                   Andy
-                                                  Warhol</span></span><br>
-                                        <span><span style="font-weight: bold;">Song Type :</span><span
-                                                style="font-size:16px">
-                                                  House</span></span><br>
-                                        <span><span style="font-weight: bold;">HashTag :</span><span
-                                                style="font-size:16px">
-                                                  #Scratch</span></span><br>
-                                        <span><span style="font-weight: bold;">Introduction :</span></span><br>
-                                        <span style="font-size:16px">"Hold It Against Me" is three <br>
-                                              minutes and forty-nine seconds <br>
-                                              long.It is a dance-pop song that <br>
-                                              blends pulsating industrial and trance <br>
-                                              beats with elements of grime.</span>
+                                                  Warhol</span></span><br> -->
+                                        <span><span style="font-weight: bold;">Song Type :</span>
+                                           <span class="songTypeSpan" style="font-size:16px">
+                                                  </span></span><br>
+                                        <span><span style="font-weight: bold;">HashTag :</span>
+                                        <span class="songTagSpan" style="font-size:16px">
+                                                  </span></span><br>
+                                        <span><span style="font-weight: bold;">Introduction :</span><br>
+                                        <span class="songIdnSpan" style="font-size:16px"></span></span>
                                     </div>
                                 </div>
   
@@ -747,10 +754,15 @@
             let inputImageFile = $("#inputImageFile"),
                 imagePreView = $("#imagePreView"),
                 songsAddPath = $(".songsadd_path"),
-                songNameSpan = $("#songNameSpan"),
+                songNameSpan = $(".songNameSpan"),
+                songTypeSpan = $(".songTypeSpan"),
+                songTagSpan = $(".songTagSpan"),
+                songIdnSpan= $(".songIdnSpan"),
                 leftFirst = $("#songsadded_lif_first"),
                 leftSec = $("#songsadded_lif_second"),
                 secContainer = $(".songsadded_inside2"),
+                songMore = $(".more"),
+                songMoreBottom = $(".addedit"),
                 btnSongInfo = $("#songinfo_btn"),
                 btnSubmit = $("#btnSubmit"),
                 myForm = $("#myForm"),
@@ -767,8 +779,14 @@
             function updateInfo(resultSet){
                 let imageUrl = resultSet["imageUrl"] || "./img/songinfo/cover1.jpg",
                     songName = resultSet["song_name"];
+                    songCatno = resultSet["cat_no"];
+                    songHashtag = resultSet["song_hashtag"];
+                    songIdn = resultSet["song_idn"];
                 image.prop("src", imageUrl);
                 songNameSpan.text(songName);
+                songTypeSpan.text(songCatno);
+                songTagSpan.text(songHashtag);
+                songIdnSpan.text(songIdn);
             }
             /**
              * 綁定事件以及處理
@@ -806,6 +824,113 @@
                            let ret = $.parseJSON(result);
                             updateInfo(ret);
                            leftFirst.click();
+                           $('.songsadded_inside2').append(`
+                           <li class="songsadded_inside2_li">${ret.value}<span
+                                    style="float: right;margin-right: 20px;"></span>
+                                <div class="more" style="float: right;margin-right: 310px;z-index: 1000;">
+                                    <i class="fas fa-ellipsis-h"></i>
+                                    <div class="addedit">
+                                        <ul>
+                                            <a id="a1" href="javascript:;" onclick="change()">
+                                                <li><span>Edit</span></li>
+                                            </a>
+                                            <a class="test-b" href="javascript:;">
+                                                <li><span>Delete</span></li>
+                                            </a>
+                                        </ul>
+                                    </div>
+                                </div>
+                                <div class="clearfix"></div>
+                            </li>
+                            <ol class="songsadded_inside2_ol" style="overflow:scroll;overflow-X:hidden;">
+                                <div id="d1" style="display: none">
+                                    <form class="inside2form" action="" method="POST">
+                                        <article>
+                                            <br>
+                                            <p style="width: 100px;height: 100px;">
+                                                <img id="image"
+                                                     style="width: 230px;height: 230px;background-color: #D0D6D6;">
+                                            </p>
+                                            <!-- <img class="songsadded_ff" style="width: 50px;height: 30px;"
+                                                src="./img/songupload/button_edit.png"> -->
+                                            <input type="file" name="" id="theFile" style="display: none;">
+                                            <label class="songsadded_ff" for="theFile"
+                                                   style="text-align: center;margin-left: -5px;">Edit</label>
+  
+                                        </article>
+                                        <div class="inside2count">
+                                            <p style="font-weight: bold;">Song Name :
+                                                <input type="text" class="add_btom"  style="border: 1px solid #d0d6d6;height:28px;background-color: #d0d6d6;">
+                                            </p>
+                                            <div class="infopathbtom">
+                                                <!-- <span
+                                                    style="position: relative;left: -100px;top: -20px;font-weight: bold;">Upload
+                                                    path :</span> -->
+                                                <!-- <p class="songsadd_path">{{infopathURL2}}</p> -->
+                                                <!-- <input type="file" name="" id="songinfo_btnbtom"
+                                                    @change="changeSignUpload" style="display: none;">
+                                                <label class="songinfo_bb" for="songinfo_btnbtom"
+                                                    style="text-align: center;">Choose</label> -->
+                                            </div><br>
+                                            <div class="infohashtagbtom">
+                                                  <span style="font-weight: bold;">Song type :
+                                                  </span><input type="radio" name="type" class="btominpt">
+                                                House&ensp;
+                                                <input type="radio" style="border-radius: 5px;" name="type"
+                                                       class="btominpt">Trap
+                                                <br>
+                                                <span style="font-weight: bold;">Hashtag : </span><br>
+                                                <input type="checkbox" name="" class="btominpt"> #Scratch&ensp;
+                                                <input type="checkbox" name="" class="btominpt"> #Stress&ensp;
+                                                <input type="checkbox" name="" class="btominpt">
+                                                #Ethereal&ensp;
+                                                <br>
+                                                <p style="font-weight: bold;">Introduction :</p>
+                                                <textarea name="" id="add_tta" cols="52" rows="3"
+                                                          style="border: 1px solid #d0d6d6;background-color: #D0D6D6;"></textarea>
+                                            </div>
+                                        </div>
+  
+                                        <section class="btomsen"><input type="submit" class="sd" name="submit"
+                                                                        onClick="document.form.submit()">
+                                            <label class="sd_btn" for="sd">Send</label>
+                                        </section>
+                                    </form>
+                                </div>
+                                <div id="c1" style="position: relative;left: 0px;">
+                                    <article>
+                                        <p style="width: 100px;height: 100px;">
+                                            <img id="imageCover" style="width: 300px;height: 300px;">
+                                        </p>
+                                        <!-- <img class="songsadded_ff" style="width: 50px;height: 30px;"
+                                        src="./img/songupload/button_edit.png"> -->
+                                        <!-- <input type="file" name="" id="theFile" style="display: none;">
+                                        <label class="songsadded_ff" for="theFile"> &emsp; Edit</label> -->
+                                    </article>
+                                    <div>
+                                          <span><span style="font-weight: bold;">Song Name :</span>
+                                              <span class="songNameSpan" style="font-size:16px"> </span></span><br>
+                                        <span><span style="font-weight: bold;">Author :</span><span
+                                                style="font-size:16px">
+                                                  Andy
+                                                  Warhol</span></span><br>
+                                        <span><span style="font-weight: bold;">Song Type :</span><span
+                                                style="font-size:16px">
+                                                  House</span></span><br>
+                                        <span><span style="font-weight: bold;">HashTag :</span><span
+                                                style="font-size:16px">
+                                                  #Scratch</span></span><br>
+                                        <span><span style="font-weight: bold;">Introduction :</span></span><br>
+                                        <span style="font-size:16px">"Hold It Against Me" is three <br>
+                                              minutes and forty-nine seconds <br>
+                                              long.It is a dance-pop song that <br>
+                                              blends pulsating industrial and trance <br>
+                                              beats with elements of grime.</span>
+                                    </div>
+                                </div>
+  
+                            </ol>
+                           `);
                         },
                         error: function(err){
                             console.error(err);
@@ -834,6 +959,24 @@
               leftSec.click(function(){
                   secContainer.slideToggle();
               });
+              songMore.click(function(){
+                songMoreBottom.slideToggle();
+              });
+            }
+            var isShow = false;
+
+            function change() {
+               if (!isShow) {
+                isShow = true;
+                document.getElementById('d1').style.display = '';
+                document.getElementById('a1').innerText = "Edit";
+                document.getElementById('c1').style.display = 'none';
+               } else {
+                isShow = false;
+                document.getElementById('d1').style.display = 'none';
+                document.getElementById('a1').innerText = "Edit";
+                document.getElementById('c1').style.display = '';
+               }
             }
             function init(){
                 checkAccount();
