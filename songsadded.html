@@ -409,7 +409,7 @@
                                         </section>
                                     </form>
                                 </div>
-                                <div id="c1" style="position: relative;left: 0px;">
+                                <div id="c1" class="insidelidiv" style="position: relative;left: 0px;">
                                     <article>
                                         <p style="width: 100px;height: 100px;">
                                             <img id="imageCover" style="width: 300px;height: 300px;">
@@ -761,6 +761,8 @@
                 leftFirst = $("#songsadded_lif_first"),
                 leftSec = $("#songsadded_lif_second"),
                 secContainer = $(".songsadded_inside2"),
+                InsideBottomLi = $(".songsadded_inside2_li"),
+                InsideBottomDiv = $(".insidelidiv"),
                 songMore = $(".more"),
                 songMoreBottom = $(".addedit"),
                 btnSongInfo = $("#songinfo_btn"),
@@ -953,6 +955,7 @@
                      alert("加載失敗");
                  });
              //展開于第一個頁簽
+              InsideBottomDiv.hide();
               leftFirst.click(function(){
                   myForm.parent().slideToggle();
               });
@@ -962,22 +965,12 @@
               songMore.click(function(){
                 songMoreBottom.slideToggle();
               });
+              InsideBottomLi.click(function(){
+                InsideBottomDiv.slideToggle();
+              });
             }
             var isShow = false;
 
-            function change() {
-               if (!isShow) {
-                isShow = true;
-                document.getElementById('d1').style.display = '';
-                document.getElementById('a1').innerText = "Edit";
-                document.getElementById('c1').style.display = 'none';
-               } else {
-                isShow = false;
-                document.getElementById('d1').style.display = 'none';
-                document.getElementById('a1').innerText = "Edit";
-                document.getElementById('c1').style.display = '';
-               }
-            }
             function init(){
                 checkAccount();
                 bindEvt();
@@ -1285,7 +1278,7 @@
         });
     </script>
 
-    <script>
+    <!-- <script>
         var isShow = false;
 
         function change() {
@@ -1301,7 +1294,7 @@
                 document.getElementById('c1').style.display = '';
             }
         }
-    </script>
+    </script> -->
 
     <script>
         var isShow2 = false;
