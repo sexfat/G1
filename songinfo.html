@@ -11,6 +11,7 @@
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.11.2/css/all.min.css" />
   <script src="https://cdnjs.cloudflare.com/ajax/libs/vue/2.6.10/vue.js"></script>
   <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.4.1/jquery.js"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/2.1.3/TweenMax.min.js"></script>
   <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery.colorbox/1.6.4/jquery.colorbox.js"></script>
 </head>
 
@@ -342,12 +343,12 @@
             <h3>Message</h3>
             <br>
             <div class="mess">
-              <ul class="infomess_ul" style="height: 500px">
+              <ul class="infomess_ul">
                 <li class="infomess_li" v-for="item in songmess" v-if="item.re_sta != 2">
                   <img class="infomessimg" src="./img/songinfo/people.png">
                   <div class="clearfix"></div>
-                  <p>&ensp;ID : {{ item.mem_name }}</p>
-                  &ensp;{{ item.message_info }}
+                  <p>&ensp;ID : {{ item.mem_name }}<br>
+                  &ensp;{{ item.message_info }}</p>
                   <input type="button" name="" class="inforeport" style="display: none;">
                   <label class="songinfo_re" for="inforeport" style="text-align: center;"
                     @click="report_mess(item.message_no)">Report</label>
