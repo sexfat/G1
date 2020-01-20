@@ -446,7 +446,7 @@
               vm.history.push({
                 no: donate.donate_no,
                 cost: donate.donate_acount,
-                date: donate.donate_day
+                date: donate.donate_day.substr(0,10)
               })
             });
           }).catch((err) => console.error(err))
