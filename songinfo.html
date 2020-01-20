@@ -1584,77 +1584,6 @@
       });
     })();
   </script>
-  <script>
-    var colors = [
-      [
-        [0, '#f00'],
-        [0.3, '#f00'],
-        [0.3, '#f90'],
-        [0.7, '#f90'],
-        [0.7, '#ff0'],
-        [1, '#ff0']
-      ],
-      '#ff0',
-      ['#06f', '#09f', ' #0Cf', '#0ff'],
-      ['#fb6d6b', '#c10056', ' #a50053', '#51074b'],
-      [
-        [0, '#ff422d'],
-        [0.5, '#ff422d'],
-        [0.5, '#6072ff'],
-        [1, '#6072ff']
-      ]
-    ];
-    var types = ['waveform', 'circlebar', 'lighting', 'circlewave'];
-    var prettify = false;
-    var canvas = song('#infoinfocanvas');
-    var vudio = new Vudio(document.querySelector('#audioPlayer'), canvas, {
-      effect: 'waveform',
-      accuracy: 128,
-      waveform: {
-        maxHeight: 160,
-        spacing: 1,
-        shadowBlur: 6,
-        shadowColor: 'rgba(208,214,214,0.5)',
-        prettify: true,
-        fadeSide: true,
-        color: [
-          [0, '#d0d6d6'],
-          [0.3, '#afc0c0'],
-          [0.3, '#afc0c0'],
-          [0.7, '#afc0c0'],
-          [0.7, '#afc0c0'],
-          [1, '#d0d6d6'],
-
-        ]
-      },
-    });
-    vudio.dance();
-
-    function song(selector) {
-      return document.querySelector(selector);
-    }
-
-    function prettifyWaveform() {
-      vudio.setOption({
-        waveform: {
-          prettify: prettify
-        },
-        circlewave: {
-          prettify: prettify
-        },
-        circlebar: {
-          prettify: prettify
-        },
-      });
-      prettify = !prettify;
-    }
-  </script>
-
-  <!-- <script>
-        $(".songinfo_re").on('click', function () {
-            $.fancybox.open('<div class="message"><h2>Hello!</h2><p>You are awesome!</p></div>');
-        });
-    </script> -->
 
   <script>
     $(".square_info_info").on("mouseenter mouseleave", function (event) { //挷定滑鼠進入及離開事件
@@ -1759,6 +1688,7 @@
             song_no: vm.songnum,
             donate_money: vm.push_mess.donate_money,
             text: vm.push_mess.text,
+            message_time: Date.now(),
           }, res => {
             alert(res);
             vm.get_mess_infos();
@@ -1766,13 +1696,15 @@
               donate_money: 0,
               text: '',
             }
+            // $('.infomess_ul').animate({
+            //   scrollTop: 0,
+            // },300)
           })
         },
         report_mess(message_no) {
           axios.get('./phps/songinfos.php?get=report_mess&message_no=' + message_no)
             .then(res => {
               alert(res.data);
-              console.log(res.data)
             })
         },
       },
@@ -1782,16 +1714,45 @@
       }
     });
 
+    // vudio.js
+    // let a = new Audio();
+    let vudio = new Vudio(document.querySelector('#audioPlayer'), document.querySelector('#infoinfocanvas'), {
+      effect: 'waveform',
+      accuracy: 128,
+      waveform: {
+        maxHeight: 160,
+        spacing: 1,
+        shadowBlur: 6,
+        shadowColor: 'rgba(208,214,214,0.5)',
+        horizontalAlign: 'center',
+        verticalAlign: 'bottom',
+        prettify: true,
+        fadeSide: true,
+        color: [
+          [0, '#d0d6d6'],
+          [0.3, '#afc0c0'],
+          [0.3, '#afc0c0'],
+          [0.7, '#afc0c0'],
+          [0.7, '#afc0c0'],
+          [1, '#d0d6d6'],
+
+        ]
+      },
+    });
+
+
     document.querySelector('.control-play').addEventListener('click', (e) => {
       e.t = document.querySelector('.control-play');
       if (qq.temporary === true) {
         if (e.t.getAttribute('data-playStatus') === 'true') {
           isPlaying(true);
+          vudio.pause();
           e.t.setAttribute('data-playStatus', 'false')
           e.t.firstChild.classList.add('fa-play');
           e.t.firstChild.classList.remove('fa-pause');
         } else if (e.t.getAttribute('data-playStatus') === 'false') {
           isPlaying(false);
+          vudio.dance();
           e.t.setAttribute('data-playStatus', 'true')
           e.t.firstChild.classList.add('fa-pause');
           e.t.firstChild.classList.remove('fa-play');
@@ -1805,15 +1766,12 @@
         });
         nowPlaying = 0;
         qq.temporary = true;
-
+        vudio.dance();
         document.querySelector('#audioPlayer').src = myPlaylist[nowPlaying].song_addr;
-        console.log(e.t)
         isPlaying(false);
-
         e.t.setAttribute('data-playStatus', 'true')
         e.t.firstChild.classList.add('fa-pause');
         e.t.firstChild.classList.remove('fa-play');
-
       }
     })
 
