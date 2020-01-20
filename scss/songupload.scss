@@ -26,9 +26,9 @@
 }
 
 .songsadded_lif {
-    border: 1px solid #b2c0c0;
+    border: 1px solid $green;
     width: 1200px;
-    padding: 30px 0px;
+    // padding: 30px 0px;
     background-color: #d0d6d6;
 
     @include respond(latop-max) {
@@ -131,10 +131,11 @@
     width: 1200px;
     margin: 0 auto;
     background-color: rgb(255, 255, 255);
+    display: block;
 
     @include respond(latop-max) {
         max-width: 1100px;
-        margin: 0 auto;
+        margin-left: 0 auto;
     }
 }
 
@@ -142,7 +143,7 @@
 
     .songsadded_inside,
     .songsadded_inside2 {
-        margin-left: 22px;
+        margin-left: 0px;
     }
 }
 
@@ -151,7 +152,7 @@
     .songsadded_inside,
     .songsadded_inside2 {
         width: 900px;
-        margin-left: 115px;
+        margin-left: 0px;
     }
 }
 
@@ -159,7 +160,7 @@
 
     .songsadded_inside,
     .songsadded_inside2 {
-        margin-left: 30px;
+        margin-left: 0px;
     }
 }
 
@@ -167,7 +168,7 @@
 
     .songsadded_inside,
     .songsadded_inside2 {
-        margin-left: 30px;
+        margin-left: 0px;
     }
 }
 
@@ -176,7 +177,7 @@
     .songsadded_inside,
     .songsadded_inside2 {
         width: 800px;
-        margin-left: 60px;
+        margin-left: 0px;
     }
 }
 
@@ -185,7 +186,7 @@
     .songsadded_inside,
     .songsadded_inside2 {
         width: 700px;
-        margin-left: 84px;
+        margin-left: 0px;
     }
 }
 
@@ -193,7 +194,7 @@
 
     .songsadded_inside,
     .songsadded_inside2 {
-        margin-left: 45px;
+        // margin-left: 45px;
     }
 }
 
@@ -202,7 +203,7 @@
     .songsadded_inside,
     .songsadded_inside2 {
         width: 550px;
-        margin-left: 105px;
+        // margin-left: 105px;
     }
 }
 
@@ -210,7 +211,7 @@
 
     .songsadded_inside,
     .songsadded_inside2 {
-        margin-left: 55px;
+        // margin-left: 55px;
     }
 }
 
@@ -218,7 +219,7 @@
 
     .songsadded_inside,
     .songsadded_inside2 {
-        margin-left: 30px;
+        // margin-left: 30px;
     }
 }
 
@@ -226,7 +227,7 @@
 
     .songsadded_inside,
     .songsadded_inside2 {
-        margin-left: 15px;
+        // margin-left: 15px;
     }
 }
 
@@ -235,7 +236,7 @@
     .songsadded_inside,
     .songsadded_inside2 {
         width: 450px;
-        margin-left: 60px;
+        // margin-left: 60px;
     }
 }
 
@@ -244,7 +245,7 @@
     .songsadded_inside,
     .songsadded_inside2 {
         width: 330px;
-        margin-left: 20px;
+        // margin-left: 20px;
     }
 }
 
@@ -456,6 +457,7 @@
     padding: 15px;
     width: 800px;
     margin: 0 auto;
+    cursor: pointer;
 }
 
 @media screen and (max-width:936px) {
@@ -579,7 +581,7 @@
     // border: 1px solid mediumaquamarine;
     height: 350px;
     padding: 20px 0px;
-    margin-left: 200px;
+    margin-left: 200px !important;
 }
 
 @media screen and (max-width:1140px) {
@@ -645,7 +647,12 @@
     left: 300px;
     float: left;
 }
-
+@media screen and (max-width:1140px) {
+    .songsadded_inside2 div {
+        position: relative;
+        left: 200px;
+    }
+}
 @media screen and (max-width:936px) {
     .songsadded_inside2 div {
         position: relative;
@@ -658,7 +665,7 @@
 @media screen and (max-width:878px) {
     .songsadded_inside2 div {
         position: relative;
-        top: 20px;
+        top: 50px;
         left: 210px;
         font-size: $rem0_8;
     }
@@ -935,11 +942,14 @@
 
 
 
-.songsadded_inside2 .more {
+.songsadded_inside2_li .more {
     float: right;
     text-align: right;
+    // box-sizing: border-box;
     position: relative;
+    // right: 0px;
     cursor: pointer;
+    // display: inline-block;
 
     i {
         transition: transform .5s;
@@ -1039,7 +1049,7 @@
 
 .inside2form {
     position: relative;
-    left: -300px;
+    margin-left: -300px;
 
     article {
         position: relative;
@@ -1075,7 +1085,7 @@
             }
             .infohashtagbtom{
                 position: relative;
-                top: -60px;
+                top: -20px;
                 left: 0px;
                 .btominpt{
                    position: relative;
@@ -1179,11 +1189,15 @@
 .btomsen{
     .sd_btn{
         position: relative;
+        // top: 15px;
+        // margin-left: 60%;
         top: 70px;
         left: 300px;
     }
     .sd{
         position: relative;
+        // top: 50px;
+        // margin-left: 50%;
         top: 70px;
         left: 350px;
     }
@@ -1222,7 +1236,9 @@
     }
 }
 
-
+// .songsadded_inside2_ol{
+//     width: 700px;
+// }
 @media screen and (max-width:878px){
     .songsadded_inside2_ol{
         width: 630px;
@@ -1234,6 +1250,25 @@
     }
 }
 
+
+// .addinsideadd{
+//     margin-left: -50px;
+// }
+// @media screen and (max-width:1200px) {
+//     .addinsideadd{
+//         margin-left: -50px !important;
+//     }
+// }
+// @media screen and (max-width:1140px) {
+//     .addinsideadd{
+//         margin-left: -50px !important;
+//     }
+// }
+// @media screen and (max-width:878px) {
+//     .addinsideadd{
+//         margin-left: 5px !important;
+//     }
+// }
 
 
 .songaddfoot {

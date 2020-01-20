@@ -1839,7 +1839,8 @@
     padding: 50px;
     margin: 100px auto 150px auto;
     position: relative;
-    overflow: hidden;
+    z-index: 1;
+    // overflow: hidden;
 
     @include respond(latop-max) {
         margin: 0px auto;
