@@ -54,4 +54,4 @@
 	echo "例外行號 : ", $up->getLine(),"<br>";
 	echo "例外原因 : ", $up->getMessage(),"<br>";		
   }
-  ?> 
+  ?>
