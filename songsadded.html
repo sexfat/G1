@@ -321,9 +321,7 @@
                                         <input type="radio" name="song_hashtag" value="3"> #Ethereal&ensp;
                                         <br>
                                         <p style="font-weight: bold;">Introduction :</p>
-                                        <textarea name="song_idn" id="add_tta" cols="65" rows="6"
-                                            style="border: 1px solid #d0d6d6;background-color: #D0D6D6;">
-                                             </textarea>
+                                        <textarea name="song_idn" id="add_tta" cols="65" rows="6" style="border: 1px solid #d0d6d6;background-color: #D0D6D6;"></textarea>
                                     </div>
                                 </div>
                                 <section>
@@ -340,53 +338,7 @@
                                 </div>
                             </h2>
                         </div>
-                        <ol class="songsadded_inside2" style="overflow:scroll;overflow-X:hidden;">
-                            <li class="songsadded_inside2_li">because of you <span
-                                    style="float: right;margin-right: 20px;"></span>
-                                <div class="more" style="float: right;margin-right: 310px;z-index: 1000;">
-                                    <i class="fas fa-ellipsis-h"></i>
-                                    <div class="addedit">
-                                        <ul>
-                                            <a id="a1" href="javascript:;" onclick="change()">
-                                                <li><span>Edit</span></li>
-                                            </a>
-                                            <a class="test-b" href="javascript:;">
-                                                <li><span>Delete</span></li>
-                                            </a>
-                                        </ul>
-                                    </div>
-                                </div>
-                                <div class="clearfix"></div>
-                            </li>
-                            <ol class="songsadded_inside2_ol" style="overflow:scroll;overflow-X:hidden;">
-                                <div id="c1" class="insidelidiv" style="position: relative;left: 0px;">
-                                    <article>
-                                        <p style="width: 100px;height: 100px;">
-                                            <img id="imageCover" style="width: 300px;height: 300px;">
-                                        </p>
-                                        <!-- <img class="songsadded_ff" style="width: 50px;height: 30px;"
-                                        src="./img/songupload/button_edit.png"> -->
-                                        <!-- <input type="file" name="" id="theFile" style="display: none;">
-                                        <label class="songsadded_ff" for="theFile"> &emsp; Edit</label> -->
-                                    </article>
-                                    <div>
-                                        <span><span style="font-weight: bold;">Song Name :</span>
-                                            <span class="songNameSpan" style="font-size:16px"> </span></span><br>
-                                        <!-- <span><span style="font-weight: bold;">Author :</span><span
-                                                style="font-size:16px">
-                                                  Andy
-                                                  Warhol</span></span><br> -->
-                                        <span><span style="font-weight: bold;">Song Type :</span>
-                                            <span class="songTypeSpan" style="font-size:16px">
-                                            </span></span><br>
-                                        <span><span style="font-weight: bold;">HashTag :</span>
-                                            <span class="songTagSpan" style="font-size:16px">
-                                            </span></span><br>
-                                        <span><span style="font-weight: bold;">Introduction :</span><br>
-                                            <span class="songIdnSpan" style="font-size:16px"></span></span>
-                                    </div>
-                                </div>
-                            </ol>
+                        <ol id="songsList" style="list-style: none;overflow-y:scroll;background: #fff;height: 100vh;padding:40px 20px;">
                         </ol>
                     </li>
                 </ol>
@@ -601,159 +553,167 @@
     <script src="./js/nav_bar.js"></script>
     <script src="./js/player.js"></script>
     <script>
-        $(function () {
+        $(function(){
             let inputImageFile = $("#inputImageFile"),
                 imagePreView = $("#imagePreView"),
                 songsAddPath = $(".songsadd_path"),
-                songNameSpan = $(".songNameSpan"),
-                songTypeSpan = $(".songTypeSpan"),
-                songTagSpan = $(".songTagSpan"),
-                songIdnSpan = $(".songIdnSpan"),
+                songNameSpan = $("#songNameSpan"),
                 leftFirst = $("#songsadded_lif_first"),
                 leftSec = $("#songsadded_lif_second"),
                 secContainer = $(".songsadded_inside2"),
-                InsideBottomLi = $(".songsadded_inside2_li"),
-                InsideBottomDiv = $(".insidelidiv"),
-                songMore = $(".more"),
-                songMoreBottom = $(".addedit"),
                 btnSongInfo = $("#songinfo_btn"),
                 btnSubmit = $("#btnSubmit"),
                 myForm = $("#myForm"),
                 image = $("#imageCover"),
-                checkBtnY = $(".checkbtn"),
+                songsList = $("#songsList"),
                 memInfo = {};
-            
-            function SongsAdd() {
-
+            function SongsAdd(){
+   
             }
-            let SA = SongsAdd.prototype = {};
-            var test = [];
+            let SA = SongsAdd.prototype ={};
+            function songType(type){
+                let typeId = Number(type);
+                if (isNaN(typeId)){
+                    return "Unknown";
+                }
+                switch (typeId) {
+                   case 3:
+                       return "House";
+                   case 2:
+                       return "Trap";
+                   default:
+                       return "Unknown";
+                }
+            }
+            function songTag(tag){
+                let t = Number(tag);
+                if (isNaN(t)){
+                    return "Unknown";
+                }
+                switch (t) {
+                    case 1:
+                        return "#Scratch";
+                    case 2:
+                        return "#Stress";
+                    case 3:
+                        return "#Ethereal";
+                    default:
+                        return "#Unknown";
+                }
+            }
             /**
              * 更新數據，在HTML顯示
              * @param resultSet 結果集
              */
-            function updateInfo(resultSet) {
-                let imageUrl = resultSet["imageUrl"] || "./img/songinfo/cover1.jpg",
-                    songName = resultSet["song_name"];
-                    songCatno = resultSet["cat_no"];
-                    songHashtag = resultSet["song_hashtag"];
-                    songIdn = resultSet["song_idn"];
-                    image.prop("src", imageUrl);
-                    songNameSpan.text(songName);
-                    songTypeSpan.text(songCatno);
-                    songTagSpan.text(songHashtag);
-                    songIdnSpan.text(songIdn);
+            function updateInfo(resultSet){
+               let defCover = "./img/songinfo/cover1.jpg",
+                   li = $("<li style=\"margin-bottom: 10px;cursor: pointer;float: left;width: 100%;\"  />"),
+                   itemContainer = $("<div style=\"border: 1px solid gray;padding-left: 20px;position: relative;\" />"),
+                   mainTitle = $("<span style=\"width: 90%;\" />"),
+                   moreIcon = $("<i class=\"fas fa-ellipsis-h\" style=\"line-height:1.7em;position: absolute;right: 20px;\" />"),
+                   moreMenuContainer = $("<div  style=\"position: absolute;right: 0;border: 1px solid grey; display: none;\" />"),
+                   menuUl = $("<ul style=\"padding: 4px;border:1px solid gray;text-align: center;background: #eee;position: absolute;right: 0;z-index: 1000;\"  />"),
+                   menuEdit = $("<li><span>Edit</span></li>"),
+                   menuDel = $("<li style='border-top: 1px solid #888;'><span>Delete</span></li>"),
+                   contentContainer = $(" <div style=\"float: left;cursor: auto;border: 1px solid grey;border-top:none; width: 100%;padding:20px;\" />"),
+                   imageContainer = $("<div style=\"float: left;width: 380px;\" />"),
+                   img = $("<img style=\"width: 300px;height: 300px;vertical-align: center;\" />"),
+                   infoContainer = $("<div style=\"float: left;width:50%;\" />"),
+                   infoTitle = $("<span style=\"font-weight: bold;\" />"),
+                   infoContext = $("<span  style=\"font-size:16px; word-wrap:break-word;\" />"),
+                   newLine = $("<br/>");
+               if (!resultSet || !resultSet.length){
+                   return;
+               }
+               // 清除舊數據
+               songsList.empty();
+   
+               for(let i = 0; i < resultSet.length; ++i){
+                   let result = resultSet[i], menu = moreMenuContainer.clone(),
+                   item = itemContainer.clone().append(
+                                     mainTitle.clone().html(result["song_name"]))
+                                     .append(moreIcon.clone().data("menu", menu).click(function(evt){
+                                         $(this).data("menu").fadeIn();
+                                         evt.stopPropagation();
+                                     })
+                                )
+                                .append(
+                                    menu.append(
+                                        menuUl.clone()
+                                              .data("menu", menu)
+                                              .append(
+                                                  menuEdit.clone()
+                                                      .data("result", result)
+                                                      .click(function(evt){
+                                                          alert("編輯：" + $(this).data("result")["song_no"])
+                                                          evt.stopPropagation();
+                                                      })
+                                              ).append(
+                                                  menuDel.clone().clone()
+                                                      .data("result", result)
+                                                      .click(function(evt){
+                                                          let ret = $(this).data("result");
+                                                          if (confirm("刪除："+ ret["song_name"] + "?")){
+                                                              alert("刪除ID：" + ret["song_no"]);
+                                                          }
+                                                          evt.stopPropagation();
+                                                      })
+                                              ).mouseleave(function(){
+                                                 $(this).data("menu").fadeOut();
+                                              })
+                                    )
+                                ),
+                   content = contentContainer.clone().append(
+                           imageContainer.clone().append(img.clone().prop("src", result["song_pic"] || defCover))
+                       )
+                       .append(
+                           infoContainer.clone().append(infoTitle.clone().text("Song Name ："))
+                           .append(infoContext.clone().html(result["song_name"]))
+                           .append(newLine.clone())
+                        //    .append(infoTitle.clone().text("Author ："))
+                        //    .append(infoContext.clone().html("Andy Warhol"))
+                        //    .append(newLine.clone())
+                           .append(infoTitle.clone().text("Song Type ："))
+                           .append(infoContext.clone().html(songType(result["cat_no"])))
+                           .append(newLine.clone())
+                           .append(infoTitle.clone().text("HashTag ："))
+                           .append(infoContext.clone().html(songTag(result["song_hashtag"])))
+                           .append(newLine.clone())
+                           .append(infoTitle.clone().text("Introduction ："))
+                           .append(infoContext.clone().html(result["song_idn"]))
+                           .append(newLine.clone())
+                       );
+                   li.clone().append(item).append(content.hide()).appendTo(songsList)
+                       .data("content", content)
+                       .click(function () {
+                         $(this).data("content").slideToggle();
+                   });
+               }
             }
             /**
              * 綁定事件以及處理
              */
-            // init_load_song();
-            // function init_load_song() {
-            //     $.ajax({
-            //             url: "./phps/addmemallupload.php",
-            //             type: "POST",
-            //             dataType: "json",
-            //             cache: false,
-            //             data: {
-            //                 "mem_no" : mem_no
-            //             },
-            //             contentType: false,
-            //             processData: false,
-            //             success: function (data) {
-            //                 let AlluploadRow = $.parseJSON(data);
-            //                 // test = ret;
-            //                 console.log(AlluploadRow);
-            //                 // alert(ret.song_name);
-            //                 // alert(ret);
-            //                 // leftFirst.click();
-
-            //                 var AlluploadRow_arr = [];
-            //                 AlluploadRow_arr.push(AlluploadRow);
-            //                 console.log(AlluploadRow_arr)
-            //                 AlluploadRow_arr.map(function (data){
-            //                     var songsadded_inside2 = document.getElementsByClassName('songsadded_inside2')[0];
-            //                     $('.songsadded_inside2').append(`<li class="songsadded_inside2_li">${ret_arr[0].song_name}
-            //                         <div class="more" style="float: right;margin-right: 310px;z-index: 1000;">
-            //                         <i class="fas fa-ellipsis-h"></i>
-            //                         <div class="addedit">
-            //                             <ul>
-            //                                 <a id="a1" href="javascript:;" onclick="change()">
-            //                                     <li><span>Edit</span></li>
-            //                                 </a>
-            //                                 <a class="test-b" href="javascript:;">
-            //                                     <li><span>Delete</span></li>
-            //                                 </a>
-            //                             </ul>
-            //                         </div>
-            //                     </div>
-            //                     <div class="clearfix"></div>
-            //                     </li>`);
-            //                     $('.songsadded_inside2').append(`
-            //                     <ol class="songsadded_inside2_ol" style="overflow:scroll;overflow-X:hidden;">
-            //                     <div id="c1" class="insidelidiv" style="position: relative;left: 0px;">
-            //                         <article>
-            //                             <p style="width: 100px;height: 100px;">
-            //                                 <img id="imageCover" style="width: 300px;height: 300px;">
-            //                             </p>
-            //                             <!-- <img class="songsadded_ff" style="width: 50px;height: 30px;"
-            //                             src="./img/songupload/button_edit.png"> -->
-            //                             <!-- <input type="file" name="" id="theFile" style="display: none;">
-            //                             <label class="songsadded_ff" for="theFile"> &emsp; Edit</label> -->
-            //                         </article>
-            //                         <div>
-            //                             <span><span style="font-weight: bold;">Song Name : ${AlluploadRow_arr[0].song_name}</span>
-            //                                 <span class="songNameSpan" style="font-size:16px"> </span></span><br>
-            //                             <span><span style="font-weight: bold;">Song Type : ${AlluploadRow_arr[0].cat_no}</span>
-            //                                 <span class="songTypeSpan" style="font-size:16px">
-            //                                 </span></span><br>
-            //                             <span><span style="font-weight: bold;">HashTag : ${AlluploadRow_arr[0].song_hashtag}</span>
-            //                                 <span class="songTagSpan" style="font-size:16px">
-            //                                 </span></span><br>
-            //                             <span><span style="font-weight: bold;">Introduction :<br>${AlluploadRow_arr[0].song_idn}</span><br>
-            //                                 <span class="songIdnSpan" style="font-size:16px"></span></span>
-            //                         </div>
-            //                       </div>
-            //                     </ol>
-            //                     `)
-                            
-            //                     // $('.songsadded_inside2').append(`<li class="songsadded_inside2_li">${ret_arr.song_name}</li>`);
-            //                     // $('.songsadded_inside2').append($namelist);
-            //                     console.log($('.songsadded_inside2')[0]);
-            //                 });
-            //             },
-            //             error: function (err) {
-            //                 console.error(err);
-            //                 alert("存儲失敗了,請重試");
-            //             }
-            //         });
-            // }
-
-            // $('.songsadded_inside2_li').on('click', function(){
-            //     $('.songsadded_inside2_ol:nth-child('+$(this).index()+')').show();
-            // });
-
-            function bindEvt() {
-
+            function bindEvt(){
+   
                 //圖片預覽功能
-                inputImageFile.change(function () {
-                    let file = this.files[0],
-                        readFile = new FileReader();
+                inputImageFile.change(function(){
+                    let file = this.files[0], readFile = new FileReader();
                     readFile.readAsDataURL(file);
                     readFile.addEventListener('load', function () {
                         imagePreView.prop("src", this.result)
-                            .css({
-                                maxWidth: "500px",
-                                maxHeight: "400px"
-                            });
+                                    .css({
+                                        maxWidth: "500px",
+                                        maxHeight: "400px"
+                                    });
                     });
                 });
                 // 上載歌曲
-                btnSongInfo.change(function () {
+                btnSongInfo.change(function(){
                     let fileName = $(this).val();
                     songsAddPath.text(fileName.substr(fileName.lastIndexOf("\\") + 1));
                 });
                 //上載數據
-                btnSubmit.click(function () {
+                btnSubmit.click(function(){
                     let formData = new FormData(myForm[0]);
                     $.ajax({
                         url: "./phps/songsupload.php",
@@ -762,102 +722,12 @@
                         data: formData,
                         contentType: false,
                         processData: false,
-                        success: function (data) {
-                            let ret = $.parseJSON(data);
-                            console.log(ret);
-                            // alert(ret.song_name);
+                        success: function(result){
+                           let ret = $.parseJSON(result);
                             updateInfo(ret);
-                            // test.push(ret);
-                            // alert(ret);
-                            leftFirst.click();
-                            
-                            //動態新增list
-                            var ret_arr = [];
-                            ret_arr.push(ret);
-                            console.log(ret_arr)
-                            ret_arr.map(function (data){
-                                // let songCatno = '';
-                                // let songHashtag = '';
-                                // if (ret.cat_no == '3') {
-                                //     songCatno = 'House';
-                                // } else if (ret.cat_no == '2') {
-                                //     songCatno = 'Trap';
-                                // }
-                                // if (ret.song_hashtag == '1') {
-                                //     songHashtag = 'Scratch';
-                                // } else if (ret.song_hashtag == '2') {
-                                //     songHashtag = 'Stress';
-                                // } else if (ret.song_hashtag == '3') {
-                                //     songHashtag = 'Ethereal';
-                                // }
-
-                                // let namelist = '';
-                                // for(let x = 0; x < ret.length; x++)
-                                // {
-                                //     namelist += '<li class="songsadded_inside2_li">'+ret[x].song_name+'</li>';
-                                // }
-
-                                // $namelist = $('<li class="songsadded_inside2_li"></li>').html(data.songName);
-                                    // $namelistbom = $('<div class="insidelidiv"></div>');
-                                    // $namelist.append($namelistbom);
-                                    
-                                    //   $listbomp = $('<p></p>');
-                                    //   $namelistbom.append($$listbomp);
-                                // $('.songsadded_inside2').append($namelist);
-
-                                var songsadded_inside2 = document.getElementsByClassName('songsadded_inside2')[0];
-                                $('.songsadded_inside2').append(`<li class="songsadded_inside2_li">${ret_arr[0].song_name}
-                                    <div class="more" style="float: right;margin-right: 310px;z-index: 1000;">
-                                    <i class="fas fa-ellipsis-h"></i>
-                                    <div class="addedit">
-                                        <ul>
-                                            <a id="a1" href="javascript:;" onclick="change()">
-                                                <li><span>Edit</span></li>
-                                            </a>
-                                            <a class="test-b" href="javascript:;">
-                                                <li><span>Delete</span></li>
-                                            </a>
-                                        </ul>
-                                    </div>
-                                </div>
-                                <div class="clearfix"></div>
-                                </li>`);
-                                $('.songsadded_inside2').append(`
-                                <ol class="songsadded_inside2_ol" style="overflow:scroll;overflow-X:hidden;">
-                                <div id="c1" class="insidelidiv" style="position: relative;left: 0px;">
-                                    <article>
-                                        <p style="width: 100px;height: 100px;">
-                                            <img id="imageCover" style="width: 300px;height: 300px;">
-                                        </p>
-                                        <!-- <img class="songsadded_ff" style="width: 50px;height: 30px;"
-                                        src="./img/songupload/button_edit.png"> -->
-                                        <!-- <input type="file" name="" id="theFile" style="display: none;">
-                                        <label class="songsadded_ff" for="theFile"> &emsp; Edit</label> -->
-                                    </article>
-                                    <div>
-                                        
-                                        <span><span style="font-weight: bold;">Song Name : ${ret_arr[0].song_name}</span>
-                                            <span class="songNameSpan" style="font-size:16px"> </span></span><br>
-                                        <span><span style="font-weight: bold;">Song Type : ${ret_arr[0].cat_no}</span>
-                                            <span class="songTypeSpan" style="font-size:16px">
-                                            </span></span><br>
-                                        <span><span style="font-weight: bold;">HashTag : ${ret_arr[0].song_hashtag}</span>
-                                            <span class="songTagSpan" style="font-size:16px">
-                                            </span></span><br>
-                                        <span><span style="font-weight: bold;">Introduction :<br>${ret_arr[0].song_idn}</span><br>
-                                            <span class="songIdnSpan" style="font-size:16px"></span></span>
-                                    </div>
-                                  </div>
-                                </ol>
-                                `)
-                            
-                                // $('.songsadded_inside2').append(`<li class="songsadded_inside2_li">${ret_arr.song_name}</li>`);
-                                // $('.songsadded_inside2').append($namelist);
-                                console.log($('.songsadded_inside2')[0]);
-                                
-                            });
+                           leftFirst.click();
                         },
-                        error: function (err) {
+                        error: function(err){
                             console.error(err);
                             alert("存儲失敗了,請重試");
                         }
@@ -865,103 +735,51 @@
                 });
             }
             //檢查賬戶是否已登錄
-            function checkAccount() {
+            function checkAccount(){
                 $.get("./phps/getLoginInfo.php")
-                    .done(function (ret) {
-                        memInfo = $.parseJSON(ret);
-                        if (!memInfo["mem_acct"]) {
-                            alert("Please login first!");
-                            return location.href = "./login.html";
-                        }
-                    })
-                    .fail(function (e) {
-                        // alert("加載失敗");
-                    });
-                //展開于第一個頁簽
-                // InsideBottomDiv.hide();
-                $('.songsadded_inside2_ol').hide();
-                leftFirst.click(function () {
-                    myForm.parent().slideToggle();
-                });
-                leftSec.click(function () {
-                    secContainer.slideToggle();
-                });
-                // songMore.click(function () {
-                //     songMoreBottom.slideToggle();
-                // });
-                // InsideBottomLi.click(function () {
-                //     $('.songsadded_inside2_ol').slideToggle();
-                // });
+                 .done(function(ret){
+                     memInfo = $.parseJSON(ret);
+                     if (!memInfo["mem_acct"]){
+                         alert("Please login first!");
+                         return location.href = "./login.html";
+                     }
+                 })
+                 .fail(function(e){
+                     alert("加載失敗");
+                 });
+             //展開于第一個頁簽
+              leftFirst.click(function(){
+                  myForm.parent().slideToggle();
+              });
+              leftSec.click(function(){
+                  secContainer.slideToggle();
+              });
             }
-
-            //刪除當前選擇的歌曲
-            // function delectSong() {
-            //     checkBtnY.click(function(){
-            //         // $.get("./phps/addmemsongdelt.php").done()
-            //         $.ajax({
-            //             url: "./phps/addmemsongdelt.php",
-            //             type: "POST",
-            //             cache: false,
-            //             contentType: false,
-            //             processData: false,
-            //             data: JSON,
-            //             success: function(){
-            //                 alert('success!');
-            //             }
-            //         })
-            //     });
-            // }
-
-            var isShow = false;
-
-            function init() {
+            function loadMySongs(){
+                $.ajax({
+                    url: "./phps/getMySongs.php",
+                    type: "POST",
+                    cache: false,
+                    data: {},
+                    success: function(result){
+                        let ret = $.parseJSON(result);
+                        updateInfo(ret);
+                        myForm.parent().slideToggle();
+                    },
+                    error: function(err){
+                        console.error(err);
+                    }
+                });
+            }
+            function init(){
                 checkAccount();
+                loadMySongs();
                 bindEvt();
-                // delectSong();
                 return this;
             }
             let _this = window["SongsAdd"] = init.apply(new SongsAdd());
         });
-        // var c1 = document.getElementById('c1').style.display = 'block';
-        // $("#c1").show();
-        // console.log(document.getElementById('c1').style.display)
-        $(document).on("click", ".more", function(event){
-            event.stopPropagation();
-            $(this).children(".addedit").slideToggle(); 
-            // console.log($(this).children(".addedit").slideToggle());
-        });
-        $(document).on("click", ".songsadded_inside2_li", function(){
-            // console.log($(this).index());
-            let ol_index = $(this).index()/2;
-            // $('.songsadded_inside2_ol').slideToggle();
-            // console.log($(`.songsadded_inside2_ol:nth-of-type(${ol_index + 1})`));
-            $(`.songsadded_inside2_ol:nth-of-type(${ol_index + 1})`).slideToggle();
-            // console.log($(this).children(".addedit").slideToggle());
-        });
-        $(document).on("click", ".test-b", function(event){
-            $.fancybox.open(
-                '<div class="adddeletecheck"alt=""><div class="checkline"><br><p>Are you sure to delete?</p><br><br><button class="checkbtn">Yes</button> <button class="checkbtnNo" style="background-color: $yellow;font-size: 0.8rem;padding: 10px 30px;border: 1px solid $yellow;border-radius: 5px;color: #333;font-weight: bold;cursor: pointer;text-transform: capitalize;&:hover{transform: scale(1.1)};">No</button></div></div>'
-            );
-        });
-
-        //刪除當前選擇的歌曲
-        $(document).on("click", ".checkbtn", function(event){
-                    console.log(event);
-                    // $.get("./phps/addmemsongdelt.php").done()
-                    $.ajax({
-                        url: "./phps/addmemsongdelt.php",
-                        type: "POST",
-                        cache: false,
-
-                        // contentType: false,
-                        // processData: false,
-                        success: function(){
-                            alert('success!');
-                            remove($InsideBottomLi[0]);
-                        }
-                    })
-        });
-    </script>
+     </script>
 
 
     <!-- <script>

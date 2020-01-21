@@ -4,8 +4,8 @@
     $sql = "DELETE from `total_station_music_library`
             where song_no=:song_no";
     $adddelt = $pdo->prepare($sql);
-    
-    $adddelt->bindValue(':song_no', $_POST['song_no']);
+    $song_no = $pdo->lastInsertId();
+    $adddelt->bindValue(':song_no', $song_no);
     $adddelt->execute();
     if ($adddelt->rowCount() > 0) {
         echo 'success';
