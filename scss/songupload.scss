@@ -26,7 +26,7 @@
 }
 
 .songsadded_lif {
-    border: 1px solid #b2c0c0;
+    border: 1px solid $green;
     width: 1200px;
     // padding: 30px 0px;
     background-color: #d0d6d6;
@@ -194,7 +194,7 @@
 
     .songsadded_inside,
     .songsadded_inside2 {
-        margin-left: 45px;
+        // margin-left: 45px;
     }
 }
 
@@ -203,7 +203,7 @@
     .songsadded_inside,
     .songsadded_inside2 {
         width: 550px;
-        margin-left: 105px;
+        // margin-left: 105px;
     }
 }
 
@@ -211,7 +211,7 @@
 
     .songsadded_inside,
     .songsadded_inside2 {
-        margin-left: 55px;
+        // margin-left: 55px;
     }
 }
 
@@ -219,7 +219,7 @@
 
     .songsadded_inside,
     .songsadded_inside2 {
-        margin-left: 30px;
+        // margin-left: 30px;
     }
 }
 
@@ -227,7 +227,7 @@
 
     .songsadded_inside,
     .songsadded_inside2 {
-        margin-left: 15px;
+        // margin-left: 15px;
     }
 }
 
@@ -236,7 +236,7 @@
     .songsadded_inside,
     .songsadded_inside2 {
         width: 450px;
-        margin-left: 60px;
+        // margin-left: 60px;
     }
 }
 
@@ -245,7 +245,7 @@
     .songsadded_inside,
     .songsadded_inside2 {
         width: 330px;
-        margin-left: 20px;
+        // margin-left: 20px;
     }
 }
 
@@ -1251,24 +1251,24 @@
 }
 
 
-.addinsideadd{
-    margin-left: -50px;
-}
-@media screen and (max-width:1200px) {
-    .addinsideadd{
-        margin-left: -50px !important;
-    }
-}
-@media screen and (max-width:1140px) {
-    .addinsideadd{
-        margin-left: -50px !important;
-    }
-}
-@media screen and (max-width:878px) {
-    .addinsideadd{
-        margin-left: 5px !important;
-    }
-}
+// .addinsideadd{
+//     margin-left: -50px;
+// }
+// @media screen and (max-width:1200px) {
+//     .addinsideadd{
+//         margin-left: -50px !important;
+//     }
+// }
+// @media screen and (max-width:1140px) {
+//     .addinsideadd{
+//         margin-left: -50px !important;
+//     }
+// }
+// @media screen and (max-width:878px) {
+//     .addinsideadd{
+//         margin-left: 5px !important;
+//     }
+// }
 
 
 .songaddfoot {

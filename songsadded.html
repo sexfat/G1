@@ -11,7 +11,7 @@
     <link rel="stylesheet" href="./css/main.css">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/fancybox/3.5.7/jquery.fancybox.min.css">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.11.2/css/all.min.css" />
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/vue/2.6.10/vue.js"></script>   
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/vue/2.6.10/vue.js"></script>
     <!-- <script src="./js/public.js"></script> -->
     <style>
         .songsadded_lif h2 {
@@ -279,65 +279,69 @@
                     <!-- <div class="songsadded-lif-container is-click"> -->
                     <li class="songsadded_lif">
                         <div>
-                                <h2 id="songsadded_lif_first" style="cursor: pointer;">&emsp;Upload song
-                                    <div class="songsadded-lif" style="float: right;margin-right: 30px;"></div>
-                                </h2>
+                            <h2 id="songsadded_lif_first" style="cursor: pointer;">&emsp;Upload song
+                                <div class="songsadded-lif" style="float: right;margin-right: 30px;"></div>
+                            </h2>
                         </div>
                         <ol class="songsadded_inside">
-                                <form id="myForm" class="addinsideadd" style="margin: 0 auto;" method="POST"  enctype="multipart/form-data">
-                                    <article>
-                                        <br>
-                                        <p style="width: 100px;height: 100px;">
-                                            <img id="imagePreView" style="width: 300px;height: 300px;background-color: #D0D6D6;">
-                                        </p>
-                                        <input type="file" name="song_pic" id="inputImageFile" style="display: none;">
-                                        <label class="songsadded_ff" for="inputImageFile"
-                                               style="text-align: center;margin-left: -5px;">Edit</label>
-                                    </article>
-                                    <div>
-                                        <p style="font-weight: bold;">Song Name:
-                                            <input type="text" id="add_pp" name="song_name"
-                                                   style="border: 1px solid #d0d6d6;width:350px;height:28px;background-color: #d0d6d6;"
-                                                   required>
-                                        </p>
-                                        <div id="infopath">
-                                            <span style="position: relative;left: -100px;top: -20px;font-weight: bold;">Upload：</span>
-                                            <p class="songsadd_path"></p>
-                                            <input type="file" name="song_addr" id="songinfo_btn" style="display: none;">
-                                            <label class="songinfo_bb" for="songinfo_btn" style="text-align: center;">Choose</label>
-                                        </div>
-                                        <br>
-                                        <div id="infohashtag">
-                                            <span style="font-weight: bold;">Song type : </span>
-                                            <input type="radio" name="cat_no" value="3"> House&ensp;
-                                            <input type="radio" style="border-radius: 5px;" name="cat_no" value="2">Trap<br>
-                                            <span style="font-weight: bold;">Hashtag : </span><br>
-                                            <input type="radio" name="song_hashtag" value="1"> #Scratch&ensp;
-                                            <input type="radio" name="song_hashtag" value="2"> #Stress&ensp;
-                                            <input type="radio" name="song_hashtag" value="3"> #Ethereal&ensp;
-                                            <br>
-                                            <p style="font-weight: bold;">Introduction :</p>
-                                            <textarea name="song_idn" id="add_tta" cols="65" rows="6"
-                                                      style="border: 1px solid #d0d6d6;background-color: #D0D6D6;">
-                                             </textarea>
-                                        </div>
+                            <form id="myForm" class="addinsideadd" style="margin: 0 auto;" method="POST"
+                                enctype="multipart/form-data">
+                                <article>
+                                    <br>
+                                    <p style="width: 100px;height: 100px;">
+                                        <img id="imagePreView"
+                                            style="width: 300px;height: 300px;background-color: #D0D6D6;">
+                                    </p>
+                                    <input type="file" name="song_pic" id="inputImageFile" style="display: none;">
+                                    <label class="songsadded_ff" for="inputImageFile"
+                                        style="text-align: center;margin-left: -5px;">Edit</label>
+                                </article>
+                                <div>
+                                    <p style="font-weight: bold;">Song Name:
+                                        <input type="text" id="add_pp" name="song_name"
+                                            style="border: 1px solid #d0d6d6;width:350px;height:28px;background-color: #d0d6d6;"
+                                            required>
+                                    </p>
+                                    <div id="infopath">
+                                        <span
+                                            style="position: relative;left: -100px;top: -20px;font-weight: bold;">Upload：</span>
+                                        <p class="songsadd_path"></p>
+                                        <input type="file" name="song_addr" id="songinfo_btn" style="display: none;">
+                                        <label class="songinfo_bb" for="songinfo_btn"
+                                            style="text-align: center;">Choose</label>
                                     </div>
-                                    <section>
-                                        <input type="button" id="btnSubmit" name="submit">
-                                        <label class="sd_btn" for="btnSubmit">Send</label>
-                                    </section>
-                                </form>
+                                    <br>
+                                    <div id="infohashtag">
+                                        <span style="font-weight: bold;">Song type : </span>
+                                        <input type="radio" name="cat_no" value="3"> House&ensp;
+                                        <input type="radio" style="border-radius: 5px;" name="cat_no" value="2">Trap<br>
+                                        <span style="font-weight: bold;">Hashtag : </span><br>
+                                        <input type="radio" name="song_hashtag" value="1"> #Scratch&ensp;
+                                        <input type="radio" name="song_hashtag" value="2"> #Stress&ensp;
+                                        <input type="radio" name="song_hashtag" value="3"> #Ethereal&ensp;
+                                        <br>
+                                        <p style="font-weight: bold;">Introduction :</p>
+                                        <textarea name="song_idn" id="add_tta" cols="65" rows="6"
+                                            style="border: 1px solid #d0d6d6;background-color: #D0D6D6;">
+                                             </textarea>
+                                    </div>
+                                </div>
+                                <section>
+                                    <input type="button" id="btnSubmit" name="submit">
+                                    <label class="sd_btn" for="btnSubmit">Send</label>
+                                </section>
+                            </form>
                         </ol>
                     </li>
                     <li class="songsadded_lif">
                         <div>
                             <h2 id="songsadded_lif_second" style="cursor: pointer;">&emsp;Uploaded<div
                                     class="songsadded-lif2" style="float: right;margin-right: 30px;">
-                            </div>
+                                </div>
                             </h2>
                         </div>
                         <ol class="songsadded_inside2" style="overflow:scroll;overflow-X:hidden;">
-                            <li class="songsadded_inside2_li">Andy Warhol - Because of you <span
+                            <li class="songsadded_inside2_li">because of you <span
                                     style="float: right;margin-right: 20px;"></span>
                                 <div class="more" style="float: right;margin-right: 310px;z-index: 1000;">
                                     <i class="fas fa-ellipsis-h"></i>
@@ -355,60 +359,6 @@
                                 <div class="clearfix"></div>
                             </li>
                             <ol class="songsadded_inside2_ol" style="overflow:scroll;overflow-X:hidden;">
-                                <div id="d1" style="display: none">
-                                    <form class="inside2form" action="" method="POST">
-                                        <article>
-                                            <br>
-                                            <p style="width: 100px;height: 100px;">
-                                                <img id="image"
-                                                     style="width: 230px;height: 230px;background-color: #D0D6D6;">
-                                            </p>
-                                            <!-- <img class="songsadded_ff" style="width: 50px;height: 30px;"
-                                                src="./img/songupload/button_edit.png"> -->
-                                            <input type="file" name="" id="theFile" style="display: none;">
-                                            <label class="songsadded_ff" for="theFile"
-                                                   style="text-align: center;margin-left: -5px;">Edit</label>
-  
-                                        </article>
-                                        <div class="inside2count">
-                                            <p style="font-weight: bold;">Song Name :
-                                                <input type="text" class="add_btom"  style="border: 1px solid #d0d6d6;height:28px;background-color: #d0d6d6;">
-                                            </p>
-                                            <div class="infopathbtom">
-                                                <!-- <span
-                                                    style="position: relative;left: -100px;top: -20px;font-weight: bold;">Upload
-                                                    path :</span> -->
-                                                <!-- <p class="songsadd_path">{{infopathURL2}}</p> -->
-                                                <!-- <input type="file" name="" id="songinfo_btnbtom"
-                                                    @change="changeSignUpload" style="display: none;">
-                                                <label class="songinfo_bb" for="songinfo_btnbtom"
-                                                    style="text-align: center;">Choose</label> -->
-                                            </div><br>
-                                            <div class="infohashtagbtom">
-                                                  <span style="font-weight: bold;">Song type :
-                                                  </span><input type="radio" name="type" class="btominpt">
-                                                House&ensp;
-                                                <input type="radio" style="border-radius: 5px;" name="type"
-                                                       class="btominpt">Trap
-                                                <br>
-                                                <span style="font-weight: bold;">Hashtag : </span><br>
-                                                <input type="checkbox" name="" class="btominpt"> #Scratch&ensp;
-                                                <input type="checkbox" name="" class="btominpt"> #Stress&ensp;
-                                                <input type="checkbox" name="" class="btominpt">
-                                                #Ethereal&ensp;
-                                                <br>
-                                                <p style="font-weight: bold;">Introduction :</p>
-                                                <textarea name="" id="add_tta" cols="52" rows="3"
-                                                          style="border: 1px solid #d0d6d6;background-color: #D0D6D6;"></textarea>
-                                            </div>
-                                        </div>
-  
-                                        <section class="btomsen"><input type="submit" class="sd" name="submit"
-                                                                        onClick="document.form.submit()">
-                                            <label class="sd_btn" for="sd">Send</label>
-                                        </section>
-                                    </form>
-                                </div>
                                 <div id="c1" class="insidelidiv" style="position: relative;left: 0px;">
                                     <article>
                                         <p style="width: 100px;height: 100px;">
@@ -420,23 +370,22 @@
                                         <label class="songsadded_ff" for="theFile"> &emsp; Edit</label> -->
                                     </article>
                                     <div>
-                                          <span><span style="font-weight: bold;">Song Name :</span>
-                                              <span class="songNameSpan" style="font-size:16px"> </span></span><br>
+                                        <span><span style="font-weight: bold;">Song Name :</span>
+                                            <span class="songNameSpan" style="font-size:16px"> </span></span><br>
                                         <!-- <span><span style="font-weight: bold;">Author :</span><span
                                                 style="font-size:16px">
                                                   Andy
                                                   Warhol</span></span><br> -->
                                         <span><span style="font-weight: bold;">Song Type :</span>
-                                           <span class="songTypeSpan" style="font-size:16px">
-                                                  </span></span><br>
+                                            <span class="songTypeSpan" style="font-size:16px">
+                                            </span></span><br>
                                         <span><span style="font-weight: bold;">HashTag :</span>
-                                        <span class="songTagSpan" style="font-size:16px">
-                                                  </span></span><br>
+                                            <span class="songTagSpan" style="font-size:16px">
+                                            </span></span><br>
                                         <span><span style="font-weight: bold;">Introduction :</span><br>
-                                        <span class="songIdnSpan" style="font-size:16px"></span></span>
+                                            <span class="songIdnSpan" style="font-size:16px"></span></span>
                                     </div>
                                 </div>
-  
                             </ol>
                         </ol>
                     </li>
@@ -445,108 +394,8 @@
 
         <!-- ---------------------------------------------------------------------- -->
 
-        <li class="songsadded_inside2_li" style="display: none;">Andy Warhol - Because of you <span
-                style="float: right;margin-right: 20px;"></span>
-            <div class="more" style="float: right;margin-right: 310px;z-index: 1000;">
-                <i class="fas fa-ellipsis-h"></i>
-                <div class="addedit">
-                    <ul>
-                        <a id="a1" href="javascript:;" onclick="change()">
-                            <li><span>Edit</span></li>
-                        </a>
-                        <a class="test-b" href="javascript:;">
-                            <li><span>Delete</span></li>
-                        </a>
-                    </ul>
-                </div>
-            </div>
-            <div class="clearfix"></div>
-        </li>
-        <ol class="songsadded_inside2_ol" style="overflow:scroll;overflow-X:hidden;display: none;">
-            <div id="d1">
-                <form class="inside2form" action="" method="POST" style="display: none;">
-                    <article>
-                        <!-- target="id_iframe" -->
-                        <br>
-                        <p style="width: 100px;height: 100px;">
-                            <img id="image" style="width: 300px;height: 300px;background-color: #D0D6D6;">
-                        </p>
-                        <!-- <img class="songsadded_ff" style="width: 50px;height: 30px;"
-                            src="./img/songupload/button_edit.png"> -->
-                        <input type="file" name="song_pic" id="theFile" style="display: none;">
-                        <!-- <input type="hidden" name="songpicfack" id="songpicfack"> -->
-                        <label class="songsadded_ff" for="theFile"
-                            style="text-align: center;margin-left: -5px;">Edit</label>
+        
 
-                    </article>
-                    <div>
-                        <p style="font-weight: bold;">Song Name : <input type="text" id="add_pp" name="song_name"
-                                style="border: 1px solid #d0d6d6;width:350px;height:28px;background-color: #d0d6d6;"
-                                required>
-                        </p>
-                        <div id="infopath">
-                            <!-- <span
-                            style="position: relative;left: -100px;top: -20px;font-weight: bold;">Upload
-                            path :</span>
-                        <p class="songsadd_path">{{infopathURL}}</p>
-                        <input type="file" name="song_addr" id="songinfo_btn" @change="changeSignUpload"
-                            style="display: none;"> -->
-                            <!-- <input type="hidden" name="songaddrfack" id="songaddrfack"> -->
-                            <!-- <label class="songinfo_bb" for="songinfo_btn" onClick="songaddchoose"
-                            style="text-align: center;">Choose</label> -->
-                        </div><br>
-                        <div id="infohashtag">
-                            <span style="font-weight: bold;">Song type : </span><input type="radio" name="cat_no"
-                                value="3" id=""> House&ensp;
-                            <input type="radio" style="border-radius: 5px;" name="cat_no" value="2" id="">Trap
-                            <br>
-                            <span style="font-weight: bold;">Hashtag : </span><br>
-                            <input type="radio" name="song_hashtag" value="1" id=""> #Scratch&ensp;
-                            <input type="radio" name="song_hashtag" value="2" id=""> #Stress&ensp;
-                            <input type="radio" name="song_hashtag" value="3" id="add_Ethereal">
-                            #Ethereal&ensp;
-                            <br>
-                            <p style="font-weight: bold;">Introduction :</p>
-                            <textarea name="song_idn" id="add_tta" cols="65" rows="6"
-                                style="border: 1px solid #d0d6d6;background-color: #D0D6D6;"></textarea>
-                        </div>
-                    </div>
-
-                    <section><input type="button" id="sd" name="submit" onclick="">
-                        <label class="sd_btn" for="sd">Send</label>
-                    </section>
-                </form>
-            </div>
-            <div id="c1" style="position: relative;left: 0px;display: none;">
-                <article>
-                    <p style="width: 100px;height: 100px;">
-                        <img src="./img/songinfo/cover1.jpg" style="width: 300px;height: 300px;">
-                    </p>
-                    <!-- <img class="songsadded_ff" style="width: 50px;height: 30px;"
-            src="./img/songupload/button_edit.png"> -->
-                    <!-- <input type="file" name="" id="theFile" style="display: none;">
-            <label class="songsadded_ff" for="theFile"> &emsp; Edit</label> -->
-                </article>
-                <div>
-                    <span><span style="font-weight: bold;">Song Name :</span><span style="font-size:16px"> Because
-                            of you</span></span><br>
-                    <span><span style="font-weight: bold;">Author :</span><span style="font-size:16px">
-                            Andy
-                            Warhol</span></span><br>
-                    <span><span style="font-weight: bold;">Song Type :</span><span style="font-size:16px">
-                            House</span></span><br>
-                    <span><span style="font-weight: bold;">HashTag :</span><span style="font-size:16px">
-                            #Scratch</span></span><br>
-                    <span><span style="font-weight: bold;">Introduction :</span></span><br>
-                    <span style="font-size:16px">"Hold It Against Me" is three <br>
-                        minutes and forty-nine seconds <br>
-                        long.It is a dance-pop song that <br>
-                        blends pulsating industrial and trance <br>
-                        beats with elements of grime.</span>
-                </div>
-            </div>
-
-        </ol>
 
         <!-- ---------------------------------------------------------------------- -->
 
@@ -740,8 +589,7 @@
         </div>
     </div>
 
-    <script src="./js/nav_bar.js"></script>
-    <script src="./js/player.js"></script>
+    
 
     <footer class="songaddfoot">
     </footer>
@@ -749,15 +597,18 @@
 
     <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.0.4/gsap.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/gh/fancyapps/fancybox@3.5.7/dist/jquery.fancybox.min.js"></script>
+    <script src="./js/nav_bar.js"></script>
+    <script src="./js/player.js"></script>
     <script>
-        $(function(){
+        $(function () {
             let inputImageFile = $("#inputImageFile"),
                 imagePreView = $("#imagePreView"),
                 songsAddPath = $(".songsadd_path"),
                 songNameSpan = $(".songNameSpan"),
                 songTypeSpan = $(".songTypeSpan"),
                 songTagSpan = $(".songTagSpan"),
-                songIdnSpan= $(".songIdnSpan"),
+                songIdnSpan = $(".songIdnSpan"),
                 leftFirst = $("#songsadded_lif_first"),
                 leftSec = $("#songsadded_lif_second"),
                 secContainer = $(".songsadded_inside2"),
@@ -769,51 +620,140 @@
                 btnSubmit = $("#btnSubmit"),
                 myForm = $("#myForm"),
                 image = $("#imageCover"),
+                checkBtnY = $(".checkbtn"),
                 memInfo = {};
-            function SongsAdd(){
-   
+            
+            function SongsAdd() {
+
             }
-            let SA = SongsAdd.prototype ={};
+            let SA = SongsAdd.prototype = {};
+            var test = [];
             /**
              * 更新數據，在HTML顯示
              * @param resultSet 結果集
              */
-            function updateInfo(resultSet){
+            function updateInfo(resultSet) {
                 let imageUrl = resultSet["imageUrl"] || "./img/songinfo/cover1.jpg",
                     songName = resultSet["song_name"];
                     songCatno = resultSet["cat_no"];
                     songHashtag = resultSet["song_hashtag"];
                     songIdn = resultSet["song_idn"];
-                image.prop("src", imageUrl);
-                songNameSpan.text(songName);
-                songTypeSpan.text(songCatno);
-                songTagSpan.text(songHashtag);
-                songIdnSpan.text(songIdn);
+                    image.prop("src", imageUrl);
+                    songNameSpan.text(songName);
+                    songTypeSpan.text(songCatno);
+                    songTagSpan.text(songHashtag);
+                    songIdnSpan.text(songIdn);
             }
             /**
              * 綁定事件以及處理
              */
-            function bindEvt(){
-   
+            // init_load_song();
+            // function init_load_song() {
+            //     $.ajax({
+            //             url: "./phps/addmemallupload.php",
+            //             type: "POST",
+            //             dataType: "json",
+            //             cache: false,
+            //             data: {
+            //                 "mem_no" : mem_no
+            //             },
+            //             contentType: false,
+            //             processData: false,
+            //             success: function (data) {
+            //                 let AlluploadRow = $.parseJSON(data);
+            //                 // test = ret;
+            //                 console.log(AlluploadRow);
+            //                 // alert(ret.song_name);
+            //                 // alert(ret);
+            //                 // leftFirst.click();
+
+            //                 var AlluploadRow_arr = [];
+            //                 AlluploadRow_arr.push(AlluploadRow);
+            //                 console.log(AlluploadRow_arr)
+            //                 AlluploadRow_arr.map(function (data){
+            //                     var songsadded_inside2 = document.getElementsByClassName('songsadded_inside2')[0];
+            //                     $('.songsadded_inside2').append(`<li class="songsadded_inside2_li">${ret_arr[0].song_name}
+            //                         <div class="more" style="float: right;margin-right: 310px;z-index: 1000;">
+            //                         <i class="fas fa-ellipsis-h"></i>
+            //                         <div class="addedit">
+            //                             <ul>
+            //                                 <a id="a1" href="javascript:;" onclick="change()">
+            //                                     <li><span>Edit</span></li>
+            //                                 </a>
+            //                                 <a class="test-b" href="javascript:;">
+            //                                     <li><span>Delete</span></li>
+            //                                 </a>
+            //                             </ul>
+            //                         </div>
+            //                     </div>
+            //                     <div class="clearfix"></div>
+            //                     </li>`);
+            //                     $('.songsadded_inside2').append(`
+            //                     <ol class="songsadded_inside2_ol" style="overflow:scroll;overflow-X:hidden;">
+            //                     <div id="c1" class="insidelidiv" style="position: relative;left: 0px;">
+            //                         <article>
+            //                             <p style="width: 100px;height: 100px;">
+            //                                 <img id="imageCover" style="width: 300px;height: 300px;">
+            //                             </p>
+            //                             <!-- <img class="songsadded_ff" style="width: 50px;height: 30px;"
+            //                             src="./img/songupload/button_edit.png"> -->
+            //                             <!-- <input type="file" name="" id="theFile" style="display: none;">
+            //                             <label class="songsadded_ff" for="theFile"> &emsp; Edit</label> -->
+            //                         </article>
+            //                         <div>
+            //                             <span><span style="font-weight: bold;">Song Name : ${AlluploadRow_arr[0].song_name}</span>
+            //                                 <span class="songNameSpan" style="font-size:16px"> </span></span><br>
+            //                             <span><span style="font-weight: bold;">Song Type : ${AlluploadRow_arr[0].cat_no}</span>
+            //                                 <span class="songTypeSpan" style="font-size:16px">
+            //                                 </span></span><br>
+            //                             <span><span style="font-weight: bold;">HashTag : ${AlluploadRow_arr[0].song_hashtag}</span>
+            //                                 <span class="songTagSpan" style="font-size:16px">
+            //                                 </span></span><br>
+            //                             <span><span style="font-weight: bold;">Introduction :<br>${AlluploadRow_arr[0].song_idn}</span><br>
+            //                                 <span class="songIdnSpan" style="font-size:16px"></span></span>
+            //                         </div>
+            //                       </div>
+            //                     </ol>
+            //                     `)
+                            
+            //                     // $('.songsadded_inside2').append(`<li class="songsadded_inside2_li">${ret_arr.song_name}</li>`);
+            //                     // $('.songsadded_inside2').append($namelist);
+            //                     console.log($('.songsadded_inside2')[0]);
+            //                 });
+            //             },
+            //             error: function (err) {
+            //                 console.error(err);
+            //                 alert("存儲失敗了,請重試");
+            //             }
+            //         });
+            // }
+
+            // $('.songsadded_inside2_li').on('click', function(){
+            //     $('.songsadded_inside2_ol:nth-child('+$(this).index()+')').show();
+            // });
+
+            function bindEvt() {
+
                 //圖片預覽功能
-                inputImageFile.change(function(){
-                    let file = this.files[0], readFile = new FileReader();
+                inputImageFile.change(function () {
+                    let file = this.files[0],
+                        readFile = new FileReader();
                     readFile.readAsDataURL(file);
                     readFile.addEventListener('load', function () {
                         imagePreView.prop("src", this.result)
-                                    .css({
-                                        maxWidth: "500px",
-                                        maxHeight: "400px"
-                                    });
+                            .css({
+                                maxWidth: "500px",
+                                maxHeight: "400px"
+                            });
                     });
                 });
                 // 上載歌曲
-                btnSongInfo.change(function(){
+                btnSongInfo.change(function () {
                     let fileName = $(this).val();
                     songsAddPath.text(fileName.substr(fileName.lastIndexOf("\\") + 1));
                 });
                 //上載數據
-                btnSubmit.click(function(){
+                btnSubmit.click(function () {
                     let formData = new FormData(myForm[0]);
                     $.ajax({
                         url: "./phps/songsupload.php",
@@ -822,14 +762,52 @@
                         data: formData,
                         contentType: false,
                         processData: false,
-                        success: function(result){
-                           let ret = $.parseJSON(result);
+                        success: function (data) {
+                            let ret = $.parseJSON(data);
+                            console.log(ret);
+                            // alert(ret.song_name);
                             updateInfo(ret);
-                           leftFirst.click();
-                           $('.songsadded_inside2').append(`
-                           <li class="songsadded_inside2_li">${ret.value}<span
-                                    style="float: right;margin-right: 20px;"></span>
-                                <div class="more" style="float: right;margin-right: 310px;z-index: 1000;">
+                            // test.push(ret);
+                            // alert(ret);
+                            leftFirst.click();
+                            
+                            //動態新增list
+                            var ret_arr = [];
+                            ret_arr.push(ret);
+                            console.log(ret_arr)
+                            ret_arr.map(function (data){
+                                // let songCatno = '';
+                                // let songHashtag = '';
+                                // if (ret.cat_no == '3') {
+                                //     songCatno = 'House';
+                                // } else if (ret.cat_no == '2') {
+                                //     songCatno = 'Trap';
+                                // }
+                                // if (ret.song_hashtag == '1') {
+                                //     songHashtag = 'Scratch';
+                                // } else if (ret.song_hashtag == '2') {
+                                //     songHashtag = 'Stress';
+                                // } else if (ret.song_hashtag == '3') {
+                                //     songHashtag = 'Ethereal';
+                                // }
+
+                                // let namelist = '';
+                                // for(let x = 0; x < ret.length; x++)
+                                // {
+                                //     namelist += '<li class="songsadded_inside2_li">'+ret[x].song_name+'</li>';
+                                // }
+
+                                // $namelist = $('<li class="songsadded_inside2_li"></li>').html(data.songName);
+                                    // $namelistbom = $('<div class="insidelidiv"></div>');
+                                    // $namelist.append($namelistbom);
+                                    
+                                    //   $listbomp = $('<p></p>');
+                                    //   $namelistbom.append($$listbomp);
+                                // $('.songsadded_inside2').append($namelist);
+
+                                var songsadded_inside2 = document.getElementsByClassName('songsadded_inside2')[0];
+                                $('.songsadded_inside2').append(`<li class="songsadded_inside2_li">${ret_arr[0].song_name}
+                                    <div class="more" style="float: right;margin-right: 310px;z-index: 1000;">
                                     <i class="fas fa-ellipsis-h"></i>
                                     <div class="addedit">
                                         <ul>
@@ -843,63 +821,10 @@
                                     </div>
                                 </div>
                                 <div class="clearfix"></div>
-                            </li>
-                            <ol class="songsadded_inside2_ol" style="overflow:scroll;overflow-X:hidden;">
-                                <div id="d1" style="display: none">
-                                    <form class="inside2form" action="" method="POST">
-                                        <article>
-                                            <br>
-                                            <p style="width: 100px;height: 100px;">
-                                                <img id="image"
-                                                     style="width: 230px;height: 230px;background-color: #D0D6D6;">
-                                            </p>
-                                            <!-- <img class="songsadded_ff" style="width: 50px;height: 30px;"
-                                                src="./img/songupload/button_edit.png"> -->
-                                            <input type="file" name="" id="theFile" style="display: none;">
-                                            <label class="songsadded_ff" for="theFile"
-                                                   style="text-align: center;margin-left: -5px;">Edit</label>
-  
-                                        </article>
-                                        <div class="inside2count">
-                                            <p style="font-weight: bold;">Song Name :
-                                                <input type="text" class="add_btom"  style="border: 1px solid #d0d6d6;height:28px;background-color: #d0d6d6;">
-                                            </p>
-                                            <div class="infopathbtom">
-                                                <!-- <span
-                                                    style="position: relative;left: -100px;top: -20px;font-weight: bold;">Upload
-                                                    path :</span> -->
-                                                <!-- <p class="songsadd_path">{{infopathURL2}}</p> -->
-                                                <!-- <input type="file" name="" id="songinfo_btnbtom"
-                                                    @change="changeSignUpload" style="display: none;">
-                                                <label class="songinfo_bb" for="songinfo_btnbtom"
-                                                    style="text-align: center;">Choose</label> -->
-                                            </div><br>
-                                            <div class="infohashtagbtom">
-                                                  <span style="font-weight: bold;">Song type :
-                                                  </span><input type="radio" name="type" class="btominpt">
-                                                House&ensp;
-                                                <input type="radio" style="border-radius: 5px;" name="type"
-                                                       class="btominpt">Trap
-                                                <br>
-                                                <span style="font-weight: bold;">Hashtag : </span><br>
-                                                <input type="checkbox" name="" class="btominpt"> #Scratch&ensp;
-                                                <input type="checkbox" name="" class="btominpt"> #Stress&ensp;
-                                                <input type="checkbox" name="" class="btominpt">
-                                                #Ethereal&ensp;
-                                                <br>
-                                                <p style="font-weight: bold;">Introduction :</p>
-                                                <textarea name="" id="add_tta" cols="52" rows="3"
-                                                          style="border: 1px solid #d0d6d6;background-color: #D0D6D6;"></textarea>
-                                            </div>
-                                        </div>
-  
-                                        <section class="btomsen"><input type="submit" class="sd" name="submit"
-                                                                        onClick="document.form.submit()">
-                                            <label class="sd_btn" for="sd">Send</label>
-                                        </section>
-                                    </form>
-                                </div>
-                                <div id="c1" style="position: relative;left: 0px;">
+                                </li>`);
+                                $('.songsadded_inside2').append(`
+                                <ol class="songsadded_inside2_ol" style="overflow:scroll;overflow-X:hidden;">
+                                <div id="c1" class="insidelidiv" style="position: relative;left: 0px;">
                                     <article>
                                         <p style="width: 100px;height: 100px;">
                                             <img id="imageCover" style="width: 300px;height: 300px;">
@@ -910,31 +835,29 @@
                                         <label class="songsadded_ff" for="theFile"> &emsp; Edit</label> -->
                                     </article>
                                     <div>
-                                          <span><span style="font-weight: bold;">Song Name :</span>
-                                              <span class="songNameSpan" style="font-size:16px"> </span></span><br>
-                                        <span><span style="font-weight: bold;">Author :</span><span
-                                                style="font-size:16px">
-                                                  Andy
-                                                  Warhol</span></span><br>
-                                        <span><span style="font-weight: bold;">Song Type :</span><span
-                                                style="font-size:16px">
-                                                  House</span></span><br>
-                                        <span><span style="font-weight: bold;">HashTag :</span><span
-                                                style="font-size:16px">
-                                                  #Scratch</span></span><br>
-                                        <span><span style="font-weight: bold;">Introduction :</span></span><br>
-                                        <span style="font-size:16px">"Hold It Against Me" is three <br>
-                                              minutes and forty-nine seconds <br>
-                                              long.It is a dance-pop song that <br>
-                                              blends pulsating industrial and trance <br>
-                                              beats with elements of grime.</span>
+                                        
+                                        <span><span style="font-weight: bold;">Song Name : ${ret_arr[0].song_name}</span>
+                                            <span class="songNameSpan" style="font-size:16px"> </span></span><br>
+                                        <span><span style="font-weight: bold;">Song Type : ${ret_arr[0].cat_no}</span>
+                                            <span class="songTypeSpan" style="font-size:16px">
+                                            </span></span><br>
+                                        <span><span style="font-weight: bold;">HashTag : ${ret_arr[0].song_hashtag}</span>
+                                            <span class="songTagSpan" style="font-size:16px">
+                                            </span></span><br>
+                                        <span><span style="font-weight: bold;">Introduction :<br>${ret_arr[0].song_idn}</span><br>
+                                            <span class="songIdnSpan" style="font-size:16px"></span></span>
                                     </div>
-                                </div>
-  
-                            </ol>
-                           `);
+                                  </div>
+                                </ol>
+                                `)
+                            
+                                // $('.songsadded_inside2').append(`<li class="songsadded_inside2_li">${ret_arr.song_name}</li>`);
+                                // $('.songsadded_inside2').append($namelist);
+                                console.log($('.songsadded_inside2')[0]);
+                                
+                            });
                         },
-                        error: function(err){
+                        error: function (err) {
                             console.error(err);
                             alert("存儲失敗了,請重試");
                         }
@@ -942,41 +865,101 @@
                 });
             }
             //檢查賬戶是否已登錄
-            function checkAccount(){
+            function checkAccount() {
                 $.get("./phps/getLoginInfo.php")
-                 .done(function(ret){
-                     memInfo = $.parseJSON(ret);
-                     if (!memInfo["mem_acct"]){
-                         alert("Please login first!");
-                         return location.href = "./login.html";
-                     }
-                 })
-                 .fail(function(e){
-                     alert("加載失敗");
-                 });
-             //展開于第一個頁簽
-              InsideBottomDiv.hide();
-              leftFirst.click(function(){
-                  myForm.parent().slideToggle();
-              });
-              leftSec.click(function(){
-                  secContainer.slideToggle();
-              });
-              songMore.click(function(){
-                songMoreBottom.slideToggle();
-              });
-              InsideBottomLi.click(function(){
-                InsideBottomDiv.slideToggle();
-              });
+                    .done(function (ret) {
+                        memInfo = $.parseJSON(ret);
+                        if (!memInfo["mem_acct"]) {
+                            alert("Please login first!");
+                            return location.href = "./login.html";
+                        }
+                    })
+                    .fail(function (e) {
+                        // alert("加載失敗");
+                    });
+                //展開于第一個頁簽
+                // InsideBottomDiv.hide();
+                $('.songsadded_inside2_ol').hide();
+                leftFirst.click(function () {
+                    myForm.parent().slideToggle();
+                });
+                leftSec.click(function () {
+                    secContainer.slideToggle();
+                });
+                // songMore.click(function () {
+                //     songMoreBottom.slideToggle();
+                // });
+                // InsideBottomLi.click(function () {
+                //     $('.songsadded_inside2_ol').slideToggle();
+                // });
             }
+
+            //刪除當前選擇的歌曲
+            // function delectSong() {
+            //     checkBtnY.click(function(){
+            //         // $.get("./phps/addmemsongdelt.php").done()
+            //         $.ajax({
+            //             url: "./phps/addmemsongdelt.php",
+            //             type: "POST",
+            //             cache: false,
+            //             contentType: false,
+            //             processData: false,
+            //             data: JSON,
+            //             success: function(){
+            //                 alert('success!');
+            //             }
+            //         })
+            //     });
+            // }
+
             var isShow = false;
 
-            function init(){
+            function init() {
                 checkAccount();
                 bindEvt();
+                // delectSong();
                 return this;
             }
             let _this = window["SongsAdd"] = init.apply(new SongsAdd());
+        });
+        // var c1 = document.getElementById('c1').style.display = 'block';
+        // $("#c1").show();
+        // console.log(document.getElementById('c1').style.display)
+        $(document).on("click", ".more", function(event){
+            event.stopPropagation();
+            $(this).children(".addedit").slideToggle(); 
+            // console.log($(this).children(".addedit").slideToggle());
+        });
+        $(document).on("click", ".songsadded_inside2_li", function(){
+            // console.log($(this).index());
+            let ol_index = $(this).index()/2;
+            // $('.songsadded_inside2_ol').slideToggle();
+            // console.log($(`.songsadded_inside2_ol:nth-of-type(${ol_index + 1})`));
+            $(`.songsadded_inside2_ol:nth-of-type(${ol_index + 1})`).slideToggle();
+            // console.log($(this).children(".addedit").slideToggle());
+        });
+        $(document).on("click", ".test-b", function(event){
+            $.fancybox.open(
+                '<div class="adddeletecheck"alt=""><div class="checkline"><br><p>Are you sure to delete?</p><br><br><button class="checkbtn">Yes</button> <button class="checkbtnNo" style="background-color: $yellow;font-size: 0.8rem;padding: 10px 30px;border: 1px solid $yellow;border-radius: 5px;color: #333;font-weight: bold;cursor: pointer;text-transform: capitalize;&:hover{transform: scale(1.1)};">No</button></div></div>'
+            );
+        });
+
+        //刪除當前選擇的歌曲
+        $(document).on("click", ".checkbtn", function(event){
+                    console.log(event);
+                    // $.get("./phps/addmemsongdelt.php").done()
+                    $.ajax({
+                        url: "./phps/addmemsongdelt.php",
+                        type: "POST",
+                        cache: false,
+
+                        // contentType: false,
+                        // processData: false,
+                        success: function(){
+                            alert('success!');
+                            remove($InsideBottomLi[0]);
+                        }
+                    })
         });
     </script>
 
@@ -1230,7 +1213,7 @@
             });
         });
     </script> -->
-    
+
     <!-- <script>
         document.getElementById("sd").onclick = function () {
             let songaddList = document.querySelector(".songsadded_inside2");
@@ -1269,14 +1252,14 @@
         };
     </script> -->
 
-    <script src="https://cdn.jsdelivr.net/gh/fancyapps/fancybox@3.5.7/dist/jquery.fancybox.min.js"></script>
-    <script>
+    <!-- <script src="https://cdn.jsdelivr.net/gh/fancyapps/fancybox@3.5.7/dist/jquery.fancybox.min.js"></script> -->
+    <!-- <script>
         $(".test-b").on('click', function () {
             $.fancybox.open(
-                '<div class="adddeletecheck"alt=""><div class="checkline"><br><p>Are you sure to delete?</p><br><br><button class="checkbtn">Yes</button> <button class="checkbtn">No</button></div></div>'
+                '<div class="adddeletecheck"alt=""><div class="checkline"><br><p>Are you sure to delete?</p><br><br><button class="checkbtn">Yes</button> <button class="checkbtnNo" style="background-color: $yellow;font-size: 0.8rem;padding: 10px 30px;border: 1px solid $yellow;border-radius: 5px;color: #333;font-weight: bold;cursor: pointer;text-transform: capitalize;&:hover{transform: scale(1.1)};">No</button></div></div>'
             );
         });
-    </script>
+    </script> -->
 
     <!-- <script>
         var isShow = false;
