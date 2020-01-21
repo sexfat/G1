@@ -670,7 +670,7 @@
      </script>
 
     <script type="text/x-template" id="act-now">
-        <div>
+        <div >
              <article class="act_now-year" id="act_Now-Introduction" 
              v-for="(information,index) in actInformation.slice(0, 1)">
  
@@ -1281,6 +1281,7 @@
                 fetch('./phps/getMemContestSong.php').then(res => res.json()).then(data => this.memberContestSong = data);
                 this.ChangeHeart = setTimeout(this.ChangeRedHeart, 800);
                 this.ChangeVotes = setTimeout(this.ChangeGrayVotes, 800);
+            
             },
 
 
@@ -1570,6 +1571,12 @@
             }
             xhrI.open("get", "./phps/getLoginInfo.php", true);
             xhrI.send(null);
+            // console.log(location.href.search(2017))
+            if(location.href.search(2017)!=-1){
+                vml.content='actOld';
+                location.href="#act_old-year2017";
+
+            }
 
 
             $(function () {

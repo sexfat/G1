@@ -1,21 +1,25 @@
 @import"_public";
 
+#activity {
+
+    // border: 1px red solid;
+}
+
 
 #act_title {
     margin: 0 auto;
     text-align: center;
-    
-
-
+    // border: solid 1px blue;
 }
 
 #act_radioBg {
+    // border: solid 1px blue;
     position: relative;
     max-width: 1400px;
     height: 650px;
     margin: 0 auto 50px auto;
     left: -3%;
-    
+
     @include respond(latop-max) {
         width: 940px;
         height: 500px;
@@ -28,9 +32,9 @@
     }
 
     @include respond(ipadpro) {
-        width: 658px;
-        height: 350px;
-        left: -6%;
+        width: 564px;
+        height: 300px;
+        left: -7%;
 
     }
 
@@ -633,14 +637,14 @@
 }
 
 .act_old_years {
-   
+    // border: solid 1px blue;
     position: relative;
     background-image: url(../img/activity/0.blackline.svg);
     max-width: 1200px;
     min-height: 700px;
     padding: 50px;
     margin: 100px auto 0 auto;
-   
+
 
     @include respond(latop-max) {
         max-width: 940px;
@@ -662,14 +666,14 @@
         max-width: 410px;
         margin: 75px auto 0 auto;
         padding: 30px;
-        overflow: hidden;
+
     }
 
     @include respond(phone) {
         max-width: 320px;
         padding: 30px 15px 30px 20px;
         margin: 50px auto 0 auto;
-       
+
     }
 
     .act_oldink {
@@ -722,7 +726,7 @@
     div {
         width: 45%;
         padding-top: 20px;
-      
+
         @include respond(latop-min) {
             width: 50%;
         }
@@ -881,7 +885,7 @@
 
 
     .act_oldposterbox {
-      
+
         display: inline-block;
         position: absolute;
         height: 100%;
@@ -1001,11 +1005,11 @@
 }
 
 .act_oldsongbox {
-  
+    // border: solid 1px blue;
     max-width: 1200px;
     font-size: 0;
     padding-bottom: 100px;
-   
+
 
     @include respond(latop-max) {
         max-width: 940px;
@@ -1031,18 +1035,19 @@
     @include respond(phone) {
         max-width: 320px;
         padding-bottom: 50px;
-        overflow: hidden;
+
     }
 
 }
 
 .act_oldTop {
-   
+    // border: solid 1px blue;
     text-align: center;
     max-width: 1200px;
     margin: 50px auto 0px auto;
     min-height: 550px;
     vertical-align: top;
+
     @include respond(latop-max) {
         max-width: 940px;
         min-height: 450px;
@@ -1100,6 +1105,7 @@
         display: inline-block;
         font-size: 0;
         vertical-align: top;
+
         @include respond(latop-max) {
             width: 200px;
             margin: 0 15px;
@@ -1211,6 +1217,7 @@
             margin: 0;
             position: relative;
             vertical-align: top;
+
             @include respond(latop-max) {
                 width: 200px;
                 height: 200px;
@@ -1289,12 +1296,13 @@
 }
 
 .act_oldAll {
-  
+    // border: solid 1px blue;
     text-align: center;
     width: 100%;
     max-width: 1200px;
     margin: 50px auto 0px auto;
     vertical-align: top;
+
     @include respond(latop-max) {
         max-width: 940px;
 
@@ -1464,6 +1472,7 @@
             margin: 0;
             position: relative;
             vertical-align: top;
+
             @include respond(latop-max) {
                 width: 150px;
                 height: 150px;
@@ -1535,31 +1544,31 @@
 
 
 .act_now-year {
-  
+    // border: solid 1px blue;
     position: relative;
     max-width: 1200px;
     width: 100%;
     min-height: 700px;
     padding: 50px;
     margin: 150px auto 0 auto;
-
+    overflow: hidden;
     @include respond(latop-max) {
         max-width: 940px;
         margin: 100px auto 0 auto;
-        overflow: hidden;
+
 
     }
 
     @include respond(latop-min) {
         margin: 75px auto 0 auto;
         max-width: 750px;
-       
+
     }
 
     @include respond(ipadpro) {
         margin: 50px auto 0 auto;
-        padding: 100px 40px 40px;
-        max-width: 650px;
+        padding: 100px 20px 20px;
+        max-width: 600px;
         min-height: 750px;
     }
 
@@ -1577,6 +1586,7 @@
 
     div {
         width: 50%;
+        // border: solid 1px blue;
 
         @include respond(ipadpro) {
             width: 90%;
@@ -1695,7 +1705,8 @@
     position: absolute;
     top: 10%;
     right: 2%;
-   
+    // border: solid 1px blue;
+
     @include respond(latop-max) {
         top: 20%;
         right: 2%;
@@ -1736,6 +1747,7 @@
         margin: auto auto;
         // top: 30%;
         // left: 0;
+        // border: solid 1px blue;
 
         @include respond(latop-max) {
             width: 400px;
@@ -1754,7 +1766,6 @@
             position: static;
             width: 400px;
             height: 408px;
-
             margin: 0 20px 0 auto;
 
         }
@@ -1785,7 +1796,8 @@
         z-index: 1;
         width: 800px;
         height: 600px;
-      
+        // border: solid 1px blue;
+
         @include respond(latop-max) {
             width: 600px;
             height: 450px;
@@ -1795,26 +1807,26 @@
         }
 
         @include respond(latop-min) {
-            width: 600px;
+            width: 500px;
             height: 450px;
             bottom: 5%;
             left: -20%;
         }
 
         @include respond(ipadpro) {
-            left: 0%;
+            left: 10%;
             z-index: -1;
         }
 
         @include respond(ipad) {
-            width: 500px;
+            width: 425px;
             height: 350px;
-            left: -25%;
+            left: -15%;
 
         }
 
         @include respond(phone) {
-            width:470px;
+            width: 470px;
             height: 370px;
             left: -25%;
             top: 75px;
@@ -1832,15 +1844,13 @@
 }
 
 #act_Now-Sign-up {
-   
+    // border: solid 1px blue;
     max-width: 1200px;
     width: 100%;
     min-height: 850px;
     padding: 50px;
     margin: 100px auto 150px auto;
     position: relative;
-    overflow: hidden;
-
     @include respond(latop-max) {
         margin: 0px auto;
         max-width: 940px;
@@ -1851,6 +1861,7 @@
         max-width: 750px;
         padding: 0px;
         min-height: 700px;
+
 
     }
 
@@ -1904,7 +1915,7 @@
         text-align: right;
         top: 20px;
         left: 10px;
-       
+        // border: solid 1px red;
 
         @include respond(latop-max) {
             min-width: 200px;
@@ -1919,6 +1930,7 @@
 
         @include respond(phone) {
             width: 100%;
+
         }
 
         .act_now-marry {
@@ -1952,7 +1964,7 @@
         }
 
         .act_now-marry-ink {
-         
+            // border: solid 1px blue;
             width: 1200px;
             height: 850px;
             position: absolute;
@@ -1965,7 +1977,7 @@
                 width: 850px;
                 height: 600px;
                 top: -20%;
-                left: -40%;
+                left: -35%;
             }
 
             @include respond(latop-min) {
@@ -1974,27 +1986,24 @@
             }
 
             @include respond(ipadpro) {
-                width: 750px;
+                width: 600px;
                 height: 400px;
                 top: 10%;
-                left: -60%;
-
-
-
+                left: -25%;
             }
 
             @include respond(ipad) {
-                width: 450px;
+                width: 400px;
                 height: 300px;
                 top: 10%;
-                left: -50%;
+                left: -29%;
             }
 
             @include respond(phone) {
-                width: 500px;
-                height: 350px;
+                width: 350px;
+                height: 275px;
                 top: 10%;
-                left: -50%;
+                left: -29%;
             }
 
 
@@ -2009,8 +2018,8 @@
 }
 
 #act_Now-Sign-up {
-    overflow: hidden;
-   
+
+
     article {
 
         font-size: 0;
@@ -2030,6 +2039,7 @@
         top: 20%;
         right: 0%;
         text-align: center;
+        z-index: 1;
 
         @include respond(latop-min) {
             top: 15%;
@@ -2050,7 +2060,6 @@
             font-size: 0;
             width: 90%;
             margin: 0 10px 0 auto;
-            overflow: hidden;
             padding: 10px;
             text-align: left;
 
@@ -2165,6 +2174,7 @@
                     width: 100%;
                     height: 30px;
                     overflow: hidden;
+                    vertical-align: top;
 
                 }
 
@@ -2174,7 +2184,7 @@
                     background-color: #d0d6d6;
                     width: 100%;
                     overflow: hidden;
-
+                    vertical-align: top;
 
                 }
 
@@ -2242,7 +2252,8 @@
                 text-align: left;
                 padding: 2px 0;
                 width: 100%;
-                overflow: hidden;
+                overflow: auto;
+                max-height: 100px;
                 word-break: break-all;
             }
 
@@ -2255,13 +2266,14 @@
 
 
 #act_Now-Vote {
-  
+
     text-align: left;
     max-width: 1200px;
     width: 100%;
     margin: 150px auto 0px auto;
     padding-top: 50px;
     position: relative;
+    // border: solid 1px blue;
 
     @include respond(latop-max) {
         height: 300px;
@@ -2310,7 +2322,7 @@
     }
 
     .act_Now-Vote-content {
-     
+
         min-height: 400px;
         max-width: 1200px;
         padding: 50px;
@@ -2388,10 +2400,11 @@
                 left: 25px;
                 top: 0;
 
-            } 
+            }
+
             @include respond(ipad) {
                 left: 0px;
-                
+
             }
 
             h3 {
@@ -2433,7 +2446,8 @@
             z-index: -1;
             width: 50%;
             height: 125%;
-          
+            // border: solid 1px red;
+
             @include respond(ipadpro) {
                 width: 80%;
                 height: 100%;
@@ -2442,6 +2456,11 @@
             @include respond(ipad) {
                 width: 75%;
                 height: 50%;
+                bottom: -10%;
+            }
+            @include respond(phone) {
+                width: 50%;
+                height: 40%;
                 bottom: -10%;
             }
 
@@ -2454,7 +2473,7 @@
 
 
     section {
-      
+
         max-width: 1200px;
         width: 100%;
         padding: 0 0 100px 0px;

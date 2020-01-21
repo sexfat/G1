@@ -251,11 +251,12 @@ $bg: rgba(44, 15, 15, 1);
     }
 
 
-[class^="re-"] {
-    border-radius: 5px;
-    display: inline-block;
-    height: 30px;
-    width: 70px;
+    [class^="re-"] {
+        border-radius: 5px;
+        display: inline-block;
+        height: 30px;
+        width: 70px;
+    }
 }
 
 // [class^="infose-"] {
