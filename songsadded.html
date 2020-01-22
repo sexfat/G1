@@ -351,35 +351,6 @@
 
         <!-- ---------------------------------------------------------------------- -->
 
-        <!-- <div id="c1" style="position: relative;left: 0px; display: none;">
-            <article>
-                <p style="width: 100px;height: 100px;">
-                    <img src="./img/songinfo/cover1.jpg" style="width: 300px;height: 300px;">
-                </p>
-                <img class="songsadded_ff" style="width: 50px;height: 30px;"
-                src="./img/songupload/button_edit.png">
-                <input type="file" name="" id="theFile" style="display: none;">
-                <label class="songsadded_ff" for="theFile"> &emsp; Edit</label>
-            </article>
-            <div>
-                <span><span style="font-weight: bold;">Song Title :</span><span style="font-size:16px"> Because
-                        of you</span></span><br>
-                <span><span style="font-weight: bold;">Author :</span><span style="font-size:16px">
-                        Andy
-                        Warhol</span></span><br>
-                <span><span style="font-weight: bold;">Song Type :</span><span style="font-size:16px">
-                        House</span></span><br>
-                <span><span style="font-weight: bold;">HashTag :</span><span style="font-size:16px">
-                        #Scratch</span></span><br>
-                <span><span style="font-weight: bold;">Introduction :</span></span><br>
-                <span style="font-size:16px">"Hold It Against Me" is three <br>
-                    minutes and forty-nine seconds <br>
-                    long.It is a dance-pop song that <br>
-                    blends pulsating industrial and trance <br>
-                    beats with elements of grime.</span>
-            </div>
-        </div> -->
-
         <div class="uploadmic">
             <img src="./img/songupload/mic.png" alt="">
         </div>
@@ -607,8 +578,8 @@
              */
             function updateInfo(resultSet){
                let defCover = "./img/songinfo/cover1.jpg",
-                   li = $("<li style=\"margin-bottom: 10px;cursor: pointer;float: left;width: 100%;\"  />"),
-                   itemContainer = $("<div style=\"border: 1px solid gray;padding-left: 20px;position: relative;\" />"),
+                   li = $("<li style=\"cursor: pointer;float: left;width: 100%;\"  />"),
+                   itemContainer = $("<div style=\"border: 1px solid gray;padding-left: 20px;padding-top:10px;padding-bottom:10px;position: relative;\" />"),
                    mainTitle = $("<span style=\"width: 90%;\" />"),
                    moreIcon = $("<i class=\"fas fa-ellipsis-h\" style=\"line-height:1.7em;position: absolute;right: 20px;\" />"),
                    moreMenuContainer = $("<div  style=\"position: absolute;right: 0;border: 1px solid grey; display: none;\" />"),
@@ -747,7 +718,7 @@
                  .fail(function(e){
                      alert("加載失敗");
                  });
-             //展開于第一個頁簽
+             //展開於第一個頁簽
               leftFirst.click(function(){
                   myForm.parent().slideToggle();
               });
@@ -1097,40 +1068,6 @@
         }
     </script> -->
 
-    <script>
-        var isShow2 = false;
-
-        function change2() {
-            if (!isShow2) {
-                isShow = true;
-                document.getElementById('d2').style.display = '';
-                document.getElementById('a2').innerText = "Edit";
-                document.getElementById('c2').style.display = 'none';
-            } else {
-                isShow2 = false;
-                document.getElementById('d2').style.display = 'none';
-                document.getElementById('a2').innerText = "Edit";
-                document.getElementById('c2').style.display = '';
-            }
-        }
-    </script>
-    <script>
-        var isShow3 = false;
-
-        function change3() {
-            if (!isShow3) {
-                isShow = true;
-                document.getElementById('d3').style.display = '';
-                document.getElementById('a3').innerText = "Edit";
-                document.getElementById('c3').style.display = 'none';
-            } else {
-                isShow3 = false;
-                document.getElementById('d3').style.display = 'none';
-                document.getElementById('a3').innerText = "Edit";
-                document.getElementById('c3').style.display = '';
-            }
-        }
-    </script>
 
     <script>
         (function ($) {
@@ -1180,7 +1117,7 @@
     </script> -->
 
 
-    <script>
+    <!-- <script>
         const v1 = new Vue({
             el: "#infopath",
             data: {
@@ -1198,58 +1135,8 @@
                 }
             },
         });
-        // const v2 = new Vue({
-        //     el: ".infopathbtom",
-        //     data: {
-        //         infopathURL2: "",
-        //     },
-        //     methods: {
-        //         changeSignUpload(song) {
-        //             const songFile = song.target.files.item(0);
-        //             const readers = new FileReader();
-        //             readers.addEventListener('load', this.SignUploadLoader);
-        //             readers.readAsDataURL(songFile);
-        //         },
-        //         SignUploadLoader(song) {
-        //             this.infopathURL2 = song.target.result;
-        //         }
-        //     },
-        // });
-        // const v3 = new Vue({
-        //     el: ".infopathbtom2",
-        //     data: {
-        //         infopathURL3: "",
-        //     },
-        //     methods: {
-        //         changeSignUpload(song) {
-        //             const songFile = song.target.files.item(0);
-        //             const readers = new FileReader();
-        //             readers.addEventListener('load', this.SignUploadLoader);
-        //             readers.readAsDataURL(songFile);
-        //         },
-        //         SignUploadLoader(song) {
-        //             this.infopathURL3 = song.target.result;
-        //         }
-        //     },
-        // });
-        // const v4 = new Vue({
-        //     el: ".infopathbtom3",
-        //     data: {
-        //         infopathURL4: "",
-        //     },
-        //     methods: {
-        //         changeSignUpload(song) {
-        //             const songFile = song.target.files.item(0);
-        //             const readers = new FileReader();
-        //             readers.addEventListener('load', this.SignUploadLoader);
-        //             readers.readAsDataURL(songFile);
-        //         },
-        //         SignUploadLoader(song) {
-        //             this.infopathURL4 = song.target.result;
-        //         }
-        //     },
-        // });
-    </script>
+    </script> -->
+
     <!-- <script>
         new Vue({
             el: "#a1",
@@ -1297,29 +1184,6 @@
             }
         });
     </script>
-
-    <!-- <script>
-        $(function () {
-            $(".songsadded_leftli").height(document.body.scrollHeight);
-
-            $(".songsadded_leftli .songsadded_inside2").hide();
-            $(".songsadded_inside2 ol").hide();
-
-            $(".songsadded_inside").hide();
-            
-
-            //bind()為.leftli li的li生成點選事件
-            $(".songsadded_leftli li").bind("click", function () {
-                /**
-                .netx("ol")獲取同級的下一個ol元素
-                slideToggle(300)展開/關閉當前被點選的ol元素，300為速度，除了可以是數字還可以"slow"、"normal"、"fast"
-                siblings("ol")遍歷所有的ul元素
-                **/
-                // $(this).next("ol").slideToggle(300).siblings("ol").slideUp(300);
-                $(this).next("ol").slideToggle(300).siblings("ol").slideUp(300);
-            })
-        });
-    </script> -->
 
 </body>
 
