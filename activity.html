@@ -1154,8 +1154,8 @@
                 showChangeHeart(e, value) {//確認會員登入狀態，變更收藏愛心顏色
 
                     if (vml.mem_login == false) {
-                        alert("Please login first!");
-                        location.href = "./login.html";
+                        alert("Please login.");
+                        // location.href = "./login.html";
                     } else {
                         let heartButton = e.target;
                         this.getHeartSong = value;
