@@ -542,17 +542,7 @@
                    return;
                }
                // 清除舊資料
-               //    songsList.empty();
-            //    function deletesong(){
-            //     $.get("./phps/addmemsongdelt.php")
-            //      .done(function(ret){
-            //         item.remove();
-            //         content.remove();
-            //      })
-            //      .fail(function(e){
-            //          alert("加載失敗");
-            //      });
-            //    }
+               songsList.empty();
    
                for(let i = 0; i < resultSet.length; ++i){
                    let result = resultSet[i], menu = moreMenuContainer.clone(),
@@ -586,7 +576,7 @@
                                                             // content.remove();
                                                             function deletesong(){
                                                                $.get("./phps/addmemsongdelt.php")
-                                                                 .done(function(ret){
+                                                                 .done(function(){
                                                                   item.remove();
                                                                   content.remove();
                                                                })
