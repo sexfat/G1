@@ -18,6 +18,8 @@
     $formList->bindValue(':mem_no',$no);
     $formList->execute();
 
+    echo $pdo->lastInsertId();
+
    
   } catch (PDOException $e) {
     echo "例外行號:", $e->getLine(), "<br>";
