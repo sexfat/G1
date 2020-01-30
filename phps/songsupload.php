@@ -5,7 +5,7 @@
           return null;
       }
       if (move_uploaded_file($imageFile['tmp_name'],'../img/uploadpic/'.$imageFile['name'])){
-          return '../img/uploadpic/'.$imageFile['name'];
+          return './img/uploadpic/'.$imageFile['name'];
       };
       return null;
   }

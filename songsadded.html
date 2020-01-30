@@ -101,61 +101,6 @@
             transform: rotate(-45deg);
         }
     </style>
-    <!-- <script>
-        $(function () {
-            $(".songsadded_inside2").hide();
-
-            $("#songsadded_lif_first").click(function () {
-                $(".songsadded_inside").slideUp();
-                if ($(".songsadded_inside").css("display") == "none") {
-                    $(".songsadded_inside").slideDown();
-                }
-            });
-            $("#songsadded_lif_second").click(function () {
-                $(".songsadded_inside2").slideUp();
-                if ($(".songsadded_inside2").css("display") == "none") {
-                    $(".songsadded_inside2").slideDown();
-                };
-            });
-
-        })
-    </script>
-    <script>
-        $(function () {
-            $(".songsadded_inside2_li .addedit").hide();
-
-            $(".songsadded_inside2_li .more").click(function () {
-                $(".songsadded_inside2_li .addedit").slideUp();
-                if ($(".songsadded_inside2_li .addedit").css("display") == "none") {
-                    $(".songsadded_inside2_li .addedit").slideDown();
-                };
-            });
-
-        })
-    </script>
-    <script>
-        $(function () {
-            $(".songsadded_inside2_ol").hide();
-
-            $(".songsadded_inside2_li").click(function () {
-                $(".songsadded_inside2_ol").slideUp();
-                if ($(".songsadded_inside2_ol").css("display") == "none") {
-                    $(".songsadded_inside2_ol").slideDown();
-                };
-            });
-        })
-    </script> -->
-    <!-- <script>
-        $(function(){
-            // $(".addedit").hide();
-            $(".more i").click(function(){
-                $(".addedit").slideDown();
-                if($(".addedit").css("display") == "block"){
-                   $(".addedit").slideUp();
-                }
-            });
-        })
-    </script> -->
 </head>
 
 <body class="songsadded_body">
@@ -279,7 +224,7 @@
                     <!-- <div class="songsadded-lif-container is-click"> -->
                     <li class="songsadded_lif">
                         <div>
-                            <h2 id="songsadded_lif_first" style="cursor: pointer;">&emsp;Upload song
+                            <h2 id="songsadded_lif_first" style="cursor: pointer;border: 1px solid rgb(131, 131, 131);">&emsp;Upload song
                                 <div class="songsadded-lif" style="float: right;margin-right: 30px;"></div>
                             </h2>
                         </div>
@@ -573,7 +518,7 @@
                 }
             }
             /**
-             * 更新數據，在HTML顯示
+             * 更新資料，在HTML顯示
              * @param resultSet 結果集
              */
             function updateInfo(resultSet){
@@ -588,15 +533,16 @@
                    menuDel = $("<li style='border-top: 1px solid #888;'><span>Delete</span></li>"),
                    contentContainer = $(" <div style=\"float: left;cursor: auto;border: 1px solid grey;border-top:none; width: 100%;padding:20px;\" />"),
                    imageContainer = $("<div style=\"float: left;width: 380px;\" />"),
-                   img = $("<img style=\"width: 300px;height: 300px;vertical-align: center;\" />"),
+                   img = $("<img style=\"width: 250px;height: 250px;vertical-align: center;\" />"),
                    infoContainer = $("<div style=\"float: left;width:50%;\" />"),
                    infoTitle = $("<span style=\"font-weight: bold;\" />"),
                    infoContext = $("<span  style=\"font-size:16px; word-wrap:break-word;\" />"),
+                //    infoContext = $("<input style=\"font-size:16px; word-wrap:break-word;\" type=\"text;\" readonly=\"readonly;\" />"),
                    newLine = $("<br/>");
                if (!resultSet || !resultSet.length){
                    return;
                }
-               // 清除舊數據
+               // 清除舊資料
                songsList.empty();
    
                for(let i = 0; i < resultSet.length; ++i){
@@ -612,20 +558,22 @@
                                     menu.append(
                                         menuUl.clone()
                                               .data("menu", menu)
+                                            //   .append(
+                                            //       menuEdit.clone()
+                                            //           .data("result", result)
+                                            //           .click(function(evt){
+                                            //               alert("編輯：" + $(this).data("result")["song_no"])
+                                            //               evt.stopPropagation();
+                                            //           })
+                                            //   )
                                               .append(
-                                                  menuEdit.clone()
-                                                      .data("result", result)
-                                                      .click(function(evt){
-                                                          alert("編輯：" + $(this).data("result")["song_no"])
-                                                          evt.stopPropagation();
-                                                      })
-                                              ).append(
                                                   menuDel.clone().clone()
                                                       .data("result", result)
                                                       .click(function(evt){
                                                           let ret = $(this).data("result");
                                                           if (confirm("刪除："+ ret["song_name"] + "?")){
-                                                              alert("刪除ID：" + ret["song_no"]);
+                                                            //   alert("刪除ID：" + ret["song_no"]);
+                                                            item.remove();
                                                           }
                                                           evt.stopPropagation();
                                                       })
@@ -678,12 +626,12 @@
                                     });
                     });
                 });
-                // 上載歌曲
+                // 上傳歌曲
                 btnSongInfo.change(function(){
                     let fileName = $(this).val();
                     songsAddPath.text(fileName.substr(fileName.lastIndexOf("\\") + 1));
                 });
-                //上載數據
+                //上傳表單資料
                 btnSubmit.click(function(){
                     let formData = new FormData(myForm[0]);
                     $.ajax({
@@ -753,42 +701,6 @@
      </script>
 
 
-    <!-- <script>
-       function submit(){
-           let xhr = new XMLHttpRequest();
-           xhr.open("get","./phps/songsupload.php",true);
-           xhr.send(null);
-           console.log();
-       }
-    </script> -->
-
-    <!-- <script>
-        let songinfobtnData;
-        window.addEventListener('load', function () {
-            let xhr = new XMLHttpRequest();
-            xhr.onload = () => {
-                member = JSON.parse(xhr.responseText);
-                if (member.mem_acct) {
-                    vm.mem_login = true;
-                } else {
-                    vm.mem_login = false;
-                }
-            }
-            xhr.open("get", "./phps/getLoginInfo.php", false);
-            xhr.send(null);
-
-            //music
-            $('#songinfo_btn').change(function (e) {
-                songinfobtnData = e.target.files[0];
-                let reader = new FileReader();
-                reader.onload = function () {
-                    $('.songsadded_inside img').attr('src', reader.result);
-                }
-                reader.readAsDataURL(songinfobtnData);
-            });
-
-        })
-    </script> -->
 
     <!-- <script>
         // $(document).ready(function(){
@@ -1050,26 +962,9 @@
         });
     </script> -->
 
+
+
     <!-- <script>
-        var isShow = false;
-
-        function change() {
-            if (!isShow) {
-                isShow = true;
-                document.getElementById('d1').style.display = '';
-                document.getElementById('a1').innerText = "Edit";
-                document.getElementById('c1').style.display = 'none';
-            } else {
-                isShow = false;
-                document.getElementById('d1').style.display = 'none';
-                document.getElementById('a1').innerText = "Edit";
-                document.getElementById('c1').style.display = '';
-            }
-        }
-    </script> -->
-
-
-    <script>
         (function ($) {
             $(document).ready(function () {
                 var dashButton = $('.songsadded_lif'),
@@ -1079,9 +974,9 @@
                 });
             });
         })(jQuery);
-    </script>
+    </script> -->
 
-    <script>
+    <!-- <script>
         function doFirst() {
             document.getElementById('theFile').onchange = fileChange;
         }
@@ -1101,64 +996,10 @@
             });
         }
         window.addEventListener('load', doFirst);
-    </script>
-
-    <!-- <script>
-        window.addEventListener('load', function () {
-            //more -- changeList
-            $('.more').click(function () {
-                $(this).find('.addedit').show();
-                $('.more').not(this).find('.addedit').hide();
-            });
-            $('.more').mouseleave(function () {
-                $(this).find('.addedit').hide();
-            });
-        });
     </script> -->
 
 
     <!-- <script>
-        const v1 = new Vue({
-            el: "#infopath",
-            data: {
-                infopathURL: "",
-            },
-            methods: {
-                changeSignUpload(song) {
-                    const songFile = song.target.files.item(0);
-                    const readers = new FileReader();
-                    readers.addEventListener('load', this.SignUploadLoader);
-                    readers.readAsDataURL(songFile);
-                },
-                SignUploadLoader(song) {
-                    this.infopathURL = song.target.result;
-                }
-            },
-        });
-    </script> -->
-
-    <!-- <script>
-        new Vue({
-            el: "#a1",
-            data: {
-                infopathURL2: "",
-            },
-            methods: {
-                changeSignUpload(song) {
-                    const songFile = song.target.files.item(0);
-                    const readers = new FileReader();
-                    readers.addEventListener('load', this.SignUploadLoader);
-                    readers.readAsDataURL(songFile);
-                },
-                SignUploadLoader(song) {
-                    this.infopathURL2 = song.target.result;
-                }
-            },
-        });
-    </script> -->
-
-
-    <script>
         $(".songsadded_inside2").on("mouseenter mouseleave", function (event) { //挷定滑鼠進入及離開事件
             if (event.type == "mouseenter") {
                 $(this).css({
@@ -1183,7 +1024,7 @@
                 }); //滑鼠離開
             }
         });
-    </script>
+    </script> -->
 
 </body>
 
