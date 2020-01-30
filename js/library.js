@@ -4,18 +4,6 @@
  let mylistInfo = []; //清單資訊
  let libraryList = []; //歌曲資訊
  let member = [];
- /* ---------------- library TimelineMax ---------------- */
- //  var library_tl = new TimelineMax();
-
- //  library_tl.fromTo('.before', 2, {
- //    opacity: 0
- //  }, {
- //    opacity: 1
- //  }).fromTo('.after', 2, {
- //    opacity: 0
- //  }, {
- //    opacity: 1
- //  });
 
  /* ---------------- library load ---------------- */
  window.addEventListener('load', function () {
@@ -43,7 +31,6 @@
      $('#modifyBtn').show();
      $('#createBtn').show();
      $('.playall_btn').show();
-     console.log(nowList);
    }
    myListInfoCha(-1, libraryList.length);
 
@@ -89,9 +76,6 @@
        songChangeListA(songNo);
      } else {
        if (nowList == getNewListName) {
-         //  $('.lightCover').show();
-         //  $('#listAlert').show();
-         //  $('#listAlert h4').text('Fail to change!');
          alert('Fail to change!');
        } else {
          songChangeListD(songNo);
@@ -141,9 +125,6 @@
      let libraryInd = getSongIndex(heartSong);
      let favSongInd = libraryList[libraryInd].song_no;
      if (!member['mem_no']) {
-       //  $('.lightCover').show();
-       //  $('#listAlert').show();
-       //  $('#listAlert h4').text('Please login!');
        alert('Please login!');
      } else {
        if ($(this).hasClass('becomeRed')) {
@@ -197,7 +178,6 @@
      let coverFileData;
      if (fileType == "jpg" || fileType == "png" || fileType == "gif") {
        coverFileData = './img/library/' + libraryFileData.name;
-       //  console.log(libraryFileData.name);
      } else {
        coverFileData = "";
      }
@@ -215,13 +195,9 @@
              $('#inputListTitle').hide();
              $('.listName').find('.name').find('h2').show();
              alert('Successfully modified');
-             //  $('#listAlert h4').text('Successfully modified');
            } else {
-             //  $('#listAlert h4').text('Fail to modify');
              alert('Fail to modify!');
            }
-           //  $('.lightCover').show();
-           //  $('#listAlert').show();
          }
        };
        let url = `./phps/modifyList.php`;
@@ -323,9 +299,6 @@
            $('#inputListTitle').hide();
            $('.listName').find('.name').find('h2').show();
            alert('Success to delete!');
-           //  $('#listAlert h4').text('Success to delete!'); 
-           //  $('.lightCover').show();
-           //  $('#listAlert').show();
          }
        }
      };
@@ -417,8 +390,6 @@
    xhr.onload = function () {
      if (xhr.status == 200) {
        libraryList = JSON.parse(xhr.responseText);
-       console.log(libraryList.length);
-       console.log(listname);
        if (listname == 'Liked songs' && libraryList.length == 0) {
          $('.lightCover').show();
          $('#listAlert').show();
@@ -499,7 +470,6 @@
  //顯示所有清單列表
  function showAllMyList(mylist) {
    $('.my_list .lists').children().remove();
-   //  $('#mobile_listChoose').children().remove();
    for (let i = 0; i < mylist.length; i++) {
      $('.my_list .lists').append(`<li>
      <h4>${mylist[i].plist_name}</h4>
@@ -583,9 +553,6 @@
          songChangeListA(songNo);
        } else {
          alert('Fail to change!');
-         //  $('.lightCover').show();
-         //  $('#listAlert').show();
-         //  $('#listAlert h4').text('Fail to change!');
        }
      }
    };
@@ -608,14 +575,10 @@
      if (xhr.status == 200) {
        if (xhr.responseText == 'success') {
          getLibrarySongs(nowList);
-         //  $('#listAlert h4').text('Added successfully');
          alert('Success to add');
        } else {
-         //  $('#listAlert h4').text('Fail to change!');
          alert('Fail to change!');
        }
-       //  $('.lightCover').show();
-       //  $('#listAlert').show();
      }
    };
    xhr.open("post", "./phps/songChangeList.php", true);
@@ -632,19 +595,13 @@
      if (xhr.status == 200) {
        if (xhr.responseText == 'Asuccess') {
          alert('Success to add');
-         //  $('#listAlert h4').text('Success to add');
        } else if (xhr.responseText == 'Dsuccess') {
          alert('Success to cancel');
-         //  $('#listAlert h4').text('Success to cancel');
        } else if (xhr.responseText == 'Afail') {
          alert('Fail to add');
-         //  $('#listAlert h4').text('Fail to add');
        } else if (xhr.responseText == 'Dfail') {
          alert('Fail to cancel');
-         //  $('#listAlert h4').text('Fail to cancel');
        }
-       //  $('.lightCover').show();
-       //  $('#listAlert').show();
        getLibrarySongs(nowList);
      }
    };

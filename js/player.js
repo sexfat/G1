@@ -718,7 +718,6 @@
        } else if (xhr.responseText == 'Dfail') {
          alert('Fail to cancel');
        }
-       //  createPlayerList(nowList);
      }
    };
    xhr.open("post", "./phps/LibraryHeart.php", true);
