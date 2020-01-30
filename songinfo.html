@@ -11,6 +11,7 @@
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.11.2/css/all.min.css" />
   <script src="https://cdnjs.cloudflare.com/ajax/libs/vue/2.6.10/vue.js"></script>
   <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.4.1/jquery.js"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/2.1.3/TweenMax.min.js"></script>
   <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery.colorbox/1.6.4/jquery.colorbox.js"></script>
 </head>
 
@@ -342,12 +343,12 @@
             <h3>Message</h3>
             <br>
             <div class="mess">
-              <ul class="infomess_ul" style="height: 500px">
-                <li class="infomess_li" v-for="item in songmess" v-if="item.re_sta != 2">
+              <ul class="infomess_ul">
+                <li class="infomess_li" v-for="item in songmess" v-if="item.re_sta != 1">
                   <img class="infomessimg" src="./img/songinfo/people.png">
                   <div class="clearfix"></div>
-                  <p>&ensp;ID : {{ item.mem_name }}</p>
-                  &ensp;{{ item.message_info }}
+                  <p>&ensp;ID : {{ item.mem_name }}<br>
+                  &ensp;{{ item.message_info }}</p>
                   <input type="button" name="" class="inforeport" style="display: none;">
                   <label class="songinfo_re" for="inforeport" style="text-align: center;"
                     @click="report_mess(item.message_no)">Report</label>
@@ -1573,6 +1574,7 @@
   <script src="./js/nav_bar.js"></script>
   <script src="./js/donateAni.js"></script>
   <script src="./js/vudio.js"></script>
+  <script src="./js/songinfo.js"></script>
   <script>
     (function () {
       $('.inforeport').on('click', function () {
@@ -1720,24 +1722,52 @@
       effect: 'waveform',
       accuracy: 128,
       waveform: {
+        // maxHeight: 160,
+        // // spacing: 1,
+        // // shadowBlur: 0,
+        // // shadowColor: 'rgba(208,214,214,0.5)',
+        // shadowColor: '#d0d6d6',
+        // horizontalAlign: 'center',
+        // verticalAlign: 'bottom',
+        // // prettify: true,
+        // // fadeSide: true,
+        // // color: '#d0d6d6',
+        // color: [
+        //   [0, '#d0d6d6'],
+        //   [0.3, '#afc0c0'],
+        //   [0.3, '#afc0c0'],
+        //   [0.7, '#afc0c0'],
+        //   [0.7, '#afc0c0'],
+        //   [1, '#d0d6d6'],
+
+        // ]
         maxHeight: 160,
-        spacing: 1,
-        shadowBlur: 6,
-        shadowColor: 'rgba(208,214,214,0.5)',
+        lineWidth: 0.5,
+        // maxSize: 12,
         horizontalAlign: 'center',
         verticalAlign: 'bottom',
-        prettify: true,
+        dottify: true,
         fadeSide: true,
-        color: [
-          [0, '#d0d6d6'],
-          [0.3, '#afc0c0'],
-          [0.3, '#afc0c0'],
-          [0.7, '#afc0c0'],
-          [0.7, '#afc0c0'],
-          [1, '#d0d6d6'],
-
-        ]
+        prettify: false,
+        // color: '#49f3f7',
+        color: 'rgba(192,199,199,.5)',
+        // color: '#FFFF33',
+        shadowBlur: 3,
+        shadowColor: 'rgba(192,199,199,.5)',
       },
+      // lighting: {
+      //           lineWidth: 1,
+      //           maxSize: 12,
+      //           horizontalAlign: 'center',
+      //           verticalAlign: 'bottom',
+      //           dottify: true,
+      //           fadeSide: true,
+      //           prettify: false,
+      //           color: '#49f3f7',
+      //           // color: '#FFFF33',
+      //           shadowBlur: 2,
+      //           shadowColor: 'rgba(244,244,244,.5)',
+      // },
     });
 
 

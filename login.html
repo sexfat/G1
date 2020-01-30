@@ -10,8 +10,6 @@
   <script src="https://cdnjs.cloudflare.com/ajax/libs/vue/2.6.10/vue.js"></script>
   <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
   <link rel="stylesheet" href="./css/main.css">
-  <script src="./js/player.js"></script>
-  <script src="./js/public.js"></script>
 </head>
 <body class="loginbody">
   <div>
@@ -131,7 +129,7 @@
             <span class="name">Lucid Dreamer</span>
             <span class="creator">Spazz Cardigan</span>
           </div>
-          <div class="heart becomeRed"><img src="./img/collection/redheart.png" alt=""></div>
+          <div class="heart"><img src="./img/collection/grayheart.png" alt=""></div>
           <div class="clearfix"></div>
         </div>
   
@@ -181,7 +179,7 @@
           <div class="songInfo">
             <div class="name">Lucid Dreamer</div>
             <div class="creator">Spazz Cardigan</div>
-            <div class="heart becomeRed"><img src="./img/collection/redheart.png" alt=""></div>
+            <div class="heart"><img src="./img/collection/grayheart.png" alt=""></div>
             <div class="clearfix"></div>
           </div>
           <div class="controlPanel">
@@ -220,17 +218,17 @@
           <div class="pushBtn"></div>
           <div class="listTitle">
             <div class="listCover">
-              <img src="./img/library/list_pic1.jpg"></div>
+              <img src="./img/library/list_pic_no.jpg"></div>
             <div class="listName">
-              <h2>peaceful list</h2>
-              <span>8 songs</span>
+              <h2>Total songs</h2>
+              <span>0 songs</span>
             </div>
             <button class="selectBtn" id="selectBtn">SELECT</button>
             <div class="clearfix"></div>
           </div>
           <div class="list">
-            <ul>
-              <li>
+            <ul class="chooseList">
+              <!-- <li>
                 <div class="songCover">
                   <img src="./img/collection/album1.jpg" alt="">
                   <div class="listPlay nowlistening"><img src="./img/library/coverPlay-s.png"></div>
@@ -244,117 +242,32 @@
                 <div class="totalTime">3:11</div>
                 <div class="heart becomeRed"><img src="./img/collection/redheart.png"></div>
                 <div class="clearfix"></div>
-              </li>
-              <li>
-                <div class="songCover">
-                  <img src="./img/collection/album2.jpg" alt="">
-                  <div class="listPlay"><img src="./img/library/coverPlay-s.png"></div>
-                </div>
-                <div class="listSongInfo">
-                  <div class="name">
-                    <h4>Spring In My Step</h4>
-                    <p>Silent Partner</p>
-                  </div>
-                </div>
-                <div class="totalTime">1:59</div>
-                <div class="heart becomeRed"><img src="./img/collection/redheart.png" alt=""></div>
-                <div class="clearfix"></div>
-              </li>
-              <li>
-                <div class="songCover">
-                  <img src="./img/collection/album3.jpg" alt="">
-                  <div class="listPlay"><img src="./img/library/coverPlay-s.png"></div>
-                </div>
-                <div class="listSongInfo">
-                  <div class="name">
-                    <h4>On My Way Home</h4>
-                    <p>The 126ers</p>
-                  </div>
-                </div>
-                <div class="totalTime">1:56</div>
-                <div class="heart becomeRed"><img src="./img/collection/redheart.png" alt=""></div>
-                <div class="clearfix"></div>
-              </li>
-              <li>
-                <div class="songCover">
-                  <img src="./img/collection/album4.jpg" alt="">
-                  <div class="listPlay"><img src="./img/library/coverPlay-s.png"></div>
-                </div>
-                <div class="listSongInfo">
-                  <div class="name">
-                    <h4>Lucid Dreamer</h4>
-                    <p> Spazz Cardigan</p>
-                  </div>
-                </div>
-                <div class="totalTime">4:30</div>
-                <div class="heart becomeRed"><img src="./img/collection/redheart.png" alt=""></div>
-                <div class="clearfix"></div>
-              </li>
-              <li>
-                <div class="songCover">
-                  <img src="./img/collection/album5.jpg" alt="">
-                  <div class="listPlay"><img src="./img/library/coverPlay-s.png"></div>
-                </div>
-                <div class="listSongInfo">
-                  <div class="name">
-                    <h4>Lucid Dreamer</h4>
-                    <p> Spazz Cardigan</p>
-                  </div>
-                </div>
-                <div class="totalTime">4:30</div>
-                <div class="heart becomeRed"><img src="./img/collection/redheart.png" alt=""></div>
-                <div class="clearfix"></div>
-              </li>
-              <li>
-                <div class="songCover">
-                  <img src="./img/collection/album6.jpg" alt="">
-                  <div class="listPlay"><img src="./img/library/coverPlay-s.png"></div>
-                </div>
-                <div class="listSongInfo">
-                  <div class="name">
-                    <h4>Lucid Dreamer</h4>
-                    <p> Spazz Cardigan</p>
-                  </div>
-                </div>
-                <div class="totalTime">4:30</div>
-                <div class="heart becomeRed"><img src="./img/collection/redheart.png" alt=""></div>
-                <div class="clearfix"></div>
-              </li>
-              <li>
-                <div class="songCover">
-                  <img src="./img/collection/album7.jpg" alt="">
-                  <div class="listPlay"><img src="./img/library/coverPlay-s.png"></div>
-                </div>
-                <div class="listSongInfo">
-                  <div class="name">
-                    <h4>Lucid Dreamer</h4>
-                    <p> Spazz Cardigan</p>
-                  </div>
-                </div>
-                <div class="totalTime">4:30</div>
-                <div class="heart becomeRed"><img src="./img/collection/redheart.png" alt=""></div>
-                <div class="clearfix"></div>
-              </li>
-  
+              </li> -->
             </ul>
           </div>
+          <input type="hidden" id="playerfavorStatus" name="favorStatus">
+          <input type="hidden" id="playerFavorSong" name="favorSong">
         </div>
         <div class="close" id="closePlayer"><i class="fas fa-times"></i></div>
         <div class="clearfix"></div>
   
         <!-- 撥放器燈箱 -->
         <div class="lightCover">
-          <div class="lightbox_s" id="myAllList">
+          <div class="lightbox_s allmylist" id="myAllList">
             <div class="closeLight"><i class="fas fa-times"></i></div>
-            <h3>My List</h3>
+            <h4>My List</h4>
             <div class="lightSelectMenu">
               <ul>
-                <li>Liked songs</li>
-                <li>Peaceful songs</li>
-                <li>party</li>
+                <!-- <li class="chooseList">Liked songs</li> -->
               </ul>
             </div>
-            <button class="">ok</button>
+            <input type="hidden" name="plistName" id="plistName">
+            <button id="mylistOK">ok</button>
+          </div>
+          <div class="lightbox_s" id="playerAlert">
+            <div class="closeLight"><i class="fas fa-times"></i></div>
+            <h4></h4>
+            <button>ok</button>
           </div>
         </div>
       </div>
@@ -381,9 +294,9 @@
             <h1>Sign in</h1>
             <form  autocomplete="off">
             <label>E-mail*:</label>
-            <input type="email" class="emailinput" title="ENTER RIGHT" id="mem_acct" name="mem_acct" required>
+            <input type="email" class="emailinput memacct" title="ENTER RIGHT"  name="mem_acct" required>
             <label >Password*:</label>
-            <input type="password" id="mem_psw" pattern="\w{5,17}$" name="mem_psw" title="字母開頭，長度在6~18間，只能包含字母、數字、下底線">
+            <input type="password" class="mempsw" pattern="\w{5,17}$" name="mem_psw" title="字母開頭，長度在6~18間，只能包含字母、數字、下底線">
             <a href="" class="forgetpswlightbox">forget password?</a>
             <button type="button" class="buttonsubmitlogin loginbutton" >Log in</button>
           </form>
@@ -403,7 +316,7 @@
         </div>
       </div>
     </div>
-  <div id=mobilelogintab>
+  <div id="mobilelogintab">
     <ul class="motabtitle">
       <li><a href="#mobilelogintab1">Sign in</a></li>
       <li><a href="#mobilelogintab2">Register</a></li>
@@ -411,22 +324,22 @@
     <div id="mobilelogintab1" class="motabinner">
       <form  autocomplete="off">
         <label>E-mail*:</label>
-        <input type="email" class="emailinput" title="ENTER RIGHT" name="mem_acct" required>
+        <input type="email" class="emailinput memacct" title="ENTER RIGHT"  name="mem_acct" required>
         <label >Password*:</label>
-        <input type="password" pattern="\w{5,17}$" name="mem_psw" title="字母開頭，長度在6~18間，只能包含字母、數字、下底線">
+        <input type="password" pattern="\w{5,17}$"  class="mempsw" name="mem_psw" title="字母開頭，長度在6~18間，只能包含字母、數字、下底線">
         <a href="" class="forgetpswlightbox">forget password?</a>
-        <button type="button" class="buttonsubmitlogin loginbutton">Log in</button>
+        <button type="button" class="buttonsubmitlogin loginbutton" >Log in</button>
       </form>
     </div>
     <div id="mobilelogintab2" class="motabinner">
-      <form autocomplete="off" >
-        <label>E-mail:</label>
+      <form autocomplete="off">
+        <label>E-mail*:</label>
         <input type="email"class="emailinput regiterinput" title="ENTER RIGHT" name="mem_acct" required>
-        <label>Password:</label>
-        <input type="password"class="emailinput firsttimepsw regiterinput1" pattern="\w{5,17}$" title="字母開頭，長度在6~18間，只能包含字母、數字、下底線" >
-        <label>Confirm password:</label>
-        <input type="password"class="emailinput confirmpsw" pattern="\w{5,17}$" title="字母開頭，長度在6~18間，只能包含字母、數字、下底線">
-        <button type="button" class="loginregisterbtn registerbutton">Create</button>
+        <label>Password*:</label>
+        <input type="password"class="emailinput firsttimepsw regiterinput1" pattern="\w{5,17}$" name="mem_psw" title="字母開頭，長度在6~18間，只能包含字母、數字、下底線" >
+        <label>Confirm password*:</label>
+        <input type="password"class="emailinput confirmpsw regiterinput1" pattern="\w{5,17}$" name="mem_psw" title="字母開頭，長度在6~18間，只能包含字母、數字、下底線">
+        <button type="button" class="loginregisterbtn">Create</button>
       </form>
     </div>
   </div>
@@ -445,6 +358,7 @@
   </div>
   <!-- the end of light box -->
   <script src="./js/nav_bar.js"></script>
+  <script src="./js/player.js"></script>
 </body>
 <!-- the script of myself -->
 <script>
@@ -485,9 +399,16 @@
   let url = "./phps/memlogin.php";
   xhr.open("post", url, true);
   xhr.setRequestHeader("content-type","application/x-www-form-urlencoded");
-  let member_data = "mem_acct=" + document.getElementById('mem_acct').value+"&mem_psw=" + document.getElementById('mem_psw').value ;
+  let member_data;
+  if($('#mobilelogintab').css('display')==='none'){
+    member_data = "mem_acct=" + document.getElementsByClassName('memacct')[0].value+"&mem_psw=" + document.getElementsByClassName('mempsw')[0].value ;
+  }else{
+    member_data = "mem_acct=" + document.getElementsByClassName('memacct')[1].value+"&mem_psw=" + document.getElementsByClassName('mempsw')[1].value ;
+  }
   xhr.send(member_data);
   console.log(member_data);
+  console.log(document.getElementsByClassName('memacct')[0].value);
+  console.log(document.getElementsByClassName('mempsw')[0].value);
 }
  //click register XML function
  function registerfun(){  

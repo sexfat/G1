@@ -1,11 +1,11 @@
 @import "public";
-header {
-  @media screen and (max-width: 375px) {
-    img {
-      width: 100%;
-    }
-  }
-}
+// header {
+//   @media screen and (max-width: 375px) {
+//     img {
+//       width: 100%;
+//     }
+//   }
+// }
 .profile_content {
   position: relative;
   background: url(../img/member/border.png) top center no-repeat;

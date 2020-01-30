@@ -163,8 +163,8 @@ let vm = new Vue({
                 this.mem_login = false;
                 document.querySelector(".mem_list").setAttribute("style", "transform: translateX(270px); filter: opacity(0);");
                 let href = location.href;
-                if (href.lastIndexOf('library') != -1 || href.lastIndexOf('profile') != -1 || href.lastIndexOf('songsadded') != -1 || href.lastIndexOf('store') != -1 || href.lastIndexOf('donate') != -1) {
-                    location.href = 'http://localhost/index.html'
+                if (href.lastIndexOf('activity') != -1 || href.lastIndexOf('remix') != -1 || href.lastIndexOf('collection') != -1 || href.lastIndexOf('library') != -1 || href.lastIndexOf('profile') != -1 || href.lastIndexOf('songsadded') != -1 || href.lastIndexOf('store') != -1 || href.lastIndexOf('donate') != -1) {
+                    location.href = './index.html'
                 }
             }
             xhr.open("get", "./phps/logout.php", true);
