@@ -326,7 +326,7 @@
         <label>E-mail*:</label>
         <input type="email" class="emailinput memacct" title="ENTER RIGHT"  name="mem_acct" required>
         <label >Password*:</label>
-        <input type="password" pattern="\w{5,17}$"  class="mempsw" name="mem_psw" title="字母開頭，長度在6~18間，只能包含字母、數字、下底線">
+        <input type="password" class="mempsw" name="mem_psw">
         <a href="" class="forgetpswlightbox">forget password?</a>
         <button type="button" class="buttonsubmitlogin loginbutton" >Log in</button>
       </form>
@@ -336,9 +336,9 @@
         <label>E-mail*:</label>
         <input type="email"class="emailinput regiterinput" title="ENTER RIGHT" name="mem_acct" required>
         <label>Password*:</label>
-        <input type="password"class="emailinput firsttimepsw regiterinput1" pattern="\w{5,17}$" name="mem_psw" title="字母開頭，長度在6~18間，只能包含字母、數字、下底線" >
+        <input type="password"class="emailinput firsttimepsw regiterinput1" name="mem_psw">
         <label>Confirm password*:</label>
-        <input type="password"class="emailinput confirmpsw regiterinput1" pattern="\w{5,17}$" name="mem_psw" title="字母開頭，長度在6~18間，只能包含字母、數字、下底線">
+        <input type="password"class="emailinput confirmpsw regiterinput1" name="mem_psw>
         <button type="button" class="loginregisterbtn">Create</button>
       </form>
     </div>
@@ -416,8 +416,9 @@
   console.log(xhr.readyState);
   xhr.onreadystatechange = function(){
     if(xhr.readyState == 4){
-      if( xhr.status == 200){ //success
+      if( xhr.responseText == 'Success!Please log in'){ //success
         alert(xhr.responseText);
+        $(location).attr('href', './login.html');
       }else{ 
         alert(xhr.responseText);
       }
@@ -472,7 +473,6 @@
    $('.loginbutton').click(loginfun);
    $('.loginregisterbtn').click(registerfun);
    $('#forpswlogin').click(forgetfun);
-
     });
 </script>
 <!-- the end of my script -->

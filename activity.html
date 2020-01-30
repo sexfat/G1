@@ -947,6 +947,7 @@
     <script>
         let songObj = {};
 
+
         Vue.component('actNow', {
             template: '#act-now',
             props: {
@@ -1133,9 +1134,7 @@
                         }
                         console.log(myForm);
                         xhr.open("post", "./phps/act_formSignUp.php", true);
-                        xhr.send(myForm); 
-
-
+                        xhr.send(myForm);
 
                     }
 
@@ -1176,8 +1175,11 @@
                                     favorSongName: this.getHeartSong,
                                 },
                                 type: 'POST',
-                                dataType: 'json'
+                                dataType: 'json',
+
                             });
+                            alert("Success to add!");
+                            location.reload();
 
                         } else {
                             this.heartSaute = "gray";
@@ -1190,8 +1192,11 @@
                                     favorSongName: this.getHeartSong,
                                 },
                                 type: 'POST',
-                                dataType: 'json'
+                                dataType: 'json',
+
                             });
+                            alert("Success to cancel!");
+                            location.reload();
 
                         }
 
@@ -1237,7 +1242,7 @@
                     for (let i = 0; i < this.nowVoteSong.length; i++) {
                         let allSongName = this.nowVoteSong[i].entries_name;
                         let playStatus = this.$refs.playSongs[i].classList.contains("act_old-play-Pause");
-
+                        heartStatus(myPlaylist[0].song_name);
                         if (allSongName == item.entries_name) {
                             if (playStatus == false) {
                                 playButton.classList.add("act_old-play-Pause");
@@ -1253,6 +1258,8 @@
                     };
 
                     playerAuto = false;
+                    console.log(myPlaylist[0].song_name);
+                    // heartStatus(myPlaylist[0].song_name);
 
                 },
 
