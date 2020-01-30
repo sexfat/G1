@@ -25,7 +25,7 @@
             <div class="welreored">
                 <img class="recordimg" src="./img/collection/recordback.png" alt="">
                 <div>
-                    <img src="./img/collection/backlaptop.png" alt="" class="wecBtn">
+                    <a href=""><img src="./img/collection/backlaptop.png" alt="" class="wecBtn"></a>
                 </div>
             </div>
         </div>
@@ -37,7 +37,9 @@
             <a href="./index.html">
                 <img src="./img/collection/fronttext.png" alt="">
             </a>
+            <a href="">
                 <img src="./img/collection/backtext.png" alt="" class="backtextup wecBtn">
+            </a>
         </div>
     </div>
     <!-- mobile 375px -->
@@ -46,7 +48,9 @@
             <a href="./index.html">
                 <img src="./img/collection/fronttextsm.png" alt="">
             </a>
+            <a href="">
                 <img src="./img/collection/backtextsm.png" alt="" class="backtextup wecBtn">
+            </a>
                 <div class="mobilesmall"><img src="./img/collection/mobilesmallrec.png" alt=""></div>
         </div>
     </div>
@@ -66,10 +70,22 @@
     </div>
     <script>
         window.addEventListener('load', function () {
-            $('.wecBtn').click(function () {
+            $('.wecBtn').click(function (e) {
+                e.preventDefault();
                 $('.lightCover').show();
                 $('#actLogin').show();
 
+            });
+            $('.closeLight').click(function(){
+                $('.lightCover').hide();
+                $('#actLogin').hide();
+            });
+            $('.lightCover').click(function(){
+                $('.lightCover').hide();
+                $('#actLogin').hide();
+            });
+            $('#actLogin').click(function(e){
+                e.stopPropagation();
             });
 
             $('#actSubmit').click(function () {
