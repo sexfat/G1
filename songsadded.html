@@ -542,7 +542,17 @@
                    return;
                }
                // 清除舊資料
-               songsList.empty();
+               //    songsList.empty();
+            //    function deletesong(){
+            //     $.get("./phps/addmemsongdelt.php")
+            //      .done(function(ret){
+            //         item.remove();
+            //         content.remove();
+            //      })
+            //      .fail(function(e){
+            //          alert("加載失敗");
+            //      });
+            //    }
    
                for(let i = 0; i < resultSet.length; ++i){
                    let result = resultSet[i], menu = moreMenuContainer.clone(),
@@ -572,7 +582,19 @@
                                                           let ret = $(this).data("result");
                                                           if (confirm("刪除："+ ret["song_name"] + "?")){
                                                             //   alert("刪除ID：" + ret["song_no"]);
-                                                            item.remove();
+                                                            // item.remove();
+                                                            // content.remove();
+                                                            function deletesong(){
+                                                               $.get("./phps/addmemsongdelt.php")
+                                                                 .done(function(ret){
+                                                                  item.remove();
+                                                                  content.remove();
+                                                               })
+                                                            //    .fail(function(e){
+                                                            //     alert("加載失敗");
+                                                            //    });
+                                                            }
+                                                            deletesong();
                                                           }
                                                           evt.stopPropagation();
                                                       })

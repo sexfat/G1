@@ -29,9 +29,9 @@
             maxHeight : 80,
             minHeight : 1,
             spacing : 1,
-            color : '#f00',
+            color : '#d0d6d6',
             shadowBlur : 0,
-            shadowColor : '#f00',
+            shadowColor : '#d0d6d6',
             fadeSide : true,
             horizontalAlign : 'center',
             verticalAlign : 'middle',
@@ -846,8 +846,8 @@
         drawBarProgress: function(__color='#eee', __progress) {
             var __that = this;
             var canv = __that.context2d.canvas;
-            var lineY = canv.height * .7;
-            var lineX = 5 +__progress * canv.width * .7;
+            var lineY = canv.height * .3;
+            var lineX = 5 +__progress * canv.width * .3;
             __that.context2d.beginPath();
             if (__color) {
                 __that.context2d.globalAlpha = .3;
