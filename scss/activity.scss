@@ -1,18 +1,10 @@
 @import"_public";
 
-
-
-
-
-
-
-
 #act_title {
     margin: 0 auto;
     text-align: center;
     
 }
-
 
 
 #act_radioBg {
@@ -1554,9 +1546,6 @@
 }
 
 
-
-
-
 .act_now-year {
    
     position: relative;
@@ -1866,11 +1855,8 @@
     padding: 50px;
     margin: 100px auto 150px auto;
     position: relative;
-<<<<<<< HEAD
     z-index: 1;
     // overflow: hidden;
-=======
->>>>>>> origin/yuling
 
     @include respond(latop-max) {
         margin: 0px auto;
@@ -2190,24 +2176,27 @@
                 }
 
                 .act_Sign-up-song-name {
-
                     border: 1px #d0d6d6 solid;
                     background-color: #d0d6d6;
                     width: 100%;
                     height: 30px;
                     overflow: hidden;
                     vertical-align: top;
+                    margin: 0;
+                    padding: 0;
 
                 }
 
                 .act_Sign-up-song-information {
                     margin: 0;
+                    padding: 0;
                     border: 1px #d0d6d6 solid;
                     background-color: #d0d6d6;
                     width: 100%;
                     overflow: hidden;
                     vertical-align: top;
-
+                    height: 100px;
+                    resize:none;
                 }
 
                 .act_showSignUpImg {
@@ -2218,9 +2207,9 @@
                     text-align: center;
                     font-size: $rem1;
                     margin: 0 0 10px 0;
+                    padding: 0;
                     position: relative;
                     left: 0px;
-
 
                     @include respond(latop-max) {
                         height: 75px;
