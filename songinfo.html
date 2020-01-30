@@ -1574,6 +1574,7 @@
   <script src="./js/nav_bar.js"></script>
   <script src="./js/donateAni.js"></script>
   <script src="./js/vudio.js"></script>
+  <script src="./js/songinfo.js"></script>
   <script>
     (function () {
       $('.inforeport').on('click', function () {
@@ -1718,27 +1719,38 @@
     // vudio.js
     // let a = new Audio();
     let vudio = new Vudio(document.querySelector('#audioPlayer'), document.querySelector('#infoinfocanvas'), {
-      effect: 'waveform',
+      effect: 'lighting',
       accuracy: 128,
-      waveform: {
-        maxHeight: 160,
-        spacing: 1,
-        shadowBlur: 6,
-        shadowColor: 'rgba(208,214,214,0.5)',
-        horizontalAlign: 'center',
-        verticalAlign: 'bottom',
-        prettify: true,
-        fadeSide: true,
-        color: [
-          [0, '#d0d6d6'],
-          [0.3, '#afc0c0'],
-          [0.3, '#afc0c0'],
-          [0.7, '#afc0c0'],
-          [0.7, '#afc0c0'],
-          [1, '#d0d6d6'],
+      lighting: {
+                lineWidth: 1,
+                maxSize: 12,
+                dottify: true,
+                fadeSide: true,
+                prettify: false,
+                color: '#49f3f7',
+                // color: '#FFFF33',
+                shadowBlur: 2,
+                shadowColor: 'rgba(244,244,244,.5)',
+      }
+      // waveform: {
+      //   maxHeight: 160,
+      //   spacing: 1,
+      //   shadowBlur: 6,
+      //   shadowColor: 'rgba(208,214,214,0.5)',
+      //   horizontalAlign: 'center',
+      //   verticalAlign: 'bottom',
+      //   prettify: true,
+      //   fadeSide: true,
+      //   color: [
+      //     [0, '#d0d6d6'],
+      //     [0.3, '#afc0c0'],
+      //     [0.3, '#afc0c0'],
+      //     [0.7, '#afc0c0'],
+      //     [0.7, '#afc0c0'],
+      //     [1, '#d0d6d6'],
 
-        ]
-      },
+      //   ]
+      // },
     });
 
 
