@@ -8,7 +8,7 @@ require('Exception.php');
 require('PHPMailer.php');
 require('SMTP.php');
 
-function generateRandomString($length = 6)
+function generateRandomString($length = 8)
 {
     $characters = '0123456789abcde';
     $charactersLength = strlen($characters);
@@ -20,11 +20,12 @@ function generateRandomString($length = 6)
 };
 try {
     require_once "../../phps/connectBooks.php";
-    $searchEmail = $_POST["forpswlogin"];
-    // $searchEmail ="soundwave@gmail.com";
-    $checkEmail = "select * from `member` where mem_acct='{$searchEmail}';";
+    $searchEmail = $_POST["forgetwho"];
+    // $searchEmail ="ilovesnoopy@gmail.com";
+    $checkEmail = "select * from `member` where mem_acct='$searchEmail';";
     $showEmail = $pdo->query($checkEmail);
-    if ($memberRow = $showEmail->fetch(PDO::FETCH_ASSOC)) {
+    // echo $searchEmail;
+    if ($memberRow = $showEmail->fetch(PDO::FETCH_ASSOC)){
         $Randompsw = generateRandomString();
         $updatapsw = "update `member` set mem_psw='{$Randompsw}' where mem_acct='{$searchEmail}';";
         $runpsw = $pdo->exec($updatapsw);
@@ -41,8 +42,8 @@ try {
         // $mail->SMTPDebug = 0;
         
         //Recipients
-        $mail->setFrom('fifichin926@gmail.com', 'SOUNDWAVE');
-        $mail->addAddress('fifichin926@gmail.com');
+        $mail->setFrom('dd104g1@gmail.com', 'SOUNDWAVE');
+        $mail->addAddress('dd104g1@gmail.com');
         $mail->charSet = 'utf-8';
         // Content
         $mail->Subject = 'SOUNDWAVE password comfirmation';
@@ -50,16 +51,11 @@ try {
             'Hello: ' . $memberRow["mem_name"] . '
              New password:' . $Randompsw . '
              Please use this new password log in again.';
-        $mail->Send();
-        // echo 123;
-
-             //  if ($mail->Send()) {
-            //     echo "已發送郵件";
-            // }
-    
-        // } else {
-        //     echo "查無此帳號";
-        // }
+        if( $mail->Send()){
+            echo "New password already send,please check in your E-mail!";
+        }else{
+            echo "E-mail isn't exist,please enter other one.";
+        }
     }
 
 } catch (PDOException $msg) {

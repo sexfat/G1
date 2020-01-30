@@ -2,7 +2,6 @@ let donateVal = 0;
 window.addEventListener('load', function () {
     $('input[type="radio"]').change(function () {
         donateVal = $(this).val();
-        console.log(donateVal);
     });
     $('.lightCover').click(function () {
         $('.lightCover').hide();
@@ -10,7 +9,6 @@ window.addEventListener('load', function () {
     });
 
     $('button.infose-send').click(function () {
-        console.log(donateVal);
         if (donateVal == 100) {
             $('.lightCover').show();
             $('.donanimate').show();
@@ -47,31 +45,31 @@ function cat() {
     let bbf, bff, fff, fbf, tail, catN;
     let ballon, waterPlace, waterBall;
     /* -- 貓咪 -- */
-    bbf = TweenMax.to('#cat_bbf', 1, {
+    bbf = TweenMax.to('#cat_bbf', .3, {
         rotation: 10,
         transformOrigin: 'top center',
-        repeat: 6,
+        repeat: 5,
         yoyo: true,
     });
-    bff = TweenMax.to('#cat_bff', 1, {
+    bff = TweenMax.to('#cat_bff', .3, {
         rotation: -10,
         transformOrigin: 'top center',
-        repeat: 6,
+        repeat: 5,
         yoyo: true,
     });
-    fff = TweenMax.to('#cat_fff', 1, {
+    fff = TweenMax.to('#cat_fff', .3, {
         rotation: 10,
         transformOrigin: 'top right',
-        repeat: 6,
+        repeat: 5,
         yoyo: true,
     });
-    fbf = TweenMax.to('#cat_fbf', 1, {
+    fbf = TweenMax.to('#cat_fbf', .3, {
         rotation: -10,
         transformOrigin: 'top center',
-        repeat: 6,
+        repeat: 5,
         yoyo: true,
     });
-    tail = TweenMax.to('#cat_tail', 2, {
+    tail = TweenMax.to('#cat_tail', 1, {
         rotation: -20,
         transformOrigin: 'bottom left',
         repeat: 6,
@@ -93,7 +91,7 @@ function cat() {
     catN.set('#catNormal', {
         x: 1200,
     });
-    catN.fromTo('#catNormal', 5, {
+    catN.fromTo('#catNormal', 1.5, {
         x: 1200,
     }, {
         x: 0,
@@ -125,7 +123,7 @@ function cat() {
         transformOrigin: 'bottom center',
         opacity: 0
     }, {
-        delay: 6.2,
+        delay: 2.5,
         scale: 1.2,
         opacity: 1,
         ease: Elastic.easeOut.config(1, 0.3),
@@ -134,7 +132,7 @@ function cat() {
         scale: 1,
     });
     TweenMax.to('#catNormal', 0.1, {
-        delay: 6.2,
+        delay: 2.5,
         opacity: 0,
         ease: Elastic.easeOut.config(1, 0.3),
     });
@@ -142,7 +140,7 @@ function cat() {
         opacity: 0,
         scale: 0.5,
     }, {
-        delay: 6.2,
+        delay: 2.5,
         opacity: 1,
         scale: 1,
         ease: Elastic.easeOut.config(1, 0.3),
@@ -376,7 +374,7 @@ function oct() {
     })
 
     oct = octRed = octHeart1 = octHeart2 = octText = new TimelineMax();
-    oct.fromTo('#oct', 5, {
+    oct.fromTo('#oct', 3, {
         x: 0,
         y: 1000,
     }, {
