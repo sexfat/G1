@@ -306,7 +306,7 @@
                             for="upimg">
                               <input type="file" name="act_img" id="upimg" style="display: none;" @change="up_img">
                               <img src="./img/back/upload.png" class="uploadimg" v-if="upact_infos.activity_img == ''">
-                              <!-- <img :src=upact_infos.activity_img class="act_img" v-else> -->
+                              <img :src=upact_infos.activity_img class="act_img" v-else>
                               <div class="img_name">{{ upact_infos.activity_g }}</div>
                             </label>
                           </div>
