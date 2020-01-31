@@ -47,7 +47,7 @@
     $formList->bindValue(':entries_song',$songs);
     $formList->bindValue(':introduction',$_POST['introduction']);
     $formList->bindValue(':entries_img',$tos);
-    $formList->bindValue(':activity_no',2019);
+    $formList->bindValue(':activity_no',$_POST['contestNowYear']);
     $formList->bindValue(':vote_per',0);
     $formList->bindValue(':donate_acount',0);
     $formList->bindValue(':fav_total',0);
