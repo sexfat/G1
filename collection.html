@@ -10,7 +10,6 @@
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.11.2/css/all.min.css" />
   <script src="https://cdnjs.cloudflare.com/ajax/libs/vue/2.6.10/vue.js"></script>
   <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
-  <script src="./js/public.js"></script>
 </head>
 <body class="collectionbody">
   <!-- nav_bar and player -->
@@ -51,26 +50,52 @@
                   <div class="finger"></div>
 =======
         <div class="hamburger" @click="hamburger_click">
-          <div class="hamburger-box">
-            <div class="hamburger-inner"></div>
-          </div>
+            <div class="hamburger-box">
+                <div class="hamburger-inner"></div>
+            </div>
         </div>
         <div class="mobile_list" @click="stopPropagation">
-          <div class="paint_border"></div>
-          <ul>
+            <div class="paint_border"></div>
+            <ul>
+                <li class="REMIX flexbox">
+                    <a href="./remix.html">
+                    </a>
+                </li>
+                <li class="COLLECTION flexbox">
+                    <a href="./collection.html">
+                    </a>
+                </li>
+                <li class="ACTIVITY flexbox">
+                    <a href="./activity.html">
+                    </a>
+                </li>
+                <li class="LIBRARY flexbox">
+                    <a href="./library.html">
+                    </a>
+                </li>
+            </ul>
+        </div>
+        <div class="logo_container">
+            <a href="./home.html">
+                <div class="logo"></div>
+            </a>
+            <div class="finger"></div>
+        </div>
+        <ul class="main_list flexbox">
             <li class="REMIX flexbox">
-              <a href="./remix.html">
-              </a>
+                <a href="./remix.html">
+                </a>
             </li>
             <li class="COLLECTION flexbox">
-              <a href="./collection.html">
-              </a>
+                <a href="./collection.html">
+                </a>
             </li>
             <li class="ACTIVITY flexbox">
-              <a href="./activity.html">
-              </a>
+                <a href="./activity.html">
+                </a>
             </li>
             <li class="LIBRARY flexbox">
+<<<<<<< HEAD
               <a href="./library.html">
 >>>>>>> 0314f3b0329fceb310a2e97643c853bebef6d300
               </a>
@@ -126,15 +151,27 @@
             <a href="./library.html">
             </a>
           </li>
+=======
+                <a href="./library.html">
+                </a>
+            </li>
+>>>>>>> 49de25c7b775fa32494b84f6798097a411287b51
         </ul>
         <div class="search_bt" @click="search_bt_click">
-          <a href="#"></a>
+            <a href="#"></a>
         </div>
         <div class="search_bar" @click="stopPropagation">
+<<<<<<< HEAD
           <input class="search" type="text" />
           <div class="tag_container">
 >>>>>>> 0314f3b0329fceb310a2e97643c853bebef6d300
           </div>
+=======
+            <input class="search" type="text" />
+            <div class="tag_container">
+            </div>
+        </div>
+>>>>>>> 49de25c7b775fa32494b84f6798097a411287b51
 
 <<<<<<< HEAD
           <div class="mem_bt" @click="mem_bt_click" v-if="mem_login == true">
@@ -181,53 +218,59 @@
           </div>
 =======
         <div class="mem_bt" @click="mem_bt_click" v-if="mem_login == true">
-          <a href="#"></a>
+            <a href="#"></a>
         </div>
         <div class="login_bt" v-if="mem_login == false">
-          <a href="./login.html"></a>
+            <a href="./login.html"></a>
         </div>
         <div class="mem_list" @click="stopPropagation">
-          <div class="paint_border"></div>
-          <ul>
-            <li>
-              <a href="./profile.html">
-                <h4>Profile</h4>
-              </a>
-            </li>
-            <li>
-              <a href="./songsadded.html">
-                <h4>
-                  Song Upload
-                  <br />&amp; Remove
-                </h4>
-              </a>
-            </li>
-            <li>
-              <a href="./store.html">
-                <h4>
-                  Store Value
-                  <br />&amp;Store Record
-                </h4>
-              </a>
-            </li>
-            <li>
-              <a href="./donate.html">
-                <h4>Donate Record</h4>
-              </a>
-            </li>
-            <li @click="logout">
-              <a href="#">
-                <h4>Log Out</h4>
-              </a>
-            </li>
-          </ul>
+            <div class="paint_border"></div>
+            <ul>
+                <li>
+                    <a href="./profile.html">
+                        <h4>Profile</h4>
+                    </a>
+                </li>
+                <li>
+                    <a href="./songsadded.html">
+                        <h4>
+                            Song Upload
+                            <br />&amp; Remove
+                        </h4>
+                    </a>
+                </li>
+                <li>
+                    <a href="./store.html">
+                        <h4>
+                            Store Value
+                            <br />&amp;Store Record
+                        </h4>
+                    </a>
+                </li>
+                <li>
+                    <a href="./donate.html">
+                        <h4>Donate Record</h4>
+                    </a>
+                </li>
+                <li @click="logout">
+                    <a href="#">
+                        <h4>Log Out</h4>
+                    </a>
+                </li>
+            </ul>
         </div>
+<<<<<<< HEAD
 >>>>>>> 0314f3b0329fceb310a2e97643c853bebef6d300
       </div>
       <!-- nav_bar end -->
   </div>
     <!-- nav_bar end -->
     <!-- player start -->
+=======
+    </div>
+      <!-- nav_bar end -->
+  </div>
+>>>>>>> 49de25c7b775fa32494b84f6798097a411287b51
     <div id="player">
       <audio src="" id="audioPlayer"></audio>
       <div class="player_s">
