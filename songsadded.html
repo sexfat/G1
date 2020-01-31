@@ -224,7 +224,7 @@
                     <!-- <div class="songsadded-lif-container is-click"> -->
                     <li class="songsadded_lif">
                         <div>
-                            <h2 id="songsadded_lif_first" style="cursor: pointer;border: 2.5px solid rgb(133, 133, 133);">&emsp;Upload song
+                            <h2 id="songsadded_lif_first" style="cursor: pointer;border: 1.5px solid rgb(133, 133, 133);">&emsp;Upload song
                                 <!-- <div class="songsadded-lif" style="float: right;margin-right: 30px;"></div> -->
                             </h2>
                         </div>
@@ -278,7 +278,7 @@
                     </li>
                     <li class="songsadded_lif">
                         <div>
-                            <h2 id="songsadded_lif_second" style="cursor: pointer;border: 2.5px solid rgb(133, 133, 133);">&emsp;Uploaded
+                            <h2 id="songsadded_lif_second" style="cursor: pointer;border: 1.5px solid rgb(133, 133, 133);">&emsp;Uploaded
                                 <!-- <div class="songsadded-lif2" style="float: right;margin-right: 30px;"></div> -->
                             </h2>
                         </div>
@@ -533,7 +533,7 @@
                    contentContainer = $(" <div style=\"float: left;cursor: auto;border: 1px solid grey;border-top:none; width: 100%;padding:20px;\" />"),
                    imageContainer = $("<div style=\"float: left;width: 380px;\" />"),
                    img = $("<img style=\"width: 250px;height: 250px;vertical-align: center;\" />"),
-                   infoContainer = $("<div style=\"float: left;width:50%;\" />"),
+                   infoContainer = $("<div style=\"float: left;width:50%;min-width:220px\" />"),
                    infoTitle = $("<span style=\"font-weight: bold;\" />"),
                    infoContext = $("<span  style=\"font-size:16px; word-wrap:break-word;\" />"),
                 //    infoContext = $("<input style=\"font-size:16px; word-wrap:break-word;\" type=\"text;\" readonly=\"readonly;\" />"),
@@ -713,327 +713,12 @@
 
 
 
-    <!-- <script>
-        // $(document).ready(function(){
-        //     $('.addinsideadd').on('submit',function (){
-        //       $ajax({
-        //           url:'songsupload.php',
-        //           method:'POST',
-        //           dataType:'json',
-        //           data:$('form').serialize(),
-        //           success:
-        //             alert('success'),
-        //       })
-        //     });
-        //     return false;
-        // });
-
-        // let xhr = new XMLHttpRequest();
-        //     console.log(xhr.readyState);
-        //     xhr.onreadystatechange = function () {
-        //         if (xhr.readyState == XMLHttpRequest.DONE) {
-        //             if (xhr.status == 200) { //success
-        //                 // document.getElementById("idMsg").innerHTML = xhr.responseText;
-        //             } else { //其它
-        //                 alert(xhr.status);
-        //             }
-        //         }
-        //     }
-        //     //設定好所要連結的程式
-        //     let url = "songsupload.php?song_name=" + document.getElementsByName("song_name").value 
-        //                            + "&song_idn=" + document.getElementsByName("song_idn").value 
-        //                            + "&song_pic=" + document.getElementsByName("song_pic").value
-        //                            + "&cat_no" + document.getElementsByName("cat_no").value
-        //                            + "&song_hashtag" + document.getElementsByName("song_hashtag").value
-        //                            + "&song_addr" + document.getElementsByName("song_addr").value;
-        //     xhr.open("get", url, true); //
-        //     //送出資料
-        //     xhr.send(null);
-
-        window.addEventListener('load', function () {
-            $('#sd').click(function () {
-                if (member.mem_acct == false) {
-                    alert("Please login first!");
-                    location.href = "./login.html";
-                } else {
-                    this.formContent = 1;
-                    this.SignSongURL = "";
-                    this.selectSong = "";
-                    fetch('./phps/getMemInfo.php').then(res => res.json()).then(data => this.member =
-                        data);
-                };
-                let form = new FormData(document.querySelector('.addinsideadd'));
-                let xhr = new XMLHttpRequest();
-                console.log(xhr.readyState);
-                xhr.onreadystatechange = function () {
-                    if (xhr.readyState == 4) {
-                        if (xhr.status == 200) {
-
-                            // $(location).attr('href', '//www.localhost/g1test/index.html');
-                            // alert(xhr.responseText);
-                            // let test = document.createElement(xhr.responseText);
-
-                            // let songaddList = document.querySelector(".songsadded_inside2");
-                            // let addtemp = document.querySelector(".songsadded_inside2_li");
-                            // let addtempol = document.querySelector(".songsadded_inside2_ol");
-                            // let addnewSong = addtemp.cloneNode(true);
-                            // let addnewSongend = addtempol.cloneNode(true);
-                            // let myForm = document.getElementById("myForm");
-                            // addnewSong.style.display = "";
-                            // addnewSongend.style.display = "";
-                            // let addsongName = document.querySelector(
-                            //     "#myForm input[name='song_name']").value;
-                            // let addsongType = document.querySelector(
-                            //     "#myForm input[name='cat_no']").value;
-                            // let addsongTag = document.querySelector(
-                            //     "#myForm input[name='song_hashtag']").value;
-                            // let addsongIdn = document.querySelector(
-                            //     "#myForm input[name='song_idn']").value;
-
-                            // addnewSongend.querySelector("input[name='song_name']").innerText = document.querySelector(
-                            //     "#myForm input[name='song_name']").value;
-
-                            // addnewSongend.querySelector("input[name='cat_no']").innerText = document.querySelector(
-                            //     "#myForm input[name='cat_no']").value;
-
-                            // addnewSongend.querySelector("input[name='song_hashtag']").innerText = document.querySelector(
-                            //     "#myForm input[name='song_hashtag']").value;
-
-                            // addnewSongend.querySelector("input[name='song_idn']").innerText = document.querySelector(
-                            //     "#myForm input[name='song_idn']").value;
-
-
-                            // addnewSongend.querySelector("input[name='song_name']").innerText = document.querySelector(
-                            //     "#myForm input[name='song_name']").value;
-
-                            // addnewSongend.querySelector("input[name='cat_no']").innerText = document.querySelector(
-                            //     "#myForm input[name='cat_no']").value;
-
-                            // addnewSongend.querySelector("input[name='song_hashtag']").innerText = document.querySelector(
-                            //     "#myForm input[name='song_hashtag']").value;
-
-                            // addnewSongend.querySelector("input[name='song_idn']").innerText = document.querySelector(
-                            //     "#myForm input[name='song_idn']").value;
-
-
-                            // addnewSongend.querySelectorAll("input")[0].innerText
-
-
-
-
-                            // addnewSongend.querySelector("input[name='song_name']").value = document
-                            //     .querySelector(
-                            //         ".addinsideadd input[name='song_name']").value;
-                            // addnewSongend.querySelector("input[name='cat_no']").value = document
-                            //     .querySelector(
-                            //         ".addinsideadd input[name='cat_no']").value;
-                            // addnewSongend.querySelector("input[name='song_hashtag']").value =
-                            //     document.querySelector(
-                            //         ".addinsideadd input[name='song_hashtag']").value;
-                            // addnewSongend.querySelector("input[name='song_idn']").value = document
-                            //     .querySelector(
-                            //         ".addinsideadd input[name='song_idn']").value;
-
-                            // songaddList.appendChild(addnewSong);
-                            // songaddList.appendChild(addnewSongend);
-
-
-
-                            // let btnsend = document.querySelector('#sd')
-                            // let temp = document.querySelector('.addinsideadd');
-                            // let newSong = temp.cloneNode(true);
-                            // let myForm = document.getElementById("myForm");
-                            // newSong.style.display = '';
-                            // console.log( newSong );
-                            // newSong.getElementsByName("song_name")[0].value = document.querySelector(
-                            //     "#myForm input[name='song_name']").value;
-
-                            // newSong.querySelector("input[name='song_name']").value = document.querySelector(
-                            //     "#myForm input[name='song_name']").value;
-
-                            // // newSong.getElementsByName("song_idn")[0].value = document.querySelector(
-                            // //     "#myForm input[name='song_name']").value;
-
-                            // newSong.querySelector("input[name='song_idn']").value = document.querySelector(
-                            //     "#myForm input[name='song_idn']").value;
-
-                            // // newSong.getElementsByName("song_pic")[0].value = document.getElementsByName(
-                            // //     'song_pic')[0].value;
-
-                            // // newSong.querySelector("input[name='song_pic']").value = document.querySelector(
-                            // //     "#myForm input[name='song_pic']").value;
-
-                            // // newSong.getElementsByName("cat_no")[0].value = document.getElementsByName('cat_no')[
-                            // //     0].value;
-
-                            // newSong.querySelector("input[name='cat_no']").value = document.querySelector(
-                            //     "#myForm input[name='cat_no']").value;
-
-                            // // newSong.getElementsByName("song_hashtag")[0].value = document.getElementsByName(
-                            // //     'song_hashtag')[0].value;
-
-                            // newSong.querySelector("input[name='song_hashtag']").value = document.querySelector(
-                            //     "#myForm input[name='song_hashtag']").value;
-
-                            // // newSong.getElementsByName("song_addr")[0].value = document.getElementsByName(
-                            // //     'song_addr')[0].value;
-
-                            // // newSong.querySelector("input[name='song_addr']").value = document.querySelector(
-                            // //     "#myForm input[name='song_addr']").value;
-
-                            // temp.insertBefore(newSong, btnsend);
-
-
-                            let li = document.createElement('li');
-                            li.className = 'songsadded_inside2_li';
-                            // $('songsadded_inside2_li').bind("click", function (){
-                            //     $(this).next("ol").slideToggle(300).slideUp(300);
-                            // });
-                            li.innerHTML = xhr.responseText;
-                            let div = document.createElement('div');
-                            document.querySelector('.songsadded_inside2').append(li);
-                            // let aa = `<ol class="songsadded_inside2_ol" style="overflow: hidden; display: none;">
-                            //         
-                            //     `
-                            //div.innerHTML = aa;
-                            document.querySelector('.songsadded_inside2').append(div);
-
-
-                            console.log(xhr.responseText);
-                        } else {
-                            // alert(xhr.responseText);
-                            console.log(xhr.responseText);
-                        }
-                    }
-                }
-                let url = "./phps/songsupload.php";
-                xhr.open("post", url, true);
-                // xhr.setRequestHeader("content-type", "application/x-www-form-urlencoded");
-                // let songsadd_send = "song_name=" + document.getElementsByClassName(".song_name").value+"&song_idn=" + document.getElementsByClassName(".song_idn").value+"&song_pic=" + document.getElementsByClassName(".song_pic").value+"&cat_no" + document.getElementsByClassName(".cat_no").value+"&song_hashtag" + document.getElementsByClassName(".song_hashtag").value+"&song_addr" + document.getElementsByClassName(".song_addr").value;
-                xhr.send(form);
-                // console.log(songsadd_send);
-            });
-        });
-    </script> -->
-    <!-- <script>
-        $(document).ready(function(){
-            $('#sd').click(function (){
-                $.ajax({url:"./phps/songsupload.php",success:function(showsongName){
-                    $(".songsadded_inside2").html(showsongName);
-                    console.log();
-                }});
-            });
-        });
-    </script> -->
-
-    <!-- <script>
-        document.getElementById("sd").onclick = function () {
-            let songaddList = document.querySelector(".songsadded_inside2");
-            let addtemp = document.querySelector(".songsadded_inside2_li");
-            let addtempol = document.querySelector(".songsadded_inside2_ol");
-            let addnewSong = addtemp.cloneNode(true);
-            let addnewSongend = addtempol.cloneNode(true);
-            let myForm = document.getElementById("myForm");
-            addnewSong.style.display = "";
-            addnewSongend.style.display = "";
-             // let addsongName = document.querySelector(
-             //     "#myForm input[name='song_name']").value;
-             // let addsongType = document.querySelector(
-             //     "#myForm input[name='cat_no']").value;
-             // let addsongTag = document.querySelector(
-             //     "#myForm input[name='song_hashtag']").value;
-             // let addsongIdn = document.querySelector(
-             //     "#myForm input[name='song_idn']").value;
-
-             console.log(addnewSongend.querySelector("input[name='song_name']").value);
-            addnewSongend.querySelector("input[name='song_name']").value = document.querySelector(
-                "#myForm input[name='song_name']").value;
-
-            addnewSongend.querySelector("input[name='cat_no']").value = document.querySelector(
-                "#myForm input[name='cat_no']").value;
-
-            addnewSongend.querySelector("input[name='song_hashtag']").value = document.querySelector(
-                "#myForm input[name='song_hashtag']").value;
-
-            addnewSongend.querySelector("input[name='song_idn']").value = document.querySelector(
-                "#myForm input[name='song_idn']").value;
-
-            songaddList.appendChild(addnewSong);
-            songaddList.appendChild(addnewSongend);
-            console.log();
-        };
-    </script> -->
-
     <!-- <script src="https://cdn.jsdelivr.net/gh/fancyapps/fancybox@3.5.7/dist/jquery.fancybox.min.js"></script> -->
     <!-- <script>
         $(".test-b").on('click', function () {
             $.fancybox.open(
                 '<div class="adddeletecheck"alt=""><div class="checkline"><br><p>Are you sure to delete?</p><br><br><button class="checkbtn">Yes</button> <button class="checkbtnNo" style="background-color: $yellow;font-size: 0.8rem;padding: 10px 30px;border: 1px solid $yellow;border-radius: 5px;color: #333;font-weight: bold;cursor: pointer;text-transform: capitalize;&:hover{transform: scale(1.1)};">No</button></div></div>'
             );
-        });
-    </script> -->
-
-
-
-    <!-- <script>
-        (function ($) {
-            $(document).ready(function () {
-                var dashButton = $('.songsadded_lif'),
-                    album = $('.album');
-                dashButton.on('click', function () {
-                    $('.songsadded-lif-container').toggleClass('is-click');
-                });
-            });
-        })(jQuery);
-    </script> -->
-
-    <!-- <script>
-        function doFirst() {
-            document.getElementById('theFile').onchange = fileChange;
-        }
-
-        function fileChange() {
-            let file = document.getElementById('theFile').files[0];
-            let content = '';
-            //========================
-
-            let readFile = new FileReader();
-            readFile.readAsDataURL(file);
-            readFile.addEventListener('load', function () {
-                let image = document.getElementById('image');
-                image.src = this.result;
-                image.style.maxWidth = '500px';
-                image.style.maxHeight = '400px';
-            });
-        }
-        window.addEventListener('load', doFirst);
-    </script> -->
-
-
-    <!-- <script>
-        $(".songsadded_inside2").on("mouseenter mouseleave", function (event) { //挷定滑鼠進入及離開事件
-            if (event.type == "mouseenter") {
-                $(this).css({
-                    "overflow-y": "scroll"
-                }); //滑鼠進入
-            } else {
-                $(this).scrollTop(0).css({
-                    "overflow-y": "hidden"
-                }); //滑鼠離開
-            }
-        });
-    </script>
-    <script>
-        $(".songsadded_inside2_ol").on("mouseenter mouseleave", function (event) { //挷定滑鼠進入及離開事件
-            if (event.type == "mouseenter") {
-                $(this).css({
-                    "overflow-y": "scroll"
-                }); //滑鼠進入
-            } else {
-                $(this).scrollTop(0).css({
-                    "overflow-y": "hidden"
-                }); //滑鼠離開
-            }
         });
     </script> -->
 
