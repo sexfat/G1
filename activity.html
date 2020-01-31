@@ -377,7 +377,7 @@
                 <img src="./img/activity/radio.png" alt="">
 
 
-                <h2 v-if=" content=='actNow'">{{actInformation[0].activity_name}}</h2>
+                <h2 v-if=" content=='actNow'" v-for='item in actInformation.slice(0,1)'>{{item.activity_name}}</h2>
                 <h2 v-if=" content=='actOld'">Previous activities</h2>
 
                 <div id="act_HeadBtn">
@@ -413,11 +413,11 @@
 
                 <div id="act_oldyear_Anchor" v-if=" content=='actOld'">
                     <a href="#act_old-year2018" class="act_Anchor">
-                        <img src="./img/activity/yearbutton.png"><span>2018</span>
+                        <img src="./img/activity/yearbutton.png"><span v-for="(information,index) in actInformation.slice(1,2)">{{information.activity_no}}</span>
                     </a>
 
                     <a href="#act_old-year2017" class="act_Anchor">
-                        <img src="./img/activity/yearbutton.png"> <span>2017</span>
+                        <img src="./img/activity/yearbutton.png"> <span v-for="(information,index) in actInformation.slice(2,3)">{{information.activity_no}}</span>
                     </a>
                 </div>
 
@@ -506,7 +506,7 @@
                  </p>
                  <div class="act_oldVotes">
                      <h3>Votes</h3>
-                     <span  v-for="item in voteAll.slice(1,2)">{{item.total_vote}}</span>
+                     <span v-if="oldVoteAllOne">{{oldVoteAllOne}}</span>
                  </div>
              </div>
      
@@ -588,7 +588,7 @@
                  </p>
                  <div class="act_oldVotes">
                      <h3>Votes</h3>
-                     <span v-for="item in voteAll.slice(2,3)">{{item.total_vote}}</span>
+                     <span v-if="oldVoteAllTwo">{{oldVoteAllTwo}}</span>
                  </div>
              </div>
      
@@ -904,7 +904,7 @@
                    </p>
                    <div>
                      <h3>Votes</h3>
-                     <span v-for="item in voteAll.slice(0,1)">{{item.total_vote}}</span>
+                     <span v-if="nowVoteAll">{{nowVoteAll}}</span>
                    </div>
                    
                  </article>
@@ -958,7 +958,9 @@
             },
             data: function () {
                 return {
+                    //參賽歌曲
                     nowVoteSong: [],
+                    
                     //表單步驟頁面
                     formContent: 0,
 
@@ -969,6 +971,7 @@
                     SignSongURL: "",
                     SignSong: '',
                     SignImg: "",
+                    
                     //會員選擇已有歌曲，資料陣列
                     selectSong: [],
 
@@ -978,6 +981,9 @@
 
                     //被投票的歌曲編號
                     voteSongNo: '',
+                    
+                    //投票總數
+                    nowVoteAll:'',
 
 
                     //愛心收藏
@@ -1114,7 +1120,6 @@
                         myForm.append("entries_name", this.SongName);
                         myForm.append("introduction", this.SongInformation);
                         myForm.append("contestNowYear", this.contestYear);
-
                         let xhr = new XMLHttpRequest();
                         xhr.onload = function () {
                             // console.log("-----------final");
@@ -1127,9 +1132,10 @@
                                 alert("Sign up failed!");
                             }
                         }
-                        console.log(myForm);
+                        // console.log(myForm);
                         xhr.open("post", "./phps/act_formSignUp.php", true);
                         xhr.send(myForm);
+                        
 
                     }
 
@@ -1232,7 +1238,7 @@
                     nowPlaying = 0;
                     listLen = myPlaylist.length;
                     $('#player audio').attr('src', myPlaylist[0].song_addr);
-                    console.log(myPlaylist);
+                    // console.log(myPlaylist);
 
                     for (let i = 0; i < this.nowVoteSong.length; i++) {
                         let allSongName = this.nowVoteSong[i].entries_name;
@@ -1253,7 +1259,7 @@
                     };
 
                     playerAuto = false;
-                    console.log(myPlaylist[0].song_name);
+                    // console.log(myPlaylist[0].song_name);
                     heartStatus(myPlaylist[0].song_name);
 
                 },
@@ -1302,6 +1308,21 @@
                     };
                 },
 
+
+                changeVoteAll(){
+                    let nowYear=this.contestYear;
+                  
+                    for(let i=0;i<this.voteAll.length;i++){
+                        let year =this.voteAll[i].activity_no;
+                        if(nowYear==year){
+                           this.nowVoteAll=this.voteAll[i].total_vote;
+                           break;
+                        }else{
+                            this.nowVoteAll="0";
+                        }
+
+                    }
+                },
                 getNewContestYear() {//動態更換新活動歌曲
                     // fetch('./phps/getContestInformation.php').then(res => res.json()).then(data => this.nowInformation = data);
                     this.contestYear = this.actInformation[0].activity_no;
@@ -1321,7 +1342,7 @@
                         });
                     }
                     this.nowVoteSong = year.responseJSON;
-
+                  
                 },
 
                 changeHref(no) {//獲得跳轉單頁的歌曲編號
@@ -1346,10 +1367,12 @@
 
                 },
 
+
             },
             created() {
                 // fetch('./phps/getContestNowSong.php').then(res => res.json()).then(data => this.nowVoteSong = data);
                 this.getYear = setTimeout(this.getNewContestYear, 500);
+                this.NowVote = setTimeout(this.changeVoteAll,600);
             },
             mounted() {
                 this.ChangeHeart = setTimeout(this.ChangeRedHeart, 800);
@@ -1383,11 +1406,17 @@
                     hrefNoName: "",
                     backSong: '',
                     oneSongNo: '',
-
+                    
+                    //動態更換舊歌曲
                     contestOldYear1: '',
                     contestOldYear2: '',
                     oldVoteSong2018: [],
                     oldVoteSong2017: [],
+
+                    //投票總數
+                    oldVoteAllOne:'',
+                    oldVoteAllTwo:'',
+
                 }
 
             },
@@ -1512,6 +1541,7 @@
                         }
                     };
                     playerAuto = false;
+                    heartStatus(myPlaylist[0].song_name);
 
                 },
                 showChangePlay2017(e, item) {//切換撥放按鈕
@@ -1549,6 +1579,7 @@
                         }
                     };
                     playerAuto = false;
+                    heartStatus(myPlaylist[0].song_name);
 
                 },
 
@@ -1614,11 +1645,36 @@
                     };
 
                 },
+                
+                changeVoteAll1(){
+                    let Year=this.contestOldYear1;
+                  
+                    for(let i=0;i<this.voteAll.length;i++){
+                        let years =this.voteAll[i].activity_no;
+                        
+                        if(Year==years){
+                            this.oldVoteAllOne=this.voteAll[i].total_vote;
+                            break;
+                        }
+                    }
+                },
+                changeVoteAll2(){
+                    let Year=this.contestOldYear2;
 
+                    for(let i=0;i<this.voteAll.length;i++){
+                        let years =this.voteAll[i].activity_no;
+                        
+                        if(Year==years){
+                            this.oldVoteAllTwo=this.voteAll[i].total_vote;
+                            break;
+                        }
+                    }
+                },
             },
             created() {
-                // fetch('./phps/getContestNowSong.php').then(res => res.json()).then(data => this.nowVoteSong = data);
-                // this.getYear = setTimeout(this.getOldContestYear, 500);
+               this.getVoteAll1=setTimeout(this.changeVoteAll1,500);
+               this.getVoteAll2=setTimeout(this.changeVoteAll2,500);
+
             },
             mounted() {
                 this.getYear = setTimeout(this.getOldContestYear, 500);
@@ -1680,7 +1736,7 @@
 
                 //活動資訊
                 actInformation: [],
-                activity_name:'',
+               
 
                 //播放歌曲
                 getMyPlaylist: []
@@ -1727,6 +1783,7 @@
                     }
                     this.GoTopBush = true;
                 },
+
 
             },
             created() {
