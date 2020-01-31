@@ -26,7 +26,7 @@ switch ($_POST['post']) {
       $add_activity->bindValue(':activity_str', "{$_POST['activity_start']}");
       $add_activity->bindValue(':activity_fin', "{$_POST['activity_fin']}");
       $add_activity->bindValue(':activity_Introduction', $_POST['activity_Introduction']);
-      $add_activity->bindValue(':activity_img', $to);
+      $add_activity->bindValue(':activity_img', substr($to,1));
       $add_activity->execute();
     } catch (PDOException $th) {
       echo $th->getMessage();

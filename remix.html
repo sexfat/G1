@@ -508,7 +508,7 @@
         </div>
       </div>
       <div class="remix_table">
-        <h3>Piano</h3>
+        <h3>Paino</h3>
         <!-- re -->
         <table class="re poa remix_play" style="z-index: 5;">
           <tr>
@@ -623,75 +623,20 @@
       <img src="./img/remix/background_color.png" alt="">
     </div>
   </div>
-
-  <!-- tutorial start -->
-  <div class="tutorial" id="tutorial">
-    <p><i class="fas fa-book"></i></p>
-    <span>tutorial</span>
-  </div>
-
-  <div class="lightCover">
-    <div id="tutorialBox">
-      <div class="closeLight"><i class="fas fa-times"></i></div>
-      <h2>Remix tutorial</h2>
-      <div class="stepCarosel ">
-        <ul class="stepContent owl-carousel owl-theme">
-          <li class="item">
-            <h4>step 1</h4>
-            <div class="tutorImg">
-              <img src="./img/library/remix_step-1.jpg">
-            </div>
-            <p>Choose beats or piano to remix, and choose musical scale you like.</p>
-          </li>
-          <li class="item">
-            <h4>step 2</h4>
-            <div class="tutorImg">
-              <img src="./img/library/remix_step-2.gif">
-            </div>
-            <p>A row means a period of time, different blocks in the same column means in the same period of time,you
-              can press more blocks to add sound into the audio.</p>
-          </li>
-          <li class="item">
-            <h4>step 3</h4>
-            <div class="tutorImg">
-              <img src="./img/library/remix_step-3.jpg">
-            </div>
-            <p>When audio is playing , drag the button can change the BPM, you can hear the audio become fast / slow.
-            </p>
-          </li>
-          <li class="item">
-            <h4>step 4</h4>
-            <div class="tutorImg">
-              <img src="./img/library/remix_step-4.gif">
-            </div>
-            <p>Remember to record the audio when the final you've done.</p>
-          </li>
-          <li class="item">
-            <h4>step 5</h4>
-            <div class="tutorImg">
-              <img src="./img/library/remix_step-5.gif">
-            </div>
-            <p>Finally, download the audio to PC.Also,upload the audio to join our activity or share to social web.</p>
-          </li>
-        </ul>
-      </div>
-    </div>
-  </div>
-  <!-- tutorial end -->
-
   <!-- player start -->
   <div id="player">
     <audio src="" id="audioPlayer"></audio>
     <div class="player_s">
       <div class="info">
-        <div class="cover"><img src="./img/collection/album1.jpg"></div>
+        <div class="cover"><img src="./img/library/cover1.jpg"></div>
         <div class="songInfo">
           <span class="name">Lucid Dreamer</span>
           <span class="creator">Spazz Cardigan</span>
         </div>
-        <div class="heart"><img src="./img/collection/grayheart.png" alt=""></div>
+        <div class="heart becomeRed"><i class="fas fa-heart"></i></div>
         <div class="clearfix"></div>
       </div>
+
       <div class="controlPanel">
         <div class="progressbar">
           <div class="progress"></div>
@@ -721,6 +666,7 @@
           <div class="clearfix"></div>
         </div>
       </div>
+
       <div class="expand" id="expand"><i class="fas fa-expand"></i></div>
       <div class="clearfix"></div>
     </div>
@@ -728,16 +674,20 @@
     <!-- 詳細版 -->
     <div class="player_b">
       <div class="left">
-        <div class="info">
-          <div class="songCover">
-            <img src="./img/collection/album1.jpg">
+        <div class="songCover">
+          <div class="coverImg">
+            <img src="./img/library/cover1.jpg">
             <div class="coverRec"><img src="./img/library/player_record.png" alt=""></div>
           </div>
         </div>
         <div class="songInfo">
-          <div class="name">Lucid Dreamer</div>
-          <div class="creator">Spazz Cardigan</div>
-          <div class="heart"><img src="./img/collection/grayheart.png" alt=""></div>
+          <div class="name">
+            Lucid Dreamer
+          </div>
+          <div class="creator">
+            Spazz Cardigan
+          </div>
+          <div class="heart becomeRed"><i class="fas fa-heart"></i></div>
           <div class="clearfix"></div>
         </div>
         <div class="controlPanel">
@@ -746,7 +696,7 @@
           </div>
           <div class="time">
             <span class="start">00:00</span>
-            <span class="end">00:00</span>
+            <span class="end">04:30</span>
             <div class="clearfix"></div>
           </div>
           <div class="btns">
@@ -771,20 +721,127 @@
         </div>
         <div class="pushBtn"></div>
       </div>
+
       <div class="right">
         <div class="pushBtn"></div>
         <div class="listTitle">
           <div class="listCover">
-            <img src="./img/library/list_pic_no.jpg"></div>
+            <img src="./img/library/list_pic1.jpg"></div>
           <div class="listName">
-            <h2>Total songs</h2>
-            <span>0 songs</span>
+            <h2>peaceful list</h2>
+            <span>8 songs</span>
           </div>
           <button class="selectBtn" id="selectBtn">SELECT</button>
           <div class="clearfix"></div>
         </div>
         <div class="list">
-          <ul class="chooseList">
+          <ul>
+            <li>
+              <div class="songCover">
+                <img src="./img/library/cover1.jpg" alt="">
+                <div class="listPlay"><i class="fas fa-play"></i></div>
+              </div>
+              <div class="listSongInfo">
+                <div class="name">
+                  <h4>Lucid Dreamer</h4>
+                  <p> Spazz Cardigan</p>
+                </div>
+              </div>
+              <div class="totalTime">4:30</div>
+              <div class="heart becomeRed"><i class="fas fa-heart"></i></div>
+              <div class="clearfix"></div>
+            </li>
+            <li>
+              <div class="songCover">
+                <img src="./img/library/cover2.jpg" alt="">
+                <div class="listPlay"><i class="fas fa-play"></i></div>
+              </div>
+              <div class="listSongInfo">
+                <div class="name">
+                  <h4>Lucid Dreamer</h4>
+                  <p> Spazz Cardigan</p>
+                </div>
+              </div>
+              <div class="totalTime">4:30</div>
+              <div class="heart becomeRed"><i class="fas fa-heart"></i></div>
+              <div class="clearfix"></div>
+            </li>
+            <li>
+              <div class="songCover">
+                <img src="./img/library/cover3.jpg" alt="">
+                <div class="listPlay"><i class="fas fa-play"></i></div>
+              </div>
+              <div class="listSongInfo">
+                <div class="name">
+                  <h4>Lucid Dreamer</h4>
+                  <p> Spazz Cardigan</p>
+                </div>
+              </div>
+              <div class="totalTime">4:30</div>
+              <div class="heart becomeRed"><i class="fas fa-heart"></i></div>
+              <div class="clearfix"></div>
+            </li>
+            <li>
+              <div class="songCover">
+                <img src="./img/library/cover4.jpg" alt="">
+                <div class="listPlay"><i class="fas fa-play"></i></div>
+              </div>
+              <div class="listSongInfo">
+                <div class="name">
+                  <h4>Lucid Dreamer</h4>
+                  <p> Spazz Cardigan</p>
+                </div>
+              </div>
+              <div class="totalTime">4:30</div>
+              <div class="heart becomeRed"><i class="fas fa-heart"></i></div>
+              <div class="clearfix"></div>
+            </li>
+            <li>
+              <div class="songCover">
+                <img src="./img/library/cover5.jpg" alt="">
+                <div class="listPlay"><i class="fas fa-play"></i></div>
+              </div>
+              <div class="listSongInfo">
+                <div class="name">
+                  <h4>Lucid Dreamer</h4>
+                  <p> Spazz Cardigan</p>
+                </div>
+              </div>
+              <div class="totalTime">4:30</div>
+              <div class="heart becomeRed"><i class="fas fa-heart"></i></div>
+              <div class="clearfix"></div>
+            </li>
+            <li>
+              <div class="songCover">
+                <img src="./img/library/cover6.jpg" alt="">
+                <div class="listPlay"><i class="fas fa-play"></i></div>
+              </div>
+              <div class="listSongInfo">
+                <div class="name">
+                  <h4>Lucid Dreamer</h4>
+                  <p> Spazz Cardigan</p>
+                </div>
+              </div>
+              <div class="totalTime">4:30</div>
+              <div class="heart becomeRed"><i class="fas fa-heart"></i></div>
+              <div class="clearfix"></div>
+            </li>
+            <li>
+              <div class="songCover">
+                <img src="./img/library/cover1.jpg" alt="">
+                <div class="listPlay"><i class="fas fa-play"></i></div>
+              </div>
+              <div class="listSongInfo">
+                <div class="name">
+                  <h4>Lucid Dreamer</h4>
+                  <p> Spazz Cardigan</p>
+                </div>
+              </div>
+              <div class="totalTime">4:30</div>
+              <div class="heart becomeRed"><i class="fas fa-heart"></i></div>
+              <div class="clearfix"></div>
+            </li>
+
           </ul>
         </div>
       </div>
@@ -793,34 +850,29 @@
 
       <!-- 撥放器燈箱 -->
       <div class="lightCover">
-        <div class="lightbox_s allmylist" id="myAllList">
+        <div class="lightbox_s" id="myAllList">
           <div class="closeLight"><i class="fas fa-times"></i></div>
-          <h4>My List</h4>
+          <h3>My List</h3>
           <div class="lightSelectMenu">
             <ul>
+              <li>Liked songs</li>
+              <li>Peaceful songs</li>
+              <li>party</li>
             </ul>
           </div>
-          <input type="hidden" name="plistName" id="plistName">
-          <button id="mylistOK">ok</button>
-        </div>
-        <div class="lightbox_s" id="playerAlert">
-          <div class="closeLight"><i class="fas fa-times"></i></div>
-          <h4></h4>
-          <button>ok</button>
+          <button class="">ok</button>
         </div>
       </div>
     </div>
   </div>
   <!-- player end -->
-  <script src='https://cdnjs.cloudflare.com/ajax/libs/tone/13.4.0/Tone.js'></script>
+  <script src='https://cdnjs.cloudflare.com/ajax/libs/tone/13.4.0/Tone.min.js'></script>
   <script src='https://cdnjs.cloudflare.com/ajax/libs/gsap/2.1.3/TweenMax.min.js'></script>
   <script src='https://cdnjs.cloudflare.com/ajax/libs/jquery/3.4.1/jquery.min.js'></script>
-  <script src="https://cdnjs.cloudflare.com/ajax/libs/OwlCarousel2/2.3.4/owl.carousel.min.js"></script>
-  <script src="./js/vue.js"></script>
+  <script src="./js/vue.min.js"></script>
   <script src="./js/nav_bar.js"></script>
   <script src="./js/player.js"></script>
-  <script src="./js/remixTutorial.js"></script>
-
+  <!-- <script src="./js/remix.js"></script> -->
   <script>
     var app = new Vue({
       el: '#remix_app',
@@ -1144,6 +1196,12 @@
 
                 if (nowstep.classList.contains('active')) {
                   var audio = new Audio(`./img/remix/sound/${vm.notes1[i]}.mp3`)
+                  audio.addEventListener('loadedmetadata', () => {
+                    console.log(audio.duration);
+                    var clear_audio = setTimeout(() => {
+                      audio = null;
+                    }, audio.duration * 1000)
+                  })
                   audio.play();
                 }
               }
@@ -1445,6 +1503,8 @@
             vm.running = !vm.running;
           }
 
+          var clear;
+
           function toggle() {
             if (internals.running || vm.demostart) {
               vm.running = !vm.running;
@@ -1464,7 +1524,6 @@
 
           for (var i = 0; i < demo_song.length; i++) {
             demo_song[i].addEventListener('click', toggle);
-<<<<<<< HEAD
           }
 
           // for (var i = 0; i < remix_btn.length; i++) {
@@ -1478,35 +1537,14 @@
 
           for (var i = 0; i < remix_btn.length; i++) {
             remix_btn[i].addEventListener('click', function () {
-
+              if (clear) {
                 clearTimeout(clear);
-                vm.running = !vm.running;
-                pause();
-            })
-          }
-
-=======
-          }
-
-          // for (var i = 0; i < remix_btn.length; i++) {
-          //   remix_btn[i].addEventListener('click', function () {
-          //     var btn = document.getElementsByClassName('remix_btn');
-          //     for (var y = 0; y < btn.length; y++) {
-
-          //     }
-          //   });
-          // }
-
-          for (var i = 0; i < remix_btn.length; i++) {
-            remix_btn[i].addEventListener('click', function () {
-
-              clearTimeout(clear);
+              }
               vm.running = !vm.running;
               pause();
             })
           }
 
->>>>>>> 0314f3b0329fceb310a2e97643c853bebef6d300
 
 
           toggle();

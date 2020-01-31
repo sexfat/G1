@@ -1,9 +1,5 @@
 <?php
-<<<<<<< HEAD
 require_once('./connect_dd104g1.php');
-=======
-require_once('./connectBooks.php');
->>>>>>> 0314f3b0329fceb310a2e97643c853bebef6d300
 session_start();
 switch ($_GET['get']) {
   case 'song':
@@ -55,11 +51,7 @@ switch ($_GET['get']) {
     break;
   case "mem":
     try {
-<<<<<<< HEAD
-      $sql = "SELECT mem_name FROM `member` WHERE mem_no = {$_SESSION['mem_no']}";
-=======
-      $sql = "SELECT mem_no, mem_name FROM `member` WHERE mem_no = {$_SESSION['mem_no']}";
->>>>>>> 0314f3b0329fceb310a2e97643c853bebef6d300
+      $sql = "SELECT * FROM `member` WHERE mem_no = {$_SESSION['mem_no']}";
       $mem = $pdo->prepare($sql);
       $mem->execute();
 

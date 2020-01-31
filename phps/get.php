@@ -94,14 +94,10 @@
     case "report":
       try {
         require_once('./connect_dd104g1.php');
-<<<<<<< HEAD
-        $sql = "SELECT * FROM `report`";
-=======
         $sql = "SELECT report.re_no,report.message_no,report.mem_no,report.re_sta,message_board.message_info 
-        FROM `report` inner join `message_board` on  
+        FROM `message_board` inner join `report` on  
         (message_board.message_no = report.message_no)";
 
->>>>>>> 0314f3b0329fceb310a2e97643c853bebef6d300
         $report = $pdo->prepare($sql);
         $report->execute();
         
@@ -124,5 +120,16 @@
         echo $th->getMessage();
       }
       break;
+    case "message": // 留言總攬
+      try {
+        require_once('./connect_dd104g1.php');
+        $sql = "SELECT * FROM `message_board` ORDER BY message_time desc";
+        $message = $pdo->prepare($sql);
+        $message->execute();
+        $messages = $message->fetchAll(PDO::FETCH_ASSOC);
+        echo json_encode($messages);
+      } catch (PDOException $th) {
+        echo $th->getMessage();
+      }
+      break;
   }
-?>
