@@ -1,19 +1,19 @@
 @import"_public";
 
-
 #act_title {
     margin: 0 auto;
     text-align: center;
-
-
+    
 }
 
+
 #act_radioBg {
+  
     position: relative;
-    max-width: 1400px;
+    max-width: 1200px;
     height: 650px;
-    margin: 0 auto 50px auto;
-    left: -3%;
+    margin: 0 auto;
+
 
     @include respond(latop-max) {
         width: 940px;
@@ -21,28 +21,29 @@
     }
 
     @include respond(latop-min) {
-        width: 789px;
+        width: 752px;
         height: 400px;
-        left: -6%;
+
     }
 
     @include respond(ipadpro) {
-        width: 658px;
-        height: 350px;
-        left: -6%;
+        width: 564px;
+        height: 300px;
+
 
     }
 
     @include respond(ipad) {
         width: 410px;
         height: 220px;
-        left: -4%;
+
     }
 
     @include respond(phone) {
         width: 338px;
         height: 180px;
-        left: -5%;
+
+
     }
 
 
@@ -95,7 +96,7 @@
         height: 75px;
         position: absolute;
         bottom: 4%;
-        left: 23%;
+        left: 15%;
         // transform: translate(-50%, -50%);
         z-index: 1;
 
@@ -117,13 +118,18 @@
         @include respond(ipadpro) {
             width: 500px;
             height: 25px;
-            left: 62%;
+            left: 55%;
+            bottom: 2%;
         }
 
         @include respond(ipad) {
             width: 375px;
             left: 68%;
             bottom: 3%;
+        }
+
+        @include respond(phone) {
+            display: none;
         }
 
         a {
@@ -297,9 +303,7 @@
     font-size: 0;
 
     @include respond(phone) {
-        right: 10px;
-        bottom: 90px;
-
+        display: none;
     }
 
     a {
@@ -360,6 +364,13 @@
     @include respond(latop-max) {
         top: 55px;
         width: 30px;
+    }
+
+    @include respond(phone) {
+        display: none;
+
+
+
     }
 
     img {
@@ -480,13 +491,13 @@
 }
 
 #act_carousel {
-    width: 80%;
+    width: 90%;
     height: 60%;
     max-width: 1200px;
     max-height: 400px;
     position: absolute;
     top: 35%;
-    left: 15%;
+    left: 5%;
     z-index: -1;
     overflow: hidden;
 
@@ -500,7 +511,7 @@
     }
 
     @include respond(ipadpro) {
-        max-height: 180px;
+        max-height: 220px;
     }
 
 
@@ -549,14 +560,14 @@
     bottom: -25%;
     left: 50%;
     text-align: center;
-    transform: translate(-30%, -0%);
-
+    transform: translate(-50%, 0%);
+   
 
 
     @include respond(latop-min) {
         width: 300px;
         height: 75px;
-        transform: translate(-40%, 0%);
+        transform: translate(-35%, 0%);
     }
 
     @include respond(ipadpro) {
@@ -577,12 +588,11 @@
     p {
         vertical-align: bottom;
         font-size: $rem1;
-        margin: 0 5px 0 0;
-      
-        @include respond(latop-min) {
+        margin: 0;
+
+        @include respond(ipad) {
             font-size: $rem0_8;
         }
-        
     }
 
     div {
@@ -604,7 +614,7 @@
             }
 
             p {
-                margin: 5px;
+                margin: 0;
                 padding: 0;
                 font-size: $rem1_5;
                 color: #333;
@@ -619,12 +629,12 @@
             span {
                 font-size: $rem0_8;
                 position: relative;
-                top: -10px;
+                top: -20px;
                 color: #333;
 
                 @include respond(latop-min) {
                     font-size: 0.4rem;
-                    
+                    top: -10px;
 
                 }
             }
@@ -633,13 +643,14 @@
 }
 
 .act_old_years {
-
+    // border: solid 1px blue;
     position: relative;
     background-image: url(../img/activity/0.blackline.svg);
     max-width: 1200px;
     min-height: 700px;
     padding: 50px;
     margin: 100px auto 0 auto;
+
 
     @include respond(latop-max) {
         max-width: 940px;
@@ -661,12 +672,14 @@
         max-width: 410px;
         margin: 75px auto 0 auto;
         padding: 30px;
+
     }
 
     @include respond(phone) {
         max-width: 320px;
         padding: 30px 15px 30px 20px;
         margin: 50px auto 0 auto;
+
     }
 
     .act_oldink {
@@ -998,7 +1011,7 @@
 }
 
 .act_oldsongbox {
-
+    // border: solid 1px blue;
     max-width: 1200px;
     font-size: 0;
     padding-bottom: 100px;
@@ -1034,10 +1047,12 @@
 }
 
 .act_oldTop {
+    // border: solid 1px blue;
     text-align: center;
     max-width: 1200px;
     margin: 50px auto 0px auto;
     min-height: 550px;
+    vertical-align: top;
 
     @include respond(latop-max) {
         max-width: 940px;
@@ -1095,6 +1110,7 @@
         margin: 0 20px;
         display: inline-block;
         font-size: 0;
+        vertical-align: top;
 
         @include respond(latop-max) {
             width: 200px;
@@ -1206,6 +1222,7 @@
             height: 250px;
             margin: 0;
             position: relative;
+            vertical-align: top;
 
             @include respond(latop-max) {
                 width: 200px;
@@ -1285,11 +1302,12 @@
 }
 
 .act_oldAll {
-
+    // border: solid 1px blue;
     text-align: center;
     width: 100%;
     max-width: 1200px;
     margin: 50px auto 0px auto;
+    vertical-align: top;
 
     @include respond(latop-max) {
         max-width: 940px;
@@ -1459,6 +1477,7 @@
             height: 200px;
             margin: 0;
             position: relative;
+            vertical-align: top;
 
             @include respond(latop-max) {
                 width: 150px;
@@ -1527,21 +1546,20 @@
 }
 
 
-
-
-
 .act_now-year {
-
+   
     position: relative;
     max-width: 1200px;
     width: 100%;
     min-height: 700px;
     padding: 50px;
     margin: 150px auto 0 auto;
+    overflow: hidden;
 
     @include respond(latop-max) {
         max-width: 940px;
         margin: 100px auto 0 auto;
+
 
     }
 
@@ -1553,8 +1571,8 @@
 
     @include respond(ipadpro) {
         margin: 50px auto 0 auto;
-        padding: 100px 40px 40px;
-        max-width: 650px;
+        padding: 100px 20px 20px;
+        max-width: 575px;
         min-height: 750px;
     }
 
@@ -1572,6 +1590,7 @@
 
     div {
         width: 50%;
+       
 
         @include respond(ipadpro) {
             width: 90%;
@@ -1690,7 +1709,7 @@
     position: absolute;
     top: 10%;
     right: 2%;
-
+   
     @include respond(latop-max) {
         top: 20%;
         right: 2%;
@@ -1699,7 +1718,6 @@
 
 
     @include respond(latop-min) {
-        top: 20%;
         right: 2%;
 
     }
@@ -1708,6 +1726,7 @@
         position: static;
         position: relative;
         top: 50px;
+        left: 5%;
 
 
     }
@@ -1731,6 +1750,7 @@
         margin: auto auto;
         // top: 30%;
         // left: 0;
+      
 
         @include respond(latop-max) {
             width: 400px;
@@ -1743,14 +1763,14 @@
             width: 400px;
             height: 408px;
 
+
         }
 
         @include respond(ipadpro) {
             position: static;
             width: 400px;
             height: 408px;
-
-            margin: 0 20px 0 auto;
+            margin: 0 auto;
 
         }
 
@@ -1780,6 +1800,7 @@
         z-index: 1;
         width: 800px;
         height: 600px;
+      
 
         @include respond(latop-max) {
             width: 600px;
@@ -1790,29 +1811,29 @@
         }
 
         @include respond(latop-min) {
-            width: 600px;
+            width: 500px;
             height: 450px;
             bottom: 5%;
             left: -20%;
         }
 
         @include respond(ipadpro) {
-            left: 0%;
+            left: 1%;
             z-index: -1;
         }
 
         @include respond(ipad) {
-            width: 500px;
+            width: 425px;
             height: 350px;
-            left: -25%;
+            left: -15%;
 
         }
 
         @include respond(phone) {
-            width: 500px;
+            width: 470px;
             height: 370px;
-            left: -30%;
-            top: 50px;
+            left: -25%;
+            top: 75px;
         }
 
 
@@ -1827,14 +1848,15 @@
 }
 
 #act_Now-Sign-up {
-
+  
     max-width: 1200px;
     width: 100%;
     min-height: 850px;
     padding: 50px;
     margin: 100px auto 150px auto;
     position: relative;
-
+    z-index: 1;
+    // overflow: hidden;
 
     @include respond(latop-max) {
         margin: 0px auto;
@@ -1846,6 +1868,7 @@
         max-width: 750px;
         padding: 0px;
         min-height: 700px;
+
 
     }
 
@@ -1899,7 +1922,7 @@
         text-align: right;
         top: 20px;
         left: 10px;
-
+      
 
         @include respond(latop-max) {
             min-width: 200px;
@@ -1914,6 +1937,7 @@
 
         @include respond(phone) {
             width: 100%;
+
         }
 
         .act_now-marry {
@@ -1947,46 +1971,47 @@
         }
 
         .act_now-marry-ink {
+         
             width: 1200px;
             height: 850px;
             position: absolute;
             transform: rotate(-2deg);
             z-index: -1;
             top: -25%;
+            left: -10%;
 
             @include respond(latop-max) {
                 width: 850px;
                 height: 600px;
                 top: -20%;
-                left: -40%;
+                left: -3%;
             }
 
             @include respond(latop-min) {
                 top: -25%;
-                left: -60%;
+                left: -0%;
+                width: 700px;
             }
 
             @include respond(ipadpro) {
-                width: 750px;
+                width: 600px;
                 height: 400px;
                 top: 10%;
-                left: -60%;
-
-
+                left: -20%;
             }
 
             @include respond(ipad) {
-                width: 450px;
+                width: 400px;
                 height: 300px;
                 top: 10%;
-                left: -50%;
+                left: -29%;
             }
 
             @include respond(phone) {
-                width: 500px;
-                height: 350px;
+                width: 320px;
+                height: 275px;
                 top: 10%;
-                left: -50%;
+                left: -1%;
             }
 
 
@@ -2001,6 +2026,7 @@
 }
 
 #act_Now-Sign-up {
+
 
     article {
 
@@ -2021,6 +2047,7 @@
         top: 20%;
         right: 0%;
         text-align: center;
+        z-index: 1;
 
         @include respond(latop-min) {
             top: 15%;
@@ -2041,7 +2068,6 @@
             font-size: 0;
             width: 90%;
             margin: 0 10px 0 auto;
-            overflow: hidden;
             padding: 10px;
             text-align: left;
 
@@ -2079,6 +2105,7 @@
                 width: 100%;
                 margin: 5px auto;
                 text-align: left;
+                font-weight: normal;
 
                 @include respond(latop-min) {
 
@@ -2118,6 +2145,7 @@
                 padding: 0 0 10px 5px;
                 text-align: left;
                 width: 95%;
+                font-weight: normal;
 
 
                 @include respond(ipadpro) {
@@ -2148,23 +2176,27 @@
                 }
 
                 .act_Sign-up-song-name {
-
                     border: 1px #d0d6d6 solid;
                     background-color: #d0d6d6;
                     width: 100%;
                     height: 30px;
                     overflow: hidden;
+                    vertical-align: top;
+                    margin: 0;
+                    padding: 0;
 
                 }
 
                 .act_Sign-up-song-information {
                     margin: 0;
+                    padding: 0;
                     border: 1px #d0d6d6 solid;
                     background-color: #d0d6d6;
                     width: 100%;
-                    overflow: hidden;
-
-
+                    overflow:hidden;
+                    vertical-align: top;
+                    height: 100px;
+                    resize:none;
                 }
 
                 .act_showSignUpImg {
@@ -2175,9 +2207,9 @@
                     text-align: center;
                     font-size: $rem1;
                     margin: 0 0 10px 0;
+                    padding: 0;
                     position: relative;
                     left: 0px;
-
 
                     @include respond(latop-max) {
                         height: 75px;
@@ -2226,12 +2258,13 @@
 
             .act_showSong-information {
                 font-size: $rem1;
-                // border: 1px #d0d6d6 solid;
+                border: 1px #d0d6d6 solid;
                 margin: 0;
                 text-align: left;
                 padding: 2px 0;
                 width: 100%;
-                overflow: hidden;
+                overflow: auto;
+                max-height: 100px;
                 word-break: break-all;
             }
 
@@ -2244,12 +2277,14 @@
 
 
 #act_Now-Vote {
+
     text-align: left;
     max-width: 1200px;
     width: 100%;
     margin: 150px auto 0px auto;
     padding-top: 50px;
     position: relative;
+   
 
     @include respond(latop-max) {
         height: 300px;
@@ -2298,6 +2333,7 @@
     }
 
     .act_Now-Vote-content {
+      
         min-height: 400px;
         max-width: 1200px;
         padding: 50px;
@@ -2377,6 +2413,11 @@
 
             }
 
+            @include respond(ipad) {
+                left: 0px;
+
+            }
+
             h3 {
                 display: inline-block;
                 margin: 0;
@@ -2416,6 +2457,16 @@
             z-index: -1;
             width: 50%;
             height: 125%;
+           
+
+            @include respond(latop-max) {
+                width: 80%;
+                right: 0%;
+            }
+
+            @include respond(latop-min) {
+                right: 0%;
+            }
 
             @include respond(ipadpro) {
                 width: 80%;
@@ -2428,6 +2479,12 @@
                 bottom: -10%;
             }
 
+            @include respond(phone) {
+                width: 100%;
+                height: 40%;
+                bottom: -10%;
+            }
+
         }
 
 
@@ -2437,7 +2494,7 @@
 
 
     section {
-
+      
         max-width: 1200px;
         width: 100%;
         padding: 0 0 100px 0px;
@@ -2513,6 +2570,7 @@
                 margin: 0 auto 0 10px;
                 display: inline-block;
                 vertical-align: bottom;
+                min-width: 60px;
 
                 span {
                     font-size: $rem0_8;
@@ -2580,7 +2638,7 @@
 
             }
 
-          button {
+            button {
                 display: inline-block;
                 @include butttonn02();
                 margin: 0 0 10px -30px;

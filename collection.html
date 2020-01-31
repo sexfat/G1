@@ -10,7 +10,6 @@
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.11.2/css/all.min.css" />
   <script src="https://cdnjs.cloudflare.com/ajax/libs/vue/2.6.10/vue.js"></script>
   <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
-  <script src="./js/player.js"></script>
   <script src="./js/public.js"></script>
 </head>
 <body class="collectionbody">
@@ -19,6 +18,7 @@
     <div id="nav_app">
       <!-- nav_bar start -->
       <div class="nav_bar flexbox">
+<<<<<<< HEAD
           <div class="hamburger" @click="hamburger_click">
               <div class="hamburger-box">
                   <div class="hamburger-inner"></div>
@@ -49,6 +49,30 @@
               <a href="./index.html">
                   <div class="logo"></div>
                   <div class="finger"></div>
+=======
+        <div class="hamburger" @click="hamburger_click">
+          <div class="hamburger-box">
+            <div class="hamburger-inner"></div>
+          </div>
+        </div>
+        <div class="mobile_list" @click="stopPropagation">
+          <div class="paint_border"></div>
+          <ul>
+            <li class="REMIX flexbox">
+              <a href="./remix.html">
+              </a>
+            </li>
+            <li class="COLLECTION flexbox">
+              <a href="./collection.html">
+              </a>
+            </li>
+            <li class="ACTIVITY flexbox">
+              <a href="./activity.html">
+              </a>
+            </li>
+            <li class="LIBRARY flexbox">
+              <a href="./library.html">
+>>>>>>> 0314f3b0329fceb310a2e97643c853bebef6d300
               </a>
           </div>
           <ul class="main_list flexbox">
@@ -69,6 +93,7 @@
                   </a>
               </li>
           </ul>
+<<<<<<< HEAD
           <div class="search_bt" @click="search_bt_click">
               <a href="#"></a>
           </div>
@@ -76,8 +101,42 @@
               <input class="search" type="text" />
               <div class="tag_container">
               </div>
+=======
+        </div>
+        <div class="logo_container">
+          <a href="./index.html">
+            <div class="logo"></div>
+            <div class="finger"></div>
+          </a>
+        </div>
+        <ul class="main_list flexbox">
+          <li class="REMIX flexbox">
+            <a href="./remix.html">
+            </a>
+          </li>
+          <li class="COLLECTION flexbox">
+            <a href="./collection.html">
+            </a>
+          </li>
+          <li class="ACTIVITY flexbox">
+            <a href="./activity.html">
+            </a>
+          </li>
+          <li class="LIBRARY flexbox">
+            <a href="./library.html">
+            </a>
+          </li>
+        </ul>
+        <div class="search_bt" @click="search_bt_click">
+          <a href="#"></a>
+        </div>
+        <div class="search_bar" @click="stopPropagation">
+          <input class="search" type="text" />
+          <div class="tag_container">
+>>>>>>> 0314f3b0329fceb310a2e97643c853bebef6d300
           </div>
 
+<<<<<<< HEAD
           <div class="mem_bt" @click="mem_bt_click" v-if="mem_login == true">
               <a href="#"></a>
           </div>
@@ -120,6 +179,50 @@
                   </li>
               </ul>
           </div>
+=======
+        <div class="mem_bt" @click="mem_bt_click" v-if="mem_login == true">
+          <a href="#"></a>
+        </div>
+        <div class="login_bt" v-if="mem_login == false">
+          <a href="./login.html"></a>
+        </div>
+        <div class="mem_list" @click="stopPropagation">
+          <div class="paint_border"></div>
+          <ul>
+            <li>
+              <a href="./profile.html">
+                <h4>Profile</h4>
+              </a>
+            </li>
+            <li>
+              <a href="./songsadded.html">
+                <h4>
+                  Song Upload
+                  <br />&amp; Remove
+                </h4>
+              </a>
+            </li>
+            <li>
+              <a href="./store.html">
+                <h4>
+                  Store Value
+                  <br />&amp;Store Record
+                </h4>
+              </a>
+            </li>
+            <li>
+              <a href="./donate.html">
+                <h4>Donate Record</h4>
+              </a>
+            </li>
+            <li @click="logout">
+              <a href="#">
+                <h4>Log Out</h4>
+              </a>
+            </li>
+          </ul>
+        </div>
+>>>>>>> 0314f3b0329fceb310a2e97643c853bebef6d300
       </div>
       <!-- nav_bar end -->
   </div>
@@ -129,12 +232,12 @@
       <audio src="" id="audioPlayer"></audio>
       <div class="player_s">
         <div class="info">
-          <div class="cover"><img src="./img/library/cover1.jpg"></div>
+          <div class="cover"><img src="./img/collection/album1.jpg"></div>
           <div class="songInfo">
             <span class="name">Lucid Dreamer</span>
             <span class="creator">Spazz Cardigan</span>
           </div>
-          <div class="heart becomeRed"><i class="fas fa-heart"></i></div>
+          <div class="heart"><img src="./img/collection/grayheart.png" alt=""></div>
           <div class="clearfix"></div>
         </div>
   
@@ -167,22 +270,33 @@
             <div class="clearfix"></div>
           </div>
         </div>
+<<<<<<< HEAD
+=======
+
+>>>>>>> 0314f3b0329fceb310a2e97643c853bebef6d300
         <div class="expand" id="expand"><i class="fas fa-expand"></i></div>
         <div class="clearfix"></div>
       </div>
+
       <!-- 詳細版 -->
       <div class="player_b">
         <div class="left">
+<<<<<<< HEAD
           <div class="songCover">
             <div class="coverImg">
               <img src="./img/library/cover1.jpg">
+=======
+          <div class="info">
+            <div class="songCover">
+              <img src="./img/collection/album1.jpg">
+>>>>>>> 0314f3b0329fceb310a2e97643c853bebef6d300
               <div class="coverRec"><img src="./img/library/player_record.png" alt=""></div>
             </div>
           </div>
           <div class="songInfo">
             <div class="name">Lucid Dreamer</div>
             <div class="creator">Spazz Cardigan</div>
-            <div class="heart becomeRed"><i class="fas fa-heart"></i></div>
+            <div class="heart"><img src="./img/collection/grayheart.png" alt=""></div>
             <div class="clearfix"></div>
           </div>
           <div class="controlPanel">
@@ -216,24 +330,30 @@
           </div>
           <div class="pushBtn"></div>
         </div>
+
         <div class="right">
           <div class="pushBtn"></div>
           <div class="listTitle">
             <div class="listCover">
-              <img src="./img/library/list_pic1.jpg"></div>
+              <img src="./img/library/list_pic_no.jpg"></div>
             <div class="listName">
-              <h2>peaceful list</h2>
-              <span>8 songs</span>
+              <h2>Total songs</h2>
+              <span>0 songs</span>
             </div>
             <button class="selectBtn" id="selectBtn">SELECT</button>
             <div class="clearfix"></div>
           </div>
           <div class="list">
-            <ul>
-              <li>
+            <ul class="chooseList">
+              <!-- <li>
                 <div class="songCover">
+<<<<<<< HEAD
                   <img src="./img/library/cover1.jpg" alt="">
                   <div class="listPlay"><i class="fas fa-play"></i></div>
+=======
+                  <img src="./img/collection/album1.jpg" alt="">
+                  <div class="listPlay nowlistening"><img src="./img/library/coverPlay-s.png"></div>
+>>>>>>> 0314f3b0329fceb310a2e97643c853bebef6d300
                 </div>
                 <div class="listSongInfo">
                   <div class="name">
@@ -242,6 +362,7 @@
                   </div>
                 </div>
                 <div class="totalTime">3:11</div>
+<<<<<<< HEAD
                 <div class="heart becomeRed"><i class="fas fa-heart"></i></div>
                 <div class="clearfix"></div>
               </li>
@@ -336,24 +457,41 @@
                 <div class="clearfix"></div>
               </li>
   
+=======
+                <div class="heart becomeRed"><img src="./img/collection/redheart.png"></div>
+                <div class="clearfix"></div>
+              </li> -->
+>>>>>>> 0314f3b0329fceb310a2e97643c853bebef6d300
             </ul>
           </div>
         </div>
         <div class="close" id="closePlayer"><i class="fas fa-times"></i></div>
+<<<<<<< HEAD
         <div class="clearfix"></div> 
         <!-- 撥放器燈箱 -->
         <div class="lightCover">
           <div class="lightbox_s" id="myAllList">
+=======
+        <div class="clearfix"></div>
+
+        <!-- 撥放器燈箱 -->
+        <div class="lightCover">
+          <div class="lightbox_s allmylist" id="myAllList">
+>>>>>>> 0314f3b0329fceb310a2e97643c853bebef6d300
             <div class="closeLight"><i class="fas fa-times"></i></div>
-            <h3>My List</h3>
+            <h4>My List</h4>
             <div class="lightSelectMenu">
               <ul>
-                <li>Liked songs</li>
-                <li>Peaceful songs</li>
-                <li>party</li>
+                <!-- <li class="chooseList">Liked songs</li> -->
               </ul>
             </div>
-            <button class="">ok</button>
+            <input type="hidden" name="plistName" id="plistName">
+            <button id="mylistOK">ok</button>
+          </div>
+          <div class="lightbox_s" id="playerAlert">
+            <div class="closeLight"><i class="fas fa-times"></i></div>
+            <h4></h4>
+            <button>ok</button>
           </div>
         </div>
       </div>
@@ -367,7 +505,11 @@
   </header>
   <section class="collectionsection">
     <div class="collectionradio">
+<<<<<<< HEAD
       <div class="collgreenradio">
+=======
+      <div class="collgreenradio" id="eyesball">
+>>>>>>> 0314f3b0329fceb310a2e97643c853bebef6d300
         <img src="./img/collection/openeye.png" alt="">
       </div>
       <div class="collpinkradio">
@@ -380,6 +522,7 @@
     </div>
     <div id="collectiontabcontainer">
       <ul class="collectiontabtitle">
+<<<<<<< HEAD
         <li><a class="tabtitlechange1" href="#tab01"><img src="./img/collection/tabblue.png" alt=""><span> All</span></a></li>
         <li><a class="tabtitlechange2" href="#tab02"><img src="./img/collection/tabyellow.png" alt=""><span> Trap</span></a></li>
         <li><a class="tabtitlechange3" href="#tab03"><img src="./img/collection/tabyellow.png" alt=""><span> House</span></a></li>
@@ -389,6 +532,21 @@
         <button id="listAllPlay" class="circlebtn"><i class="fas fa-play"></i></button>
         play all
       </div>
+=======
+        <li><a class="tabtitlechange1" href="#tab01">
+            <img src="./img/collection/tabblue.png" alt="">
+            <span>All</span></a></li>
+        <li><a class="tabtitlechange2" href="#tab02">
+            <img src="./img/collection/tabyellow.png" alt="">
+            <span>Trap</span></a></li>
+        <li><a class="tabtitlechange3" href="#tab03">
+            <img src="./img/collection/tabyellow.png" alt="">
+            <span>House</span></a></li>
+        <li><a class="tabtitlechange4" href="#tab04">
+            <img ssrc="./img/collection/tabyellow.png" alt="">
+            <span>Favorite</span></a></li>
+      </ul>
+>>>>>>> 0314f3b0329fceb310a2e97643c853bebef6d300
       <div id="tab01" class="collectiontabinner">
         <section class="collectionalbumsection1">
         </section>
@@ -412,14 +570,105 @@
 </body>
 <!-- the script of myself -->
 <script>
+<<<<<<< HEAD
   // CHANGE HEART
     $('.collectionalbumsection1').on('click','.collheart', function(){
       if ($(this).hasClass('becomeRed')) {
       $(this).html('<img src="./img/collection/grayheart.png">').removeClass('becomeRed');
       } else {
       $(this).html('<img src="./img/collection/redheart.png">').addClass('becomeRed');
+=======
+  let collheartall = [];
+  let colllist = [];
+  let searchURL1 = window.location.href;
+  searchURL1 = searchURL1.substring(1, searchURL1.length);
+  let targetPageId = searchURL1.split("#")[1];
+  //PLAY AND PASUSE INTO PLAYER(from player.js)
+  $(".collectionalbumsection1").on('click', '.collplayer img', function () {
+    nowPlaying = $(this).parent().parent().parent().index();
+    myPlaylist = colllist;
+    $(".collectionalbumsection1 .collplayer img").not(this).removeClass("nowlistening").attr('src', "./img/library/coverPlay-b.png");
+    if ($(this).hasClass('nowlistening')) {
+      if (playStatus) {
+        $(this).attr('src', "./img/library/coverPlay-b.png");
+        isPlaying(true);
+      } else {
+        $(this).attr('src', "./img/library/coverPause-b.png");
+        isPlaying(false);
+      }
+    } else {
+      $("#player audio").attr("src", myPlaylist[nowPlaying].song_addr);
+      $(this).attr('src', "./img/library/coverPause-b.png");
+      isPlaying(false);
+      $(this).addClass("nowlistening");
+    }
+    playerAuto = false;
+    heartStatus(myPlaylist[nowPlaying].song_name);
+  });
+
+  //FAV STATUS
+  function favorStatus(favorSong) {
+    let xhr = new XMLHttpRequest();
+    xhr.onload = function () {
+      if (xhr.status == 200) {
+        if (xhr.responseText == 'Asuccess') {
+          alert("Success to add");
+        } else if (xhr.responseText == 'Dsuccess') {
+          alert("Success to cancel");
+        } else if (xhr.responseText == 'Afail') {
+          alert("Fail to add");
+        } else if (xhr.responseText == 'Dfail') {
+          alert("Fail to cancel");
+        }
+      } else {
+        alert(xhr.statusText);
+      }
+      // console.log(xhr.responseText);
+    };
+    xhr.open("post", "./phps/LibraryHeart.php", true);
+    xhr.setRequestHeader('content-type', 'application/x-www-form-urlencoded');
+    let data_info = `favorStatus=${$('#favorStatus').val()}&favorSong=${favorSong}`;
+    xhr.send(data_info);
+  }
+
+  //LOAD COLL HEART
+  function CollHeart() {
+    let xhr = new XMLHttpRequest();
+    xhr.onload = function () {
+      collheartall = JSON.parse(xhr.responseText);
+      showCollHeart();
+    };
+    xhr.open("get", "./phps/collGetHeart.php", true);
+    xhr.send(null);
+  }
+  //FAV DATA
+  $('.collectionalbumsection1').on('click', '.collheart img', function () {
+    let heartsongname = $(this).parent('.collheart').next('p').children('.collsongnamea').text(); //song_name
+    // console.log(heartsongname);
+    let totalcollInd = getSongIndex(heartsongname); // let song_name take array
+    let favsongnoInd = colllist[totalcollInd].song_no; //song_no
+    if (!member['mem_no']) {
+      alert("Please login.");
+    } else {
+      if ($(this).hasClass('becomeRed')) {
+        $('#favorStatus').val('gray');
+        $(this).attr('src', './img/collection/grayheart.png').removeClass('becomeRed');
+      } else {
+        $('#favorStatus').val('red');
+        $(this).attr('src', './img/collection/redheart.png').addClass('becomeRed');
+      }
+      favorStatus(favsongnoInd);
+>>>>>>> 0314f3b0329fceb310a2e97643c853bebef6d300
     }
   });
+  function getSongIndex(name) {
+    let songName = [];
+    for (let i = 0; i < colllist.length; i++) {
+      songName.push(colllist[i].song_name);
+    }
+    let songind = songName.indexOf(name);
+    return songind;
+  }
   // PLAY BUTTON
   $('.collectionalbumsection1').on('mouseover','.collalbumpic', function(){
     if($(this).find('.collplayer').css("display", "none")){
@@ -449,12 +698,13 @@
         $('.collectionalbumsection1').append(`
         <div class="collectionsinglecover">
           <div class="collalbumpic sampleblum12">
-            <div class="collplayer"><a href=""><img src="./img/library/coverPlay-b.png" alt=""></a></div>
+            <div class="collplayer"><img src="./img/library/coverPlay-b.png" alt=""></div>
           </div>
           <div class="collheart"><img src="./img/collection/grayheart.png" alt=""></div>
-          <p><a class="collsongnamea" href="./songinfo.html">${colllist[i].song_name}</a><br>
+          <p><a class="collsongnamea" href="./songinfo.html?song_no=${colllist[i].song_no}">${colllist[i].song_name}</a><br>
             <span>${colllist[i].mem_name}</span>
           </p>
+<<<<<<< HEAD
         </div>`);
         $(`.collectionsinglecover:nth-of-type(${i+1}) .sampleblum12`).css('background-image',`url(${colllist[i].song_pic})`);
       }
@@ -517,6 +767,71 @@
       $(this).addClass('active').siblings('.active').removeClass('active');
     });
   });
+=======
+        </div>`)
+      $(`.collectionsinglecover:nth-of-type(${i + 1}) .sampleblum12`).css('background-image',
+        `url(${colllist[i].song_pic})`);
+    }
+    // console.log(colllist[2].song_no);
+  }
+  //READ MEMBER FAV STATUS
+  function showCollHeart() {
+    for (let i = 0; i < colllist.length; i++) {
+      for (let j = 0; j < collheartall.length; j++) {
+        if (colllist[i].song_no == collheartall[j].song_no) {
+          $(`.collectionsinglecover:nth-of-type(${i + 1}) .collheart img`).replaceWith(
+            '<img class="becomeRed" src="./img/collection/redheart.png" alt="">');
+        }
+      }
+    }
+  }
+  //CLICK COLL TAB DATA
+  $('.tabtitlechange1').click(CollListFav1);
+  function CollListFav1() {
+    let xhr = new XMLHttpRequest();
+    xhr.open("get", "./phps/allCollection.php", true);
+    xhr.send(null);
+    xhr.onload = function () {
+      colllist = JSON.parse(xhr.responseText);
+      findCollList();
+      CollHeart();
+    };
+  };
+
+  $('.tabtitlechange4').click(CollListFav4);
+  function CollListFav4() {
+    let xhr = new XMLHttpRequest();
+    xhr.open("get", "./phps/favCollection.php", true);
+    xhr.send(null);
+    xhr.onload = function () {
+      colllist = JSON.parse(xhr.responseText);
+      findCollList();
+      CollHeart();
+    };
+  };
+  $('.tabtitlechange3').click(CollListFav3);
+  function CollListFav3() {
+    let xhr = new XMLHttpRequest();
+    xhr.open("get", "./phps/houseCollection.php", true);
+    xhr.send(null);
+    xhr.onload = function () {
+      colllist = JSON.parse(xhr.responseText);
+      findCollList();
+      CollHeart();
+    };
+  };
+  $('.tabtitlechange2').click(CollListFav2);
+  function CollListFav2() {
+    let xhr = new XMLHttpRequest();
+    xhr.open("get", "./phps/trapCollection.php", true);
+    xhr.send(null);
+    xhr.onload = function () {
+      colllist = JSON.parse(xhr.responseText);
+      findCollList();
+      CollHeart();
+    };
+  };
+>>>>>>> 0314f3b0329fceb310a2e97643c853bebef6d300
   //TAB CHNAGE COLOR
   $('.collectiontabtitle li a').click(function () {
     $(this).children('img').attr("src","./img/collection/tabblue.png");
@@ -527,6 +842,7 @@
       $('.collpinkradio').find('img').attr("src","./img/collection/closeeye.png");
       $('.collblueradio').find('img').attr("src","./img/collection/closeeye.png");
     }
+<<<<<<< HEAD
     else if(lia == 1){
       $('.collpinkradio').find('img').eq(0).attr("src","./img/collection/openeye.png");
       $('.collgreenradio').find('img').attr("src","./img/collection/closeeye.png");
@@ -543,6 +859,67 @@
       $('.collgreenradio').find('img').attr("src","./img/collection/closeeye.png");
       $('.collpinkradio').find('img').attr("src","./img/collection/closeeye.png");
     }
+=======
+  });
+  function CollListYa() {
+    let xhr = new XMLHttpRequest();
+    xhr.onload = function () {
+      colllist = JSON.parse(xhr.responseText);
+      findCollList();
+    };
+    xhr.open("get", "./phps/allCollection.php", true);
+    xhr.send(null);
+  }
+  $(function () {
+    if (targetPageId == 'tab02') {
+      CollListFav2();
+      $('.collectiontabtitle li a').children('img').attr("src", "./img/collection/tabyellow.png");
+      $('.collectiontabtitle li:nth-of-type(2) a').children('img').attr("src", "./img/collection/tabblue.png");
+      $('.collpinkradio').find('img').eq(0).attr("src", "./img/collection/openeye.png");
+      $('.collgreenradio').find('img').attr("src", "./img/collection/closeeye.png");
+      $('.collpinkradio').find('img').eq(1).attr("src", "./img/collection/closeeye.png");
+      $('.collblueradio').find('img').attr("src", "./img/collection/closeeye.png");
+    } else if (targetPageId == 'tab03') {
+      CollListFav3();
+      $('.collectiontabtitle li a').children('img').attr("src", "./img/collection/tabyellow.png");
+      $('.collectiontabtitle li:nth-of-type(3) a').children('img').attr("src", "./img/collection/tabblue.png");
+      $('.collpinkradio').find('img').eq(1).attr("src", "./img/collection/openeye.png");
+      $('.collgreenradio').find('img').attr("src", "./img/collection/closeeye.png");
+      $('.collpinkradio').find('img').eq(0).attr("src", "./img/collection/closeeye.png");
+      $('.collblueradio').find('img').attr("src", "./img/collection/closeeye.png");
+    } else if (targetPageId == 'tab04') {
+      CollListFav4();
+      $('.collectiontabtitle li a').children('img').attr("src", "./img/collection/tabyellow.png");
+      $('.collectiontabtitle li:nth-of-type(4) a').children('img').attr("src", "./img/collection/tabblue.png");
+      $('.collblueradio').find('img').attr("src", "./img/collection/openeye.png");
+      $('.collgreenradio').find('img').attr("src", "./img/collection/closeeye.png");
+      $('.collpinkradio').find('img').attr("src", "./img/collection/closeeye.png");
+    } else {
+      CollListYa();
+      CollHeart();
+      $('.collectiontabtitle li a').children('img').attr("src", "./img/collection/tabyellow.png");
+      $('.collectiontabtitle li:nth-of-type(1) a').children('img').attr("src", "./img/collection/tabblue.png");
+      $('.collgreenradio').find('img').attr("src", "./img/collection/openeye.png");
+      $('.collpinkradio').find('img').attr("src", "./img/collection/closeeye.png");
+      $('.collblueradio').find('img').attr("src", "./img/collection/closeeye.png");
+    }
+
+    var $li = $('ul.motabtitle li');
+    $($li.eq(0).addClass('active').find('a').attr('href')).siblings('.motabinner').hide();
+    $li.click(function () {
+      $($(this).find('a').attr('href')).show().siblings('.motabinner').hide();
+      $(this).addClass('active').siblings('.active').removeClass('active');
+    });
+    // TAB CONTENT CHANGE
+    var $li = $('ul.collectiontabtitle li');
+    $($li.eq(0).addClass('active').find('a').attr('href')).siblings('.collectiontabinner').hide();
+    $li.click(function () {
+      $($(this).find('a').attr('href')).show().siblings('.collectiontabinner').hide();
+      $(this).addClass('active').siblings('.active').removeClass('active');
+    });
+    // CollListYa();
+    // CollHeart();
+>>>>>>> 0314f3b0329fceb310a2e97643c853bebef6d300
   });
   $(function(){
     var $li = $('ul.motabtitle li');
@@ -555,4 +932,6 @@
    });
 </script>
 <!-- the end of my script -->
+<script src="./js/player.js"></script>
+
 </html>

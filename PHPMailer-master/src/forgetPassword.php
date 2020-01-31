@@ -41,8 +41,8 @@ try {
         // $mail->SMTPDebug = 0;
         
         //Recipients
-        $mail->setFrom('fifichin926@gmail.com', 'SOUNDWAVE');
-        $mail->addAddress('fifichin926@gmail.com');
+        $mail->setFrom('dd104g1@gmail.com', 'SOUNDWAVE');
+        $mail->addAddress('dd104g1@gmail.com');
         $mail->charSet = 'utf-8';
         // Content
         $mail->Subject = 'SOUNDWAVE password comfirmation';

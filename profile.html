@@ -6,6 +6,7 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <meta http-equiv="X-UA-Compatible" content="ie=edge">
   <title>Document</title>
+  <link rel="Shortcut Icon" type="image/x-icon" href="./img/collection/smalllogo.ico" />
   <link rel="stylesheet" href="./css/main.css">
   <link rel="stylesheet" href="./css/profile.css">
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.11.2/css/all.min.css" />
@@ -127,7 +128,7 @@
       <div class="profile_container flexbox">
         <div class="profile_leftbox">
           <div class="profile_mem_img">
-            <div class="edit">Edit</div>
+            <div class="edit" @click="photo_edit_click">Edit</div>
           </div>
         </div>
         <div class="profile_rightbox">
@@ -175,6 +176,26 @@
         </div>
       </div>
     </div>
+    <div class="profile_lightbox" v-if="photo_edit == true">
+      <div class="photo_edit_box">
+        <label class="photo_preview" for="upfile">
+          <input id="upfile" type="file" name="upfile" accept="image/*" @change="photo_upfile">
+          <span class="plus1"></span>
+          <span class="plus2"></span>
+        </label>
+        <p>
+          Recommended image size is 300px &times 300px.
+        </p>
+        <input class="cancel" type="button" value="cancel" @click="cancel_click">
+        <input class="confirm" type="button" value="confirm" @click="upfile_confirm">
+      </div>
+    </div>
+    <div class="box_cover" v-if="my_alert == true">
+      <div class="remind_box">
+        <p>dsfasdfsd</p>
+        <input class="OK" type="button" value="OK" @click="my_alert = false">
+      </div>
+    </div>
   </div>
 
   <script>
@@ -188,19 +209,23 @@
         mem_login: false,
 
         // profile
-        onresize: false,
+        photo_edit: false,
         name_edit: false,
         psw_edit: false,
-        warn: 'test',
-        // input_name,
-        // input_psw,
-        // input_confirm_psw,
+        my_alert: false,
+        warn: '',
 
+        test: true,
+        // 會員資料
+        mem_no: Number,
         account: '',
         mem_name: '',
         password: '',
         point: '',
         img_src: '',
+
+        // 上傳圖片
+        file: 'error',
       },
       mounted() {
         document.querySelector('.mem_list ul').setAttribute('style', `height: ${window.innerHeight}px;`);
@@ -223,6 +248,7 @@
             .querySelector(".mobile_list")
             .setAttribute("style", "transform: translateX(-270px); filter: opacity(0);");
         });
+        // nav_bar end
       },
       methods: {
         // nav_bar
@@ -330,11 +356,14 @@
             document
               .querySelector(".mem_list")
               .setAttribute("style", "transform: translateX(270px); filter: opacity(0);");
+            let href = location.href;
+            if (href.lastIndexOf('profile') != -1 || href.lastIndexOf('songsadded') != -1 || href.lastIndexOf('store') != -1 || href.lastIndexOf('donate') != -1) {
+              location.href = 'http://localhost/index.html'
+            }
           }
-          xhr.open("get", "./php/logout.php", true);
+          xhr.open("get", "./phps/logout.php", true);
           xhr.send(null)
         },
-
         // nav_bar end
 
         // profile start
@@ -378,22 +407,115 @@
           }, 400)
         },
 
+        photo_edit_click() {
+          this.photo_edit = true;
+        },
+
+        photo_upfile(e) {
+          this.file = e.target.files[0];
+          let reader = new FileReader();
+          reader.addEventListener('load', (e) => {
+            if (this.file.type.indexOf('image') == -1) {
+              this.file = 'error';
+              document.querySelector('.photo_edit_box p').innerHTML = 'The file you uploaded is not an image. Please upload again.'
+              document.querySelector('.photo_edit_box p').style.color = 'red';
+            } else {
+              document.querySelector('.photo_edit_box p').innerHTML = 'Recommended image size is 300px &times 300px.'
+              document.querySelector('.photo_preview').style.background = `url(${reader.result})`;
+              document.querySelector('.photo_preview').style.backgroundSize = `cover`;
+              document.querySelector('.plus1').style.display = 'none';
+              document.querySelector('.plus2').style.display = 'none';
+            }
+          })
+          reader.readAsDataURL(this.file);
+        },
+
         cancel_click() {
           document.querySelector(`.edit_box`).style.width = `0px`;
-          setTimeout(() => {
-            for (let i = 1; i <= 4; i++) {
-              document.querySelector(`.row${i}`).style.transform = `translateX(0px)`;
-            }
-          }, 300)
           setTimeout(() => {
             this.name_edit = false;
             this.psw_edit = false;
           }, 300)
+          this.photo_edit = false;
+        },
+
+        upfile_confirm() {
+          console.log(this.file == {})
+          if (this.file == 'error') {
+            this.my_alert = true;
+            this.$nextTick(() => {
+              document.querySelector('.remind_box p').innerHTML = 'The file you uploaded is not an image. Please upload again.';
+              document.querySelector('.remind_box p').style.color = 'red';
+            })
+            return;
+          }
+          let form_data = new FormData();
+          form_data.append('upfile', this.file)
+          let xhr = new XMLHttpRequest();
+          xhr.onload = () => {
+            let upload_status = xhr.responseText;
+            this.photo_edit = false;
+            this.my_alert = true;
+            this.$nextTick(() => {
+              document.querySelector('.remind_box p').innerHTML = upload_status;
+            })
+            get_mem_info();
+          }
+          xhr.open("post", "./phps/memPhotoUpload.php", true);
+          xhr.send(form_data);
         },
 
         confirm_click() {
-          edit();
-        }
+          let mem_name, mem_psw, mem_data, file
+          if (this.name_edit == true) {
+            mem_name = document.querySelector('input.name').value;
+          }
+          if (this.psw_edit == true) {
+            mem_psw = document.querySelector('input.psw').value;
+          }
+          if (this.photo_edit == true) {
+            file = this.file;
+          }
+          let xhr = new XMLHttpRequest();
+          xhr.onload = () => {
+            if (xhr.readyState == 4) {
+              if (xhr.status == 200) {
+                get_mem_info();
+                let result = xhr.responseText;
+                document.querySelector(`.edit_box`).style.width = `0px`;
+                setTimeout(() => {
+                  for (let i = 1; i <= 4; i++) {
+                    document.querySelector(`.row${i}`).style.transform = `translateX(0px)`;
+                  }
+                }, 300)
+                setTimeout(() => {
+                  this.name_edit = false;
+                  this.psw_edit = false;
+                }, 300)
+                this.my_alert = true;
+                this.$nextTick(() => {
+                  document.querySelector('.remind_box p').innerHTML = 'Edit success';
+                })
+              } else {
+                alert('Edit fail');
+              }
+            }
+          }
+          xhr.open("post", "./phps/memEdit.php", true);
+          xhr.setRequestHeader("content-type", "application/x-www-form-urlencoded");
+          if (this.name_edit == true) {
+            mem_data = `mem_name=${mem_name}&edit=name`
+          }
+          if (this.psw_edit == true) {
+            mem_data = `mem_psw=${mem_psw}&edit=psw`
+          }
+          if (this.photo_edit == true) {
+            mem_data = `mem_psw=${mem_psw}&edit=photo`
+          }
+
+          xhr.send(mem_data);
+        },
+
       }
     });
     let mem_login = () => {
@@ -406,13 +528,14 @@
           vm.mem_login = false;
         }
       }
-      xhr.open("get", "./php/getLoginInfo.php", true);
+      xhr.open("get", "./phps/getLoginInfo.php", true);
       xhr.send(null);
     }
     let get_mem_info = () => {
       let xhr = new XMLHttpRequest();
       xhr.onload = () => {
         let member = JSON.parse(xhr.responseText);
+        vm.mem_no = member.mem_no;
         vm.account = member.mem_acct;
         vm.mem_name = member.mem_name;
         vm.password = (() => {
@@ -424,8 +547,10 @@
         })();
         vm.point = member.mem_point;
         vm.img_src = member.mem_img;
+        document.querySelector('.profile_mem_img').style.background = `url(../memberRepository/photo/${vm.mem_no}/${vm.img_src})`
+        document.querySelector('.profile_mem_img').style.backgroundSize = 'cover'
       }
-      xhr.open("get", "./php/getMemInfo.php", true);
+      xhr.open("get", "./phps/getMemInfo.php", true);
       xhr.send(null);
     }
 
@@ -456,8 +581,7 @@
               if (!/^(?=.*[0-9])(?=.*[a-zA-Z])[A-Za-z0-9]+$/.test(e.target.value)) {
                 document.querySelector('.warn').innerHTML = 'Password must be at least one number and one letter!'
               } else {
-                console.log(e.target.value == document.querySelector('input.psw').value)
-                if (e.target.value != document.querySelector('input.psw').value){
+                if (e.target.value != document.querySelector('input.psw').value) {
                   document.querySelector('.warn').innerHTML = 'Inconsistent passwords, Please reconfirm!';
                 } else {
                   document.querySelector('.warn').innerHTML = '';
@@ -469,48 +593,7 @@
       }
     }
 
-    let edit = () => {
-      let mem_name, mem_psw, mem_data;
-      if (vm.name_edit == true) {
-        mem_name = document.querySelector('input.name').value;
-      }
-      if (vm.psw_edit == true) {
-        mem_psw = document.querySelector('input.psw').value;
-      }
-      let xhr = new XMLHttpRequest();
-      xhr.onload = () => {
-        if (xhr.readyState == 4) {
-          if (xhr.status == 200) {
-            get_mem_info();
-            let result = xhr.responseText;
-            document.querySelector(`.edit_box`).style.width = `0px`;
-            setTimeout(() => {
-              for (let i = 1; i <= 4; i++) {
-                document.querySelector(`.row${i}`).style.transform = `translateX(0px)`;
-              }
-            }, 300)
-            setTimeout(() => {
-              vm.name_edit = false;
-              vm.psw_edit = false;
-            }, 300)
-            alert(result);
-          } else {
-            alert('some fail');
-          }
-        }
-      }
-      xhr.open("post", "./php/memEdit.php", true);
-      xhr.setRequestHeader("content-type", "application/x-www-form-urlencoded");
-      if (vm.name_edit == true) {
-        mem_data = `mem_name=${mem_name}&edit=name`
-      }
-      if (vm.psw_edit == true) {
-        mem_data = `mem_psw=${mem_psw}&edit=psw`
-      }
-      xhr.send(mem_data);
 
-      console.log(mem_data);
-    };
 
     window.addEventListener('load', () => {
       mem_login();

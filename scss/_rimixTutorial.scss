@@ -167,6 +167,7 @@
   position: fixed;
   right: 10px;
   top: 35%;
+  z-index: 1000;
   cursor: pointer;
   @include respond(ipad) {
     text-align: right;
@@ -251,7 +252,7 @@
     &::before {
       content: "";
       position: absolute;
-      width: 1500px;
+      width: 1600px;
       height: 450px;
       top: 50%;
       right: -100px;
@@ -260,6 +261,7 @@
       background-repeat: no-repeat;
       background-position: right center;
       z-index: -1;
+      pointer-events: auto;
 
       @include respond(ipad) {
         display: none;
@@ -270,7 +272,7 @@
       content: "";
       position: absolute;
       width: 260px;
-      height: 450px;
+      height: 300px;
       top: 50%;
       right: -100px;
       transform: translateY(-50%);
@@ -279,6 +281,7 @@
       background-repeat: no-repeat;
       background-position: right center;
       z-index: 3;
+      pointer-events: auto;
 
       @include respond(ipad) {
         display: none;

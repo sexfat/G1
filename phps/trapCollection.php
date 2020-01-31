@@ -1,10 +1,13 @@
 <?php
 try {
     require_once("connectBooks.php");
-    
     $sql = "SELECT total_station_music_library.song_pic,
     total_station_music_library.song_name,total_station_music_library.cat_no,
+<<<<<<< HEAD
     `member`.mem_name
+=======
+    `member`.mem_name,total_station_music_library.song_no,total_station_music_library.song_addr
+>>>>>>> 0314f3b0329fceb310a2e97643c853bebef6d300
     FROM (total_station_music_library
     INNER JOIN `member`
     ON total_station_music_library.mem_no = `member`.mem_no)
@@ -12,10 +15,10 @@ try {
     ON total_station_music_library.cat_no = category.cat_no
     WHERE category.cat_no=2;";
     
-    $collAlbumtrap = $pdo -> prepare($sql);
-    $collAlbumtrap -> execute();
-    $collAllAlbum2 = $collAlbumtrap->fetchAll(PDO::FETCH_ASSOC);
-    echo json_encode($collAllAlbum2);
+    $collAlbumhou = $pdo -> prepare($sql);
+    $collAlbumhou -> execute();
+    $collAllAlbum3 = $collAlbumhou->fetchAll(PDO::FETCH_ASSOC);
+    echo json_encode($collAllAlbum3);
 
 } catch (PDOException $e) {
     echo "例外行號:", $e->getLine(), "<br>";

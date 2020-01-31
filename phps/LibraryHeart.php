@@ -13,6 +13,12 @@ try {
         if ($selectList->rowCount() == 0) {
           echo 'Afail';
         } else {
+          $sql2 = "update total_station_music_library
+          set fav_total=fav_total+1
+          where song_no = :songNo2;";
+          $updateFav = $pdo->prepare($sql2);
+          $updateFav->bindValue(':songNo2', $_POST['favorSong']);
+          $updateFav->execute();
           echo 'Asuccess';
         }
         break;
@@ -26,6 +32,12 @@ try {
         if ($selectList->rowCount() == 0) {
           echo 'Dfail';
         } else {
+          $sql2 = "update total_station_music_library
+          set fav_total=fav_total-1
+          where song_no = :songNo2;";
+          $updateFav = $pdo->prepare($sql2);
+          $updateFav->bindValue(':songNo2', $_POST['favorSong']);
+          $updateFav->execute();
           echo 'Dsuccess';
         }
         break;

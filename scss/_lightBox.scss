@@ -10,11 +10,13 @@
     display: none;
 
     .closeLight {
+        pointer-events: auto;
         position: absolute;
         right: 20px;
         top: 20px;
         cursor: pointer;
         transition: transform 0.5s;
+        
         @include respond(phone){
             right: 10px;
             top: 5px;

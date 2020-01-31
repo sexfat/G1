@@ -162,7 +162,6 @@ var back = new Vue({
     get_activity() { // 已建活動資訊
       var vm = this;
       axios.get('./phps/get.php?get=activity').then(function (res) {
-        // console.log(res.data)
         vm.activity = res.data;
 
       }).catch(err => {
@@ -220,9 +219,9 @@ var back = new Vue({
         vm.report = res.data;
       })
     },
-    get_hid_report(no){ // 屏蔽留言
+    get_hid_report(no) { // 屏蔽留言
       var vm = this;
-      axios.get('./phps/get.php?get=hid_report&re_no='+no).then(res=>{
+      axios.get('./phps/get.php?get=hid_report&re_no=' + no).then(res => {
         console.log(res.data);
         vm.get_report();
       });
@@ -250,6 +249,16 @@ var back = new Vue({
         return item.re_sta == 1
       })
     },
+    activity_substr() {
+      var vm = this;
+      var activity_substr = JSON.parse(JSON.stringify(vm.activity));
+      for (var i = 0; i < activity_substr.length; i++){
+        if(activity_substr[i].activity_con.length>100){
+          activity_substr[i].activity_con = activity_substr[i].activity_con.substr(0, 150) + "...";
+        }
+      }
+      return activity_substr;
+    }
 
   },
   watch: {

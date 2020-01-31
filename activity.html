@@ -49,10 +49,10 @@
                     </ul>
                 </div>
                 <div class="logo_container">
-                    <a href="./index.html">
+                    <a href="./home.html">
                         <div class="logo"></div>
-                        <div class="finger"></div>
                     </a>
+                    <div class="finger"></div>
                 </div>
                 <ul class="main_list flexbox">
                     <li class="REMIX flexbox">
@@ -80,7 +80,7 @@
                     <div class="tag_container">
                     </div>
                 </div>
-
+    
                 <div class="mem_bt" @click="mem_bt_click" v-if="mem_login == true">
                     <a href="#"></a>
                 </div>
@@ -377,7 +377,7 @@
                 <img src="./img/activity/radio.png" alt="">
 
 
-                <h2 v-if=" content=='actNow'">Electronic dance music contest 2019</h2>
+                <h2 v-if=" content=='actNow'">{{actInformation[0].activity_name}}</h2>
                 <h2 v-if=" content=='actOld'">Previous activities</h2>
 
                 <div id="act_HeadBtn">
@@ -412,7 +412,7 @@
                 </div>
 
                 <div id="act_oldyear_Anchor" v-if=" content=='actOld'">
-                    <a href="#act_old_year2018" class="act_Anchor">
+                    <a href="#act_old-year2018" class="act_Anchor">
                         <img src="./img/activity/yearbutton.png"><span>2018</span>
                     </a>
 
@@ -482,16 +482,17 @@
 
 
         </div>
-        <component :is="content" :now-Vote-Song=" nowVoteSong" :old-Vote-Song2018="oldVoteSong2018"
-            :old-Vote-Song2017="oldVoteSong2017" :vote-All="voteAll" :act-Information="actInformation"
-            :mem-Heart="memHeart" :mem-Votes="memVotes"> </component>
+        <component :is="content" :vote-All="voteAll" :act-Information="actInformation" :mem-Heart="memHeart" :mem-Votes="memVotes"
+            :member="member">
+        </component>
 
 
     </section>
     <script type="text/x-template" id="act-old">
         <div>
-         <article class="act_old_years " id="act_old_year2018"  
+         <article class="act_old_years " id="act_old-year2018"  
          v-for="(information,index) in actInformation.slice(1,2)">
+         <input type="hidden" name="contestNowYear" v-model="contestOldYear1=information.activity_no"> 
              <div class="act_oldink"><img src="./img/activity/Splash-ink05.png" alt=""></div>
              <div>
                  <div class="act_year">{{information.activity_no}}</div>
@@ -505,7 +506,7 @@
                  </p>
                  <div class="act_oldVotes">
                      <h3>Votes</h3>
-                     <span>{{voteAll[1].total_vote}}</span>
+                     <span  v-for="item in voteAll.slice(1,2)">{{item.total_vote}}</span>
                  </div>
              </div>
      
@@ -531,14 +532,15 @@
                     <p >Votes <span>{{oldSong.vote_per}}</span></p>
                     <div>
                        <img :src="oldSong.entries_img" alt="">
-                       <div class="act_old-play" @click="showChangePlay"> </div>
+                       <div class="act_old-play" @click="showChangePlay2018($event,oldSong)" ref="playSongsOld2018"> </div>
                         
                      </div>
                   
                      <div class="act_songBox"> 
-                      <div class="act_old-hear1" @click="showChangeHeart"> </div>
-                        
-                      <a href="./songinfo.html"><h4>'{{oldSong.entries_name}}'</h4></a>  
+                      <div class="act_old-hear1" @click="showChangeHeart($event,oldSong.entries_name)"ref="oneOldHearts"> </div>
+                      <input type="hidden" name="favorStatus" v-model="heartSaute" ref="oneOldHeartsVal">
+                      <input type="hidden" name="favorSongName" v-model="getHeartSong" > 
+                      <a :href="'songinfo.html?song_no='+oneSongNo"@click="changeHref(oldSong.entries_name)"><h4>'{{oldSong.entries_name}}'</h4></a>  
                        
                            <p>  {{oldSong.mem_name}} </p>
                     
@@ -550,18 +552,19 @@
              </div>
              <div class="act_oldAll">
                  <h3> All contest music </h3>
-                 <div v-for="oldSong in oldVoteSong2018">
+                 <div v-for="oldSong in oldVoteSong2018.slice(3, oldVoteSong2018.length)">
                     <p >Votes <span>{{oldSong.vote_per}}</span></p>
                     <div>
                        <img :src="oldSong.entries_img" alt="">
-                       <div class="act_old-play" @click="showChangePlay"> </div>
+                       <div class="act_old-play"@click="showChangePlay2018($event,oldSong)" ref="playSongsOld2018"> </div>
                         
                      </div>
                   
                      <div class="act_songBox"> 
-                      <div class="act_old-hear1" @click="showChangeHeart"> </div>
-                        
-                      <a href="./songinfo.html"><h4>'{{oldSong.entries_name}}'</h4></a>  
+                      <div class="act_old-hear1" @click="showChangeHeart($event,oldSong.entries_name)"ref="oneOldHearts"> </div>
+                      <input type="hidden" name="favorStatus" v-model="heartSaute" ref="oneOldHeartsVal">
+                      <input type="hidden" name="favorSongName" v-model="getHeartSong" > 
+                      <a :href="'songinfo.html?song_no='+oneSongNo"@click="changeHref(oldSong.entries_name)"><h4>'{{oldSong.entries_name}}'</h4></a>  
                        
                            <p>  {{oldSong.mem_name}} </p>
                     
@@ -574,20 +577,18 @@
          </section>
          <article class="act_old_years " id="act_old-year2017" v-for="(information,index) in actInformation.slice(2,3)">
              <div class="act_oldink"><img src="./img/activity/Splash-ink06.png" alt=""></div>
+             <input type="hidden" name="contestNowYear" v-model="contestOldYear2=information.activity_no"> 
              <div>
                  <div class="act_year">{{information.activity_no}}</div>
                  <h2>Information</h2>
                  <h3>{{information.activity_name}}</h3>
      
                  <p>
-     
                     {{information.activity_con}}
-     
-     
                  </p>
                  <div class="act_oldVotes">
                      <h3>Votes</h3>
-                     <span>{{voteAll[2].total_vote}}</span>
+                     <span v-for="item in voteAll.slice(2,3)">{{item.total_vote}}</span>
                  </div>
              </div>
      
@@ -618,14 +619,15 @@
                     <p >Votes <span>{{oldSong.vote_per}}</span></p>
                     <div>
                        <img :src="oldSong.entries_img" alt="">
-                       <div class="act_old-play" @click="showChangePlay"> </div>
+                       <div class="act_old-play"@click="showChangePlay2017($event,oldSong)" ref="playSongsOld2017"> </div>
                         
                      </div>
                   
                      <div class="act_songBox"> 
-                      <div class="act_old-hear1" @click="showChangeHeart"> </div>
-                        
-                      <a href="./songinfo.html"><h4>'{{oldSong.entries_name}}'</h4></a>  
+                      <div class="act_old-hear1" @click="showChangeHeart($event,oldSong.entries_name)" ref="twoOldHearts"> </div>
+                      <input type="hidden" name="favorStatus" v-model="heartSaute" ref="twoOldHeartsVal">
+                      <input type="hidden" name="favorSongName" v-model="getHeartSong" > 
+                      <a :href="'songinfo.html?song_no='+oneSongNo"@click="changeHref(oldSong.entries_name)"><h4>'{{oldSong.entries_name}}'</h4></a>  
                        
                            <p>  {{oldSong.mem_name}} </p>
                     
@@ -638,18 +640,19 @@
             <div class="act_oldAll">
                 <h3> All contest music </h3>
 
-                <div v-for="oldSong in oldVoteSong2017">
+                <div v-for="oldSong in oldVoteSong2017.slice(3, oldVoteSong2017.length)">
                     <p >Votes <span>{{oldSong.vote_per}}</span></p>
                     <div>
                        <img :src="oldSong.entries_img" alt="">
-                       <div class="act_old-play" @click="showChangePlay"> </div>
+                       <div class="act_old-play" @click="showChangePlay2017($event,oldSong)" ref="playSongsOld2017"> </div>
                         
                      </div>
                   
                      <div class="act_songBox"> 
-                      <div class="act_old-hear1" @click="showChangeHeart"> </div>
-                        
-                      <a href="./songinfo.html"><h4>'{{oldSong.entries_name}}'</h4></a>  
+                      <div class="act_old-hear1" @click="showChangeHeart($event,oldSong.entries_name)" ref="twoOldHearts"> </div>
+                      <input type="hidden" name="favorStatus" v-model="heartSaute" ref="twoOldHeartsVal">
+                      <input type="hidden" name="favorSongName" v-model="getHeartSong" > 
+                      <a :href="'songinfo.html?song_no='+oneSongNo"@click="changeHref(oldSong.entries_name)"><h4>'{{oldSong.entries_name}}'</h4></a>  
                        
                            <p>  {{oldSong.mem_name}} </p>
                     
@@ -666,7 +669,7 @@
      </script>
 
     <script type="text/x-template" id="act-now">
-        <div>
+        <div >
              <article class="act_now-year" id="act_Now-Introduction" 
              v-for="(information,index) in actInformation.slice(0, 1)">
  
@@ -732,7 +735,8 @@
     
                    </div>
                </article>
-            <form> 
+        <form method='post'  id="act_form" > 
+            <!-- <input type="hidden" name="post" id="postAction"> -->
              <article  v-if="formContent==1">
                 <div >
                    <h3>Choose your contest song!</h3>
@@ -742,8 +746,9 @@
                       <div>  
                         Upload from my local song:
                          <label  class="act_SignUPButton"for="act_SignUp-UpLoadSong" >Upload</label>
-                        <input type="file" id="act_SignUp-UpLoadSong" style="display:none"
-                         @change="changeSignUpload"  accept="audio/mpeg"> 
+                        
+                         <input type="file" id="act_SignUp-UpLoadSong" style="display:none"
+                         @change="changeSignUpload"  accept="audio/mpeg" name="entries_song"  > 
                          </div>
 
                      <div  class="act_SignSongURL-box" v-if="SignSongURL">{{SignSongURL}}</div>
@@ -752,16 +757,17 @@
                         Select from my music list:
                           <label class="act_SignUPButton" for="act_SignUp-selectSong" @click="selectSignUpload" v-if='memberContestSong'>  Select</label>
                           <br>   
-                          <select id="act_SignUp-selectSong"  v-model="selectSong"@click="selectSignUpload" v-if='memberContestSong'>
+                          <select id="act_SignUp-selectSong"  v-model="selectSong" @click="selectSignUpload" v-if='memberContestSong'>
                             <option value="" disabled selected>select you song</option>
                            <option  v-for="(list,index) in memberContestSong" :value="memberContestSong[index]">{{list.song_name}}</option>
                           </select>
+                          <input type="hidden" name="Select_song" v-model="selectSong.song_addr">
                        </div>
 
                 
                    <p class="act_from-button-box">
                      <button type="button"  @click="BackFormPage(0)">Back</button>
-                     <button type="button"  @click="formNextsong()" >Next </button>
+                     <button type="button"  @click="formNextsong" >Next </button>
                    </p>
                 </div>
                 
@@ -773,22 +779,27 @@
                    
                         <div>
                             <h4>Song name:</h4>
-                            <input type="text" class="act_Sign-up-song-name"maxlength="20"
-                                    v-model="SongName"    placeholder="Your song name!"  v-if="SignSongURL" required>
+                            <input type="text" class="act_Sign-up-song-name"maxlength="13"
+                                    v-model="SongName"placeholder="Your song name!"  v-if="SignSongURL" required 
+                                    name="entries_name">
+                            
                             <div  class="act_Sign-up-song-name" v-if="selectSong">{{selectSong.song_name}}</div>
+                            <input type="hidden"  v-model="selectSong.song_name" name="Select_name">
                                     
                         </div>
 
                         <div>
                             <h4>Song information:</h4>
                             <textarea class="act_Sign-up-song-information" 
-                                      cols="40" rows="5" maxlength="150"
+                                      maxlength="100"
                                       v-model="SongInformation"
                                       placeholder="Introduce your song!"
-                                      v-if="SignSongURL" required></textarea>
+                                      v-if="SignSongURL" required
+                                      name="introduction"></textarea>
                             
                             <div class="act_Sign-up-song-information" 
                                      v-if="selectSong">{{selectSong.song_idn}}</div>
+                            <input type="hidden" v-model="selectSong.song_idn" name="Select_information">
                                    
 
                         </div>
@@ -799,9 +810,12 @@
                                 <p v-if="SignSongURL">Upload The album cover:
                                    <label class="act_SignUPButton2"  for="act_SignUp-Song-img"  v-if="SignSongURL">Upload</label>
                                 </p>
-                               <input type="file" id="act_SignUp-Song-img" style="display:none" @change="changeSignUpImg" accept="image/jpeg, image/png" required>
+                               <input type="file" id="act_SignUp-Song-img" style="display:none" @change="changeSignUpImg" 
+                                      name="Song_img" accept="image/jpeg" required>
                                <div class="act_showSignUpImg" v-if="SignUpImg&&SignSongURL"> <img :src="SignUpImg" alt=""></div>
+                               
                                <div class="act_showSignUpImg" v-if="selectSong"> <img :src="selectSong.song_pic" alt=""></div>
+                               <input type="hidden" v-model="selectSong.song_pic"name="Select_img" >
                                
                         
                         </div>
@@ -819,28 +833,25 @@
                 <div >
                    <h3>Check your song information!</h3>   
                   
-                       <div>
+                      <div>
                          <h4>Member name:</h4> 
                          {{member.mem_name}}
-                       </div>
-
-                       <div>
+                      </div>
+                      <div>
                              <h4>Menber email:</h4>
                              {{member.mem_acct}}
-                        </div>
-
+                      </div>
                       <div>
                          <h4>Song img:</h4>
                          <div class="act_showSignUpImgSmall" 
                          v-if="SignUpImg&&SignSongURL"><img :src="SignUpImg" alt=""></div>
                          <div class="act_showSignUpImgSmall" 
-                         v-if="selectSong"><img :src="selectSong.song_pic" alt=""></div>
-                           
+                         v-if="selectSong"><img :src="selectSong.song_pic" alt=""></div> 
                        </div>
                        <div>
                             <h4>Song name:</h4>
                              <p  v-if="SongName">{{SongName}}</p>
-                            <p  v-if="selectSong">{{selectSong.song_name}}</p>
+                             <p  v-if="selectSong">{{selectSong.song_name}}</p>
 
                        </div>
                        <div>
@@ -848,20 +859,16 @@
                               <p class="act_showSong-information" v-if="SongInformation" >{{SongInformation}}</p> 
                               <p class="act_showSong-information" v-if="selectSong" >{{selectSong.song_idn}}</p> 
                        </div>
-
                        <div> 
                            <h4>Song URL:</h4>    
                             <p  class="act_SignSongURL-box" v-if="SignSongURL">{{SignSongURL}}</p> 
                             <p  class="act_SignSongURL-box" v-if="selectSong">{{selectSong.song_addr}}</p> 
                        </div>
-
-                     <p class="act_from-button-box">
-                       <button type="button"  @click="BackFormPage(2)">Back</button>
-                       <input type="submit" value="Comfirm" @click="NextFormPage(4)" class="signUpComfirm">
-                     </p>
-                 
+                       <p class="act_from-button-box">
+                           <button type="button"  @click="BackFormPage(2)">Back</button>
+                           <input type="button" value="Comfirm" @click="sendForm" class="signUpComfirm" >
+                       </p>
                 </div>
-                
             </article>  
         </form>   
             <article v-if="formContent==4">
@@ -872,17 +879,17 @@
                        2.Cannot register with songs that have already participated in previous events
                   </p>
                   <p class="act_from-button-box">
-                        <button type="button" disable style="background-color:gray ">Done</button>
+                        <button type="button" disable style="background-color:gray;border:none ">Done</button>
                   </p>
                  
                 </div>
             </article> 
-        </section>
+         </section>
             
              <section id="act_Now-Vote"> 
                 <h2>Vote</h2>
                  <article class="act_Now-Vote-content">
-                   
+                   <input type="hidden" name="contestNowYear" v-model="contestYear"> 
                    <img src="./img/activity/Splash-ink07.png" alt="">
                    <h3>Rules</h3>
                    <p>
@@ -897,25 +904,28 @@
                    </p>
                    <div>
                      <h3>Votes</h3>
-                     <span>{{voteAll[0].total_vote}}</span>
+                     <span v-for="item in voteAll.slice(0,1)">{{item.total_vote}}</span>
                    </div>
                    
                  </article>
          
                  <section>
                     <div v-for="(item,index) in nowVoteSong" :key="index">   
-                        <button type="button" @click.once="showChangeVote(item)" ref="votes">Vote</button>
+                        <button type="button" @click.once="showChangeVote($event,item)" ref="votes">Vote</button>
                         <p >Votes <span>{{item.vote_per}}</span></p>
                         <input type="hidden" name="entries_no" v-model='voteSongNo'>
                         <div>
                               <img :src="item.entries_img" alt="">
-                              <div class="act_old-play" @click="showChangePlay"></div>
+                              <div class="act_old-play"@click="showChangePlay($event,item)" ref="playSongs"></div>
+
                               
                         </div>
                           <div class="act_songBox"> 
-                              <div class="act_old-hear1"  @click="showChangeHeart(item)" ref="hearts"></div>
-                              <input type="hidden" name="favorStatus" v-model='heartSongNo'>
-                              <a href="./songinfo.html"><h4>' {{item.entries_name}}'</h4></a>  
+                              <div class="act_old-hear1"  @click="showChangeHeart($event,item.entries_name)" ref="hearts"></div>
+                              <input type="hidden" name="favorStatus" v-model="heartSaute" ref="heartsVal">
+                              <input type="hidden" name="favorSongName" v-model="getHeartSong" > 
+                              <a :href="'songinfo.html?song_no='+oneSongNo" @click="changeHref(item.entries_name)"><h4>' {{item.entries_name}}'</h4></a>  
+                              <input type="hidden" v-model="hrefNoName" name="hrefNoName">
                               <p> {{item.mem_name}} </p>
                           </div>
                      </div>
@@ -924,19 +934,6 @@
              </section>
            </div>
      </script>
-    <script>
-
-        $(function () {
-            $('.act_Anchor').on('click', function (e) {
-                e.preventDefault();
-                $('html, body').animate({ scrollTop: $($(this).attr('href')).offset().top }, 700, 'swing');
-
-            });
-
-        });
-
-
-    </script>
 
 
 
@@ -947,17 +944,21 @@
 
 
     <script>
+        let songObj = {};
+
+
         Vue.component('actNow', {
             template: '#act-now',
             props: {
-                nowVoteSong: [Array],
                 voteAll: [Array],
                 actInformation: [Array],
                 memHeart: [Array],
                 memVotes: [Array],
+                member: Object,
             },
             data: function () {
                 return {
+                    nowVoteSong: [],
                     //表單步驟頁面
                     formContent: 0,
 
@@ -966,27 +967,35 @@
                     SongInformation: "",
                     SignUpImg: "",
                     SignSongURL: "",
-
+                    SignSong: '',
+                    SignImg: "",
                     //會員選擇已有歌曲，資料陣列
                     selectSong: [],
 
                     //會員資料
-                    member: [],
+                    // member: [],
                     memberContestSong: [],
-                    total_vote: [],
 
                     //被投票的歌曲編號
                     voteSongNo: '',
 
+
                     //愛心收藏
-                    heartSongNo: [],
+                    heartSaute: [],
+                    getHeartSong: [],
 
-                    // heartSaute:[
-                    //     {red:true, backgroundImage: url('./img/collection/redheart.png')},
-                    //     {gray:false,backgroundImage: url('./img/collection/grayheart.png')}
 
-                    // ]
+                    //撥放
+                    myPlaylist: [],
 
+                    //比賽歌曲年分
+                    contestYear: "",
+                    // nowInformation:[],
+
+                    //跳轉單曲
+                    hrefNoName: "",
+                    backSong: '',
+                    oneSongNo: '',
 
                 }
 
@@ -997,15 +1006,14 @@
 
                     if (vml.mem_login == false) {
 
-                        alert("Please login first!");
-                        location.href = "./login.html";
+                        alert("Please login.");
 
                     } else {
                         this.formContent = 1;
                         this.SignSongURL = "";
                         this.selectSong = "";
-                        fetch('./phps/getMemInfo.php').then(res => res.json()).then(data => this.member = data);
 
+                        fetch('./phps/getMemContestSong.php').then(res => res.json()).then(data => this.memberContestSong = data);
                     };
 
                 },
@@ -1031,14 +1039,15 @@
                     }
                 },
 
-                NextFormPage(Index) {
+                NextFormPage(Index) {//切換表單下一步
                     this.formContent = Index;
                 },
-                BackFormPage(Index) {
+                BackFormPage(Index) {//切換表單上一步
                     this.formContent = Index;
                 },
                 changeSignUpImg(img) {//獲取檔案路徑
                     const imgFile = img.target.files.item(0);
+                    this.SignImg = imgFile;
                     const reader = new FileReader();
                     reader.addEventListener('load', this.imageLoader);
                     reader.readAsDataURL(imgFile);
@@ -1050,6 +1059,7 @@
 
                 changeSignUpload(event) {//獲取檔案
                     let song = event.target.files.item(0);
+                    this.SignSong = song;
                     this.SignSongURL = this.getObjectURL(song);
                     if (this.selectSong != "") {
                         this.selectSong = "";
@@ -1074,88 +1084,188 @@
                         this.SignSongURL = "";
                     }
                 },
+                sendForm() {//表單確認後，輸入資料庫
+                    this.formContent = 4;
+                    this.contestYear = this.actInformation[0].activity_no;
+                    if (this.selectSong != "") {
+                        var Select_sign = $.ajax({
+                            url: './phps/act_formSelectSignUp.php',
+                            data: {
+                                Select_name: this.selectSong.song_name,
+                                Select_song: this.selectSong.song_addr,
+                                Select_information: this.selectSong.song_idn,
+                                Select_img: this.selectSong.song_pic,
+                                contestNowYear: this.contestYear,
+                            },
+                            type: 'POST',
+                            datatype: 'text',
+                            success: function (data) {
+                                alert("Success sign up!");
+                                location.reload();
+                            }
 
-                showChangeHeart(e) {//確認會員登入狀態，變更收藏愛心顏色
-                    console.log(e);
-                    if (vml.mem_login == false) {
-                        alert("Please login first!");
-                        location.href = "./login.html";
+                        });
+
+
                     } else {
-                        this.memHeart
-                        // let button = e.target;
-                        // button.classList.toggle('actShowHeart');
-                        if (button.classList.contains('actShowHeart')) {
-                            this.heartSongNo = 'red';
-                            var vote = $.ajax({
-                                url: '',
-                                data: {
-                                    favorStatus: this.heartSongNo,
-                                },
-                                type: 'POST',
-                                dataType: 'json'
-                            });
+                        let myForm = new FormData(document.getElementById("act_form"));
+                        myForm.append("Song_img", this.SignImg);
+                        myForm.append("entries_song", this.SignSong);
+                        myForm.append("entries_name", this.SongName);
+                        myForm.append("introduction", this.SongInformation);
+                        myForm.append("contestNowYear", this.contestYear);
 
-                        } else {
-                            this.heartSongNo = 'gray';
-                            var vote = $.ajax({
-                                url: '',
-                                data: {
-                                    favorStatus: this.heartSongNo,
-                                },
-                                type: 'POST',
-                                dataType: 'json'
-                            });
-
+                        let xhr = new XMLHttpRequest();
+                        xhr.onload = function () {
+                            // console.log("-----------final");
+                            // console.log(xhr.status);
+                            // console.log(xhr.responseText);
+                            if (xhr.status == 200) {
+                                alert("Success sign up!");
+                                location.reload();
+                            } else {
+                                alert("Sign up failed!");
+                            }
                         }
+                        console.log(myForm);
+                        xhr.open("post", "./phps/act_formSignUp.php", true);
+                        xhr.send(myForm);
 
                     }
 
                 },
+                changeSignForm() {//更換已報名的表單狀態
+                    if (vml.mem_login == true) {
+                        let getMem = this.member.mem_name;
+                        // console.log(getMem);
+                        for (let i = 0; i < this.nowVoteSong.length; i++) {
+                            let contestMem = this.nowVoteSong[i].mem_name;
+                            // console.log(contestMem);
+                            if (getMem == contestMem) {
+                                this.formContent = 4;
+                                break;
+                            } else {
+                                this.formContent = 0;
+                            }
+                        }
+                    }
+
+                },
+                showChangeHeart(e, value) {//確認會員登入狀態，變更收藏愛心顏色
+
+                    if (vml.mem_login == false) {
+                        alert("Please login.");
+                    } else {
+                        let heartButton = e.target;
+                        this.getHeartSong = value;
+
+                        if (heartButton.classList.contains('actShowHeart') == false) {
+                            this.heartSaute = "red";
+                            heartButton.classList.add('actShowHeart');
+
+                            var addHeart = $.ajax({
+                                url: './phps/act_contestSongHeart.php',
+                                data: {
+                                    favorStatus: this.heartSaute,
+                                    favorSongName: this.getHeartSong,
+                                },
+                                type: 'POST',
+                                dataType: 'json',
+
+                            });
+                            alert("Success to add!");
+                            location.reload();
+
+                        } else {
+                            this.heartSaute = "gray";
+                            heartButton.classList.remove('actShowHeart');
+
+                            var deleteHeart = $.ajax({
+                                url: './phps/act_contestSongHeart.php',
+                                data: {
+                                    favorStatus: this.heartSaute,
+                                    favorSongName: this.getHeartSong,
+                                },
+                                type: 'POST',
+                                dataType: 'json',
+
+                            });
+                            alert("Success to cancel!");
+                            location.reload();
+
+                        }
+
+                    }
+                },
+
                 ChangeRedHeart() {//獲取會員已收藏歌曲，並更換顏色
-                    this.nowVoteSong;
-                    this.memHeart;
-                    // console.log(this.nowVoteSong);
-                    // console.log(this.memHeart);
-                    // console.log(this.memHeart[1].song_name);
+                    var HL = this.memHeart.length;
+                    var NL = this.nowVoteSong.length;
 
-                    for (let i = 0; i <= this.nowVoteSong.length; i++) {
-                        console.log(this.nowVoteSong[i].entries_name);
+                    for (let j = 0; j < HL; j++) {
+                        for (let i = 0; i < NL; i++) {
+                            var heart = (this.nowVoteSong[i].entries_name == this.memHeart[j].song_name);
+                            if (heart == true) {
+                                var heartExist = this.$refs.hearts[i].classList.contains('actShowHeart');
+                                if (heartExist == false) {
+                                    this.$refs.hearts[i].classList.add('actShowHeart');
+                                };
+                                this.$refs.heartsVal[i].value = "red";
+                            } else {
+                                this.$refs.heartsVal[i].value = "gray";
 
-                        for (let j = 0; j <= this.memHeart.length; j++) {
-                            console.log(this.memHeart[j].song_name);
-                            // console.log(this.nowVoteSong[i].entries_name);
-                            // console.log(this.memHeart[j].song_name);
-
-                            // if (this.nowVoteSong[i].entries_name == this.memHeart[j].song_name) {
-                            //     console.log(1);
-                            //     // this.$refs.hearts.classList.toggle('actShowHeart');
-                            //     // console.log(nowSong[i]);
-                            //     // console.log(memHave[j]);
-                            // }
+                            }
                         };
+                    };
+                },
 
+                showChangePlay(e, item) {//切換撥放按鈕
+                    let playButton = e.target;
+
+                    songObj = {};
+                    songObj.song_addr = item.entries_song;
+                    songObj.song_name = item.entries_name;
+                    songObj.mem_name = item.mem_name;
+                    songObj.song_pic = item.entries_img;
+
+                    myPlaylist = [songObj];
+                    nowPlaying = 0;
+                    listLen = myPlaylist.length;
+                    $('#player audio').attr('src', myPlaylist[0].song_addr);
+                    console.log(myPlaylist);
+
+                    for (let i = 0; i < this.nowVoteSong.length; i++) {
+                        let allSongName = this.nowVoteSong[i].entries_name;
+                        let playStatus = this.$refs.playSongs[i].classList.contains("act_old-play-Pause");
+
+                        if (allSongName == item.entries_name) {
+                            if (playStatus == false) {
+                                playButton.classList.add("act_old-play-Pause");
+                                isPlaying(false);
+                            } else {
+                                playButton.classList.remove("act_old-play-Pause");
+                                isPlaying(true);
+                            }
+
+                        } else {
+                            this.$refs.playSongs[i].classList.remove("act_old-play-Pause");
+                        }
                     };
 
-
+                    playerAuto = false;
+                    console.log(myPlaylist[0].song_name);
+                    heartStatus(myPlaylist[0].song_name);
 
                 },
 
-                // showChangePlay(e) {//切換撥放按鈕
-                //     let playButton = e.target;
-                //     playButton.classList.toggle('act_old-play-Pause');
-                // },
-
-                showChangeVote(item) {//確認會員登入後才能繼續投票
+                showChangeVote(e, item) {//確認會員登入後才能繼續投票
                     if (vml.mem_login == false) {
 
-                        alert("Please login first!");
-                        location.href = "./login.html";
-
+                        alert("Please login.");
                     } else {
-                        // console.log(item.entries_no);
-                        // console.log(item);
+
                         this.voteSongNo = item.entries_no;
-                        // console.log(this.voteSongNo);
+
                         if (this.voteSongNo) {
                             var vote = $.ajax({
                                 url: './phps/act_VoteSong.php',
@@ -1165,39 +1275,95 @@
                                 type: 'POST',
                                 dataType: 'json'
                             });
+                            alert("Success vote!");
+                            let voteButton = e.target;
+                            voteButton.style = "background-color:gray;border:none;";
+                            voteButton.disabled = true;
+                            location.reload();
+
+
                         }
                     }
                 },
-                ChangeGrayVotes() {
-                    for (let i = 0; i <= this.nowVoteSong.length; i++) {
-                        for (let j = 0; j <= this.memVotes.length; j++) {
-                            // console.log(this.memVotes[j].entries_name);
-                            // if (this.nowVoteSong[i].entries_name == this.memVotes[j].entries_name) {
-                            //     // this.$refs.votes.classList.toggle('act_old-play-Pause');
-                            //     Console.log(123);
 
-                            // }
+                ChangeGrayVotes() {//判斷歌曲是否已被會員投票，變換投票可點選狀態
+                    var i = 0;
+                    var l = this.nowVoteSong.length;
+                    for (let j = 0; j < this.memVotes.length; j++) {
+                        for (i = 0; i < l; i += 1) {
+                            var vote = (this.nowVoteSong[i].entries_no == this.memVotes[j].entries_no);
+                            if (vote == true) {
+                                this.$refs.votes[i].disabled = true;
+                                this.$refs.votes[i].style = "background-color:gray;border:none;";
+                                vote = "";
+
+                            }
                         };
-
                     };
+                },
+
+                getNewContestYear() {//動態更換新活動歌曲
+                    // fetch('./phps/getContestInformation.php').then(res => res.json()).then(data => this.nowInformation = data);
+                    this.contestYear = this.actInformation[0].activity_no;
+                    console.log(this.contestYear);
+                    if (this.contestYear != "") {
+                        var year = $.ajax({
+                            url: './phps/getContestSong.php',
+                            data: {
+                                contestNowYear: this.contestYear,
+                            },
+                            type: 'GET',
+                            dataType: 'json',
+                            async: false,
+                            success: function (data, textStatus, jqXHR) {
+                                return;
+                            }
+                        });
+                    }
+                    this.nowVoteSong = year.responseJSON;
 
                 },
 
+                changeHref(no) {//獲得跳轉單頁的歌曲編號
+                    this.hrefNoName = no;
+                    var songNo = $.ajax({
+                        url: './phps/getallSong.php',
+                        data: {
+                            hrefNoName: this.hrefNoName,
+                        },
+                        type: 'GET',
+                        dataType: 'json',
+                        async: false,
+                        success: function (data, textStatus, jqXHR) {
+                            return;
+                        }
+                    });
+                    this.backSong = songNo.responseJSON;
+
+                    if (this.backSong != "") {
+                        this.oneSongNo = this.backSong[0].song_no;
+                    }
+
+                },
 
             },
-            mounted() {
-                fetch('./phps/getMemContestSong.php').then(res => res.json()).then(data => this.memberContestSong = data);
-                this.ChangeHeart = setTimeout(this.ChangeRedHeart, 1000);
-                this.ChangeVotes = setTimeout(this.ChangeGrayVotes, 1000)
-                console.log(this.$refs);
+            created() {
+                // fetch('./phps/getContestNowSong.php').then(res => res.json()).then(data => this.nowVoteSong = data);
+                this.getYear = setTimeout(this.getNewContestYear, 500);
             },
+            mounted() {
+                this.ChangeHeart = setTimeout(this.ChangeRedHeart, 800);
+                this.ChangeVotes = setTimeout(this.ChangeGrayVotes, 800);
+                this.ChangeForm = setTimeout(this.changeSignForm, 800);
+
+            },
+
+
         });
 
         Vue.component('actOld', {
             template: '#act-old',
             props: {
-                oldVoteSong2018: [Array],
-                oldVoteSong2017: [Array],
                 voteAll: [Array],
                 actInformation: [Array],
                 memHeart: [Array],
@@ -1206,29 +1372,258 @@
             data: function () {
                 return {
                     total_vote: [],
+                    //愛心收藏
+                    heartSaute: [],
+                    getHeartSong: [],
 
+                    //撥放
+                    myPlaylist: [],
+
+                    //跳轉單曲
+                    hrefNoName: "",
+                    backSong: '',
+                    oneSongNo: '',
+
+                    contestOldYear1: '',
+                    contestOldYear2: '',
+                    oldVoteSong2018: [],
+                    oldVoteSong2017: [],
                 }
 
             },
             methods: {
-                showChangeHeart(e) {
-                    let button = e.target;
-                    button.classList.toggle('actShowHeart');
-
-
-                },
                 showChangePlay(e) {
                     let playButton = e.target;
                     playButton.classList.toggle('act_old-play-Pause');
                 },
+                showChangeHeart(e, value) {//確認會員登入狀態，變更收藏愛心顏色
 
+                    if (vml.mem_login == false) {
+                        alert("Please login first!");
+                        location.href = "./login.html";
+                    } else {
+                        let heartButton = e.target;
+                        this.getHeartSong = value;
 
+                        if (heartButton.classList.contains('actShowHeart') == false) {
+                            this.heartSaute = "red";
+                            heartButton.classList.toggle('actShowHeart');
+
+                            var addHeart = $.ajax({
+                                url: './phps/act_contestSongHeart.php',
+                                data: {
+                                    favorStatus: this.heartSaute,
+                                    favorSongName: this.getHeartSong,
+                                },
+                                type: 'POST',
+                                dataType: 'json'
+                            });
+                            // console.log(addHeart);
+                            // console.log(this.heartSongNo);
+                        } else {
+                            this.heartSaute = "gray";
+                            heartButton.classList.toggle('actShowHeart');
+
+                            var deleteHeart = $.ajax({
+                                url: './phps/act_contestSongHeart.php',
+                                data: {
+                                    favorStatus: this.heartSaute,
+                                    favorSongName: this.getHeartSong,
+                                },
+                                type: 'POST',
+                                dataType: 'json'
+                            });
+                            // console.log(this.heartSongNo);
+                            // console.log(deleteHeart);
+
+                        }
+
+                    }
+                },
+                ChangeRedHeart2018() {//獲取會員已收藏歌曲，並更換顏色
+
+                    for (let j = 0; j < this.memHeart.length; j++) {
+                        for (let i = 0; i < this.oldVoteSong2018.length; i++) {
+                            var heart = (this.oldVoteSong2018[i].entries_name == this.memHeart[j].song_name);
+                            if (heart == true) {
+                                var heartExist = this.$refs.oneOldHearts[i].classList.contains('actShowHeart');
+                                if (heartExist == false) {
+                                    this.$refs.oneOldHearts[i].classList.add('actShowHeart');
+                                };
+                                this.$refs.oneOldHeartsVal[i].value = "red";
+                            } else {
+                                this.$refs.oneOldHeartsVal[i].value = "gray";
+
+                            }
+                        };
+                    };
+                },
+                ChangeRedHeart2017() {//獲取會員已收藏歌曲，並更換顏色
+                    for (let j = 0; j < this.memHeart.length; j++) {
+                        for (let i = 0; i < this.oldVoteSong2017.length; i++) {
+
+                            var heart = (this.oldVoteSong2017[i].entries_name == this.memHeart[j].song_name);
+                            if (heart == true) {
+                                var heartExist = this.$refs.twoOldHearts[i].classList.contains('actShowHeart');
+                                if (heartExist == false) {
+                                    this.$refs.twoOldHearts[i].classList.add('actShowHeart');
+                                };
+                                this.$refs.twoOldHeartsVal[i].value = "red";
+                            } else {
+                                this.$refs.twoOldHeartsVal[i].value = "gray";
+
+                            }
+                        };
+                    };
+                },
+
+                showChangePlay2018(e, item) {//切換撥放按鈕
+                    let playButton = e.target;
+
+                    songObj = {};
+                    songObj.song_addr = item.entries_song;
+                    songObj.song_name = item.entries_name;
+                    songObj.mem_name = item.mem_name;
+                    songObj.song_pic = item.entries_img;
+
+                    myPlaylist = [songObj];
+                    nowPlaying = 0;
+                    listLen = myPlaylist.length;
+                    $('#player audio').attr('src', myPlaylist[0].song_addr);
+                    for (let j = 0; j < this.oldVoteSong2017.length; j++) {
+                        this.$refs.playSongsOld2017[j].classList.remove("act_old-play-Pause");
+                    }
+
+                    for (let i = 0; i < this.oldVoteSong2018.length; i++) {
+                        let allSongName = this.oldVoteSong2018[i].entries_name;
+                        let playStatus = this.$refs.playSongsOld2018[i].classList.contains("act_old-play-Pause");
+
+                        if (allSongName == item.entries_name) {
+                            if (playStatus == false) {
+                                playButton.classList.add("act_old-play-Pause");
+                                isPlaying(false);
+                            } else {
+                                playButton.classList.remove("act_old-play-Pause");
+                                isPlaying(true);
+                            }
+
+                        } else {
+                            this.$refs.playSongsOld2018[i].classList.remove("act_old-play-Pause");
+                        }
+                    };
+                    playerAuto = false;
+
+                },
+                showChangePlay2017(e, item) {//切換撥放按鈕
+                    let playButton = e.target;
+
+                    songObj = {};
+                    songObj.song_addr = item.entries_song;
+                    songObj.song_name = item.entries_name;
+                    songObj.mem_name = item.mem_name;
+                    songObj.song_pic = item.entries_img;
+
+                    myPlaylist = [songObj];
+                    nowPlaying = 0;
+                    listLen = myPlaylist.length;
+                    $('#player audio').attr('src', myPlaylist[0].song_addr);
+                    for (let j = 0; j < this.oldVoteSong2018.length; j++) {
+                        this.$refs.playSongsOld2018[j].classList.remove("act_old-play-Pause");
+                    }
+
+                    for (let i = 0; i < this.oldVoteSong2017.length; i++) {
+                        let allSongName = this.oldVoteSong2017[i].entries_name;
+                        let playStatus = this.$refs.playSongsOld2017[i].classList.contains("act_old-play-Pause");
+
+                        if (allSongName == item.entries_name) {
+                            if (playStatus == false) {
+                                playButton.classList.add("act_old-play-Pause");
+                                isPlaying(false);
+                            } else {
+                                playButton.classList.remove("act_old-play-Pause");
+                                isPlaying(true);
+                            }
+
+                        } else {
+                            this.$refs.playSongsOld2017[i].classList.remove("act_old-play-Pause");
+                        }
+                    };
+                    playerAuto = false;
+
+                },
+
+                changeHref(no) {//獲得跳轉單頁的歌曲編號
+                    console.log(no);
+                    this.hrefNoName = no;
+                    var songNo = $.ajax({
+                        url: './phps/getallSong.php',
+                        data: {
+                            hrefNoName: this.hrefNoName,
+                        },
+                        type: 'GET',
+                        dataType: 'json',
+                        async: false,
+                        success: function (data, textStatus, jqXHR) {
+                            return;
+                        }
+                    });
+                    this.backSong = songNo.responseJSON;
+                    console.log(this.backSong);
+                    if (this.backSong != "") {
+                        this.oneSongNo = this.backSong[0].song_no;
+                        console.log(this.oneSongNo);
+                        // location.href= "'./songinfo.html?song_no'=+this.oneSongNo";
+                    }
+                    console.log(songNo);
+                },
+
+                getOldContestYear() {//動態更換新活動歌曲
+
+                    if (this.contestOldYear1 != "") {
+                        var year = $.ajax({
+                            url: './phps/getContestSong.php',
+                            data: {
+                                contestNowYear: this.contestOldYear1,
+                            },
+                            type: 'GET',
+                            dataType: 'json',
+                            async: false,
+                            success: function (data, textStatus, jqXHR) {
+                                return;
+                            }
+                        });
+
+                        this.oldVoteSong2018 = year.responseJSON;
+                    };
+                    if (this.contestOldYear2 != "") {
+                        var year2 = $.ajax({
+                            url: './phps/getContestSong.php',
+                            data: {
+                                contestNowYear: this.contestOldYear2,
+                            },
+                            type: 'GET',
+                            dataType: 'json',
+                            async: false,
+                            success: function (data, textStatus, jqXHR) {
+                                return;
+                            }
+                        });
+
+                        this.oldVoteSong2017 = year2.responseJSON;
+
+                    };
+
+                },
 
             },
+            created() {
+                // fetch('./phps/getContestNowSong.php').then(res => res.json()).then(data => this.nowVoteSong = data);
+                // this.getYear = setTimeout(this.getOldContestYear, 500);
+            },
             mounted() {
-
-
-
+                this.getYear = setTimeout(this.getOldContestYear, 500);
+                this.ChangeHeart2018 = setTimeout(this.ChangeRedHeart2018, 500);
+                this.ChangeHeart2017 = setTimeout(this.ChangeRedHeart2017, 800);
             },
 
         });
@@ -1269,14 +1664,10 @@
                 //GOTOP動畫判斷
                 GoTopBush: false,
 
-                //比賽歌曲陣列
-                nowVoteSong: [],
-                oldVoteSong2018: [],
-                oldVoteSong2017: [],
-
                 //會員登入狀態
                 mem_login: false,
-
+                member: {},
+               
                 //投票總數
                 voteAll: [],
                 total_vote: [],
@@ -1289,15 +1680,14 @@
 
                 //活動資訊
                 actInformation: [],
+                activity_name:'',
 
+                //播放歌曲
+                getMyPlaylist: []
 
 
             },
 
-            computed: {
-
-
-            },
             methods: {
 
                 changeBanner(Index) {
@@ -1329,8 +1719,6 @@
                     this.seconds = Math.floor((this.distance % (1000 * 60)) / 1000);
                 },
                 GoTopAnima(e) {
-
-
                     let GoTopButton = e.target;
                     if (GoTopButton.classList.contains('act_ShowTopAnchor') == true) {
                         // this.clearBush();
@@ -1339,58 +1727,30 @@
                     }
                     this.GoTopBush = true;
                 },
-                // clearBush() {
-                //     this.GoTopBush = false;
-                //     GoTopButton.classList.remove('act_ShowTopAnchor');
-                // }
 
-
-
-
-
-
+            },
+            created() {
+            
+                fetch('./phps/getContestVoteAll.php').then(res => res.json()).then(data => this.voteAll = data);
+                fetch('./phps/getContestInformation.php').then(res => res.json()).then(data => this.actInformation = data);
+                this.getYear = setTimeout(this.getNewContestYear, 1000);
 
             },
             mounted() {
+                // this.get_member();
                 this.timer = setTimeout(this.getCountDownDate, 500);
                 this.ChangeBannerImg = setInterval(this.timeChangeBanner, 3000);
                 this.countTimer = setInterval(this.timerCount, 1000);
 
             },
-            watch: {
 
-            },
-            // created() {
-            //     // 在 created 的時候才建立 penguine 順便設值為 0
-            //     // 使用 $set 動態新增響應式組件
-            //     this.$set(this.nowVoteSong, 'nowVoteSong.vote_per', 0)
-            // }
+
+
         });
 
-
+        //----Vue 結束---------------------------------------------------------------
 
         window.onload = function () {
-            let xhr = new XMLHttpRequest();
-            xhr.open("get", "./phps/getContestNowSong.php", true);
-            xhr.send(null);
-            xhr.onload = function () {
-                vml.nowVoteSong = JSON.parse(xhr.responseText);
-            }
-
-            let xhrL = new XMLHttpRequest();
-            xhrL.open("get", "./phps/getContestOldsong2018.php", true);
-            xhrL.send(null);
-            xhrL.onload = function () {
-                vml.oldVoteSong2018 = JSON.parse(xhrL.responseText);
-            }
-
-            let xhrA = new XMLHttpRequest();
-            xhrA.open("get", "./phps/getContestOldsong2017.php", true);
-            xhrA.send(null);
-            xhrA.onload = function () {
-                vml.oldVoteSong2017 = JSON.parse(xhrA.responseText);
-            }
-
             let xhrI = new XMLHttpRequest();
             xhrI.onload = function () {
                 member = JSON.parse(xhrI.responseText);
@@ -1412,28 +1772,45 @@
                     xhrV.open("get", "./phps/getMemcontestvote.php", true);
                     xhrV.send(null);
 
+                    let xhrM = new XMLHttpRequest();
+                    xhrM.onload = function () {
+                        vml.member = JSON.parse(xhrM.responseText);
+                    }
+                    xhrM.open("get", "./phps/getMemInfo.php", true);
+                    xhrM.send(null);
+
+
                 } else {
                     vml.mem_login = false;
                 }
             }
             xhrI.open("get", "./phps/getLoginInfo.php", true);
             xhrI.send(null);
+            // console.log(location.href.search(2017))
 
-            let xhrB = new XMLHttpRequest();
-            xhrB.open("get", "./phps/getContestVoteAll.php", true);
-            xhrB.send(null);
-            xhrB.onload = function () {
-                vml.voteAll = JSON.parse(xhrB.responseText);
+            if (location.href.search('/?year=') != -1) {
+                new Promise((res) => {
+                    vml.content = 'actOld';
+                    res(res);
+                }).then((res) => {
+                    let year = location.search.substr(6);
+                    location.hash = `#act_old-year${year}`;
+                });
             }
 
-            let xhrC = new XMLHttpRequest();
-            xhrC.open("get", "./phps/getContestInformation.php", true);
-            xhrC.send(null);
-            xhrC.onload = function () {
-                vml.actInformation = JSON.parse(xhrC.responseText);
-            }
+
+            $(function () {
+                $('.act_Anchor').on('click', function (e) {
+                    e.preventDefault();
+                    $('html, body').animate({ scrollTop: $($(this).attr('href')).offset().top }, 700, 'swing');
+
+                });
+
+            });
+
 
         }
+
 
 
     </script>

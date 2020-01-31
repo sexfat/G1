@@ -372,7 +372,7 @@ $mainRed : #de267d;
     .close {
       position: absolute;
       right: 30px;
-      top: 10px;
+      top: 50px;
       transition: transform 0.5s;
       cursor: pointer;
 
@@ -1093,6 +1093,7 @@ $mainRed : #de267d;
     #myAllList {
       width: 90%;
       max-width: 500px;
+      height: auto;
       background-color: white;
       border-radius: 10px;
       padding: 1% 0;

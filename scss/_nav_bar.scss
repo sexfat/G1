@@ -129,7 +129,7 @@ div.nav_bar {
           background: url("../img/public/nav_m_y_bt02.png") center center no-repeat;
         }
         &.ACTIVITY {
-          background: url("../img/public/nav_m_y_bt04.png") center center no-repeat;
+          background: url("../img/public/nav_m_y_bt03.png") center center no-repeat;
         }
         &.LIBRARY {
           background: url("../img/public/nav_m_y_bt04.png") center center no-repeat;
@@ -247,7 +247,6 @@ div.nav_bar {
     height: 45px;
     background: url("../img/public/login_bt.png") center center no-repeat;
     background-size: 65px 35px;
-    transition: all 0.5s;
 
     a {
       display: block;
@@ -261,7 +260,6 @@ div.nav_bar {
     height: 50px;
     background: url("../img/public/user_icon.png") center center no-repeat;
     background-size: 25px 30px;
-    transition: all 0.5s;
 
     a {
       display: block;
@@ -291,10 +289,10 @@ div.nav_bar {
 
       li {
         padding: 5px 10px;
-
         a {
           display: block;
           text-align: end;
+          transform-origin: right;
         }
       }
     }
