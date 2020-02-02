@@ -5,7 +5,7 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
-    <title>Sound Wave</title>
+    <title>SOUNDWAVE</title>
     <link rel="Shortcut Icon" type="image/x-icon" href="./img/collection/smalllogo.ico" />
     <link rel="stylesheet" href="./css/main.css">
     <link rel="stylesheet" href="./css/home.css">
@@ -16,73 +16,6 @@
     <script src="https://cdnjs.cloudflare.com/ajax/libs/pagePiling.js/1.5.6/jquery.pagepiling.min.js"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/pixi.js/5.2.0/pixi.min.js"></script>
     <script src="https://cdn.jsdelivr.net/npm/pixi-filters@3.0.3/dist/pixi-filters.js"></script>
-    <style>
-        #loader {
-            position: fixed;
-            z-index: 99999;
-            width: 100%;
-            height: 100%;
-            background: #333;
-            transition: all 0.6s;
-        }
-
-        .line_container {
-            position: relative;
-            left: calc(50% - 20px);
-            top: calc(50% - 20px);
-            width: 40px;
-            height: 40px;
-        }
-
-        #loader .line {
-            width: 8px;
-            position: absolute;
-            border-radius: 5px;
-            bottom: 0;
-            background: -webkit-gradient(linear, left top, left bottom, from(#1ee95d), to(#5714ce));
-            background: -webkit-linear-gradient(top, #1ee95d, #5714ce);
-            background: -o-linear-gradient(top, #1ee95d, #5714ce);
-            background: linear-gradient(to bottom, #1ee95d, #5714ce);
-        }
-
-        #loader .line1 {
-            left: 0;
-            -webkit-animation: line-grow 0.5s ease alternate infinite;
-            animation: line-grow 0.5s ease alternate infinite;
-        }
-
-        #loader .line2 {
-            left: 20px;
-            -webkit-animation: line-grow 0.5s 0.2s ease alternate infinite;
-            animation: line-grow 0.5s 0.2s ease alternate infinite;
-        }
-
-        #loader .line3 {
-            left: 40px;
-            -webkit-animation: line-grow 0.5s 0.4s ease alternate infinite;
-            animation: line-grow 0.5s 0.4s ease alternate infinite;
-        }
-
-        @-webkit-keyframes line-grow {
-            0% {
-                height: 0;
-            }
-
-            100% {
-                height: 40px;
-            }
-        }
-
-        @keyframes line-grow {
-            0% {
-                height: 0;
-            }
-
-            100% {
-                height: 40px;
-            }
-        }
-    </style>
 </head>
 
 <body>
@@ -127,10 +60,10 @@
                 </ul>
             </div>
             <div class="logo_container">
-                <a href="./index.html">
+                <a href="./home.html">
                     <div class="logo"></div>
-                    <div class="finger"></div>
                 </a>
+                <div class="finger"></div>
             </div>
             <ul class="main_list flexbox">
                 <li class="REMIX flexbox">
@@ -153,16 +86,41 @@
             <div class="search_bt" @click="search_bt_click">
                 <a href="#"></a>
             </div>
-            <div class="search_bar" @click="stopPropagation">
-                <input class="search" type="text" />
-                <div class="tag_container">
+            <div class="search_bar" @click="stopPropagation" v-bind:style="search_bar_style()">
+                <input class="search" type="text" placeholder="Enter Song Name or Author" />
+                <i class="fas fa-search" @click="search_click"></i>
+                <div class="keyword_container">
+                    <div class="keyword" @click="keyword_click">
+                        <i class="far fa-hand-point-right"></i>
+                        {{search_keyword[0]}}
+                    </div>
+                    <div class="keyword" @click="keyword_click">
+                        <i class="far fa-hand-point-right"></i>
+                        {{search_keyword[1]}}
+                    </div>
+                    <div class="keyword" @click="keyword_click">
+                        <i class="far fa-hand-point-right"></i>
+                        {{search_keyword[2]}}
+                    </div>
+                    <div class="keyword" @click="keyword_click">
+                        <i class="far fa-hand-point-right"></i>
+                        {{search_keyword[3]}}
+                    </div>
+                    <div class="keyword" @click="keyword_click">
+                        <i class="far fa-hand-point-right"></i>
+                        {{search_keyword[4]}}
+                    </div>
+                    <div class="keyword" @click="keyword_click">
+                        <i class="far fa-hand-point-right"></i>
+                        {{search_keyword[5]}}
+                    </div>
                 </div>
             </div>
 
             <div class="mem_bt" @click="mem_bt_click" v-if="mem_login == true">
                 <a href="#"></a>
             </div>
-            <div class="login_bt" @click="" v-if="mem_login == false">
+            <div class="login_bt" v-if="mem_login == false">
                 <a href="./login.html"></a>
             </div>
             <div class="mem_list" @click="stopPropagation">
@@ -202,6 +160,7 @@
                 </ul>
             </div>
         </div>
+        <!-- nav_bar end -->
 
         <div id="pagepiling">
             <div class="home_sec home_sec01 section">
@@ -296,11 +255,11 @@
                         <div class="home_song_container">
                             <div class="home_song home_song1">
                                 <div class="home_cover_img">
-                                    <button class="home_play" data-playStatus="false"
-                                        v-bind:data-songNo="rank.song_no[0]"><i class="fas fa-play"></i></button>
+                                    <button class="home_play" data-playStatus="false" data-rankNo="0"><i
+                                            class="fas fa-play"></i></button>
                                 </div>
                                 <div class="home_shadow"></div>
-                                <div class="home_song_info">
+                                <div class="home_song_info flexbox">
                                     <div class="container flexbox">
                                         <span class="home_song_name">{{rank.song_name[0]}}</span>
                                         <span class="home_song_author">{{rank.song_author[0]}}</span>
@@ -328,11 +287,11 @@
                             </div>
                             <div class="home_song home_song2">
                                 <div class="home_cover_img">
-                                    <button class="home_play" data-playStatus="false"
-                                        v-bind:data-songNo="rank.song_no[1]"><i class="fas fa-play"></i></button>
+                                    <button class="home_play" data-playStatus="false" data-rankNo="1"><i
+                                            class="fas fa-play"></i></button>
                                 </div>
                                 <div class="home_shadow"></div>
-                                <div class="home_song_info">
+                                <div class="home_song_info flexbox">
                                     <div class="container flexbox">
                                         <span class="home_song_name">{{rank.song_name[1]}}</span>
                                         <span class="home_song_author">{{rank.song_author[1]}}</span>
@@ -360,12 +319,12 @@
                             </div>
                             <div class="home_song home_song3">
                                 <div class="home_cover_img">
-                                    <button class="home_play" data-playStatus="false"
-                                        v-bind:data-songNo="rank.song_no[2]"><i class="fas fa-play"></i></button>
+                                    <button class="home_play" data-playStatus="false" data-rankNo="2"><i
+                                            class="fas fa-play"></i></button>
 
                                 </div>
                                 <div class="home_shadow"></div>
-                                <div class="home_song_info">
+                                <div class="home_song_info flexbox">
                                     <div class="container flexbox">
                                         <span class="home_song_name">{{rank.song_name[2]}}</span>
                                         <span class="home_song_author">{{rank.song_author[2]}}</span>
@@ -393,12 +352,12 @@
                             </div>
                             <div class="home_song home_song4">
                                 <div class="home_cover_img">
-                                    <button class="home_play" data-playStatus="false"
-                                        v-bind:data-songNo="rank.song_no[3]"><i class="fas fa-play"></i></button>
+                                    <button class="home_play" data-playStatus="false" data-rankNo="3"><i
+                                            class="fas fa-play"></i></button>
 
                                 </div>
                                 <div class="home_shadow"></div>
-                                <div class="home_song_info">
+                                <div class="home_song_info flexbox">
                                     <div class="container flexbox">
                                         <span class="home_song_name">{{rank.song_name[3]}}</span>
                                         <span class="home_song_author">{{rank.song_author[3]}}</span>
@@ -426,12 +385,12 @@
                             </div>
                             <div class="home_song home_song5">
                                 <div class="home_cover_img">
-                                    <button class="home_play" data-playStatus="false"
-                                        v-bind:data-songNo="rank.song_no[4]"><i class="fas fa-play"></i></button>
+                                    <button class="home_play" data-playStatus="false" data-rankNo="4"><i
+                                            class="fas fa-play"></i></button>
 
                                 </div>
                                 <div class="home_shadow"></div>
-                                <div class="home_song_info">
+                                <div class="home_song_info flexbox">
                                     <div class="container flexbox">
                                         <span class="home_song_name">{{rank.song_name[4]}}</span>
                                         <span class="home_song_author">{{rank.song_author[4]}}</span>
@@ -459,12 +418,12 @@
                             </div>
                             <div class="home_song home_song6">
                                 <div class="home_cover_img">
-                                    <button class="home_play" data-playStatus="false"
-                                        v-bind:data-songNo="rank.song_no[5]"><i class="fas fa-play"></i></button>
+                                    <button class="home_play" data-playStatus="false" data-rankNo="5"><i
+                                            class="fas fa-play"></i></button>
 
                                 </div>
                                 <div class="home_shadow"></div>
-                                <div class="home_song_info">
+                                <div class="home_song_info flexbox">
                                     <div class="container flexbox">
                                         <span class="home_song_name">{{rank.song_name[5]}}</span>
                                         <span class="home_song_author">{{rank.song_author[5]}}</span>
@@ -492,12 +451,12 @@
                             </div>
                             <div class="home_song home_song7">
                                 <div class="home_cover_img">
-                                    <button class="home_play" data-playStatus="false"
-                                        v-bind:data-songNo="rank.song_no[6]"><i class="fas fa-play"></i></button>
+                                    <button class="home_play" data-playStatus="false" data-rankNo="6"><i
+                                            class="fas fa-play"></i></button>
 
                                 </div>
                                 <div class="home_shadow"></div>
-                                <div class="home_song_info">
+                                <div class="home_song_info flexbox">
                                     <div class="container flexbox">
                                         <span class="home_song_name">{{rank.song_name[6]}}</span>
                                         <span class="home_song_author">{{rank.song_author[6]}}</span>
@@ -525,12 +484,12 @@
                             </div>
                             <div class="home_song home_song8">
                                 <div class="home_cover_img">
-                                    <button class="home_play" data-playStatus="false"
-                                        v-bind:data-songNo="rank.song_no[7]"><i class="fas fa-play"></i></button>
+                                    <button class="home_play" data-playStatus="false" data-rankNo="7"><i
+                                            class="fas fa-play"></i></button>
 
                                 </div>
                                 <div class="home_shadow"></div>
-                                <div class="home_song_info">
+                                <div class="home_song_info flexbox">
                                     <div class="container flexbox">
                                         <span class="home_song_name">{{rank.song_name[7]}}</span>
                                         <span class="home_song_author">{{rank.song_author[7]}}</span>
@@ -558,12 +517,12 @@
                             </div>
                             <div class="home_song home_song9">
                                 <div class="home_cover_img">
-                                    <button class="home_play" data-playStatus="false"
-                                        v-bind:data-songNo="rank.song_no[8]"><i class="fas fa-play"></i></button>
+                                    <button class="home_play" data-playStatus="false" data-rankNo="8"><i
+                                            class="fas fa-play"></i></button>
 
                                 </div>
                                 <div class="home_shadow"></div>
-                                <div class="home_song_info">
+                                <div class="home_song_info flexbox">
                                     <div class="container flexbox">
                                         <span class="home_song_name">{{rank.song_name[8]}}</span>
                                         <span class="home_song_author">{{rank.song_author[8]}}</span>
@@ -591,12 +550,12 @@
                             </div>
                             <div class="home_song home_song10">
                                 <div class="home_cover_img">
-                                    <button class="home_play" data-playStatus="false"
-                                        v-bind:data-songNo="rank.song_no[9]"><i class="fas fa-play"></i></button>
+                                    <button class="home_play" data-playStatus="false" data-rankNo="9"><i
+                                            class="fas fa-play"></i></button>
 
                                 </div>
                                 <div class="home_shadow"></div>
-                                <div class="home_song_info">
+                                <div class="home_song_info flexbox">
                                     <div class="container flexbox">
                                         <span class="home_song_name">{{rank.song_name[9]}}</span>
                                         <span class="home_song_author">{{rank.song_author[9]}}</span>
@@ -637,33 +596,32 @@
                 <div class="home_title home_activity"></div>
                 <div class="home_DJ">
                     <i class="fas fa-bolt lightning1"></i>
-
                     <i class="fas fa-bolt lightning2"></i>
                     <i class="fas fa-bolt lightning3"></i>
                     <div class="home_DJ_g"></div>
                 </div>
                 <div class="home_activity_info">
-                    <div class="home_activity_img">
+                    <div class="home_activity_img"
+                        v-bind:style="'background:url(' + activity.activity_img[0] + ') 50% 50% / cover'">
                     </div>
                     <h2>
-                        Electronic dance music contest 2019
+                        {{activity.activity_name[0]}}
                     </h2>
                     <h3>
                         Information
                     </h3>
                     <p>
-                        American Idol is an annual American singing competition which began its first season in June 11,
-                        2002. Part of the Idol franchise, it originated from the UK reality program Pop Idol.
+                        {{activity.activity_con[0]}}
                     </p>
                     <h3>
                         Time
                     </h3>
                     <p>
-                        2019 Dec 31 to 2020 Dec 31
+                        {{activity.activity_str[0]}} to {{activity.activity_fin[0]}}
                     </p>
                     <h4>Enter Contest Now! >>></h4>
                     <div class="enter_bt">
-                        <a href="./activity.html"></a>
+                        <a href="./activity.html?year=2017"></a>
                     </div>
                 </div>
 
@@ -946,6 +904,8 @@
                 mem_list: false,
                 mem_login: false,
 
+                search_keyword: [],
+
                 // member info
                 member: {
                     mem_no: null,
@@ -953,6 +913,7 @@
                 },
 
                 // home
+                // rank
                 rank: {
                     song_no: [],
                     song_name: [],
@@ -964,14 +925,14 @@
                     song_addr: [],
                 },
 
-                // play
-                play_song_info: {
-                    song_no: Number,
-                    song_name: '',
-                    song_author: '',
-                    song_img: '',
-                    song_addr: '',
-                    song_time: '',
+                activity: {
+                    activity_no: [],
+                    activity_name: [],
+                    activity_res: [],
+                    activity_str: [],
+                    activity_fin: [],
+                    activity_con: [],
+                    activity_img: [],
                 },
 
             },
@@ -980,12 +941,12 @@
                     let xhr = new XMLHttpRequest();
                     xhr.onload = () => {
                         member = JSON.parse(xhr.responseText);
-                        vm.member.mem_no = member.mem_no;
-                        vm.member.mem_acct = member.mem_acct;
+                        this.member.mem_no = member.mem_no;
+                        this.member.mem_acct = member.mem_acct;
                         if (member.mem_acct) {
-                            vm.mem_login = true;
+                            this.mem_login = true;
                         } else {
-                            vm.mem_login = false;
+                            this.mem_login = false;
                         }
                     }
                     xhr.open("get", "./phps/getLoginInfo.php", true);
@@ -993,19 +954,20 @@
                 }
                 get_login_info();
 
-                let = get_rank_info = () => {
+                let get_rank_info = () => {
                     let xhr = new XMLHttpRequest();
                     xhr.onload = () => {
                         let rank = JSON.parse(xhr.responseText);
                         for (let i = 0; i < 10; i++) {
-                            vm.rank.song_no.push(rank[i].song_no)
-                            vm.rank.song_name.push(rank[i].song_name);
-                            vm.rank.song_author.push(rank[i].mem_name);
-                            vm.rank.favorite.push(rank[i].fav_total);
-                            vm.rank.donate.push(rank[i].donate_acount);
-                            vm.rank.song_intro.push(rank[i].song_idn);
-                            vm.rank.song_img.push(rank[i].song_pic);
-                            document.querySelector(`.home_song${i + 1} .home_cover_img`).style.background = `url(${vm.rank.song_img[i]})`
+                            this.rank.song_no.push(rank[i].song_no)
+                            this.rank.song_name.push(rank[i].song_name);
+                            this.rank.song_author.push(rank[i].mem_name);
+                            this.rank.favorite.push(rank[i].fav_total);
+                            this.rank.donate.push(rank[i].donate_acount);
+                            this.rank.song_intro.push(rank[i].song_idn);
+                            this.rank.song_img.push(rank[i].song_pic);
+                            this.rank.song_addr.push(rank[i].song_addr)
+                            document.querySelector(`.home_song${i + 1} .home_cover_img`).style.background = `url(${this.rank.song_img[i]})`
                             document.querySelector(`.home_song${i + 1} .home_cover_img`).style.backgroundSize = 'cover'
                         }
                     }
@@ -1013,6 +975,41 @@
                     xhr.send(null);
                 }
                 get_rank_info();
+
+                let get_activity_info = () => {
+                    let xhr = new XMLHttpRequest();
+                    xhr.onload = () => {
+                        let activity = JSON.parse(xhr.responseText);
+                        console.log(activity)
+                        for (let i = 0; i < activity.length; i++) {
+                            this.activity.activity_no.push(activity[i].activity_no);
+                            this.activity.activity_name.push(activity[i].activity_name);
+                            this.activity.activity_res.push(activity[i].activity_res);
+                            this.activity.activity_str.push(activity[i].activity_str);
+                            this.activity.activity_fin.push(activity[i].activity_fin);
+                            this.activity.activity_con.push(activity[i].activity_con);
+                            this.activity.activity_img.push(activity[i].activity_img);
+                        }
+                        console.log(this.activity[0].activity_no)
+
+                    }
+                    xhr.open("get", "./phps/getContestInformation.php", true);
+                    xhr.send(null);
+                }
+                get_activity_info();
+
+                let get_search_keyword = () => {
+                    let xhr = new XMLHttpRequest();
+                    xhr.onload = () => {
+                        let keyword = JSON.parse(xhr.responseText);
+                        for (let i = 0; i < keyword.length; i++) {
+                            this.search_keyword.push(keyword[i].song_name);
+                        }
+                    }
+                    xhr.open("get", "./phps/getSearchKeyword.php", true);
+                    xhr.send(null);
+                }
+                get_search_keyword();
 
                 // nav_bar start
                 document.querySelector('.mem_list ul').setAttribute('style', `height: ${window.innerHeight}px;`);
@@ -1025,9 +1022,8 @@
                     this.search_bar = false;
                     this.mobile_list = false;
 
-                    document
-                        .querySelector(".search_bar")
-                        .setAttribute("style", "height: 0px; filter: opacity(0);");
+                    document.querySelector(".search_bar").style.height = '0px';
+                    document.querySelector(".search_bar").style.filter = 'opacity(0)';
                     document
                         .querySelector(".mem_list")
                         .setAttribute("style", "transform: translateX(270px); filter: opacity(0);");
@@ -1041,7 +1037,6 @@
             methods: {
                 // nav_bar
                 hamburger_click(e) {
-                    // e.stopPropagation();
                     document
                         .querySelector(".hamburger").classList.toggle("is-active");
                 },
@@ -1051,9 +1046,8 @@
                         this.search_bar = true;
                         this.mem_list = false;
                         this.mobile_list = false;
-                        document
-                            .querySelector(".search_bar")
-                            .setAttribute("style", "height: 240px; filter: opacity(1);");
+                        document.querySelector(".search_bar").style.height = '257px';
+                        document.querySelector(".search_bar").style.filter = 'opacity(1)';
                         document.querySelector("input.search").focus();
                         document
                             .querySelector(".mem_list")
@@ -1063,9 +1057,8 @@
                             .setAttribute("style", "transform: translateX(-270px); filter: opacity(0);");
                     } else {
                         this.search_bar = false;
-                        document
-                            .querySelector(".search_bar")
-                            .setAttribute("style", "height: 0px; filter: opacity(0);");
+                        document.querySelector(".search_bar").style.height = '0px';
+                        document.querySelector(".search_bar").style.filter = 'opacity(0)';
                         document.querySelector("input.search").blur();
                         document
                             .querySelector(".mem_list")
@@ -1089,9 +1082,8 @@
                         document
                             .querySelector(".mem_list")
                             .setAttribute("style", "transform: translateX(0); filter: opacity(1);");
-                        document
-                            .querySelector(".search_bar")
-                            .setAttribute("style", "height: 0px; filter: opacity(0);");
+                        document.querySelector(".search_bar").style.height = '0px';
+                        document.querySelector(".search_bar").style.filter = 'opacity(0)';
                         document
                             .querySelector(".mobile_list")
                             .setAttribute("style", "transform: translateX(-270px); filter: opacity(0);");
@@ -1100,9 +1092,8 @@
                         document
                             .querySelector(".mem_list")
                             .setAttribute("style", "transform: translateX(270px); filter: opacity(0);");
-                        document
-                            .querySelector(".search_bar")
-                            .setAttribute("style", "height: 0px; filter: opacity(0);");
+                        document.querySelector(".search_bar").style.height = '0px';
+                        document.querySelector(".search_bar").style.filter = 'opacity(0)';
                         document
                             .querySelector(".mobile_list")
                             .setAttribute("style", "transform: translateX(-270px); filter: opacity(0);");
@@ -1121,9 +1112,8 @@
                         document
                             .querySelector(".mem_list")
                             .setAttribute("style", "transform: translateX(270px); filter: opacity(0);");
-                        document
-                            .querySelector(".search_bar")
-                            .setAttribute("style", "height: 0px; filter: opacity(0);");
+                        document.querySelector(".search_bar").style.height = '0px';
+                        document.querySelector(".search_bar").style.filter = 'opacity(0)';
                     } else {
                         this.mobile_list = false;
                         document
@@ -1132,9 +1122,33 @@
                         document
                             .querySelector(".mem_list")
                             .setAttribute("style", "transform: translateX(270px); filter: opacity(0);");
-                        document
-                            .querySelector(".search_bar")
-                            .setAttribute("style", "height: 0px; filter: opacity(0);");
+                        document.querySelector(".search_bar").style.height = '0px';
+                        document.querySelector(".search_bar").style.filter = 'opacity(0)';
+                    }
+                },
+
+                keyword_click(e) {
+                    document.querySelector('.nav_bar .search').value = e.target.innerText;
+                },
+
+                search_click() {
+                    let value = document.querySelector('.nav_bar .search').value.replace(' ', '');
+                    location.href = `./search.html?${value}`
+                },
+
+                search_bar_style() {
+                    if (this.mem_login == true) {
+                        if (window.innerWidth <= 440) {
+                            return `right:${(window.innerWidth - 320) / 2}px`
+                        } else {
+                            return 'right:60px'
+                        }
+                    } else {
+                        if (window.innerWidth <= 500) {
+                            return `right:${(window.innerWidth - 320) / 2}px`
+                        } else {
+                            return 'right:90px'
+                        }
                     }
                 },
 
@@ -1156,94 +1170,6 @@
         // ===============================================================================================================================
 
 
-        // jQueryMobile-SwipeUpDown
-        // ----------------------------------
-        //
-        // Copyright (c)2012 Donnovan Lewis
-        // Distributed under MIT license
-        //
-        // https://github.com/blackdynamo/jquerymobile-swipeupdown
-
-        (function () {
-            // initializes touch and scroll events
-            var supportTouch = $.support.touch,
-                scrollEvent = "touchmove scroll",
-                touchStartEvent = supportTouch ? "touchstart" : "mousedown",
-                touchStopEvent = supportTouch ? "touchend" : "mouseup",
-                touchMoveEvent = supportTouch ? "touchmove" : "mousemove";
-
-            // handles swipe up and swipe down
-            $.event.special.swipeupdown = {
-                setup: function () {
-                    var thisObject = this;
-                    var $this = $(thisObject);
-
-                    $this.bind(touchStartEvent, function (event) {
-                        var data = event.originalEvent.touches ?
-                            event.originalEvent.touches[0] :
-                            event,
-                            start = {
-                                time: (new Date).getTime(),
-                                coords: [data.pageX, data.pageY],
-                                origin: $(event.target)
-                            },
-                            stop;
-
-                        function moveHandler(event) {
-                            if (!start) {
-                                return;
-                            }
-
-                            var data = event.originalEvent.touches ?
-                                event.originalEvent.touches[0] :
-                                event;
-                            stop = {
-                                time: (new Date).getTime(),
-                                coords: [data.pageX, data.pageY]
-                            };
-
-                            // prevent scrolling
-                            if (Math.abs(start.coords[1] - stop.coords[1]) > 10) {
-                                event.preventDefault();
-                            }
-                        }
-
-                        $this
-                            .bind(touchMoveEvent, moveHandler)
-                            .one(touchStopEvent, function (event) {
-                                $this.unbind(touchMoveEvent, moveHandler);
-                                if (start && stop) {
-                                    if (stop.time - start.time < 1000 &&
-                                        Math.abs(start.coords[1] - stop.coords[1]) > 30 &&
-                                        Math.abs(start.coords[0] - stop.coords[0]) < 75) {
-                                        start.origin
-                                            .trigger("swipeupdown")
-                                            .trigger(start.coords[1] > stop.coords[1] ? "swipeup" : "swipedown");
-                                    }
-                                }
-                                start = stop = undefined;
-                            });
-                    });
-                }
-            };
-
-            //Adds the events to the jQuery events special collection
-            $.each({
-                swipedown: "swipeupdown",
-                swipeup: "swipeupdown"
-            }, function (event, sourceEvent) {
-                $.event.special[event] = {
-                    setup: function () {
-                        $(this).bind(sourceEvent, $.noop);
-                    }
-                };
-            });
-
-        })();
-
-
-        // =================================================================================================================================
-
         // pagepiling =====================================================================================================================
 
 
@@ -1257,12 +1183,7 @@
                 },
             }
         );
-        $('.home_sec').on('swipedown', () => {
-            $.fn.pagepiling.moveSectionUp();
-        });
-        $('.home_sec').on('swipeup', () => {
-            $.fn.pagepiling.moveSectionDown();
-        });
+
 
         // PIXI =======================================================================================================================================
 
@@ -1544,11 +1465,12 @@
                 document.querySelector('.home_mixer_box').style.display = 'none'
             });
         }
-        // document.querySelector('.text0 h3').style.height
+
 
         // RANK Slider =====================================================================================================================
 
 
+        // slider init
         transform_rotate = new Array();
         for (let i = 0; i < 10; i++) {
             transform_rotate.push(i * 36);
@@ -1558,30 +1480,33 @@
             size: parseInt(160 - (((1920 - window.innerWidth) / 16) * 0.01 * 60)),
             translateZ: parseInt(360 - (((1920 - window.innerWidth) / 16) * 0.01 * 130)),
         }
+        // slider init end
+
 
         let left_arrow_click = () => {
             document.querySelector('.home_left_arrow').removeEventListener('click', left_arrow_click);
             document.querySelector('.home_right_arrow').removeEventListener('click', right_arrow_click);
             document.querySelector('.home_perspective').removeEventListener('mousedown', myMousedown);
             document.querySelector('.home_perspective').removeEventListener('mousemove', myMousemove);
-
+            document.querySelector('.home_perspective').removeEventListener('touchstart', myTouchstart);
+            document.querySelector('.home_perspective').removeEventListener('touchmove', myTouchmove);
             rankOrder--;
             if (rankOrder == 0) {
                 rankOrder = 10;
                 document.querySelector(`.home_song${rankOrder} .home_shadow`).style.boxShadow = '5px 5px 5px 1px rgba(0, 0, 0, 0.2)';
                 if (window.innerWidth <= 576) {
-                    document.querySelector(`.home_song${rankOrder} .home_song_info`).setAttribute('style', `width:200%; transform:translateX(${set_value.size}px);`);
+                    document.querySelector(`.home_song${rankOrder} .home_song_info`).setAttribute('style', `width: 200%; transform: translateX(${set_value.size}px); `);
                 } else {
-                    document.querySelector(`.home_song${rankOrder} .home_song_info`).setAttribute('style', `width:100%; transform:translateX(${-set_value.size}px);`);
+                    document.querySelector(`.home_song${rankOrder} .home_song_info`).setAttribute('style', `width: 100%; transform: translateX(${- set_value.size}px); `);
                 }
                 if (window.innerWidth <= 576) {
-                    document.querySelector(`.home_song${rankOrder} .home_vinyl_records_s`).style.transform = `translateX(${-set_value.size / 2}px)`;
+                    document.querySelector(`.home_song${rankOrder} .home_vinyl_records_s`).style.transform = `translateX(${- set_value.size / 2}px)`;
                 } else {
                     document.querySelector(`.home_song${rankOrder} .home_vinyl_records_s`).style.transform = `translateX(${set_value.size / 2}px)`;
                 }
                 document.querySelector(`.home_song1 .home_shadow`).style.boxShadow = 'none';
                 if (window.innerWidth <= 576) {
-                    document.querySelector(`.home_song1 .home_song_info`).setAttribute('style', `width:100%; transform:translateX(0px);`);
+                    document.querySelector(`.home_song1 .home_song_info`).setAttribute('style', `width: 100%; transform: translateX(0px); `);
                 } else {
                     document.querySelector(`.home_song1 .home_song_info`).style.transform = 'translateX(0px)';
                 }
@@ -1589,18 +1514,18 @@
             } else {
                 document.querySelector(`.home_song${rankOrder} .home_shadow`).style.boxShadow = '5px 5px 5px 1px rgba(0, 0, 0, 0.2)';
                 if (window.innerWidth <= 576) {
-                    document.querySelector(`.home_song${rankOrder} .home_song_info`).setAttribute('style', `width:200%; transform:translateX(${set_value.size}px);`);
+                    document.querySelector(`.home_song${rankOrder} .home_song_info`).setAttribute('style', `width: 200%; transform: translateX(${set_value.size}px); `);
                 } else {
-                    document.querySelector(`.home_song${rankOrder} .home_song_info`).setAttribute('style', `width:100%; transform:translateX(${-set_value.size}px);`);
+                    document.querySelector(`.home_song${rankOrder} .home_song_info`).setAttribute('style', `width: 100%; transform: translateX(${- set_value.size}px); `);
                 }
                 if (window.innerWidth <= 576) {
-                    document.querySelector(`.home_song${rankOrder} .home_vinyl_records_s`).style.transform = `translateX(${-set_value.size / 2}px)`;
+                    document.querySelector(`.home_song${rankOrder} .home_vinyl_records_s`).style.transform = `translateX(${- set_value.size / 2}px)`;
                 } else {
                     document.querySelector(`.home_song${rankOrder} .home_vinyl_records_s`).style.transform = `translateX(${set_value.size / 2}px)`;
                 }
                 document.querySelector(`.home_song${rankOrder + 1} .home_shadow`).style.boxShadow = 'none';
                 if (window.innerWidth <= 576) {
-                    document.querySelector(`.home_song${rankOrder + 1} .home_song_info`).setAttribute('style', `width:100%; transform:translateX(0px);`);
+                    document.querySelector(`.home_song${rankOrder + 1} .home_song_info`).setAttribute('style', `width: 100%; transform: translateX(0px); `);
                 } else {
                     document.querySelector(`.home_song${rankOrder + 1} .home_song_info`).style.transform = 'translateX(0px)';
                 }
@@ -1616,24 +1541,25 @@
             document.querySelector('.home_left_arrow').removeEventListener('click', left_arrow_click);
             document.querySelector('.home_perspective').removeEventListener('mousedown', myMousedown);
             document.querySelector('.home_perspective').removeEventListener('mousemove', myMousemove);
-
+            document.querySelector('.home_perspective').removeEventListener('touchstart', myTouchstart);
+            document.querySelector('.home_perspective').removeEventListener('touchmove', myTouchmove);
             rankOrder++;
             if (rankOrder == 11) {
                 rankOrder = 1;
                 document.querySelector(`.home_song${rankOrder} .home_shadow`).style.boxShadow = '5px 5px 5px 1px rgba(0, 0, 0, 0.2)';
                 if (window.innerWidth <= 576) {
-                    document.querySelector(`.home_song${rankOrder} .home_song_info`).setAttribute('style', `width:200%; transform:translateX(${set_value.size}px);`);
+                    document.querySelector(`.home_song${rankOrder} .home_song_info`).setAttribute('style', `width: 200%; transform: translateX(${set_value.size}px); `);
                 } else {
-                    document.querySelector(`.home_song${rankOrder} .home_song_info`).setAttribute('style', `width:100%; transform:translateX(${-set_value.size}px);`);
+                    document.querySelector(`.home_song${rankOrder} .home_song_info`).setAttribute('style', `width: 100%; transform: translateX(${- set_value.size}px); `);
                 }
                 if (window.innerWidth <= 576) {
-                    document.querySelector(`.home_song${rankOrder} .home_vinyl_records_s`).style.transform = `translateX(${-set_value.size / 2}px)`;
+                    document.querySelector(`.home_song${rankOrder} .home_vinyl_records_s`).style.transform = `translateX(${- set_value.size / 2}px)`;
                 } else {
                     document.querySelector(`.home_song${rankOrder} .home_vinyl_records_s`).style.transform = `translateX(${set_value.size / 2}px)`;
                 }
                 document.querySelector(`.home_song10 .home_shadow`).style.boxShadow = 'none';
                 if (window.innerWidth <= 576) {
-                    document.querySelector(`.home_song10 .home_song_info`).setAttribute('style', `width:100%; transform:translateX(0px);`);
+                    document.querySelector(`.home_song10 .home_song_info`).setAttribute('style', `width: 100%; transform: translateX(0px); `);
                 } else {
                     document.querySelector(`.home_song10 .home_song_info`).style.transform = 'translateX(0px)';
                 }
@@ -1641,18 +1567,18 @@
             } else {
                 document.querySelector(`.home_song${rankOrder} .home_shadow`).style.boxShadow = '5px 5px 5px 1px rgba(0, 0, 0, 0.2)';
                 if (window.innerWidth <= 576) {
-                    document.querySelector(`.home_song${rankOrder} .home_song_info`).setAttribute('style', `width:200%; transform:translateX(${set_value.size}px);`);
+                    document.querySelector(`.home_song${rankOrder} .home_song_info`).setAttribute('style', `width: 200%; transform: translateX(${set_value.size}px); `);
                 } else {
-                    document.querySelector(`.home_song${rankOrder} .home_song_info`).setAttribute('style', `width:100%; transform:translateX(${-set_value.size}px);`);
+                    document.querySelector(`.home_song${rankOrder} .home_song_info`).setAttribute('style', `width: 100%; transform: translateX(${- set_value.size}px); `);
                 }
                 if (window.innerWidth <= 576) {
-                    document.querySelector(`.home_song${rankOrder} .home_vinyl_records_s`).style.transform = `translateX(${-set_value.size / 2}px)`;
+                    document.querySelector(`.home_song${rankOrder} .home_vinyl_records_s`).style.transform = `translateX(${- set_value.size / 2}px)`;
                 } else {
                     document.querySelector(`.home_song${rankOrder} .home_vinyl_records_s`).style.transform = `translateX(${set_value.size / 2}px)`;
                 }
                 document.querySelector(`.home_song${rankOrder - 1} .home_shadow`).style.boxShadow = 'none';
                 if (window.innerWidth <= 576) {
-                    document.querySelector(`.home_song${rankOrder - 1} .home_song_info`).setAttribute('style', `width:100%; transform:translateX(0px);`);
+                    document.querySelector(`.home_song${rankOrder - 1} .home_song_info`).setAttribute('style', `width: 100%; transform: translateX(0px); `);
                 } else {
                     document.querySelector(`.home_song${rankOrder - 1} .home_song_info`).style.transform = 'translateX(0px)';
                 }
@@ -1669,7 +1595,7 @@
                 for (let i = 0; i < 10; i++) {
                     if (+transform_rotate[i] == 360 || +transform_rotate[i] == 0) {
                         document
-                            .querySelector(`.home_song${i + 1}`).style.transform = `rotateY(${0 + spin}deg) translateZ(${set_value.translateZ}px) scale(${1.18 - 0.005 * spin})`;
+                            .querySelector(`.home_song${i + 1} `).style.transform = `rotateY(${0 + spin}deg) translateZ(${set_value.translateZ}px) scale(${1.18 - 0.005 * spin})`;
                     } else if (+transform_rotate[i] == 324) {
                         document
                             .querySelector(`.home_song${i + 1} `).style.transform = `rotateY(${+ transform_rotate[i] + spin}deg) translateZ(${set_value.translateZ}px) scale(${1 + 0.005 * spin})`;
@@ -1690,6 +1616,8 @@
                 document.querySelector('.home_right_arrow').addEventListener('click', right_arrow_click);
                 document.querySelector('.home_perspective').addEventListener('mousedown', myMousedown);
                 document.querySelector('.home_perspective').addEventListener('mousemove', myMousemove);
+                document.querySelector('.home_perspective').addEventListener('touchstart', myTouchstart);
+                document.querySelector('.home_perspective').addEventListener('touchmove', myTouchmove);
             }
         }
         let right_spin = () => {
@@ -1713,22 +1641,31 @@
             } else {
                 transform_rotate = [];
                 for (let i = 0; i < 10; i++) {
-                    transform_rotate.push(`${parseInt(document.querySelector(`.home_song${i + 1}`).style.transform.substr(8, 3))}`)
+                    transform_rotate.push(`${parseInt(document.querySelector(`.home_song${i + 1}`).style.transform.substr(8, 3))} `)
                 }
                 spin = 0;
                 document.querySelector('.home_right_arrow').addEventListener('click', right_arrow_click);
                 document.querySelector('.home_left_arrow').addEventListener('click', left_arrow_click);
                 document.querySelector('.home_perspective').addEventListener('mousedown', myMousedown);
                 document.querySelector('.home_perspective').addEventListener('mousemove', myMousemove);
+                document.querySelector('.home_perspective').addEventListener('touchstart', myTouchstart);
+                document.querySelector('.home_perspective').addEventListener('touchmove', myTouchmove);
             }
         }
 
         press = false;
         move = false;
 
-        document.querySelector('.home_perspective').addEventListener('selectstart', (e) => {
+        // 防止rank 標題被選取、拖曳
+        document.querySelector('.home_slider').addEventListener('selectstart', (e) => {
             e.preventDefault();
-        })
+        });
+        document.querySelectorAll('.more a').forEach((el) => {
+            el.addEventListener('dragstart', (e) => {
+                e.preventDefault();
+            });
+        });
+
         let myMousedown = (e) => {
             document.querySelector('.home_perspective').removeEventListener('mousedown', myMousedown);
             press = true;
@@ -1736,6 +1673,13 @@
             document.querySelector('.home_perspective').style.cursor = 'grabbing';
         };
         document.querySelector('.home_perspective').addEventListener('mousedown', myMousedown)
+        let myTouchstart = (e) => {
+            document.querySelector('.home_perspective').removeEventListener('touchstart', myTouchstart);
+            press = true;
+            preX = e.touches[0].clientX;
+            document.querySelector('.home_perspective').style.cursor = 'grabbing';
+        };
+        document.querySelector('.home_perspective').addEventListener('touchstart', myTouchstart);
 
         let myMousemove = (e) => {
             if (press == true) {
@@ -1748,7 +1692,7 @@
                         for (let i = 0; i < 10; i++) {
                             if (+transform_rotate[i] == 360 || +transform_rotate[i] == 0) {
                                 document
-                                    .querySelector(`.home_song${i + 1}`).style.transform = `rotateY(${0 + (spin > 36 ? 36 : spin)}deg) translateZ(${set_value.translateZ}px) scale(${1.18 - 0.005 * (spin > 36 ? 36 : spin)})`;
+                                    .querySelector(`.home_song${i + 1} `).style.transform = `rotateY(${0 + (spin > 36 ? 36 : spin)}deg) translateZ(${set_value.translateZ}px) scale(${1.18 - 0.005 * (spin > 36 ? 36 : spin)})`;
                             } else if (+transform_rotate[i] == 324) {
                                 document
                                     .querySelector(`.home_song${i + 1} `).style.transform = `rotateY(${+ transform_rotate[i] + (spin > 36 ? 36 : spin)}deg) translateZ(${set_value.translateZ}px) scale(${1 + 0.005 * (spin > 36 ? 36 : spin)})`;
@@ -1778,6 +1722,47 @@
             }
         };
         document.querySelector('.home_perspective').addEventListener('mousemove', myMousemove);
+        let myTouchmove = (e) => {
+            if (press == true) {
+                x = e.touches[0].clientX;
+                spin = parseInt(Math.abs(preX - x) / 20);
+                if (spin >= 1) {
+                    move = true;
+                    if (preX < x) {
+                        moveDirection = 'right';
+                        for (let i = 0; i < 10; i++) {
+                            if (+transform_rotate[i] == 360 || +transform_rotate[i] == 0) {
+                                document
+                                    .querySelector(`.home_song${i + 1} `).style.transform = `rotateY(${0 + (spin > 36 ? 36 : spin)}deg) translateZ(${set_value.translateZ}px) scale(${1.18 - 0.005 * (spin > 36 ? 36 : spin)})`;
+                            } else if (+transform_rotate[i] == 324) {
+                                document
+                                    .querySelector(`.home_song${i + 1} `).style.transform = `rotateY(${+ transform_rotate[i] + (spin > 36 ? 36 : spin)}deg) translateZ(${set_value.translateZ}px) scale(${1 + 0.005 * (spin > 36 ? 36 : spin)})`;
+                            } else {
+                                document
+                                    .querySelector(`.home_song${i + 1} `).style.transform = `rotateY(${+ transform_rotate[i] + (spin > 36 ? 36 : spin)}deg) translateZ(${set_value.translateZ}px) scale(1)`;
+                            }
+                        }
+                    } else if (preX > x) {
+                        moveDirection = 'left';
+                        for (let i = 0; i < 10; i++) {
+                            if (+transform_rotate[i] == 0 || +transform_rotate[i] == 360) {
+                                document
+                                    .querySelector(`.home_song${i + 1} `).style.transform = `rotateY(${360 - (spin > 36 ? 36 : spin)}deg) translateZ(${set_value.translateZ}px) scale(${1.18 - 0.005 * (spin > 36 ? 36 : spin)})`;
+
+                            } else if (+transform_rotate[i] == 36) {
+                                document
+                                    .querySelector(`.home_song${i + 1} `).style.transform = `rotateY(${+ transform_rotate[i] - (spin > 36 ? 36 : spin)}deg) translateZ(${set_value.translateZ}px) scale(${1 + 0.005 * (spin > 36 ? 36 : spin)})`;
+
+                            } else {
+                                document
+                                    .querySelector(`.home_song${i + 1} `).style.transform = `rotateY(${+ transform_rotate[i] - (spin > 36 ? 36 : spin)}deg) translateZ(${set_value.translateZ}px)`;
+                            }
+                        }
+                    }
+                }
+            }
+        };
+        document.querySelector('.home_perspective').addEventListener('touchmove', myTouchmove);
 
         let myMouseup = () => {
             document.querySelector('.home_perspective').removeEventListener('mousemove', myMousemove);
@@ -1792,18 +1777,18 @@
                         rankOrder = 10;
                         document.querySelector(`.home_song${rankOrder} .home_shadow`).style.boxShadow = '5px 5px 5px 1px rgba(0, 0, 0, 0.2)';
                         if (window.innerWidth <= 576) {
-                            document.querySelector(`.home_song${rankOrder} .home_song_info`).setAttribute('style', `width:200%; transform:translateX(${set_value.size}px);`);
+                            document.querySelector(`.home_song${rankOrder} .home_song_info`).setAttribute('style', `width: 200%; transform: translateX(${set_value.size}px); `);
                         } else {
-                            document.querySelector(`.home_song${rankOrder} .home_song_info`).setAttribute('style', `width:100%; transform:translateX(${-set_value.size}px);`);
+                            document.querySelector(`.home_song${rankOrder} .home_song_info`).setAttribute('style', `width: 100%; transform: translateX(${- set_value.size}px); `);
                         }
                         if (window.innerWidth <= 576) {
-                            document.querySelector(`.home_song${rankOrder} .home_vinyl_records_s`).style.transform = `translateX(${-set_value.size / 2}px)`;
+                            document.querySelector(`.home_song${rankOrder} .home_vinyl_records_s`).style.transform = `translateX(${- set_value.size / 2}px)`;
                         } else {
                             document.querySelector(`.home_song${rankOrder} .home_vinyl_records_s`).style.transform = `translateX(${set_value.size / 2}px)`;
                         }
                         document.querySelector(`.home_song1 .home_shadow`).style.boxShadow = 'none';
                         if (window.innerWidth <= 576) {
-                            document.querySelector(`.home_song1 .home_song_info`).setAttribute('style', `width:100%; transform:translateX(0px);`);
+                            document.querySelector(`.home_song1 .home_song_info`).setAttribute('style', `width: 100%; transform: translateX(0px); `);
                         } else {
                             document.querySelector(`.home_song1 .home_song_info`).style.transform = 'translateX(0px)';
                         }
@@ -1811,18 +1796,18 @@
                     } else {
                         document.querySelector(`.home_song${rankOrder} .home_shadow`).style.boxShadow = '5px 5px 5px 1px rgba(0, 0, 0, 0.2)';
                         if (window.innerWidth <= 576) {
-                            document.querySelector(`.home_song${rankOrder} .home_song_info`).setAttribute('style', `width:200%; transform:translateX(${set_value.size}px);`);
+                            document.querySelector(`.home_song${rankOrder} .home_song_info`).setAttribute('style', `width: 200%; transform: translateX(${set_value.size}px); `);
                         } else {
-                            document.querySelector(`.home_song${rankOrder} .home_song_info`).setAttribute('style', `width:100%; transform:translateX(${-set_value.size}px);`);
+                            document.querySelector(`.home_song${rankOrder} .home_song_info`).setAttribute('style', `width: 100%; transform: translateX(${- set_value.size}px); `);
                         }
                         if (window.innerWidth <= 576) {
-                            document.querySelector(`.home_song${rankOrder} .home_vinyl_records_s`).style.transform = `translateX(${-set_value.size / 2}px)`;
+                            document.querySelector(`.home_song${rankOrder} .home_vinyl_records_s`).style.transform = `translateX(${- set_value.size / 2}px)`;
                         } else {
                             document.querySelector(`.home_song${rankOrder} .home_vinyl_records_s`).style.transform = `translateX(${set_value.size / 2}px)`;
                         }
                         document.querySelector(`.home_song${rankOrder + 1} .home_shadow`).style.boxShadow = 'none';
                         if (window.innerWidth <= 576) {
-                            document.querySelector(`.home_song${rankOrder + 1} .home_song_info`).setAttribute('style', `width:100%; transform:translateX(0px);`);
+                            document.querySelector(`.home_song${rankOrder + 1} .home_song_info`).setAttribute('style', `width: 100%; transform: translateX(0px); `);
                         } else {
                             document.querySelector(`.home_song${rankOrder + 1} .home_song_info`).style.transform = 'translateX(0px)';
                         }
@@ -1836,18 +1821,18 @@
                         rankOrder = 1;
                         document.querySelector(`.home_song${rankOrder} .home_shadow`).style.boxShadow = '5px 5px 5px 1px rgba(0, 0, 0, 0.2)';
                         if (window.innerWidth <= 576) {
-                            document.querySelector(`.home_song${rankOrder} .home_song_info`).setAttribute('style', `width:200%; transform:translateX(${set_value.size}px);`);
+                            document.querySelector(`.home_song${rankOrder} .home_song_info`).setAttribute('style', `width: 200%; transform: translateX(${set_value.size}px); `);
                         } else {
-                            document.querySelector(`.home_song${rankOrder} .home_song_info`).setAttribute('style', `width:100%; transform:translateX(${-set_value.size}px);`);
+                            document.querySelector(`.home_song${rankOrder} .home_song_info`).setAttribute('style', `width: 100%; transform: translateX(${- set_value.size}px); `);
                         }
                         if (window.innerWidth <= 576) {
-                            document.querySelector(`.home_song${rankOrder} .home_vinyl_records_s`).style.transform = `translateX(${-set_value.size / 2}px)`;
+                            document.querySelector(`.home_song${rankOrder} .home_vinyl_records_s`).style.transform = `translateX(${- set_value.size / 2}px)`;
                         } else {
                             document.querySelector(`.home_song${rankOrder} .home_vinyl_records_s`).style.transform = `translateX(${set_value.size / 2}px)`;
                         }
                         document.querySelector(`.home_song10 .home_shadow`).style.boxShadow = 'none';
                         if (window.innerWidth <= 576) {
-                            document.querySelector(`.home_song10 .home_song_info`).setAttribute('style', `width:100%; transform:translateX(0px);`);
+                            document.querySelector(`.home_song10 .home_song_info`).setAttribute('style', `width: 100%; transform: translateX(0px); `);
                         } else {
                             document.querySelector(`.home_song10 .home_song_info`).style.transform = 'translateX(0px)';
                         }
@@ -1855,18 +1840,18 @@
                     } else {
                         document.querySelector(`.home_song${rankOrder} .home_shadow`).style.boxShadow = '5px 5px 5px 1px rgba(0, 0, 0, 0.2)';
                         if (window.innerWidth <= 576) {
-                            document.querySelector(`.home_song${rankOrder} .home_song_info`).setAttribute('style', `width:200%; transform:translateX(${set_value.size}px);`);
+                            document.querySelector(`.home_song${rankOrder} .home_song_info`).setAttribute('style', `width: 200%; transform: translateX(${set_value.size}px); `);
                         } else {
-                            document.querySelector(`.home_song${rankOrder} .home_song_info`).setAttribute('style', `width:100%; transform:translateX(${-set_value.size}px);`);
+                            document.querySelector(`.home_song${rankOrder} .home_song_info`).setAttribute('style', `width: 100%; transform: translateX(${- set_value.size}px); `);
                         }
                         if (window.innerWidth <= 576) {
-                            document.querySelector(`.home_song${rankOrder} .home_vinyl_records_s`).style.transform = `translateX(${-set_value.size / 2}px)`;
+                            document.querySelector(`.home_song${rankOrder} .home_vinyl_records_s`).style.transform = `translateX(${- set_value.size / 2}px)`;
                         } else {
                             document.querySelector(`.home_song${rankOrder} .home_vinyl_records_s`).style.transform = `translateX(${set_value.size / 2}px)`;
                         }
                         document.querySelector(`.home_song${rankOrder - 1} .home_shadow`).style.boxShadow = 'none';
                         if (window.innerWidth <= 576) {
-                            document.querySelector(`.home_song${rankOrder - 1} .home_song_info`).setAttribute('style', `width:100%; transform:translateX(0px);`);
+                            document.querySelector(`.home_song${rankOrder - 1} .home_song_info`).setAttribute('style', `width: 100%; transform: translateX(0px); `);
                         } else {
                             document.querySelector(`.home_song${rankOrder - 1} .home_song_info`).style.transform = 'translateX(0px)';
                         }
@@ -1880,97 +1865,173 @@
             }
         };
         window.addEventListener('mouseup', myMouseup);
+        let myTouchend = () => {
+            document.querySelector('.home_perspective').removeEventListener('touchmove', myTouchmove);
+            press = false;
+            document.querySelector('.home_perspective').style.cursor = 'grab';
+            if (move == true) {
+                move = false;
+                if (moveDirection == 'right') {
+                    rankOrder--;
+                    moveDirection = '';
+                    if (rankOrder == 0) {
+                        rankOrder = 10;
+                        document.querySelector(`.home_song${rankOrder} .home_shadow`).style.boxShadow = '5px 5px 5px 1px rgba(0, 0, 0, 0.2)';
+                        if (window.innerWidth <= 576) {
+                            document.querySelector(`.home_song${rankOrder} .home_song_info`).setAttribute('style', `width: 200%; transform: translateX(${set_value.size}px); `);
+                        } else {
+                            document.querySelector(`.home_song${rankOrder} .home_song_info`).setAttribute('style', `width: 100%; transform: translateX(${- set_value.size}px); `);
+                        }
+                        if (window.innerWidth <= 576) {
+                            document.querySelector(`.home_song${rankOrder} .home_vinyl_records_s`).style.transform = `translateX(${- set_value.size / 2}px)`;
+                        } else {
+                            document.querySelector(`.home_song${rankOrder} .home_vinyl_records_s`).style.transform = `translateX(${set_value.size / 2}px)`;
+                        }
+                        document.querySelector(`.home_song1 .home_shadow`).style.boxShadow = 'none';
+                        if (window.innerWidth <= 576) {
+                            document.querySelector(`.home_song1 .home_song_info`).setAttribute('style', `width: 100%; transform: translateX(0px); `);
+                        } else {
+                            document.querySelector(`.home_song1 .home_song_info`).style.transform = 'translateX(0px)';
+                        }
+                        document.querySelector(`.home_song1.home_vinyl_records_s`).style.transform = 'translateX(0px)';
+                    } else {
+                        document.querySelector(`.home_song${rankOrder} .home_shadow`).style.boxShadow = '5px 5px 5px 1px rgba(0, 0, 0, 0.2)';
+                        if (window.innerWidth <= 576) {
+                            document.querySelector(`.home_song${rankOrder} .home_song_info`).setAttribute('style', `width: 200%; transform: translateX(${set_value.size}px); `);
+                        } else {
+                            document.querySelector(`.home_song${rankOrder} .home_song_info`).setAttribute('style', `width: 100%; transform: translateX(${- set_value.size}px); `);
+                        }
+                        if (window.innerWidth <= 576) {
+                            document.querySelector(`.home_song${rankOrder} .home_vinyl_records_s`).style.transform = `translateX(${- set_value.size / 2}px)`;
+                        } else {
+                            document.querySelector(`.home_song${rankOrder} .home_vinyl_records_s`).style.transform = `translateX(${set_value.size / 2}px)`;
+                        }
+                        document.querySelector(`.home_song${rankOrder + 1} .home_shadow`).style.boxShadow = 'none';
+                        if (window.innerWidth <= 576) {
+                            document.querySelector(`.home_song${rankOrder + 1} .home_song_info`).setAttribute('style', `width: 100%; transform: translateX(0px); `);
+                        } else {
+                            document.querySelector(`.home_song${rankOrder + 1} .home_song_info`).style.transform = 'translateX(0px)';
+                        }
+                        document.querySelector(`.home_song${rankOrder + 1} .home_vinyl_records_s`).style.transform = 'translateX(0px)';
+                    }
+                    left_spin();
+                } else if (moveDirection == 'left') {
+                    rankOrder++;
+                    moveDirection = '';
+                    if (rankOrder == 11) {
+                        rankOrder = 1;
+                        document.querySelector(`.home_song${rankOrder} .home_shadow`).style.boxShadow = '5px 5px 5px 1px rgba(0, 0, 0, 0.2)';
+                        if (window.innerWidth <= 576) {
+                            document.querySelector(`.home_song${rankOrder} .home_song_info`).setAttribute('style', `width: 200%; transform: translateX(${set_value.size}px); `);
+                        } else {
+                            document.querySelector(`.home_song${rankOrder} .home_song_info`).setAttribute('style', `width: 100%; transform: translateX(${- set_value.size}px); `);
+                        }
+                        if (window.innerWidth <= 576) {
+                            document.querySelector(`.home_song${rankOrder} .home_vinyl_records_s`).style.transform = `translateX(${- set_value.size / 2}px)`;
+                        } else {
+                            document.querySelector(`.home_song${rankOrder} .home_vinyl_records_s`).style.transform = `translateX(${set_value.size / 2}px)`;
+                        }
+                        document.querySelector(`.home_song10 .home_shadow`).style.boxShadow = 'none';
+                        if (window.innerWidth <= 576) {
+                            document.querySelector(`.home_song10 .home_song_info`).setAttribute('style', `width: 100%; transform: translateX(0px); `);
+                        } else {
+                            document.querySelector(`.home_song10 .home_song_info`).style.transform = 'translateX(0px)';
+                        }
+                        document.querySelector(`.home_song10 .home_vinyl_records_s`).style.transform = 'translateX(0px)';
+                    } else {
+                        document.querySelector(`.home_song${rankOrder} .home_shadow`).style.boxShadow = '5px 5px 5px 1px rgba(0, 0, 0, 0.2)';
+                        if (window.innerWidth <= 576) {
+                            document.querySelector(`.home_song${rankOrder} .home_song_info`).setAttribute('style', `width: 200%; transform: translateX(${set_value.size}px); `);
+                        } else {
+                            document.querySelector(`.home_song${rankOrder} .home_song_info`).setAttribute('style', `width: 100%; transform: translateX(${- set_value.size}px); `);
+                        }
+                        if (window.innerWidth <= 576) {
+                            document.querySelector(`.home_song${rankOrder} .home_vinyl_records_s`).style.transform = `translateX(${- set_value.size / 2}px)`;
+                        } else {
+                            document.querySelector(`.home_song${rankOrder} .home_vinyl_records_s`).style.transform = `translateX(${set_value.size / 2}px)`;
+                        }
+                        document.querySelector(`.home_song${rankOrder - 1} .home_shadow`).style.boxShadow = 'none';
+                        if (window.innerWidth <= 576) {
+                            document.querySelector(`.home_song${rankOrder - 1} .home_song_info`).setAttribute('style', `width: 100%; transform: translateX(0px); `);
+                        } else {
+                            document.querySelector(`.home_song${rankOrder - 1} .home_song_info`).style.transform = 'translateX(0px)';
+                        }
+                        document.querySelector(`.home_song${rankOrder - 1} .home_vinyl_records_s`).style.transform = 'translateX(0px)';
+                    }
+                    right_spin();
+                }
+            } else if (move == false) {
+                document.querySelector('.home_perspective').addEventListener('touchstart', myTouchstart);
+                document.querySelector('.home_perspective').addEventListener('touchmove', myTouchmove);
+            }
+        };
+        window.addEventListener('touchend', myTouchend);
 
 
         // rank play =============================================================================================
 
 
-        let home_play = false;
-        let temporary = false;
+        // console.log(.indexOf('home_vinyl_records_s'))
+        let home_play = false; // 是否正在撥放home 頁面的音樂
+        let temporary = false; // 是否將home 頁面的音樂暫時加入音樂清單
+        let playing_rankNo = Number;
 
         document.querySelectorAll('.home_song .home_play').forEach((el) => {
             el.addEventListener('click', (e) => {
-                home_play = true;
                 if (temporary === true) {
-                    if (e.target.getAttribute('data-songNo') == vm.play_song_info.song_no) {
+                    if (e.target.getAttribute('data-rankNo') == playing_rankNo) {
                         if (e.target.getAttribute('data-playStatus') === 'false') {
                             isPlaying(false);
                             e.target.setAttribute('data-playStatus', 'true')
                             e.target.firstChild.classList.add('fa-pause');
                             e.target.firstChild.classList.remove('fa-play');
                         } else if (e.target.getAttribute('data-playStatus') === 'true') {
-                            isPlaying(isPlaying)
+                            isPlaying(true);
                         }
                     } else {
-                        let play_no = `${e.target.getAttribute('data-songNo')}`
-                        let xhr = new XMLHttpRequest();
-                        xhr.onload = () => {
-                            let play_song_info = JSON.parse(xhr.responseText);
-                            vm.play_song_info.song_no = play_song_info.song_no;
-                            vm.play_song_info.song_name = play_song_info.song_name;
-                            vm.play_song_info.song_author = play_song_info.mem_name;
-                            vm.play_song_info.song_img = play_song_info.song_pic;
-                            vm.play_song_info.song_addr = play_song_info.song_addr;
-
-                            myPlaylist.splice(0, 1);
-                            myPlaylist.splice(0, 0, {
-                                song_name: vm.play_song_info.song_name,
-                                song_pic: vm.play_song_info.song_img,
-                                song_addr: vm.play_song_info.song_addr,
-                                mem_name: vm.play_song_info.song_author,
-                            });
-                            nowPlaying = 0;
-                            temporary = true;
-                            audio.src = myPlaylist[nowPlaying].song_addr;
-                            isPlaying(false);
-                            try {
-                                document.querySelector('.home_play[data-playStatus=true]').setAttribute('data-playStatus', 'false');
-                                document.querySelector('.home_play i.fa-pause').classList.add('fa-play')
-                                document.querySelector('.home_play i.fa-pause').classList.remove('fa-pause');
-                                e.target.setAttribute('data-playStatus', 'true');
-                                e.target.firstChild.classList.add('fa-pause');
-                                e.target.firstChild.classList.remove('fa-play');
-                            } catch {
-                                e.target.setAttribute('data-playStatus', 'true');
-                                e.target.firstChild.classList.add('fa-pause');
-                                e.target.firstChild.classList.remove('fa-play');
-                            }
-                        }
-                        xhr.open("post", "./phps/getPlaySongInfo.php", true);
-                        xhr.setRequestHeader("content-type", "application/x-www-form-urlencoded");
-                        xhr.send(`song_no=${play_no}`);
-                    }
-                } else if (temporary === false) {
-                    if (e.target.getAttribute('data-playStatus') === 'false') {
-                        let play_no = `${e.target.getAttribute('data-songNo')}`
-                        let xhr = new XMLHttpRequest();
-                        xhr.onload = () => {
-                            console.log(xhr.responseText)
-                            let play_song_info = JSON.parse(xhr.responseText);
-
-                            vm.play_song_info.song_no = play_song_info.song_no;
-                            vm.play_song_info.song_name = play_song_info.song_name;
-                            vm.play_song_info.song_author = play_song_info.mem_name;
-                            vm.play_song_info.song_img = play_song_info.song_pic;
-                            vm.play_song_info.song_addr = play_song_info.song_addr;
-                            console.log(myPlaylist)
-                            myPlaylist.splice(0, 0, {
-                                song_name: vm.play_song_info.song_name,
-                                song_pic: vm.play_song_info.song_img,
-                                song_addr: vm.play_song_info.song_addr,
-                                mem_name: vm.play_song_info.song_author,
-                            });
-                            nowPlaying = 0;
-                            temporary = true;
-                            audio.src = myPlaylist[nowPlaying].song_addr;
-                            isPlaying(false);
-                            e.target.setAttribute('data-playStatus', 'true')
+                        home_play = true;
+                        playing_rankNo = e.target.getAttribute('data-rankNo');
+                        myPlaylist.splice(0, 1);
+                        myPlaylist.splice(0, 0, {
+                            song_name: vm.rank.song_name[playing_rankNo],
+                            song_pic: vm.rank.song_img[playing_rankNo],
+                            song_addr: vm.rank.song_addr[playing_rankNo],
+                            mem_name: vm.rank.song_author[playing_rankNo],
+                        });
+                        nowPlaying = 0;
+                        temporary = true;
+                        audio.src = myPlaylist[nowPlaying].song_addr;
+                        isPlaying(false);
+                        try {
+                            document.querySelector('.home_play[data-playStatus=true]').setAttribute('data-playStatus', 'false');
+                            document.querySelector('.home_play i.fa-pause').classList.add('fa-play')
+                            document.querySelector('.home_play i.fa-pause').classList.remove('fa-pause');
+                            e.target.setAttribute('data-playStatus', 'true');
+                            e.target.firstChild.classList.add('fa-pause');
+                            e.target.firstChild.classList.remove('fa-play');
+                        } catch {
+                            e.target.setAttribute('data-playStatus', 'true');
                             e.target.firstChild.classList.add('fa-pause');
                             e.target.firstChild.classList.remove('fa-play');
                         }
-                        xhr.open("post", "./phps/getPlaySongInfo.php", true);
-                        xhr.setRequestHeader("content-type", "application/x-www-form-urlencoded");
-                        xhr.send(`song_no=${play_no}`);
+                    }
+                } else if (temporary === false) {
+                    if (e.target.getAttribute('data-playStatus') === 'false') {
+                        home_play = true;
+                        playing_rankNo = e.target.getAttribute('data-rankNo');
+                        myPlaylist.splice(0, 0, {
+                            song_name: vm.rank.song_name[playing_rankNo],
+                            song_pic: vm.rank.song_img[playing_rankNo],
+                            song_addr: vm.rank.song_addr[playing_rankNo],
+                            mem_name: vm.rank.song_author[playing_rankNo],
+                        });
+                        nowPlaying = 0;
+                        temporary = true;
+                        audio.src = myPlaylist[nowPlaying].song_addr;
+                        isPlaying(false);
+                        e.target.setAttribute('data-playStatus', 'true')
+                        e.target.firstChild.classList.add('fa-pause');
+                        e.target.firstChild.classList.remove('fa-play');
                     }
                 }
             });
@@ -2144,11 +2205,13 @@
             document.querySelector('.home_girl').style.left = `${160 - (((1920 - window.innerWidth) / 6.4) * 0.01 * 160)}px`
             document.querySelector('.text_container').style.margin = `0px`
         } else if (window.innerWidth <= 1280 && window.innerWidth > 992) {
-            document.querySelector('.home_girl').style.left = `${0 - (((1280 - window.innerWidth) / 2.88) * 0.01 * 30)}px`
             document.querySelector('.text_container').style.margin = `0 0 0 ${(window.innerWidth - 990) / 2}px`
-        } else if (window.innerWidth <= 992 && window.innerWidth > 768) {
-            document.querySelector('.home_girl').style.left = `${-30 - (((1280 - window.innerWidth) / 2.88) * 0.01 * 30)}px`
         }
+
+        if (window.innerWidth <= 1280) {
+            document.querySelector('.home_girl').style.left = `0px`;
+        }
+
         if (window.innerWidth <= 992) {
             document.querySelector('.text_container').style.margin = `0px`
         }
@@ -2338,11 +2401,13 @@
                 document.querySelector('.home_girl').style.left = `${160 - (((1920 - window.innerWidth) / 6.4) * 0.01 * 160)}px`
                 document.querySelector('.text_container').style.margin = `0px`
             } else if (window.innerWidth <= 1280 && window.innerWidth > 992) {
-                document.querySelector('.home_girl').style.left = `${0 - (((1280 - window.innerWidth) / 2.88) * 0.01 * 30)}px`
                 document.querySelector('.text_container').style.margin = `0 0 0 ${(window.innerWidth - 990) / 2}px`
-            } else if (window.innerWidth <= 992 && window.innerWidth > 768) {
-                document.querySelector('.home_girl').style.left = `${-30 - (((1280 - window.innerWidth) / 2.88) * 0.01 * 30)}px`
             }
+
+            if (window.innerWidth <= 1280) {
+                document.querySelector('.home_girl').style.left = `0px`;
+            }
+
             if (window.innerWidth <= 992) {
                 document.querySelector('.text_container').style.margin = `0px`
             }
@@ -2390,7 +2455,6 @@
             listLen = myPlaylist.length;
 
         // audio
-
         let context = new (window.AudioContext || window.webkitAudioContext);
         let analyser = context.createAnalyser();
         analyser.fftSize = 4096;
@@ -2452,7 +2516,7 @@
             let songName = $(this).siblings('.name').text();
             let playerInd = getPlayerSongIndex(songName);
             let favSongInd = myPlaylist[playerInd].song_no;
-            if (!member['mem_no']) {
+            if (!vm.member.mem_no) {
                 //  $('#player .lightCover').show();
                 //  $('#playerAlert').show();
                 //  $('#playerAlert h4').text('Please login!');
@@ -2474,7 +2538,7 @@
             let songName = $(this).siblings('.listSongInfo').find('.name h4').text();
             let playerInd = getPlayerSongIndex(songName);
             let favSongInd = myPlaylist[playerInd].song_no;
-            if (!member['mem_no']) {
+            if (!vm.member.mem_no) {
                 //  $('#player .lightCover').show();
                 //  $('#playerAlert').show();
                 //  $('#playerAlert h4').text('Please login!');
@@ -2801,14 +2865,9 @@
         let getLikedList = () => {
             let xhr = new XMLHttpRequest();
             xhr.onload = () => {
-                if (xhr.status == 200) {
-                    console.log(xhr.responseText)
-                    myPlaylist = JSON.parse(xhr.responseText);
-                    listLen = myPlaylist.length;
-                    createPlayerList(myPlaylist);
-                } else {
-                    alert(xhr.statusText);
-                }
+                myPlaylist = JSON.parse(xhr.responseText);
+                listLen = myPlaylist.length;
+                createPlayerList(myPlaylist);
             };
             let url = "./phps/likedSongsList.php";
             xhr.open("get", url, false);
@@ -2840,13 +2899,9 @@
             } else {
                 let xhr = new XMLHttpRequest();
                 xhr.onload = function () {
-                    if (xhr.status == 200) {
-                        phpGetListName = JSON.parse(xhr.responseText);
-                        mylistInfo = phpGetListName;
-                        lightListName(mylistInfo);
-                    } else {
-                        alert(xhr.statusText);
-                    }
+                    phpGetListName = JSON.parse(xhr.responseText);
+                    mylistInfo = phpGetListName;
+                    lightListName(mylistInfo);
                 };
                 let url = "./phps/getListName.php";
                 xhr.open("get", url, true);
@@ -2858,13 +2913,9 @@
         function showAllSongs() {
             let xhr = new XMLHttpRequest();
             xhr.onload = function () {
-                if (xhr.status == 200) {
-                    myPlaylist = JSON.parse(xhr.responseText);
-                    listLen = myPlaylist.length;
-                    createPlayerList(myPlaylist);
-                } else {
-                    alert(xhr.statusText);
-                }
+                myPlaylist = JSON.parse(xhr.responseText);
+                listLen = myPlaylist.length;
+                createPlayerList(myPlaylist);
             };
             let url = "./phps/allSongs.php";
             xhr.open("get", url, false);
@@ -2875,18 +2926,12 @@
         function getOtherPlayList() {
             let xhr = new XMLHttpRequest();
             xhr.onload = function () {
-                if (xhr.status == 200) {
-                    console.log(xhr.responseText)
-
-                    myPlaylist = JSON.parse(xhr.responseText);
-                    listLen = myPlaylist.length;
-                    createPlayerList(myPlaylist);
-                } else {
-                    alert(xhr.status);
-                }
+                myPlaylist = JSON.parse(xhr.responseText);
+                listLen = myPlaylist.length;
+                createPlayerList(myPlaylist);
             };
-            let url = `./php/showPlayList.php?plistName=${playerListName}`;
-            xhr.open("GET", url, false);
+            let url = `./ php / showPlayList.php ? plistName = ${playerListName} `;
+            xhr.open("get", url, false);
             xhr.send(null);
         }
         //歌單資訊
@@ -2922,19 +2967,19 @@
             if (songlistbuild != "") {
                 if (vm.member.mem_no) {
                     for (let i = 0; i < songlistbuild.length; i++) {
-                        $('#player .list ul').append(`<li>
-        <div class="songCover">
-          <img src="${songlistbuild[i].song_pic}" alt="">
-          <div class="listPlay"><img src="./img/library/coverPlay-s.png"></div>
-        </div>
-        <div class="listSongInfo">
-          <div class="name">
-            <h4><a href="./songinfo.html?song_no=${songlistbuild[i].song_no}">${songlistbuild[i].song_name}</a></h4>
-            <p>${songlistbuild[i].mem_name}</p>
-          </div>
-        </div>
-        <div class="heart becomeRed"><img src="./img/collection/redheart.png"></div>
-        <div class="clearfix"></div>
+                        $('#player .list ul').append(`< li >
+            <div class="songCover">
+                <img src="${songlistbuild[i].song_pic}" alt="">
+                    <div class="listPlay"><img src="./img/library/coverPlay-s.png"></div>
+                    </div>
+                    <div class="listSongInfo">
+                        <div class="name">
+                            <h4><a href="./songinfo.html?song_no=${songlistbuild[i].song_no}">${songlistbuild[i].song_name}</a></h4>
+                            <p>${songlistbuild[i].mem_name}</p>
+                        </div>
+                    </div>
+                    <div class="heart becomeRed"><img src="./img/collection/redheart.png"></div>
+                        <div class="clearfix"></div>
       </li>`);
                     }
                 } else {
@@ -3019,9 +3064,9 @@
                     if (home_play === false) {
                         if (temporary === true) {
                             home_play = true;
-                            document.querySelector(`.home_play[data-songNo="${vm.play_song_info.song_no}"]`).setAttribute('data-playStatus', 'true');
-                            document.querySelector(`.home_play[data-songNo="${vm.play_song_info.song_no}"] i.fa-play`).classList.add('fa-pause')
-                            document.querySelector(`.home_play[data-songNo="${vm.play_song_info.song_no}"] i.fa-play`).classList.remove('fa-play')
+                            document.querySelector(`.home_play[data-rankNo="${playing_rankNo}"]`).setAttribute('data-playStatus', 'true');
+                            document.querySelector(`.home_play[data-rankNo="${playing_rankNo}"] i.fa-play`).classList.add('fa-pause')
+                            document.querySelector(`.home_play[data-rankNo="${playing_rankNo}"] i.fa-play`).classList.remove('fa-play')
                         }
                     }
                     playStatus = true;
@@ -3127,13 +3172,13 @@
             $(`.player_b .listPlay`).removeClass("nowlistening");
             //  $(`.songCover .listPlay`).removeClass("nowlistening");
             $(`.player_b li:nth-of-type(${nowPlaying + 1}) .listPlay`).addClass("nowlistening");
-            //  $(`.songs li:nth-of-type(${nowPlaying+1}) .listPlay`).addClass("nowlistening");
+            //  $(`.songs li:nth-of-type(${nowPlaying + 1}) .listPlay`).addClass("nowlistening");
             if (playStatus) {
                 $(`.player_b li:nth-of-type(${nowPlaying + 1}) .listPlay`).html('<img src="./img/library/coverPause-s.png">');
-                //  $(`.songs li:nth-of-type(${nowPlaying+1}) .listPlay`).html('<img src="./img/library/coverPause-s.png">');
+                //  $(`.songs li:nth-of-type(${nowPlaying + 1}) .listPlay`).html('<img src="./img/library/coverPause-s.png">');
             } else {
                 $(`.player_b li:nth-of-type(${nowPlaying + 1}) .listPlay`).html('<img src="./img/library/coverPlay-s.png">');
-                //  $(`.songs li:nth-of-type(${nowPlaying+1}) .listPlay`).html('<img src="./img/library/coverPlay-s.png">');
+                //  $(`.songs li:nth-of-type(${nowPlaying + 1}) .listPlay`).html('<img src="./img/library/coverPlay-s.png">');
             }
         }
         //音量控制
@@ -3209,19 +3254,14 @@
         function playerFavorStatus(favorSong) {
             let xhr = new XMLHttpRequest();
             xhr.onload = function () {
-                if (xhr.status == 200) {
-                    if (xhr.responseText == 'Asuccess') {
-                        alert('Success to add');
-                    } else if (xhr.responseText == 'Dsuccess') {
-                        alert('Success to cancel');
-                    } else if (xhr.responseText == 'Afail') {
-                        alert('Fail to add');
-                    } else if (xhr.responseText == 'Dfail') {
-                        alert('Fail to cancel');
-                    }
-                    //  createPlayerList(nowList);
-                } else {
-                    alert(xhr.statusText);
+                if (xhr.responseText == 'Asuccess') {
+                    alert('Success to add');
+                } else if (xhr.responseText == 'Dsuccess') {
+                    alert('Success to cancel');
+                } else if (xhr.responseText == 'Afail') {
+                    alert('Fail to add');
+                } else if (xhr.responseText == 'Dfail') {
+                    alert('Fail to cancel');
                 }
             };
             xhr.open("post", "./phps/LibraryHeart.php", true);

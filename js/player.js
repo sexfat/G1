@@ -56,6 +56,7 @@
 
    //歌單清單
    $('.closeLight').click(function () {
+     console.log(0);
      $('.lightCover').hide();
      $('#player #myAllList').hide();
    });
@@ -143,6 +144,7 @@
    });
 
    $('#myAllList #mylistOK').click(function () { //----有bug
+    console.log(1);
      if (playerListName == undefined) {
        myPlaylist = myPlaylist;
      } else {

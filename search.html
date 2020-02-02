@@ -1,0 +1,366 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>SOUNDWAVE | Profile</title>
+    <link rel="Shortcut Icon" type="image/x-icon" href="./img/collection/smalllogo.ico" />
+    <link rel="stylesheet" href="./css/main.css">
+    <link rel="stylesheet" href="./css/search.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.11.2/css/all.min.css" />
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/vue/2.6.10/vue.js"></script>
+
+</head>
+
+<body>
+    <div id="nav_app">
+        <!-- nav_bar start -->
+        <div class="nav_bar flexbox">
+            <div class="hamburger" @click="hamburger_click">
+                <div class="hamburger-box">
+                    <div class="hamburger-inner"></div>
+                </div>
+            </div>
+            <div class="mobile_list" @click="stopPropagation">
+                <div class="paint_border"></div>
+                <ul>
+                    <li class="REMIX flexbox">
+                        <a href="./remix.html">
+                        </a>
+                    </li>
+                    <li class="COLLECTION flexbox">
+                        <a href="./collection.html">
+                        </a>
+                    </li>
+                    <li class="ACTIVITY flexbox">
+                        <a href="./activity.html">
+                        </a>
+                    </li>
+                    <li class="LIBRARY flexbox">
+                        <a href="./library.html">
+                        </a>
+                    </li>
+                </ul>
+            </div>
+            <div class="logo_container">
+                <a href="./home.html">
+                    <div class="logo"></div>
+                </a>
+                <div class="finger"></div>
+            </div>
+            <ul class="main_list flexbox">
+                <li class="REMIX flexbox">
+                    <a href="./remix.html">
+                    </a>
+                </li>
+                <li class="COLLECTION flexbox">
+                    <a href="./collection.html">
+                    </a>
+                </li>
+                <li class="ACTIVITY flexbox">
+                    <a href="./activity.html">
+                    </a>
+                </li>
+                <li class="LIBRARY flexbox">
+                    <a href="./library.html">
+                    </a>
+                </li>
+            </ul>
+            <div class="search_bt" @click="search_bt_click">
+                <a href="#"></a>
+            </div>
+            <div class="search_bar" @click="stopPropagation" v-bind:style="search_bar_style()">
+                <input class="search" type="text" placeholder="Enter Song Name or Author"/>
+                <i class="fas fa-search" @click="search_click"></i>
+                <div class="keyword_container">
+                    <div class="keyword" @click="keyword_click">
+                        <i class="far fa-hand-point-right"></i>
+                        {{search_keyword[0]}}
+                    </div>
+                    <div class="keyword" @click="keyword_click">
+                        <i class="far fa-hand-point-right"></i>
+                        {{search_keyword[1]}}
+                    </div>
+                    <div class="keyword" @click="keyword_click">
+                        <i class="far fa-hand-point-right"></i>
+                        {{search_keyword[2]}}
+                    </div>
+                    <div class="keyword" @click="keyword_click">
+                        <i class="far fa-hand-point-right"></i>
+                        {{search_keyword[3]}}
+                    </div>
+                    <div class="keyword" @click="keyword_click">
+                        <i class="far fa-hand-point-right"></i>
+                        {{search_keyword[4]}}
+                    </div>
+                    <div class="keyword" @click="keyword_click">
+                        <i class="far fa-hand-point-right"></i>
+                        {{search_keyword[5]}}
+                    </div>
+                </div>
+            </div>
+
+            <div class="mem_bt" @click="mem_bt_click" v-if="mem_login == true">
+                <a href="#"></a>
+            </div>
+            <div class="login_bt" v-if="mem_login == false">
+                <a href="./login.html"></a>
+            </div>
+            <div class="mem_list" @click="stopPropagation">
+                <div class="paint_border"></div>
+                <ul>
+                    <li>
+                        <a href="./profile.html">
+                            <h4>Profile</h4>
+                        </a>
+                    </li>
+                    <li>
+                        <a href="./songsadded.html">
+                            <h4>
+                                Song Upload
+                                <br />&amp; Remove
+                            </h4>
+                        </a>
+                    </li>
+                    <li>
+                        <a href="./store.html">
+                            <h4>
+                                Store Value
+                                <br />&amp;Store Record
+                            </h4>
+                        </a>
+                    </li>
+                    <li>
+                        <a href="./donate.html">
+                            <h4>Donate Record</h4>
+                        </a>
+                    </li>
+                    <li @click="logout">
+                        <a href="#">
+                            <h4>Log Out</h4>
+                        </a>
+                    </li>
+                </ul>
+            </div>
+        </div>
+        <!-- nav_bar end -->
+    </div>
+    <script src="./js/nav_bar.js"></script>
+    <div id="player">
+        <audio src="" id="audioPlayer"></audio>
+        <div class="player_s">
+            <div class="info">
+                <div class="cover"><img src="./img/collection/album1.jpg"></div>
+                <div class="songInfo">
+                    <span class="name">Lucid Dreamer</span>
+                    <span class="creator">Spazz Cardigan</span>
+                </div>
+                <div class="heart"><img src="./img/collection/grayheart.png" alt=""></div>
+                <div class="clearfix"></div>
+            </div>
+
+            <div class="controlPanel">
+                <div class="progressbar">
+                    <div class="progress"></div>
+                </div>
+                <div class="time">
+                    <span class="start">00:00</span>
+                    <span class="end">04:30</span>
+                    <div class="clearfix"></div>
+                </div>
+                <div class="btns">
+                    <div class="controls">
+                        <button class="prev"><i class="fas fa-step-backward"></i></button>
+                        <button class="play"><i class="fas fa-play"></i></button>
+                        <button class="next"><i class="fas fa-step-forward"></i></button>
+                        <button class="stop"><i class="fas fa-stop"></i></button>
+                        <button class="rand"><i class="fas fa-random"></i></button>
+                        <button class="loop"><i class="fas fa-undo-alt"></i></button>
+                        <div class="clearfix"></div>
+                    </div>
+                    <div class="vol">
+                        <div class="volicon"><i class="fas fa-volume-down"></i></div>
+                        <div class="volLine">
+                            <div class="volControl"></div>
+                        </div>
+                        <div class="clearfix"></div>
+                    </div>
+                    <div class="clearfix"></div>
+                </div>
+            </div>
+
+            <div class="expand" id="expand"><i class="fas fa-expand"></i></div>
+            <div class="clearfix"></div>
+        </div>
+
+        <!-- 詳細版 -->
+        <div class="player_b">
+            <div class="left">
+                <div class="info">
+                    <div class="songCover">
+                        <img src="./img/collection/album1.jpg">
+                        <div class="coverRec"><img src="./img/library/player_record.png" alt=""></div>
+                    </div>
+                </div>
+                <div class="songInfo">
+                    <div class="name">Lucid Dreamer</div>
+                    <div class="creator">Spazz Cardigan</div>
+                    <div class="heart"><img src="./img/collection/grayheart.png" alt=""></div>
+                    <div class="clearfix"></div>
+                </div>
+                <div class="controlPanel">
+                    <div class="progressbar">
+                        <div class="progress"></div>
+                    </div>
+                    <div class="time">
+                        <span class="start">00:00</span>
+                        <span class="end">00:00</span>
+                        <div class="clearfix"></div>
+                    </div>
+                    <div class="btns">
+                        <div class="controls">
+                            <button class="rand"><i class="fas fa-random"></i></button>
+                            <button class="prev"><i class="fas fa-step-backward"></i></button>
+                            <button class="play"><i class="fas fa-play"></i></button>
+                            <button class="next"><i class="fas fa-step-forward"></i></button>
+                            <button class="stop"><i class="fas fa-stop"></i></button>
+                            <button class="loop"><i class="fas fa-undo-alt"></i></button>
+                            <div class="clearfix"></div>
+                        </div>
+                        <div class="vol">
+                            <div class="volicon"><i class="fas fa-volume-down"></i></div>
+                            <div class="volLine">
+                                <div class="volControl"></div>
+                            </div>
+                            <div class="clearfix"></div>
+                        </div>
+                        <div class="clearfix"></div>
+                    </div>
+                </div>
+                <div class="pushBtn"></div>
+            </div>
+
+            <div class="right">
+                <div class="pushBtn"></div>
+                <div class="listTitle">
+                    <div class="listCover">
+                        <img src="./img/library/list_pic_no.jpg"></div>
+                    <div class="listName">
+                        <h2>Total songs</h2>
+                        <span>0 songs</span>
+                    </div>
+                    <button class="selectBtn" id="selectBtn">SELECT</button>
+                    <div class="clearfix"></div>
+                </div>
+                <div class="list">
+                    <ul class="chooseList">
+                        <!-- <li>
+              <div class="songCover">
+                <img src="./img/collection/album1.jpg" alt="">
+                <div class="listPlay nowlistening"><img src="./img/library/coverPlay-s.png"></div>
+              </div>
+              <div class="listSongInfo">
+                <div class="name">
+                  <h4>Lucid Dreamer</h4>
+                  <p> Spazz Cardigan</p>
+                </div>
+              </div>
+              <div class="totalTime">3:11</div>
+              <div class="heart becomeRed"><img src="./img/collection/redheart.png"></div>
+              <div class="clearfix"></div>
+            </li> -->
+                    </ul>
+                </div>
+                <input type="hidden" id="playerfavorStatus" name="favorStatus">
+                <input type="hidden" id="playerFavorSong" name="favorSong">
+            </div>
+            <div class="close" id="closePlayer"><i class="fas fa-times"></i></div>
+            <div class="clearfix"></div>
+
+            <!-- 撥放器燈箱 -->
+            <div class="lightCover">
+                <div class="lightbox_s allmylist" id="myAllList">
+                    <div class="closeLight"><i class="fas fa-times"></i></div>
+                    <h4>My List</h4>
+                    <div class="lightSelectMenu">
+                        <ul>
+                            <!-- <li class="chooseList">Liked songs</li> -->
+                        </ul>
+                    </div>
+                    <input type="hidden" name="plistName" id="plistName">
+                    <button id="mylistOK">ok</button>
+                </div>
+                <div class="lightbox_s" id="playerAlert">
+                    <div class="closeLight"><i class="fas fa-times"></i></div>
+                    <h4></h4>
+                    <button>ok</button>
+                </div>
+            </div>
+        </div>
+    </div>
+    <script src="./js/player.js"></script>
+    <div id="search_app">
+        <header>
+            <img src="./img/public/title_search.png" alt="">
+        </header>
+        <div class="search_wrapper">
+            <ul>
+                <search_li v-for="item in search_result" :search_result="item">
+                </search_li>
+            </ul>
+        </div>
+    </div>
+
+    <script>
+        Vue.component("search_li", {
+            props: ['search_result'],
+            template: `
+                <li>
+                    <a class="flexbox" :href="'./songinfo.html?song_no=' + search_result.song_no">                 
+                        <div class="song_img">
+                            <img :src="search_result.song_pic" alt="">
+                        </div>
+                        <div>
+                            <span class="song_name">{{search_result.song_name}}</span>
+                            <span class="song_author">{{search_result.mem_name}}</span>
+                            <p>{{search_result.song_idn}}</p>
+                        </div>
+                    </a>
+                </li>
+            `,
+        });
+        let s_vm = new Vue({
+            el: "#search_app",
+            data: {
+                search_result: []
+            },
+            methods: {
+                get_search_result() {
+                    let xhr = new XMLHttpRequest();
+                    let search_keyword = location.search.substr(1);
+                    xhr.onload = () => {
+                        let search_result = JSON.parse(xhr.responseText);
+                        for (let i = 0; i < search_result.length; i++) {
+                            this.search_result.push(search_result[i]);
+                        }
+                    }
+                    xhr.open("post", "./phps/getSearchResult.php", true);
+                    xhr.setRequestHeader("content-type", "application/x-www-form-urlencoded");
+                    xhr.send(`search_keyword=${search_keyword}`);
+                }
+            },
+            mounted() {
+                this.get_search_result();
+            },
+
+        });
+
+
+
+    </script>
+</body>
+
+</html>

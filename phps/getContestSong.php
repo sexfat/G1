@@ -3,7 +3,8 @@ try {
   require_once("./connectBooks.php");
   $sql = "select `entries_no`,`entries_name`,`vote_per`,`entries_song`,`entries_img`,`mem_name` 
   from `entries`,`MEMBER` 
-  where (`activity_no`=:activity_no) and `MEMBER`.mem_no=entries.mem_no";
+  where (`activity_no`=:activity_no) and `MEMBER`.mem_no=entries.mem_no
+  order by vote_per desc";
   $allNowList = $pdo->prepare($sql);
   $allNowList->bindValue(':activity_no', $_GET['contestNowYear']);
   $allNowList->execute();

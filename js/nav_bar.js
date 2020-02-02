@@ -6,6 +6,7 @@ let vm = new Vue({
         mem_list: false,
         mem_login: false,
 
+        search_keyword: [],
     },
     mounted() {
         // nav_bar init
@@ -29,17 +30,33 @@ let vm = new Vue({
             document.querySelector('.main_list .LIBRARY').style.background = 'url("./img/public/nav_b_bt04.png") center center no-repeat';
         }
 
-        let xhr = new XMLHttpRequest();
-        xhr.onload = () => {
-            member = JSON.parse(xhr.responseText);
-            if (member.mem_acct) {
-                vm.mem_login = true;
-            } else {
-                vm.mem_login = false;
+        let get_login_info = () => {
+            let xhr = new XMLHttpRequest();
+            xhr.onload = () => {
+                member = JSON.parse(xhr.responseText);
+                if (member.mem_acct) {
+                    this.mem_login = true;
+                } else {
+                    this.mem_login = false;
+                }
             }
+            xhr.open("get", "./phps/getLoginInfo.php", true);
+            xhr.send(null);
         }
-        xhr.open("get", "./phps/getLoginInfo.php", true);
-        xhr.send(null);
+        get_login_info();
+
+        let get_search_keyword = () => {
+            let xhr = new XMLHttpRequest();
+            xhr.onload = () => {
+                let keyword = JSON.parse(xhr.responseText);
+                for (let i = 0; i < keyword.length; i++) {
+                    this.search_keyword.push(keyword[i].song_name);
+                }
+            }
+            xhr.open("get", "./phps/getSearchKeyword.php", true);
+            xhr.send(null);
+        }
+        get_search_keyword();
 
         document.addEventListener('click', () => {
             this.mem_list = false;
@@ -59,12 +76,7 @@ let vm = new Vue({
     },
     methods: {
         // nav_bar
-        stopPropagation(e) {
-            e.stopPropagation();
-        },
-
         hamburger_click(e) {
-            e.stopPropagation();
             document
                 .querySelector(".hamburger").classList.toggle("is-active");
         },
@@ -74,9 +86,8 @@ let vm = new Vue({
                 this.search_bar = true;
                 this.mem_list = false;
                 this.mobile_list = false;
-                document
-                    .querySelector(".search_bar")
-                    .setAttribute("style", "height: 240px; filter: opacity(1);");
+                document.querySelector(".search_bar").style.height = '257px';
+                document.querySelector(".search_bar").style.filter = 'opacity(1)';
                 document.querySelector("input.search").focus();
                 document
                     .querySelector(".mem_list")
@@ -86,9 +97,8 @@ let vm = new Vue({
                     .setAttribute("style", "transform: translateX(-270px); filter: opacity(0);");
             } else {
                 this.search_bar = false;
-                document
-                    .querySelector(".search_bar")
-                    .setAttribute("style", "height: 0px; filter: opacity(0);");
+                document.querySelector(".search_bar").style.height = '0px';
+                document.querySelector(".search_bar").style.filter = 'opacity(0)';
                 document.querySelector("input.search").blur();
                 document
                     .querySelector(".mem_list")
@@ -97,6 +107,10 @@ let vm = new Vue({
                     .querySelector(".mobile_list")
                     .setAttribute("style", "transform: translateX(-270px); filter: opacity(0);");
             }
+        },
+
+        stopPropagation(e) {
+            e.stopPropagation();
         },
 
         mem_bt_click(e) {
@@ -108,9 +122,8 @@ let vm = new Vue({
                 document
                     .querySelector(".mem_list")
                     .setAttribute("style", "transform: translateX(0); filter: opacity(1);");
-                document
-                    .querySelector(".search_bar")
-                    .setAttribute("style", "height: 0px; filter: opacity(0);");
+                document.querySelector(".search_bar").style.height = '0px';
+                document.querySelector(".search_bar").style.filter = 'opacity(0)';
                 document
                     .querySelector(".mobile_list")
                     .setAttribute("style", "transform: translateX(-270px); filter: opacity(0);");
@@ -119,9 +132,8 @@ let vm = new Vue({
                 document
                     .querySelector(".mem_list")
                     .setAttribute("style", "transform: translateX(270px); filter: opacity(0);");
-                document
-                    .querySelector(".search_bar")
-                    .setAttribute("style", "height: 0px; filter: opacity(0);");
+                document.querySelector(".search_bar").style.height = '0px';
+                document.querySelector(".search_bar").style.filter = 'opacity(0)';
                 document
                     .querySelector(".mobile_list")
                     .setAttribute("style", "transform: translateX(-270px); filter: opacity(0);");
@@ -140,9 +152,8 @@ let vm = new Vue({
                 document
                     .querySelector(".mem_list")
                     .setAttribute("style", "transform: translateX(270px); filter: opacity(0);");
-                document
-                    .querySelector(".search_bar")
-                    .setAttribute("style", "height: 0px; filter: opacity(0);");
+                document.querySelector(".search_bar").style.height = '0px';
+                document.querySelector(".search_bar").style.filter = 'opacity(0)';
             } else {
                 this.mobile_list = false;
                 document
@@ -151,9 +162,25 @@ let vm = new Vue({
                 document
                     .querySelector(".mem_list")
                     .setAttribute("style", "transform: translateX(270px); filter: opacity(0);");
-                document
-                    .querySelector(".search_bar")
-                    .setAttribute("style", "height: 0px; filter: opacity(0);");
+                document.querySelector(".search_bar").style.height = '0px';
+                document.querySelector(".search_bar").style.filter = 'opacity(0)';
+            }
+        },
+
+        keyword_click(e) {
+            document.querySelector('.nav_bar .search').value = e.target.innerText;
+        },
+
+        search_click() {
+            let value = document.querySelector('.nav_bar .search').value.replace(' ', '');
+            location.href = `./search.html?${value}`
+        },
+
+        search_bar_style() {
+            if (this.mem_login == true) {
+                return 'right:60px'
+            } else {
+                return 'right:90px'
             }
         },
 
@@ -164,7 +191,7 @@ let vm = new Vue({
                 document.querySelector(".mem_list").setAttribute("style", "transform: translateX(270px); filter: opacity(0);");
                 let href = location.href;
                 if (href.lastIndexOf('activity') != -1 || href.lastIndexOf('remix') != -1 || href.lastIndexOf('collection') != -1 || href.lastIndexOf('library') != -1 || href.lastIndexOf('profile') != -1 || href.lastIndexOf('songsadded') != -1 || href.lastIndexOf('store') != -1 || href.lastIndexOf('donate') != -1) {
-                    location.href = './index.html'
+                    location.href = './home.html'
                 }
             }
             xhr.open("get", "./phps/logout.php", true);
