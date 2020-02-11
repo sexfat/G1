@@ -1,9 +1,10 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
-	<meta charset="UTF-8">
-	<meta name="viewport" content="width=device-width, initial-scale=1.0">
-	<meta http-equiv="X-UA-Compatible" content="ie=edge">
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta http-equiv="X-UA-Compatible" content="ie=edge">
   <title>SOUNDWAVE | log in</title>
   <link rel="Shortcut Icon" type="image/x-icon" href="./img/collection/smalllogo.ico" />
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.11.2/css/all.min.css" />
@@ -11,112 +12,138 @@
   <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
   <link rel="stylesheet" href="./css/main.css">
 </head>
+
 <body class="loginbody">
   <div>
     <div id="nav_app">
       <!-- nav_bar start -->
       <div class="nav_bar flexbox">
-          <div class="hamburger" @click="hamburger_click">
-              <div class="hamburger-box">
-                  <div class="hamburger-inner"></div>
-              </div>
+        <div class="hamburger" @click="hamburger_click">
+          <div class="hamburger-box">
+            <div class="hamburger-inner"></div>
           </div>
-          <div class="mobile_list" @click="stopPropagation">
-              <div class="paint_border"></div>
-              <ul>
-                  <li class="REMIX flexbox">
-                      <a href="./remix.html">
-                      </a>
-                  </li>
-                  <li class="COLLECTION flexbox">
-                      <a href="./collection.html">
-                      </a>
-                  </li>
-                  <li class="ACTIVITY flexbox">
-                      <a href="./activity.html">
-                      </a>
-                  </li>
-                  <li class="LIBRARY flexbox">
-                      <a href="./library.html">
-                      </a>
-                  </li>
-              </ul>
-          </div>
-          <div class="logo_container">
-              <a href="./index.html">
-                  <div class="logo"></div>
-                  <div class="finger"></div>
+        </div>
+        <div class="mobile_list" @click="stopPropagation">
+          <div class="paint_border"></div>
+          <ul>
+            <li class="REMIX flexbox">
+              <a href="./remix.html">
               </a>
-          </div>
-          <ul class="main_list flexbox">
-              <li class="REMIX flexbox">
-                  <a href="./remix.html">
-                  </a>
-              </li>
-              <li class="COLLECTION flexbox">
-                  <a href="./collection.html">
-                  </a>
-              </li>
-              <li class="ACTIVITY flexbox">
-                  <a href="./activity.html">
-                  </a>
-              </li>
-              <li class="LIBRARY flexbox">
-                  <a href="./library.html">
-                  </a>
-              </li>
+            </li>
+            <li class="COLLECTION flexbox">
+              <a href="./collection.html">
+              </a>
+            </li>
+            <li class="ACTIVITY flexbox">
+              <a href="./activity.html">
+              </a>
+            </li>
+            <li class="LIBRARY flexbox">
+              <a href="./library.html">
+              </a>
+            </li>
           </ul>
-          <div class="search_bt" @click="search_bt_click">
-              <a href="#"></a>
+        </div>
+        <div class="logo_container">
+          <a href="./home.html">
+            <div class="logo"></div>
+          </a>
+          <div class="finger"></div>
+        </div>
+        <ul class="main_list flexbox">
+          <li class="REMIX flexbox">
+            <a href="./remix.html">
+            </a>
+          </li>
+          <li class="COLLECTION flexbox">
+            <a href="./collection.html">
+            </a>
+          </li>
+          <li class="ACTIVITY flexbox">
+            <a href="./activity.html">
+            </a>
+          </li>
+          <li class="LIBRARY flexbox">
+            <a href="./library.html">
+            </a>
+          </li>
+        </ul>
+        <div class="search_bt" @click="search_bt_click">
+          <a href="#"></a>
+        </div>
+        <div class="search_bar" @click="stopPropagation" v-bind:style="search_bar_style()">
+          <input class="search" type="text" placeholder="Enter Song Name or Author" />
+          <i class="fas fa-search" @click="search_click"></i>
+          <div class="keyword_container">
+            <div class="keyword" @click="keyword_click">
+              <i class="far fa-hand-point-right"></i>
+              {{search_keyword[0]}}
+            </div>
+            <div class="keyword" @click="keyword_click">
+              <i class="far fa-hand-point-right"></i>
+              {{search_keyword[1]}}
+            </div>
+            <div class="keyword" @click="keyword_click">
+              <i class="far fa-hand-point-right"></i>
+              {{search_keyword[2]}}
+            </div>
+            <div class="keyword" @click="keyword_click">
+              <i class="far fa-hand-point-right"></i>
+              {{search_keyword[3]}}
+            </div>
+            <div class="keyword" @click="keyword_click">
+              <i class="far fa-hand-point-right"></i>
+              {{search_keyword[4]}}
+            </div>
+            <div class="keyword" @click="keyword_click">
+              <i class="far fa-hand-point-right"></i>
+              {{search_keyword[5]}}
+            </div>
           </div>
-          <div class="search_bar" @click="stopPropagation">
-              <input class="search" type="text" />
-              <div class="tag_container">
-              </div>
-          </div>
+        </div>
 
-          <div class="mem_bt" @click="mem_bt_click" v-if="mem_login == true">
-              <a href="#"></a>
-          </div>
-          <div class="login_bt" v-if="mem_login == false">
-              <a href="./login.html"></a>
-          </div>
-          <div class="mem_list" @click="stopPropagation">
-              <div class="paint_border"></div>
-              <ul>
-                  <li>
-                      <a href="./profile.html">
-                          <h4>Profile</h4>
-                      </a>
-                  </li>
-                  <li>
-                      <a href="./songsadded.html">
-                          <h4>
-                              Song Upload
-                              <br />&amp; Remove
-                          </h4>
-                      </a>
-                  </li>
-                  <li>
-                      <a href="./store.html">
-                          <h4>
-                              Store Value
-                              <br />&amp;Store Record
-                          </h4>
-                      </a>
-                  </li>
-                  <li>
-                      <a href="./donate.html">
-                          <h4>Donate Record</h4>
-                      </a>
-                  </li>
-                  <li @click="logout">
-                      <a href="#">
-                          <h4>Log Out</h4>
-                      </a>
-                  </li>
-              </ul>
-          </div>
+        <div class="mem_bt" @click="mem_bt_click" v-if="mem_login == true">
+          <a href="#"></a>
+        </div>
+        <div class="login_bt" v-if="mem_login == false">
+          <a href="./login.html"></a>
+        </div>
+        <div class="mem_list" @click="stopPropagation">
+          <div class="paint_border"></div>
+          <ul>
+            <li>
+              <a href="./profile.html">
+                <h4>Profile</h4>
+              </a>
+            </li>
+            <li>
+              <a href="./songsadded.html">
+                <h4>
+                  Song Upload
+                  <br />&amp; Remove
+                </h4>
+              </a>
+            </li>
+            <li>
+              <a href="./store.html">
+                <h4>
+                  Store Value
+                  <br />&amp;Store Record
+                </h4>
+              </a>
+            </li>
+            <li>
+              <a href="./donate.html">
+                <h4>Donate Record</h4>
+              </a>
+            </li>
+            <li @click="logout">
+              <a href="#">
+                <h4>Log Out</h4>
+              </a>
+            </li>
+          </ul>
+        </div>
       </div>
       <!-- nav_bar end -->
     </div>
@@ -132,7 +159,7 @@
           <div class="heart"><img src="./img/collection/grayheart.png" alt=""></div>
           <div class="clearfix"></div>
         </div>
-  
+
         <div class="controlPanel">
           <div class="progressbar">
             <div class="progress"></div>
@@ -162,11 +189,11 @@
             <div class="clearfix"></div>
           </div>
         </div>
-  
+
         <div class="expand" id="expand"><i class="fas fa-expand"></i></div>
         <div class="clearfix"></div>
       </div>
-  
+
       <!-- 詳細版 -->
       <div class="player_b">
         <div class="left">
@@ -213,7 +240,7 @@
           </div>
           <div class="pushBtn"></div>
         </div>
-  
+
         <div class="right">
           <div class="pushBtn"></div>
           <div class="listTitle">
@@ -250,7 +277,7 @@
         </div>
         <div class="close" id="closePlayer"><i class="fas fa-times"></i></div>
         <div class="clearfix"></div>
-  
+
         <!-- 撥放器燈箱 -->
         <div class="lightCover">
           <div class="lightbox_s allmylist" id="myAllList">
@@ -282,64 +309,67 @@
           <h1>Register</h1>
           <form autocomplete="off">
             <label>E-mail*:</label>
-            <input type="email"class="emailinput regiterinput" title="ENTER RIGHT" name="mem_acct" required>
+            <input type="email" class="emailinput regiterinput" title="ENTER RIGHT" name="mem_acct" required>
             <label>Password*:</label>
-            <input type="password"class="emailinput firsttimepsw regiterinput1" pattern="\w{5,17}$" name="mem_psw" title="字母開頭，長度在6~18間，只能包含字母、數字、下底線" >
+            <input type="password" class="emailinput firsttimepsw regiterinput1" pattern="\w{5,17}$" name="mem_psw"
+              title="字母開頭，長度在6~18間，只能包含字母、數字、下底線">
             <label>Confirm password*:</label>
-            <input type="password"class="emailinput confirmpsw regiterinput1" pattern="\w{5,17}$" name="mem_psw" title="字母開頭，長度在6~18間，只能包含字母、數字、下底線">
+            <input type="password" class="emailinput confirmpsw regiterinput1" pattern="\w{5,17}$" name="mem_psw"
+              title="字母開頭，長度在6~18間，只能包含字母、數字、下底線">
             <button type="button" class="loginregisterbtn">Create</button>
           </form>
         </div>
         <div class="signin">
-            <h1>Sign in</h1>
-            <form  autocomplete="off">
+          <h1>Sign in</h1>
+          <form autocomplete="off">
             <label>E-mail*:</label>
-            <input type="email" class="emailinput memacct" title="ENTER RIGHT"  name="mem_acct" required>
-            <label >Password*:</label>
-            <input type="password" class="mempsw" pattern="\w{5,17}$" name="mem_psw" title="字母開頭，長度在6~18間，只能包含字母、數字、下底線">
+            <input type="email" class="emailinput memacct" title="ENTER RIGHT" name="mem_acct" required>
+            <label>Password*:</label>
+            <input type="password" class="mempsw" pattern="\w{5,17}$" name="mem_psw"
+              title="字母開頭，長度在6~18間，只能包含字母、數字、下底線">
             <a href="" class="forgetpswlightbox">forget password?</a>
-            <button type="button" class="buttonsubmitlogin loginbutton" >Log in</button>
+            <button type="button" class="buttonsubmitlogin loginbutton">Log in</button>
           </form>
         </div>
       </div>
-        <div class="leftbox">
-          <h2 class="title"><span>EDM</span><br>IN SOUNDWAVE</h2>
-          <img class="flower smaller" src="./img/register/flower.png" alt="1357d638624297b" border="0">
-          <p class="account">have an account?</p>
-          <button id="signin">Login</button>
-        </div>
-        <div class="rightbox">
-          <h2 class="title"><span>SOUNDWAVE</span><br>IN HEART</h2>
-          <img class="flower" src="./img/register/water.png"/>
-          <p class="account">don't have an account?</p>
-          <button id="signup">Sign up</button>
-        </div>
+      <div class="leftbox">
+        <h2 class="title"><span>EDM</span><br>IN SOUNDWAVE</h2>
+        <img class="flower smaller" src="./img/register/flower.png" alt="1357d638624297b" border="0">
+        <p class="account">have an account?</p>
+        <button id="signin">Login</button>
+      </div>
+      <div class="rightbox">
+        <h2 class="title"><span>SOUNDWAVE</span><br>IN HEART</h2>
+        <img class="flower" src="./img/register/water.png" />
+        <p class="account">don't have an account?</p>
+        <button id="signup">Sign up</button>
       </div>
     </div>
+  </div>
   <div id="mobilelogintab">
     <ul class="motabtitle">
       <li><a href="#mobilelogintab1">Sign in</a></li>
       <li><a href="#mobilelogintab2">Register</a></li>
     </ul>
     <div id="mobilelogintab1" class="motabinner">
-      <form  autocomplete="off">
+      <form autocomplete="off">
         <label>E-mail*:</label>
-        <input type="email" class="emailinput memacct" title="ENTER RIGHT"  name="mem_acct" required>
-        <label >Password*:</label>
+        <input type="email" class="emailinput memacct" title="ENTER RIGHT" name="mem_acct" required>
+        <label>Password*:</label>
         <input type="password" class="mempsw" name="mem_psw">
         <a href="" class="forgetpswlightbox">forget password?</a>
-        <button type="button" class="buttonsubmitlogin loginbutton" >Log in</button>
+        <button type="button" class="buttonsubmitlogin loginbutton">Log in</button>
       </form>
     </div>
     <div id="mobilelogintab2" class="motabinner">
       <form autocomplete="off">
         <label>E-mail*:</label>
-        <input type="email"class="emailinput regiterinput" title="ENTER RIGHT" name="mem_acct" required>
+        <input type="email" class="emailinput regiterinput" title="ENTER RIGHT" name="mem_acct" required>
         <label>Password*:</label>
-        <input type="password"class="emailinput firsttimepsw regiterinput1" name="mem_psw">
+        <input type="password" class="emailinput firsttimepsw regiterinput1" name="mem_psw">
         <label>Confirm password*:</label>
-        <input type="password"class="emailinput confirmpsw regiterinput1" name="mem_psw>
-        <button type="button" class="loginregisterbtn">Create</button>
+        <input type="password" class="emailinput confirmpsw regiterinput1" name="mem_psw">
+        <button type="button" class="loginregisterbtnMob">Create</button>
       </form>
     </div>
   </div>
@@ -349,10 +379,10 @@
     <div class="loginforgetpsw2 lightbox_s">
       <div class="loginlightboxclose closeLight"><i class="fas fa-times"></i></div>
       <h4>Return password</h4>
-      <form action="./PHPMailer-master/src/forgetPassword.php" method="POST">
+      <form>
         <label class="emailchecklabel">Please enter your e-mail:</label> <br>
-        <input class="emailcheckinput forpswlogin" name="forpswlogin" type="text"> <br>
-        <button class="emailcheck" type="button">Ok</button>
+        <input class="emailcheckinput forgetwho" name="forgetwho" type="text"> <br>
+        <button class="emailcheck" id="forpswlogin" type="button">Ok</button>
       </form>
     </div>
   </div>
@@ -362,54 +392,130 @@
 </body>
 <!-- the script of myself -->
 <script>
+  //forget password XML function
+  function forgetfun() {
+    let xhr = new XMLHttpRequest();
+    xhr.onreadystatechange = function () {
+      if (xhr.readyState == 4) {
+        if (xhr.status == 200) {
+          // alert(xhr.responseText);
+          $('.lightCover').hide();
+          $('.loginforgetpsw2').hide();
+          alert('Please check the confirmation in your E-mail.');
+        }
+      }
+    }
+    let url = "./PHPMailer-master/src/forgetPassword.php";
+    xhr.open("post", url, true);
+    xhr.setRequestHeader("content-type", "application/x-www-form-urlencoded");
+    let memberdata = "forgetwho=" + document.getElementsByClassName('forgetwho')[0].value;
+    xhr.send(memberdata);
+  }
   //click login XML function
-  function loginfun(){  
-  let xhr = new XMLHttpRequest();
-  xhr.onreadystatechange = function(){
-    if(xhr.readyState == 4){
-      if( xhr.status == 200){ //success
-        alert(xhr.responseText);
-        $(location).attr('href', './index.html');
-      }else{ 
-        alert(xhr.responseText);
+  function loginfun() {
+    if (document.getElementsByClassName('memacct')[0].value != "" && document.getElementsByClassName('mempsw')[0]
+      .value != "") {
+      let xhr = new XMLHttpRequest();
+      xhr.onreadystatechange = function () {
+        if (xhr.readyState == 4) {
+          if (xhr.responseText == 'Log in successly!') {
+            alert(xhr.responseText);
+            $(location).attr('href', './home.html');
+          } else {
+            alert(xhr.responseText);
+            $(location).attr('href', './login.html');
+          }
+        }
       }
+      let url = "./phps/memlogin.php";
+      xhr.open("post", url, true);
+      xhr.setRequestHeader("content-type", "application/x-www-form-urlencoded");
+      let member_data;
+      member_data = "mem_acct=" + document.getElementsByClassName('memacct')[0].value + "&mem_psw=" + document
+        .getElementsByClassName('mempsw')[0].value;
+      xhr.send(member_data);
+    } else if (document.getElementsByClassName('memacct')[1].value != "" && document.getElementsByClassName('mempsw')[1]
+      .value != "") {
+      let xhr = new XMLHttpRequest();
+      xhr.onreadystatechange = function () {
+        if (xhr.readyState == 4) {
+          if (xhr.responseText == 'Log in successly!') {
+            alert(xhr.responseText);
+            $(location).attr('href', './home.html');
+          } else {
+            alert(xhr.responseText);
+            $(location).attr('href', './login.html');
+          }
+        }
+      }
+      let url = "./phps/memlogin.php";
+      xhr.open("post", url, true);
+      xhr.setRequestHeader("content-type", "application/x-www-form-urlencoded");
+      let member_data;
+      member_data = "mem_acct=" + document.getElementsByClassName('memacct')[1].value + "&mem_psw=" + document
+        .getElementsByClassName('mempsw')[1].value;
+      xhr.send(member_data);
+    } else {
+      alert('Please enter your account and password!');
     }
   }
-  let url = "./phps/memlogin.php";
-  xhr.open("post", url, true);
-  xhr.setRequestHeader("content-type","application/x-www-form-urlencoded");
-  let member_data;
-  if($('#mobilelogintab').css('display')==='none'){
-    member_data = "mem_acct=" + document.getElementsByClassName('memacct')[0].value+"&mem_psw=" + document.getElementsByClassName('mempsw')[0].value ;
-  }else{
-    member_data = "mem_acct=" + document.getElementsByClassName('memacct')[1].value+"&mem_psw=" + document.getElementsByClassName('mempsw')[1].value ;
-  }
-  xhr.send(member_data);
-  console.log(member_data);
-  console.log(document.getElementsByClassName('memacct')[0].value);
-  console.log(document.getElementsByClassName('mempsw')[0].value);
-}
- //click register XML function
- function registerfun(){  
-  let xhr = new XMLHttpRequest();
-  console.log(xhr.readyState);
-  xhr.onreadystatechange = function(){
-    if(xhr.readyState == 4){
-      if( xhr.responseText == 'Success!Please log in'){ //success
-        alert(xhr.responseText);
-        $(location).attr('href', './home.html');
-      }else{ 
-        alert(xhr.responseText);
+  //click register XML function
+  function registerfun() {
+    if ($('.firsttimepsw').val() != "" && $('.confirmpsw').val() != "" && $('.regiterinput').val() != "") {
+      if ($('.whiteform .firsttimepsw').val() === $('.whiteform .confirmpsw').val()) {
+        let xhr = new XMLHttpRequest();
+        xhr.onreadystatechange = function () {
+          if (xhr.readyState == 4) {
+            if (xhr.responseText == 'success') { //success
+              alert('Registration success!');
+              $(location).attr('href', './home.html');
+            } else {
+              alert(xhr.responseText);
+            }
+          }
+        }
+        let url = "./phps/memRegister.php";
+        xhr.open("post", url, true);
+        xhr.setRequestHeader("content-type", "application/x-www-form-urlencoded");
+        let member_data = "mem_acct=" + document.getElementsByClassName('regiterinput')[0].value + "&mem_psw=" +
+          document
+          .getElementsByClassName('regiterinput1')[0].value;
+        xhr.send(member_data);
+      } else {
+        alert('Please enter the same password!');
+        $('.whiteform .firsttimepsw').val('').focus();
+        $('.whiteform .confirmpsw').val('');
       }
+    } else {
+      alert('Please enter your account and password!');
     }
   }
-  let url = "./phps/memRegister.php";
-  xhr.open("post", url, true);
-  xhr.setRequestHeader("content-type","application/x-www-form-urlencoded");
-  let member_data = "mem_acct=" + document.getElementsByClassName('regiterinput')[0].value+"&mem_psw=" + document.getElementsByClassName('regiterinput1')[0].value ;
-  xhr.send(member_data);
-  console.log(member_data);
-}
+
+  function registerfunMob() {
+    if ($('#mobilelogintab .firsttimepsw').val() === $('#mobilelogintab .confirmpsw').val()) {
+      let xhr = new XMLHttpRequest();
+      xhr.onreadystatechange = function () {
+        if (xhr.readyState == 4) {
+          if (xhr.responseText == 'success') { //success
+            alert('Registration success!');
+            $(location).attr('href', './home.html');
+          } else {
+            alert(xhr.responseText);
+          }
+        }
+      }
+      let url = "./phps/memRegister.php";
+      xhr.open("post", url, true);
+      xhr.setRequestHeader("content-type", "application/x-www-form-urlencoded");
+      let member_data = "mem_acct=" + document.getElementsByClassName('regiterinput')[0].value + "&mem_psw=" + document
+        .getElementsByClassName('regiterinput1')[0].value;
+      xhr.send(member_data);
+    } else {
+      alert('Please enter the same password!');
+      $('#mobilelogintab .firsttimepsw').val('').focus();
+      $('#mobilelogintab .confirmpsw').val('');
+    }
+  }
   //the lightbox forgetpswlightbox
   $('.forgetpswlightbox').click(function (e) {
     e.preventDefault();
@@ -420,17 +526,17 @@
     $('.loginforgetpsw1').hide();
   });
   //the email double check
-  $('.emailcheck').click(function(){
-    $('.emailchecklabel').text('Please check the confirmation in your E-mail.');
-    $('.emailcheckinput').hide();
-    $('.emailcheck').text('Close');
-      $('.emailcheck').click(function(){
-        $('.loginforgetpsw1').hide();
-        location.reload(['.forgetpswlightbox']);  
-      }); 
-  });
+  // $('.emailcheck').click(function () {
+  //   $('.emailchecklabel').text('Please check the confirmation in your E-mail.');
+  //   $('.emailcheckinput').hide();
+  //   $('.emailcheck').text('Close');
+  //   $('.emailcheck').click(function () {
+  //     $('.loginforgetpsw1').hide();
+  //     // location.reload(['.forgetpswlightbox']);
+  //   });
+  // });
   //the change of the div
-  $('#signup').click(function() {
+  $('#signup').click(function () {
     $('.whiteform').css('transform', 'translateX(80%)');
     $('.signin').addClass('displaynone');
     $('.signup').removeClass('displaynone');
@@ -444,19 +550,28 @@
   // mobile version the tab
   $(function () {
     var $li = $('ul.motabtitle li');
-        $($li. eq(0) .addClass('active').find('a').attr('href')).siblings('.motabinner').hide();
-        $li.click(function(){
-          $($(this).find('a'). attr ('href')).show().siblings ('.motabinner').hide();
-          $(this).addClass('active'). siblings ('.active').removeClass('active');
-        });
-   $('.loginbutton').click(loginfun);
-   $('.loginregisterbtn').click(registerfun);
-<<<<<<< HEAD
-   });
-=======
-   $('#forpswlogin').click(forgetfun);
+    $($li.eq(0).addClass('active').find('a').attr('href')).siblings('.motabinner').hide();
+    $li.click(function () {
+      $($(this).find('a').attr('href')).show().siblings('.motabinner').hide();
+      $(this).addClass('active').siblings('.active').removeClass('active');
     });
->>>>>>> 0314f3b0329fceb310a2e97643c853bebef6d300
+    $('.loginbutton').click(loginfun);
+    $('.loginregisterbtn').click(registerfun);
+    $('.loginregisterbtnMob').click(registerfunMob);
+    $('#forpswlogin').click(forgetfun);
+    $('.loginbody .lightCover').click(function () {
+      $('.lightCover').hide();
+      $('.loginforgetpsw2.lightbox_s').hide();
+    });
+    $('.loginlightboxclose.closeLight').click(function () {
+      $('.lightCover').hide();
+      $('.loginforgetpsw2.lightbox_s').hide();
+    });
+    $('.loginforgetpsw2').click(function(e){
+      e.stopPropagation();
+    });
+  });
 </script>
 <!-- the end of my script -->
+
 </html>

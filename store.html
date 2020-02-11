@@ -9,7 +9,8 @@
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.11.2/css/all.min.css" />
   <!-- <link rel="stylesheet" href="./css/store.css"> -->
   <link rel="stylesheet" href="./css/main.css">
-  <title>Document</title>
+  <link rel="Shortcut Icon" type="image/x-icon" href="./img/collection/smalllogo.ico" />
+  <title>SOUNDWAVE | store</title>
 </head>
 
 <body class="store_body">
@@ -43,7 +44,7 @@
         </ul>
       </div>
       <div class="logo_container">
-        <a href="./index.html">
+        <a href="./home.html">
           <div class="logo"></div>
         </a>
         <div class="finger"></div>
@@ -69,9 +70,34 @@
       <div class="search_bt" @click="search_bt_click">
         <a href="#"></a>
       </div>
-      <div class="search_bar" @click="stopPropagation">
-        <input class="search" type="text" />
-        <div class="tag_container">
+      <div class="search_bar" @click="stopPropagation" v-bind:style="search_bar_style()">
+        <input class="search" type="text" placeholder="Enter Song Name or Author" />
+        <i class="fas fa-search" @click="search_click"></i>
+        <div class="keyword_container">
+          <div class="keyword" @click="keyword_click">
+            <i class="far fa-hand-point-right"></i>
+            {{search_keyword[0]}}
+          </div>
+          <div class="keyword" @click="keyword_click">
+            <i class="far fa-hand-point-right"></i>
+            {{search_keyword[1]}}
+          </div>
+          <div class="keyword" @click="keyword_click">
+            <i class="far fa-hand-point-right"></i>
+            {{search_keyword[2]}}
+          </div>
+          <div class="keyword" @click="keyword_click">
+            <i class="far fa-hand-point-right"></i>
+            {{search_keyword[3]}}
+          </div>
+          <div class="keyword" @click="keyword_click">
+            <i class="far fa-hand-point-right"></i>
+            {{search_keyword[4]}}
+          </div>
+          <div class="keyword" @click="keyword_click">
+            <i class="far fa-hand-point-right"></i>
+            {{search_keyword[5]}}
+          </div>
         </div>
       </div>
 
@@ -138,6 +164,7 @@
         <div class="store_meminfos">
           <div class="col-xl-3 mem_img">
             <div class="col-xl-8 ">
+              <img src="./img/member/mem.png" v-if="memberinfos.mem_img == null">
               <img :src=memberinfos.mem_img>
             </div>
           </div>
@@ -264,7 +291,7 @@
                   <h4>Card Number: </h4>
                 </div>
                 <div class="col-xl-12 fal">
-                  <input type="number" placeholder="4444444444444444" v-model="card_infos.card_number">
+                  <input type="number" placeholder="enter card number" v-model="card_infos.card_number">
                   <span v-if="checkNum(card_infos.card_number) && enter">need to enter 16 number</span>
                 </div>
               </div>
@@ -273,7 +300,7 @@
                   <h4>CVC: </h4>
                 </div>
                 <div class="col-xl-12 fal">
-                  <input type="number" placeholder="444" v-model="card_infos.cvc">
+                  <input type="number" placeholder="enter cvc" v-model="card_infos.cvc">
                   <span v-if="checkCvc(card_infos.cvc) && enter">need to enter 3 number</span>
                 </div>
               </div>
@@ -329,7 +356,7 @@
             </div>
             <div class="col-xl-12 button">
               <div class="store_button">
-                <a href="./index.html" style="color: #333;display: inline-block;">
+                <a href="./home.html" style="color: #333;display: inline-block;">
                   <div class="btn">Home</div>
                 </a>
               </div>
@@ -491,8 +518,6 @@
             </li> -->
           </ul>
         </div>
-        <input type="hidden" id="playerfavorStatus" name="favorStatus">
-        <input type="hidden" id="playerFavorSong" name="favorSong">
       </div>
       <div class="close" id="closePlayer"><i class="fas fa-times"></i></div>
       <div class="clearfix"></div>
@@ -504,7 +529,7 @@
           <h4>My List</h4>
           <div class="lightSelectMenu">
             <ul>
-              <!-- <li class="chooseList">Liked songs</li> -->
+              <!-- <li class="chooseList">Liked songs</li>-->
             </ul>
           </div>
           <input type="hidden" name="plistName" id="plistName">
@@ -703,7 +728,8 @@
               mem_acct: res.data[0].mem_acct,
               mem_psw: res.data[0].mem_psw,
               mem_name: res.data[0].mem_name,
-              mem_img: res.data[0].mem_img,
+              mem_img: res.data[0].mem_img == null ? null :
+                `./memberRepository/photo/${res.data[0].mem_no}/` + res.data[0].mem_img,
               mem_point: res.data[0].mem_point
             }
 

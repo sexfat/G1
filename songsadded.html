@@ -13,6 +13,7 @@
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.11.2/css/all.min.css" />
     <script src="https://cdnjs.cloudflare.com/ajax/libs/vue/2.6.10/vue.js"></script>
     <!-- <script src="./js/public.js"></script> -->
+    
     <style>
         .songsadded_lif h2 {
             /* margin-bottom: 23px; */
@@ -33,6 +34,7 @@
         }
 
         .songsadded_body {
+            max-height: 100%;
             background: url(./img/songupload/addimg0.jpg);
             background-repeat: no-repeat;
         }
@@ -107,6 +109,7 @@
     <div class="addallall">
         <!-- nav_bar start -->
         <div id="nav_app">
+            <!-- nav_bar start -->
             <div class="nav_bar flexbox">
                 <div class="hamburger" @click="hamburger_click">
                     <div class="hamburger-box">
@@ -135,7 +138,7 @@
                     </ul>
                 </div>
                 <div class="logo_container">
-                    <a href="./index.html">
+                    <a href="./home.html">
                         <div class="logo"></div>
                     </a>
                     <div class="finger"></div>
@@ -161,12 +164,37 @@
                 <div class="search_bt" @click="search_bt_click">
                     <a href="#"></a>
                 </div>
-                <div class="search_bar" @click="stopPropagation">
-                    <input class="search" type="text" />
-                    <div class="tag_container">
+                <div class="search_bar" @click="stopPropagation" v-bind:style="search_bar_style()">
+                    <input class="search" type="text" placeholder="Enter Song Name or Author"/>
+                    <i class="fas fa-search" @click="search_click"></i>
+                    <div class="keyword_container">
+                        <div class="keyword" @click="keyword_click">
+                            <i class="far fa-hand-point-right"></i>
+                            {{search_keyword[0]}}
+                        </div>
+                        <div class="keyword" @click="keyword_click">
+                            <i class="far fa-hand-point-right"></i>
+                            {{search_keyword[1]}}
+                        </div>
+                        <div class="keyword" @click="keyword_click">
+                            <i class="far fa-hand-point-right"></i>
+                            {{search_keyword[2]}}
+                        </div>
+                        <div class="keyword" @click="keyword_click">
+                            <i class="far fa-hand-point-right"></i>
+                            {{search_keyword[3]}}
+                        </div>
+                        <div class="keyword" @click="keyword_click">
+                            <i class="far fa-hand-point-right"></i>
+                            {{search_keyword[4]}}
+                        </div>
+                        <div class="keyword" @click="keyword_click">
+                            <i class="far fa-hand-point-right"></i>
+                            {{search_keyword[5]}}
+                        </div>
                     </div>
                 </div>
-
+    
                 <div class="mem_bt" @click="mem_bt_click" v-if="mem_login == true">
                     <a href="#"></a>
                 </div>
@@ -270,7 +298,7 @@
                                     </div>
                                 </div>
                                 <section>
-                                    <input type="button" id="btnSubmit" name="submit">
+                                    <input type="button" id="btnSubmit" name="submit" style="display: none;">
                                     <label class="sd_btn" for="btnSubmit">Send</label>
                                 </section>
                             </form>
@@ -282,7 +310,7 @@
                                 <!-- <div class="songsadded-lif2" style="float: right;margin-right: 30px;"></div> -->
                             </h2>
                         </div>
-                        <ol id="songsList" style="list-style: none;overflow-y:scroll;background: #fff;height: 100vh;padding:40px 20px;">
+                        <ol id="songsList" style="list-style: none;background: #fff;padding:40px 20px;overflow-y:hidden;overflow-x: hidden;">
                         </ol>
                     </li>
                 </ol>
@@ -304,169 +332,170 @@
     </div>
     </div>
 
+    
+    
+    <footer class="songaddfoot">
+    </footer>
+
     <!-- 播放器 -->
     <div id="player">
         <audio src="" id="audioPlayer"></audio>
         <div class="player_s">
-            <div class="info">
-                <div class="cover"><img src="./img/collection/album1.jpg"></div>
-                <div class="songInfo">
-                    <span class="name">Lucid Dreamer</span>
-                    <span class="creator">Spazz Cardigan</span>
-                </div>
-                <div class="heart"><img src="./img/collection/grayheart.png" alt=""></div>
-                <div class="clearfix"></div>
+          <div class="info">
+            <div class="cover"><img src="./img/collection/album1.jpg"></div>
+            <div class="songInfo">
+              <span class="name">Lucid Dreamer</span>
+              <span class="creator">Spazz Cardigan</span>
             </div>
-
-            <div class="controlPanel">
-                <div class="progressbar">
-                    <div class="progress"></div>
-                </div>
-                <div class="time">
-                    <span class="start">00:00</span>
-                    <span class="end">04:30</span>
-                    <div class="clearfix"></div>
-                </div>
-                <div class="btns">
-                    <div class="controls">
-                        <button class="prev"><i class="fas fa-step-backward"></i></button>
-                        <button class="play"><i class="fas fa-play"></i></button>
-                        <button class="next"><i class="fas fa-step-forward"></i></button>
-                        <button class="stop"><i class="fas fa-stop"></i></button>
-                        <button class="rand"><i class="fas fa-random"></i></button>
-                        <button class="loop"><i class="fas fa-undo-alt"></i></button>
-                        <div class="clearfix"></div>
-                    </div>
-                    <div class="vol">
-                        <div class="volicon"><i class="fas fa-volume-down"></i></div>
-                        <div class="volLine">
-                            <div class="volControl"></div>
-                        </div>
-                        <div class="clearfix"></div>
-                    </div>
-                    <div class="clearfix"></div>
-                </div>
-            </div>
-
-            <div class="expand" id="expand"><i class="fas fa-expand"></i></div>
+            <div class="heart"><img src="./img/collection/grayheart.png" alt=""></div>
             <div class="clearfix"></div>
+          </div>
+    
+          <div class="controlPanel">
+            <div class="progressbar">
+              <div class="progress"></div>
+            </div>
+            <div class="time">
+              <span class="start">00:00</span>
+              <span class="end">04:30</span>
+              <div class="clearfix"></div>
+            </div>
+            <div class="btns">
+              <div class="controls">
+                <button class="prev"><i class="fas fa-step-backward"></i></button>
+                <button class="play"><i class="fas fa-play"></i></button>
+                <button class="next"><i class="fas fa-step-forward"></i></button>
+                <button class="stop"><i class="fas fa-stop"></i></button>
+                <button class="rand"><i class="fas fa-random"></i></button>
+                <button class="loop"><i class="fas fa-undo-alt"></i></button>
+                <div class="clearfix"></div>
+              </div>
+              <div class="vol">
+                <div class="volicon"><i class="fas fa-volume-down"></i></div>
+                <div class="volLine">
+                  <div class="volControl"></div>
+                </div>
+                <div class="clearfix"></div>
+              </div>
+              <div class="clearfix"></div>
+            </div>
+          </div>
+    
+          <div class="expand" id="expand"><i class="fas fa-expand"></i></div>
+          <div class="clearfix"></div>
         </div>
-
+    
         <!-- 詳細版 -->
         <div class="player_b">
-            <div class="left">
-                <div class="info">
-                    <div class="songCover">
-                        <img src="./img/collection/album1.jpg">
-                        <div class="coverRec"><img src="./img/library/player_record.png" alt=""></div>
-                    </div>
-                </div>
-                <div class="songInfo">
-                    <div class="name">Lucid Dreamer</div>
-                    <div class="creator">Spazz Cardigan</div>
-                    <div class="heart"><img src="./img/collection/grayheart.png" alt=""></div>
-                    <div class="clearfix"></div>
-                </div>
-                <div class="controlPanel">
-                    <div class="progressbar">
-                        <div class="progress"></div>
-                    </div>
-                    <div class="time">
-                        <span class="start">00:00</span>
-                        <span class="end">00:00</span>
-                        <div class="clearfix"></div>
-                    </div>
-                    <div class="btns">
-                        <div class="controls">
-                            <button class="rand"><i class="fas fa-random"></i></button>
-                            <button class="prev"><i class="fas fa-step-backward"></i></button>
-                            <button class="play"><i class="fas fa-play"></i></button>
-                            <button class="next"><i class="fas fa-step-forward"></i></button>
-                            <button class="stop"><i class="fas fa-stop"></i></button>
-                            <button class="loop"><i class="fas fa-undo-alt"></i></button>
-                            <div class="clearfix"></div>
-                        </div>
-                        <div class="vol">
-                            <div class="volicon"><i class="fas fa-volume-down"></i></div>
-                            <div class="volLine">
-                                <div class="volControl"></div>
-                            </div>
-                            <div class="clearfix"></div>
-                        </div>
-                        <div class="clearfix"></div>
-                    </div>
-                </div>
-                <div class="pushBtn"></div>
-            </div>
-
-            <div class="right">
-                <div class="pushBtn"></div>
-                <div class="listTitle">
-                    <div class="listCover">
-                        <img src="./img/library/list_pic_no.jpg"></div>
-                    <div class="listName">
-                        <h2>Total songs</h2>
-                        <span>0 songs</span>
-                    </div>
-                    <button class="selectBtn" id="selectBtn">SELECT</button>
-                    <div class="clearfix"></div>
-                </div>
-                <div class="list">
-                    <ul class="chooseList">
-                        <!-- <li>
+          <div class="left">
+            <div class="info">
               <div class="songCover">
-                <img src="./img/collection/album1.jpg" alt="">
-                <div class="listPlay nowlistening"><img src="./img/library/coverPlay-s.png"></div>
+                <img src="./img/collection/album1.jpg">
+                <div class="coverRec"><img src="./img/library/player_record.png" alt=""></div>
               </div>
-              <div class="listSongInfo">
-                <div class="name">
-                  <h4>Lucid Dreamer</h4>
-                  <p> Spazz Cardigan</p>
-                </div>
-              </div>
-              <div class="totalTime">3:11</div>
-              <div class="heart becomeRed"><img src="./img/collection/redheart.png"></div>
+            </div>
+            <div class="songInfo">
+              <div class="name">Lucid Dreamer</div>
+              <div class="creator">Spazz Cardigan</div>
+              <div class="heart"><img src="./img/collection/grayheart.png" alt=""></div>
               <div class="clearfix"></div>
-            </li> -->
-                    </ul>
-                </div>
             </div>
-            <div class="close" id="closePlayer"><i class="fas fa-times"></i></div>
-            <div class="clearfix"></div>
-
-            <!-- 撥放器燈箱 -->
-            <div class="lightCover">
-                <div class="lightbox_s allmylist" id="myAllList">
-                    <div class="closeLight"><i class="fas fa-times"></i></div>
-                    <h4>My List</h4>
-                    <div class="lightSelectMenu">
-                        <ul>
-                            <!-- <li class="chooseList">Liked songs</li>-->
-                        </ul>
+            <div class="controlPanel">
+              <div class="progressbar">
+                <div class="progress"></div>
+              </div>
+              <div class="time">
+                <span class="start">00:00</span>
+                <span class="end">00:00</span>
+                <div class="clearfix"></div>
+              </div>
+              <div class="btns">
+                <div class="controls">
+                  <button class="rand"><i class="fas fa-random"></i></button>
+                  <button class="prev"><i class="fas fa-step-backward"></i></button>
+                  <button class="play"><i class="fas fa-play"></i></button>
+                  <button class="next"><i class="fas fa-step-forward"></i></button>
+                  <button class="stop"><i class="fas fa-stop"></i></button>
+                  <button class="loop"><i class="fas fa-undo-alt"></i></button>
+                  <div class="clearfix"></div>
+                </div>
+                <div class="vol">
+                  <div class="volicon"><i class="fas fa-volume-down"></i></div>
+                  <div class="volLine">
+                    <div class="volControl"></div>
+                  </div>
+                  <div class="clearfix"></div>
+                </div>
+                <div class="clearfix"></div>
+              </div>
+            </div>
+            <div class="pushBtn"></div>
+          </div>
+    
+          <div class="right">
+            <div class="pushBtn"></div>
+            <div class="listTitle">
+              <div class="listCover">
+                <img src="./img/library/list_pic_no.jpg"></div>
+              <div class="listName">
+                <h2>Total songs</h2>
+                <span>0 songs</span>
+              </div>
+              <button class="selectBtn" id="selectBtn">SELECT</button>
+              <div class="clearfix"></div>
+            </div>
+            <div class="list">
+              <ul class="chooseList">
+                <!-- <li>
+                  <div class="songCover">
+                    <img src="./img/collection/album1.jpg" alt="">
+                    <div class="listPlay nowlistening"><img src="./img/library/coverPlay-s.png"></div>
+                  </div>
+                  <div class="listSongInfo">
+                    <div class="name">
+                      <h4>Lucid Dreamer</h4>
+                      <p> Spazz Cardigan</p>
                     </div>
-                    <input type="hidden" name="plistName" id="plistName">
-                    <button id="mylistOK">ok</button>
-                </div>
-                <div class="lightbox_s" id="playerAlert">
-                    <div class="closeLight"><i class="fas fa-times"></i></div>
-                    <h4></h4>
-                    <button>ok</button>
-                </div>
+                  </div>
+                  <div class="totalTime">3:11</div>
+                  <div class="heart becomeRed"><img src="./img/collection/redheart.png"></div>
+                  <div class="clearfix"></div>
+                </li> -->
+              </ul>
             </div>
+          </div>
+          <div class="close" id="closePlayer"><i class="fas fa-times"></i></div>
+          <div class="clearfix"></div>
+    
+          <!-- 撥放器燈箱 -->
+          <div class="lightCover">
+            <div class="lightbox_s allmylist" id="myAllList">
+              <div class="closeLight"><i class="fas fa-times"></i></div>
+              <h4>My List</h4>
+              <div class="lightSelectMenu">
+                <ul>
+                  <!-- <li class="chooseList">Liked songs</li>-->
+                </ul>
+              </div>
+              <input type="hidden" name="plistName" id="plistName">
+              <button id="mylistOK">ok</button>
+            </div>
+            <div class="lightbox_s" id="playerAlert">
+              <div class="closeLight"><i class="fas fa-times"></i></div>
+              <h4></h4>
+              <button>ok</button>
+            </div>
+          </div>
         </div>
     </div>
-
-    
-
-    <footer class="songaddfoot">
-    </footer>
-
 
     <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.0.4/gsap.min.js"></script>
     <script src="https://cdn.jsdelivr.net/gh/fancyapps/fancybox@3.5.7/dist/jquery.fancybox.min.js"></script>
     <script src="./js/nav_bar.js"></script>
     <script src="./js/player.js"></script>
+    
+
     <script>
         $(function(){
             let inputImageFile = $("#inputImageFile"),
@@ -481,6 +510,7 @@
                 myForm = $("#myForm"),
                 image = $("#imageCover"),
                 songsList = $("#songsList"),
+                songsadds2 = $(".songsadded_adds2"),
                 memInfo = {};
             function SongsAdd(){
    
@@ -527,8 +557,8 @@
                    mainTitle = $("<span style=\"width: 90%;\" />"),
                    moreIcon = $("<i class=\"fas fa-ellipsis-h\" style=\"line-height:1.7em;position: absolute;right: 20px;\" />"),
                    moreMenuContainer = $("<div  style=\"position: absolute;right: 0;border: 1px solid grey; display: none;\" />"),
-                   menuUl = $("<ul style=\"padding: 4px;border:1px solid gray;text-align: center;background: #eee;position: absolute;right: 0;z-index: 1000;\"  />"),
-                   menuEdit = $("<li><span>Edit</span></li>"),
+                   menuUl = $("<ul style=\"padding: 4px;border:1px solid gray;text-align: center;background: #eee;position: absolute;top:-15px;right: 0;z-index: 1000;\"  />"),
+                   menuEdit = $("<li><span>Songinfo</span></li>"),
                    menuDel = $("<li style='border-top: 1px solid #888;'><span>Delete</span></li>"),
                    contentContainer = $(" <div style=\"float: left;cursor: auto;border: 1px solid grey;border-top:none; width: 100%;padding:20px;\" />"),
                    imageContainer = $("<div style=\"float: left;width: 380px;\" />"),
@@ -537,6 +567,7 @@
                    infoTitle = $("<span style=\"font-weight: bold;\" />"),
                    infoContext = $("<span  style=\"font-size:16px; word-wrap:break-word;\" />"),
                 //    infoContext = $("<input style=\"font-size:16px; word-wrap:break-word;\" type=\"text;\" readonly=\"readonly;\" />"),
+                   inputhid = $("<input type=\"hidden\" name=\"name\" />"),
                    newLine = $("<br/>");
                if (!resultSet || !resultSet.length){
                    return;
@@ -565,28 +596,52 @@
                                             //               evt.stopPropagation();
                                             //           })
                                             //   )
-                                              .append(
-                                                  menuDel.clone().clone()
-                                                      .data("result", result)
-                                                      .click(function(evt){
-                                                          let ret = $(this).data("result");
-                                                          if (confirm("刪除："+ ret["song_name"] + "?")){
+                                                  .append(
+                                                     menuEdit.clone()
+                                                         .data("result", result)
+                                                         .click(function(evt){
+                                                             location.href = "./songinfo.html?song_no=" + $(this).data("result")["song_no"];
+                                                             evt.stopPropagation();
+                                                         })
+                                                  )
+                                                  .append(
+                                                      menuDel.clone().clone()
+                                                        .data("result", result)
+                                                        .click(function(evt){
+                                                            let ret = $(this).data("result");
+                                                            if (confirm("刪除："+ ret["song_name"] + "?")){
                                                             //   alert("刪除ID：" + ret["song_no"]);
-                                                            // item.remove();
-                                                            // content.remove();
-                                                            function deletesong(){
-                                                               $.get("./phps/addmemsongdelt.php")
-                                                                 .done(function(){
-                                                                  item.remove();
-                                                                  content.remove();
-                                                               })
-                                                            //    .fail(function(e){
-                                                            //     alert("加載失敗");
-                                                            //    });
-                                                            }
-                                                            deletesong();
-                                                          }
-                                                          evt.stopPropagation();
+                                                            //    item.remove();
+                                                            //    content.remove();
+                                                            //    function deletesong(){
+                                                            //       $.post("./phps/addmemsongdelt.php")
+                                                            //        .done(function(){
+                                                            //          console.log(ret["song_no"]);
+                                                            //          item.remove();
+                                                            //          content.remove();
+                                                            //        })
+                                                            //    }
+                                                            //    deletesong();
+                                                                  $.ajax({
+                                                                       url: "./phps/addmemsongdelt.php",
+                                                                       type: "GET",
+                                                                       cache: false,
+                                                                       data: {
+                                                                           name:ret["song_no"],
+                                                                       },
+                                                                       success: function(result){
+                                                                              // let ret = $.parseJSON(result);
+                                                                              // updateInfo(ret);
+                                                                              console.log(ret["song_no"]);
+                                                                              item.remove();
+                                                                              content.remove();
+                                                                       },
+                                                                       error: function(err){
+                                                                           console.error(err);
+                                                                       }
+                                                                   });
+                                                                   evt.stopPropagation();
+                                                           }
                                                       })
                                               ).mouseleave(function(){
                                                  $(this).data("menu").fadeOut();
@@ -611,6 +666,7 @@
                            .append(newLine.clone())
                            .append(infoTitle.clone().text("Introduction ："))
                            .append(infoContext.clone().html(result["song_idn"]))
+                           .append(inputhid.clone())
                            .append(newLine.clone())
                        );
                    li.clone().append(item).append(content.hide()).appendTo(songsList)
@@ -683,7 +739,10 @@
               });
               leftSec.click(function(){
                   secContainer.slideToggle();
+                  songsList.slideToggle();
               });
+            //   songsList.height(document.body.scrollHeight);
+            //   $(".songsadded_adds2").height(document.body.scrollHeight);
             }
             function loadMySongs(){
                 $.ajax({

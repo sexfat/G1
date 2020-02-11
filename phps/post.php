@@ -70,7 +70,7 @@ switch ($_POST['post']) {
       $update_activity = $pdo->prepare($sql);
 
       if($_FILES['act_img']['error'] == 0){
-        $update_activity->bindValue(':activity_img', $to);
+        $update_activity->bindValue(':activity_img', substr($to,1));
       }
       $update_activity->bindValue(':activity_num', $_POST['activity_num']);
       $update_activity->bindValue(':activity_name', $_POST['activity_name']);

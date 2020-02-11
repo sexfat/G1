@@ -3,11 +3,7 @@ try {
     require_once("connectBooks.php");
     $sql = "SELECT total_station_music_library.song_pic,
     total_station_music_library.song_name,total_station_music_library.cat_no,
-<<<<<<< HEAD
-    `member`.mem_name
-=======
     `member`.mem_name,total_station_music_library.song_no,total_station_music_library.song_addr
->>>>>>> 0314f3b0329fceb310a2e97643c853bebef6d300
     FROM (total_station_music_library
     INNER JOIN `member`
     ON total_station_music_library.mem_no = `member`.mem_no)

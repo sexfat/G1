@@ -1,5 +1,18 @@
 let donateVal = 0;
+var member = [];
 window.addEventListener('load', function () {
+    let xhr = new XMLHttpRequest();
+    xhr.onload = () => {
+        member = JSON.parse(xhr.responseText);
+        if (member.mem_acct) {
+            vm.mem_login = true;
+        } else {
+            vm.mem_login = false;
+        }
+    }
+    xhr.open("get", "./phps/getLoginInfo.php", false);
+    xhr.send(null);
+
     $('input[type="radio"]').change(function () {
         donateVal = $(this).val();
     });
@@ -9,38 +22,43 @@ window.addEventListener('load', function () {
     });
 
     $('button.infose-send').click(function () {
-        if (donateVal == 100) {
-            $('.lightCover').show();
-            $('.donanimate').show();
-            $('.donanimate>div').hide();
-            $('.ani_oct').show();
-            oct();
-        } else if (donateVal == 300) {
-            $('.lightCover').show();
-            $('.donanimate').show();
-            $('.donanimate>div').hide();
-            $('.ani_water').show();
-            waterBall();
-        } else if (donateVal == 500) {
-            $('.lightCover').show();
-            $('.donanimate').show();
-            $('.donanimate>div').hide();
-            $('.ani_cat').show();
-            cat();
-        } else if (donateVal == 1000) {
-            $('.lightCover').show();
-            $('.donanimate').show();
-            $('.donanimate>div').hide();
-            $('.ani_rocket').show();
-            rocket();
-        }else {
-            $('.donanimate>div').hide();
-            $('.donanimate').hide();
-            $('.lightCover').hide();
+        if (member['mem_no']) {
+            if (donateVal == 100) {
+                $('.lightCover').show();
+                $('.donanimate').show();
+                $('.donanimate>div').hide();
+                $('.ani_oct').show();
+                oct();
+            } else if (donateVal == 300) {
+                $('.lightCover').show();
+                $('.donanimate').show();
+                $('.donanimate>div').hide();
+                $('.ani_water').show();
+                waterBall();
+            } else if (donateVal == 500) {
+                $('.lightCover').show();
+                $('.donanimate').show();
+                $('.donanimate>div').hide();
+                $('.ani_cat').show();
+                cat();
+            } else if (donateVal == 1000) {
+                $('.lightCover').show();
+                $('.donanimate').show();
+                $('.donanimate>div').hide();
+                $('.ani_rocket').show();
+                rocket();
+            } else {
+                $('.donanimate>div').hide();
+                $('.donanimate').hide();
+                $('.lightCover').hide();
+            }
+            donateVal = 0;
+        }else{
+            alert('Please login!');
         }
-        donateVal = 0;
     });
 });
+
 function cat() {
     let bbf, bff, fff, fbf, tail, catN;
     let ballon, waterPlace, waterBall;

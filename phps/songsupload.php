@@ -14,7 +14,7 @@
           return null;
       }
       if(move_uploaded_file($file['tmp_name'],'../music/'.$file['name'])){
-          return '../music/'.$file['name'];
+          return './music/'.$file['name'];
       };
       return null;
   }

@@ -143,8 +143,8 @@
               <a class="nav-link">
                 <i class="nav-icon icon-pie-chart"></i> 留言總覽</a>
             </li>
-            <li class="nav-item">
-              <a class="nav-link" href="#">
+            <li class="nav-item" @click="actLogout">
+              <a class="nav-link" href="./index.html">
                 <i class="nav-icon icon-star"></i>登出</a>
             </li>
           </ul>
@@ -485,8 +485,8 @@
       el: "#app",
       data: {
         screenWidth: document.body.clientWidth,
-        currpos: "檢舉管理",
-        currchild: "未處理",
+        currpos: "管理員帳號管理",
+        currchild: "",
         update: false,
         upact_infos: {
           activity_img: '',
@@ -659,8 +659,8 @@
             vm.upact_infos.activity_img = res.data.activity_img;
             vm.upact_infos.activity_num = res.data.activity_no;
             vm.upact_infos.activity_name = res.data.activity_name;
-            vm.upact_infos.activity_start = res.data.activity_str;
-            vm.upact_infos.activity_fin = res.data.activity_fin;
+            vm.upact_infos.activity_start = res.data.activity_str.substr(0,10);
+            vm.upact_infos.activity_fin = res.data.activity_fin.substr(0,10);
             vm.upact_infos.activity_Introduction = res.data.activity_con;
             vm.upact_infos.activity_g = res.data.activity_img.substring(16);
 
@@ -717,6 +717,10 @@
             console.log(res.data)
             vm.message = res.data;
           })
+        },
+        actLogout(){
+          var vm = this;
+          axios.get('./phps/actlogout.php');
         },
       },
       mounted() {

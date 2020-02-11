@@ -12,7 +12,7 @@
       });
     });
     $('.lightCover').click(function () {
-      $(this).hide();
+      $('.lightCover').hide();
       $("#tutorialBox").hide().animate({
         left: "-50%"
       });
@@ -38,4 +38,3 @@
         }
       }
     })
-  

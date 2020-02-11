@@ -3,6 +3,9 @@ try {
     require_once("connectBooks.php");
     session_start();
     $mem_no = $_SESSION["mem_no"];
+    $sql = "SELECT `mem_img` FROM `member` WHERE `mem_no` = {$_SESSION['mem_no']}";
+    $mem_img = $pdo->query($sql);
+    $imgRow = $mem_img->fetch(PDO::FETCH_ASSOC);
 
     switch ($_FILES['upfile']['error']) {
         case UPLOAD_ERR_OK:
@@ -10,10 +13,7 @@ try {
             if (file_exists($dir) === false) {
                 mkdir($dir); //make directory
             } else {
-                $aa = scandir($dir);
-                for ($i=2; $i<=count($aa); $i++){
-                    unlink("$dir/$aa[$i]");
-                }
+                unlink("$dir/".implode($imgRow));
             }
 
             $file_info = pathinfo($_FILES['upfile']['name']);

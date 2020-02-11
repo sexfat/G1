@@ -13,13 +13,16 @@
     // border: 1px solid black;
     box-sizing: border-box;
     // width: 100vw;
-    height: 1100px;
+    // height: 1100px;
+    // min-height:500px;
+    // max-height: 100vh;
+    height: 150%;
 }
 
 .songsadded_leftli {
     // border: 1px solid greenyellow;
     width: 1200px;
-    height: 650px !important;
+    // height: 650px !important;
     margin: 0 auto;
     box-sizing: border-box;
     padding: 0px;
@@ -190,13 +193,13 @@
     }
 }
 
-@media screen and (max-width:800px) {
+// @media screen and (max-width:800px) {
 
-    .songsadded_inside,
-    .songsadded_inside2 {
-        // margin-left: 45px;
-    }
-}
+//     .songsadded_inside,
+//     .songsadded_inside2 {
+//         // margin-left: 45px;
+//     }
+// }
 
 @media screen and (max-width:768px) {
 
@@ -207,29 +210,29 @@
     }
 }
 
-@media screen and (max-width:670px) {
+// @media screen and (max-width:670px) {
 
-    .songsadded_inside,
-    .songsadded_inside2 {
-        // margin-left: 55px;
-    }
-}
+//     .songsadded_inside,
+//     .songsadded_inside2 {
+//         // margin-left: 55px;
+//     }
+// }
 
-@media screen and (max-width:620px) {
+// @media screen and (max-width:620px) {
 
-    .songsadded_inside,
-    .songsadded_inside2 {
-        // margin-left: 30px;
-    }
-}
+//     .songsadded_inside,
+//     .songsadded_inside2 {
+//         // margin-left: 30px;
+//     }
+// }
 
-@media screen and (max-width:595px) {
+// @media screen and (max-width:595px) {
 
-    .songsadded_inside,
-    .songsadded_inside2 {
-        // margin-left: 15px;
-    }
-}
+//     .songsadded_inside,
+//     .songsadded_inside2 {
+//         // margin-left: 15px;
+//     }
+// }
 
 @media screen and (max-width:576px) {
 
@@ -1276,9 +1279,9 @@
 }
 
 
-.songadd_all {
-    overflow: hidden;
-}
+// .songadd_all {
+//     overflow: hidden;
+// }
 
 .addallall {
     overflow: hidden;

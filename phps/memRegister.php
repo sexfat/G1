@@ -18,7 +18,13 @@ try {
         $memInsert1->bindValue(':mem_acct',$_POST['mem_acct']);
         $memInsert1->bindValue(':mem_psw',$_POST['mem_psw']);
         $memInsert1->execute();
-        echo "Success!Please log in";
+        $memNo = $pdo->lastInsertId();
+        session_start();
+        $_SESSION["mem_no"] = $memNo;
+        $_SESSION["mem_acct"] = $_POST['mem_acct'];
+        $_SESSION["mem_psw"] = $_POST['mem_psw'];
+        
+        echo "success";
     }
 } catch (PDOException $e) {
     echo "例外行號:", $e->getLine(), "<br>";

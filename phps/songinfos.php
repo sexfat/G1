@@ -1,10 +1,10 @@
 <?php
-require_once('./connect_dd104g1.php');
+require_once('./connectBooks.php');
 session_start();
 switch ($_GET['get']) {
   case 'song':
     try {
-      $sql = "SELECT * FROM `total_station_music_library` WHERE song_no = {$_GET['song_no']}";
+    $sql = "SELECT music.song_no,song_idn,song_name,song_pic,donate_acount,fav_total,song_addr, mem.mem_name FROM `total_station_music_library` as music, `member` as mem where music.mem_no = mem.mem_no and song_no = {$_REQUEST['song_no']}";
       $song = $pdo->prepare($sql);
       $song->execute();
 
@@ -51,7 +51,7 @@ switch ($_GET['get']) {
     break;
   case "mem":
     try {
-      $sql = "SELECT * FROM `member` WHERE mem_no = {$_SESSION['mem_no']}";
+      $sql = "SELECT mem_no, mem_name FROM `member` WHERE mem_no = {$_SESSION['mem_no']}";
       $mem = $pdo->prepare($sql);
       $mem->execute();
 

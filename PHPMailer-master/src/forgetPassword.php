@@ -20,7 +20,7 @@ function generateRandomString($length = 6)
 };
 try {
     require_once "../../phps/connectBooks.php";
-    $searchEmail = $_POST["forpswlogin"];
+    $searchEmail = $_POST["forgetwho"];
     // $searchEmail ="soundwave@gmail.com";
     $checkEmail = "select * from `member` where mem_acct='{$searchEmail}';";
     $showEmail = $pdo->query($checkEmail);
@@ -42,7 +42,7 @@ try {
         
         //Recipients
         $mail->setFrom('dd104g1@gmail.com', 'SOUNDWAVE');
-        $mail->addAddress('dd104g1@gmail.com');
+        $mail->addAddress($searchEmail);
         $mail->charSet = 'utf-8';
         // Content
         $mail->Subject = 'SOUNDWAVE password comfirmation';
@@ -51,11 +51,8 @@ try {
              New password:' . $Randompsw . '
              Please use this new password log in again.';
         $mail->Send();
+        // echo "success";
         // echo 123;
-
-             //  if ($mail->Send()) {
-            //     echo "已發送郵件";
-            // }
     
         // } else {
         //     echo "查無此帳號";
@@ -66,4 +63,3 @@ try {
     echo "例外行號 : ", $msg->getLine(), "<br>";
     echo "例外原因 : ", $msg->getMessage(), "<br>";
 }
-?>

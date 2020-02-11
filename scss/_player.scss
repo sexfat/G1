@@ -372,13 +372,16 @@ $mainRed : #de267d;
     .close {
       position: absolute;
       right: 30px;
-      top: 50px;
+      top: 20px;
       transition: transform 0.5s;
       cursor: pointer;
 
 
       &:hover {
         transform: scale(1.1);
+      }
+      @include respond(phone){
+        top: 20%;
       }
     }
 

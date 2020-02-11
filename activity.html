@@ -16,9 +16,9 @@
 
 </head>
 
-<body>
+<body id="act_maxTop">
 
-    <div>
+    <div style="margin: 0; padding: 0;">
         <div id="nav_app">
             <!-- nav_bar start -->
             <div class="nav_bar flexbox">
@@ -75,12 +75,37 @@
                 <div class="search_bt" @click="search_bt_click">
                     <a href="#"></a>
                 </div>
-                <div class="search_bar" @click="stopPropagation">
-                    <input class="search" type="text" />
-                    <div class="tag_container">
+                <div class="search_bar" @click="stopPropagation" v-bind:style="search_bar_style()">
+                    <input class="search" type="text" placeholder="Enter Song Name or Author" />
+                    <i class="fas fa-search" @click="search_click"></i>
+                    <div class="keyword_container">
+                        <div class="keyword" @click="keyword_click">
+                            <i class="far fa-hand-point-right"></i>
+                            {{search_keyword[0]}}
+                        </div>
+                        <div class="keyword" @click="keyword_click">
+                            <i class="far fa-hand-point-right"></i>
+                            {{search_keyword[1]}}
+                        </div>
+                        <div class="keyword" @click="keyword_click">
+                            <i class="far fa-hand-point-right"></i>
+                            {{search_keyword[2]}}
+                        </div>
+                        <div class="keyword" @click="keyword_click">
+                            <i class="far fa-hand-point-right"></i>
+                            {{search_keyword[3]}}
+                        </div>
+                        <div class="keyword" @click="keyword_click">
+                            <i class="far fa-hand-point-right"></i>
+                            {{search_keyword[4]}}
+                        </div>
+                        <div class="keyword" @click="keyword_click">
+                            <i class="far fa-hand-point-right"></i>
+                            {{search_keyword[5]}}
+                        </div>
                     </div>
                 </div>
-    
+
                 <div class="mem_bt" @click="mem_bt_click" v-if="mem_login == true">
                     <a href="#"></a>
                 </div>
@@ -126,6 +151,7 @@
             </div>
             <!-- nav_bar end -->
         </div>
+
         <div id="player">
             <audio src="" id="audioPlayer"></audio>
             <div class="player_s">
@@ -135,7 +161,7 @@
                         <span class="name">Lucid Dreamer</span>
                         <span class="creator">Spazz Cardigan</span>
                     </div>
-                    <div class="heart becomeRed"><img src="./img/collection/redheart.png" alt=""></div>
+                    <div class="heart"><img src="./img/collection/grayheart.png" alt=""></div>
                     <div class="clearfix"></div>
                 </div>
 
@@ -185,7 +211,7 @@
                     <div class="songInfo">
                         <div class="name">Lucid Dreamer</div>
                         <div class="creator">Spazz Cardigan</div>
-                        <div class="heart becomeRed"><img src="./img/collection/redheart.png" alt=""></div>
+                        <div class="heart"><img src="./img/collection/grayheart.png" alt=""></div>
                         <div class="clearfix"></div>
                     </div>
                     <div class="controlPanel">
@@ -224,141 +250,56 @@
                     <div class="pushBtn"></div>
                     <div class="listTitle">
                         <div class="listCover">
-                            <img src="./img/library/list_pic1.jpg"></div>
+                            <img src="./img/library/list_pic_no.jpg"></div>
                         <div class="listName">
-                            <h2>peaceful list</h2>
-                            <span>8 songs</span>
+                            <h2>Total songs</h2>
+                            <span>0 songs</span>
                         </div>
                         <button class="selectBtn" id="selectBtn">SELECT</button>
                         <div class="clearfix"></div>
                     </div>
                     <div class="list">
-                        <ul>
-                            <li>
-                                <div class="songCover">
-                                    <img src="./img/collection/album1.jpg" alt="">
-                                    <div class="listPlay nowlistening"><img src="./img/library/coverPlay-s.png"></div>
-                                </div>
-                                <div class="listSongInfo">
-                                    <div class="name">
-                                        <h4>Lucid Dreamer</h4>
-                                        <p> Spazz Cardigan</p>
-                                    </div>
-                                </div>
-                                <div class="totalTime">3:11</div>
-                                <div class="heart becomeRed"><img src="./img/collection/redheart.png"></div>
-                                <div class="clearfix"></div>
-                            </li>
-                            <li>
-                                <div class="songCover">
-                                    <img src="./img/collection/album2.jpg" alt="">
-                                    <div class="listPlay"><img src="./img/library/coverPlay-s.png"></div>
-                                </div>
-                                <div class="listSongInfo">
-                                    <div class="name">
-                                        <h4>Spring In My Step</h4>
-                                        <p>Silent Partner</p>
-                                    </div>
-                                </div>
-                                <div class="totalTime">1:59</div>
-                                <div class="heart becomeRed"><img src="./img/collection/redheart.png" alt=""></div>
-                                <div class="clearfix"></div>
-                            </li>
-                            <li>
-                                <div class="songCover">
-                                    <img src="./img/collection/album3.jpg" alt="">
-                                    <div class="listPlay"><img src="./img/library/coverPlay-s.png"></div>
-                                </div>
-                                <div class="listSongInfo">
-                                    <div class="name">
-                                        <h4>On My Way Home</h4>
-                                        <p>The 126ers</p>
-                                    </div>
-                                </div>
-                                <div class="totalTime">1:56</div>
-                                <div class="heart becomeRed"><img src="./img/collection/redheart.png" alt=""></div>
-                                <div class="clearfix"></div>
-                            </li>
-                            <li>
-                                <div class="songCover">
-                                    <img src="./img/collection/album4.jpg" alt="">
-                                    <div class="listPlay"><img src="./img/library/coverPlay-s.png"></div>
-                                </div>
-                                <div class="listSongInfo">
-                                    <div class="name">
-                                        <h4>Lucid Dreamer</h4>
-                                        <p> Spazz Cardigan</p>
-                                    </div>
-                                </div>
-                                <div class="totalTime">4:30</div>
-                                <div class="heart becomeRed"><img src="./img/collection/redheart.png" alt=""></div>
-                                <div class="clearfix"></div>
-                            </li>
-                            <li>
-                                <div class="songCover">
-                                    <img src="./img/collection/album5.jpg" alt="">
-                                    <div class="listPlay"><img src="./img/library/coverPlay-s.png"></div>
-                                </div>
-                                <div class="listSongInfo">
-                                    <div class="name">
-                                        <h4>Lucid Dreamer</h4>
-                                        <p> Spazz Cardigan</p>
-                                    </div>
-                                </div>
-                                <div class="totalTime">4:30</div>
-                                <div class="heart becomeRed"><img src="./img/collection/redheart.png" alt=""></div>
-                                <div class="clearfix"></div>
-                            </li>
-                            <li>
-                                <div class="songCover">
-                                    <img src="./img/collection/album6.jpg" alt="">
-                                    <div class="listPlay"><img src="./img/library/coverPlay-s.png"></div>
-                                </div>
-                                <div class="listSongInfo">
-                                    <div class="name">
-                                        <h4>Lucid Dreamer</h4>
-                                        <p> Spazz Cardigan</p>
-                                    </div>
-                                </div>
-                                <div class="totalTime">4:30</div>
-                                <div class="heart becomeRed"><img src="./img/collection/redheart.png" alt=""></div>
-                                <div class="clearfix"></div>
-                            </li>
-                            <li>
-                                <div class="songCover">
-                                    <img src="./img/collection/album7.jpg" alt="">
-                                    <div class="listPlay"><img src="./img/library/coverPlay-s.png"></div>
-                                </div>
-                                <div class="listSongInfo">
-                                    <div class="name">
-                                        <h4>Lucid Dreamer</h4>
-                                        <p> Spazz Cardigan</p>
-                                    </div>
-                                </div>
-                                <div class="totalTime">4:30</div>
-                                <div class="heart becomeRed"><img src="./img/collection/redheart.png" alt=""></div>
-                                <div class="clearfix"></div>
-                            </li>
-
+                        <ul class="chooseList">
+                            <!-- <li>
+                      <div class="songCover">
+                        <img src="./img/collection/album1.jpg" alt="">
+                        <div class="listPlay nowlistening"><img src="./img/library/coverPlay-s.png"></div>
+                      </div>
+                      <div class="listSongInfo">
+                        <div class="name">
+                          <h4>Lucid Dreamer</h4>
+                          <p> Spazz Cardigan</p>
+                        </div>
+                      </div>
+                      <div class="totalTime">3:11</div>
+                      <div class="heart becomeRed"><img src="./img/collection/redheart.png"></div>
+                      <div class="clearfix"></div>
+                    </li> -->
                         </ul>
                     </div>
+                    <input type="hidden" id="playerfavorStatus" name="favorStatus">
+                    <input type="hidden" id="playerFavorSong" name="favorSong">
                 </div>
                 <div class="close" id="closePlayer"><i class="fas fa-times"></i></div>
                 <div class="clearfix"></div>
 
                 <!-- 撥放器燈箱 -->
                 <div class="lightCover">
-                    <div class="lightbox_s" id="myAllList">
+                    <div class="lightbox_s allmylist" id="myAllList">
                         <div class="closeLight"><i class="fas fa-times"></i></div>
-                        <h3>My List</h3>
+                        <h4>My List</h4>
                         <div class="lightSelectMenu">
                             <ul>
-                                <li>Liked songs</li>
-                                <li>Peaceful songs</li>
-                                <li>party</li>
+                                <!-- <li class="chooseList">Liked songs</li> -->
                             </ul>
                         </div>
-                        <button class="">ok</button>
+                        <input type="hidden" name="plistName" id="plistName">
+                        <button id="mylistOK">ok</button>
+                    </div>
+                    <div class="lightbox_s" id="playerAlert">
+                        <div class="closeLight"><i class="fas fa-times"></i></div>
+                        <h4></h4>
+                        <button>ok</button>
                     </div>
                 </div>
             </div>
@@ -366,27 +307,26 @@
     </div>
     <script src="./js/player.js"></script>
     <script src="./js/nav_bar.js"></script>
-
     <header>
-        <div id="act_title"><img src="./img/activity/title.png" alt=""></div>
+        <div id="act_title"><img src="./img/activity/title.png" alt="" ></div>
     </header>
     <section id="activity">
-        <div id="actHead" class="wrapper">
+        <div id="actHead" class="wrapper" >
 
             <div id="act_radioBg">
-                <img src="./img/activity/radio.png" alt="">
+                <img src="./img/activity/radio.png" alt="" style="pointer-events: none;position: relative;z-index:1;">
 
 
-                <h2 v-if=" content=='actNow'">{{actInformation[0].activity_name}}</h2>
+                <h2 v-if=" content=='actNow'" v-for='item in actInformation.slice(0,1)'>{{item.activity_name}}</h2>
                 <h2 v-if=" content=='actOld'">Previous activities</h2>
 
                 <div id="act_HeadBtn">
-                    <div @click="content='actNow' ">
+                    <div @click="content='actNow'">
                         <span>Now</span>
                         <img v-if=" content=='actNow'" :src=" tabImgON" alt="">
                         <img v-else :src=" tabImgOFF" alt="">
                     </div>
-                    <div @click="content='actOld' ">
+                    <div @click="content='actOld'">
                         <span> Old</span>
                         <img v-if=" content=='actNow'" :src=" tabImgOFF" alt="">
                         <img v-else :src=" tabImgON" alt="">
@@ -411,45 +351,43 @@
 
                 </div>
 
-                <div id="act_oldyear_Anchor" v-if=" content=='actOld'">
+                <div id="act_oldyear_Anchor" v-if=" content=='actOld'" style="z-index:2;">
                     <a href="#act_old-year2018" class="act_Anchor">
-                        <img src="./img/activity/yearbutton.png"><span>2018</span>
+                        <img src="./img/activity/yearbutton.png"><span
+                            v-for="(information,index) in actInformation.slice(1,2)">{{information.activity_no}}</span>
                     </a>
 
                     <a href="#act_old-year2017" class="act_Anchor">
-                        <img src="./img/activity/yearbutton.png"> <span>2017</span>
+                        <img src="./img/activity/yearbutton.png"> <span
+                            v-for="(information,index) in actInformation.slice(2,3)">{{information.activity_no}}</span>
                     </a>
                 </div>
 
                 <div id="act_TopAnchor" @click="GoTopAnima">
 
-                    <a href="body" class="act_Anchor ">
-                        <img src="./img/activity/top-bush.png" alt="" class="act_Bush">
+                    <a href="#act_maxTop" class="act_Anchor">
+                        <img src="./img/activity/top-bush.png" id="act_Top" class="act_Bush">
 
-                        <div class="act_ShowTopBush" v-if="GoTopBush==true">
+                        <div id="act_ShowTopBush">
                             <img src="./img/activity/top-bush02.png" alt="">
                         </div>
-
                         TOP
                     </a>
 
                 </div>
 
-                <div id="act_carouselSelect">
-                    <div @click.prevent="changeBanner(0),isActive =0" :class=" {btncolor:isActive==0}">
+                <div id="act_carouselSelect" style="z-index: 2;">
+                    <div @click.prevent="changeBanner(0),isActive =0,bannerHref" :class=" {btncolor:isActive==0}">
                     </div>
-                    <div @click.prevent="changeBanner(1),isActive =1" :class=" {btncolor:isActive==1}">
+                    <div @click.prevent="changeBanner(1),isActive =1,bannerHref" :class=" {btncolor:isActive==1}">
                     </div>
-                    <div @click.prevent="changeBanner(2),isActive =2" :class=" {btncolor:isActive==2}">
+                    <div @click.prevent="changeBanner(2),isActive =2,bannerHref" :class=" {btncolor:isActive==2}">
                     </div>
                 </div>
 
-                <div id="act_carousel">
-                    <a :href="imageHref">
-                        <img :src=" imageActive">
-                    </a>
-
-                </div>
+                <a id="act_carousel":href="imageHref" style="z-index:0;">
+                     <img :src=" imageActive">
+                </a>
 
 
 
@@ -482,8 +420,8 @@
 
 
         </div>
-        <component :is="content" :vote-All="voteAll" :act-Information="actInformation" :mem-Heart="memHeart" :mem-Votes="memVotes"
-            :member="member">
+        <component :is="content" :vote-All="voteAll" :act-Information="actInformation" :mem-Heart="memHeart"
+            :mem-Votes="memVotes" :member="member">
         </component>
 
 
@@ -499,14 +437,14 @@
                  <h2>Information</h2>
                  <h3>{{information.activity_name}}</h3>
      
-                 <p>
+                 <p style="word-wrap:break-word;" v-html="information.activity_con.replace(/\n/g, '<br>')">
      
                     {{information.activity_con}}
                    
                  </p>
                  <div class="act_oldVotes">
                      <h3>Votes</h3>
-                     <span  v-for="item in voteAll.slice(1,2)">{{item.total_vote}}</span>
+                     <span v-if="oldVoteAllOne">{{oldVoteAllOne}}</span>
                  </div>
              </div>
      
@@ -561,7 +499,7 @@
                      </div>
                   
                      <div class="act_songBox"> 
-                      <div class="act_old-hear1" @click="showChangeHeart($event,oldSong.entries_name)"ref="oneOldHearts"> </div>
+                      <div class="act_old-hear1" @click="showChangeHeart($event,oldSong.entries_name)"ref="oneOldHearts" style="cursor: pointer;"> </div>
                       <input type="hidden" name="favorStatus" v-model="heartSaute" ref="oneOldHeartsVal">
                       <input type="hidden" name="favorSongName" v-model="getHeartSong" > 
                       <a :href="'songinfo.html?song_no='+oneSongNo"@click="changeHref(oldSong.entries_name)"><h4>'{{oldSong.entries_name}}'</h4></a>  
@@ -583,12 +521,12 @@
                  <h2>Information</h2>
                  <h3>{{information.activity_name}}</h3>
      
-                 <p>
+                 <p style="word-wrap:break-word;" v-html="information.activity_con.replace(/\n/g, '<br>')">
                     {{information.activity_con}}
                  </p>
                  <div class="act_oldVotes">
                      <h3>Votes</h3>
-                     <span v-for="item in voteAll.slice(2,3)">{{item.total_vote}}</span>
+                     <span v-if="oldVoteAllTwo">{{oldVoteAllTwo}}</span>
                  </div>
              </div>
      
@@ -624,7 +562,7 @@
                      </div>
                   
                      <div class="act_songBox"> 
-                      <div class="act_old-hear1" @click="showChangeHeart($event,oldSong.entries_name)" ref="twoOldHearts"> </div>
+                      <div class="act_old-hear1" @click="showChangeHeart($event,oldSong.entries_name)" ref="twoOldHearts" style="cursor: pointer;"> </div>
                       <input type="hidden" name="favorStatus" v-model="heartSaute" ref="twoOldHeartsVal">
                       <input type="hidden" name="favorSongName" v-model="getHeartSong" > 
                       <a :href="'songinfo.html?song_no='+oneSongNo"@click="changeHref(oldSong.entries_name)"><h4>'{{oldSong.entries_name}}'</h4></a>  
@@ -649,7 +587,7 @@
                      </div>
                   
                      <div class="act_songBox"> 
-                      <div class="act_old-hear1" @click="showChangeHeart($event,oldSong.entries_name)" ref="twoOldHearts"> </div>
+                      <div class="act_old-hear1" @click="showChangeHeart($event,oldSong.entries_name)" ref="twoOldHearts" style="cursor: pointer;"> </div>
                       <input type="hidden" name="favorStatus" v-model="heartSaute" ref="twoOldHeartsVal">
                       <input type="hidden" name="favorSongName" v-model="getHeartSong" > 
                       <a :href="'songinfo.html?song_no='+oneSongNo"@click="changeHref(oldSong.entries_name)"><h4>'{{oldSong.entries_name}}'</h4></a>  
@@ -678,7 +616,7 @@
                      <h2>Introduction</h2>
                      <div>{{information.activity_name}}</div>
                      <h3>Information</h3>
-                     <p style="word-break: keep-all;">
+                     <p style="word-wrap:break-word;" v-html="information.activity_con.replace(/\n/g, '<br>')">
                         {{information.activity_con}}
                       
                      </p>
@@ -783,7 +721,7 @@
                                     v-model="SongName"placeholder="Your song name!"  v-if="SignSongURL" required 
                                     name="entries_name">
                             
-                            <div  class="act_Sign-up-song-name" v-if="selectSong">{{selectSong.song_name}}</div>
+                            <input  class="act_Select-song-name" v-if="selectSong" :value="selectSong.song_name" readonly>
                             <input type="hidden"  v-model="selectSong.song_name" name="Select_name">
                                     
                         </div>
@@ -797,8 +735,8 @@
                                       v-if="SignSongURL" required
                                       name="introduction"></textarea>
                             
-                            <div class="act_Sign-up-song-information" 
-                                     v-if="selectSong">{{selectSong.song_idn}}</div>
+                            <textarea class="act_Select-song-information" 
+                                     v-if="selectSong" readonly>{{selectSong.song_idn}}</textarea>
                             <input type="hidden" v-model="selectSong.song_idn" name="Select_information">
                                    
 
@@ -904,7 +842,7 @@
                    </p>
                    <div>
                      <h3>Votes</h3>
-                     <span v-for="item in voteAll.slice(0,1)">{{item.total_vote}}</span>
+                     <span v-if="nowVoteAll">{{nowVoteAll}}</span>
                    </div>
                    
                  </article>
@@ -921,7 +859,7 @@
                               
                         </div>
                           <div class="act_songBox"> 
-                              <div class="act_old-hear1"  @click="showChangeHeart($event,item.entries_name)" ref="hearts"></div>
+                              <div class="act_old-hear1"  @click="showChangeHeart($event,item.entries_name)" ref="hearts" style="cursor: pointer;"></div>
                               <input type="hidden" name="favorStatus" v-model="heartSaute" ref="heartsVal">
                               <input type="hidden" name="favorSongName" v-model="getHeartSong" > 
                               <a :href="'songinfo.html?song_no='+oneSongNo" @click="changeHref(item.entries_name)"><h4>' {{item.entries_name}}'</h4></a>  
@@ -941,10 +879,15 @@
         @import "./css/main.css";
     </style>
 
-
-
     <script>
         let songObj = {};
+
+        function smooth() {
+            $('.act_Anchor').on('click', function (e) {
+                e.preventDefault();
+                $('html, body').animate({ scrollTop: $($(this).attr('href')).offset().top }, 700, 'swing');
+            });
+        };
 
 
         Vue.component('actNow', {
@@ -958,7 +901,9 @@
             },
             data: function () {
                 return {
+                    //參賽歌曲
                     nowVoteSong: [],
+
                     //表單步驟頁面
                     formContent: 0,
 
@@ -969,6 +914,7 @@
                     SignSongURL: "",
                     SignSong: '',
                     SignImg: "",
+
                     //會員選擇已有歌曲，資料陣列
                     selectSong: [],
 
@@ -978,6 +924,9 @@
 
                     //被投票的歌曲編號
                     voteSongNo: '',
+
+                    //投票總數
+                    nowVoteAll: '',
 
 
                     //愛心收藏
@@ -1114,7 +1063,6 @@
                         myForm.append("entries_name", this.SongName);
                         myForm.append("introduction", this.SongInformation);
                         myForm.append("contestNowYear", this.contestYear);
-
                         let xhr = new XMLHttpRequest();
                         xhr.onload = function () {
                             // console.log("-----------final");
@@ -1127,9 +1075,10 @@
                                 alert("Sign up failed!");
                             }
                         }
-                        console.log(myForm);
+                        // console.log(myForm);
                         xhr.open("post", "./phps/act_formSignUp.php", true);
                         xhr.send(myForm);
+
 
                     }
 
@@ -1232,7 +1181,7 @@
                     nowPlaying = 0;
                     listLen = myPlaylist.length;
                     $('#player audio').attr('src', myPlaylist[0].song_addr);
-                    console.log(myPlaylist);
+                    // console.log(myPlaylist);
 
                     for (let i = 0; i < this.nowVoteSong.length; i++) {
                         let allSongName = this.nowVoteSong[i].entries_name;
@@ -1253,8 +1202,9 @@
                     };
 
                     playerAuto = false;
-                    console.log(myPlaylist[0].song_name);
+                    // console.log(myPlaylist[0].song_name);
                     heartStatus(myPlaylist[0].song_name);
+                    listStatus(myPlaylist[0].song_name);
 
                 },
 
@@ -1302,10 +1252,25 @@
                     };
                 },
 
+
+                changeVoteAll() {
+                    let nowYear = this.contestYear;
+
+                    for (let i = 0; i < this.voteAll.length; i++) {
+                        let year = this.voteAll[i].activity_no;
+                        if (nowYear == year) {
+                            this.nowVoteAll = this.voteAll[i].total_vote;
+                            break;
+                        } else {
+                            this.nowVoteAll = "0";
+                        }
+
+                    }
+                },
                 getNewContestYear() {//動態更換新活動歌曲
                     // fetch('./phps/getContestInformation.php').then(res => res.json()).then(data => this.nowInformation = data);
                     this.contestYear = this.actInformation[0].activity_no;
-                    console.log(this.contestYear);
+                    // console.log(this.contestYear);
                     if (this.contestYear != "") {
                         var year = $.ajax({
                             url: './phps/getContestSong.php',
@@ -1346,10 +1311,13 @@
 
                 },
 
+
             },
             created() {
                 // fetch('./phps/getContestNowSong.php').then(res => res.json()).then(data => this.nowVoteSong = data);
                 this.getYear = setTimeout(this.getNewContestYear, 500);
+                this.NowVote = setTimeout(this.changeVoteAll, 600);
+                smooth();
             },
             mounted() {
                 this.ChangeHeart = setTimeout(this.ChangeRedHeart, 800);
@@ -1384,10 +1352,16 @@
                     backSong: '',
                     oneSongNo: '',
 
+                    //動態更換舊歌曲
                     contestOldYear1: '',
                     contestOldYear2: '',
                     oldVoteSong2018: [],
                     oldVoteSong2017: [],
+
+                    //投票總數
+                    oldVoteAllOne: '',
+                    oldVoteAllTwo: '',
+
                 }
 
             },
@@ -1512,6 +1486,7 @@
                         }
                     };
                     playerAuto = false;
+                    heartStatus(myPlaylist[0].song_name);
 
                 },
                 showChangePlay2017(e, item) {//切換撥放按鈕
@@ -1549,6 +1524,7 @@
                         }
                     };
                     playerAuto = false;
+                    heartStatus(myPlaylist[0].song_name);
 
                 },
 
@@ -1615,10 +1591,36 @@
 
                 },
 
+                changeVoteAll1() {
+                    let Year = this.contestOldYear1;
+
+                    for (let i = 0; i < this.voteAll.length; i++) {
+                        let years = this.voteAll[i].activity_no;
+
+                        if (Year == years) {
+                            this.oldVoteAllOne = this.voteAll[i].total_vote;
+                            break;
+                        }
+                    }
+                },
+                changeVoteAll2() {
+                    let Year = this.contestOldYear2;
+
+                    for (let i = 0; i < this.voteAll.length; i++) {
+                        let years = this.voteAll[i].activity_no;
+
+                        if (Year == years) {
+                            this.oldVoteAllTwo = this.voteAll[i].total_vote;
+                            break;
+                        }
+                    }
+                },
             },
             created() {
-                // fetch('./phps/getContestNowSong.php').then(res => res.json()).then(data => this.nowVoteSong = data);
-                // this.getYear = setTimeout(this.getOldContestYear, 500);
+                this.getVoteAll1 = setTimeout(this.changeVoteAll1, 500);
+                this.getVoteAll2 = setTimeout(this.changeVoteAll2, 500);
+                smooth();
+
             },
             mounted() {
                 this.getYear = setTimeout(this.getOldContestYear, 500);
@@ -1657,17 +1659,22 @@
                     `./img/activity/banner-remix02.jpg`,
                 ],
                 imageActive: `./img/activity/banner-activ.jpg`,
+                BannerImageHref: [
+                    `./activity.html#act_Now-Introduction`,
+                    `./collection.html`,
+                    `./remix.html`,
+                ],
                 imageHref: `./activity.html`,
                 isActive: 0,
                 currentIndex: 1,
 
                 //GOTOP動畫判斷
-                GoTopBush: false,
+                // GoTopBush: false,
 
                 //會員登入狀態
                 mem_login: false,
                 member: {},
-               
+
                 //投票總數
                 voteAll: [],
                 total_vote: [],
@@ -1680,17 +1687,15 @@
 
                 //活動資訊
                 actInformation: [],
-                activity_name:'',
+
 
                 //播放歌曲
                 getMyPlaylist: []
-
-
             },
 
             methods: {
 
-                changeBanner(Index) {
+                changeBanner(Index) {//輪播廣告
                     this.imageActive = this.BannerImgURL[Index];
                     vml.currentIndex = Index;
                     vml.isActive = vml.currentIndex;
@@ -1704,13 +1709,25 @@
                         vml.currentIndex = 0;
 
                     }
+                    this.bannerHref();
                 },
-                getCountDownDate() {
+                bannerHref(){
+                    let nowImg=this.imageActive;
+                    // console.log(this.imageActive);
+                    for(let i=0;i<this.BannerImgURL.length;i++){
+                        if(nowImg==this.BannerImgURL[i]){
+                            this.imageHref=this.BannerImageHref[i];
+                            // console.log(this.imageHref);
+                        }
+                    }
+
+                },
+                getCountDownDate() {//活動倒數
                     let finTime = this.actInformation[0].activity_fin;
                     this.countDownDate = new Date(finTime).getTime();
 
                 },
-                timerCount() {
+                timerCount() {//活動倒數
                     now = new Date().getTime();
                     this.distance = this.countDownDate - now;
                     this.days = Math.floor(this.distance / (1000 * 60 * 60 * 24));
@@ -1718,30 +1735,44 @@
                     this.minutes = Math.floor((this.distance % (1000 * 60 * 60)) / (1000 * 60));
                     this.seconds = Math.floor((this.distance % (1000 * 60)) / 1000);
                 },
-                GoTopAnima(e) {
-                    let GoTopButton = e.target;
-                    if (GoTopButton.classList.contains('act_ShowTopAnchor') == true) {
-                        // this.clearBush();
-                    } else {
-                        GoTopButton.classList.toggle('act_ShowTopAnchor');
+                GoTopAnima() {//GOTOP
+
+                    let GoTopButton = document.getElementById("act_Top");
+                    let GoTopLine = document.getElementById("act_ShowTopBush");
+                    let bush = GoTopButton.classList.contains('act_ShowTopAnchor');
+                    let line = GoTopLine.classList.contains('act_bushShow');
+                    // console.log(GoTopButton);
+                    // console.log(GoTopLine);
+                    // console.log(line);
+                    // console.log(bush);
+                    if (bush == false && line == false) {
+                        GoTopButton.classList.add('act_ShowTopAnchor');
+                        GoTopLine.classList.add('act_bushShow');
                     }
-                    this.GoTopBush = true;
+
+                    setTimeout(function () {
+                        GoTopButton.classList.remove('act_ShowTopAnchor');
+                        GoTopLine.classList.remove('act_bushShow');
+                        // console.log(GoTopButton);
+                        // console.log(GoTopLine);
+                    }, 2000);
                 },
+
 
             },
             created() {
-            
+
                 fetch('./phps/getContestVoteAll.php').then(res => res.json()).then(data => this.voteAll = data);
                 fetch('./phps/getContestInformation.php').then(res => res.json()).then(data => this.actInformation = data);
                 this.getYear = setTimeout(this.getNewContestYear, 1000);
-
+                smooth();
             },
             mounted() {
                 // this.get_member();
                 this.timer = setTimeout(this.getCountDownDate, 500);
                 this.ChangeBannerImg = setInterval(this.timeChangeBanner, 3000);
+                // this.ChangeBannerHref = setInterval(this.bannerHref, 3000);
                 this.countTimer = setInterval(this.timerCount, 1000);
-
             },
 
 
@@ -1796,21 +1827,13 @@
                     let year = location.search.substr(6);
                     location.hash = `#act_old-year${year}`;
                 });
-            }
-
-
-            $(function () {
-                $('.act_Anchor').on('click', function (e) {
-                    e.preventDefault();
-                    $('html, body').animate({ scrollTop: $($(this).attr('href')).offset().top }, 700, 'swing');
-
-                });
-
+            };
+            $('.act_Anchor').on('click', function (e) {
+                e.preventDefault();
+                $('html, body').animate({ scrollTop: $($(this).attr('href')).offset().top }, 700, 'swing');
             });
 
-
         }
-
 
 
     </script>

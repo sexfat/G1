@@ -3,7 +3,7 @@
  let nowList = 'Liked songs';
  let mylistInfo = []; //清單資訊
  let libraryList = []; //歌曲資訊
- let member = [];
+ var member = [];
 
  /* ---------------- library load ---------------- */
  window.addEventListener('load', function () {
@@ -173,41 +173,43 @@
      let listind = getListIndex(nowList);
      let plistno = mylistInfo[listind].plist_no;
      $('#inputListNo').val(plistno);
-     let pointPos = libraryFileData.name.lastIndexOf('.');
-     let fileType = libraryFileData.name.substr(pointPos + 1, 3);
      let coverFileData;
-     if (fileType == "jpg" || fileType == "png" || fileType == "gif") {
-       coverFileData = './img/library/' + libraryFileData.name;
+     if (libraryFileData == undefined) {
+       coverFileData = $('#LibImg').attr('src');
      } else {
-       coverFileData = "";
+      let pointPos = libraryFileData.name.lastIndexOf('.');
+      let fileType = libraryFileData.name.substr(pointPos + 1, 3);
+       if (fileType == "jpg" || fileType == "png" || fileType == "gif") {
+         coverFileData = './img/library/' + libraryFileData.name;
+       } else {
+         coverFileData = $('#LibImg').attr('src');
+       }
      }
      $('#listPic').val(coverFileData);
-     if (modifyName != "" || coverFileData != "") {
-       let xhr = new XMLHttpRequest();
-       xhr.onload = function () {
-         if (xhr.status == 200) {
-           if (xhr.responseText == 'success') {
-             getLibraryList();
-             myListInfoCha(listind, libraryList.length);
-             $('.delete').hide();
-             $('.editBtn').hide();
-             $('.enterBtn').hide();
-             $('#inputListTitle').hide();
-             $('.listName').find('.name').find('h2').show();
-             alert('Successfully modified');
-           } else {
-             alert('Fail to modify!');
-           }
+
+     let xhr = new XMLHttpRequest();
+     xhr.onload = function () {
+       if (xhr.status == 200) {
+         if (xhr.responseText == 'success') {
+           getLibraryList();
+           myListInfoCha(listind, libraryList.length);
+           $('.delete').hide();
+           $('.editBtn').hide();
+           $('.enterBtn').hide();
+           $('#inputListTitle').hide();
+           $('.listName').find('.name').find('h2').show();
+           ListTopInfo();
+           alert('Successfully modified');
+         } else {
+           alert('Fail to modify!');
          }
-       };
-       let url = `./phps/modifyList.php`;
-       xhr.open("POST", url, true);
-       xhr.setRequestHeader('content-type', 'application/x-www-form-urlencoded');
-       let data_info = `plistName=${modifyName}&plistNo=${plistno}&listPic=${coverFileData}`;
-       xhr.send(data_info);
-     } else {
-       alert('Please enter correct information!')
-     }
+       }
+     };
+     let url = `./phps/modifyList.php`;
+     xhr.open("POST", url, true);
+     xhr.setRequestHeader('content-type', 'application/x-www-form-urlencoded');
+     let data_info = `plistName=${modifyName}&plistNo=${plistno}&listPic=${coverFileData}`;
+     xhr.send(data_info);
    });
    $('#listAlert').click(function (e) {
      e.stopPropagation();
@@ -267,16 +269,10 @@
    //手機選歌單
    $(".mobile_listChoose").click(function () {
      if ($(this).hasClass('open')) {
-       $('.lists').animate({
-         height: '0px',
-       }, 500);
+       $('.lists').hide();
        $(this).removeClass('open');
      } else {
-       let hei = $('.lists li').height();
-       let len = $('.lists li').length + 1;
-       $('.lists').animate({
-         height: (hei * len + 30) + 'px',
-       }, 500);
+       $('.lists').show();
        $(this).addClass('open');
      }
    });
@@ -325,6 +321,7 @@
        }
      } else {
        $("#player audio").attr("src", myPlaylist[nowPlaying].song_addr);
+       audio.load();
        $(this).html('<img src="./img/library/coverPause-s.png">');
        isPlaying(false);
        $(this).addClass("nowlistening");
@@ -340,6 +337,7 @@
          getOtherPlayList();
        }
      }
+     listStatus(myPlaylist[nowPlaying].song_name);
    });
 
    //ALL PLAY BTN
@@ -589,7 +587,6 @@
 
  //收藏狀態
  function favorStatus(favorSong) {
-   console.log(favorSong);
    let xhr = new XMLHttpRequest();
    xhr.onload = function () {
      if (xhr.status == 200) {

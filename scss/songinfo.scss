@@ -1,263 +1,366 @@
-@import './public';
+@import "./public";
 
 $bg: rgba(44, 15, 15, 1);
 
 .songinfo_back {
-    background-image: url(../img/songinfo/songinfo_back.jpg);
-    background-repeat: no-repeat;
-    background-size: cover;
+  background-image: url(../img/songinfo/songinfo_back.jpg);
+  background-repeat: no-repeat;
+  background-size: cover;
 
-    .songinfo_infos2 {
-        max-height: 550px;
-        overflow: hidden;
+  .songinfo_infos2 {
+    max-height: 550px;
 
-        @include respond(ipad) {
-            max-height: 500px;
+    @include respond(ipad) {
+      max-height: 500px;
+    }
+
+    .songinfo_infoplay {
+      width: 100%;
+      max-width: 1200px;
+      min-height: 350px;
+      margin: 0 auto;
+      overflow: hidden;
+      .music-player-container {
+        justify-content: center;
+        padding: 0 25px;
+        @media screen and (max-width: 576px) {
+          flex-direction: column-reverse;
         }
 
-        .songinfo_infoplay {
-            width: 100%;
-            max-width: 1200px;
-            min-height: 350px;
+        .music-player {
+          width: 480px;
+          @media screen and (max-width: 992px) {
+            width: 320px;
+          }
+          @media screen and (max-width: 576px) {
+            margin: 50px auto 0;
+          }
+
+          .song-title {
+            @media screen and (max-width: 768px) {
+              font-size: 1.2rem;
+            }
+            @media screen and (max-width: 576px) {
+              text-align: center;
+            }
+          }
+          .artist-name {
+            @media screen and (max-width: 768px) {
+              font-size: 1rem;
+            }
+            @media screen and (max-width: 576px) {
+              text-align: center;
+            }
+          }
+          .music-player-controls {
+            margin: 20px 0 0 0;
+            align-items: center;
+            .control-play {
+              width: 35px;
+              height: 35px;
+              display: inline-block;
+              background-color: #f1c40f;
+              border-radius: 20px;
+              text-align: center;
+              line-height: 35px;
+              padding: 5px;
+              margin: 0 30px 0 0;
+              cursor: pointer;
+              transition: transform 0.5s;
+              i {
+                display: block;
+                pointer-events: none;
+              }
+            }
+            .songinfo_favorite {
+              font-size: 1.2rem;
+              color: #b9baba;
+              &.liked {
+                color: #de267d;
+              }
+              i {
+                cursor: pointer;
+                transition: all 0.3s;
+                &:hover {
+                  transform: scale(1.2);
+                }
+              }
+            }
+            .songinfo_donate {
+              font-size: 1.2rem;
+              color: #f8b503;
+              margin: 0 0 0 20px;
+              i {
+                cursor: pointer;
+                transition: all 0.3s;
+                &:hover {
+                  transform: scale(1.2);
+                }
+              }
+            }
+          }
+        }
+        .album {
+          position: relative;
+          top: 20px;
+          flex-shrink: 0;
+          width: 300px;
+          height: 300px;
+          @media screen and (max-width: 992px) {
+            width: 210px;
+            height: 210px;
+          }
+          @media screen and (max-width: 576px) {
             margin: 0 auto;
-            box-sizing: border-box;
-        }
+          }
 
-        #audioFile {
-            display: none;
-        }
-
-        .songinfo_wave {
+          .album-art {
             position: relative;
-            margin-top: -400px;
+            z-index: 1;
             width: 100%;
+            height: 100%;
+          }
+          .vinyl {
+            position: absolute;
             top: 0;
             left: 0;
-            z-index: -1;
-            margin-bottom: 200px;
-
-            .infoinfocontainer {
-                width: 100%;
-                min-height: 400px;
-                z-index: -1;
-
-                #infoinfocanvas {
-                    position: absolute;
-                    transform: translate(-50%, -50%);
-                    top: 50%;
-                    left: 50%;
-                    width: 100%;
-                    height: 80%;
-                }
+            width: 100%;
+            height: 100%;
+            -webkit-transition: all 500ms;
+            transition: all 500ms;
+            background: url("../img/songinfo/player_record.png") center center no-repeat;
+            background-size: cover;
+            transform: translateX(0);
+            &.playing {
+              -webkit-animation: record_rotate 2s linear infinite;
+              animation: record_rotate 2s linear infinite;
             }
-
-            iframe {
-                display: none;
-            }
+          }
         }
+      }
+    }
+    @keyframes record_rotate {
+      0% {
+        transform: rotate(0deg);
+      }
+      100% {
+        transform: rotate(360deg);
+      }
+    }
+    #audioFile {
+      display: none;
     }
 
+    .songinfo_wave {
+      position: absolute;
+      top: 0;
+      left: 0;
+      z-index: -1;
+      canvas {
+        position: absolute;
+        top: 0;
+        left: 0;
+      }
+    }
+  }
 
+  /*單曲資訊*/
+  .songinfo_infos3 {
+    margin-top: 130px;
+    width: 100%;
+    margin: 0 auto;
 
-    /*單曲資訊*/
-    .songinfo_infos3 {
-        margin-top: 130px;
-        width: 100%;
+    p {
+      width: 130px;
+      padding-top: 20px;
+      font-size: $rem2;
+      font-weight: bold;
+    }
+
+    .songinfo_titl {
+      max-width: 1200px;
+      width: 100%;
+      margin: 0 auto;
+
+      .info_square {
+        background-color: #d0d6d6;
+        box-sizing: border-box;
+        width: 90%;
+        min-height: 400px;
         margin: 0 auto;
+        padding-bottom: 50px;
+        position: relative;
+
+        &::before {
+          content: "";
+          position: absolute;
+          width: 430px;
+          height: 700px;
+          right: 0;
+          top: -145px;
+          background-image: url(../img/songinfo/ear2.png);
+          background-repeat: no-repeat;
+
+          @include respond(ipadpro) {
+            background-image: none;
+            width: 0;
+            height: 0;
+            overflow: hidden;
+          }
+        }
 
         p {
-            width: 130px;
-            padding-top: 20px;
-            font-size: $rem2;
-            font-weight: bold;
-        }
+          margin-left: -50px;
+          text-align: left;
 
-
-        .songinfo_titl {
-            max-width: 1200px;
-            width: 100%;
-            margin: 0 auto;
-
-            .info_square {
-                background-color: #d0d6d6;
-                box-sizing: border-box;
-                width: 90%;
-                min-height: 400px;
-                margin: 0 auto;
-                padding-bottom: 50px;
-                position: relative;
-
-                &::before {
-                    content: "";
-                    position: absolute;
-                    width: 430px;
-                    height: 700px;
-                    right: 0;
-                    top: -145px;
-                    background-image: url(../img/songinfo/ear2.png);
-                    background-repeat: no-repeat;
-
-                    @include respond(ipadpro) {
-                        background-image: none;
-                        width: 0;
-                        height: 0;
-                        overflow: hidden;
-                    }
-                }
-
-                p {
-                    margin-left: -50px;
-                    text-align: left;
-
-                    @include respond(latop-max) {
-                        margin-left: 0px;
-                        padding-left: 50px;
-                    }
-                }
-
-                .square_info_info {
-                    width: 70%;
-                    margin-left: 50px;
-
-                    @include respond(latop-min) {
-                        width: 60%;
-                    }
-
-                    @include respond(ipadpro) {
-                        width: 100%;
-                        margin-left: 0px;
-                        padding: 0 50px;
-                    }
-                }
-            }
-        }
-    }
-
-    /*留言區*/
-    .songinfo_infos4 {
-        margin-top: 120px;
-
-        @include respond(ipadpro) {
-            margin-top: 30px;
-        }
-
-        h3 {
+          @include respond(latop-max) {
             margin-left: 0px;
-            font-weight: bold;
-            font-size: $rem2;
-
-            @include respond(latop-max) {
-                margin-left: 10%;
-            }
+            padding-left: 50px;
+          }
         }
 
-        .message {
-            max-width: 1200px;
+        .square_info_info {
+          width: 70%;
+          margin-left: 50px;
+
+          @include respond(latop-min) {
+            width: 60%;
+          }
+
+          @include respond(ipadpro) {
+            width: 100%;
+            margin-left: 0px;
+            padding: 0 50px;
+          }
+        }
+      }
+    }
+  }
+
+  /*留言區*/
+  .songinfo_infos4 {
+    margin-top: 120px;
+
+    @include respond(ipadpro) {
+      margin-top: 30px;
+    }
+
+    h3 {
+      margin-left: 0px;
+      font-weight: bold;
+      font-size: $rem2;
+
+      @include respond(latop-max) {
+        margin-left: 10%;
+      }
+    }
+
+    .message {
+      max-width: 1200px;
+      width: 90%;
+      margin: 0 auto;
+
+      @include respond(latop-max) {
+        width: 100%;
+      }
+
+      .mess {
+        width: 90%;
+        margin: 0 auto;
+
+        li {
+          background-color: #d0d6d6;
+          margin-bottom: 20px;
+          padding: 10px;
+          display: flex;
+          align-content: center;
+
+          img {
+            width: 50px;
+            height: 50px;
+            border-radius: 25px;
+          }
+
+          p {
             width: 90%;
-            margin: 0 auto;
+          }
 
-            @include respond(latop-max) {
-                width: 100%;
-            }
+          .songinfo_re {
+            @include buttonno04();
+            max-height: 32px;
+          }
 
-            .mess {
-                width: 90%;
-                margin: 0 auto;
-
-                li {
-                    background-color: #d0d6d6;
-                    margin-bottom: 20px;
-                    padding: 10px;
-                    display: flex;
-                    align-content: center;
-
-                    img {
-                        width: 50px;
-                        height: 50px;
-                        border-radius: 25px;
-                    }
-
-                    p {
-                        width: 90%;
-                    }
-
-                    .songinfo_re {
-                        @include buttonno04();
-                        max-height: 32px;
-                    }
-
-                    .clearfix {
-                        width: 0;
-                        height: 0;
-                        display: none;
-                    }
-                }
-            }
-
-            .mess_write {
-                background-color: #d0d6d6;
-                width: 90%;
-                margin: 0 auto;
-                padding: 30px 50px;
-
-                textarea {
-                    width: 100%;
-                }
-
-                div.infose-send {
-                    width: 100%;
-                    display: block;
-                    height: 40px;
-                    text-align: right;
-
-                    button.infose-send {
-                        @include butttonn02();
-                    }
-                }
-            }
+          .clearfix {
+            width: 0;
+            height: 0;
+            display: none;
+          }
         }
-    }
+      }
 
-    input[type="radio"] {
-        -webkit-appearance: none;
-        vertical-align: middle;
-        margin-top: 0;
-        background: #fff;
-        border: #d0d6d6 solid 1px;
-        border-radius: 3px;
-        min-height: 20px;
-        min-width: 20px;
-    }
+      .mess_write {
+        background-color: #d0d6d6;
+        width: 90%;
+        margin: 0 auto;
+        padding: 30px 50px;
 
-    input[type="radio"]:checked {
-        background: #7ED5E5;
-    }
+        textarea {
+          width: 100%;
+        }
 
-    input[type=radio]:checked::after {
-        content: '';
-        top: 3px;
-        left: 3px;
-        position: absolute;
-        background: transparent;
-        border: #fff solid 2px;
-        border-top: none;
-        border-right: none;
-        height: 6px;
-        width: 10px;
-        -moz-transform: rotate(-45deg);
-        -ms-transform: rotate(-45deg);
-        -webkit-transform: rotate(-45deg);
-        transform: rotate(-45deg);
+        div.infose-send {
+          width: 100%;
+          display: block;
+          height: 40px;
+          text-align: right;
+
+          button.infose-send {
+            @include butttonn02();
+          }
+        }
+      }
     }
+  }
+
+  input[type="radio"] {
+    -webkit-appearance: none;
+    vertical-align: middle;
+    margin-top: 0;
+    background: #fff;
+    border: #d0d6d6 solid 1px;
+    border-radius: 3px;
+    min-height: 20px;
+    min-width: 20px;
+  }
+
+  input[type="radio"]:checked {
+    background: #7ed5e5;
+  }
+
+  input[type="radio"]:checked::after {
+    content: "";
+    top: 3px;
+    left: 3px;
+    position: absolute;
+    background: transparent;
+    border: #fff solid 2px;
+    border-top: none;
+    border-right: none;
+    height: 6px;
+    width: 10px;
+    -moz-transform: rotate(-45deg);
+    -ms-transform: rotate(-45deg);
+    -webkit-transform: rotate(-45deg);
+    transform: rotate(-45deg);
+  }
 }
 
-    [class^="re-"] {
-        border-radius: 5px;
-        display: inline-block;
-        height: 30px;
-        width: 70px;
-    }
-
+[class^="re-"] {
+  border-radius: 5px;
+  display: inline-block;
+  height: 30px;
+  width: 70px;
+}
 
 // [class^="infose-"] {
 //     border-radius: 5px;
@@ -267,65 +370,64 @@ $bg: rgba(44, 15, 15, 1);
 // }
 
 #infocanvas {
-    z-index: -1;
+  z-index: -1;
 }
 
 .jumping-things-wrap {
-    width: 800px;
-    min-height: 120px;
-    max-height: 120px;
-    text-align: center;
-    left: 27px;
-    position: relative;
+  width: 800px;
+  min-height: 120px;
+  max-height: 120px;
+  text-align: center;
+  left: 27px;
+  position: relative;
 
-    span {
-        width: 20px;
-        margin: 0;
-        padding: 0;
-        background: #d0d6d6;
-        transition: all 0.2s;
-        display: inline-block;
-        position: absolute;
-        bottom: 0;
-    }
+  span {
+    width: 20px;
+    margin: 0;
+    padding: 0;
+    background: #d0d6d6;
+    transition: all 0.2s;
+    display: inline-block;
+    position: absolute;
+    bottom: 0;
+  }
 
-    @for $i from 1 through 72 {
-        span:nth-child(#{$i}) {
-            left: 25px * $i;
-        }
+  @for $i from 1 through 72 {
+    span:nth-child(#{$i}) {
+      left: 25px * $i;
     }
+  }
 }
 
 .songinfo_ear {
-    display: none;
+  display: none;
 
-    img {
-        width: 0;
-        height: 0;
-        overflow: hidden;
-    }
+  img {
+    width: 0;
+    height: 0;
+    overflow: hidden;
+  }
 }
 
 .infocreat_re {
-    @include buttonno04();
-    position: relative;
-    left: 730px;
+  @include buttonno04();
+  position: relative;
+  left: 730px;
 }
 
 .infore {
-    width: 400px;
-    height: 260px;
-    background-color: white;
-    border-radius: 10px;
+  width: 400px;
+  height: 260px;
+  background-color: white;
+  border-radius: 10px;
 
-    .reportbtn {
-        @include butttonn02;
-    }
+  .reportbtn {
+    @include butttonn02;
+  }
 }
 
-
 .songinfofoot {
-    height: 100px;
+  height: 100px;
 }
 
 // .songinfo_all{
@@ -337,8 +439,8 @@ $bg: rgba(44, 15, 15, 1);
 
 // }
 
-@media screen and (max-width:930px) {
-    .songinfo_back {
-        background-position: center;
-    }
+@media screen and (max-width: 930px) {
+  .songinfo_back {
+    background-position: center;
+  }
 }

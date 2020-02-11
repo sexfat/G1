@@ -16,17 +16,59 @@
 
 <body class="librarybg">
   <!-- nav_bar start -->
-  <div id="nav_app">
-    <!-- nav_bar start -->
-    <div class="nav_bar flexbox">
-      <div class="hamburger" @click="hamburger_click">
-          <div class="hamburger-box">
-              <div class="hamburger-inner"></div>
+  <!DOCTYPE html>
+  <html lang="en">
+
+  <head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+    <link rel="stylesheet" href="./css/main.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.11.2/css/all.min.css" />
+
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/vue/2.6.10/vue.js"></script>
+
+  </head>
+
+  <body>
+    <div id="nav_app">
+      <!-- nav_bar start -->
+      <div class="nav_bar flexbox">
+          <div class="hamburger" @click="hamburger_click">
+              <div class="hamburger-box">
+                  <div class="hamburger-inner"></div>
+              </div>
           </div>
-      </div>
-      <div class="mobile_list" @click="stopPropagation">
-          <div class="paint_border"></div>
-          <ul>
+          <div class="mobile_list" @click="stopPropagation">
+              <div class="paint_border"></div>
+              <ul>
+                  <li class="REMIX flexbox">
+                      <a href="./remix.html">
+                      </a>
+                  </li>
+                  <li class="COLLECTION flexbox">
+                      <a href="./collection.html">
+                      </a>
+                  </li>
+                  <li class="ACTIVITY flexbox">
+                      <a href="./activity.html">
+                      </a>
+                  </li>
+                  <li class="LIBRARY flexbox">
+                      <a href="./library.html">
+                      </a>
+                  </li>
+              </ul>
+          </div>
+          <div class="logo_container">
+              <a href="./home.html">
+                  <div class="logo"></div>
+              </a>
+              <div class="finger"></div>
+          </div>
+          <ul class="main_list flexbox">
               <li class="REMIX flexbox">
                   <a href="./remix.html">
                   </a>
@@ -44,85 +86,87 @@
                   </a>
               </li>
           </ul>
-      </div>
-      <div class="logo_container">
-          <a href="./home.html">
-              <div class="logo"></div>
-          </a>
-          <div class="finger"></div>
-      </div>
-      <ul class="main_list flexbox">
-          <li class="REMIX flexbox">
-              <a href="./remix.html">
-              </a>
-          </li>
-          <li class="COLLECTION flexbox">
-              <a href="./collection.html">
-              </a>
-          </li>
-          <li class="ACTIVITY flexbox">
-              <a href="./activity.html">
-              </a>
-          </li>
-          <li class="LIBRARY flexbox">
-              <a href="./library.html">
-              </a>
-          </li>
-      </ul>
-      <div class="search_bt" @click="search_bt_click">
-          <a href="#"></a>
-      </div>
-      <div class="search_bar" @click="stopPropagation">
-          <input class="search" type="text" />
-          <div class="tag_container">
+          <div class="search_bt" @click="search_bt_click">
+              <a href="#"></a>
+          </div>
+          <div class="search_bar" @click="stopPropagation" v-bind:style="search_bar_style()">
+              <input class="search" type="text" placeholder="Enter Song Name or Author"/>
+              <i class="fas fa-search" @click="search_click"></i>
+              <div class="keyword_container">
+                  <div class="keyword" @click="keyword_click">
+                      <i class="far fa-hand-point-right"></i>
+                      {{search_keyword[0]}}
+                  </div>
+                  <div class="keyword" @click="keyword_click">
+                      <i class="far fa-hand-point-right"></i>
+                      {{search_keyword[1]}}
+                  </div>
+                  <div class="keyword" @click="keyword_click">
+                      <i class="far fa-hand-point-right"></i>
+                      {{search_keyword[2]}}
+                  </div>
+                  <div class="keyword" @click="keyword_click">
+                      <i class="far fa-hand-point-right"></i>
+                      {{search_keyword[3]}}
+                  </div>
+                  <div class="keyword" @click="keyword_click">
+                      <i class="far fa-hand-point-right"></i>
+                      {{search_keyword[4]}}
+                  </div>
+                  <div class="keyword" @click="keyword_click">
+                      <i class="far fa-hand-point-right"></i>
+                      {{search_keyword[5]}}
+                  </div>
+              </div>
+          </div>
+
+          <div class="mem_bt" @click="mem_bt_click" v-if="mem_login == true">
+              <a href="#"></a>
+          </div>
+          <div class="login_bt" v-if="mem_login == false">
+              <a href="./login.html"></a>
+          </div>
+          <div class="mem_list" @click="stopPropagation">
+              <div class="paint_border"></div>
+              <ul>
+                  <li>
+                      <a href="./profile.html">
+                          <h4>Profile</h4>
+                      </a>
+                  </li>
+                  <li>
+                      <a href="./songsadded.html">
+                          <h4>
+                              Song Upload
+                              <br />&amp; Remove
+                          </h4>
+                      </a>
+                  </li>
+                  <li>
+                      <a href="./store.html">
+                          <h4>
+                              Store Value
+                              <br />&amp;Store Record
+                          </h4>
+                      </a>
+                  </li>
+                  <li>
+                      <a href="./donate.html">
+                          <h4>Donate Record</h4>
+                      </a>
+                  </li>
+                  <li @click="logout">
+                      <a href="#">
+                          <h4>Log Out</h4>
+                      </a>
+                  </li>
+              </ul>
           </div>
       </div>
-
-      <div class="mem_bt" @click="mem_bt_click" v-if="mem_login == true">
-          <a href="#"></a>
-      </div>
-      <div class="login_bt" v-if="mem_login == false">
-          <a href="./login.html"></a>
-      </div>
-      <div class="mem_list" @click="stopPropagation">
-          <div class="paint_border"></div>
-          <ul>
-              <li>
-                  <a href="./profile.html">
-                      <h4>Profile</h4>
-                  </a>
-              </li>
-              <li>
-                  <a href="./songsadded.html">
-                      <h4>
-                          Song Upload
-                          <br />&amp; Remove
-                      </h4>
-                  </a>
-              </li>
-              <li>
-                  <a href="./store.html">
-                      <h4>
-                          Store Value
-                          <br />&amp;Store Record
-                      </h4>
-                  </a>
-              </li>
-              <li>
-                  <a href="./donate.html">
-                      <h4>Donate Record</h4>
-                  </a>
-              </li>
-              <li @click="logout">
-                  <a href="#">
-                      <h4>Log Out</h4>
-                  </a>
-              </li>
-          </ul>
-      </div>
+      <!-- nav_bar end -->
   </div>
-    <!-- nav_bar end -->
-</div>
+
+  </html>
   <!-- header -->
   <header>
     <img src="./img/library/title_library.png" alt="">
@@ -158,7 +202,7 @@
       <div class="listInfo">
         <form action="./phps/copyCoverImg.php" method="POST" enctype="multipart/form-data" target="id_iframe">
           <div class="listCover">
-            <img src="./img/library/list_pic0.jpg" alt="">
+            <img src="./img/library/list_pic0.jpg" alt="" id="LibImg">
             <label for="library_editCover" class="editBtn">choose
               <input type="file" name="listPicFake" id="library_editCover">
               <input type="hidden" name="listPic" id="listPic">
@@ -380,6 +424,8 @@
             </li> -->
           </ul>
         </div>
+        <input type="hidden" id="playerfavorStatus" name="favorStatus">
+        <input type="hidden" id="playerFavorSong" name="favorSong">
       </div>
       <div class="close" id="closePlayer"><i class="fas fa-times"></i></div>
       <div class="clearfix"></div>
@@ -391,7 +437,7 @@
           <h4>My List</h4>
           <div class="lightSelectMenu">
             <ul>
-              <!-- <li class="chooseList">Liked songs</li>-->
+              <!-- <li class="chooseList">Liked songs</li> -->
             </ul>
           </div>
           <input type="hidden" name="plistName" id="plistName">

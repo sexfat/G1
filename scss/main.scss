@@ -4,6 +4,7 @@
 @import 'lightBox';
 
 
+
 // ==================================
 
 @import './home';
@@ -15,7 +16,7 @@
 @import './login';
 @import './collection';
 @import'./activity.scss';
-@import './infotop.scss';
+// @import './infotop.scss';
 @import './songinfo.scss';
 @import './songupload.scss';
 
@@ -25,3 +26,4 @@
 @import './actLogin';
 @import './donateAni';
 @import './rimixTutorial';
+@import 'search.scss';

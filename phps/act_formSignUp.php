@@ -5,6 +5,8 @@
     $no = $_SESSION["mem_no"];
     $song ="";
     $songs="";
+    $to=""; 
+    $tos="";
     $date_time=date('Y-m-d');
     switch ($_FILES['Song_img']['error']) {
         case 0;
@@ -22,6 +24,7 @@
           if (copy($from, $to)) {
             echo "上傳成功";
             $tos = './img/activity/collction-img/' . $_FILES['Song_img']['name'];
+            echo  $to;
           }
           break;
       }
@@ -35,7 +38,7 @@
           if (copy($S_from, $song)) {
             echo "上傳成功";
             $songs = './music/' . $_FILES['entries_song']['name'];
-          
+            echo $songs;
           }
           break;
       }

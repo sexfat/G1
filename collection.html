@@ -1,5 +1,6 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
@@ -11,13 +12,13 @@
   <script src="https://cdnjs.cloudflare.com/ajax/libs/vue/2.6.10/vue.js"></script>
   <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
 </head>
+
 <body class="collectionbody">
   <!-- nav_bar and player -->
   <div>
     <div id="nav_app">
       <!-- nav_bar start -->
       <div class="nav_bar flexbox">
-<<<<<<< HEAD
           <div class="hamburger" @click="hamburger_click">
               <div class="hamburger-box">
                   <div class="hamburger-inner"></div>
@@ -45,60 +46,10 @@
               </ul>
           </div>
           <div class="logo_container">
-              <a href="./index.html">
+              <a href="./home.html">
                   <div class="logo"></div>
-                  <div class="finger"></div>
-=======
-        <div class="hamburger" @click="hamburger_click">
-            <div class="hamburger-box">
-                <div class="hamburger-inner"></div>
-            </div>
-        </div>
-        <div class="mobile_list" @click="stopPropagation">
-            <div class="paint_border"></div>
-            <ul>
-                <li class="REMIX flexbox">
-                    <a href="./remix.html">
-                    </a>
-                </li>
-                <li class="COLLECTION flexbox">
-                    <a href="./collection.html">
-                    </a>
-                </li>
-                <li class="ACTIVITY flexbox">
-                    <a href="./activity.html">
-                    </a>
-                </li>
-                <li class="LIBRARY flexbox">
-                    <a href="./library.html">
-                    </a>
-                </li>
-            </ul>
-        </div>
-        <div class="logo_container">
-            <a href="./home.html">
-                <div class="logo"></div>
-            </a>
-            <div class="finger"></div>
-        </div>
-        <ul class="main_list flexbox">
-            <li class="REMIX flexbox">
-                <a href="./remix.html">
-                </a>
-            </li>
-            <li class="COLLECTION flexbox">
-                <a href="./collection.html">
-                </a>
-            </li>
-            <li class="ACTIVITY flexbox">
-                <a href="./activity.html">
-                </a>
-            </li>
-            <li class="LIBRARY flexbox">
-<<<<<<< HEAD
-              <a href="./library.html">
->>>>>>> 0314f3b0329fceb310a2e97643c853bebef6d300
               </a>
+              <div class="finger"></div>
           </div>
           <ul class="main_list flexbox">
               <li class="REMIX flexbox">
@@ -118,62 +69,40 @@
                   </a>
               </li>
           </ul>
-<<<<<<< HEAD
           <div class="search_bt" @click="search_bt_click">
               <a href="#"></a>
           </div>
-          <div class="search_bar" @click="stopPropagation">
-              <input class="search" type="text" />
-              <div class="tag_container">
+          <div class="search_bar" @click="stopPropagation" v-bind:style="search_bar_style()">
+              <input class="search" type="text" placeholder="Enter Song Name or Author"/>
+              <i class="fas fa-search" @click="search_click"></i>
+              <div class="keyword_container">
+                  <div class="keyword" @click="keyword_click">
+                      <i class="far fa-hand-point-right"></i>
+                      {{search_keyword[0]}}
+                  </div>
+                  <div class="keyword" @click="keyword_click">
+                      <i class="far fa-hand-point-right"></i>
+                      {{search_keyword[1]}}
+                  </div>
+                  <div class="keyword" @click="keyword_click">
+                      <i class="far fa-hand-point-right"></i>
+                      {{search_keyword[2]}}
+                  </div>
+                  <div class="keyword" @click="keyword_click">
+                      <i class="far fa-hand-point-right"></i>
+                      {{search_keyword[3]}}
+                  </div>
+                  <div class="keyword" @click="keyword_click">
+                      <i class="far fa-hand-point-right"></i>
+                      {{search_keyword[4]}}
+                  </div>
+                  <div class="keyword" @click="keyword_click">
+                      <i class="far fa-hand-point-right"></i>
+                      {{search_keyword[5]}}
+                  </div>
               </div>
-=======
-        </div>
-        <div class="logo_container">
-          <a href="./index.html">
-            <div class="logo"></div>
-            <div class="finger"></div>
-          </a>
-        </div>
-        <ul class="main_list flexbox">
-          <li class="REMIX flexbox">
-            <a href="./remix.html">
-            </a>
-          </li>
-          <li class="COLLECTION flexbox">
-            <a href="./collection.html">
-            </a>
-          </li>
-          <li class="ACTIVITY flexbox">
-            <a href="./activity.html">
-            </a>
-          </li>
-          <li class="LIBRARY flexbox">
-            <a href="./library.html">
-            </a>
-          </li>
-=======
-                <a href="./library.html">
-                </a>
-            </li>
->>>>>>> 49de25c7b775fa32494b84f6798097a411287b51
-        </ul>
-        <div class="search_bt" @click="search_bt_click">
-            <a href="#"></a>
-        </div>
-        <div class="search_bar" @click="stopPropagation">
-<<<<<<< HEAD
-          <input class="search" type="text" />
-          <div class="tag_container">
->>>>>>> 0314f3b0329fceb310a2e97643c853bebef6d300
           </div>
-=======
-            <input class="search" type="text" />
-            <div class="tag_container">
-            </div>
-        </div>
->>>>>>> 49de25c7b775fa32494b84f6798097a411287b51
 
-<<<<<<< HEAD
           <div class="mem_bt" @click="mem_bt_click" v-if="mem_login == true">
               <a href="#"></a>
           </div>
@@ -216,61 +145,9 @@
                   </li>
               </ul>
           </div>
-=======
-        <div class="mem_bt" @click="mem_bt_click" v-if="mem_login == true">
-            <a href="#"></a>
-        </div>
-        <div class="login_bt" v-if="mem_login == false">
-            <a href="./login.html"></a>
-        </div>
-        <div class="mem_list" @click="stopPropagation">
-            <div class="paint_border"></div>
-            <ul>
-                <li>
-                    <a href="./profile.html">
-                        <h4>Profile</h4>
-                    </a>
-                </li>
-                <li>
-                    <a href="./songsadded.html">
-                        <h4>
-                            Song Upload
-                            <br />&amp; Remove
-                        </h4>
-                    </a>
-                </li>
-                <li>
-                    <a href="./store.html">
-                        <h4>
-                            Store Value
-                            <br />&amp;Store Record
-                        </h4>
-                    </a>
-                </li>
-                <li>
-                    <a href="./donate.html">
-                        <h4>Donate Record</h4>
-                    </a>
-                </li>
-                <li @click="logout">
-                    <a href="#">
-                        <h4>Log Out</h4>
-                    </a>
-                </li>
-            </ul>
-        </div>
-<<<<<<< HEAD
->>>>>>> 0314f3b0329fceb310a2e97643c853bebef6d300
       </div>
       <!-- nav_bar end -->
   </div>
-    <!-- nav_bar end -->
-    <!-- player start -->
-=======
-    </div>
-      <!-- nav_bar end -->
-  </div>
->>>>>>> 49de25c7b775fa32494b84f6798097a411287b51
     <div id="player">
       <audio src="" id="audioPlayer"></audio>
       <div class="player_s">
@@ -313,26 +190,17 @@
             <div class="clearfix"></div>
           </div>
         </div>
-<<<<<<< HEAD
-=======
-
->>>>>>> 0314f3b0329fceb310a2e97643c853bebef6d300
+  
         <div class="expand" id="expand"><i class="fas fa-expand"></i></div>
         <div class="clearfix"></div>
       </div>
-
+  
       <!-- 詳細版 -->
       <div class="player_b">
         <div class="left">
-<<<<<<< HEAD
-          <div class="songCover">
-            <div class="coverImg">
-              <img src="./img/library/cover1.jpg">
-=======
           <div class="info">
             <div class="songCover">
               <img src="./img/collection/album1.jpg">
->>>>>>> 0314f3b0329fceb310a2e97643c853bebef6d300
               <div class="coverRec"><img src="./img/library/player_record.png" alt=""></div>
             </div>
           </div>
@@ -373,7 +241,7 @@
           </div>
           <div class="pushBtn"></div>
         </div>
-
+  
         <div class="right">
           <div class="pushBtn"></div>
           <div class="listTitle">
@@ -390,13 +258,8 @@
             <ul class="chooseList">
               <!-- <li>
                 <div class="songCover">
-<<<<<<< HEAD
-                  <img src="./img/library/cover1.jpg" alt="">
-                  <div class="listPlay"><i class="fas fa-play"></i></div>
-=======
                   <img src="./img/collection/album1.jpg" alt="">
                   <div class="listPlay nowlistening"><img src="./img/library/coverPlay-s.png"></div>
->>>>>>> 0314f3b0329fceb310a2e97643c853bebef6d300
                 </div>
                 <div class="listSongInfo">
                   <div class="name">
@@ -405,122 +268,20 @@
                   </div>
                 </div>
                 <div class="totalTime">3:11</div>
-<<<<<<< HEAD
-                <div class="heart becomeRed"><i class="fas fa-heart"></i></div>
-                <div class="clearfix"></div>
-              </li>
-              <li>
-                <div class="songCover">
-                  <img src="./img/library/cover2.jpg" alt="">
-                  <div class="listPlay"><i class="fas fa-play"></i></div>
-                </div>
-                <div class="listSongInfo">
-                  <div class="name">
-                    <h4>Spring In My Step</h4>
-                    <p>Silent Partner</p>
-                  </div>
-                </div>
-                <div class="totalTime">1:59</div>
-                <div class="heart becomeRed"><i class="fas fa-heart"></i></div>
-                <div class="clearfix"></div>
-              </li>
-              <li>
-                <div class="songCover">
-                  <img src="./img/library/cover3.jpg" alt="">
-                  <div class="listPlay"><i class="fas fa-play"></i></div>
-                </div>
-                <div class="listSongInfo">
-                  <div class="name">
-                    <h4>On My Way Home</h4>
-                    <p>The 126ers</p>
-                  </div>
-                </div>
-                <div class="totalTime">1:56</div>
-                <div class="heart becomeRed"><i class="fas fa-heart"></i></div>
-                <div class="clearfix"></div>
-              </li>
-              <li>
-                <div class="songCover">
-                  <img src="./img/library/cover4.jpg" alt="">
-                  <div class="listPlay"><i class="fas fa-play"></i></div>
-                </div>
-                <div class="listSongInfo">
-                  <div class="name">
-                    <h4>Lucid Dreamer</h4>
-                    <p> Spazz Cardigan</p>
-                  </div>
-                </div>
-                <div class="totalTime">4:30</div>
-                <div class="heart becomeRed"><i class="fas fa-heart"></i></div>
-                <div class="clearfix"></div>
-              </li>
-              <li>
-                <div class="songCover">
-                  <img src="./img/library/cover5.jpg" alt="">
-                  <div class="listPlay"><i class="fas fa-play"></i></div>
-                </div>
-                <div class="listSongInfo">
-                  <div class="name">
-                    <h4>Lucid Dreamer</h4>
-                    <p> Spazz Cardigan</p>
-                  </div>
-                </div>
-                <div class="totalTime">4:30</div>
-                <div class="heart becomeRed"><i class="fas fa-heart"></i></div>
-                <div class="clearfix"></div>
-              </li>
-              <li>
-                <div class="songCover">
-                  <img src="./img/library/cover6.jpg" alt="">
-                  <div class="listPlay"><i class="fas fa-play"></i></div>
-                </div>
-                <div class="listSongInfo">
-                  <div class="name">
-                    <h4>Lucid Dreamer</h4>
-                    <p> Spazz Cardigan</p>
-                  </div>
-                </div>
-                <div class="totalTime">4:30</div>
-                <div class="heart becomeRed"><i class="fas fa-heart"></i></div>
-                <div class="clearfix"></div>
-              </li>
-              <li>
-                <div class="songCover">
-                  <img src="./img/library/cover1.jpg" alt="">
-                  <div class="listPlay"><i class="fas fa-play"></i></div>
-                </div>
-                <div class="listSongInfo">
-                  <div class="name">
-                    <h4>Lucid Dreamer</h4>
-                    <p> Spazz Cardigan</p>
-                  </div>
-                </div>
-                <div class="totalTime">4:30</div>
-                <div class="heart becomeRed"><i class="fas fa-heart"></i></div>
-                <div class="clearfix"></div>
-              </li>
-  
-=======
                 <div class="heart becomeRed"><img src="./img/collection/redheart.png"></div>
                 <div class="clearfix"></div>
               </li> -->
->>>>>>> 0314f3b0329fceb310a2e97643c853bebef6d300
             </ul>
           </div>
+          <input type="hidden" id="playerfavorStatus" name="favorStatus">
+          <input type="hidden" id="playerFavorSong" name="favorSong">
         </div>
         <div class="close" id="closePlayer"><i class="fas fa-times"></i></div>
-<<<<<<< HEAD
-        <div class="clearfix"></div> 
-        <!-- 撥放器燈箱 -->
-        <div class="lightCover">
-          <div class="lightbox_s" id="myAllList">
-=======
         <div class="clearfix"></div>
-
+  
         <!-- 撥放器燈箱 -->
         <div class="lightCover">
           <div class="lightbox_s allmylist" id="myAllList">
->>>>>>> 0314f3b0329fceb310a2e97643c853bebef6d300
             <div class="closeLight"><i class="fas fa-times"></i></div>
             <h4>My List</h4>
             <div class="lightSelectMenu">
@@ -539,20 +300,14 @@
         </div>
       </div>
     </div>
-    <!-- player end -->
   </div>
-  <!-- the end of the nav_bar and player  -->
   <!-- start to the content -->
   <header>
     <img src="./img/collection/colltitle.png" alt="">
   </header>
   <section class="collectionsection">
     <div class="collectionradio">
-<<<<<<< HEAD
-      <div class="collgreenradio">
-=======
       <div class="collgreenradio" id="eyesball">
->>>>>>> 0314f3b0329fceb310a2e97643c853bebef6d300
         <img src="./img/collection/openeye.png" alt="">
       </div>
       <div class="collpinkradio">
@@ -565,17 +320,6 @@
     </div>
     <div id="collectiontabcontainer">
       <ul class="collectiontabtitle">
-<<<<<<< HEAD
-        <li><a class="tabtitlechange1" href="#tab01"><img src="./img/collection/tabblue.png" alt=""><span> All</span></a></li>
-        <li><a class="tabtitlechange2" href="#tab02"><img src="./img/collection/tabyellow.png" alt=""><span> Trap</span></a></li>
-        <li><a class="tabtitlechange3" href="#tab03"><img src="./img/collection/tabyellow.png" alt=""><span> House</span></a></li>
-        <li><a class="tabtitlechange4" href="#tab04"><img src="./img/collection/tabyellow.png" alt=""><span> Favorite</span></a></li>
-      </ul>
-      <div class="playall_btns">
-        <button id="listAllPlay" class="circlebtn"><i class="fas fa-play"></i></button>
-        play all
-      </div>
-=======
         <li><a class="tabtitlechange1" href="#tab01">
             <img src="./img/collection/tabblue.png" alt="">
             <span>All</span></a></li>
@@ -589,7 +333,6 @@
             <img ssrc="./img/collection/tabyellow.png" alt="">
             <span>Favorite</span></a></li>
       </ul>
->>>>>>> 0314f3b0329fceb310a2e97643c853bebef6d300
       <div id="tab01" class="collectiontabinner">
         <section class="collectionalbumsection1">
         </section>
@@ -609,28 +352,39 @@
     </div>
   </section>
   <!-- the end of the content -->
-  <script src="./js/nav_bar.js"></script>
+  
+  <input type="hidden" name="favorStatus" id="favorStatus">
+  <input type="hidden" name="favorSong" id="favorSong">
 </body>
 <!-- the script of myself -->
+<script src="./js/nav_bar.js"></script>
+<script src="./js/player.js"></script>
 <script>
-<<<<<<< HEAD
-  // CHANGE HEART
-    $('.collectionalbumsection1').on('click','.collheart', function(){
-      if ($(this).hasClass('becomeRed')) {
-      $(this).html('<img src="./img/collection/grayheart.png">').removeClass('becomeRed');
-      } else {
-      $(this).html('<img src="./img/collection/redheart.png">').addClass('becomeRed');
-=======
   let collheartall = [];
   let colllist = [];
   let searchURL1 = window.location.href;
   searchURL1 = searchURL1.substring(1, searchURL1.length);
   let targetPageId = searchURL1.split("#")[1];
+  var member = [];
+
+  let xhr = new XMLHttpRequest();
+  xhr.onload = () => {
+    member = JSON.parse(xhr.responseText);
+    if (member.mem_acct) {
+      vm.mem_login = true;
+    } else {
+      vm.mem_login = false;
+    }
+  }
+  xhr.open("get", "./phps/getLoginInfo.php", false);
+  xhr.send(null);
+
   //PLAY AND PASUSE INTO PLAYER(from player.js)
   $(".collectionalbumsection1").on('click', '.collplayer img', function () {
     nowPlaying = $(this).parent().parent().parent().index();
     myPlaylist = colllist;
-    $(".collectionalbumsection1 .collplayer img").not(this).removeClass("nowlistening").attr('src', "./img/library/coverPlay-b.png");
+    $(".collectionalbumsection1 .collplayer img").not(this).removeClass("nowlistening").attr('src',
+      "./img/library/coverPlay-b.png");
     if ($(this).hasClass('nowlistening')) {
       if (playStatus) {
         $(this).attr('src', "./img/library/coverPlay-b.png");
@@ -641,6 +395,7 @@
       }
     } else {
       $("#player audio").attr("src", myPlaylist[nowPlaying].song_addr);
+      audio.load();
       $(this).attr('src', "./img/library/coverPause-b.png");
       isPlaying(false);
       $(this).addClass("nowlistening");
@@ -666,7 +421,6 @@
       } else {
         alert(xhr.statusText);
       }
-      // console.log(xhr.responseText);
     };
     xhr.open("post", "./phps/LibraryHeart.php", true);
     xhr.setRequestHeader('content-type', 'application/x-www-form-urlencoded');
@@ -687,7 +441,6 @@
   //FAV DATA
   $('.collectionalbumsection1').on('click', '.collheart img', function () {
     let heartsongname = $(this).parent('.collheart').next('p').children('.collsongnamea').text(); //song_name
-    // console.log(heartsongname);
     let totalcollInd = getSongIndex(heartsongname); // let song_name take array
     let favsongnoInd = colllist[totalcollInd].song_no; //song_no
     if (!member['mem_no']) {
@@ -701,9 +454,9 @@
         $(this).attr('src', './img/collection/redheart.png').addClass('becomeRed');
       }
       favorStatus(favsongnoInd);
->>>>>>> 0314f3b0329fceb310a2e97643c853bebef6d300
     }
   });
+
   function getSongIndex(name) {
     let songName = [];
     for (let i = 0; i < colllist.length; i++) {
@@ -713,32 +466,30 @@
     return songind;
   }
   // PLAY BUTTON
-  $('.collectionalbumsection1').on('mouseover','.collalbumpic', function(){
-    if($(this).find('.collplayer').css("display", "none")){
+  $('.collectionalbumsection1').on('mouseover', '.collalbumpic', function () {
+    if ($(this).find('.collplayer').css("display", "none")) {
       $(this).find('.collplayer').css("display", "block");
-    }else{
+    } else {
       $(this).find('.collplayer').css("display", "none");
     }
   });
-  $('.collectionalbumsection1').on('mouseout','.collalbumpic', function(){
-      $(this).find('.collplayer').css("display", "none");
+  $('.collectionalbumsection1').on('mouseout', '.collalbumpic', function () {
+    $(this).find('.collplayer').css("display", "none");
   });
   //PLAY AND PAUSE BUTTON
-  $('body').on('click','.collplayer a', function(e){
+  $('body').on('click', '.collplayer a', function (e) {
     e.preventDefault();
     if ($(this).hasClass('Pause')) {
-     $(this).html('<img src="./img/library/coverPlay-b.png">').removeClass('Pause');
+      $(this).html('<img src="./img/library/coverPlay-b.png">').removeClass('Pause');
     } else {
-     $(this).html('<img src="./img/library/coverPause-b.png">').addClass('Pause');
+      $(this).html('<img src="./img/library/coverPause-b.png">').addClass('Pause');
     }
   });
-  //add
-    let colllist =[];
-    function findCollList(){
-        $('.collectionalbumsection1').children().remove();
-      for(i=0;i<colllist.length;i++){
-        // console.log(colllist[i].song_pic);
-        $('.collectionalbumsection1').append(`
+  //INPUT ALBUM DATA
+  function findCollList() {
+    $('.collectionalbumsection1').children().remove();
+    for (i = 0; i < colllist.length; i++) {
+      $('.collectionalbumsection1').append(`
         <div class="collectionsinglecover">
           <div class="collalbumpic sampleblum12">
             <div class="collplayer"><img src="./img/library/coverPlay-b.png" alt=""></div>
@@ -747,70 +498,6 @@
           <p><a class="collsongnamea" href="./songinfo.html?song_no=${colllist[i].song_no}">${colllist[i].song_name}</a><br>
             <span>${colllist[i].mem_name}</span>
           </p>
-<<<<<<< HEAD
-        </div>`);
-        $(`.collectionsinglecover:nth-of-type(${i+1}) .sampleblum12`).css('background-image',`url(${colllist[i].song_pic})`);
-      }
-    }
-    //click coll function
-    function CollListYa(){
-      let xhr = new XMLHttpRequest();
-      xhr.open("get", "./php/allCollection.php", true);
-      xhr.send(null);
-      xhr.onload = function(){
-        colllist = JSON.parse(xhr.responseText);
-        findCollList();
-        console.log(colllist);
-      };
-    }
-    $('.tabtitlechange1').click(function CollListFav (){
-      let xhr = new XMLHttpRequest();
-      xhr.open("get", "./php/allCollection.php", true);
-      xhr.send(null);
-      xhr.onload = function(){
-        colllist = JSON.parse(xhr.responseText);
-        findCollList();
-        // console.log(colllist);
-      };
-  });
-    $('.tabtitlechange2').click(function CollListFav (){
-      let xhr = new XMLHttpRequest();
-      xhr.open("get", "./php/favCollection.php", true);
-      xhr.send(null);
-      xhr.onload = function(){
-        colllist = JSON.parse(xhr.responseText);
-        findCollList();
-        // console.log(colllist);
-      };
-  });
-    $('.tabtitlechange3').click(function CollListFav (){
-      let xhr = new XMLHttpRequest();
-      xhr.open("get", "./php/houseCollection.php", true);
-      xhr.send(null);
-      xhr.onload = function(){
-        colllist = JSON.parse(xhr.responseText);
-        findCollList();
-      };
-  });
-    $('.tabtitlechange4').click(function CollListFav (){
-      let xhr = new XMLHttpRequest();
-      xhr.open("get", "./php/trapCollection.php", true);
-      xhr.send(null);
-      xhr.onload = function(){
-        colllist = JSON.parse(xhr.responseText);
-        findCollList();
-      };
-  });
-  // TAB CONTENT CHANGE
-  $(function () {
-    var $li = $('ul.collectiontabtitle li');
-    $($li.eq(0).addClass('active').find('a').attr('href')).siblings('.collectiontabinner').hide();
-    $li.click(function () {
-      $($(this).find('a').attr('href')).show().siblings('.collectiontabinner').hide();
-      $(this).addClass('active').siblings('.active').removeClass('active');
-    });
-  });
-=======
         </div>`)
       $(`.collectionsinglecover:nth-of-type(${i + 1}) .sampleblum12`).css('background-image',
         `url(${colllist[i].song_pic})`);
@@ -830,6 +517,7 @@
   }
   //CLICK COLL TAB DATA
   $('.tabtitlechange1').click(CollListFav1);
+
   function CollListFav1() {
     let xhr = new XMLHttpRequest();
     xhr.open("get", "./phps/allCollection.php", true);
@@ -837,11 +525,14 @@
     xhr.onload = function () {
       colllist = JSON.parse(xhr.responseText);
       findCollList();
-      CollHeart();
+      if (member['mem_no']) {
+        CollHeart();
+      }
     };
   };
 
   $('.tabtitlechange4').click(CollListFav4);
+
   function CollListFav4() {
     let xhr = new XMLHttpRequest();
     xhr.open("get", "./phps/favCollection.php", true);
@@ -849,10 +540,13 @@
     xhr.onload = function () {
       colllist = JSON.parse(xhr.responseText);
       findCollList();
-      CollHeart();
+      if (member['mem_no']) {
+        CollHeart();
+      }
     };
   };
   $('.tabtitlechange3').click(CollListFav3);
+
   function CollListFav3() {
     let xhr = new XMLHttpRequest();
     xhr.open("get", "./phps/houseCollection.php", true);
@@ -860,10 +554,13 @@
     xhr.onload = function () {
       colllist = JSON.parse(xhr.responseText);
       findCollList();
-      CollHeart();
+      if (member['mem_no']) {
+        CollHeart();
+      }
     };
   };
   $('.tabtitlechange2').click(CollListFav2);
+
   function CollListFav2() {
     let xhr = new XMLHttpRequest();
     xhr.open("get", "./phps/trapCollection.php", true);
@@ -871,49 +568,52 @@
     xhr.onload = function () {
       colllist = JSON.parse(xhr.responseText);
       findCollList();
-      CollHeart();
+      if (member['mem_no']) {
+        CollHeart();
+      }
     };
   };
->>>>>>> 0314f3b0329fceb310a2e97643c853bebef6d300
   //TAB CHNAGE COLOR
   $('.collectiontabtitle li a').click(function () {
-    $(this).children('img').attr("src","./img/collection/tabblue.png");
-    $('.collectiontabtitle li a').not(this).children('img').attr("src","./img/collection/tabyellow.png");
+    $(this).children('img').attr("src", "./img/collection/tabblue.png");
+    $('.collectiontabtitle li a').not(this).children('img').attr("src", "./img/collection/tabyellow.png");
     var lia = $(this).parent().index();
-    if( lia == 0){
-      $('.collgreenradio').find('img').attr("src","./img/collection/openeye.png");
-      $('.collpinkradio').find('img').attr("src","./img/collection/closeeye.png");
-      $('.collblueradio').find('img').attr("src","./img/collection/closeeye.png");
+    if (lia == 0) {
+      $('.collgreenradio').find('img').attr("src", "./img/collection/openeye.png");
+      $('.collpinkradio').find('img').attr("src", "./img/collection/closeeye.png");
+      $('.collblueradio').find('img').attr("src", "./img/collection/closeeye.png");
+    } else if (lia == 1) {
+      $('.collpinkradio').find('img').eq(0).attr("src", "./img/collection/openeye.png");
+      $('.collgreenradio').find('img').attr("src", "./img/collection/closeeye.png");
+      $('.collpinkradio').find('img').eq(1).attr("src", "./img/collection/closeeye.png");
+      $('.collblueradio').find('img').attr("src", "./img/collection/closeeye.png");
+    } else if (lia == 2) {
+      $('.collpinkradio').find('img').eq(1).attr("src", "./img/collection/openeye.png");
+      $('.collgreenradio').find('img').attr("src", "./img/collection/closeeye.png");
+      $('.collpinkradio').find('img').eq(0).attr("src", "./img/collection/closeeye.png");
+      $('.collblueradio').find('img').attr("src", "./img/collection/closeeye.png");
+    } else if (lia == 3) {
+      $('.collblueradio').find('img').attr("src", "./img/collection/openeye.png");
+      $('.collgreenradio').find('img').attr("src", "./img/collection/closeeye.png");
+      $('.collpinkradio').find('img').attr("src", "./img/collection/closeeye.png");
     }
-<<<<<<< HEAD
-    else if(lia == 1){
-      $('.collpinkradio').find('img').eq(0).attr("src","./img/collection/openeye.png");
-      $('.collgreenradio').find('img').attr("src","./img/collection/closeeye.png");
-      $('.collpinkradio').find('img').eq(1).attr("src","./img/collection/closeeye.png");
-      $('.collblueradio').find('img').attr("src","./img/collection/closeeye.png");
-    }
-    else if(lia == 2){
-      $('.collpinkradio').find('img').eq(1).attr("src","./img/collection/openeye.png");
-      $('.collgreenradio').find('img').attr("src","./img/collection/closeeye.png");
-      $('.collpinkradio').find('img').eq(0).attr("src","./img/collection/closeeye.png");
-      $('.collblueradio').find('img').attr("src","./img/collection/closeeye.png");
-    }else if(lia == 3){
-      $('.collblueradio').find('img').attr("src","./img/collection/openeye.png");
-      $('.collgreenradio').find('img').attr("src","./img/collection/closeeye.png");
-      $('.collpinkradio').find('img').attr("src","./img/collection/closeeye.png");
-    }
-=======
   });
+
   function CollListYa() {
     let xhr = new XMLHttpRequest();
     xhr.onload = function () {
       colllist = JSON.parse(xhr.responseText);
       findCollList();
     };
-    xhr.open("get", "./phps/allCollection.php", true);
+    xhr.open("get", "./phps/allCollection.php", false);
     xhr.send(null);
   }
   $(function () {
+    if (member['mem_no']) {
+      CollListYa();
+
+      CollHeart();
+    }
     if (targetPageId == 'tab02') {
       CollListFav2();
       $('.collectiontabtitle li a').children('img').attr("src", "./img/collection/tabyellow.png");
@@ -939,7 +639,9 @@
       $('.collpinkradio').find('img').attr("src", "./img/collection/closeeye.png");
     } else {
       CollListYa();
-      CollHeart();
+      if (member['mem_no']) {
+        CollHeart();
+      }
       $('.collectiontabtitle li a').children('img').attr("src", "./img/collection/tabyellow.png");
       $('.collectiontabtitle li:nth-of-type(1) a').children('img').attr("src", "./img/collection/tabblue.png");
       $('.collgreenradio').find('img').attr("src", "./img/collection/openeye.png");
@@ -960,21 +662,13 @@
       $($(this).find('a').attr('href')).show().siblings('.collectiontabinner').hide();
       $(this).addClass('active').siblings('.active').removeClass('active');
     });
-    // CollListYa();
-    // CollHeart();
->>>>>>> 0314f3b0329fceb310a2e97643c853bebef6d300
   });
-  $(function(){
-    var $li = $('ul.motabtitle li');
-        $($li. eq(0) .addClass('active').find('a').attr('href')).siblings('.motabinner').hide();
-        $li.click(function(){
-          $($(this).find('a'). attr ('href')).show().siblings ('.motabinner').hide();
-          $(this).addClass('active'). siblings ('.active').removeClass('active');
-        });
-   CollListYa();
-   });
+</script>
+<script>
+  
+
 </script>
 <!-- the end of my script -->
-<script src="./js/player.js"></script>
+
 
 </html>

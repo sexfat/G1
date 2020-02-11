@@ -5,7 +5,7 @@ div.nav_bar {
   height: 60px;
   padding: 0px 10px;
   align-items: center;
-  background: #FAFAF1;
+  background: #fafaf1;
 
   ul {
     list-style: none;
@@ -220,7 +220,7 @@ div.nav_bar {
     position: absolute;
     top: 60px;
     right: 60px;
-    width: 200px;
+    width: 320px;
     height: 0px;
     overflow: hidden;
     filter: opacity(0);
@@ -228,17 +228,42 @@ div.nav_bar {
 
     input.search {
       position: absolute;
-      top: 0;
-      left: 0;
+      top: 0px;
       width: 100%;
-      height: 38px;
+      height: 36px;
+      line-height: 36px;
+    }
+    .fa-search {
+      position: absolute;
+      padding: 8px 12px 8px 8px;
+      top: 0px;
+      right: 0px;
+      cursor: pointer;
     }
 
-    .tag_container {
+    .keyword_container {
       width: 100%;
-      height: 200px;
-      margin: 38px 0 0 0;
+      height: 221px;
+      margin: 36px 0 0 0;
       background: #ffffff;
+      .keyword {
+        cursor: pointer;
+        line-height: 36px;
+        color: #898785;
+        i {
+          margin: 0 0 0 5px;
+          color: #84CCC2;
+        }
+      }
+      .keyword:not(:last-child) {
+        &::after {
+          content: "";
+          display: block;
+          width: 100%;
+          height: 1px;
+          background: linear-gradient(to right, #d9e8c2, #829ec0, #d9e8c2);
+        }
+      }
     }
   }
 

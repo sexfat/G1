@@ -187,8 +187,7 @@ $mainRed : #de267d;
         margin-bottom: 5px;
 
         @include respond(latop-min) {
-          height: 0px;
-          overflow: hidden;
+          display: none;
         }
 
         li {
@@ -208,7 +207,6 @@ $mainRed : #de267d;
           h4 {
             &:hover {
               font-weight: bold;
-              transform: scale(1.1);
             }
           }
 
